@@ -13,7 +13,7 @@ const bodySchema = z.union([
 export interface VoteGatewayOptions {
   signingKey?: string | undefined;
   origin?: string | undefined;
-  store: () => Pick<LiveStore, 'getVoteWindow' | 'getVoteReceipt' | 'submitVote'>;
+  store: () => Pick<LiveStore, 'getVoteWindow' | 'getVoteReceipt' | 'getVoteResult' | 'submitVote'>;
   now?: () => number;
 }
 class RequestError extends Error { constructor(readonly status: number) { super('Invalid vote request'); } }
@@ -93,8 +93,11 @@ export async function handleVoteRequest(request: Request, options: VoteGatewayOp
     if (input.action === 'status') {
       const window = await store.getVoteWindow(input.roundId);
       if (window === null) return response(404, { error: 'window-not-found' });
-      const receipt = await store.getVoteReceipt({ roundId: input.roundId, sessionId: session!.sessionId });
-      return response(200, { window, receipt });
+      const [receipt, result] = await Promise.all([
+        store.getVoteReceipt({ roundId: input.roundId, sessionId: session!.sessionId }),
+        store.getVoteResult(input.roundId),
+      ]);
+      return response(200, { window, receipt, result });
     }
     // Publication may have been withdrawn after this session was signed. Keep the
     // public visibility boundary even for retries; the database owns eligibility.

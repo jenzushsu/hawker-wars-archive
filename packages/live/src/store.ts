@@ -1,5 +1,6 @@
 import { versions } from 'node:process';
 import { z } from 'zod';
+import { ResolutionSchema } from './vote-resolution-schema.ts';
 
 const MAX_REQUEST_BYTES = 1_048_576;
 const MAX_RESPONSE_BYTES = 2_097_152;
@@ -83,6 +84,20 @@ const voteReceipt = z.object({ schemaVersion: z.literal('live-vote-receipt-1'), 
 }).strict();
 const voteIdentityInput = z.object({ roundId: uuid, sessionId: uuid }).strict();
 const submitVoteInput = voteIdentityInput.extend({ requestId: uuid, optionId: voteOption }).strict();
+const voteResult = z.object({ schemaVersion: z.literal('live-vote-result-1'), round_id: uuid,
+  winner: voteOption.nullable(), effective_tick: integer.refine(value => value >= 31 && value <= 119),
+  ends_at: nonnegative.nullable(), counts: z.object({ bus: voteCount, rain: voteCount, 'supplier-delay': voteCount }).strict(),
+  applied: z.boolean(),
+}).strict().refine(value => {
+  const counts = Object.values(value.counts), maximum = Math.max(...counts);
+  return counts.reduce((total, count) => total + count, 0) <= 400 &&
+    (value.winner === null
+      ? maximum === 0 && value.ends_at === null
+      : maximum > 0 && value.counts[value.winner] === maximum &&
+        value.ends_at === value.effective_tick + (value.winner === 'bus' ? 0 : 9));
+});
+export type LiveVoteResolution = z.infer<typeof ResolutionSchema>;
+export type LiveVoteResult = z.infer<typeof voteResult>;
 export type LiveVoteWindow = z.infer<typeof voteWindow>;
 export type LiveVoteReceipt = z.infer<typeof voteReceipt>;
 export type LiveVoteSubmission = z.input<typeof submitVoteInput>;
@@ -159,7 +174,7 @@ export class LiveStore {
       result.control_state !== state || result.control_revision !== value.expectedRevision + 1) throw new LiveStoreError('response');
     return result;
   }
-  /** Fenced worker only. Current rules workers do not opt into audience voting. */
+  /** Fenced worker only. Integrated voting workers open at the atomic tick-30 commit. */
   async openVoteWindow(input: z.input<typeof releaseInput>): Promise<LiveVoteWindow> {
     const value = parse(releaseInput, input, 'input');
     const result = await this.#request('/rpc/live_open_vote_window', { p_round_id: value.roundId, p_owner_id: value.ownerId, p_fence: value.fence }, voteWindow);
@@ -186,6 +201,21 @@ export class LiveStore {
     const value = parse(voteIdentityInput, input, 'input');
     const result = await this.#request('/rpc/live_get_vote_receipt', { p_round_id: value.roundId, p_session_id: value.sessionId }, voteReceipt.nullable());
     if (result !== null && result.round_id !== value.roundId) throw new LiveStoreError('response');
+    return result;
+  }
+  /** Fenced worker only. A durable resolution is private until projected; never blindly retry uncertainty. */
+  async resolveVoteWindow(input: z.input<typeof releaseInput>): Promise<LiveVoteResolution | null> {
+    const value = parse(releaseInput, input, 'input');
+    const result = await this.#request('/rpc/live_resolve_vote_window', { p_round_id: value.roundId,
+      p_owner_id: value.ownerId, p_fence: value.fence }, ResolutionSchema.nullable());
+    if (result !== null && result.round_id !== value.roundId) throw new LiveStoreError('response');
+    return result;
+  }
+  /** Public projection only: no private seed, tie draw or session identities. */
+  async getVoteResult(roundId: string): Promise<LiveVoteResult | null> {
+    const id = parse(uuid, roundId, 'input');
+    const result = await this.#request('/rpc/live_get_vote_result', { p_round_id: id }, voteResult.nullable());
+    if (result !== null && result.round_id !== id) throw new LiveStoreError('response');
     return result;
   }
   async acquireLease(input: z.input<typeof acquireInput>): Promise<LiveLease> {

@@ -17,9 +17,10 @@ const receipt = { schemaVersion: 'live-vote-receipt-1' as const, round_id: round
 function setup() {
   const getVoteWindow = vi.fn<LiveStore['getVoteWindow']>().mockResolvedValue(window);
   const getVoteReceipt = vi.fn<LiveStore['getVoteReceipt']>().mockResolvedValue(receipt);
+  const getVoteResult = vi.fn<LiveStore['getVoteResult']>().mockResolvedValue(null);
   const submitVote = vi.fn<LiveStore['submitVote']>().mockResolvedValue(receipt);
-  const store = vi.fn(() => ({ getVoteWindow, getVoteReceipt, submitVote }));
-  return { getVoteWindow, getVoteReceipt, submitVote, store, options: { signingKey: key, origin, store, now: () => nowMs } };
+  const store = vi.fn(() => ({ getVoteWindow, getVoteReceipt, getVoteResult, submitVote }));
+  return { getVoteWindow, getVoteReceipt, getVoteResult, submitVote, store, options: { signingKey: key, origin, store, now: () => nowMs } };
 }
 function request(body: unknown, cookie?: string, headers: Record<string, string> = {}) {
   return new Request(`${origin}/api/votes`, { method: 'POST', headers: { origin, 'content-type': 'application/json',
@@ -134,8 +135,17 @@ describe('durable voting gateway trust and acknowledgement boundary', () => {
     const issued = issueVoteSession({ key, roundId, nowMs });
     const result = await handleVoteRequest(request({ action: 'status', roundId }, `__Host-hawker-session=${issued.token}`), options);
     expect(getVoteReceipt).toHaveBeenCalledExactlyOnceWith({ roundId, sessionId: issued.sessionId });
-    expect(await result.json()).toEqual({ window, receipt });
+    expect(await result.json()).toEqual({ window, receipt, result: null });
     expect(submitVote).not.toHaveBeenCalled();
+  });
+  it('returns the sanitized resolved result alongside the session receipt', async () => {
+    const { options, getVoteResult } = setup();
+    const resolved = { schemaVersion: 'live-vote-result-1' as const, round_id: roundId, winner: 'rain' as const, effective_tick: 35, ends_at: 44, counts: { bus: 0, rain: 1, 'supplier-delay': 0 }, applied: true };
+    getVoteResult.mockResolvedValueOnce(resolved);
+    const response = await handleVoteRequest(request({ action: 'status', roundId }, sessionCookie()), options);
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ window, receipt, result: resolved });
+    expect(getVoteResult).toHaveBeenCalledExactlyOnceWith(roundId);
   });
   it('does not read private receipts or submit when a previously visible window is withdrawn', async () => {
     const { options, getVoteWindow, getVoteReceipt, submitVote } = setup();

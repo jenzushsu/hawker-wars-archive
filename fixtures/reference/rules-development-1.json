@@ -22,7 +22,7 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "8beae46dc48daeb8c2228228e5d7f2199c28ffc85a8570701c92b5494bfa3006",
+    "sourceTreeHash": "7dbf29a0797cd0417b30d2be5ba6209f2c15902cee771c15b7cc7f3d2e3fe489",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
       {
@@ -435,7 +435,7 @@
       },
       {
         "path": "package.json",
-        "sha256": "d4418737672ea5ce70692310f48c3800b72a2bc0590ce2867344a050683fbfa7"
+        "sha256": "7d37b637350e572b64fb87ff9f85e51ebb6506bbfdde2e7c4fd1ca45cef2a617"
       },
       {
         "path": "packages/art/src/customer.ts",
@@ -515,11 +515,19 @@
       },
       {
         "path": "packages/live/src/store.ts",
-        "sha256": "251c579be24c7d3fd676bd046df4e572661c8705e9478cb9f2e543912366fb66"
+        "sha256": "3e24aae23d794e418d11ac0025d19440be3923960fc40ce7af7e125f7c7f9c32"
       },
       {
         "path": "packages/live/src/vote-gateway.ts",
-        "sha256": "b854269a5a1eab4d5472976ec6522f5fb2e76533cc0154620122f2851cac49e2"
+        "sha256": "31f927e0bac36926d19d13d5a8bd250570bdc6c054cbf709d5c92607eba65808"
+      },
+      {
+        "path": "packages/live/src/vote-resolution-schema.ts",
+        "sha256": "55d748748e8dd2b5ce000b76a9c91bdac2b50f723717f7dd8befb5f7fa200d3d"
+      },
+      {
+        "path": "packages/live/src/vote-resolution.ts",
+        "sha256": "6915c31c90dd2cb8be8bbe410c85b10f1bf365d3e8d5e9a6b7028c19c9102666"
       },
       {
         "path": "packages/live/src/voting.ts",
@@ -527,7 +535,7 @@
       },
       {
         "path": "packages/live/src/worker.ts",
-        "sha256": "132f848cff28d673a95ee0a0dcd3d02b1d4636fb6d5f956b13d3e7875fc32150"
+        "sha256": "586c791963fe4f81dcd4323cc9ea3fbed0fdb8c0dc5d80a8f2f5ef08193d7a0a"
       },
       {
         "path": "packages/providers/package.json",
@@ -735,7 +743,7 @@
       },
       {
         "path": "scripts/run-rules-worker.ts",
-        "sha256": "97c61e8397bf5280c8e32a56de0ffe7a4257107ca3c03d942cfff31161dcda8d"
+        "sha256": "8b472a88e21f05cc00d59c05761dbd9d0878d88042df2c1c429d138f710567bc"
       },
       {
         "path": "scripts/source-identity.ts",
@@ -755,7 +763,7 @@
       },
       {
         "path": "scripts/validate-live-store.sh",
-        "sha256": "f57214b49e609c9027cb900eef01b721dd46f7ac8099bd40eb31f92116fe0d33"
+        "sha256": "de62e9d6cadbe1ae902c90c74b87dbd938ad6711b09c02ac6b62876ee3222fdc"
       },
       {
         "path": "scripts/validate-p0.ts",
@@ -768,6 +776,14 @@
       {
         "path": "scripts/validate-p2-b.ts",
         "sha256": "a869213b30c4e7015c940b78eb329693fb9b54db784e36d3a070cccc179b5e8a"
+      },
+      {
+        "path": "scripts/validate-vote-effects-http.sh",
+        "sha256": "370befdebd37b473f8d5f00d90d30ee7c8b73cb38747f639b2d83b3cb6aab24f"
+      },
+      {
+        "path": "scripts/validate-vote-effects-http.ts",
+        "sha256": "3621724f309f0bd338e25c1c58b1a934d8616e961d6be823faedb0c185177d0a"
       },
       {
         "path": "scripts/validate-votes-http.sh",
@@ -794,8 +810,16 @@
         "sha256": "353451bb39b5c25c6904829e88535ee52e1f7660ecea75e30fe38c19bfd0df55"
       },
       {
+        "path": "supabase/migrations/202610230005_vote_resolution.sql",
+        "sha256": "9f77930060834a9ddf8bb0fb80a0988aa7479eaaec9369e9b24b39318a543a3a"
+      },
+      {
         "path": "supabase/tests/live-store.sql",
         "sha256": "d0fe345c6226087973b44a6132a1ee7d8609ed3255a80266d91485f9bf4eb9b9"
+      },
+      {
+        "path": "supabase/tests/live-vote-effects.sql",
+        "sha256": "7284f54892388a994e31c69a00febd3d5b39407b895016e7a379449ec4b10552"
       },
       {
         "path": "supabase/tests/live-votes.sql",
@@ -850,8 +874,16 @@
         "sha256": "6d90c0483f394a6b828bfabbe7b896d252e4d20477bd4e670598075b2338088c"
       },
       {
+        "path": "tests/live-vote-effects-store.test.ts",
+        "sha256": "1020f80de39552199602d5a52fed9005fc33174e086dcce5cb9cc094b2ee9cee"
+      },
+      {
         "path": "tests/live-vote-gateway.test.ts",
-        "sha256": "3b63b56634baad9ddb08feb4f0f83d785cca6223d11838a2839711fdb0cb8784"
+        "sha256": "99ebf99916d0f6857cc55430d0547d6bed768aff8e8dea8b0da322e0996cc3e6"
+      },
+      {
+        "path": "tests/live-vote-resolution.test.ts",
+        "sha256": "15e80c4fc18a4a719d36bf251f00842570f7fbc2ccddafe9bba2bb2cdbbbadc5"
       },
       {
         "path": "tests/live-vote-store.test.ts",
@@ -860,6 +892,14 @@
       {
         "path": "tests/live-voting-adversarial.test.ts",
         "sha256": "35f03ddc6d7b6594d68f24ab52bb98dceb96c438ad5f7bbf32a89d47a6348146"
+      },
+      {
+        "path": "tests/live-voting-worker-adversarial.test.ts",
+        "sha256": "1c3f49812e69008f6f161b56df9106fd959ffa4c74060c70ebeab90a7a69251e"
+      },
+      {
+        "path": "tests/live-voting-worker.test.ts",
+        "sha256": "fd593b53c9ceeb880b11aa5a611f2debbd1be88507ba82683631a864c6353dd1"
       },
       {
         "path": "tests/live-voting.test.ts",

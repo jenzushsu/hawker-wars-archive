@@ -101,3 +101,5 @@ Hawkers, customers, environment, effects and pictograms use the reproducible atl
 [P5-D operator controls](docs/p5-d-operator-controls.md) add durable pause/resume/stop and a machine-only authenticated API for rules exhibition rounds. Live voting and viewer integration remain pending.
 
 [P5-E durable voting](docs/p5-e-durable-voting.md) adds signed anonymous sessions, database receipts, pause-aware deadlines and submission limits. Activation remains blocked pending winning-effect integration into the worker.
+
+[P5-F vote effects](docs/p5-f-vote-effects.md) connects durable vote resolution to explicit rules-worker opt-in (`--voting`), preserving atomic application and restart recovery. This supersedes the P5-E worker activation gate; live browser integration remains pending.
