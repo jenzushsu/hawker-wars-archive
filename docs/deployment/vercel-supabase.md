@@ -1,6 +1,6 @@
 # Vercel and Supabase deployment
 
-The application is aligned with a Vercel frontend and Supabase shared backend. The current browser is still an offline recorded replay; deploying it does not activate shared rounds, real audience votes or model inference. P5 is adding the backend in verified increments. No hosted deployment or production migration has been performed by these changes.
+The application is aligned with a Vercel frontend and Supabase shared backend. A [bounded rules-only worker](../p5-c-rules-worker.md) is now available with verified recovery and database pacing; multi-policy inference and audience voting are not enabled. The current browser is still an offline recorded replay; deploying it does not activate shared rounds, real audience votes or model inference. P5 is adding the backend in verified increments. No hosted deployment or production migration has been performed by these changes.
 
 ## Execution boundaries
 
@@ -32,7 +32,7 @@ The provider reservation ledger currently uses a local SQLite file. It cannot be
 ## Deployment acceptance still required
 
 - Provision the Vercel project, Supabase staging/production projects and a durable worker host.
-- Finish the worker, authenticated endpoints, durable votes, reconnect and operator recovery paths; demonstrate two viewers sharing one round.
+- Extend the rules worker to the intended policy/voting integration, authenticated endpoints, durable votes, reconnect and operator controls; demonstrate two viewers sharing one round.
 - Apply reviewed migrations in staging and test actual anonymous/authenticated/service-role HTTP and Realtime access.
 - Configure server secrets, origin/cookie policy and operational limits; verify none appear in public bundles or responses.
 - Verify persistent provider reservations and independently satisfy each enabled provider's access/budget gates.

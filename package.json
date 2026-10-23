@@ -33,7 +33,8 @@
     "art:check": "tsx scripts/export-hawker.ts --check && tsx scripts/export-customer.ts --check && tsx scripts/export-environment.ts --check && tsx scripts/export-effects.ts --check && tsx scripts/export-ui.ts --check",
     "demo:voting": "tsx scripts/demo-voting.ts",
     "validate:p5-store": "bash scripts/validate-live-store.sh",
-    "validate:p5-http": "bash scripts/validate-live-http.sh"
+    "validate:p5-http": "bash scripts/validate-live-http.sh",
+    "worker:rules": "node --use-env-proxy --import tsx scripts/run-rules-worker.ts"
   },
   "dependencies": {
     "zod": "3.25.76"

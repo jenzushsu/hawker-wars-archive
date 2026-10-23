@@ -22,7 +22,7 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "2a6e9a4d0d5aa1658f1142faaeee85123fa4e2e9f7d9a22802916a2d6d600c5b",
+    "sourceTreeHash": "57e53d1fdd866afcacdde0b87380f29b3bb30c3de923aaf6f2cc0c9133f23e4e",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
       {
@@ -427,7 +427,7 @@
       },
       {
         "path": "package.json",
-        "sha256": "e1f453b8e5c13d21eb55942ca300602c383008006d4e969616d2f5abc7e274b8"
+        "sha256": "49fcf0e08628b4957b9447a166833f364205068be84d8297bc4226f7ba6de9bd"
       },
       {
         "path": "packages/art/src/customer.ts",
@@ -499,11 +499,15 @@
       },
       {
         "path": "packages/live/src/store.ts",
-        "sha256": "42c345da2e9ffe89fa579085b3f36981a9c2c342a9ffed28e2fbe779c5bbfc37"
+        "sha256": "6f7588a500165a1e05d2ceec0eeb7b848dadbf683561e2f647d6d9103d71de34"
       },
       {
         "path": "packages/live/src/voting.ts",
         "sha256": "020777660a4b157fbf2e5b12a70eea5657f101f93988fb2e70f058561df876b7"
+      },
+      {
+        "path": "packages/live/src/worker.ts",
+        "sha256": "259da6aea98edb354ada4308a13e18f1506c92fcfdcb8e62fc68d31bba8f34a8"
       },
       {
         "path": "packages/providers/package.json",
@@ -710,6 +714,10 @@
         "sha256": "96a003105becb4f413b86a5c5a57fcdca9e2ae53dd798b594e129ac982a41078"
       },
       {
+        "path": "scripts/run-rules-worker.ts",
+        "sha256": "951592cf5fab553434d24be11e595eafa1eab4eea2c8a41efe4328608e8149cb"
+      },
+      {
         "path": "scripts/source-identity.ts",
         "sha256": "39ef8f0b84ecf68718cdadc273ab86cba0802f6a9df8c0abfe140b19e526baab"
       },
@@ -723,7 +731,7 @@
       },
       {
         "path": "scripts/validate-live-http.ts",
-        "sha256": "980a4b7a78423921d3f07f95eef30fb2669b848738ac72ab8ea62cb57d0c05f4"
+        "sha256": "69a98944af59aedd87b042a339e0fc4dee601ff3b43602a6d4f650ee733624bf"
       },
       {
         "path": "scripts/validate-live-store.sh",
@@ -746,8 +754,12 @@
         "sha256": "e661f352c570ac6b95f75d6e484cfa17c2992d4bf43b51dd4dc5b5a2c0411885"
       },
       {
+        "path": "supabase/migrations/202610230002_worker_recovery_metadata.sql",
+        "sha256": "6d138a5915aaf304ae3d7838a36c507a52781ad46cd5f3cd4017d3c61475ba9f"
+      },
+      {
         "path": "supabase/tests/live-store.sql",
-        "sha256": "fce54c622f1d43be24122f233da8416d7b7940413ad7397329d86beab7588ade"
+        "sha256": "e621090a91c51d8443174915519f56c6c52d70dc5cd80f161ecfb17104f7ddc6"
       },
       {
         "path": "tests/customer-art.test.ts",
@@ -787,7 +799,7 @@
       },
       {
         "path": "tests/live-store.test.ts",
-        "sha256": "968f2a2ec2e327a93a12f35d87043cbdb703fef094736678337f7fc65b624b12"
+        "sha256": "9bdc4a3a6d3bc6b34a76b713f23711ecb0c46891bd272b53f1d21199b32de814"
       },
       {
         "path": "tests/live-voting-adversarial.test.ts",
@@ -796,6 +808,14 @@
       {
         "path": "tests/live-voting.test.ts",
         "sha256": "48b7ad6c961de60e224cd3193d7cdab0b5d19c0fd2884afceb43fd3da5591a91"
+      },
+      {
+        "path": "tests/live-worker-adversarial.test.ts",
+        "sha256": "6fbe493d3f14fd745b36151b66e416f2a45f8518fc7c36a6bdd245d216178ebb"
+      },
+      {
+        "path": "tests/live-worker.test.ts",
+        "sha256": "d498a1b73d9bf7bdf497a486a65d5e8121f882c4b88e1be5582ba426114bf0fd"
       },
       {
         "path": "tests/load-demo.test.ts",

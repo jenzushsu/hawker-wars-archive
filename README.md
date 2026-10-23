@@ -60,7 +60,7 @@ P2-C adapters and a local durable reservation ledger are now implemented. Jev's 
 
 P5-A adds an offline server-side voting core for exhibition windows, vote changes, pause/resume and deterministic resolution. Run `pnpm demo:voting` for an in-memory demonstration. The browser remains a local vote preview; shared service, authentication, durable persistence and reconnect are still pending. See [P5-A scope and evidence](docs/p5-a-voting-core.md).
 
-P5-B adds Supabase-compatible fenced persistence and a server-only RPC client. See [persistence validation](docs/p5-b-persistence.md) and [Vercel/Supabase deployment](docs/deployment/vercel-supabase.md). The Vercel project root is `apps/web`; a durable worker remains necessary for live rounds.
+P5-B adds Supabase-compatible fenced persistence and a server-only RPC client. See [persistence validation](docs/p5-b-persistence.md) and [Vercel/Supabase deployment](docs/deployment/vercel-supabase.md). The Vercel project root is `apps/web`; a durable worker remains necessary for live rounds. The [P5-C rules worker](docs/p5-c-rules-worker.md) provides bounded rules-only execution and validated restart recovery; live viewers and voting remain pending.
 
 ## Recorded replay and evaluation workflows
 

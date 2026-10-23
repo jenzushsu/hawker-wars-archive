@@ -33,6 +33,9 @@ GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA test TO anon, authenticated, service_ro
 SET ROLE service_role;
 SELECT test.assert(public.live_create_round('11111111-1111-4111-8111-111111111111','exhibition',array['rules','jev'],repeat('a',64),repeat('b',64),test.recovery(),false)->>'sequence'='0','new round sequence');
 SELECT test.rejects($q$select public.live_create_round('22222222-2222-4222-8222-222222222222','exhibition',array['rules'],repeat('a',64),repeat('b',64),test.recovery(),true)$q$,'only one active round');
+SELECT test.assert(public.live_get_round_status('11111111-1111-4111-8111-111111111111') @> '{"classification":"exhibition","policy_ids":["rules","jev"],"status":"running","tick":-1,"sequence":0,"ready":true}'::jsonb,'service metadata includes unpublished running round');
+SELECT test.assert(public.live_get_round_status('11111111-1111-4111-8111-111111111111')->>'schedule_hash'=repeat('b',64),'service metadata carries schedule identity');
+SELECT test.assert(public.live_get_round_status('44444444-4444-4444-8444-444444444444') IS NULL,'missing status is null');
 SELECT test.rejects('select * from live_private.round_state','service role cannot directly read private state');
 SELECT test.rejects('update public.rounds set tick=10','service role cannot directly bypass commit RPC');
 RESET ROLE;
@@ -46,18 +49,21 @@ SELECT test.rejects('select * from live_private.round_state','private recovery d
 SELECT test.rejects($q$select public.live_get_recovery('11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',1)$q$,'private recovery RPC denied to anon');
 SELECT test.rejects($q$select public.live_acquire_lease('11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',30)$q$,'anon lease execution denied');
 SELECT test.rejects('delete from public.rounds','anon mutation denied');
+SELECT test.rejects($q$select public.live_get_round_status('11111111-1111-4111-8111-111111111111')$q$,'anon service status denied');
 RESET ROLE;
 UPDATE public.rounds SET published=true;
 SET ROLE authenticated;
 SELECT test.assert((SELECT count(*) FROM public.rounds)=1,'authenticated can read published round');
 SELECT test.rejects('update public.rounds set published=false','authenticated mutation denied');
 SELECT test.rejects('select * from live_private.tick_commits','idempotency data is private');
+SELECT test.rejects($q$select public.live_get_round_status('11111111-1111-4111-8111-111111111111')$q$,'authenticated service status denied');
 SELECT test.rejects($q$select public.live_create_round('33333333-3333-4333-8333-333333333333','exhibition',array['rules'],repeat('a',64),repeat('b',64),test.recovery(),true)$q$,'authenticated create RPC denied');
 RESET ROLE;
 \echo 'Permission and publication checks passed.'
 
 SET ROLE service_role;
 SELECT test.assert((public.live_acquire_lease('11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',60)->>'fence')::bigint=1,'first fence');
+SELECT test.assert(public.live_get_recovery('11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',1) @> '{"classification":"exhibition","policy_ids":["rules","jev"],"status":"running"}'::jsonb,'fenced recovery exposes authoritative metadata');
 SELECT test.assert((public.live_acquire_lease('11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',60)->>'fence')::bigint=1,'same active owner acquisition is idempotent');
 SELECT test.rejects($q$select public.live_acquire_lease('11111111-1111-4111-8111-111111111111','bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb',60)$q$,'second worker cannot acquire active lease');
 SELECT test.rejects($q$select public.live_renew_lease('11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',0,60)$q$,'stale fence cannot renew');
@@ -125,6 +131,7 @@ SELECT test.assert((test.commit(120,120,'00000000-0000-4000-8000-000000000130',3
 SELECT test.rejects($q$select public.live_acquire_lease('11111111-1111-4111-8111-111111111111','bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb',60)$q$,'completed round cannot acquire');
 SELECT test.rejects($q$select public.live_renew_lease('11111111-1111-4111-8111-111111111111','bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb',3,60)$q$,'completed round cannot renew');
 SELECT test.assert(public.live_release_lease('11111111-1111-4111-8111-111111111111','bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb',3),'completed round may release lease');
+SELECT test.assert(public.live_get_round_status('11111111-1111-4111-8111-111111111111') @> '{"status":"completed","tick":120,"sequence":121,"ready":false}'::jsonb,'completed metadata readable without a lease');
 RESET ROLE;
 SELECT test.assert((SELECT tick=120 AND sequence=121 AND status='completed' FROM public.rounds),'terminal commit settles round');
 SELECT test.assert((SELECT count(*) FROM public.game_events)=121,'contiguous sequence log');
@@ -136,6 +143,29 @@ SELECT test.assert(jsonb_array_length(public.live_get_events('11111111-1111-4111
 SELECT test.assert((public.live_get_events('11111111-1111-4111-8111-111111111111',119,1)->>'high_water')::bigint=121,'cursor high-water independent of page limit');
 RESET ROLE;
 \echo 'Expiry, replacement fencing, terminal state and cursor checks passed.'
+-- Pacing uses authoritative database time and rolls back every partial write on early commits.
+DELETE FROM public.rounds;
+SET ROLE service_role;
+SELECT public.live_create_round('11111111-1111-4111-8111-111111111111','exhibition',array['rules','jev'],repeat('a',64),repeat('b',64),test.recovery() || '{"workerVersion":"rules-worker-1"}',false);
+SELECT public.live_acquire_lease('11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',60);
+SELECT test.assert((public.live_get_round_status('11111111-1111-4111-8111-111111111111')->>'ready')::boolean,'initial paced tick is ready');
+SELECT public.live_commit_tick('11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',1,0,0,'00000000-0000-4000-8000-000000000901',test.snapshot(),test.decisions(),test.recovery() || '{"workerVersion":"rules-worker-1"}');
+SELECT test.assert(NOT (public.live_get_round_status('11111111-1111-4111-8111-111111111111')->>'ready')::boolean,'next paced tick is not ready immediately');
+SELECT test.assert((public.live_commit_tick('11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',1,0,0,'00000000-0000-4000-8000-000000000901',test.snapshot(),test.decisions(),test.recovery() || '{"workerVersion":"rules-worker-1"}')->>'replayed')::boolean,'exact retry bypasses no new tick or timer');
+SELECT test.rejects($q$select public.live_commit_tick('11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',1,1,1,'00000000-0000-4000-8000-000000000902',test.snapshot(),test.decisions(),test.recovery() || '{"workerVersion":"rules-worker-1"}')$q$,'early worker tick rejected');
+RESET ROLE;
+SELECT test.assert((SELECT tick=0 AND sequence=1 FROM public.rounds),'pacing rejection leaves round boundary unchanged');
+SELECT test.assert((SELECT count(*) FROM public.decisions)=2,'pacing rejection rolls back decision inserts');
+SELECT test.assert((SELECT count(*) FROM public.game_events)=1,'pacing rejection rolls back event inserts');
+SELECT test.assert((SELECT count(*) FROM live_private.tick_commits)=1,'pacing rejection rolls back idempotency record');
+-- Administrative test-only time advance; no production RPC accepts this override.
+UPDATE live_private.round_state SET next_tick_at=clock_timestamp()-interval '1 second';
+SET ROLE service_role;
+SELECT test.assert((public.live_get_round_status('11111111-1111-4111-8111-111111111111')->>'ready')::boolean,'elapsed database pacing permits next tick');
+SELECT public.live_commit_tick('11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',1,1,1,'00000000-0000-4000-8000-000000000902',test.snapshot(),test.decisions(),test.recovery() || '{"workerVersion":"rules-worker-1"}');
+RESET ROLE;
+SELECT test.assert((SELECT tick=1 AND sequence=2 FROM public.rounds),'elapsed worker commit advances once');
+\echo 'Worker metadata, permission and database pacing checks passed.'
 -- Leave a fresh clean round for the separate-process lease and lock-wait races.
 DELETE FROM public.rounds;
 SET ROLE service_role;

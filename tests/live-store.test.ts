@@ -27,6 +27,19 @@ function mock(value: unknown, status = 200) {
     expect(JSON.stringify(store)).toBe('{}');
     expect(Object.keys(store)).toEqual([]);
   });
+  it('canonicalizes UUID inputs before dispatch so successful database writes are not reported as failures', async () => {
+    const uppercaseRound = 'ABCDEFAB-CDEF-4ABC-8DEF-ABCDEFABCDEF';
+    const uppercaseOwner = 'BCDEFABC-DEFA-4BCD-8EFA-BCDEFABCDEFA';
+    const uppercaseKey = 'CDEFABCD-EFAB-4CDE-8FAB-CDEFABCDEFAB';
+    const canonicalRound = uppercaseRound.toLowerCase();
+    const created = mock({ round_id: canonicalRound, tick: -1, sequence: 0 });
+    await expect(created.store.createRound({ roundId: uppercaseRound, classification: 'exhibition', policyIds: ['rules'], configurationHash: hash, scheduleHash: hash, recovery: { schemaVersion: 'recovery-1' } })).resolves.toMatchObject({ round_id: canonicalRound });
+    expect(JSON.parse(created.transport.mock.calls[0]![1]!.body as string).p_round_id).toBe(canonicalRound);
+    const committed = mock({ round_id: canonicalRound, tick: 0, sequence: 1, replayed: false });
+    await expect(committed.store.commitTick({ ...commit, roundId: uppercaseRound, ownerId: uppercaseOwner, commitKey: uppercaseKey })).resolves.toMatchObject({ round_id: canonicalRound });
+    expect(JSON.parse(committed.transport.mock.calls[0]![1]!.body as string)).toMatchObject({ p_round_id: canonicalRound, p_owner_id: uppercaseOwner.toLowerCase(), p_commit_key: uppercaseKey.toLowerCase() });
+    await expect(mock({ ...wireSnapshot, round_id: uppercaseRound }).store.getSnapshot(uppercaseRound)).resolves.toMatchObject({ round_id: canonicalRound });
+  });
   it('uses database-issued leases and rejects a changed fence on renewal', async () => {
     const { store, transport } = mock({ fence: 7, expires_at: '2026-10-23T12:00:30+00:00' });
     await expect(store.acquireLease({ roundId, ownerId })).resolves.toMatchObject({ fence: 7 });
@@ -86,11 +99,28 @@ function mock(value: unknown, status = 200) {
     expect(transport).not.toHaveBeenCalled();
   });
   it('keeps recovery reads separate and fenced, without claiming semantic engine recovery', async () => {
-    const value = { schemaVersion: 'live-recovery-1', round_id: roundId, tick: 0, sequence: 1, configuration_hash: hash, schedule_hash: hash, recovery: { schemaVersion: 'recovery-1', privateData: [1, 2] } };
+    const value = { schemaVersion: 'live-recovery-1', round_id: roundId, classification: 'exhibition', policy_ids: ['rules'], status: 'running', tick: 0, sequence: 1, configuration_hash: hash, schedule_hash: hash, recovery: { schemaVersion: 'recovery-1', privateData: [1, 2] } };
     const { store, transport } = mock(value);
     await expect(store.getRecovery({ roundId, ownerId, fence: 8 })).resolves.toEqual(value);
     expect(transport.mock.calls[0]![0]).toContain('/rpc/live_get_recovery');
     expect(JSON.parse(transport.mock.calls[0]![1]!.body as string)).toEqual({ p_round_id: roundId, p_owner_id: ownerId, p_fence: 8 });
+  });
+  it('reads service-only status without a lease and rejects incompatible metadata or private fields', async () => {
+    const status = { schemaVersion: 'live-round-status-1', ready: false, round_id: roundId, classification: 'exhibition', policy_ids: ['rules'], status: 'completed', tick: 120, sequence: 121, configuration_hash: hash, schedule_hash: hash };
+    const { store, transport } = mock(status);
+    await expect(store.getRoundStatus(roundId)).resolves.toEqual(status);
+    expect(transport.mock.calls[0]![0]).toContain('/rpc/live_get_round_status');
+    expect(JSON.parse(transport.mock.calls[0]![1]!.body as string)).toEqual({ p_round_id: roundId });
+    await expect(mock(null).store.getRoundStatus(roundId)).resolves.toBeNull();
+    for (const value of [{ ...status, round_id: ownerId }, { ...status, status: 'running' }, { ...status, sequence: 120 }, { ...status, policy_ids: ['jev'] }, { ...status, recovery: { private: true } }, { ...status, schedule_hash: 'wrong' }, { ...status, ready: true }]) {
+      await expect(mock(value).store.getRoundStatus(roundId)).rejects.toMatchObject({ code: 'response' });
+    }
+  });
+  it('requires authoritative classification, policies and status on fenced recovery responses', async () => {
+    const value = { schemaVersion: 'live-recovery-1', round_id: roundId, classification: 'exhibition', policy_ids: ['rules'], status: 'running', tick: 0, sequence: 1, configuration_hash: hash, schedule_hash: hash, recovery: { schemaVersion: 'recovery-1' } };
+    for (const changed of [{ ...value, classification: undefined }, { ...value, policy_ids: [] }, { ...value, policy_ids: ['rules', 'rules'] }, { ...value, status: 'completed' }, { ...value, sequence: 0 }, { ...value, round_id: ownerId }]) {
+      await expect(mock(changed).store.getRecovery({ roundId, ownerId, fence: 1 })).rejects.toMatchObject({ code: 'response' });
+    }
   });
   it('sanitizes HTTP and network errors without retrying or exposing remote diagnostics', async () => {
     const { store, transport } = mock({ error: `${serviceRoleKey} secret provider payload` }, 403);

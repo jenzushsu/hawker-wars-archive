@@ -5,7 +5,8 @@ const MAX_REQUEST_BYTES = 1_048_576;
 const MAX_RESPONSE_BYTES = 2_097_152;
 const integer = z.number().int().safe().refine(value => !Object.is(value, -0));
 const nonnegative = integer.refine(value => value >= 0);
-const uuid = z.string().uuid();
+// PostgreSQL uuid values serialize canonically; normalize identifiers before dispatch and comparison.
+const uuid = z.string().uuid().transform(value => value.toLowerCase());
 const hash = z.string().regex(/^[a-f0-9]{64}$/);
 const classification = z.enum(['offline-contract', 'clean', 'stress', 'exhibition', 'replay']);
 const policy = z.enum(['rules', 'jev', 'zoom', 'zoom-pro']);
@@ -28,6 +29,15 @@ const publicSnapshot = z.object({ schemaVersion: z.literal('live-snapshot-1'), r
 const event = z.object({ round_id: uuid, sequence: nonnegative, tick,
   event_type: z.enum(['tick-committed', 'round-closed']), snapshot,
 }).strict().refine(value => value.sequence === value.tick + 1 && (value.event_type === 'round-closed') === (value.tick === 120));
+const roundMetadata = {
+  round_id: uuid, classification, policy_ids: policyIds, status: z.enum(['running', 'completed']),
+  tick: integer.refine(value => value >= -1 && value <= 120), sequence: nonnegative,
+  configuration_hash: hash, schedule_hash: hash,
+};
+const metadataBoundary = (value: { sequence: number; tick: number; status: string }) =>
+  value.sequence === value.tick + 1 && (value.status === 'completed') === (value.tick === 120);
+const roundStatus = z.object({ schemaVersion: z.literal('live-round-status-1'), ...roundMetadata, ready: z.boolean() }).strict().refine(metadataBoundary).refine(value => value.status !== 'completed' || !value.ready);
+const recoveryRecord = z.object({ schemaVersion: z.literal('live-recovery-1'), ...roundMetadata, recovery }).strict().refine(metadataBoundary);
 const eventPage = z.object({ high_water: nonnegative.refine(value => value <= 121), events: z.array(event).max(100) }).strict();
 const ownerInput = { roundId: uuid, ownerId: uuid };
 const fenceInput = { ...ownerInput, fence: nonnegative.refine(value => value > 0) };
@@ -47,6 +57,8 @@ export type LivePublicSnapshot = z.infer<typeof publicSnapshot>;
 export type LiveEventPage = z.infer<typeof eventPage>;
 export type LiveCommitInput = z.input<typeof commitInput>;
 export type LiveCreateInput = z.input<typeof createInput>;
+export type LiveRoundStatus = z.infer<typeof roundStatus>;
+export type LiveRecoveryRecord = z.infer<typeof recoveryRecord>;
 export type LiveLease = z.infer<typeof lease>;
 
 export class LiveStoreError extends Error {
@@ -137,13 +149,18 @@ export class LiveStore {
     if (result.high_water < value.afterSequence || result.events.length !== Math.min(value.limit, Math.max(0, result.high_water - value.afterSequence)) || result.events.some((item, index) => item.round_id !== value.roundId || item.sequence !== value.afterSequence + index + 1 || item.sequence > result.high_water)) throw new LiveStoreError('response');
     return result;
   }
+  /** Service-only metadata, including unpublished and completed rounds; never acquires or advances work. */
+  async getRoundStatus(roundId: string): Promise<LiveRoundStatus | null> {
+    const id = parse(uuid, roundId, 'input');
+    const result = await this.#request('/rpc/live_get_round_status', { p_round_id: id }, roundStatus.nullable());
+    if (result !== null && result.round_id !== id) throw new LiveStoreError('response');
+    return result;
+  }
   /** Private worker recovery envelope; requires a current fence. Validate engine/contract semantics before restoration. */
-  async getRecovery(input: z.input<typeof releaseInput>): Promise<{ schemaVersion: 'live-recovery-1'; round_id: string; tick: number; sequence: number; configuration_hash: string; schedule_hash: string; recovery: Record<string, unknown> }> {
+  async getRecovery(input: z.input<typeof releaseInput>): Promise<LiveRecoveryRecord> {
     const value = parse(releaseInput, input, 'input');
-    const result = await this.#request('/rpc/live_get_recovery', { p_round_id: value.roundId, p_owner_id: value.ownerId, p_fence: value.fence },
-      z.object({ schemaVersion: z.literal('live-recovery-1'), round_id: uuid, tick: integer.refine(n => n >= -1 && n <= 120), sequence: nonnegative,
-        configuration_hash: hash, schedule_hash: hash, recovery }).strict());
-    if (result.round_id !== value.roundId || result.sequence !== result.tick + 1) throw new LiveStoreError('response');
+    const result = await this.#request('/rpc/live_get_recovery', { p_round_id: value.roundId, p_owner_id: value.ownerId, p_fence: value.fence }, recoveryRecord);
+    if (result.round_id !== value.roundId) throw new LiveStoreError('response');
     return result;
   }
   async #request<T>(path: string, body: unknown, schema: z.ZodType<T>): Promise<T> {

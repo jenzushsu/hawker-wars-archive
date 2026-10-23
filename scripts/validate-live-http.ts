@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import { createHmac } from 'node:crypto';
 import { LiveStore } from '../packages/live/src/store.ts';
+import { createRulesRoundInput, runRulesTick } from '../packages/live/src/worker.ts';
+import { setTimeout as delay } from 'node:timers/promises';
 
 const secret = process.env.P5_HTTP_JWT_SECRET;
 if (!secret || secret.length < 32) throw new Error('Missing disposable gateway JWT secret');
@@ -70,6 +72,7 @@ for (const role of ['anon', 'authenticated'] as const) {
   for (const [path, body] of [
     ['/rpc/live_acquire_lease', { p_round_id: roundId, p_owner_id: ownerId, p_ttl_seconds: 30 }],
     ['/rpc/live_get_recovery', { p_round_id: roundId, p_owner_id: ownerId, p_fence: lease.fence }],
+    ['/rpc/live_get_round_status', { p_round_id: roundId }],
   ] as const) {
     const denied = await request(path, role, 'POST', body);
     assert.equal(denied.status, role === 'anon' ? 401 : 403, `${role} denied private worker RPC`);
@@ -87,4 +90,44 @@ assert.equal(invalid.status, 400);
 assert.equal((await store.getSnapshot(roundId))?.sequence, 1);
 assert.equal((await store.getEvents({ roundId, afterSequence: 0 })).events.length, 1);
 assert.equal(await store.releaseLease({ roundId, ownerId, fence: lease.fence }), true);
-console.log('Local PostgREST HTTP integration passed: real client RPCs, JWT roles, RLS reads, denied writes/private RPCs, idempotency and rollback. No Supabase Realtime/hosted deployment claim.');
+// Finish the synthetic storage fixture so the one-running-round constraint permits
+// a separate real rules-worker round. This fixture has no worker pacing marker.
+const finishingLease = await store.acquireLease({ roundId, ownerId, ttlSeconds: 60 });
+for (let tick = 1; tick <= 120; tick++) {
+  await store.commitTick({ ...commit, fence: finishingLease.fence, tick, expectedSequence: tick,
+    commitKey: `00000000-0000-4000-8000-${String(tick + 100).padStart(12, '0')}`,
+    decisions: tick === 120 ? [] : commit.decisions });
+}
+assert.equal((await store.getRoundStatus(roundId))?.status, 'completed');
+await store.releaseLease({ roundId, ownerId, fence: finishingLease.fence });
+
+const workerRound = '66666666-6666-4666-8666-666666666666';
+await store.createRound(createRulesRoundInput(workerRound, 7, true));
+assert.deepEqual(await runRulesTick(store, { roundId: workerRound, ownerId }),
+  { status: 'committed', tick: 0, sequence: 1, replayed: false });
+assert.equal((await runRulesTick(store, { roundId: workerRound, ownerId })).status, 'waiting');
+assert.equal((await store.getEvents({ roundId: workerRound, afterSequence: 0 })).events.length, 1);
+await delay(5100);
+let commitRequests = 0;
+const lostAckFetch: typeof fetch = async (input, init) => {
+  const response = await localFetch(input, init);
+  if (String(input).endsWith('/rpc/live_commit_tick')) {
+    commitRequests++;
+    assert.equal(response.status, 200, 'Commit must succeed before simulating a lost acknowledgement');
+    await response.arrayBuffer();
+    throw new Error('Synthetic lost acknowledgement');
+  }
+  return response;
+};
+const interrupted = new LiveStore({ supabaseUrl: 'https://gateway-test.invalid', serviceRoleKey: tokens.service_role, fetch: lostAckFetch });
+await assert.rejects(runRulesTick(interrupted, { roundId: workerRound, ownerId }), { code: 'store' });
+assert.equal(commitRequests, 1, 'Uncertain commit must not retry within the invocation');
+assert.equal((await store.getSnapshot(workerRound))?.sequence, 2);
+await delay(5100);
+const restarted = new LiveStore({ supabaseUrl: 'https://gateway-test.invalid', serviceRoleKey: tokens.service_role, fetch: localFetch });
+assert.deepEqual(await runRulesTick(restarted, { roundId: workerRound, ownerId: '77777777-7777-4777-8777-777777777777' }),
+  { status: 'committed', tick: 2, sequence: 3, replayed: false });
+const workerEvents = await store.getEvents({ roundId: workerRound, afterSequence: 0 });
+assert.deepEqual(workerEvents.events.map(event => event.sequence), [1, 2, 3]);
+assert.ok(!JSON.stringify(workerEvents).match(/privateSeed|recentActions|workerVersion|schedule|stateHash/));
+console.log('Local PostgREST integration passed: permissions, fenced commits, real rules ticks, durable pacing and restart after a lost commit acknowledgement. No hosted deployment/Realtime claim.');
