@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { createHmac } from 'node:crypto';
 import { LiveStore } from '../packages/live/src/store.ts';
+import { handleOperatorRequest } from '../packages/live/src/operator.ts';
 import { createRulesRoundInput, runRulesTick } from '../packages/live/src/worker.ts';
 import { setTimeout as delay } from 'node:timers/promises';
 
@@ -73,12 +74,14 @@ for (const role of ['anon', 'authenticated'] as const) {
     ['/rpc/live_acquire_lease', { p_round_id: roundId, p_owner_id: ownerId, p_ttl_seconds: 30 }],
     ['/rpc/live_get_recovery', { p_round_id: roundId, p_owner_id: ownerId, p_fence: lease.fence }],
     ['/rpc/live_get_round_status', { p_round_id: roundId }],
+    ['/rpc/live_control_round', { p_round_id: roundId, p_request_id: 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa', p_action: 'pause', p_expected_revision: 0, p_actor_id: 'operator-http-test' }],
   ] as const) {
     const denied = await request(path, role, 'POST', body);
     assert.equal(denied.status, role === 'anon' ? 401 : 403, `${role} denied private worker RPC`);
     assert.equal((await denied.json()).code, '42501');
   }
 }
+await assert.rejects(store.controlRound({ roundId, requestId: 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa', action: 'pause', expectedRevision: 0, actorId: 'operator-http-test' }), { code: 'http', status: 409 }, 'Generic recovery fixture cannot be operated as a rules worker');
 const directWrite = await request(`/rounds?id=eq.${roundId}`, 'service_role', 'PATCH', { tick: 100 });
 assert.equal(directWrite.status, 403, 'Service role must use commit RPC');
 const invalid = await request('/rpc/live_commit_tick', 'service_role', 'POST', {
@@ -130,4 +133,79 @@ assert.deepEqual(await runRulesTick(restarted, { roundId: workerRound, ownerId: 
 const workerEvents = await store.getEvents({ roundId: workerRound, afterSequence: 0 });
 assert.deepEqual(workerEvents.events.map(event => event.sequence), [1, 2, 3]);
 assert.ok(!JSON.stringify(workerEvents).match(/privateSeed|recentActions|workerVersion|schedule|stateHash/));
-console.log('Local PostgREST integration passed: permissions, fenced commits, real rules ticks, durable pacing and restart after a lost commit acknowledgement. No hosted deployment/Realtime claim.');
+// Durable controls serialize against the same committed boundary as worker writes.
+const controlOwner = '88888888-8888-4888-8888-888888888888';
+const staleLease = await store.acquireLease({ roundId: workerRound, ownerId: controlOwner, ttlSeconds: 60 });
+const pause = { roundId: workerRound, requestId: 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa', action: 'pause' as const, expectedRevision: 0, actorId: 'operator-http-test' };
+const operatorToken = 'http-test-operator-token-never-used-outside-local-tests';
+const operatorRequest = (body: unknown) => new Request('https://operator-test.invalid/api/admin/rounds/control', {
+  method: 'POST', headers: { authorization: `Bearer ${operatorToken}`, 'content-type': 'application/json' }, body: JSON.stringify(body),
+});
+const { actorId: _actorId, ...pauseBody } = pause;
+const pauseResponse = await handleOperatorRequest(operatorRequest(pauseBody), { token: operatorToken, actorId: pause.actorId, store: () => store });
+assert.equal(pauseResponse.status, 200, 'Authenticated handler must reach the durable control transaction');
+assert.equal(pauseResponse.headers.get('cache-control'), 'no-store');
+const paused = await pauseResponse.json();
+const statusResponse = await handleOperatorRequest(operatorRequest({ action: 'status', roundId: workerRound }), { token: operatorToken, actorId: pause.actorId, store: () => store });
+assert.equal(statusResponse.status, 200);
+assert.equal((await statusResponse.json()).control_state, 'paused');
+assert.deepEqual(paused, { schemaVersion: 'live-control-1', round_id: workerRound, request_id: pause.requestId,
+  action: 'pause', control_state: 'paused', control_revision: 1, tick: 2, sequence: 3, replayed: false });
+assert.equal((await store.getRoundStatus(workerRound))?.ready, false);
+assert.equal((await runRulesTick(store, { roundId: workerRound, ownerId })).status, 'paused');
+await assert.rejects(store.acquireLease({ roundId: workerRound, ownerId }), { code: 'http' });
+await assert.rejects(store.renewLease({ roundId: workerRound, ownerId: controlOwner, fence: staleLease.fence }), { code: 'http' });
+await assert.rejects(store.commitTick({ ...commit, roundId: workerRound, ownerId: controlOwner, fence: staleLease.fence,
+  expectedSequence: 3, tick: 3, commitKey: 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb' }), { code: 'http' });
+assert.equal((await store.getSnapshot(workerRound))?.sequence, 3, 'Pause cannot create a fake tick');
+await assert.rejects(store.controlRound({ ...pause, action: 'resume' }), { code: 'http', status: 409 }, 'Request reuse with another action conflicts');
+const conflictResponse = await handleOperatorRequest(operatorRequest({ ...pauseBody, action: 'resume' }), { token: operatorToken, actorId: pause.actorId, store: () => store });
+assert.equal(conflictResponse.status, 409, 'Known durable control conflicts must remain HTTP 409 through the operator endpoint');
+assert.deepEqual(await conflictResponse.json(), { error: 'control-conflict' });
+assert.deepEqual(await store.controlRound(pause), { ...paused, replayed: true });
+const resume = { ...pause, requestId: 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb', action: 'resume' as const, expectedRevision: 1 };
+assert.equal((await store.controlRound(resume)).control_revision, 2);
+assert.equal((await store.getSnapshot(workerRound))?.control_state, 'active');
+assert.deepEqual(await store.controlRound(pause), { ...paused, replayed: true }, 'Old accepted retry returns original receipt');
+assert.equal((await store.getRoundStatus(workerRound))?.control_state, 'active', 'Old pause retry cannot undo resume');
+await assert.rejects(store.controlRound({ ...pause, requestId: 'cccccccc-cccc-4ccc-8ccc-cccccccccccc' }), { code: 'http', status: 409 }, 'Stale revision cannot control current state');
+await assert.rejects(store.renewLease({ roundId: workerRound, ownerId: controlOwner, fence: staleLease.fence }), { code: 'http' }, 'Resume cannot revive a revoked lease');
+const freshLease = await store.acquireLease({ roundId: workerRound, ownerId: controlOwner });
+assert.ok(freshLease.fence > staleLease.fence);
+await store.releaseLease({ roundId: workerRound, ownerId: controlOwner, fence: freshLease.fence });
+
+const stop = { ...pause, requestId: 'dddddddd-dddd-4ddd-8ddd-dddddddddddd', action: 'stop' as const, expectedRevision: 2 };
+let controlRequests = 0;
+const lostControlAck: typeof fetch = async (input, init) => {
+  const response = await localFetch(input, init);
+  if (String(input).endsWith('/rpc/live_control_round')) {
+    controlRequests++;
+    assert.equal(response.status, 200);
+    await response.arrayBuffer();
+    throw new Error('Synthetic lost control acknowledgement');
+  }
+  return response;
+};
+const uncertainControl = new LiveStore({ supabaseUrl: 'https://gateway-test.invalid', serviceRoleKey: tokens.service_role, fetch: lostControlAck });
+await assert.rejects(uncertainControl.controlRound(stop), { code: 'transport' });
+assert.equal(controlRequests, 1, 'Control client cannot blindly retry an uncertain request');
+const stopped = await store.controlRound(stop);
+assert.equal(stopped.replayed, true);
+assert.equal(stopped.control_state, 'stopped');
+assert.equal(stopped.control_revision, 3);
+assert.equal((await runRulesTick(store, { roundId: workerRound, ownerId })).status, 'stopped');
+await assert.rejects(store.acquireLease({ roundId: workerRound, ownerId }), { code: 'http' });
+await assert.rejects(store.controlRound({ ...resume, requestId: 'eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee', expectedRevision: 3 }), { code: 'http', status: 409 }, 'Stop is irreversible');
+assert.deepEqual((await store.getEvents({ roundId: workerRound, afterSequence: 0 })).events.map(event => event.sequence), [1, 2, 3]);
+for (const role of ['anon', 'authenticated'] as const) {
+  const response = await request('/rpc/live_get_snapshot', role, 'POST', { p_round_id: workerRound });
+  assert.equal(response.status, 200);
+  const publicControl = await response.json();
+  assert.equal(publicControl.control_state, 'stopped');
+  assert.equal(publicControl.control_revision, 3);
+  assert.ok(!JSON.stringify(publicControl).match(/operator-http-test|actor_id|request_id|recovery|owner_id|expires_at/), 'Public control projection cannot reveal private audit or lease data');
+}
+const replacementRound = 'aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee';
+await store.createRound(createRulesRoundInput(replacementRound, 8));
+assert.equal((await store.getRoundStatus(replacementRound))?.tick, -1, 'A stopped round releases the one-active-round slot');
+console.log('Local PostgREST integration passed: permissions, fenced commits, real rules ticks, pacing, restart after lost acknowledgements, durable pause/resume/stop and control idempotency. No hosted deployment/Realtime claim.');

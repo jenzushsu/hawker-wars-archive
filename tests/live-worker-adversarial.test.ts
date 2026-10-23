@@ -29,7 +29,7 @@ class AuthoritativeStore {
     const created = createRulesRoundInput(roundId, 7);
     this.record = {
       schemaVersion: 'live-recovery-1', round_id: roundId, classification: created.classification,
-      policy_ids: [...created.policyIds], status: 'running', tick: -1, sequence: 0,
+      policy_ids: [...created.policyIds], status: 'running', control_state: 'active' as const, control_revision: 0, tick: -1, sequence: 0,
       configuration_hash: created.configurationHash, schedule_hash: created.scheduleHash,
       recovery: structuredClone(created.recovery),
     };
@@ -184,6 +184,31 @@ describe('independent rules worker recovery and failure review', () => {
     expect(store.acquireLease).not.toHaveBeenCalled();
     expect(store.getRecovery).not.toHaveBeenCalled();
     expect(store.commitTick).not.toHaveBeenCalled();
+  });
+
+  it.each(['paused', 'stopped'] as const)('does no lease or simulator work for a durable %s round', async control_state => {
+    const store = new AuthoritativeStore();
+    store.record.control_state = control_state;
+    store.record.control_revision = 3;
+    const status = await store.getRoundStatus();
+    store.getRoundStatus.mockResolvedValue({ ...status, ready: false });
+    await expect(runRulesTick(store, input)).resolves.toEqual({ status: control_state, tick: -1, sequence: 0, replayed: false });
+    expect(store.acquireLease).not.toHaveBeenCalled();
+    expect(store.getRecovery).not.toHaveBeenCalled();
+    expect(store.renewLease).not.toHaveBeenCalled();
+    expect(store.commitTick).not.toHaveBeenCalled();
+  });
+
+  it.each(['paused', 'stopped'] as const)('rejects a concurrent %s control found after acquiring the lease', async control_state => {
+    const store = new AuthoritativeStore();
+    const status = await store.getRoundStatus();
+    store.getRoundStatus.mockResolvedValue(status);
+    store.record.control_state = control_state;
+    store.record.control_revision++;
+    await expect(runRulesTick(store, input)).rejects.toMatchObject({ code: 'recovery' });
+    expect(store.renewLease).not.toHaveBeenCalled();
+    expect(store.commitTick).not.toHaveBeenCalled();
+    expect(store.releaseLease).toHaveBeenCalledTimes(1);
   });
 
   it('rejects malformed commands and held-out creation seeds before any store operation', async () => {

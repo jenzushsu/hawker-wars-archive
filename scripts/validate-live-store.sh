@@ -61,4 +61,32 @@ select test.assert((public.live_acquire_lease('11111111-1111-4111-8111-111111111
 select test.assert((test.commit(0,0,'00000000-0000-4000-8000-000000000999',3,'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb')->>'sequence')::bigint=1,'replacement commits once');
 SQL
 printf '%s\n' 'Concurrent lease and lock-wait expiry checks passed.'
+# A pause owns the same state lock as a worker commit. A waiting stale worker must
+# observe the revoked fence after the control transaction commits, never append a tick.
+psql_db -qAt <<'SQL' > "$race_directory/control-setup.log"
+delete from public.rounds;
+set role service_role;
+select public.live_create_round('11111111-1111-4111-8111-111111111111','exhibition',array['rules'],repeat('a',64),repeat('b',64),test.recovery() || '{"workerVersion":"rules-worker-1"}',true);
+select public.live_acquire_lease('11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',30);
+SQL
+psql_db -qAt -c "set application_name='p5-control-blocker'; begin; set local role service_role; select test.control('00000000-0000-4000-8000-000000000301','pause',0); select pg_sleep(1); commit;" > "$race_directory/control-blocker.log" 2>&1 &
+control_pid=$!
+control_ready=false
+for ((attempt=0; attempt<50; attempt++)); do
+  if [[ "$(psql_db -qAt -c "select count(*) from pg_stat_activity where application_name='p5-control-blocker' and wait_event='PgSleep';")" == 1 ]]; then control_ready=true; break; fi
+  sleep 0.02
+done
+if [[ "$control_ready" != true ]]; then wait "$control_pid" || true; echo 'Could not observe control lock blocker' >&2; exit 1; fi
+control_commit_status=0
+psql_db -qAt -c "set role service_role; select test.commit(0,0,'00000000-0000-4000-8000-000000000302',1);" > "$race_directory/control-stale.log" 2>&1 || control_commit_status=$?
+wait "$control_pid"
+if [[ "$control_commit_status" -eq 0 ]]; then echo 'Paused lock-waiting worker committed' >&2; exit 1; fi
+rg -q 'stale lease' "$race_directory/control-stale.log"
+psql_db -qAt <<'SQL'
+select test.assert((select control_state='paused' and control_revision=1 and tick=-1 and sequence=0 from public.rounds),'pause acknowledgement keeps committed boundary');
+select test.assert((select count(*) from public.game_events)=0,'pause race writes no event');
+select test.assert((select count(*) from live_private.control_receipts)=1,'pause race has one durable acknowledgement');
+SQL
+printf '%s\n' 'Concurrent control/commit lock and fence checks passed.'
+
 printf '%s\n' 'P5 SQL lifecycle and permission validation passed (local Postgres; no PostgREST/Realtime claim).'

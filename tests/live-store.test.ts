@@ -9,7 +9,7 @@ const hash = 'a'.repeat(64);
 const projection = { policies: [{ policy_id: 'rules' as const, cash_cents: 20000, profit_cents: 0, utility_points: 0, served: 0, abandoned: 0 }] };
 const commit: LiveCommitInput = { roundId, ownerId, fence: 1, expectedSequence: 0, tick: 0, commitKey, snapshot: projection,
   decisions: [{ policy_id: 'rules', action: 'WAIT', source: 'rules', fallback_reason: null }], recovery: { schemaVersion: 'recovery-1', privateFixture: true } };
-const wireSnapshot = { schemaVersion: 'live-snapshot-1', round_id: roundId, classification: 'exhibition', tick: 0, sequence: 1, status: 'running', configuration_hash: hash, snapshot: projection };
+const wireSnapshot = { schemaVersion: 'live-snapshot-1', round_id: roundId, classification: 'exhibition', tick: 0, sequence: 1, status: 'running', control_state: 'active' as const, control_revision: 0, configuration_hash: hash, snapshot: projection };
 const wireEvent = { round_id: roundId, sequence: 1, tick: 0, event_type: 'tick-committed', snapshot: projection };
 function mock(value: unknown, status = 200) {
   const transport = vi.fn<typeof fetch>().mockImplementation(async () => new Response(JSON.stringify(value), { status, headers: { 'content-type': 'application/json' } }));
@@ -39,6 +39,37 @@ function mock(value: unknown, status = 200) {
     await expect(committed.store.commitTick({ ...commit, roundId: uppercaseRound, ownerId: uppercaseOwner, commitKey: uppercaseKey })).resolves.toMatchObject({ round_id: canonicalRound });
     expect(JSON.parse(committed.transport.mock.calls[0]![1]!.body as string)).toMatchObject({ p_round_id: canonicalRound, p_owner_id: uppercaseOwner.toLowerCase(), p_commit_key: uppercaseKey.toLowerCase() });
     await expect(mock({ ...wireSnapshot, round_id: uppercaseRound }).store.getSnapshot(uppercaseRound)).resolves.toMatchObject({ round_id: canonicalRound });
+  });
+  it('sends authenticated-service control commands once and correlates exact original receipts', async () => {
+    const request = { roundId, requestId: commitKey, action: 'pause' as const, expectedRevision: 4, actorId: 'operator_fixture' };
+    const receipt = { schemaVersion: 'live-control-1', round_id: roundId, request_id: commitKey, action: 'pause',
+      control_state: 'paused', control_revision: 5, tick: 30, sequence: 31, replayed: true };
+    const { store, transport } = mock(receipt);
+    await expect(store.controlRound(request)).resolves.toEqual(receipt);
+    expect(transport).toHaveBeenCalledTimes(1);
+    expect(transport.mock.calls[0]![0]).toContain('/rpc/live_control_round');
+    expect(JSON.parse(transport.mock.calls[0]![1]!.body as string)).toEqual({ p_round_id: roundId, p_request_id: commitKey,
+      p_action: 'pause', p_expected_revision: 4, p_actor_id: 'operator_fixture' });
+    for (const patch of [{ round_id: ownerId }, { request_id: ownerId }, { action: 'stop' }, { control_state: 'active' },
+      { control_revision: 6 }, { sequence: 30 }, { tick: 120, sequence: 121 }, { private_audit: 'secret' }]) {
+      await expect(mock({ ...receipt, ...patch }).store.controlRound(request)).rejects.toMatchObject({ code: 'response' });
+    }
+    const uppercase = 'ABCDEFAB-CDEF-4ABC-8DEF-ABCDEFABCDEF';
+    const normalized = mock({ ...receipt, round_id: uppercase.toLowerCase(), request_id: uppercase.toLowerCase() });
+    await normalized.store.controlRound({ ...request, roundId: uppercase, requestId: uppercase });
+    expect(JSON.parse(normalized.transport.mock.calls[0]![1]!.body as string)).toMatchObject({ p_round_id: uppercase.toLowerCase(), p_request_id: uppercase.toLowerCase() });
+  });
+  it('rejects malformed operator control requests before dispatch and never retries an uncertain control', async () => {
+    const request = { roundId, requestId: commitKey, action: 'pause' as const, expectedRevision: 0, actorId: 'operator_fixture' };
+    const { store, transport } = mock(null);
+    for (const patch of [{ actorId: '' }, { actorId: 'a'.repeat(129) }, { actorId: 'user@example.org' }, { action: 'restart' },
+      { expectedRevision: -0 }, { expectedRevision: -1 }, { expectedRevision: Number.MAX_SAFE_INTEGER }, { serverTime: 123 }, { requestId: 'invalid' }]) {
+      await expect(store.controlRound({ ...request, ...patch } as never)).rejects.toMatchObject({ code: 'input' });
+    }
+    expect(transport).not.toHaveBeenCalled();
+    transport.mockRejectedValueOnce(new Error('private-credential-canary'));
+    await expect(store.controlRound(request)).rejects.toMatchObject({ code: 'transport', message: 'Live store transport failure' });
+    expect(transport).toHaveBeenCalledTimes(1);
   });
   it('uses database-issued leases and rejects a changed fence on renewal', async () => {
     const { store, transport } = mock({ fence: 7, expires_at: '2026-10-23T12:00:30+00:00' });
@@ -99,14 +130,14 @@ function mock(value: unknown, status = 200) {
     expect(transport).not.toHaveBeenCalled();
   });
   it('keeps recovery reads separate and fenced, without claiming semantic engine recovery', async () => {
-    const value = { schemaVersion: 'live-recovery-1', round_id: roundId, classification: 'exhibition', policy_ids: ['rules'], status: 'running', tick: 0, sequence: 1, configuration_hash: hash, schedule_hash: hash, recovery: { schemaVersion: 'recovery-1', privateData: [1, 2] } };
+    const value = { schemaVersion: 'live-recovery-1', round_id: roundId, classification: 'exhibition', policy_ids: ['rules'], status: 'running', control_state: 'active' as const, control_revision: 0, tick: 0, sequence: 1, configuration_hash: hash, schedule_hash: hash, recovery: { schemaVersion: 'recovery-1', privateData: [1, 2] } };
     const { store, transport } = mock(value);
     await expect(store.getRecovery({ roundId, ownerId, fence: 8 })).resolves.toEqual(value);
     expect(transport.mock.calls[0]![0]).toContain('/rpc/live_get_recovery');
     expect(JSON.parse(transport.mock.calls[0]![1]!.body as string)).toEqual({ p_round_id: roundId, p_owner_id: ownerId, p_fence: 8 });
   });
   it('reads service-only status without a lease and rejects incompatible metadata or private fields', async () => {
-    const status = { schemaVersion: 'live-round-status-1', ready: false, round_id: roundId, classification: 'exhibition', policy_ids: ['rules'], status: 'completed', tick: 120, sequence: 121, configuration_hash: hash, schedule_hash: hash };
+    const status = { schemaVersion: 'live-round-status-1', ready: false, round_id: roundId, classification: 'exhibition', policy_ids: ['rules'], status: 'completed', control_state: 'active' as const, control_revision: 0, tick: 120, sequence: 121, configuration_hash: hash, schedule_hash: hash };
     const { store, transport } = mock(status);
     await expect(store.getRoundStatus(roundId)).resolves.toEqual(status);
     expect(transport.mock.calls[0]![0]).toContain('/rpc/live_get_round_status');
@@ -117,7 +148,7 @@ function mock(value: unknown, status = 200) {
     }
   });
   it('requires authoritative classification, policies and status on fenced recovery responses', async () => {
-    const value = { schemaVersion: 'live-recovery-1', round_id: roundId, classification: 'exhibition', policy_ids: ['rules'], status: 'running', tick: 0, sequence: 1, configuration_hash: hash, schedule_hash: hash, recovery: { schemaVersion: 'recovery-1' } };
+    const value = { schemaVersion: 'live-recovery-1', round_id: roundId, classification: 'exhibition', policy_ids: ['rules'], status: 'running', control_state: 'active' as const, control_revision: 0, tick: 0, sequence: 1, configuration_hash: hash, schedule_hash: hash, recovery: { schemaVersion: 'recovery-1' } };
     for (const changed of [{ ...value, classification: undefined }, { ...value, policy_ids: [] }, { ...value, policy_ids: ['rules', 'rules'] }, { ...value, status: 'completed' }, { ...value, sequence: 0 }, { ...value, round_id: ownerId }]) {
       await expect(mock(changed).store.getRecovery({ roundId, ownerId, fence: 1 })).rejects.toMatchObject({ code: 'response' });
     }

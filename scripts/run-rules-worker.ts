@@ -36,7 +36,7 @@ async function main() {
     if (step > 0) await delay(5000);
     const result = await runRulesTick(store, { roundId, ownerId });
     console.log(JSON.stringify({ roundId, ...result }));
-    if (result.status === 'completed') break;
+    if (['completed', 'paused', 'stopped'].includes(result.status)) break;
   }
 }
 main().catch(error => {

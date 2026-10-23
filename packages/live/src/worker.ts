@@ -22,6 +22,7 @@ const optionsSchema = z.object({ roundId: uuid, ownerId: uuid, ttlSeconds: bound
 const metadataFields = {
   round_id: uuid, classification: z.literal('exhibition'), policy_ids: z.tuple([z.literal('rules')]),
   status: z.enum(['running', 'completed']), tick: boundary, sequence,
+  control_state: z.enum(['active', 'paused', 'stopped']), control_revision: bounded(0, Number.MAX_SAFE_INTEGER),
   configuration_hash: HashSchema, schedule_hash: HashSchema,
 };
 const statusSchema = z.object({ ...metadataFields, schemaVersion: z.literal('live-round-status-1'), ready: z.boolean() }).strict();
@@ -34,7 +35,7 @@ const recoverySchema = z.object({
 const recordSchema = z.object({ ...metadataFields, schemaVersion: z.literal('live-recovery-1'), recovery: recoverySchema }).strict();
 export type RulesRecovery = z.infer<typeof recoverySchema>;
 export type RulesWorkerStore = Pick<LiveStore, 'getRoundStatus' | 'acquireLease' | 'getRecovery' | 'renewLease' | 'commitTick' | 'releaseLease'>;
-export interface RulesTickResult { status: 'committed' | 'completed' | 'waiting'; tick: number; sequence: number; replayed: boolean }
+export interface RulesTickResult { status: 'committed' | 'completed' | 'waiting' | 'paused' | 'stopped'; tick: number; sequence: number; replayed: boolean }
 export class RulesWorkerError extends Error {
   constructor(readonly code: 'input' | 'recovery' | 'store') { super(`Rules worker ${code} failure`); this.name = 'RulesWorkerError'; }
 }
@@ -95,13 +96,14 @@ export async function runRulesTick(store: RulesWorkerStore, input: z.input<typeo
     const status = parse(statusSchema, await store.getRoundStatus(options.roundId), 'recovery');
     metadata(status, options.roundId);
     if (status.status === 'completed') return { status: 'completed', tick: 120, sequence: 121, replayed: false };
+    if (status.control_state !== 'active') return { status: status.control_state, tick: status.tick, sequence: status.sequence, replayed: false };
     if (!status.ready) return { status: 'waiting', tick: status.tick, sequence: status.sequence, replayed: false };
     const lease = await store.acquireLease(options);
     ownership = { roundId: options.roundId, ownerId: options.ownerId, fence: lease.fence };
     const record = parse(recordSchema, await store.getRecovery(ownership), 'recovery');
     metadata(record, options.roundId);
     const saved = record.recovery;
-    if (record.status !== 'running' || saved.roundId !== options.roundId || saved.configurationHash !== configurationHash ||
+    if (record.status !== 'running' || record.control_state !== 'active' || saved.roundId !== options.roundId || saved.configurationHash !== configurationHash ||
       saved.committedTick !== record.tick || saved.sequence !== record.sequence || saved.schedule.hash !== record.schedule_hash ||
       saved.schedule.scenario !== 'clean' || saved.schedule.shock !== null || saved.schedule.seed > 99 || status.schedule_hash !== record.schedule_hash) fail();
     const position = replay(saved.schedule, record.tick);

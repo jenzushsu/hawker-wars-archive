@@ -22,9 +22,13 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "57e53d1fdd866afcacdde0b87380f29b3bb30c3de923aaf6f2cc0c9133f23e4e",
+    "sourceTreeHash": "96dd3fe5fc0c0320bb749563aff6408cbcd3c363382da58f061ad09afa286622",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
+      {
+        "path": "apps/web/app/api/admin/rounds/control/route.ts",
+        "sha256": "eedc1829a36ee735eca610955a872df8e1951e5117d67583aa3077eb80501153"
+      },
       {
         "path": "apps/web/app/decision-states/page.module.css",
         "sha256": "4d885644361993f1d3f4ddebd286b9902b0412bde373a5cc8b9a72df00f20a45"
@@ -498,8 +502,12 @@
         "sha256": "ba4911a2393b6de4b1348a7e97df773f6912345902538227a0379de0b431ca77"
       },
       {
+        "path": "packages/live/src/operator.ts",
+        "sha256": "bef96f828254012d240c02d84a4b31a89062572c0ac83c292718ef9e52a8738c"
+      },
+      {
         "path": "packages/live/src/store.ts",
-        "sha256": "6f7588a500165a1e05d2ceec0eeb7b848dadbf683561e2f647d6d9103d71de34"
+        "sha256": "05e228fd0a216ee36b149c61b2c6470560f81b1cc4236fbc47c64f797663422f"
       },
       {
         "path": "packages/live/src/voting.ts",
@@ -507,7 +515,7 @@
       },
       {
         "path": "packages/live/src/worker.ts",
-        "sha256": "259da6aea98edb354ada4308a13e18f1506c92fcfdcb8e62fc68d31bba8f34a8"
+        "sha256": "132f848cff28d673a95ee0a0dcd3d02b1d4636fb6d5f956b13d3e7875fc32150"
       },
       {
         "path": "packages/providers/package.json",
@@ -715,7 +723,7 @@
       },
       {
         "path": "scripts/run-rules-worker.ts",
-        "sha256": "951592cf5fab553434d24be11e595eafa1eab4eea2c8a41efe4328608e8149cb"
+        "sha256": "97c61e8397bf5280c8e32a56de0ffe7a4257107ca3c03d942cfff31161dcda8d"
       },
       {
         "path": "scripts/source-identity.ts",
@@ -731,11 +739,11 @@
       },
       {
         "path": "scripts/validate-live-http.ts",
-        "sha256": "69a98944af59aedd87b042a339e0fc4dee601ff3b43602a6d4f650ee733624bf"
+        "sha256": "3345efba3c3ed6f1eccda38efe948049636ac83e43d26c63dfe85c57fb17602b"
       },
       {
         "path": "scripts/validate-live-store.sh",
-        "sha256": "463fd26ee53903c40d07bb7a5c48d3a644382631a2383efcb27e555cd1bbbc67"
+        "sha256": "8b3342f4788deeaf8935a387729df4bdcb96b6230a4abe8a648808b2122747ac"
       },
       {
         "path": "scripts/validate-p0.ts",
@@ -758,8 +766,12 @@
         "sha256": "6d138a5915aaf304ae3d7838a36c507a52781ad46cd5f3cd4017d3c61475ba9f"
       },
       {
+        "path": "supabase/migrations/202610230003_operator_controls.sql",
+        "sha256": "503ccc5304b5e1dc95c6bc39797987e6dbd47008bf7c74cdbe5ab2c27fd8fc8c"
+      },
+      {
         "path": "supabase/tests/live-store.sql",
-        "sha256": "e621090a91c51d8443174915519f56c6c52d70dc5cd80f161ecfb17104f7ddc6"
+        "sha256": "d0fe345c6226087973b44a6132a1ee7d8609ed3255a80266d91485f9bf4eb9b9"
       },
       {
         "path": "tests/customer-art.test.ts",
@@ -798,8 +810,12 @@
         "sha256": "cb9bb8cf46499b0339fc4a38ab66be8653d9e8163edac4c87c67953a474343a7"
       },
       {
+        "path": "tests/live-operator.test.ts",
+        "sha256": "8e4f821a453fe9bbf0c9e7268186510c947285c85dc47d7fd2aac20997f985ad"
+      },
+      {
         "path": "tests/live-store.test.ts",
-        "sha256": "9bdc4a3a6d3bc6b34a76b713f23711ecb0c46891bd272b53f1d21199b32de814"
+        "sha256": "6d90c0483f394a6b828bfabbe7b896d252e4d20477bd4e670598075b2338088c"
       },
       {
         "path": "tests/live-voting-adversarial.test.ts",
@@ -811,11 +827,11 @@
       },
       {
         "path": "tests/live-worker-adversarial.test.ts",
-        "sha256": "6fbe493d3f14fd745b36151b66e416f2a45f8518fc7c36a6bdd245d216178ebb"
+        "sha256": "005ef64299512d85ddd2bc1b38f8870847dfc6b09af1df508e1b8d905180158b"
       },
       {
         "path": "tests/live-worker.test.ts",
-        "sha256": "d498a1b73d9bf7bdf497a486a65d5e8121f882c4b88e1be5582ba426114bf0fd"
+        "sha256": "2d1faa64e8ea3751605575276015508c25b733acbef0facfdecf800d13892711"
       },
       {
         "path": "tests/load-demo.test.ts",

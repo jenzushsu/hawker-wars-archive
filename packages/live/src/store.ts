@@ -9,6 +9,9 @@ const nonnegative = integer.refine(value => value >= 0);
 const uuid = z.string().uuid().transform(value => value.toLowerCase());
 const hash = z.string().regex(/^[a-f0-9]{64}$/);
 const classification = z.enum(['offline-contract', 'clean', 'stress', 'exhibition', 'replay']);
+const controlState = z.enum(['active', 'paused', 'stopped']);
+const controlAction = z.enum(['pause', 'resume', 'stop']);
+const controlFields = { control_state: controlState, control_revision: nonnegative };
 const policy = z.enum(['rules', 'jev', 'zoom', 'zoom-pro']);
 const policyIds = z.array(policy).min(1).max(4).refine(values => new Set(values).size === values.length && values.includes('rules'));
 const tick = integer.refine(value => value >= 0 && value <= 120);
@@ -22,7 +25,7 @@ const decision = z.object({ policy_id: policy, action: z.enum(['SERVE', 'COOK', 
 // A private JSON envelope only, not validation of simulator recovery semantics.
 const recovery = z.record(z.unknown()).refine(value => value.schemaVersion === 'recovery-1');
 const lease = z.object({ fence: nonnegative.refine(value => value > 0), expires_at: z.string().datetime({ offset: true }) }).strict();
-const publicSnapshot = z.object({ schemaVersion: z.literal('live-snapshot-1'), round_id: uuid, classification,
+const publicSnapshot = z.object({ schemaVersion: z.literal('live-snapshot-1'), round_id: uuid, classification, ...controlFields,
   tick: integer.refine(value => value >= -1 && value <= 120), sequence: nonnegative,
   status: z.enum(['running', 'completed']), configuration_hash: hash, snapshot: z.union([snapshot, z.object({ policies: z.tuple([]) }).strict()]),
 }).strict().refine(value => value.sequence === value.tick + 1 && (value.status === 'completed') === (value.tick === 120) && (value.snapshot.policies.length === 0) === (value.tick === -1));
@@ -30,13 +33,13 @@ const event = z.object({ round_id: uuid, sequence: nonnegative, tick,
   event_type: z.enum(['tick-committed', 'round-closed']), snapshot,
 }).strict().refine(value => value.sequence === value.tick + 1 && (value.event_type === 'round-closed') === (value.tick === 120));
 const roundMetadata = {
-  round_id: uuid, classification, policy_ids: policyIds, status: z.enum(['running', 'completed']),
+  round_id: uuid, classification, policy_ids: policyIds, status: z.enum(['running', 'completed']), ...controlFields,
   tick: integer.refine(value => value >= -1 && value <= 120), sequence: nonnegative,
   configuration_hash: hash, schedule_hash: hash,
 };
 const metadataBoundary = (value: { sequence: number; tick: number; status: string }) =>
   value.sequence === value.tick + 1 && (value.status === 'completed') === (value.tick === 120);
-const roundStatus = z.object({ schemaVersion: z.literal('live-round-status-1'), ...roundMetadata, ready: z.boolean() }).strict().refine(metadataBoundary).refine(value => value.status !== 'completed' || !value.ready);
+const roundStatus = z.object({ schemaVersion: z.literal('live-round-status-1'), ...roundMetadata, ready: z.boolean() }).strict().refine(metadataBoundary).refine(value => !value.ready || (value.status === 'running' && value.control_state === 'active'));
 const recoveryRecord = z.object({ schemaVersion: z.literal('live-recovery-1'), ...roundMetadata, recovery }).strict().refine(metadataBoundary);
 const eventPage = z.object({ high_water: nonnegative.refine(value => value <= 121), events: z.array(event).max(100) }).strict();
 const ownerInput = { roundId: uuid, ownerId: uuid };
@@ -53,6 +56,14 @@ const commitInput = z.object({ ...fenceInput, expectedSequence: nonnegative, tic
   const decisions = value.decisions.map(item => item.policy_id).sort();
   return value.tick === 120 ? decisions.length === 0 : JSON.stringify(ids) === JSON.stringify(decisions);
 });
+const controlInput = z.object({ roundId: uuid, requestId: uuid, action: controlAction,
+  expectedRevision: nonnegative.refine(value => value < Number.MAX_SAFE_INTEGER), actorId: z.string().regex(/^[A-Za-z0-9_-]{1,128}$/),
+}).strict();
+const controlResult = z.object({ schemaVersion: z.literal('live-control-1'), round_id: uuid, request_id: uuid, action: controlAction,
+  ...controlFields, tick: integer.refine(value => value >= -1 && value <= 119), sequence: nonnegative, replayed: z.boolean(),
+}).strict().refine(value => value.sequence === value.tick + 1);
+export type LiveControlInput = z.input<typeof controlInput>;
+export type LiveControlResult = z.infer<typeof controlResult>;
 export type LivePublicSnapshot = z.infer<typeof publicSnapshot>;
 export type LiveEventPage = z.infer<typeof eventPage>;
 export type LiveCommitInput = z.input<typeof commitInput>;
@@ -112,6 +123,16 @@ export class LiveStore {
       p_policy_ids: value.policyIds, p_configuration_hash: value.configurationHash, p_schedule_hash: value.scheduleHash,
       p_recovery: value.recovery, p_published: value.published }, z.object({ round_id: uuid, tick: z.literal(-1), sequence: z.literal(0) }).strict());
     if (result.round_id !== value.roundId) throw new LiveStoreError('response');
+    return result;
+  }
+  /** Trusted operator service only. Reuse the original request ID after an uncertain acknowledgement. */
+  async controlRound(input: LiveControlInput): Promise<LiveControlResult> {
+    const value = parse(controlInput, input, 'input');
+    const result = await this.#request('/rpc/live_control_round', { p_round_id: value.roundId, p_request_id: value.requestId,
+      p_action: value.action, p_expected_revision: value.expectedRevision, p_actor_id: value.actorId }, controlResult);
+    const state = { pause: 'paused', resume: 'active', stop: 'stopped' }[value.action];
+    if (result.round_id !== value.roundId || result.request_id !== value.requestId || result.action !== value.action ||
+      result.control_state !== state || result.control_revision !== value.expectedRevision + 1) throw new LiveStoreError('response');
     return result;
   }
   async acquireLease(input: z.input<typeof acquireInput>): Promise<LiveLease> {

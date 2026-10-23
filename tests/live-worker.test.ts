@@ -8,7 +8,7 @@ const ownerId = '22222222-2222-4222-8222-222222222222';
 type RecoveryRecord = Awaited<ReturnType<LiveStore['getRecovery']>>;
 function memory(seed = 7, saved?: RecoveryRecord) {
   const input = createRulesRoundInput(roundId, seed);
-  let record: RecoveryRecord = saved ?? { schemaVersion: 'live-recovery-1', round_id: roundId, classification: 'exhibition', policy_ids: ['rules'], status: 'running',
+  let record: RecoveryRecord = saved ?? { schemaVersion: 'live-recovery-1', round_id: roundId, classification: 'exhibition', policy_ids: ['rules'], status: 'running', control_state: 'active', control_revision: 0,
     tick: -1, sequence: 0, configuration_hash: input.configurationHash, schedule_hash: input.scheduleHash, recovery: input.recovery };
   let fence = 0;
   const commits: LiveCommitInput[] = [];

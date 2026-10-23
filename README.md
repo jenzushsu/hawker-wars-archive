@@ -97,3 +97,5 @@ Hawkers, customers, environment, effects and pictograms use the reproducible atl
 ## Pixel asset pipeline
 
 `pnpm art:export` regenerates the original hawker, customer, environment, effects and UI pictogram atlases. `pnpm art:check` verifies generated assets and provenance without writing. With the web app running, open `/art/hawker-review.html`, `/art/customer-review.html` or `/art/environment-review.html`; effects and pictograms have `/art/effects-review.html` and `/art/ui-review.html`. See [parallel P3/P4 validation](docs/parallel-p3-p4-validation.md), [P3 asset validation](docs/p3-assets-validation.md) and [G1 art validation](docs/g1-art-validation.md) for scope and remaining acceptance limits.
+
+[P5-D operator controls](docs/p5-d-operator-controls.md) add durable pause/resume/stop and a machine-only authenticated API for rules exhibition rounds. Live voting and viewer integration remain pending.

@@ -9,7 +9,7 @@ CREATE FUNCTION test.rejects(statement text, label text) RETURNS void LANGUAGE p
 DECLARE rejected boolean := false;
 BEGIN
   BEGIN EXECUTE statement; EXCEPTION WHEN OTHERS THEN
-    IF SQLSTATE NOT IN ('22023','23514','23502','23505','55000','42501') THEN RAISE; END IF;
+    IF SQLSTATE NOT IN ('22023','23514','23502','23505','55000','42501','PT409') THEN RAISE; END IF;
     rejected := true;
   END;
   IF NOT rejected THEN RAISE EXCEPTION 'Expected rejection: %', label; END IF;
@@ -166,6 +166,61 @@ SELECT public.live_commit_tick('11111111-1111-4111-8111-111111111111','aaaaaaaa-
 RESET ROLE;
 SELECT test.assert((SELECT tick=1 AND sequence=2 FROM public.rounds),'elapsed worker commit advances once');
 \echo 'Worker metadata, permission and database pacing checks passed.'
+-- Durable controls are separate from the simulator sequence and private recovery hash.
+DELETE FROM public.rounds;
+CREATE FUNCTION test.control(p_request uuid,p_action text,p_revision bigint,p_actor text default 'operator_1') RETURNS jsonb LANGUAGE sql AS $$
+ SELECT public.live_control_round('11111111-1111-4111-8111-111111111111',p_request,p_action,p_revision,p_actor)
+$$;
+GRANT EXECUTE ON FUNCTION test.control(uuid,text,bigint,text) TO anon,authenticated,service_role;
+SET ROLE service_role;
+SELECT public.live_create_round('11111111-1111-4111-8111-111111111111','exhibition',array['rules'],repeat('a',64),repeat('b',64),test.recovery() || '{"workerVersion":"rules-worker-1"}',true);
+SELECT public.live_acquire_lease('11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',60);
+SELECT test.assert(test.control('00000000-0000-4000-8000-000000000201','pause',0) @> '{"control_state":"paused","control_revision":1,"tick":-1,"sequence":0,"replayed":false}', 'pause persists before acknowledgement');
+SELECT test.assert(public.live_get_round_status('11111111-1111-4111-8111-111111111111') @> '{"control_state":"paused","control_revision":1,"ready":false}', 'paused worker not ready');
+SELECT test.rejects($q$select public.live_acquire_lease('11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',30)$q$,'paused lease acquisition rejected');
+SELECT test.rejects($q$select public.live_renew_lease('11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',1,30)$q$,'paused old lease renewal rejected');
+SELECT test.rejects($q$select test.commit(0,0,'00000000-0000-4000-8000-000000000999',1)$q$,'paused stale worker cannot commit');
+SELECT test.rejects($q$select test.control('00000000-0000-4000-8000-000000000202','resume',0)$q$,'stale control revision rejected');
+SELECT test.rejects($q$select test.control('00000000-0000-4000-8000-000000000202','pause',1)$q$,'new request cannot repeat noop');
+SELECT test.rejects($q$select test.control('00000000-0000-4000-8000-000000000201','resume',0)$q$,'request action conflict rejected');
+SELECT test.rejects($q$select test.control('00000000-0000-4000-8000-000000000201','pause',0,'other_actor')$q$,'request actor conflict rejected');
+SELECT test.rejects($q$select public.live_create_round('22222222-2222-4222-8222-222222222222','exhibition',array['rules'],repeat('a',64),repeat('b',64),test.recovery(),true)$q$,'paused round retains active slot');
+SELECT test.assert(test.control('00000000-0000-4000-8000-000000000202','resume',1) @> '{"control_state":"active","control_revision":2,"sequence":0}', 'resume preserves simulator boundary');
+SELECT test.assert(test.control('00000000-0000-4000-8000-000000000201','pause',0) @> '{"control_state":"paused","control_revision":1,"replayed":true}', 'old pause retry returns original receipt');
+SELECT test.assert(public.live_get_round_status('11111111-1111-4111-8111-111111111111') @> '{"control_state":"active","control_revision":2}', 'old receipt retry does not re-pause');
+SELECT test.assert((public.live_acquire_lease('11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',30)->>'fence')::bigint=4,'resume cannot resurrect prior fence');
+SELECT test.rejects($q$select test.commit(0,0,'00000000-0000-4000-8000-000000000999',1)$q$,'old worker fenced after resume');
+SELECT test.assert(test.control('00000000-0000-4000-8000-000000000203','stop',2) @> '{"control_state":"stopped","control_revision":3,"sequence":0}', 'stop is durable');
+SELECT test.rejects($q$select test.control('00000000-0000-4000-8000-000000000204','resume',3)$q$,'stopped round cannot resume');
+SELECT test.rejects($q$select public.live_acquire_lease('11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',30)$q$,'stopped round cannot acquire');
+SELECT test.assert(test.control('00000000-0000-4000-8000-000000000203','stop',2)->>'replayed'='true','stop retry acknowledged');
+SELECT public.live_create_round('22222222-2222-4222-8222-222222222222','exhibition',array['rules'],repeat('a',64),repeat('b',64),test.recovery(),true);
+SELECT test.rejects($q$select public.live_control_round('22222222-2222-4222-8222-222222222222','00000000-0000-4000-8000-000000000204','pause',0,'operator_1')$q$,'generic recovery not controlled');
+SELECT test.rejects('select * from live_private.control_receipts','service cannot directly read control audit');
+RESET ROLE;
+SELECT test.assert((SELECT count(*) FROM live_private.control_receipts)=3,'only accepted requests persisted');
+SELECT test.assert((SELECT count(*) FROM public.game_events)=0,'control changes create no tick events');
+SELECT test.assert((SELECT recovery=test.recovery() || '{"workerVersion":"rules-worker-1"}' FROM live_private.round_state WHERE round_id='11111111-1111-4111-8111-111111111111'),'controls preserve recovery bytes');
+SET ROLE anon;
+SELECT test.assert(public.live_get_snapshot('11111111-1111-4111-8111-111111111111') @> '{"control_state":"stopped","control_revision":3}', 'public snapshot reflects independent control revision');
+SELECT test.rejects($q$select test.control('00000000-0000-4000-8000-000000000203','stop',2)$q$,'anon cannot read control receipt');
+SELECT test.rejects('select * from live_private.control_receipts','anon audit denied');
+RESET ROLE;
+SET ROLE authenticated;
+SELECT test.rejects($q$select test.control('00000000-0000-4000-8000-000000000203','stop',2)$q$,'authenticated cannot control');
+SELECT test.rejects('select * from live_private.control_receipts','authenticated audit denied');
+RESET ROLE;
+DELETE FROM public.rounds;
+SET ROLE service_role;
+SELECT public.live_create_round('11111111-1111-4111-8111-111111111111','clean',array['rules'],repeat('a',64),repeat('b',64),test.recovery() || '{"workerVersion":"rules-worker-1"}',false);
+SELECT test.rejects($q$select test.control('00000000-0000-4000-8000-000000000201','pause',0)$q$,'benchmark control rejected');
+RESET ROLE;
+UPDATE public.rounds SET classification='exhibition',tick=120,sequence=121,status='completed';
+SET ROLE service_role;
+SELECT test.rejects($q$select test.control('00000000-0000-4000-8000-000000000201','pause',0)$q$,'completed control rejected');
+RESET ROLE;
+\echo 'Durable control transitions, receipts, fences, benchmark isolation and permissions passed.'
+
 -- Leave a fresh clean round for the separate-process lease and lock-wait races.
 DELETE FROM public.rounds;
 SET ROLE service_role;
