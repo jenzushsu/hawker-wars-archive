@@ -58,6 +58,8 @@ Zoom's user-approved caps are **USD 0.25 per paired Standard+Pro run** and **USD
 
 P2-C adapters and a local durable reservation ledger are now implemented. Jev's one approved inference smoke passed; its small retained budget cannot fund another request. Zoom still needs maximum-charge evidence and credentialed inference smokes. Run `pnpm providers:status` for configured readiness (which does not include remaining ledger capacity), and consult [adapter activation](docs/providers/activation.md) for measured results and phase limits. Frontend composition and artwork can proceed independently.
 
+P5-A adds an offline server-side voting core for exhibition windows, vote changes, pause/resume and deterministic resolution. Run `pnpm demo:voting` for an in-memory demonstration. The browser remains a local vote preview; shared service, authentication, durable persistence and reconnect are still pending. See [P5-A scope and evidence](docs/p5-a-voting-core.md).
+
 ## Recorded replay and evaluation workflows
 
 ```sh

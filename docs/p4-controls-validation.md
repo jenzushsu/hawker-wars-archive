@@ -32,6 +32,6 @@ Validation date: 2026-10-23.
 
 ## Acceptance limits
 
-Actual browser zoom, spoken screen-reader review, cross-browser/OS coverage, native-art-source acceptance and the remaining G2/G3 sign-off remain open. Chromium's accessibility tree and smaller CSS viewports are useful automated checks, not those manual results. UI-05 provider pending/invalid/timeout/fallback states still need an explicit presentation contract and honestly labelled fixtures; the rules replay cannot establish real provider behavior. Shared voting, reconnect and multi-viewer behavior remain P5 work.
+Actual browser zoom, spoken screen-reader review, cross-browser/OS coverage, native-art-source acceptance and the remaining G2/G3 sign-off remain open. Chromium's accessibility tree and smaller CSS viewports are useful automated checks, not those manual results. The subsequent [UI-05 increment](p4-decision-states-validation.md) supplies an explicit presentation contract and labelled pending/invalid/timeout/fallback/missing-usage fixtures; the rules replay still cannot establish real provider behavior. Shared voting, reconnect and multi-viewer behavior remain P5 work.
 
 No provider calls or campaign spending are part of this increment.

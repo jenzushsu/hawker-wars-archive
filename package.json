@@ -30,7 +30,8 @@
     "demo:web": "tsx scripts/generate-web-demo.ts",
     "test:web": "playwright test",
     "art:export": "tsx scripts/export-hawker.ts && tsx scripts/export-customer.ts && tsx scripts/export-environment.ts && tsx scripts/export-effects.ts && tsx scripts/export-ui.ts",
-    "art:check": "tsx scripts/export-hawker.ts --check && tsx scripts/export-customer.ts --check && tsx scripts/export-environment.ts --check && tsx scripts/export-effects.ts --check && tsx scripts/export-ui.ts --check"
+    "art:check": "tsx scripts/export-hawker.ts --check && tsx scripts/export-customer.ts --check && tsx scripts/export-environment.ts --check && tsx scripts/export-effects.ts --check && tsx scripts/export-ui.ts --check",
+    "demo:voting": "tsx scripts/demo-voting.ts"
   },
   "dependencies": {
     "zod": "3.25.76"

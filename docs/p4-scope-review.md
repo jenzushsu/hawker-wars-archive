@@ -52,3 +52,5 @@ No new implementation, commands, screenshots or gate evidence were produced by t
 The [parallel P3/P4 increment](parallel-p3-p4-validation.md) implements strict public replay validation, explicit empty-recording recovery and the compact forced-WAIT badge. These address part of the loading and inspector gaps above. Tabs, history/filtering, richer inspector controls, reset preferences and remaining G3 acceptance are still outstanding.
 
 The [offline P4 controls increment](p4-controls-validation.md) subsequently implements tabs, bounded policy/action history, inspector copy/provenance details and view-default recovery, with automated keyboard and resilience coverage. The table above is the original gap review; current remaining acceptance limits are recorded in the new validation document.
+
+The [UI-05 decision-state increment](p4-decision-states-validation.md) subsequently adds isolated labelled examples with contract and browser coverage. The remaining manual G3 checks and shared-service requirements remain open. See [P5-A voting core](p5-a-voting-core.md) for the next backend preparation slice.

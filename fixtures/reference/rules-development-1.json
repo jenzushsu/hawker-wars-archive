@@ -22,7 +22,7 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "ff10a7de1e996dc317106c24f56e89908c8b07bd2be22de78a7de7eeea29749d",
+    "sourceTreeHash": "e28f2e0f92f968f67bc9713414c72406f86780604d4af0101e9c4f5afec32fc8",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
       {
@@ -423,7 +423,7 @@
       },
       {
         "path": "package.json",
-        "sha256": "e04ae8599ef69bd326600e73236abe22345e223d243784594b8b7f0744864052"
+        "sha256": "19e43c9d4a9face87f706f4a4d681bc3caaf5a58e6a0bd2e669030a1eb11dc9d"
       },
       {
         "path": "packages/art/src/customer.ts",
@@ -492,6 +492,10 @@
       {
         "path": "packages/decisions/src/rules.ts",
         "sha256": "ba4911a2393b6de4b1348a7e97df773f6912345902538227a0379de0b431ca77"
+      },
+      {
+        "path": "packages/live/src/voting.ts",
+        "sha256": "020777660a4b157fbf2e5b12a70eea5657f101f93988fb2e70f058561df876b7"
       },
       {
         "path": "packages/providers/package.json",
@@ -626,6 +630,10 @@
         "sha256": "66899bc4cf3b536d4b079b01d04832cb37ad9ad0ebaa4055cb92273afa3839ac"
       },
       {
+        "path": "scripts/demo-voting.ts",
+        "sha256": "7d6ba77f9900226b86bc8c7e4e2b4b35799ae9a07658069d01f72acdcfbdf9e9"
+      },
+      {
         "path": "scripts/export-customer.ts",
         "sha256": "e90bb49ff68b938a1fccaeee7f718db6fcea942d6b780441c2841adc745e814a"
       },
@@ -748,6 +756,14 @@
       {
         "path": "tests/helpers/p2-fixture-runner.ts",
         "sha256": "cb9bb8cf46499b0339fc4a38ab66be8653d9e8163edac4c87c67953a474343a7"
+      },
+      {
+        "path": "tests/live-voting-adversarial.test.ts",
+        "sha256": "35f03ddc6d7b6594d68f24ab52bb98dceb96c438ad5f7bbf32a89d47a6348146"
+      },
+      {
+        "path": "tests/live-voting.test.ts",
+        "sha256": "48b7ad6c961de60e224cd3193d7cdab0b5d19c0fd2884afceb43fd3da5591a91"
       },
       {
         "path": "tests/load-demo.test.ts",
