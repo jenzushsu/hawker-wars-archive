@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "provider-account-input-1",
+  "provider": "jev",
+  "recordedDate": "2026-10-22",
+  "timezone": "Asia/Singapore",
+  "source": "User reports Jev variable added and currently on freemium use.",
+  "userReported": {
+    "planTier": "freemium",
+    "credentialVariableAdded": true,
+    "modelId": null,
+    "freeAllowance": null,
+    "rateLimit": {
+      "source": "User-supplied account rate-limits screenshot",
+      "recordedDate": "2026-10-22",
+      "requestsPerSecond": 80,
+      "inputTokensPerSecond": 100000,
+      "scope": "organization-wide, shared across all keys including simultaneous requests",
+      "limitStatus": "Default",
+      "independentlyQueriedFromApi": false,
+      "isFreeAllowance": false
+    },
+    "resetPeriod": null,
+    "trialExpiry": null,
+    "automaticPaidOveragesDisabled": null,
+    "pricingDocumentationUrl": null,
+    "estimatedInputPrice": {
+      "currency": "USD",
+      "usdPerMillionInputTokens": "0.042",
+      "officiallyVerified": false
+    }
+  },
+  "credentialReadiness": {
+    "variable": "TYPESAFE_API_KEY",
+    "presentInProcess": true,
+    "runtimeBindingState": "unknown",
+    "observationsCurrent": true,
+    "credentialValueInspected": false,
+    "authenticationTested": false,
+    "note": "Binding exists and variable is present. Runtime status unknown is not proof of invalid credentials; no duplicate key requested."
+  },
+  "spending": {
+    "paidSpendAuthorized": false,
+    "zoomBudgetApplies": false,
+    "automaticUpgradeAllowed": false,
+    "note": "Freemium tier alone does not establish a numeric free quota, unlimited usage, zero marginal cost after quota exhaustion, or permission for paid overages. No Jev paid cap has been approved."
+  },
+  "dispatch": {
+    "enabled": false,
+    "inferenceCallsMade": 0,
+    "reason": "Remaining account/billing details explicitly unknown; live Jev remains disabled while offline development can proceed."
+  },
+  "remainingAccountEvidence": [
+    "Available Jev model identifier",
+    "Freemium request/token/credit allowance and reset period",
+    "Automatic billing behavior after free allowance is exhausted",
+    "Official pricing including output/other billable units; input rate is currently an estimate"
+  ],
+  "pricingEvidenceReference": "jev-pricing.json",
+  "unknownDetailsAcknowledgement": {
+    "recordedDate": "2026-10-22",
+    "source": "User: the rest are unknown",
+    "status": "remaining-details-unknown",
+    "requestedAgain": false,
+    "note": "Unknown values are retained without inferring free/unlimited usage, expiry, output pricing or overage behavior. No further account-information request is needed for offline development."
+  }
+}

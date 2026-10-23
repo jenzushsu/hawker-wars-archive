@@ -1,0 +1,20 @@
+[
+  {
+    "provider": "jev",
+    "status": "not-verified",
+    "liveDispatchEnabled": false,
+    "evidence": null
+  },
+  {
+    "provider": "zoom",
+    "status": "not-verified",
+    "liveDispatchEnabled": false,
+    "evidence": null
+  },
+  {
+    "provider": "zoom-pro",
+    "status": "not-verified",
+    "liveDispatchEnabled": false,
+    "evidence": null
+  }
+]

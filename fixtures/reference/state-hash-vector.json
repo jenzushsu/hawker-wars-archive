@@ -1,0 +1,8 @@
+{
+  "version": "state-hash-vector-1",
+  "independentAuthoring": "Explicit opening-state envelope serialized with Python json.dumps(sort_keys=True,separators) and hashed with hashlib.sha256; no TypeScript serializer or hash function used.",
+  "configurationHash": "9b088ecdbca6d50dca76a78a4e98872b0b8751d3b63ac881cbcb2704358236d6",
+  "scheduleHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "canonical": "{\"appliedEvents\":[],\"boundaryTick\":0,\"configurationHash\":\"9b088ecdbca6d50dca76a78a4e98872b0b8751d3b63ac881cbcb2704358236d6\",\"ledger\":{\"openingCashCents\":20000,\"openingPortions\":42},\"recentActions\":[],\"scenario\":\"clean\",\"scheduleHash\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"schemaVersion\":\"state-hash-1\",\"seenCustomerIds\":[],\"stage\":\"before-tick\",\"state\":{\"cashCents\":20000,\"cooking\":null,\"effects\":[],\"pendingRestock\":null,\"phase\":\"committed\",\"promotion\":null,\"promotionEligibleAt\":0,\"queue\":[],\"rawPortions\":30,\"readyBatches\":[{\"expiresAt\":20,\"id\":\"batch-0\",\"quantity\":12}],\"tick\":0,\"totals\":{\"abandoned\":0,\"arrivals\":0,\"promotions\":0,\"purchasedPortions\":0,\"restockOrders\":0,\"served\":0,\"waitMinutes\":0,\"wasted\":0}}}",
+  "sha256": "07b1bb1b506b97973d8d9638cf22e19a0516e3c06495a4b74685f51debedf198"
+}

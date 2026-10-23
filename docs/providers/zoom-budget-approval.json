@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "provider-budget-approval-1",
+  "budgetId": "zoom-trial-campaign-1",
+  "approvedDate": "2026-10-22",
+  "timezone": "Asia/Singapore",
+  "approvalSource": "User replied sure to the proposed USD 0.25 paired-run and USD 5 Zoom campaign caps.",
+  "status": "approved",
+  "currency": "USD",
+  "providers": [
+    "zoom",
+    "zoom-pro"
+  ],
+  "perPairedRun": {
+    "usd": "0.25",
+    "minorUnits": 25,
+    "microUsd": 250000,
+    "scope": "Combined spend of Zoom Standard and Pro for one paired run; not a separate allowance for each model."
+  },
+  "campaign": {
+    "usd": "5.00",
+    "minorUnits": 500,
+    "microUsd": 5000000,
+    "scope": "Combined Zoom Standard and Pro campaign spend, including sequential, smoke and static requests."
+  },
+  "budgetPolicy": {
+    "sharedAcrossProviders": true,
+    "reserveConservativeRequestBoundBeforeDispatch": true,
+    "retainUncertainChargeReservations": true,
+    "stopDispatchAtEitherCap": true,
+    "automaticIncreaseAllowed": false,
+    "automaticCampaignResetAllowed": false,
+    "jevIncluded": false
+  },
+  "activation": {
+    "liveDispatchEnabled": false,
+    "runtimeEnforcementImplemented": true,
+    "runtimeEnforcementScope": "Local SQLite decision-attempt ledger with shared atomic reservations; activation remains blocked by missing bounded-billing evidence and API network access. Hosted worker enforcement remains later work.",
+    "implementationEvidenceReference": "activation.md",
+    "remainingPrerequisites": [
+      "Verified mapping of API usage units to billed tokens and enforceable maximum request charge",
+      "Apply the saved API-host network configuration and verify connectivity",
+      "Credentialed smoke evidence after safe request charging is established"
+    ],
+    "providerAccountOverageSettingKnown": false
+  }
+}

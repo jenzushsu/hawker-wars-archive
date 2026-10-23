@@ -1,0 +1,69 @@
+{
+  "version": "demand-1-vectors-1",
+  "independentAuthoring": "Python standard-library hashlib.sha256 and int.from_bytes; all seeds are development seeds.",
+  "vectors": [
+    {
+      "seed": 0,
+      "stream": "base_count",
+      "tick": 0,
+      "index": 0,
+      "input": "hawker-wars|demand-1|0|base_count|0|0",
+      "digestHex": "c33f9e022ec28b5418018ea936b92a7f99f35cf2a8700884dad2fed1a72ec15c",
+      "r": 3275726338
+    },
+    {
+      "seed": 0,
+      "stream": "base_count",
+      "tick": 30,
+      "index": 0,
+      "input": "hawker-wars|demand-1|0|base_count|30|0",
+      "digestHex": "f30821459ac354a54d3c5dfb4f0a60b22c445b165e8d0ced7c9bc694be614483",
+      "r": 4077396293
+    },
+    {
+      "seed": 1,
+      "stream": "patience",
+      "tick": 60,
+      "index": 0,
+      "input": "hawker-wars|demand-1|1|patience|60|0",
+      "digestHex": "607f4cfc89f141cc47e853066d6a816b9be193211614e751769f926c3d6462e0",
+      "r": 1618955516
+    },
+    {
+      "seed": 2,
+      "stream": "promo_count",
+      "tick": 119,
+      "index": 0,
+      "input": "hawker-wars|demand-1|2|promo_count|119|0",
+      "digestHex": "7522682cb74fcf0f0dad343e174e2531ab2df57c142b74232df956d8dd4eb4da",
+      "r": 1965189164
+    },
+    {
+      "seed": 7,
+      "stream": "rain_keep",
+      "tick": 60,
+      "index": 1,
+      "input": "hawker-wars|demand-1|7|rain_keep|60|1",
+      "digestHex": "2685607fa2e821fbc5348d94b98425b060b5e4efeb0d79abced1d53ba0e7e5a9",
+      "r": 646275199
+    },
+    {
+      "seed": 0,
+      "stream": "vote_tie",
+      "tick": 0,
+      "index": 0,
+      "input": "hawker-wars|demand-1|0|vote_tie|0|0",
+      "digestHex": "a2714b6775a624dbc239743ca0fee84574e9fbd2f38e3969b46b0e7ee8c9b3b3",
+      "r": 2725333863
+    },
+    {
+      "seed": 99,
+      "stream": "patience",
+      "tick": 89,
+      "index": 8,
+      "input": "hawker-wars|demand-1|99|patience|89|8",
+      "digestHex": "34871d779627ec83b3d4febc52409f1b5882556157955d66e53a1158d4fb05f2",
+      "r": 881270135
+    }
+  ]
+}

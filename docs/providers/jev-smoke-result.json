@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "provider-smoke-result-1",
+  "checkedAt": "2026-10-23T07:40:22.827Z",
+  "scope": "User-approved single Jev smoke; no paid evaluation campaign authorized",
+  "status": "smoke-passed",
+  "provider": "jev",
+  "outcome": {
+    "mode": "live",
+    "origin": "provider",
+    "attemptedProvider": "jev",
+    "attemptCount": 1,
+    "result": {
+      "provider": "jev",
+      "action": "COOK",
+      "latencyMs": 439,
+      "status": "success",
+      "modelVersion": "jev-1.13.0",
+      "probabilities": [
+        {
+          "action": "COOK",
+          "probability": 0.44
+        },
+        {
+          "action": "RESTOCK",
+          "probability": 0.15
+        },
+        {
+          "action": "PROMOTE",
+          "probability": 0.08
+        },
+        {
+          "action": "WAIT",
+          "probability": 0.33
+        }
+      ],
+      "confidence": 0.25,
+      "confidenceSemantics": "Provider-reported confidence in selected label per @typesafe-ai/sdk@0.7.0; not claimed calibrated.",
+      "probabilitySemantics": "Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.",
+      "usage": {
+        "inputTokens": 1969,
+        "outputTokens": 49
+      },
+      "requestId": "req_01a167b42948727db24105a76abd0efa"
+    },
+    "nativeUsage": {
+      "schemaVersion": "provider-native-usage-1",
+      "provider": "jev",
+      "inputUnits": 1969,
+      "outputUnits": 49,
+      "unitType": "tokens"
+    },
+    "diagnostic": null
+  },
+  "ledger": {
+    "campaignId": "zoom-trial-campaign-1",
+    "pools": [
+      {
+        "id": "jev-separate",
+        "reservedMicros": 2753,
+        "capMicros": 3000,
+        "lastDispatchAtMs": 1792741222388
+      },
+      {
+        "id": "zoom-shared",
+        "reservedMicros": 0,
+        "capMicros": 5000000,
+        "lastDispatchAtMs": null
+      }
+    ],
+    "attempts": 1
+  },
+  "networkCalls": 1,
+  "remainingReservedBudgetMicros": 247,
+  "additionalRequestCapacity": 0,
+  "estimatedTokenChargeUsd": "0.000082698",
+  "estimatedChargeBasis": "1969 reported input tokens x USD 0.042 per million input tokens; output tokens free per official docs. Before freemium credits/tax; not an invoice or confirmed account charge.",
+  "reservationReleased": false,
+  "durableReadbackVerified": true
+}

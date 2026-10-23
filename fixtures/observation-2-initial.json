@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "observation-2",
+  "tick": 0,
+  "remainingMinutes": 120,
+  "cashCents": 20000,
+  "rawPortions": 30,
+  "readyBatches": [
+    {
+      "id": "batch-0",
+      "quantity": 12,
+      "expiresAt": 20
+    }
+  ],
+  "cooking": null,
+  "pendingRestock": null,
+  "promotion": null,
+  "promotionEligibleAt": 0,
+  "queue": [],
+  "effects": [],
+  "demandPhase": "off-peak",
+  "cumulativeRevenueCents": 0,
+  "cumulativePurchasesCents": 0,
+  "cumulativePromotionSpendCents": 0,
+  "totals": {
+    "served": 0,
+    "abandoned": 0,
+    "wasted": 0,
+    "waitMinutes": 0,
+    "arrivals": 0,
+    "purchasedPortions": 0,
+    "restockOrders": 0,
+    "promotions": 0
+  },
+  "recentActions": [],
+  "legalActions": [
+    "COOK",
+    "RESTOCK",
+    "PROMOTE",
+    "WAIT"
+  ]
+}

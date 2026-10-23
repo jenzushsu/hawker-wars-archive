@@ -1,0 +1,200 @@
+{
+  "schemaVersion": "hawker-clips-1",
+  "artworkVersion": "hawker-art-1",
+  "texture": "hawker",
+  "frameSize": {
+    "w": 32,
+    "h": 32
+  },
+  "origin": {
+    "x": 0.5,
+    "y": 1
+  },
+  "skins": [
+    "green",
+    "blue",
+    "amber"
+  ],
+  "clips": {
+    "idle": {
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "durationMs": 1000,
+      "frameNames": {
+        "green": [
+          "hawker/green/idle/0",
+          "hawker/green/idle/1",
+          "hawker/green/idle/2",
+          "hawker/green/idle/3"
+        ],
+        "blue": [
+          "hawker/blue/idle/0",
+          "hawker/blue/idle/1",
+          "hawker/blue/idle/2",
+          "hawker/blue/idle/3"
+        ],
+        "amber": [
+          "hawker/amber/idle/0",
+          "hawker/amber/idle/1",
+          "hawker/amber/idle/2",
+          "hawker/amber/idle/3"
+        ]
+      }
+    },
+    "prepare": {
+      "frames": 6,
+      "fps": 8,
+      "loop": true,
+      "durationMs": 750,
+      "frameNames": {
+        "green": [
+          "hawker/green/prepare/0",
+          "hawker/green/prepare/1",
+          "hawker/green/prepare/2",
+          "hawker/green/prepare/3",
+          "hawker/green/prepare/4",
+          "hawker/green/prepare/5"
+        ],
+        "blue": [
+          "hawker/blue/prepare/0",
+          "hawker/blue/prepare/1",
+          "hawker/blue/prepare/2",
+          "hawker/blue/prepare/3",
+          "hawker/blue/prepare/4",
+          "hawker/blue/prepare/5"
+        ],
+        "amber": [
+          "hawker/amber/prepare/0",
+          "hawker/amber/prepare/1",
+          "hawker/amber/prepare/2",
+          "hawker/amber/prepare/3",
+          "hawker/amber/prepare/4",
+          "hawker/amber/prepare/5"
+        ]
+      }
+    },
+    "serve": {
+      "frames": 6,
+      "fps": 10,
+      "loop": false,
+      "durationMs": 600,
+      "frameNames": {
+        "green": [
+          "hawker/green/serve/0",
+          "hawker/green/serve/1",
+          "hawker/green/serve/2",
+          "hawker/green/serve/3",
+          "hawker/green/serve/4",
+          "hawker/green/serve/5"
+        ],
+        "blue": [
+          "hawker/blue/serve/0",
+          "hawker/blue/serve/1",
+          "hawker/blue/serve/2",
+          "hawker/blue/serve/3",
+          "hawker/blue/serve/4",
+          "hawker/blue/serve/5"
+        ],
+        "amber": [
+          "hawker/amber/serve/0",
+          "hawker/amber/serve/1",
+          "hawker/amber/serve/2",
+          "hawker/amber/serve/3",
+          "hawker/amber/serve/4",
+          "hawker/amber/serve/5"
+        ]
+      }
+    },
+    "waiting": {
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "durationMs": 1000,
+      "frameNames": {
+        "green": [
+          "hawker/green/waiting/0",
+          "hawker/green/waiting/1",
+          "hawker/green/waiting/2",
+          "hawker/green/waiting/3"
+        ],
+        "blue": [
+          "hawker/blue/waiting/0",
+          "hawker/blue/waiting/1",
+          "hawker/blue/waiting/2",
+          "hawker/blue/waiting/3"
+        ],
+        "amber": [
+          "hawker/amber/waiting/0",
+          "hawker/amber/waiting/1",
+          "hawker/amber/waiting/2",
+          "hawker/amber/waiting/3"
+        ]
+      }
+    },
+    "shortage": {
+      "frames": 4,
+      "fps": 6,
+      "loop": false,
+      "durationMs": 666.6666666666666,
+      "frameNames": {
+        "green": [
+          "hawker/green/shortage/0",
+          "hawker/green/shortage/1",
+          "hawker/green/shortage/2",
+          "hawker/green/shortage/3"
+        ],
+        "blue": [
+          "hawker/blue/shortage/0",
+          "hawker/blue/shortage/1",
+          "hawker/blue/shortage/2",
+          "hawker/blue/shortage/3"
+        ],
+        "amber": [
+          "hawker/amber/shortage/0",
+          "hawker/amber/shortage/1",
+          "hawker/amber/shortage/2",
+          "hawker/amber/shortage/3"
+        ]
+      }
+    },
+    "celebrate": {
+      "frames": 8,
+      "fps": 10,
+      "loop": false,
+      "durationMs": 800,
+      "frameNames": {
+        "green": [
+          "hawker/green/celebrate/0",
+          "hawker/green/celebrate/1",
+          "hawker/green/celebrate/2",
+          "hawker/green/celebrate/3",
+          "hawker/green/celebrate/4",
+          "hawker/green/celebrate/5",
+          "hawker/green/celebrate/6",
+          "hawker/green/celebrate/7"
+        ],
+        "blue": [
+          "hawker/blue/celebrate/0",
+          "hawker/blue/celebrate/1",
+          "hawker/blue/celebrate/2",
+          "hawker/blue/celebrate/3",
+          "hawker/blue/celebrate/4",
+          "hawker/blue/celebrate/5",
+          "hawker/blue/celebrate/6",
+          "hawker/blue/celebrate/7"
+        ],
+        "amber": [
+          "hawker/amber/celebrate/0",
+          "hawker/amber/celebrate/1",
+          "hawker/amber/celebrate/2",
+          "hawker/amber/celebrate/3",
+          "hawker/amber/celebrate/4",
+          "hawker/amber/celebrate/5",
+          "hawker/amber/celebrate/6",
+          "hawker/amber/celebrate/7"
+        ]
+      }
+    }
+  }
+}

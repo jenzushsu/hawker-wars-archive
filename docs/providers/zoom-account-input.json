@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "provider-account-input-1",
+  "providerFamily": "zoom",
+  "recordedDate": "2026-10-22",
+  "timezone": "Asia/Singapore",
+  "source": "User message in this task; not a credentialed API test",
+  "userReported": {
+    "standardModelAccess": true,
+    "proModelAccess": true,
+    "requiredKeyScopeEnabled": true,
+    "trialCreditsRemaining": {
+      "supplied": "NA",
+      "interpreted": null,
+      "meaning": "No allowance or expiry applies, confirmed by Zoom according to the user follow-up.",
+      "applicable": false,
+      "confirmationSource": "User reply: No allowance or expiry applies \u2014 confirmed by Zoom",
+      "independentlyVerified": false
+    },
+    "requestTokenAllowance": {
+      "supplied": "NA",
+      "interpreted": null,
+      "meaning": "No allowance or expiry applies, confirmed by Zoom according to the user follow-up.",
+      "applicable": false,
+      "confirmationSource": "User reply: No allowance or expiry applies \u2014 confirmed by Zoom",
+      "independentlyVerified": false
+    },
+    "rateLimit": {
+      "requestsPerSecond": 80,
+      "scope": "unknown \u2014 account/project/key/model/shared scope not specified",
+      "independentlyVerified": false
+    },
+    "trialExpiry": {
+      "supplied": "NA",
+      "interpreted": null,
+      "meaning": "No allowance or expiry applies, confirmed by Zoom according to the user follow-up.",
+      "applicable": false,
+      "confirmationSource": "User reply: No allowance or expiry applies \u2014 confirmed by Zoom",
+      "independentlyVerified": false
+    },
+    "standardProShareQuota": null,
+    "paidOveragesDisabled": null,
+    "pricingDocumentationUrl": "https://www.zoom.com/en/products/ai-services/decisions-api/#pricing",
+    "maximumSpendPerRunUsd": "0.25",
+    "maximumSpendCampaignUsd": "5.00",
+    "currency": "USD"
+  },
+  "credentialReadiness": {
+    "variable": "ZOOM_AI_SERVICES_API_KEY",
+    "runtimeBindingState": "ready",
+    "observationsCurrent": true,
+    "presentInProcess": true,
+    "credentialValueInspected": false,
+    "authenticationTested": false
+  },
+  "pricingRetrieval": {
+    "attemptedDate": "2026-10-22",
+    "httpStatus": 403,
+    "retrieved": false,
+    "diagnosis": "Public pricing request failed with HTTP 403 from this environment; pricing contents and denial origin not established. No alternate route used.",
+    "requiredDocumentationHost": "www.zoom.com"
+  },
+  "dispatch": {
+    "enabled": false,
+    "inferenceCallsMade": 0,
+    "reason": "Budget caps approved; usage/request charge bound, adapter/budget enforcement, overage behavior and credentialed smoke evidence remain incomplete"
+  },
+  "pendingClarifications": [
+    "Paid overage behavior and Standard/Pro shared rate-limit scope"
+  ],
+  "pricingEvidenceReference": "zoom-pricing.json",
+  "budgetApprovalReference": "zoom-budget-approval.json",
+  "budgetScope": "Shared Zoom Standard+Pro only. USD 0.25 per paired run; USD 5 total campaign including smoke/static requests; no Jev allocation."
+}

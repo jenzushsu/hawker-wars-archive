@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "provider-runtime-1",
+  "campaignId": "zoom-trial-campaign-1",
+  "jevSpendApproval": {
+    "perRunCapMicros": 3000,
+    "campaignCapMicros": 3000,
+    "approvalReference": "docs/providers/jev-smoke-approval.json"
+  },
+  "providers": {
+    "jev": {
+      "activationRequested": true,
+      "model": "jev-1.13.0",
+      "maximumRequestCost": {
+        "micros": 2753,
+        "currency": "USD",
+        "evidenceUrl": "https://docs.typesafe.ai/models",
+        "checkedAt": "2026-10-23T07:33:04.977923Z",
+        "maxRequestBytes": 65536
+      },
+      "freeTierVerified": false,
+      "smoke": {
+        "requestId": "req_01a167b42948727db24105a76abd0efa",
+        "requestedModel": "jev-1.13.0",
+        "returnedModel": "jev-1.13.0",
+        "checkedAt": "2026-10-23T07:40:22.827Z"
+      }
+    },
+    "zoom": {
+      "activationRequested": true,
+      "model": "zoom-decisions-standard",
+      "maximumRequestCost": null,
+      "freeTierVerified": false,
+      "smoke": null
+    },
+    "zoom-pro": {
+      "activationRequested": true,
+      "model": "zoom-decisions-pro",
+      "maximumRequestCost": null,
+      "freeTierVerified": false,
+      "smoke": null
+    }
+  }
+}

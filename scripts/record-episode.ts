@@ -1,0 +1,12 @@
+import {mkdirSync} from 'node:fs';
+import {dirname,resolve} from 'node:path';
+import {randomUUID} from 'node:crypto';
+import { recordEpisode } from '../packages/replay/src/record.js';
+import { writeEpisodeArchive } from '../packages/replay/src/store.js';
+import type { DemandScenario } from '../packages/simulation/src/demand.js';
+const directory=process.argv[2]??`results/episode-${randomUUID()}`,seedText=process.argv[3]??'0',scenario=process.argv[4]??'clean',policy=process.argv[5]??'rules';
+if(process.argv.length>6||!/^(0|[1-9]\d?)$/.test(seedText)||!['clean','bus','rain','supplier-delay'].includes(scenario)||!['rules','mixed'].includes(policy))throw new Error('Usage: pnpm record:episode [newDirectory] [seed0–99] [clean|bus|rain|supplier-delay] [rules|mixed]');
+const archive=recordEpisode({seed:Number(seedText),scenario:scenario as DemandScenario,policy:policy as 'rules'|'mixed'});
+mkdirSync(dirname(resolve(directory)),{recursive:true,mode:0o700});
+const output=writeEpisodeArchive(directory,archive);
+console.log(JSON.stringify({status:'recorded',mode:'offline',directory:output.directory,turns:archive.turns.length,snapshots:archive.snapshots.length,score:archive.terminal.score,finalHash:archive.terminal.finalHash,networkCalls:0},null,2));

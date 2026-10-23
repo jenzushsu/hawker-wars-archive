@@ -1,0 +1,13 @@
+import {randomUUID} from 'node:crypto';
+import {readEpisodeArchive} from '../packages/replay/src/store.js';
+import {replayArchive} from '../packages/replay/src/replay.js';
+import {exportEpisodeJson,exportEpisodeCsv,exportEpisodeJsonl,loadEpisodeJson,loadEpisodeCsv,loadEpisodeJsonl} from '../packages/benchmark/src/exports.js';
+import {configurationHash} from './config-snapshot.js';
+import {writeArtifactDirectory} from './artifact-output.js';
+const directory=process.argv[2],output=process.argv[3]??`results/export-${randomUUID()}`;
+if(!directory||process.argv.length>4)throw new Error('Usage: pnpm export:episode <archiveDirectory> [newOutputDirectory]');
+const result=replayArchive(readEpisodeArchive(directory,{expectedConfigurationHash:configurationHash}),{configurationHash});
+const files={'report.json':exportEpisodeJson(result),'report.csv':exportEpisodeCsv(result),'decisions.jsonl':exportEpisodeJsonl(result)};
+loadEpisodeJson(files['report.json']);loadEpisodeCsv(files['report.csv']);loadEpisodeJsonl(files['decisions.jsonl']);
+const target=writeArtifactDirectory(output,files);
+console.log(JSON.stringify({status:'exported-and-reloaded',mode:'replay',directory:target,formats:['JSON','CSV','JSONL'],decisions:result.trace.length,score:result.score,networkCalls:0},null,2));

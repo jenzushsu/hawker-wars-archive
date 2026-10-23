@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "provider-pricing-evidence-1",
+  "provider": "jev",
+  "recordedDate": "2026-10-22",
+  "timezone": "Asia/Singapore",
+  "estimatedInputPrice": {
+    "currency": "USD",
+    "usdPerMillionInputTokens": "0.042",
+    "microUsdPerMillionInputTokens": 42000,
+    "source": "User message: Estimated at $0.042/MTok input",
+    "status": "user-estimate-not-verified-official-price"
+  },
+  "outputTokenPricing": null,
+  "rateLimitEvidence": {
+    "source": "User-supplied account rate-limits screenshot",
+    "recordedDate": "2026-10-22",
+    "requestsPerSecond": 80,
+    "inputTokensPerSecond": 100000,
+    "scope": "organization-wide, shared across all keys including simultaneous requests",
+    "limitStatus": "Default",
+    "independentlyQueriedFromApi": false,
+    "isFreeAllowance": false
+  },
+  "planningAssumptions": {
+    "inputTokensPerRequest": 5000,
+    "requestsPerEpisode": 120,
+    "cleanEpisodes": 30,
+    "stressEpisodes": 6,
+    "totalRequests": 4320,
+    "freeAllowanceApplied": false,
+    "excluded": [
+      "output or other billable units",
+      "freemium discounts/credits",
+      "smoke and static requests",
+      "fees/taxes or unshown billing rules"
+    ],
+    "notAnEnforceableRequestCostBound": true
+  },
+  "illustrativeInputCostsUsd": {
+    "perEpisode": "0.0252",
+    "campaign": "0.9072"
+  },
+  "paidSpendAuthorized": false,
+  "remainingBillingEvidence": [
+    "Official input/output or other unit pricing",
+    "Freemium allowance and reset period",
+    "Automatic billing behavior when free allowance is exhausted",
+    "Enforceable maximum charge per request"
+  ]
+}

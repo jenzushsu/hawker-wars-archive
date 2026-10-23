@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "effects-source-1",
+  "author": "Hawker Wars project original artwork",
+  "source": "packages/art/src/effects.ts",
+  "sourceSha256": "6bad5829f96908bfaa2f9c800b57e6188b504e0acff05190584f9bea926e97a7",
+  "method": "Code-authored editable pixel rectangles; incumbent Arena palette; no external imagery",
+  "nativeAsepriteSource": false,
+  "exportCommand": "pnpm exec tsx scripts/export-effects.ts",
+  "atlasSha256": "36607b6dedb1b9720c8be670ebe0ecfc189508d2cf86e915cc9b8a9886ffef4f"
+}

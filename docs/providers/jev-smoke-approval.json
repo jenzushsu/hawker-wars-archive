@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "provider-budget-approval-1",
+  "provider": "jev",
+  "approvedAt": "2026-10-23T07:40:08.957338Z",
+  "approvalSource": "User replied proceed to the explicit request for a separate USD 0.003 cap for a single Jev smoke test.",
+  "currency": "USD",
+  "runCapMicros": 3000,
+  "campaignCapMicros": 3000,
+  "maximumRequests": 1,
+  "automaticRetries": 0,
+  "reservationMicros": 2753,
+  "scope": "Single Jev smoke only; not a paid evaluation campaign; no Zoom budget transferred.",
+  "freeTierAssumed": false,
+  "automaticIncreaseAllowed": false,
+  "status": "used-single-smoke-completed",
+  "resultReference": "jev-smoke-result.json"
+}

@@ -1,0 +1,177 @@
+{
+  "evidenceSchemaVersion": "provider-research-1",
+  "checkedDate": "2026-10-22",
+  "timezone": "Asia/Singapore",
+  "verifier": "Codex; official Zoom skill supplied by user",
+  "status": "unverified",
+  "liveDispatchEnabled": false,
+  "credentialedSmokeTest": null,
+  "verifiedModelId": null,
+  "verifiedRegion": null,
+  "verifiedEntitlement": null,
+  "verifiedPricing": null,
+  "currencyBudgetPerEpisode": null,
+  "currencyBudgetPerCampaign": null,
+  "verifiedQuota": null,
+  "verifiedMaximumRequestCost": null,
+  "requestSemanticEquivalenceTest": null,
+  "crashRecoveryEvidence": null,
+  "mockContractTestEvidence": null,
+  "scope": "Read-only official Zoom skill/reference research; no inference or account API calls, no credentials printed, and no trial quota consumed.",
+  "provider": "zoom-pro",
+  "displayName": "Zoom Decisions Pro",
+  "sourceCandidate": "zoom-decisions-pro",
+  "officialDocumentationUrl": "https://github.com/zoom/skills/blob/9a18f14b5cebd3aa022ef1565e1dbdc5d315b193/skills/decisions/SKILL.md",
+  "sdk": null,
+  "endpoint": "https://api.zoom.us/v2/aiservices/decisions/decide",
+  "authenticationMethod": "Server-side x-api-key from a Zoom Build Platform project; required scope aiservices:write:decide:admin (documented, not account-tested here).",
+  "confidenceSemantics": "Official skill reports no separate confidence field. Preserve documented choice probabilities as probabilities; never relabel winning probability as confidence or assume cross-provider calibration.",
+  "sources": [
+    {
+      "url": "https://github.com/zoom/skills/blob/9a18f14b5cebd3aa022ef1565e1dbdc5d315b193/skills/decisions/SKILL.md",
+      "retrievedDate": "2026-10-22",
+      "sourceCommit": "9a18f14b5cebd3aa022ef1565e1dbdc5d315b193",
+      "sha256": "c4e89dc207d05685fae99673b7ca347e19fd10509ca628aace2a45f33fc184e1",
+      "result": "Official Zoom-owned repository content read successfully; upstream reports production audits on 2026-10-17 and 2026-10-20, not independently reproduced in this task."
+    },
+    {
+      "url": "https://github.com/zoom/skills/blob/9a18f14b5cebd3aa022ef1565e1dbdc5d315b193/skills/decisions/references/api-contract.md",
+      "retrievedDate": "2026-10-22",
+      "sourceCommit": "9a18f14b5cebd3aa022ef1565e1dbdc5d315b193",
+      "sha256": "99d05770376846471d482ce09b2ece3621c7126c77814a49e9f0e5285a4f067b",
+      "result": "Official Zoom-owned repository content read successfully; upstream reports production audits on 2026-10-17 and 2026-10-20, not independently reproduced in this task."
+    },
+    {
+      "url": "https://github.com/zoom/skills/blob/9a18f14b5cebd3aa022ef1565e1dbdc5d315b193/skills/decisions/scenarios/high-level-scenarios.md",
+      "retrievedDate": "2026-10-22",
+      "sourceCommit": "9a18f14b5cebd3aa022ef1565e1dbdc5d315b193",
+      "sha256": "6576b0410b4cb2b12e6c4abe05e27e70c9acea1874f29fe2ad67eb9113b9e639",
+      "result": "Official Zoom-owned repository content read successfully; upstream reports production audits on 2026-10-17 and 2026-10-20, not independently reproduced in this task."
+    },
+    {
+      "url": "https://developers.zoom.us/docs/ai-services/decisions/fast-mode/",
+      "result": "Linked by official skill; not independently fetched in this update."
+    },
+    {
+      "url": "https://developers.zoom.us/api/zoap/ai-services/methods/",
+      "result": "Linked by official skill; OpenAPI independently recheck still outstanding."
+    },
+    {
+      "url": "https://www.zoom.com/en/products/ai-services/decisions-api/#pricing",
+      "retrievedDate": "2026-10-22",
+      "result": "User supplied URL; fetch returned HTTP 403; pricing content not read. No rates inferred."
+    }
+  ],
+  "researchLimitation": "Official endpoint/auth/model documentation is recorded. User reports Standard/Pro access, required scope and 80 requests/second; current key binding is ready/present. Account API behavior, pricing, quota scope and smoke tests remain unverified.",
+  "remainingEvidence": [
+    "User confirms model entitlement and required key scope; validate actual account access/model response in the eventual smoke test and document region/alias limitations",
+    "Advertised USD pricing supplied by screenshot; verify native usage-unit to billed-token mapping and enforceable per-request billed-token bounds",
+    "User confirms no allowance or expiry applies per Zoom; identify shared rate-limit scope and overage behavior and preserve provenance without assuming free/unlimited spend",
+    "Enforce approved shared USD 0.25 paired-run / USD 5 campaign caps using conservative atomic request reservations; no separate per-model allowance",
+    "Use existing ready server-side ZOOM_AI_SERVICES_API_KEY binding; permitted API route and actual authentication still need verification",
+    "Implement/mock-test legal-choice/response/refusal/usage normalization, four-second deadline, zero retries, and quota/cost/recovery enforcement",
+    "Perform one credentialed legal-decision smoke per enabled model only after the prerequisites pass; no API calls were made in this update"
+  ],
+  "proSubstitutionProhibited": true,
+  "documentedModelId": "zoom-decisions-pro",
+  "documentedResponseModel": "zoom-decisions-pro",
+  "documentationStatus": "official-skill-and-reference-reviewed; account access and live behavior unverified",
+  "officialSkill": {
+    "repository": "zoom/skills",
+    "commit": "9a18f14b5cebd3aa022ef1565e1dbdc5d315b193",
+    "path": "skills/decisions/SKILL.md",
+    "upstreamAuditDates": [
+      "2026-10-17",
+      "2026-10-20"
+    ],
+    "upstreamClaimsAreNotLocalSmokeEvidence": true
+  },
+  "observedDocumentationContract": {
+    "method": "POST",
+    "endpoint": "https://api.zoom.us/v2/aiservices/decisions/decide",
+    "requiredScope": "aiservices:write:decide:admin",
+    "authenticationHeader": "x-api-key",
+    "suggestedServerEnvironmentVariable": "ZOOM_AI_SERVICES_API_KEY",
+    "keyOrigin": "Zoom Build Platform project (formerly Video SDK account); account setup options described in skill",
+    "requestedModel": "zoom-decisions-pro",
+    "acceptedResponseModel": "zoom-decisions-pro",
+    "aliasNote": "zoom-decisions-standard may normalize to zoom-decisions; accepted service alias zoom-decisions is also documented. Record requested and returned identities separately. These names do not establish an immutable model revision.",
+    "hawkerQuestion": {
+      "type": "choice",
+      "name": "action",
+      "choices": "Each currently legal action as a {value: action} entry, in canonical legal-action order; at least two choices. Sole WAIT bypasses the provider.",
+      "input": "Non-empty serialization of canonical observation-2 and shared objective/rules; future adapter must prove semantic equivalence."
+    },
+    "requestValidation": [
+      "non-empty input and instructions",
+      "one unique trimmed non-empty question name, action",
+      "at least two unique non-empty legal action values",
+      "no images required for Hawker Wars"
+    ],
+    "responseValidation": [
+      "one answer matched by order/name/type",
+      "allow refusal as a possible service result; apply explicitly attributed fallback",
+      "choice must belong to captured legalActions",
+      "probabilities keyed by returned value must refer to original legal choices",
+      "reference_id may not be echoed; retain local correlation ID"
+    ],
+    "usageFields": [
+      "input_units",
+      "output_units",
+      "unit_type",
+      "optional details including cached_input_tokens"
+    ],
+    "usageNormalizationNote": "Do not label usage units as tokens or convert to cost without documented unit/pricing semantics. Existing generic UsageSchema requires an explicit versioned extension before preserving these native fields in executable adapter output.",
+    "requestIdField": "request_id",
+    "confidenceField": "absent in upstream observed responses",
+    "hawkerTimeoutMs": 4000,
+    "hawkerAutomaticRetriesPerTick": 0,
+    "retryPolicyResolution": "The Zoom skill recommends bounded transient retries generally. Existing fallback-2 fixes zero retries within each Hawker tick; 429/503/529 are recorded failures and rules fallback, not redispatch. Cancellation does not prove no charge."
+  },
+  "networkRequirements": {
+    "futureApiDomain": "api.zoom.us",
+    "configurationChanged": false,
+    "apiAccessTested": false
+  },
+  "accountInputReference": "zoom-account-input.json",
+  "userReportedEntitlement": {
+    "modelAccess": true,
+    "requiredScopeEnabled": true,
+    "reportedDate": "2026-10-22",
+    "independentlyVerified": false
+  },
+  "userReportedRateLimit": {
+    "requestsPerSecond": 80,
+    "scope": "unknown",
+    "sharedWithOtherModel": null,
+    "independentlyVerified": false
+  },
+  "credentialBindingObserved": {
+    "name": "ZOOM_AI_SERVICES_API_KEY",
+    "state": "ready",
+    "presentInProcess": true,
+    "credentialValueInspected": false,
+    "authenticationTested": false
+  },
+  "pricingDocumentationUrl": "https://www.zoom.com/en/products/ai-services/decisions-api/#pricing",
+  "pricingReviewStatus": "Advertised USD rate and total-token usage basis read from user screenshot; billing-unit mapping and enforceable per-request token bound remain unverified.",
+  "userReportedTrialTerms": {
+    "allowanceApplicable": false,
+    "expiryApplicable": false,
+    "reportedConfirmation": "Confirmed by Zoom per user follow-up",
+    "independentlyVerified": false,
+    "impliesZeroCost": false,
+    "impliesSpendAuthorization": false
+  },
+  "pricingEvidenceReference": "zoom-pricing.json",
+  "documentedPricing": {
+    "productLabel": "Decisions API Pro",
+    "usdPerMillionTokens": "0.10",
+    "microUsdPerMillionTokens": 100000,
+    "currency": "USD",
+    "provenance": "User screenshot of supplied pricing page; no independent web retrieval",
+    "recordedDate": "2026-10-22"
+  },
+  "approvedSharedBudgetReference": "zoom-budget-approval.json",
+  "approvedBudgetScope": "Shares USD 0.25 per paired run and USD 5 campaign with the other Zoom adapter; do not multiply the allowance by provider count."
+}

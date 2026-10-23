@@ -1,0 +1,85 @@
+{
+  "contractVersion": "tick-order-1",
+  "simulation": "poc-1",
+  "decisionTicks": {
+    "first": 0,
+    "last": 119
+  },
+  "closingTick": 120,
+  "steps": [
+    {
+      "order": 1,
+      "id": "apply-external-events"
+    },
+    {
+      "order": 2,
+      "id": "expire-ready-then-complete-deliveries-and-cooking"
+    },
+    {
+      "order": 3,
+      "id": "admit-base-bus-promotion-arrivals-in-stable-order"
+    },
+    {
+      "order": 4,
+      "id": "expire-patience-at-inclusive-deadline"
+    },
+    {
+      "order": 5,
+      "id": "capture-observations-and-ordered-legal-actions"
+    },
+    {
+      "order": 6,
+      "id": "dispatch-concurrently-or-forced-wait"
+    },
+    {
+      "order": 7,
+      "id": "validate-and-apply-action-or-rules-fallback"
+    },
+    {
+      "order": 8,
+      "id": "atomic-commit-then-broadcast"
+    }
+  ],
+  "closing": {
+    "acceptArrivals": false,
+    "acceptDecisions": false,
+    "resolveQueuedAs": "closing_unserved",
+    "discardAllReadyExactlyOnce": true,
+    "retainRawAtCentsPerPortion": 200,
+    "requireZeroCookingAndRestock": true
+  },
+  "demandDraw": {
+    "algorithm": "sha256",
+    "encoding": "utf-8",
+    "template": "hawker-wars|demand-1|s|stream|tick|index",
+    "integerEncoding": "decimal",
+    "wordBytes": 4,
+    "byteOrder": "big-endian",
+    "divisor": 4294967296,
+    "streams": [
+      "base_count",
+      "patience",
+      "promo_count",
+      "rain_keep",
+      "vote_tie"
+    ],
+    "arrivalOrder": [
+      "base",
+      "bus",
+      "promotion"
+    ],
+    "baseExpectedArrivals": 126,
+    "patience": {
+      "minimum": 3,
+      "modulus": 8
+    },
+    "promotionProbability": {
+      "numerator": 1,
+      "denominator": 2
+    },
+    "rainKeepProbability": {
+      "numerator": 1,
+      "denominator": 2
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "provider-pricing-evidence-1",
+  "recordedDate": "2026-10-22",
+  "timezone": "Asia/Singapore",
+  "currency": "USD",
+  "provenance": {
+    "sourceType": "user-supplied screenshot in chat",
+    "associatedUrl": "https://www.zoom.com/en/products/ai-services/decisions-api/#pricing",
+    "directWebRetrieval": "Prior HTTP 403; screenshot read directly in conversation",
+    "independentlyRetrievedFromWebsite": false
+  },
+  "advertisedRates": {
+    "zoom": {
+      "productLabel": "Decisions API",
+      "usdPerMillionTokens": "0.042",
+      "microUsdPerMillionTokens": 42000
+    },
+    "zoom-pro": {
+      "productLabel": "Decisions API Pro",
+      "usdPerMillionTokens": "0.10",
+      "microUsdPerMillionTokens": 100000
+    }
+  },
+  "visibleUsageDefinition": "Usage is measured based on the total number of tokens used by the Decisions API during a given billing period.",
+  "notEstablishedByScreenshot": [
+    "How response input_units/output_units/unit_type map to billed total tokens",
+    "Per-request enforceable maximum billed tokens and possible provider-internal tokens",
+    "Account-specific discounts, rounding, minimum charges or taxes",
+    "Shared rate-limit scope and paid-overage behavior"
+  ],
+  "planningAssumptions": {
+    "billedTokensPerRequest": 5000,
+    "maximumRequestsPerEpisodePerProvider": 120,
+    "cleanEpisodes": 30,
+    "stressEpisodes": 6,
+    "requestsPerProvider": 4320,
+    "excluded": [
+      "Jev usage",
+      "static evaluation requests",
+      "smoke tests",
+      "taxes/fees or unshown billing rules"
+    ],
+    "notAMeasuredUsageOrGuaranteedBound": true
+  },
+  "illustrativeCostsAt5000BilledTokensPerRequest": {
+    "zoom": {
+      "perPairedRunUsd": "0.0252",
+      "campaignUsd": "0.9072"
+    },
+    "zoom-pro": {
+      "perPairedRunUsd": "0.06",
+      "campaignUsd": "2.16"
+    }
+  },
+  "illustrativeCombinedZoomCostUsd": "3.0672",
+  "approvedCaps": {
+    "currency": "USD",
+    "perPairedRunAcrossZoomModels": "0.25",
+    "wholeZoomCampaignIncludingSmokeStatic": "5.00",
+    "status": "approved-by-user",
+    "doesNotEnableDispatch": true,
+    "approvedDate": "2026-10-22",
+    "approvalReference": "zoom-budget-approval.json"
+  }
+}

@@ -1,0 +1,13 @@
+import {randomUUID} from 'node:crypto';
+import {generateStaticCandidates} from '../packages/benchmark/src/static-tasks.js';
+import {evaluateDataset,freezeStaticDataset,loadStaticDataset} from '../packages/benchmark/src/static-dataset.js';
+import {exportStaticDatasetJsonl,loadStaticDatasetJsonl} from '../packages/benchmark/src/exports.js';
+import {writeArtifactDirectory} from './artifact-output.js';
+const output=process.argv[2]??`results/static-${randomUUID()}`;
+if(process.argv.length>3)throw new Error('Usage: pnpm static:generate [newOutputDirectory]');
+const generation=generateStaticCandidates({split:'development'});console.log(JSON.stringify({stage:'static-candidates',count:generation.generatedCount,selection:'preregistered-before-labeling'}));
+const dataset=evaluateDataset(generation);
+const files={'dataset.json':freezeStaticDataset(dataset),'dataset.jsonl':exportStaticDatasetJsonl(dataset)};
+loadStaticDataset(files['dataset.json']);loadStaticDatasetJsonl(files['dataset.jsonl']);
+const directory=writeArtifactDirectory(output,files);
+console.log(JSON.stringify({status:'frozen-and-reloaded',visibility:'evaluator-private',directory,counts:dataset.counts,solverLimits:dataset.solverLimits,datasetHash:dataset.datasetHash,networkCalls:0},null,2));

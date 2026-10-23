@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "environment-source-1",
+  "author": "Hawker Wars project original artwork",
+  "source": "packages/art/src/environment.ts",
+  "sourceSha256": "f6fc5955a2bc25c4d2d10925c535f7464964258f88b0880b97090f8623fb659a",
+  "extractedFrom": "Original apps/web/components/Arena.tsx architecture, counters and foreground object geometry",
+  "method": "Code-authored editable pixel rectangles and alpha source-over; no external imagery",
+  "nativeAsepriteSource": false,
+  "includesPeople": false,
+  "sourceRectanglesSha256": "d880a03bc534a3698d5c4cf47e2ff0bb40c920c080e7b54a3d9e24791d7ba613",
+  "exportCommand": "pnpm exec tsx scripts/export-environment.ts",
+  "atlasSha256": "f45658c2903f550ad9951812b2688bb778795e3adb3cf8a06bb2ae1e0662a5bd",
+  "contactSheet": {
+    "columns": 2,
+    "rows": 2,
+    "order": [
+      "background",
+      "counters",
+      "foreground",
+      "composite"
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "provider-verification-update-1",
+  "checkedAt": "2026-10-23T07:18:09.618Z",
+  "scope": "Read-only documentation, unauthenticated host reachability, and one authenticated Jev model-list GET; no inference requests.",
+  "network": {
+    "configurationApplied": true,
+    "api.zoom.us": {
+      "proxyConnectStatus": 200,
+      "rootHeadStatus": 200
+    },
+    "api.typesafe.ai": {
+      "proxyConnectStatus": 200,
+      "rootHeadStatus": 404
+    },
+    "note": "Root HEAD establishes reachability only; it does not establish inference authorization."
+  },
+  "jev": {
+    "accountModelList": {
+      "checkedAt": "2026-10-23T07:18:09.618Z",
+      "endpoint": "GET /v1/models",
+      "status": 401,
+      "models": [],
+      "inferenceCalls": 0
+    },
+    "documentedStableModel": "jev-1.13.0",
+    "documentedPreviewModel": "jev-1.14.0",
+    "documentedInputUsdPerMillionTokens": "0.042",
+    "documentedOutputTokensFree": true,
+    "defaultContext": {
+      "perRequest": "64k",
+      "perQuestion": "32k"
+    },
+    "longContext": {
+      "optInHeader": "TypeSafe-Danger-Zone-Long-Context: true",
+      "sentByHawker": false
+    },
+    "freeAllowanceAndOverage": "unknown",
+    "paidSpendAuthorized": false,
+    "liveDispatchEnabled": false,
+    "requiredAction": "Correct or rebind the existing TYPESAFE_API_KEY in environment settings; retry GET /v1/models after the change. No secret should be pasted into chat."
+  },
+  "zoom": {
+    "documentedInputUnits": "tokens",
+    "documentedOutputUnits": "number of submitted questions",
+    "outputUnitsAreOutputTokens": false,
+    "numericMaximumRequestTokens": "not stated in reviewed docs",
+    "maximumCharge": "unverified",
+    "credentialedInferenceSmoke": "not attempted",
+    "liveDispatchEnabled": false,
+    "pricingPageFetch": "302 redirects to zoom.us/syncStatus; redirect host blocked by current proxy policy. Existing user-screenshot pricing retained."
+  },
+  "sources": [
+    {
+      "url": "https://docs.typesafe.ai/llms-full.txt",
+      "httpStatus": 200,
+      "sha256": "bcb6f0d4f76b98c259cb0bb883273b56aed25b6a67d43545ee70f7e21b16e703"
+    },
+    {
+      "url": "https://developers.zoom.us/docs/api/ai-services.md",
+      "httpStatus": 200,
+      "sha256": "467e5130212a6ed8cac16d1359d21fc9cf9ce326b5f1e1a23e1cee027bcbb681"
+    },
+    {
+      "url": "https://developers.zoom.us/docs/ai-services/decisions/fast-mode/",
+      "httpStatus": 200,
+      "sha256": "dfedd7b140b2f4893efed4a52d0d2451340d5e89dcebe5d10a759bc9843c2cb5"
+    }
+  ],
+  "inferenceCalls": 0
+}

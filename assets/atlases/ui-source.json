@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "ui-source-1",
+  "author": "Hawker Wars project original artwork",
+  "source": "packages/art/src/ui.ts",
+  "sourceSha256": "32acf6c48cfd8630074bc362bc63381643bd24a21709f8131f97b21eb99a0942",
+  "method": "Code-authored editable integer pixel rectangles; 24px variant snapped from authored geometry; no external imagery, fonts or icon library",
+  "nativeAsepriteSource": false,
+  "sourceRectanglesSha256": "847d87e819ff6674ec8cff92b151c0c8899eb9a3a87cbd955062c53af4224bdb",
+  "exportCommand": "pnpm exec tsx scripts/export-ui.ts",
+  "atlasSha256": "8e8f29ead0d216ba78b6f96f67322ca5df4afac3c4e059ed7c8d933e4cc4ee80",
+  "contactSheet": {
+    "columns": 9,
+    "rows": 2,
+    "names": [
+      "inventory",
+      "queue",
+      "time",
+      "latency",
+      "warning",
+      "validation",
+      "vote",
+      "sound",
+      "expand"
+    ],
+    "sizes": [
+      16,
+      24
+    ],
+    "displayScale": 2
+  }
+}

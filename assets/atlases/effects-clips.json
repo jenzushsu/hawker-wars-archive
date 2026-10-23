@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "effects-clips-1",
+  "artworkVersion": "effects-art-1",
+  "texture": "effects",
+  "frameSize": {
+    "w": 32,
+    "h": 32
+  },
+  "origin": {
+    "x": 0.5,
+    "y": 1
+  },
+  "clips": {
+    "steam": {
+      "frames": 4,
+      "fps": 6,
+      "loop": true,
+      "durationMs": 666.6666666666666,
+      "frameNames": [
+        "effects/steam/0",
+        "effects/steam/1",
+        "effects/steam/2",
+        "effects/steam/3"
+      ]
+    },
+    "service": {
+      "frames": 4,
+      "fps": 8,
+      "loop": false,
+      "durationMs": 500,
+      "frameNames": [
+        "effects/service/0",
+        "effects/service/1",
+        "effects/service/2",
+        "effects/service/3"
+      ]
+    },
+    "shortage": {
+      "frames": 1,
+      "fps": 1,
+      "loop": true,
+      "durationMs": 1000,
+      "frameNames": [
+        "effects/shortage/0"
+      ]
+    },
+    "delivery": {
+      "frames": 4,
+      "fps": 8,
+      "loop": false,
+      "durationMs": 500,
+      "frameNames": [
+        "effects/delivery/0",
+        "effects/delivery/1",
+        "effects/delivery/2",
+        "effects/delivery/3"
+      ]
+    },
+    "bus": {
+      "frames": 4,
+      "fps": 8,
+      "loop": false,
+      "durationMs": 500,
+      "frameNames": [
+        "effects/bus/0",
+        "effects/bus/1",
+        "effects/bus/2",
+        "effects/bus/3"
+      ]
+    },
+    "rain": {
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "durationMs": 500,
+      "frameNames": [
+        "effects/rain/0",
+        "effects/rain/1",
+        "effects/rain/2",
+        "effects/rain/3"
+      ]
+    },
+    "supplier-delay": {
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "durationMs": 500,
+      "frameNames": [
+        "effects/supplier-delay/0",
+        "effects/supplier-delay/1",
+        "effects/supplier-delay/2",
+        "effects/supplier-delay/3"
+      ]
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "provider-validation-1",
+  "checkedAt": "2026-10-23T07:25:48.981Z",
+  "environment": {
+    "networkPolicyState": "enforced",
+    "observationsCurrent": true,
+    "credentialBindings": {
+      "ZOOM_AI_SERVICES_API_KEY": "ready",
+      "TYPESAFE_API_KEY": "ready"
+    },
+    "credentialValuesInspected": false
+  },
+  "jev": {
+    "modelList": {
+      "checkedAt": "2026-10-23T07:25:48.981Z",
+      "endpoint": "GET https://api.typesafe.ai/v1/models",
+      "status": 200,
+      "models": [
+        {
+          "name": "jev-latest",
+          "releaseDate": "2026-09-10T18:38:01.391457+00:00"
+        },
+        {
+          "name": "jev-preview",
+          "releaseDate": "2026-09-10T18:39:06.057655+00:00"
+        }
+      ],
+      "inferenceCalls": 0
+    },
+    "authenticationVerifiedForModelList": true,
+    "inferenceSmokeVerified": false,
+    "freeTierAllowanceAndOverageVerified": false,
+    "paidSpendAuthorized": false
+  },
+  "zoom": {
+    "credentialBindingReady": true,
+    "credentialedInferenceSmokeVerified": false,
+    "maximumRequestChargeVerified": false
+  },
+  "inferenceCalls": 0,
+  "scope": "Read-only Jev authentication check and local provider tests; environment readiness does not prove Zoom account authorization or inference entitlement.",
+  "localValidation": {
+    "typecheck": "passed",
+    "providerTests": 54,
+    "testFiles": 3,
+    "status": "passed"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "environment-layers-1",
+  "artworkVersion": "environment-art-1",
+  "texture": "environment",
+  "sceneSize": {
+    "width": 480,
+    "height": 240
+  },
+  "origin": {
+    "x": 0,
+    "y": 0
+  },
+  "scenePosition": {
+    "x": 0,
+    "y": 0
+  },
+  "layers": [
+    {
+      "id": "background",
+      "frame": "environment/background"
+    },
+    {
+      "id": "counters",
+      "frame": "environment/counters"
+    },
+    {
+      "id": "foreground",
+      "frame": "environment/foreground"
+    }
+  ],
+  "layout": {
+    "stallOrigins": [
+      20,
+      176,
+      332
+    ],
+    "hawkerAnchors": [
+      {
+        "x": 78,
+        "y": 112
+      },
+      {
+        "x": 234,
+        "y": 112
+      },
+      {
+        "x": 390,
+        "y": 112
+      }
+    ],
+    "tableAnchors": [
+      {
+        "x": 77,
+        "y": 202
+      },
+      {
+        "x": 240,
+        "y": 204
+      },
+      {
+        "x": 397,
+        "y": 202
+      }
+    ],
+    "seatedCustomerAnchors": [
+      {
+        "x": 55,
+        "feetY": 207,
+        "variant": 1
+      },
+      {
+        "x": 222,
+        "feetY": 204,
+        "variant": 5
+      },
+      {
+        "x": 405,
+        "feetY": 209,
+        "variant": 3
+      }
+    ]
+  },
+  "drawOrder": [
+    "background",
+    "hawker-sprites",
+    "counters",
+    "queue-customer-sprites",
+    "seated-customer-sprites",
+    "foreground",
+    "steam-effects"
+  ],
+  "includesPeople": false
+}

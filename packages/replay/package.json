@@ -1,0 +1,12 @@
+{
+  "name": "@hawker-wars/replay",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "dependencies": {
+    "@hawker-wars/shared": "workspace:*",
+    "@hawker-wars/simulation": "workspace:*",
+    "zod": "3.25.76"
+  }
+}

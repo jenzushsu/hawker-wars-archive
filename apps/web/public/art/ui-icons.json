@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "ui-icons-1",
+  "texture": "ui",
+  "names": [
+    "inventory",
+    "queue",
+    "time",
+    "latency",
+    "warning",
+    "validation",
+    "vote",
+    "sound",
+    "expand"
+  ],
+  "sizes": [
+    16,
+    24
+  ],
+  "framePattern": "ui/{name}/{size}",
+  "decorative": true,
+  "accessibleMeaning": "Adjacent visible text",
+  "frames": [
+    {
+      "name": "inventory",
+      "frames": [
+        {
+          "size": 16,
+          "frame": "ui/inventory/16"
+        },
+        {
+          "size": 24,
+          "frame": "ui/inventory/24"
+        }
+      ]
+    },
+    {
+      "name": "queue",
+      "frames": [
+        {
+          "size": 16,
+          "frame": "ui/queue/16"
+        },
+        {
+          "size": 24,
+          "frame": "ui/queue/24"
+        }
+      ]
+    },
+    {
+      "name": "time",
+      "frames": [
+        {
+          "size": 16,
+          "frame": "ui/time/16"
+        },
+        {
+          "size": 24,
+          "frame": "ui/time/24"
+        }
+      ]
+    },
+    {
+      "name": "latency",
+      "frames": [
+        {
+          "size": 16,
+          "frame": "ui/latency/16"
+        },
+        {
+          "size": 24,
+          "frame": "ui/latency/24"
+        }
+      ]
+    },
+    {
+      "name": "warning",
+      "frames": [
+        {
+          "size": 16,
+          "frame": "ui/warning/16"
+        },
+        {
+          "size": 24,
+          "frame": "ui/warning/24"
+        }
+      ]
+    },
+    {
+      "name": "validation",
+      "frames": [
+        {
+          "size": 16,
+          "frame": "ui/validation/16"
+        },
+        {
+          "size": 24,
+          "frame": "ui/validation/24"
+        }
+      ]
+    },
+    {
+      "name": "vote",
+      "frames": [
+        {
+          "size": 16,
+          "frame": "ui/vote/16"
+        },
+        {
+          "size": 24,
+          "frame": "ui/vote/24"
+        }
+      ]
+    },
+    {
+      "name": "sound",
+      "frames": [
+        {
+          "size": 16,
+          "frame": "ui/sound/16"
+        },
+        {
+          "size": 24,
+          "frame": "ui/sound/24"
+        }
+      ]
+    },
+    {
+      "name": "expand",
+      "frames": [
+        {
+          "size": 16,
+          "frame": "ui/expand/16"
+        },
+        {
+          "size": 24,
+          "frame": "ui/expand/24"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "name": "hawker-wars",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": ">=24.19.0 <25",
+    "pnpm": "11.25.0"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "validate:p0": "tsx scripts/validate-p0.ts",
+    "check": "pnpm typecheck && pnpm test && pnpm validate:p0 && pnpm validate:p2-a && pnpm validate:p2-b",
+    "demo:rules": "tsx scripts/demo-rules.ts",
+    "validate:p2-a": "tsx scripts/validate-p2-a.ts",
+    "reference:p2-a": "tsx scripts/p2-reference.ts",
+    "record:episode": "tsx scripts/record-episode.ts",
+    "replay:episode": "tsx scripts/replay-episode.ts",
+    "export:episode": "tsx scripts/export-episode.ts",
+    "static:generate": "tsx scripts/generate-static.ts",
+    "validate:p2-b": "tsx scripts/validate-p2-b.ts",
+    "providers:status": "tsx scripts/provider-status.ts",
+    "providers:init-ledger": "tsx scripts/provider-init-ledger.ts",
+    "providers:smoke": "node --use-env-proxy --import tsx scripts/provider-smoke.ts",
+    "dev:web": "pnpm --filter @hawker-wars/web dev",
+    "build:web": "pnpm --filter @hawker-wars/web build",
+    "typecheck:web": "pnpm --filter @hawker-wars/web typecheck",
+    "demo:web": "tsx scripts/generate-web-demo.ts",
+    "test:web": "playwright test",
+    "art:export": "tsx scripts/export-hawker.ts && tsx scripts/export-customer.ts && tsx scripts/export-environment.ts && tsx scripts/export-effects.ts && tsx scripts/export-ui.ts",
+    "art:check": "tsx scripts/export-hawker.ts --check && tsx scripts/export-customer.ts --check && tsx scripts/export-environment.ts --check && tsx scripts/export-effects.ts --check && tsx scripts/export-ui.ts --check"
+  },
+  "dependencies": {
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "@types/node": "24.19.2",
+    "prettier": "3.6.2",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vitest": "4.0.18"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "customer-source-1",
+  "author": "Hawker Wars project original artwork",
+  "source": "packages/art/src/customer.ts",
+  "sourceSha256": "aa5132182329fc156d30bbea85b4a3810324d3a23364f502d64ef42f42c9b4ea",
+  "method": "Code-authored editable pixel rectangles; original six Arena customer palettes; no external imagery",
+  "nativeAsepriteSource": false,
+  "exportCommand": "pnpm exec tsx scripts/export-customer.ts",
+  "atlasSha256": "7bb98b111f20b75607751ea2cd6aa39d65c1dbf3a94e02f580e58b012dadde77"
+}

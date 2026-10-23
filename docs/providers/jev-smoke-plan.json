@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "provider-smoke-plan-1",
+  "provider": "jev",
+  "status": "completed-smoke-passed",
+  "method": "POST",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "requestedModel": "jev-1.13.0",
+  "runId": "76af5727-7871-4ea3-89be-16cf4a459dde",
+  "tick": 0,
+  "requests": 1,
+  "retries": 0,
+  "deadlineMs": 4000,
+  "bodyBytes": 5464,
+  "bodySha256": "ad5f6b16a4a76aceda2b87eefa6e37b5f03b97100f15ab8dae4eec31d532a809",
+  "legalActions": [
+    "COOK",
+    "RESTOCK",
+    "PROMOTE",
+    "WAIT"
+  ],
+  "reservationMicros": 2753,
+  "proposedRunAndCampaignCapMicros": 3000,
+  "maximumAdditionalReservationsAfterFirst": 0,
+  "billingEvidence": "jev-request-bound.json",
+  "scope": "One smoke only. Does not authorize an evaluation campaign or claim freemium billing.",
+  "body": {
+    "model": "jev-1.13.0",
+    "state": "{\"legalActions\":[\"COOK\",\"RESTOCK\",\"PROMOTE\",\"WAIT\"],\"objective\":{\"formula\":\"closingCashCents + 200*closingRawPortions - 28400 - 100*abandoned - 5*allResolvedCustomerWaitMinutes - 50*wastedReadyPortions\",\"maximize\":\"finalUtilityPoints\",\"scorer\":\"utility-1\",\"weights\":{\"abandonedSatisfaction\":0,\"abandonmentPenalty\":100,\"apiCostInUtility\":false,\"equalScoresShareRank\":true,\"primaryControllerObjective\":\"utility\",\"profitWeight\":1,\"satisfactionMaximum\":100,\"satisfactionWaitPenalty\":10,\"waitMinutePenalty\":5,\"waitPopulation\":\"all-resolved-customers\",\"wastePortionPenalty\":50}},\"observation\":{\"cashCents\":20000,\"cooking\":null,\"cumulativePromotionSpendCents\":0,\"cumulativePurchasesCents\":0,\"cumulativeRevenueCents\":0,\"demandPhase\":\"off-peak\",\"effects\":[],\"legalActions\":[\"COOK\",\"RESTOCK\",\"PROMOTE\",\"WAIT\"],\"pendingRestock\":null,\"promotion\":null,\"promotionEligibleAt\":0,\"queue\":[],\"rawPortions\":30,\"readyBatches\":[{\"expiresAt\":20,\"id\":\"batch-0\",\"quantity\":12}],\"recentActions\":[],\"remainingMinutes\":120,\"schemaVersion\":\"observation-2\",\"tick\":0,\"totals\":{\"abandoned\":0,\"arrivals\":0,\"promotions\":0,\"purchasedPortions\":0,\"restockOrders\":0,\"served\":0,\"waitMinutes\":0,\"wasted\":0}},\"promptVersion\":\"hawker-decision-prompt-1\",\"publicRules\":{\"actions\":{\"COOK\":\"One idle cooker takes 10 raw portions, reserves ready capacity and completes after 5 minutes; newly ready portions expire 20 minutes after completion.\",\"PROMOTE\":\"Pay 500 cents for extra arrival opportunities over next 10 ticks, with next activation at t+20; otherwise unchanged mechanics.\",\"RESTOCK\":\"Pay 4000 cents for 20 raw portions; one pending order; delivery after 10 minutes or 15 during supplier delay; must arrive before closing.\",\"SERVE\":\"Serve min(3, queue length, ready portions), FIFO; consume earliest-expiring ready portions; earn 500 cents each. No passive service.\",\"WAIT\":\"Consume this turn without direct action; background arrivals, patience, spoilage and timers continue.\"},\"closing\":\"At120 no arrivals or decisions; resolve every queued customer as abandoned, charge wait, discard remaining ready stock once, retain raw at200 cents; no in-flight stock.\",\"demand\":{\"effects\":{\"bus\":\"6 arrivals at activation\",\"rain\":\"Keep each base arrival with probability 0.5 over 10 ticks; other sources unchanged\",\"supplierDelay\":\"Add 5 minutes once to pending order (clamp at119); new orders during10ticks take15 minutes\"},\"offPeakBaseCountMasses\":{\"denominator\":4294967296,\"numerators\":[2147483648,1717986919,429496729]},\"offPeakTicks\":[[0,29],[90,119]],\"patience\":{\"distribution\":\"uniform\",\"maximum\":10,\"minimum\":3},\"peakBase\":[{\"count\":1,\"probability\":0.5},{\"count\":2,\"probability\":0.5}],\"peakTicks\":[30,89],\"promotionExtra\":{\"count\":1,\"probability\":0.5}},\"demandDefaults\":{\"busArrivals\":6,\"drawByteOrder\":\"big-endian\",\"drawBytes\":4,\"drawDenominator\":4294967296,\"drawPrefix\":\"hawker-wars|demand-1\",\"hashAlgorithm\":\"sha256\",\"maxChaosEvents\":1,\"noVotesEffect\":null,\"patienceMinimum\":3,\"patienceModulo\":8,\"phases\":[{\"counts\":[0,1,2],\"cumulativeThresholds\":[0.5,0.9,1],\"id\":\"off-peak\",\"ranges\":[[0,29],[90,119]]},{\"counts\":[1,2],\"cumulativeThresholds\":[0.5,1],\"id\":\"peak\",\"ranges\":[[30,89]]}],\"potentialArrivalOrder\":[\"base\",\"bus\",\"promotion\"],\"promotionExtraThreshold\":0.5,\"rainDurationMinutes\":10,\"rainKeepThreshold\":0.5,\"streams\":[\"base_count\",\"patience\",\"promo_count\",\"rain_keep\",\"vote_tie\"],\"supplierDelayDurationMinutes\":10,\"supplierDelayMinutes\":5,\"supplierLatestDueTick\":119,\"voteChangesAllowed\":true,\"voteOpensAfterTick\":30,\"voteWindowMs\":20000},\"demandVersion\":\"demand-1\",\"mechanics\":{\"closingTick\":120,\"cookBatchSize\":10,\"cookingMinutes\":5,\"decisionDeadlineMs\":4000,\"firstDecisionTick\":0,\"forcedWaitCallsProvider\":false,\"ingredientValueCents\":200,\"initialCashCents\":20000,\"initialRaw\":30,\"initialReady\":12,\"initialReadyExpiryTick\":20,\"initialWealthCents\":28400,\"lastDecisionTick\":119,\"maxPendingRestocks\":1,\"maxRequestsPerProvider\":120,\"promotionCooldownMinutes\":20,\"promotionCostCents\":500,\"promotionDelayMinutes\":1,\"promotionDurationMinutes\":10,\"promotionMaxQueue\":5,\"promotionMinReady\":10,\"queueCapacity\":30,\"rawCapacity\":60,\"rawSpoilage\":false,\"readyCapacity\":30,\"readyShelfLifeMinutes\":20,\"restockCostCents\":4000,\"restockMinutes\":10,\"restockQuantity\":20,\"retriesPerTick\":0,\"salePriceCents\":500,\"serveLimit\":3,\"terminalReadyValueCents\":0,\"tickOrder\":[\"external_events\",\"expiry_and_completions\",\"arrivals\",\"patience_expiry\",\"observations\",\"dispatch\",\"validated_actions\",\"atomic_commit\"],\"visualTickMs\":5000},\"simulation\":\"poc-1\",\"tickOrder\":[\"external effects\",\"ready expiry then deliveries/cooking completion\",\"arrivals admitted before patience expiry\",\"patience expiry at deadline\",\"observation\",\"one action\",\"commit\"]}}",
+    "questions": {
+      "action": {
+        "type": "choice",
+        "instructions": "Choose exactly one allowed action to maximize expected final utility at closing. Use the supplied observation and public game rules. Return the typed choice only; do not infer hidden schedules or seeds.",
+        "criteria": {
+          "COOK": null,
+          "RESTOCK": null,
+          "PROMOTE": null,
+          "WAIT": null
+        }
+      }
+    }
+  },
+  "approvalReference": "jev-smoke-approval.json",
+  "resultReference": "jev-smoke-result.json",
+  "actualRequests": 1,
+  "actualRetries": 0
+}

@@ -1,0 +1,2156 @@
+{
+  "fixtureSetVersion": "poc-1-acceptance-1",
+  "contracts": {
+    "simulation": "poc-1",
+    "demand": "demand-1",
+    "scorer": "utility-1",
+    "baseline": "rules-1",
+    "failurePolicy": "fallback-2",
+    "observation": "observation-2",
+    "stateHash": "state-hash-1",
+    "recovery": "recovery-1",
+    "staticTask": "static-task-1",
+    "evaluation": "trial-eval-1"
+  },
+  "executionStatus": "expected-only-engine-not-implemented",
+  "scope": "P0 contract and hand-calculated expectations; P2 must execute against the engine.",
+  "syntheticLocalPolicy": {
+    "openingLedger": "For synthetic-local fixtures, given state is an explicitly injected boundary, not a reachable prefix of the poc-1 initial episode. Initial cash/stock conservation applies relative to that injected opening ledger; episode-global 42-portion/20000-cent identities apply only to setupMode=episode fixtures.",
+    "history": "Counters absent from local given state default to zero; supplied queue membership defines local arrivals. No synthetic fixture implies measured behavior."
+  },
+  "defaults": {
+    "tick": 0,
+    "cashCents": 20000,
+    "rawPortions": 30,
+    "readyBatches": [
+      {
+        "id": "batch-fixture-0",
+        "quantity": 12,
+        "expiresAt": 20
+      }
+    ],
+    "cooking": null,
+    "pendingRestock": null,
+    "promotion": null,
+    "promotionEligibleAt": 0,
+    "queue": [],
+    "effects": [],
+    "totals": {
+      "served": 0,
+      "abandoned": 0,
+      "wasted": 0,
+      "waitMinutes": 0,
+      "arrivals": 0,
+      "purchasedPortions": 0,
+      "restockOrders": 0,
+      "promotions": 0
+    },
+    "phase": "decision"
+  },
+  "cases": [
+    {
+      "id": "MECH-01",
+      "sourceId": "MECH-01",
+      "category": "mechanics",
+      "description": "Serve available portions FIFO rather than the requested capacity.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 10,
+        "cashCents": 20000,
+        "rawPortions": 30,
+        "readyBatches": [
+          {
+            "id": "batch-fixture-0",
+            "quantity": 2,
+            "expiresAt": 30
+          }
+        ],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [
+          {
+            "id": "customer-10-base-0",
+            "arrivalTick": 10,
+            "patience": 10,
+            "deadlineTick": 20
+          },
+          {
+            "id": "customer-10-base-1",
+            "arrivalTick": 10,
+            "patience": 10,
+            "deadlineTick": 20
+          },
+          {
+            "id": "customer-10-base-2",
+            "arrivalTick": 10,
+            "patience": 10,
+            "deadlineTick": 20
+          },
+          {
+            "id": "customer-10-base-3",
+            "arrivalTick": 10,
+            "patience": 10,
+            "deadlineTick": 20
+          }
+        ],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 4,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "action",
+        "action": "SERVE"
+      },
+      "expectations": [
+        {
+          "at": "after-action",
+          "path": "state.cashCents",
+          "operator": "equals",
+          "value": 21000
+        },
+        {
+          "at": "after-action",
+          "path": "state.readyPortions",
+          "operator": "equals",
+          "value": 0
+        },
+        {
+          "at": "after-action",
+          "path": "state.queueIds",
+          "operator": "equals",
+          "value": [
+            "customer-10-base-2",
+            "customer-10-base-3"
+          ]
+        },
+        {
+          "at": "after-action",
+          "path": "events.servedCustomerIds",
+          "operator": "equals",
+          "value": [
+            "customer-10-base-0",
+            "customer-10-base-1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MECH-02",
+      "sourceId": "MECH-02",
+      "category": "mechanics",
+      "description": "Cooking reserves capacity until its due boundary.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 10,
+        "cashCents": 20000,
+        "rawPortions": 10,
+        "readyBatches": [
+          {
+            "id": "batch-fixture-0",
+            "quantity": 5,
+            "expiresAt": 30
+          }
+        ],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 0,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "action",
+        "action": "COOK",
+        "advanceThroughTick": 15,
+        "futureArrivals": []
+      },
+      "expectations": [
+        {
+          "at": "after-action",
+          "path": "state.rawPortions",
+          "operator": "equals",
+          "value": 0
+        },
+        {
+          "at": "after-action",
+          "path": "state.cooking",
+          "operator": "equals",
+          "value": {
+            "quantity": 10,
+            "dueTick": 15
+          }
+        },
+        {
+          "at": "tick-14-observation",
+          "path": "state.readyPortions",
+          "operator": "equals",
+          "value": 5
+        },
+        {
+          "at": "tick-15-observation",
+          "path": "state.readyPortions",
+          "operator": "equals",
+          "value": 15
+        },
+        {
+          "at": "tick-15-observation",
+          "path": "state.readyBatches",
+          "operator": "containsSubset",
+          "value": {
+            "quantity": 10,
+            "expiresAt": 35
+          }
+        }
+      ]
+    },
+    {
+      "id": "MECH-03",
+      "sourceId": "MECH-03",
+      "category": "legality",
+      "description": "Ready capacity includes the complete next batch.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 10,
+        "cashCents": 20000,
+        "rawPortions": 10,
+        "readyBatches": [
+          {
+            "id": "batch-fixture-0",
+            "quantity": 21,
+            "expiresAt": 30
+          }
+        ],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 0,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "legalActions"
+      },
+      "expectations": [
+        {
+          "at": "observation",
+          "path": "legalActions",
+          "operator": "notContains",
+          "value": "COOK"
+        }
+      ]
+    },
+    {
+      "id": "MECH-03-CAPACITY",
+      "sourceId": "MECH-03",
+      "category": "legality",
+      "description": "Ready capacity includes the complete next batch.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 10,
+        "cashCents": 20000,
+        "rawPortions": 10,
+        "readyBatches": [
+          {
+            "id": "batch-fixture-0",
+            "quantity": 20,
+            "expiresAt": 30
+          }
+        ],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 0,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "legalActions"
+      },
+      "expectations": [
+        {
+          "at": "observation",
+          "path": "legalActions",
+          "operator": "contains",
+          "value": "COOK"
+        }
+      ]
+    },
+    {
+      "id": "MECH-04",
+      "sourceId": "MECH-04",
+      "category": "mechanics",
+      "description": "Restock reserves raw capacity and pays once on order.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 10,
+        "cashCents": 4000,
+        "rawPortions": 40,
+        "readyBatches": [
+          {
+            "id": "batch-fixture-0",
+            "quantity": 12,
+            "expiresAt": 30
+          }
+        ],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 0,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "action",
+        "action": "RESTOCK",
+        "advanceThroughTick": 20,
+        "futureArrivals": []
+      },
+      "expectations": [
+        {
+          "at": "after-action",
+          "path": "state.cashCents",
+          "operator": "equals",
+          "value": 0
+        },
+        {
+          "at": "after-action",
+          "path": "state.pendingRestock",
+          "operator": "equals",
+          "value": {
+            "quantity": 20,
+            "dueTick": 20,
+            "delayApplied": false
+          }
+        },
+        {
+          "at": "after-action",
+          "path": "legalActions",
+          "operator": "notContains",
+          "value": "RESTOCK"
+        },
+        {
+          "at": "tick-20-observation",
+          "path": "state.rawPortions",
+          "operator": "equals",
+          "value": 60
+        },
+        {
+          "at": "tick-20-observation",
+          "path": "state.pendingRestock",
+          "operator": "equals",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "MECH-05",
+      "sourceId": "MECH-05",
+      "category": "legality",
+      "description": "Restock cash and raw-capacity boundary.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 10,
+        "cashCents": 4000,
+        "rawPortions": 41,
+        "readyBatches": [
+          {
+            "id": "batch-fixture-0",
+            "quantity": 12,
+            "expiresAt": 30
+          }
+        ],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 0,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "legalActions"
+      },
+      "expectations": [
+        {
+          "at": "observation",
+          "path": "legalActions",
+          "operator": "notContains",
+          "value": "RESTOCK"
+        }
+      ]
+    },
+    {
+      "id": "MECH-05-CASH",
+      "sourceId": "MECH-05",
+      "category": "legality",
+      "description": "Restock cash and raw-capacity boundary.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 10,
+        "cashCents": 3999,
+        "rawPortions": 40,
+        "readyBatches": [
+          {
+            "id": "batch-fixture-0",
+            "quantity": 12,
+            "expiresAt": 30
+          }
+        ],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 0,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "legalActions"
+      },
+      "expectations": [
+        {
+          "at": "observation",
+          "path": "legalActions",
+          "operator": "notContains",
+          "value": "RESTOCK"
+        }
+      ]
+    },
+    {
+      "id": "MECH-05-BOUNDARY",
+      "sourceId": "MECH-05",
+      "category": "legality",
+      "description": "Restock cash and raw-capacity boundary.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 10,
+        "cashCents": 4000,
+        "rawPortions": 40,
+        "readyBatches": [
+          {
+            "id": "batch-fixture-0",
+            "quantity": 12,
+            "expiresAt": 30
+          }
+        ],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 0,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "legalActions"
+      },
+      "expectations": [
+        {
+          "at": "observation",
+          "path": "legalActions",
+          "operator": "contains",
+          "value": "RESTOCK"
+        }
+      ]
+    },
+    {
+      "id": "MECH-06",
+      "sourceId": "MECH-06",
+      "category": "mechanics",
+      "description": "Promotion is active for the next ten ticks, with independent cooldown.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 10,
+        "cashCents": 20000,
+        "rawPortions": 30,
+        "readyBatches": [
+          {
+            "id": "batch-fixture-0",
+            "quantity": 15,
+            "expiresAt": 30
+          }
+        ],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 0,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "action",
+        "action": "PROMOTE",
+        "advanceThroughTick": 30,
+        "futureArrivals": []
+      },
+      "expectations": [
+        {
+          "at": "after-action",
+          "path": "state.cashCents",
+          "operator": "equals",
+          "value": 19500
+        },
+        {
+          "at": "after-action",
+          "path": "state.promotion",
+          "operator": "equals",
+          "value": {
+            "startsAt": 11,
+            "endsAt": 20
+          }
+        },
+        {
+          "at": "after-action",
+          "path": "state.promotionEligibleAt",
+          "operator": "equals",
+          "value": 30
+        },
+        {
+          "at": "after-action",
+          "path": "promotionEligibleTicks",
+          "operator": "equals",
+          "value": [
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ]
+        },
+        {
+          "at": "after-action",
+          "path": "promotionNextAllowedTick",
+          "operator": "equals",
+          "value": 30
+        }
+      ]
+    },
+    {
+      "id": "MECH-07",
+      "sourceId": "MECH-07",
+      "category": "boundary",
+      "description": "Expiry occurs before observation; initial ready stock cannot be served at tick20.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "before-tick",
+      "given": {
+        "tick": 20,
+        "cashCents": 20000,
+        "rawPortions": 30,
+        "readyBatches": [
+          {
+            "id": "batch-fixture-0",
+            "quantity": 12,
+            "expiresAt": 20
+          }
+        ],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 0,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "committed"
+      },
+      "operation": {
+        "kind": "advanceTicks",
+        "throughTick": 20,
+        "futureArrivals": []
+      },
+      "expectations": [
+        {
+          "at": "tick-20-observation",
+          "path": "state.readyPortions",
+          "operator": "equals",
+          "value": 0
+        },
+        {
+          "at": "tick-20-observation",
+          "path": "state.totals.wasted",
+          "operator": "equals",
+          "value": 12
+        },
+        {
+          "at": "tick-20-observation",
+          "path": "legalActions",
+          "operator": "notContains",
+          "value": "SERVE"
+        }
+      ]
+    },
+    {
+      "id": "MECH-08",
+      "sourceId": "MECH-08",
+      "category": "boundary",
+      "description": "A customer is served before, but never at, their exact deadline.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "before-tick",
+      "given": {
+        "tick": 12,
+        "cashCents": 20000,
+        "rawPortions": 30,
+        "readyBatches": [
+          {
+            "id": "batch-fixture-0",
+            "quantity": 12,
+            "expiresAt": 32
+          }
+        ],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [
+          {
+            "id": "customer-10-base-0",
+            "arrivalTick": 10,
+            "patience": 3,
+            "deadlineTick": 13
+          }
+        ],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 1,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "committed"
+      },
+      "operation": {
+        "kind": "advanceTicks",
+        "throughTick": 13,
+        "futureArrivals": []
+      },
+      "expectations": [
+        {
+          "at": "tick-12-observation",
+          "path": "state.queueIds",
+          "operator": "equals",
+          "value": [
+            "customer-10-base-0"
+          ]
+        },
+        {
+          "at": "tick-13-observation",
+          "path": "state.queueIds",
+          "operator": "equals",
+          "value": []
+        },
+        {
+          "at": "tick-13-observation",
+          "path": "state.totals.abandoned",
+          "operator": "equals",
+          "value": 1
+        },
+        {
+          "at": "tick-13-observation",
+          "path": "state.totals.waitMinutes",
+          "operator": "equals",
+          "value": 3
+        },
+        {
+          "at": "tick-13-observation",
+          "path": "events.abandonmentReasons",
+          "operator": "equals",
+          "value": [
+            "patience_expired"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MECH-09",
+      "sourceId": "MECH-09",
+      "category": "boundary",
+      "description": "Admission precedes expiration even when an old customer will free capacity.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "before-tick",
+      "given": {
+        "tick": 10,
+        "cashCents": 20000,
+        "rawPortions": 30,
+        "readyBatches": [
+          {
+            "id": "batch-fixture-0",
+            "quantity": 12,
+            "expiresAt": 30
+          }
+        ],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [
+          {
+            "id": "customer-7-base-0",
+            "arrivalTick": 7,
+            "patience": 3,
+            "deadlineTick": 10
+          },
+          {
+            "id": "customer-10-base-1",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-2",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-3",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-4",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-5",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-6",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-7",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-8",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-9",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-10",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-11",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-12",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-13",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-14",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-15",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-16",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-17",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-18",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-19",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-20",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-21",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-22",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-23",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-24",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-25",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-26",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-27",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-28",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          },
+          {
+            "id": "customer-10-base-29",
+            "arrivalTick": 9,
+            "patience": 10,
+            "deadlineTick": 19
+          }
+        ],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 30,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "committed"
+      },
+      "operation": {
+        "kind": "advanceTicks",
+        "throughTick": 10,
+        "futureArrivals": [
+          {
+            "tick": 10,
+            "id": "customer-10-base-30",
+            "source": "base",
+            "arrivalTick": 10,
+            "patience": 3,
+            "deadlineTick": 13
+          }
+        ]
+      },
+      "expectations": [
+        {
+          "at": "tick-10-observation",
+          "path": "state.queueLength",
+          "operator": "equals",
+          "value": 29
+        },
+        {
+          "at": "tick-10-observation",
+          "path": "state.totals.arrivals",
+          "operator": "equals",
+          "value": 31
+        },
+        {
+          "at": "tick-10-observation",
+          "path": "state.totals.abandoned",
+          "operator": "equals",
+          "value": 2
+        },
+        {
+          "at": "tick-10-observation",
+          "path": "state.totals.waitMinutes",
+          "operator": "equals",
+          "value": 3
+        },
+        {
+          "at": "tick-10-observation",
+          "path": "events.abandonments",
+          "operator": "equals",
+          "value": [
+            {
+              "id": "customer-10-base-30",
+              "reason": "queue_full",
+              "waitMinutes": 0
+            },
+            {
+              "id": "customer-7-base-0",
+              "reason": "patience_expired",
+              "waitMinutes": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MECH-10",
+      "sourceId": "MECH-10",
+      "category": "legality",
+      "description": "No order or cook may complete at closing.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 115,
+        "cashCents": 20000,
+        "rawPortions": 10,
+        "readyBatches": [],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 0,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "legalActions"
+      },
+      "expectations": [
+        {
+          "at": "observation",
+          "path": "legalActions",
+          "operator": "notContains",
+          "value": "COOK"
+        }
+      ]
+    },
+    {
+      "id": "MECH-10-COOK-EARLY",
+      "sourceId": "MECH-10",
+      "category": "legality",
+      "description": "No order or cook may complete at closing.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 114,
+        "cashCents": 20000,
+        "rawPortions": 10,
+        "readyBatches": [],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 0,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "legalActions"
+      },
+      "expectations": [
+        {
+          "at": "observation",
+          "path": "legalActions",
+          "operator": "contains",
+          "value": "COOK"
+        }
+      ]
+    },
+    {
+      "id": "MECH-10-RESTOCK",
+      "sourceId": "MECH-10",
+      "category": "legality",
+      "description": "No order or cook may complete at closing.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 110,
+        "cashCents": 20000,
+        "rawPortions": 10,
+        "readyBatches": [],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 0,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "legalActions"
+      },
+      "expectations": [
+        {
+          "at": "observation",
+          "path": "legalActions",
+          "operator": "notContains",
+          "value": "RESTOCK"
+        }
+      ]
+    },
+    {
+      "id": "MECH-10-RESTOCK-EARLY",
+      "sourceId": "MECH-10",
+      "category": "legality",
+      "description": "No order or cook may complete at closing.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 109,
+        "cashCents": 20000,
+        "rawPortions": 10,
+        "readyBatches": [],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 0,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "legalActions"
+      },
+      "expectations": [
+        {
+          "at": "observation",
+          "path": "legalActions",
+          "operator": "contains",
+          "value": "RESTOCK"
+        }
+      ]
+    },
+    {
+      "id": "MECH-11A",
+      "sourceId": "MECH-11A",
+      "category": "boundary",
+      "description": "Delay clamps an existing order before close and applies once.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "before-tick",
+      "given": {
+        "tick": 115,
+        "cashCents": 20000,
+        "rawPortions": 20,
+        "readyBatches": [],
+        "cooking": null,
+        "pendingRestock": {
+          "quantity": 20,
+          "dueTick": 118,
+          "delayApplied": false
+        },
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 0,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "committed"
+      },
+      "operation": {
+        "kind": "applyExternalEvent",
+        "event": {
+          "type": "supplier-delay",
+          "effectiveTick": 115,
+          "endsAt": 124
+        },
+        "reapplySameEvent": true
+      },
+      "expectations": [
+        {
+          "at": "after-event",
+          "path": "state.pendingRestock",
+          "operator": "equals",
+          "value": {
+            "quantity": 20,
+            "dueTick": 119,
+            "delayApplied": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "MECH-11B",
+      "sourceId": "MECH-11B",
+      "category": "legality",
+      "description": "An order placed during a separately active delay would arrive at close.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 105,
+        "cashCents": 20000,
+        "rawPortions": 20,
+        "readyBatches": [],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [],
+        "effects": [
+          {
+            "type": "supplier-delay",
+            "startsAt": 100,
+            "endsAt": 109
+          }
+        ],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 0,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "legalActions"
+      },
+      "expectations": [
+        {
+          "at": "observation",
+          "path": "legalActions",
+          "operator": "notContains",
+          "value": "RESTOCK"
+        },
+        {
+          "at": "observation",
+          "path": "computedRestockDueTick",
+          "operator": "equals",
+          "value": 120
+        }
+      ]
+    },
+    {
+      "id": "RULE-01",
+      "sourceId": "RULE-01",
+      "category": "baseline",
+      "description": "First matching legal baseline rule wins.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 10,
+        "cashCents": 20000,
+        "rawPortions": 10,
+        "readyBatches": [
+          {
+            "id": "batch-fixture-0",
+            "quantity": 5,
+            "expiresAt": 30
+          }
+        ],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [
+          {
+            "id": "customer-10-base-0",
+            "arrivalTick": 8,
+            "patience": 3,
+            "deadlineTick": 11
+          }
+        ],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 1,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "chooseRule"
+      },
+      "expectations": [
+        {
+          "at": "decision",
+          "path": "action",
+          "operator": "equals",
+          "value": "SERVE"
+        },
+        {
+          "at": "decision",
+          "path": "matchedRulePriority",
+          "operator": "equals",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "RULE-02",
+      "sourceId": "RULE-02",
+      "category": "baseline",
+      "description": "First matching legal baseline rule wins.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 10,
+        "cashCents": 20000,
+        "rawPortions": 10,
+        "readyBatches": [
+          {
+            "id": "batch-fixture-0",
+            "quantity": 5,
+            "expiresAt": 30
+          }
+        ],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [
+          {
+            "id": "customer-10-base-0",
+            "arrivalTick": 10,
+            "patience": 5,
+            "deadlineTick": 15
+          }
+        ],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 1,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "chooseRule"
+      },
+      "expectations": [
+        {
+          "at": "decision",
+          "path": "action",
+          "operator": "equals",
+          "value": "COOK"
+        },
+        {
+          "at": "decision",
+          "path": "matchedRulePriority",
+          "operator": "equals",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "RULE-03",
+      "sourceId": "RULE-03",
+      "category": "baseline",
+      "description": "First matching legal baseline rule wins.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 10,
+        "cashCents": 20000,
+        "rawPortions": 10,
+        "readyBatches": [
+          {
+            "id": "batch-fixture-0",
+            "quantity": 6,
+            "expiresAt": 30
+          }
+        ],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [
+          {
+            "id": "customer-10-base-0",
+            "arrivalTick": 10,
+            "patience": 5,
+            "deadlineTick": 15
+          }
+        ],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 1,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "chooseRule"
+      },
+      "expectations": [
+        {
+          "at": "decision",
+          "path": "action",
+          "operator": "equals",
+          "value": "RESTOCK"
+        },
+        {
+          "at": "decision",
+          "path": "matchedRulePriority",
+          "operator": "equals",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "RULE-04",
+      "sourceId": "RULE-04",
+      "category": "baseline",
+      "description": "First matching legal baseline rule wins.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 10,
+        "cashCents": 20000,
+        "rawPortions": 25,
+        "readyBatches": [
+          {
+            "id": "batch-fixture-0",
+            "quantity": 15,
+            "expiresAt": 30
+          }
+        ],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 0,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "chooseRule"
+      },
+      "expectations": [
+        {
+          "at": "decision",
+          "path": "action",
+          "operator": "equals",
+          "value": "COOK"
+        },
+        {
+          "at": "decision",
+          "path": "matchedRulePriority",
+          "operator": "equals",
+          "value": 5
+        }
+      ]
+    },
+    {
+      "id": "RULE-04-PROMOTE",
+      "sourceId": "RULE-04",
+      "category": "baseline",
+      "description": "First matching legal baseline rule wins.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 10,
+        "cashCents": 20000,
+        "rawPortions": 25,
+        "readyBatches": [
+          {
+            "id": "batch-fixture-0",
+            "quantity": 16,
+            "expiresAt": 30
+          }
+        ],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 0,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "chooseRule"
+      },
+      "expectations": [
+        {
+          "at": "decision",
+          "path": "action",
+          "operator": "equals",
+          "value": "PROMOTE"
+        },
+        {
+          "at": "decision",
+          "path": "matchedRulePriority",
+          "operator": "equals",
+          "value": 7
+        }
+      ]
+    },
+    {
+      "id": "RULE-05",
+      "sourceId": "RULE-05",
+      "category": "baseline",
+      "description": "No late investment and empty queue leaves WAIT.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 119,
+        "cashCents": 20000,
+        "rawPortions": 0,
+        "readyBatches": [],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 0,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "chooseRule"
+      },
+      "expectations": [
+        {
+          "at": "decision",
+          "path": "action",
+          "operator": "equals",
+          "value": "WAIT"
+        },
+        {
+          "at": "decision",
+          "path": "matchedRulePriority",
+          "operator": "equals",
+          "value": 8
+        },
+        {
+          "at": "observation",
+          "path": "legalActions",
+          "operator": "equals",
+          "value": [
+            "WAIT"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SCORE-01",
+      "sourceId": "SCORE-01",
+      "category": "scoring",
+      "description": "Worked settlement uses acquisition cost once and retained raw asset value.",
+      "setupMode": "episode",
+      "givenPhase": "before-tick",
+      "given": {
+        "tick": 120,
+        "cashCents": 42000,
+        "rawPortions": 12,
+        "readyBatches": [],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [],
+        "effects": [],
+        "totals": {
+          "served": 60,
+          "abandoned": 10,
+          "wasted": 10,
+          "waitMinutes": 120,
+          "arrivals": 70,
+          "purchasedPortions": 40,
+          "restockOrders": 2,
+          "promotions": 0
+        },
+        "phase": "closed"
+      },
+      "operation": {
+        "kind": "scoreSettlement"
+      },
+      "expectations": [
+        {
+          "at": "settled",
+          "path": "profitCents",
+          "operator": "equals",
+          "value": 16000
+        },
+        {
+          "at": "settled",
+          "path": "utilityPoints",
+          "operator": "equals",
+          "value": 13900
+        },
+        {
+          "at": "settled",
+          "path": "inventoryConservation",
+          "operator": "equals",
+          "value": true
+        },
+        {
+          "at": "settled",
+          "path": "cashConservation",
+          "operator": "equals",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "SCORE-02",
+      "sourceId": "SCORE-02",
+      "category": "scoring",
+      "description": "An empty demand episode loses initial ready food only.",
+      "setupMode": "episode",
+      "givenPhase": "before-tick",
+      "given": {
+        "tick": 0,
+        "cashCents": 20000,
+        "rawPortions": 30,
+        "readyBatches": [
+          {
+            "id": "batch-fixture-0",
+            "quantity": 12,
+            "expiresAt": 20
+          }
+        ],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 0,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "committed"
+      },
+      "operation": {
+        "kind": "runEpisode",
+        "actions": "WAIT",
+        "futureArrivals": [],
+        "throughTick": 120
+      },
+      "expectations": [
+        {
+          "at": "settled",
+          "path": "state.cashCents",
+          "operator": "equals",
+          "value": 20000
+        },
+        {
+          "at": "settled",
+          "path": "state.rawPortions",
+          "operator": "equals",
+          "value": 30
+        },
+        {
+          "at": "settled",
+          "path": "state.readyPortions",
+          "operator": "equals",
+          "value": 0
+        },
+        {
+          "at": "settled",
+          "path": "state.totals.wasted",
+          "operator": "equals",
+          "value": 12
+        },
+        {
+          "at": "settled",
+          "path": "profitCents",
+          "operator": "equals",
+          "value": -2400
+        },
+        {
+          "at": "settled",
+          "path": "utilityPoints",
+          "operator": "equals",
+          "value": -3000
+        },
+        {
+          "at": "settled",
+          "path": "meanWaitMinutes",
+          "operator": "equals",
+          "value": null
+        },
+        {
+          "at": "settled",
+          "path": "satisfaction",
+          "operator": "equals",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "SCORE-03",
+      "sourceId": "SCORE-03",
+      "category": "scoring",
+      "description": "Closing resolves a customer once and charges abandonment plus wait.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "before-tick",
+      "given": {
+        "tick": 120,
+        "cashCents": 20000,
+        "rawPortions": 30,
+        "readyBatches": [],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [
+          {
+            "id": "customer-118-base-0",
+            "arrivalTick": 118,
+            "patience": 3,
+            "deadlineTick": 121
+          }
+        ],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 1,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "committed"
+      },
+      "operation": {
+        "kind": "settle"
+      },
+      "expectations": [
+        {
+          "at": "settled",
+          "path": "state.queueLength",
+          "operator": "equals",
+          "value": 0
+        },
+        {
+          "at": "settled",
+          "path": "state.totals.abandoned",
+          "operator": "equals",
+          "value": 1
+        },
+        {
+          "at": "settled",
+          "path": "state.totals.waitMinutes",
+          "operator": "equals",
+          "value": 2
+        },
+        {
+          "at": "settled",
+          "path": "customerUtilityDelta",
+          "operator": "equals",
+          "value": -110
+        }
+      ]
+    },
+    {
+      "id": "SCORE-04",
+      "sourceId": "SCORE-04",
+      "category": "ranking",
+      "description": "Latency cannot break an equal primary score.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "before-tick",
+      "given": {
+        "tick": 120,
+        "cashCents": 20000,
+        "rawPortions": 30,
+        "readyBatches": [],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 0,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "committed"
+      },
+      "operation": {
+        "kind": "rank",
+        "metric": "profitCents",
+        "results": [
+          {
+            "policy": "jev",
+            "profitCents": 16000,
+            "latencyMs": 10
+          },
+          {
+            "policy": "zoom",
+            "profitCents": 16000,
+            "latencyMs": 3000
+          }
+        ]
+      },
+      "expectations": [
+        {
+          "at": "ranked",
+          "path": "ranks",
+          "operator": "equals",
+          "value": {
+            "jev": 1,
+            "zoom": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "FALL-01",
+      "sourceId": "FALL-01",
+      "category": "fallback",
+      "description": "Provider failure applies the baseline to the same captured observation.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 10,
+        "cashCents": 20000,
+        "rawPortions": 10,
+        "readyBatches": [
+          {
+            "id": "batch-fixture-0",
+            "quantity": 5,
+            "expiresAt": 30
+          }
+        ],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [
+          {
+            "id": "customer-10-base-0",
+            "arrivalTick": 8,
+            "patience": 3,
+            "deadlineTick": 11
+          }
+        ],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 1,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "providerFailure",
+        "provider": "jev",
+        "proposedAction": "PROMOTE",
+        "failureReason": "illegal_action",
+        "receivedAtMs": 100,
+        "deadlineMs": 4000
+      },
+      "expectations": [
+        {
+          "at": "decision",
+          "path": "appliedAction",
+          "operator": "equals",
+          "value": "SERVE"
+        },
+        {
+          "at": "decision",
+          "path": "providerStatus",
+          "operator": "equals",
+          "value": "error"
+        },
+        {
+          "at": "decision",
+          "path": "applicationStatus",
+          "operator": "equals",
+          "value": "fallback"
+        },
+        {
+          "at": "decision",
+          "path": "attemptedProvider",
+          "operator": "equals",
+          "value": "jev"
+        },
+        {
+          "at": "decision",
+          "path": "appliedPolicy",
+          "operator": "equals",
+          "value": "rules"
+        },
+        {
+          "at": "decision",
+          "path": "baselineVersion",
+          "operator": "equals",
+          "value": "rules-1"
+        },
+        {
+          "at": "decision",
+          "path": "failurePolicyVersion",
+          "operator": "equals",
+          "value": "fallback-2"
+        }
+      ]
+    },
+    {
+      "id": "FALL-01-LATE",
+      "sourceId": "FALL-01",
+      "category": "fallback",
+      "description": "Provider failure applies the baseline to the same captured observation.",
+      "setupMode": "synthetic-local",
+      "givenPhase": "observation",
+      "given": {
+        "tick": 10,
+        "cashCents": 20000,
+        "rawPortions": 10,
+        "readyBatches": [
+          {
+            "id": "batch-fixture-0",
+            "quantity": 5,
+            "expiresAt": 30
+          }
+        ],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [
+          {
+            "id": "customer-10-base-0",
+            "arrivalTick": 8,
+            "patience": 3,
+            "deadlineTick": 11
+          }
+        ],
+        "effects": [],
+        "totals": {
+          "served": 0,
+          "abandoned": 0,
+          "wasted": 0,
+          "waitMinutes": 0,
+          "arrivals": 1,
+          "purchasedPortions": 0,
+          "restockOrders": 0,
+          "promotions": 0
+        },
+        "phase": "decision"
+      },
+      "operation": {
+        "kind": "providerFailure",
+        "provider": "jev",
+        "proposedAction": "SERVE",
+        "failureReason": "timeout",
+        "receivedAtMs": 4001,
+        "deadlineMs": 4000
+      },
+      "expectations": [
+        {
+          "at": "decision",
+          "path": "appliedAction",
+          "operator": "equals",
+          "value": "SERVE"
+        },
+        {
+          "at": "decision",
+          "path": "providerStatus",
+          "operator": "equals",
+          "value": "error"
+        },
+        {
+          "at": "decision",
+          "path": "applicationStatus",
+          "operator": "equals",
+          "value": "fallback"
+        },
+        {
+          "at": "decision",
+          "path": "attemptedProvider",
+          "operator": "equals",
+          "value": "jev"
+        },
+        {
+          "at": "decision",
+          "path": "appliedPolicy",
+          "operator": "equals",
+          "value": "rules"
+        },
+        {
+          "at": "decision",
+          "path": "baselineVersion",
+          "operator": "equals",
+          "value": "rules-1"
+        },
+        {
+          "at": "decision",
+          "path": "failurePolicyVersion",
+          "operator": "equals",
+          "value": "fallback-2"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "frames": {
+    "environment/background": {
+      "frame": {
+        "x": 4,
+        "y": 4,
+        "w": 480,
+        "h": 240
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 240
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "environment/counters": {
+      "frame": {
+        "x": 4,
+        "y": 252,
+        "w": 480,
+        "h": 240
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 240
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "environment/foreground": {
+      "frame": {
+        "x": 4,
+        "y": 500,
+        "w": 480,
+        "h": 240
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 240
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 240
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  },
+  "meta": {
+    "app": "Hawker Wars original environment rectangle exporter",
+    "version": "environment-art-1",
+    "image": "environment.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 488,
+      "h": 744
+    },
+    "scale": "1",
+    "source": "packages/art/src/environment.ts",
+    "extrusion": 2,
+    "padding": 2
+  }
+}

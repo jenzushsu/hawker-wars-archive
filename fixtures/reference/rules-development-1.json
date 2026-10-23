@@ -1,0 +1,4291 @@
+{
+  "schemaVersion": "rules-development-reference-1",
+  "scope": "offline-development-only-no-live-provider-results",
+  "contracts": {
+    "simulation": "poc-1",
+    "demand": "demand-1",
+    "scorer": "utility-1",
+    "baseline": "rules-1",
+    "failurePolicy": "fallback-2",
+    "observation": "observation-2",
+    "stateHash": "state-hash-1",
+    "recovery": "recovery-1",
+    "staticTask": "static-task-1",
+    "evaluation": "trial-eval-1"
+  },
+  "configurationHash": "9b088ecdbca6d50dca76a78a4e98872b0b8751d3b63ac881cbcb2704358236d6",
+  "runtime": {
+    "node": "24.19.0",
+    "pinnedPackageManager": "pnpm@11.25.0"
+  },
+  "sourceRevision": null,
+  "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
+  "sourceIdentity": {
+    "method": "p2-a-source-1",
+    "sourceTreeHash": "c8fd07db1e3ef4e57c20dc8e5f49b544b0d3804b0e4b18345d9f84f27baa60fd",
+    "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
+    "files": [
+      {
+        "path": "apps/web/app/globals.css",
+        "sha256": "0e4fc41b59719f40b01acc5e5a06f6bc5af1a980d53c939819312e86e709d98a"
+      },
+      {
+        "path": "apps/web/app/icon.svg",
+        "sha256": "2ba2a6d1294f8fbe2a92afd9819eea4d2ab732c010722e705ed648a345a8493c"
+      },
+      {
+        "path": "apps/web/app/layout.tsx",
+        "sha256": "95e76c31fc86a33a32d2a7a330db9ea26480d9cf19781dae5e44a75414404968"
+      },
+      {
+        "path": "apps/web/app/page.tsx",
+        "sha256": "06e6c8744fa5e35900a63f9fb0a907ef811cd84522b5f4fa108d9f74bb464692"
+      },
+      {
+        "path": "apps/web/components/Arena.tsx",
+        "sha256": "49d41c9c4ded59bcb0ad3b03773440db03bcc150bb0960b40230ae42111123b8"
+      },
+      {
+        "path": "apps/web/components/Pictogram.tsx",
+        "sha256": "a8d9565e2a91e045fc5e4ed3bffcdcbaca806b0d7c33e7e16d12c93a4bbde8c9"
+      },
+      {
+        "path": "apps/web/lib/animation.ts",
+        "sha256": "031890e003344486b059b642cbfde55e334afdafbebbe51799883d70e3dd1a1b"
+      },
+      {
+        "path": "apps/web/lib/customers.ts",
+        "sha256": "a6a051dc3ec2c3e07c87af5ae67289bc9f0c6d802f2e1e69d7b93f207062014c"
+      },
+      {
+        "path": "apps/web/lib/demo.ts",
+        "sha256": "8d24507111e0515ed4d219081a2f35b0ccf76565f177170064b27d2c2f8cbfdf"
+      },
+      {
+        "path": "apps/web/lib/effects.ts",
+        "sha256": "aaef5a0ffe12e574977728650afb73655d224ea7b61c309ac7e8e0ae91bb8e65"
+      },
+      {
+        "path": "apps/web/lib/load-demo.ts",
+        "sha256": "5b6197da7059ddeb98c2c443c2289cd0a12da1c895fdd155c86d2298778b6794"
+      },
+      {
+        "path": "apps/web/next.config.ts",
+        "sha256": "fbf171389d52bee2aba853200353c59e38e3c3d9e6ce3f778e419acde9026241"
+      },
+      {
+        "path": "apps/web/package.json",
+        "sha256": "dbba807cecbabef598821a2ba5c209e75fd1e4e34763e37f16769f38779a35e9"
+      },
+      {
+        "path": "apps/web/postcss.config.mjs",
+        "sha256": "a1a188221f064d964dd9958c3d48b0c23252fabbeb6099d95ee8e15c764718b0"
+      },
+      {
+        "path": "apps/web/public/art/customer-clips.json",
+        "sha256": "bacce9474e78cd4dd89c3091fe9b489c5ac8cae91a547a9f1e544234883a07e2"
+      },
+      {
+        "path": "apps/web/public/art/customer-contact-sheet.png",
+        "sha256": "cf2bae2374ea83a2c35361f2ee91eb25a07cb740aa61d228ec96a32a66e482ae"
+      },
+      {
+        "path": "apps/web/public/art/customer-review.html",
+        "sha256": "f1299582746532765d90e55b56f6acdd8e2606a45182535d098539c28dcdf061"
+      },
+      {
+        "path": "apps/web/public/art/customer-source.json",
+        "sha256": "333f633249eb6fc2216edd7c3e12efe0527a89a01b3cd82a8a2668898164d5d1"
+      },
+      {
+        "path": "apps/web/public/art/customer.json",
+        "sha256": "e5429b9235b16f81a443847631578235a8c2d315ad37a0120a282622c965a58a"
+      },
+      {
+        "path": "apps/web/public/art/customer.png",
+        "sha256": "7bb98b111f20b75607751ea2cd6aa39d65c1dbf3a94e02f580e58b012dadde77"
+      },
+      {
+        "path": "apps/web/public/art/effects-clips.json",
+        "sha256": "2a5136eb7d3566bf12b803b991b2fb906e7dd0dbbdbec25b3ef72942a59425f1"
+      },
+      {
+        "path": "apps/web/public/art/effects-contact-sheet.png",
+        "sha256": "8308ad06c06e33c7f26eac29da6199f5c60b8d5ef63a0f7c4d6064d96260195c"
+      },
+      {
+        "path": "apps/web/public/art/effects-review.html",
+        "sha256": "035109ecebb38357882e3de68bb9dfd8c581e5479d5d03c82ad032c69c27e486"
+      },
+      {
+        "path": "apps/web/public/art/effects-source.json",
+        "sha256": "14b57cb75defb278ef56925a3d4b5cd7552e2d5d4a333de6aaf9923256c0288b"
+      },
+      {
+        "path": "apps/web/public/art/effects.json",
+        "sha256": "44103c8079655d93323b3f221804ccef520f2192866dbe5292fed604be5f025e"
+      },
+      {
+        "path": "apps/web/public/art/effects.png",
+        "sha256": "36607b6dedb1b9720c8be670ebe0ecfc189508d2cf86e915cc9b8a9886ffef4f"
+      },
+      {
+        "path": "apps/web/public/art/environment-contact-sheet.png",
+        "sha256": "1e331d8440b769c9b95fa24dc530d2279c981faf5f56a4e846f883b1313a4b67"
+      },
+      {
+        "path": "apps/web/public/art/environment-layers.json",
+        "sha256": "d9a8119f321bfce305597515f588d8ea4c49d03d0eff2c8c64d728c89571d750"
+      },
+      {
+        "path": "apps/web/public/art/environment-review.html",
+        "sha256": "d7cf7f98e706d79d35381519e0b0c6cd050c5208b9c2c7664c882a8bca2e6aec"
+      },
+      {
+        "path": "apps/web/public/art/environment-source.json",
+        "sha256": "041a459777231df9c7327d6188bae8af61e8cbc864033d58738a1fc3e5daff5c"
+      },
+      {
+        "path": "apps/web/public/art/environment.json",
+        "sha256": "48bff8b225e40d0750e8bd35a38938b60c01d33a9dbabf6b34deb6e55317fb42"
+      },
+      {
+        "path": "apps/web/public/art/environment.png",
+        "sha256": "f45658c2903f550ad9951812b2688bb778795e3adb3cf8a06bb2ae1e0662a5bd"
+      },
+      {
+        "path": "apps/web/public/art/hawker-clips.json",
+        "sha256": "49d4ac423d3d7e4f3106fff894f743dc39403cb5eec6f5f776e2d7670c92aa89"
+      },
+      {
+        "path": "apps/web/public/art/hawker-contact-sheet.png",
+        "sha256": "1f2637ba1988324ecd9f4443cf7f4f026e0c659d141c8ee872d74ce103483af3"
+      },
+      {
+        "path": "apps/web/public/art/hawker-review.html",
+        "sha256": "6748e237eeef802c81df721e7ed865b69de188c0e0c852648db725b6c1f2a277"
+      },
+      {
+        "path": "apps/web/public/art/hawker-source.json",
+        "sha256": "b45082938b2be9de76f856f9c589564940d4ab5cf3ac30a55fcfea875411dc06"
+      },
+      {
+        "path": "apps/web/public/art/hawker.json",
+        "sha256": "0ac744d5cd5045883c2bfdff8e11fbfb4233174a09d17854fed58f72339926f2"
+      },
+      {
+        "path": "apps/web/public/art/hawker.png",
+        "sha256": "dcdd6a6a28022c4b8ebfe8ee23224e6562712e9242ab3edb4f4e3f387df39941"
+      },
+      {
+        "path": "apps/web/public/art/ui-contact-sheet.png",
+        "sha256": "3a840b6b44e49ae18df3320b28e47926b4ce770a655bf84c50d472b3bc6115f4"
+      },
+      {
+        "path": "apps/web/public/art/ui-icons.json",
+        "sha256": "4b9fbee631cbae155481111e2e3b99d21be4d6afc59923be84f0c6f515e9d0c3"
+      },
+      {
+        "path": "apps/web/public/art/ui-review.html",
+        "sha256": "03894b7f6ccdfa15f6f96a9a8861917a7bb0db312e9ba5584ddc4b3d25fd0175"
+      },
+      {
+        "path": "apps/web/public/art/ui-source.json",
+        "sha256": "a63ed12f42d1cae231fc91e999ed840ae38411871ded9325a610a4049ad14608"
+      },
+      {
+        "path": "apps/web/public/art/ui.json",
+        "sha256": "a975c07baac811fb8a25b24df1db9588c6878885760d782ae7fde2901bb7a890"
+      },
+      {
+        "path": "apps/web/public/art/ui.png",
+        "sha256": "8e8f29ead0d216ba78b6f96f67322ca5df4afac3c4e059ed7c8d933e4cc4ee80"
+      },
+      {
+        "path": "apps/web/public/demo.json",
+        "sha256": "34f35485b019f45fdd18f85df4bb3a02401f23303afbc76f2bf769473aee4647"
+      },
+      {
+        "path": "apps/web/tsconfig.json",
+        "sha256": "274bf48177d6c1fbeb260d217ccdf2492d99ca9c216eec4266b80fc1b4bbc15e"
+      },
+      {
+        "path": "assets/atlases/customer-clips.json",
+        "sha256": "bacce9474e78cd4dd89c3091fe9b489c5ac8cae91a547a9f1e544234883a07e2"
+      },
+      {
+        "path": "assets/atlases/customer-contact-sheet.png",
+        "sha256": "cf2bae2374ea83a2c35361f2ee91eb25a07cb740aa61d228ec96a32a66e482ae"
+      },
+      {
+        "path": "assets/atlases/customer-review.html",
+        "sha256": "f1299582746532765d90e55b56f6acdd8e2606a45182535d098539c28dcdf061"
+      },
+      {
+        "path": "assets/atlases/customer-source.json",
+        "sha256": "333f633249eb6fc2216edd7c3e12efe0527a89a01b3cd82a8a2668898164d5d1"
+      },
+      {
+        "path": "assets/atlases/customer.json",
+        "sha256": "e5429b9235b16f81a443847631578235a8c2d315ad37a0120a282622c965a58a"
+      },
+      {
+        "path": "assets/atlases/customer.png",
+        "sha256": "7bb98b111f20b75607751ea2cd6aa39d65c1dbf3a94e02f580e58b012dadde77"
+      },
+      {
+        "path": "assets/atlases/effects-clips.json",
+        "sha256": "2a5136eb7d3566bf12b803b991b2fb906e7dd0dbbdbec25b3ef72942a59425f1"
+      },
+      {
+        "path": "assets/atlases/effects-contact-sheet.png",
+        "sha256": "8308ad06c06e33c7f26eac29da6199f5c60b8d5ef63a0f7c4d6064d96260195c"
+      },
+      {
+        "path": "assets/atlases/effects-review.html",
+        "sha256": "035109ecebb38357882e3de68bb9dfd8c581e5479d5d03c82ad032c69c27e486"
+      },
+      {
+        "path": "assets/atlases/effects-source.json",
+        "sha256": "14b57cb75defb278ef56925a3d4b5cd7552e2d5d4a333de6aaf9923256c0288b"
+      },
+      {
+        "path": "assets/atlases/effects.json",
+        "sha256": "44103c8079655d93323b3f221804ccef520f2192866dbe5292fed604be5f025e"
+      },
+      {
+        "path": "assets/atlases/effects.png",
+        "sha256": "36607b6dedb1b9720c8be670ebe0ecfc189508d2cf86e915cc9b8a9886ffef4f"
+      },
+      {
+        "path": "assets/atlases/environment-contact-sheet.png",
+        "sha256": "1e331d8440b769c9b95fa24dc530d2279c981faf5f56a4e846f883b1313a4b67"
+      },
+      {
+        "path": "assets/atlases/environment-layers.json",
+        "sha256": "d9a8119f321bfce305597515f588d8ea4c49d03d0eff2c8c64d728c89571d750"
+      },
+      {
+        "path": "assets/atlases/environment-review.html",
+        "sha256": "d7cf7f98e706d79d35381519e0b0c6cd050c5208b9c2c7664c882a8bca2e6aec"
+      },
+      {
+        "path": "assets/atlases/environment-source.json",
+        "sha256": "041a459777231df9c7327d6188bae8af61e8cbc864033d58738a1fc3e5daff5c"
+      },
+      {
+        "path": "assets/atlases/environment.json",
+        "sha256": "48bff8b225e40d0750e8bd35a38938b60c01d33a9dbabf6b34deb6e55317fb42"
+      },
+      {
+        "path": "assets/atlases/environment.png",
+        "sha256": "f45658c2903f550ad9951812b2688bb778795e3adb3cf8a06bb2ae1e0662a5bd"
+      },
+      {
+        "path": "assets/atlases/hawker-clips.json",
+        "sha256": "49d4ac423d3d7e4f3106fff894f743dc39403cb5eec6f5f776e2d7670c92aa89"
+      },
+      {
+        "path": "assets/atlases/hawker-contact-sheet.png",
+        "sha256": "1f2637ba1988324ecd9f4443cf7f4f026e0c659d141c8ee872d74ce103483af3"
+      },
+      {
+        "path": "assets/atlases/hawker-review.html",
+        "sha256": "6748e237eeef802c81df721e7ed865b69de188c0e0c852648db725b6c1f2a277"
+      },
+      {
+        "path": "assets/atlases/hawker-source.json",
+        "sha256": "b45082938b2be9de76f856f9c589564940d4ab5cf3ac30a55fcfea875411dc06"
+      },
+      {
+        "path": "assets/atlases/hawker.json",
+        "sha256": "0ac744d5cd5045883c2bfdff8e11fbfb4233174a09d17854fed58f72339926f2"
+      },
+      {
+        "path": "assets/atlases/hawker.png",
+        "sha256": "dcdd6a6a28022c4b8ebfe8ee23224e6562712e9242ab3edb4f4e3f387df39941"
+      },
+      {
+        "path": "assets/atlases/ui-contact-sheet.png",
+        "sha256": "3a840b6b44e49ae18df3320b28e47926b4ce770a655bf84c50d472b3bc6115f4"
+      },
+      {
+        "path": "assets/atlases/ui-icons.json",
+        "sha256": "4b9fbee631cbae155481111e2e3b99d21be4d6afc59923be84f0c6f515e9d0c3"
+      },
+      {
+        "path": "assets/atlases/ui-review.html",
+        "sha256": "03894b7f6ccdfa15f6f96a9a8861917a7bb0db312e9ba5584ddc4b3d25fd0175"
+      },
+      {
+        "path": "assets/atlases/ui-source.json",
+        "sha256": "a63ed12f42d1cae231fc91e999ed840ae38411871ded9325a610a4049ad14608"
+      },
+      {
+        "path": "assets/atlases/ui.json",
+        "sha256": "a975c07baac811fb8a25b24df1db9588c6878885760d782ae7fde2901bb7a890"
+      },
+      {
+        "path": "assets/atlases/ui.png",
+        "sha256": "8e8f29ead0d216ba78b6f96f67322ca5df4afac3c4e059ed7c8d933e4cc4ee80"
+      },
+      {
+        "path": "assets/source/customer/README.md",
+        "sha256": "59a01edee1d7eddeeb894092aabd1b99008a4c463052547a54b7558d1f5937e8"
+      },
+      {
+        "path": "assets/source/effects/README.md",
+        "sha256": "5111fe070252b74383f259c9ce630613385513c5c01f145160f290583ad5b5ae"
+      },
+      {
+        "path": "assets/source/environment/README.md",
+        "sha256": "65ea5829323712398ed7dfb389ddd5e550af914fa64c88dd4d6c8ad979ceacc7"
+      },
+      {
+        "path": "assets/source/hawker/README.md",
+        "sha256": "3c8bf1ec628ddc40529b1f1d13c963082e2aea5da700c4f39698f168e79d6218"
+      },
+      {
+        "path": "assets/source/ui/README.md",
+        "sha256": "cb9fb0ffd9966eea4fd6438409b2a909ac734e28ab87b9508facff09ad7212f7"
+      },
+      {
+        "path": "e2e/arena.spec.ts",
+        "sha256": "108cf01ab2f3b5a2cbcb77e4f8cd8a62fdacf52b1a2d4a02158c0b0291fe0354"
+      },
+      {
+        "path": "e2e/customers.spec.ts",
+        "sha256": "160b2f04388f9af0de6c8420172e68b61bf930ff22a49c09845504bab924559b"
+      },
+      {
+        "path": "e2e/effects.spec.ts",
+        "sha256": "da3c62764c542f9eac5b4a751eae2196a20c3a50cfbf780e92cd17fca3b2ea69"
+      },
+      {
+        "path": "e2e/hawker.spec.ts",
+        "sha256": "9dd4c8a8e232f01b3977cf39e5e1da576fc2489705c7300475e796c37e73b9b4"
+      },
+      {
+        "path": "fixtures/observation-2-initial.json",
+        "sha256": "4c5511ec91ff28aa14346b4c3b184e6cbe25a3225ca91cce6abd026c495bcd0b"
+      },
+      {
+        "path": "fixtures/poc-1-acceptance.json",
+        "sha256": "a01e752c4ae14720890be1d2f2f75d5f079716d2c79d87f3e473cfa45e688590"
+      },
+      {
+        "path": "fixtures/reference/demand-vectors.json",
+        "sha256": "2118a0960ae97c1591f10baa7b7b5b9122adec3bad3d9cc8a11b069971f789b5"
+      },
+      {
+        "path": "fixtures/reference/state-hash-vector.json",
+        "sha256": "e6926c7f9837be55faccac90d8d7a3ee998bd80d177658abb62cbc57a5e403ba"
+      },
+      {
+        "path": "fixtures/static/development-1.json",
+        "sha256": "2b23ffed0d46ec550e0adf9be15a8f7e35f9d10e820c7b9e6deecaedf850c325"
+      },
+      {
+        "path": "fixtures/tick-order-1.json",
+        "sha256": "16dc0cb8180f9bc130b1649eef3698089e41c1334f21cc7d4bcaa4ad3ad62808"
+      },
+      {
+        "path": "package.json",
+        "sha256": "e04ae8599ef69bd326600e73236abe22345e223d243784594b8b7f0744864052"
+      },
+      {
+        "path": "packages/art/src/customer.ts",
+        "sha256": "aa5132182329fc156d30bbea85b4a3810324d3a23364f502d64ef42f42c9b4ea"
+      },
+      {
+        "path": "packages/art/src/effects.ts",
+        "sha256": "6bad5829f96908bfaa2f9c800b57e6188b504e0acff05190584f9bea926e97a7"
+      },
+      {
+        "path": "packages/art/src/environment.ts",
+        "sha256": "f6fc5955a2bc25c4d2d10925c535f7464964258f88b0880b97090f8623fb659a"
+      },
+      {
+        "path": "packages/art/src/hawker.ts",
+        "sha256": "26741a83e393e4e85cb0d0b9a5df77f6c0434588be48b814dacc5937335db9ad"
+      },
+      {
+        "path": "packages/art/src/ui.ts",
+        "sha256": "32acf6c48cfd8630074bc362bc63381643bd24a21709f8131f97b21eb99a0942"
+      },
+      {
+        "path": "packages/benchmark/package.json",
+        "sha256": "e0df9a88b03f1fab4724c8101904c939cf3d750c309b6263797d47ea2a1df282"
+      },
+      {
+        "path": "packages/benchmark/src/exports.ts",
+        "sha256": "fccf85ade7e8c46c520bb6a9d9a9a2e47a06e9e2bdb944ef2866ee9e6b96c733"
+      },
+      {
+        "path": "packages/benchmark/src/index.ts",
+        "sha256": "31e6b03439dea870b271b6f9bc024dabb644448892342b114041422ce9818200"
+      },
+      {
+        "path": "packages/benchmark/src/oracle.ts",
+        "sha256": "489dd92b04268ce4c990d28c3dfdb758b1ab733167cc41efc18c9024d6f0e580"
+      },
+      {
+        "path": "packages/benchmark/src/rational.ts",
+        "sha256": "3bba6ae35b06c0ab41c12b785c9f0d33c43462fed6d36018a4d19fa050f04605"
+      },
+      {
+        "path": "packages/benchmark/src/static-dataset.ts",
+        "sha256": "38443f68edc8c091edf43190c5ab2632cd15a28a0557451c88df08ada0248888"
+      },
+      {
+        "path": "packages/benchmark/src/static-tasks.ts",
+        "sha256": "6c44331bb8850cccfd2f2e334ac8dd247c9a4860c88fec70105dcf0b1b0f1487"
+      },
+      {
+        "path": "packages/decisions/package.json",
+        "sha256": "f058c4ca9ff5b16ad5e77b1c03b833e73e9e65c8c40e267eabe05d65aef55840"
+      },
+      {
+        "path": "packages/decisions/src/fallback.ts",
+        "sha256": "399bb41c143d8063a477471d34760dab1bd99cbbc3ad94adcafeb36e50807c7c"
+      },
+      {
+        "path": "packages/decisions/src/index.ts",
+        "sha256": "7049d2a217802978774fa8a0b93ac74723e5a9a548516deb28c47e71ece2eb74"
+      },
+      {
+        "path": "packages/decisions/src/mock.ts",
+        "sha256": "e8797b133299a283eefc15b51066612e3efd5a9a0dbead3cf430e0f1d05a9e9f"
+      },
+      {
+        "path": "packages/decisions/src/rules.ts",
+        "sha256": "ba4911a2393b6de4b1348a7e97df773f6912345902538227a0379de0b431ca77"
+      },
+      {
+        "path": "packages/providers/package.json",
+        "sha256": "2c9da1b99c0b0b7cae1e65aad3dac6de5c870b6e0d3fb8b1ae1294b33a6e6e50"
+      },
+      {
+        "path": "packages/providers/src/activation.ts",
+        "sha256": "1107f79fc3250a8921ca8d599c883fd85ba32debf0dcb6372b4936142699f22f"
+      },
+      {
+        "path": "packages/providers/src/adapter.ts",
+        "sha256": "d5db5c2fde17b4bd98930294ec57beae95e2e116bbf03d093e1ea6df9984c94a"
+      },
+      {
+        "path": "packages/providers/src/index.ts",
+        "sha256": "3689f3eb31cc7e4beea6b9daf986782638383cd848ce5521b384435ac5a5263c"
+      },
+      {
+        "path": "packages/providers/src/ledger.ts",
+        "sha256": "19a40cafde60c8da5dd7d1133b4f2d2b0abf1d55eca3e7d8629b991d62189d1c"
+      },
+      {
+        "path": "packages/providers/src/wire.ts",
+        "sha256": "c7d06a67b4ac142b352b94da08048c07317f8dc9f2e48667a423618762db2bd8"
+      },
+      {
+        "path": "packages/replay/package.json",
+        "sha256": "563bdab9a8946fb1737dec11a3aebd312892c3fc9fd9ad41b0ffed4e11e1234b"
+      },
+      {
+        "path": "packages/replay/src/index.ts",
+        "sha256": "aa3316b5ab63abca75832c35f10e263e7cde6b4aee0e1b89cd8b5c2ba106f273"
+      },
+      {
+        "path": "packages/replay/src/record.ts",
+        "sha256": "9316d62d9775a581fe6c55f62039943aa2399ba9941c7fe0c121002adc00b091"
+      },
+      {
+        "path": "packages/replay/src/replay.ts",
+        "sha256": "d5ec6bc223de93b921717205cd22d0ea4e06904144cad61458ddca005b5a9665"
+      },
+      {
+        "path": "packages/replay/src/schema.ts",
+        "sha256": "f3ccaa728666cd232de1dbd092fd53bec11b5cbbc1bf10618d186f571053d0f3"
+      },
+      {
+        "path": "packages/replay/src/store.ts",
+        "sha256": "1f0a1d7033edcaa718b0aeb6bcf3dc157082e6a726a4496fa6866664477e800c"
+      },
+      {
+        "path": "packages/shared/package.json",
+        "sha256": "f7f65cf392a74758f0db375931a89143f5287daedb532747e632382bc3c7ac4d"
+      },
+      {
+        "path": "packages/shared/src/config.ts",
+        "sha256": "db841de8ce5eabb62933254666d49a9bd55a4111c2daeef24c0c6b6830714a76"
+      },
+      {
+        "path": "packages/shared/src/index.ts",
+        "sha256": "28b989960465b020f9065823e133d3e8ea25b7159c099e9b26a39f54aa49ab72"
+      },
+      {
+        "path": "packages/shared/src/schemas.ts",
+        "sha256": "6b49a761e2062b7eda875cb9ad0163cafcee62298711717b3902396dedd9f404"
+      },
+      {
+        "path": "packages/shared/src/trial-plan.ts",
+        "sha256": "5e24b113f7762179b665a4516cb1a857f2bfd8646cac24bb5ad48b06de5354cd"
+      },
+      {
+        "path": "packages/simulation/package.json",
+        "sha256": "715aef007a377683edd5b6c837d7e99e4a9591f92612b7fc55a4365a0141f939"
+      },
+      {
+        "path": "packages/simulation/src/demand.ts",
+        "sha256": "05374c8988ee90d1a07ba25c8bc673313a8f9c10daf890915fd9727c2c6dd6b2"
+      },
+      {
+        "path": "packages/simulation/src/engine.ts",
+        "sha256": "4fd66fb46e16d5cd7e8b4f4f4ca1fc730eec2d004b10a911a696afa0d4a6e42d"
+      },
+      {
+        "path": "packages/simulation/src/hash.ts",
+        "sha256": "9569674635db6a829aa7bf56b120625f5e329b25db920476d7650b695346bb47"
+      },
+      {
+        "path": "packages/simulation/src/index.ts",
+        "sha256": "780e3ff77e8ccdc9bc7319f2f5a7220fff988eb96b68e355d6d05e6d5eded91c"
+      },
+      {
+        "path": "packages/simulation/src/legality.ts",
+        "sha256": "0e3b5307e01afd7a5b7be60cb86263cfe12e22134136ba93e037176e5a5be20b"
+      },
+      {
+        "path": "packages/simulation/src/observation.ts",
+        "sha256": "7e35dcde84d1230859bf55c42ba5637c138e87420cd3eef1b87bf2409d49f284"
+      },
+      {
+        "path": "packages/simulation/src/scoring.ts",
+        "sha256": "89b568200741ba1187caa858668ab3416858c1f5991eba69e228d4bd65a43f2e"
+      },
+      {
+        "path": "packages/simulation/src/types.ts",
+        "sha256": "51f3245e54211983a18919f4931ceec5b46c9ac73df07b6fb30f2533420caf56"
+      },
+      {
+        "path": "playwright.config.ts",
+        "sha256": "9389154944c000ca3d365f66b70e4e46c8be9f20a7d8aebd07a2b69631e06d79"
+      },
+      {
+        "path": "pnpm-lock.yaml",
+        "sha256": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504"
+      },
+      {
+        "path": "pnpm-workspace.yaml",
+        "sha256": "4a4e154eac1f34ba2d32f96b0b7c714d905ab1fdff24a372965e4bb21381cb08"
+      },
+      {
+        "path": "scripts/artifact-output.ts",
+        "sha256": "9c16c184d13efe0668ea99a4e1216492e1ce3be8b51e7c3643a288f16712b39c"
+      },
+      {
+        "path": "scripts/config-snapshot.ts",
+        "sha256": "dec57fb08c1cc548253375a55c46ccb29c2be1b0219040a5852ac4062c65b184"
+      },
+      {
+        "path": "scripts/create-contract-examples.ts",
+        "sha256": "7523a2505c3e35a996053ae6f8e2c397e40a3fee53ef48aabe206ab1459c2ab3"
+      },
+      {
+        "path": "scripts/demo-rules.ts",
+        "sha256": "66899bc4cf3b536d4b079b01d04832cb37ad9ad0ebaa4055cb92273afa3839ac"
+      },
+      {
+        "path": "scripts/export-customer.ts",
+        "sha256": "e90bb49ff68b938a1fccaeee7f718db6fcea942d6b780441c2841adc745e814a"
+      },
+      {
+        "path": "scripts/export-effects.ts",
+        "sha256": "c971a3089f0ccd2532446c499c2994aa5bcdad2d166e9dd85c7b41c2a47712d9"
+      },
+      {
+        "path": "scripts/export-environment.ts",
+        "sha256": "6e6b8c00a28dc58b47e5b05289e690438761928a76cdfa073a0d211e6831bc2f"
+      },
+      {
+        "path": "scripts/export-episode.ts",
+        "sha256": "1988b3c1109561286a5689555b6f91876274462f317c8457aefc6f72fca9790b"
+      },
+      {
+        "path": "scripts/export-hawker.ts",
+        "sha256": "beab020776983abe35820c6f8a475a20f62ea422cb7a2591fe19e31409d5a1cb"
+      },
+      {
+        "path": "scripts/export-ui.ts",
+        "sha256": "7dca300d3fb54bda5ed20c4ab77f66d40a82bcc4f022cdb2cddfcf12510dccfd"
+      },
+      {
+        "path": "scripts/generate-static.ts",
+        "sha256": "a2cce33e5f4cc1f203b83e96490fe131fdb3db7db37b22ee4dab364cfba5fbe1"
+      },
+      {
+        "path": "scripts/generate-web-demo.ts",
+        "sha256": "a4a6dedc714202ff4585eff051ee7c1f6eb53db57ceafa6219986e10d5884249"
+      },
+      {
+        "path": "scripts/offline-episode.ts",
+        "sha256": "332317a8df05c9b5a7d4ffecc70fb18cb82fc94caa55190a77f90fb1aabf41fd"
+      },
+      {
+        "path": "scripts/p0-artifacts.ts",
+        "sha256": "ee8d27d8e221d9bf09aab16d6c73d1c3d1fab0323df323a18217acc7a07b619e"
+      },
+      {
+        "path": "scripts/p2-reference.ts",
+        "sha256": "576bb565c2b2af9f74ed8f78b246e17ef300e785a850b7d6f69c8691ae6b78d0"
+      },
+      {
+        "path": "scripts/provider-config.ts",
+        "sha256": "a77b8255115f87aab05e3bfbe215957c810428e48834ca6cb2578857c0b73979"
+      },
+      {
+        "path": "scripts/provider-init-ledger.ts",
+        "sha256": "7b38baafe8a78a4285b6be2a96bd733c61223ab70dcd17f5e5410ce8b0980e3a"
+      },
+      {
+        "path": "scripts/provider-smoke.ts",
+        "sha256": "7eadf6e4d04d3e86b578f0b5b62bb538c711a181c07ad189e9ff4bc2c48636d4"
+      },
+      {
+        "path": "scripts/provider-status.ts",
+        "sha256": "d26d7b0152e9d443c2dba4c6818bd8db8faccf9e6eaabc5c4e65e1ac21e3ce08"
+      },
+      {
+        "path": "scripts/record-episode.ts",
+        "sha256": "7d5ba6d3cdcd4fd572badcdd053e6347210a2dbfef80b19c216b86164a437dfb"
+      },
+      {
+        "path": "scripts/replay-episode.ts",
+        "sha256": "96a003105becb4f413b86a5c5a57fcdca9e2ae53dd798b594e129ac982a41078"
+      },
+      {
+        "path": "scripts/source-identity.ts",
+        "sha256": "430eb52053f9ed22a8e540773f0d3268785b9dc2c4f4cdbe67673b9a78e4c7d0"
+      },
+      {
+        "path": "scripts/validate-engine-fixtures.ts",
+        "sha256": "d3e4bdbeeb5bb940cf5b4aad4149c98644870d1ddccf8a015b0adb8175a0c745"
+      },
+      {
+        "path": "scripts/validate-p0.ts",
+        "sha256": "8e9f0fb5ebc776bc4c7d7f4f8037c064422a9f75bf16bd90b46f3f3ed689fc2d"
+      },
+      {
+        "path": "scripts/validate-p2-a.ts",
+        "sha256": "f397f09fe633cb39aa9e7af158bc9aaa027f3ffb8d381c53c28fbccf727f3ad7"
+      },
+      {
+        "path": "scripts/validate-p2-b.ts",
+        "sha256": "a869213b30c4e7015c940b78eb329693fb9b54db784e36d3a070cccc179b5e8a"
+      },
+      {
+        "path": "tests/customer-art.test.ts",
+        "sha256": "fb10c7ff740917e5640cbdcf9ab350862738d332273ecd8514ce698a446b3884"
+      },
+      {
+        "path": "tests/customer-projection.test.ts",
+        "sha256": "6933aa78e36460dd1b300f2518a8d4ce85552439eb591efeb4b6a869aefe6499"
+      },
+      {
+        "path": "tests/effects-art.test.ts",
+        "sha256": "d2f6c881b3842a67108253cd3e75ff8d8b27881771725a54ce1b4955bbd9b0cf"
+      },
+      {
+        "path": "tests/effects-projection.test.ts",
+        "sha256": "bef90716be35348bfd51c5194a08878f2a1aa4434d17d0f28119b97a92b2adf4"
+      },
+      {
+        "path": "tests/environment-art.test.ts",
+        "sha256": "598423b8cc15cacee9fe28505cd45f5d7eefe545067c7b4f05b8bfbb0e199915"
+      },
+      {
+        "path": "tests/hawker-art.test.ts",
+        "sha256": "157369ab2026a4b07a18745ac5faeffd94fa6ec7fc83a1027ab1e4ede3175cf6"
+      },
+      {
+        "path": "tests/hawker-presentation.test.ts",
+        "sha256": "9553b7e1d0c9148778c700cb456529d6ce17839b347bd08090234cc4ec378b97"
+      },
+      {
+        "path": "tests/helpers/p2-fixture-runner.ts",
+        "sha256": "cb9bb8cf46499b0339fc4a38ab66be8653d9e8163edac4c87c67953a474343a7"
+      },
+      {
+        "path": "tests/load-demo.test.ts",
+        "sha256": "ea7467867df3667b160b54ecc96d5828de7ad21cb2aff566e9a1fc5d915c9188"
+      },
+      {
+        "path": "tests/p0-adversarial.test.ts",
+        "sha256": "07cfddf411e8c5cc464211823ffb8d36e885133027e32e38eb5aee476987d142"
+      },
+      {
+        "path": "tests/p0.test.ts",
+        "sha256": "27fa853366db6b240744d45aae1b3b81dc015725592fbf59e289afafae552816"
+      },
+      {
+        "path": "tests/p2-decisions.test.ts",
+        "sha256": "a6b5b4a5fb1461de5ba6b7dd27e5e377809ada3e4433c3b8309ded5b565279df"
+      },
+      {
+        "path": "tests/p2-demand.test.ts",
+        "sha256": "4d9e6f5d31c304bfefd828af62c27204ffe37ebb896f84c66d1b918cc985563b"
+      },
+      {
+        "path": "tests/p2-engine.test.ts",
+        "sha256": "28be452811b9e4cf9d06248df64a6f478b2239c8f176e07dba94c6ed9f6ac9ba"
+      },
+      {
+        "path": "tests/p2-fixtures.test.ts",
+        "sha256": "cd677800ca13d6887f7e240a0a02fec2d38007d1f985e26770421e3b717d89ec"
+      },
+      {
+        "path": "tests/p2-hash.test.ts",
+        "sha256": "939ada33a20d7e50dae52ffb008cdd5757a8605c12d62bcecc54ecf4010922c5"
+      },
+      {
+        "path": "tests/p2-integration-adversarial.test.ts",
+        "sha256": "5611aa23a0362d2aede4821e7347dace3a84efbd52f26707d907c564d7e92645"
+      },
+      {
+        "path": "tests/p2b-adversarial.test.ts",
+        "sha256": "93203e8d9c93cd80c4f4160e46bc726e5e3e0397eb926dbffee9bc88a957ad32"
+      },
+      {
+        "path": "tests/p2b-exports.test.ts",
+        "sha256": "0ce3cae882f081f0caa17288691700d64fda752066cb52c85a7e7748b3a5d9ad"
+      },
+      {
+        "path": "tests/p2b-oracle.test.ts",
+        "sha256": "b2f2873d1ee002c58bcb8495083a5404b29e1d827c634f834814137425c75586"
+      },
+      {
+        "path": "tests/p2b-static-dataset.test.ts",
+        "sha256": "19751b50ed50ea9cc1458495b6c363d304fb482a07e5c07d710881175270a642"
+      },
+      {
+        "path": "tests/p2b-store.test.ts",
+        "sha256": "babcc37c9b32562a201bbe655ef4df4fccf1766220a44c3bd3cfb95436816784"
+      },
+      {
+        "path": "tests/providers-adversarial.test.ts",
+        "sha256": "4f3b057082fb0277ec40eb45a8cee94781892f3cbb4c451f735560b497982f5c"
+      },
+      {
+        "path": "tests/providers-jev-smoke.test.ts",
+        "sha256": "fc9b0e0aca64facd83d5c840623bbd94f42b3a14db438dd299e42d4067b1ea44"
+      },
+      {
+        "path": "tests/providers-ledger.test.ts",
+        "sha256": "e1562db5c61f9333e05f4c8efb415135ddad666d7ae63f7f980cb2493a81aa40"
+      },
+      {
+        "path": "tests/providers-wire.test.ts",
+        "sha256": "e54353fc7a32468f36bb7ab543655d562f50ffbf38462bf8d89acb7f53c64246"
+      },
+      {
+        "path": "tests/ui-art.test.ts",
+        "sha256": "29b8de96d9a6940af21c1aef20d5817928c1f5e77673c4394e5a02e96a00ff09"
+      },
+      {
+        "path": "tests/web-demo.test.ts",
+        "sha256": "1ce2ed3841b4454d5882a0cd74520479a3b62478d6e474b7eccfa6dd88defdc6"
+      },
+      {
+        "path": "tsconfig.json",
+        "sha256": "e665247b0c863f33990a3fb4a7a8a6703674b4a341a6dd0d050fa153a7aa871f"
+      },
+      {
+        "path": "vitest.config.ts",
+        "sha256": "8a23818e20c1203212615df118052d5fe57e3b0bdab33e5ad93a412900c4090c"
+      }
+    ]
+  },
+  "hashEnvelope": "state-hash-1 includes explicit policy state, stage/tick, opening ledger, event/customer dedup context, last five actions, configuration and schedule identities; excludes UUIDs/latency/operational metadata",
+  "scenarios": [
+    {
+      "seed": 0,
+      "scenario": "clean",
+      "scheduleHash": "bc6986734f0afb8d84fac28e1b7de125653b2bb367eef09e00c097c79d692fe2",
+      "turns": [
+        {
+          "tick": 0,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "0adc03b5cae6322803b496d70e2a6186f66ee6fec5c873a341b1596fa1e9dc02",
+          "hash": "b66d0f51601106f50f27de26e4e2dffe56e78991a6f5f4a3261ebf48de520f87"
+        },
+        {
+          "tick": 1,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "855a2da6424151b8bc998016633b93b74febce1ee04120df3a7fa9d28d0b5f0b",
+          "hash": "c92ac6a7d9e83e4249d6b0b8a7b626f2f411a3f3fd5eec164cb35eee3c2ed06c"
+        },
+        {
+          "tick": 2,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "25110dfb42045b0144714a332861dedfafd16fdb107a865b92a03f7417485e6c",
+          "hash": "cca5d055b5638a6f613c853858e58a6f1a37d6b72efe5364aeb08f9cc23bc95f"
+        },
+        {
+          "tick": 3,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "e9e492949daf5d21eaf6b610d2980ffa77fa9973b8949cb032ef565952610569",
+          "hash": "65ffda613ded11e9ac49a33d551a93d3a781b4abd6bcd0ac1ab16df462545d2c"
+        },
+        {
+          "tick": 4,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "e41c927957c1eb97b647cf4f80b945119ffc1917d1a31f5bd1e072e5dfe2be0f",
+          "hash": "cb1353637927ced54678515368686d2f6bb579ec137a5f8a0abb586254709001"
+        },
+        {
+          "tick": 5,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "54dcf95ccb5048dd4b9d312fc5f644581a31274d79cdf5d2a066ec45d2fb6b45",
+          "hash": "e61b9eba19ea0dc95ea3bf4b268e33012c98abf243a5d5dfe0d945e77603eb4e"
+        },
+        {
+          "tick": 6,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "59594d02db320206c565bf5bfca8a62cc857868f847a2e113e72520f76da59fb",
+          "hash": "bd1c9545ecb50b282080ad56ae4b2aa5dd161ee94e5b87be9ca4522ed8fd28b2"
+        },
+        {
+          "tick": 7,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "18157126fa0046a5aa3a641cf1668e443b892437e3d2d8a33a61d2cb4c1b4db3",
+          "hash": "8c86595d539e900deb9ccf6ba535f91bec5ae59cc60e3331b3f1ac0232a852cf"
+        },
+        {
+          "tick": 8,
+          "action": "RESTOCK",
+          "origin": "rules",
+          "preparedHash": "5c0bbba0c4a0e58ae039d1f8d166f1d2cfccc90e0c023dcf8bb7c4a481397c0b",
+          "hash": "45c560cd8a37a14a79f3a2dc92b33dcf7aa88f16f6541d85b012a841ef96fb46"
+        },
+        {
+          "tick": 9,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "5694898d590d16069f9620fbd8640b04cf0f244ced26924c96ed8e054fef20e8",
+          "hash": "b0447f0d75030192c07e0dadd09868167efe632c9912caeb0fb961f79de6470a"
+        },
+        {
+          "tick": 10,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "623f029d1b7f22913275c0d5d04864ca35208ced56cffcc678a4e76471d9af33",
+          "hash": "84189891b261f21539cd5a028ac0d79757de6443519d661259a002197ca84d22"
+        },
+        {
+          "tick": 11,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "21fa7fec96a0af7e2b88256aa5ca1892aae64bb911adb75578f3df0358c84820",
+          "hash": "8a46dafe1a3a50f0abba9dd33e44c9a88dcf796d81d83e689e85fc675eb6474d"
+        },
+        {
+          "tick": 12,
+          "action": "PROMOTE",
+          "origin": "rules",
+          "preparedHash": "b865679b6a5e90232c9df22f45f17e5362918b2bc9ce4c289ec38c5f3091a66f",
+          "hash": "3afc5b3c55d42729b8b5c4775ff848e4887248d1a1bcde8ddac23f27938cb9c8"
+        },
+        {
+          "tick": 13,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "306008d5b33ef2c7f929954a642ea019daaabcff474c186feeff6d1e80bcebe6",
+          "hash": "954fb2b77daa3cca4f25ed61ea069baa8b632134869625c338bb7a8213c00746"
+        },
+        {
+          "tick": 14,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "462fbca7ec1725fe611071b56effc81c05f6dcd9afe7278644b4f48b4609313f",
+          "hash": "6bc5e1ff2a9a13fc1cea90706891d82df8c37b77b4a5e98cab6a0d71c479b57b"
+        },
+        {
+          "tick": 15,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "0ff0f6d5be4dd7331bcb018954279561bb237b8aec4f58374a428dfc12cc327a",
+          "hash": "f03dd23cdfc5318202b870280de370a16fc8c10044517d4d1a6a088cd0462b70"
+        },
+        {
+          "tick": 16,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "dd7e21f9e762c196435ed21d68c3fabe34d915b1e6eec0ab8e58f0a1dc9cdbad",
+          "hash": "db29f0e27a555950ca409276cd5aa59327c9d7a0c543d8f0c8cb5c0dbcfd8469"
+        },
+        {
+          "tick": 17,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "80e4ef05821f657aa14ada1b29fad05dc9f5167967768339b1cf1a1fab726ffa",
+          "hash": "fbdf9245f5a1221fed8fae43b9f4faa29ef1cefdf4be0d95f52fa756141ea00e"
+        },
+        {
+          "tick": 18,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "2da7c880d7778482fc6ce74c03de40d5c29ca25caa3df1f95a2a27a130845da9",
+          "hash": "1fa8cd725538ba16162f2d8b464ef6af23436b1308e6ef2e4c8a90bc6e6bf65b"
+        },
+        {
+          "tick": 19,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "9990e2272a72d0725616584bd4fc26ab986f724d1230fab80a37ff06e5f20276",
+          "hash": "492d0504b745e1acb420ca63ce6a7c2ab291fdd83606dd356b96621bceacf7a7"
+        },
+        {
+          "tick": 20,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "67ab837d0d265e0eae0ad58025ba642ef89d3dd4b8004793373039974716687c",
+          "hash": "2e7864cf90a61946b83eb4d83454964301068cc77f0d4ecd4e3ab2515714c730"
+        },
+        {
+          "tick": 21,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "538aed361ab03182b6a4e2f7d31e3228f88e23dffc0c65b9ecb6ae7947a37b3c",
+          "hash": "e8974560ee47c4bb5083a0d6e751a7ac60b4550c3e0541f5cdaba0d26270976c"
+        },
+        {
+          "tick": 22,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "9e9a1f2beed77147b2552020aa2e11339688836aad3bb39b4a693947d581c20e",
+          "hash": "2b8ad2862753e8017cf5269d4c0a10004e31c32b88a2c0293dcd020f558a7ee2"
+        },
+        {
+          "tick": 23,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "b78a982a75291a1d1da2d327d628a9c6900036a833d9be4ff33e82979edc8e56",
+          "hash": "4886a4c0b875dafe2992338f1cb2fa1c599cd87b4010429e9fa2d6fce1f04922"
+        },
+        {
+          "tick": 24,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "2c644d7d77354fdabc287d842a634e5cd82258bc84d280d792c95d2739f7a40a",
+          "hash": "8663090c08fe15dbd0b4b8903c24554a8ea3cb30e6f28b5eed60a9a837111473"
+        },
+        {
+          "tick": 25,
+          "action": "RESTOCK",
+          "origin": "rules",
+          "preparedHash": "ab2f5057fe2db16847071224df64ea0351a9fe6068e68182dff6a1a488eecea4",
+          "hash": "e2e5b2bf4aca730be98e87a0f0ca11c9fbbf03ea781b7805886b3f4c0e9131f9"
+        },
+        {
+          "tick": 26,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "c79c303d37933ff2a03b8dcbee083130b6f86de785caab0d0cabf1819e25a900",
+          "hash": "3219ff52c351e94c438da06a85c98eda8a648f041df51afdeb495ef5df508a17"
+        },
+        {
+          "tick": 27,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "c4555ebf751073a8e0eb8155235cd34904d94c0e0fa11ce3535acbaf9d6a77d8",
+          "hash": "4d9d134862ed60b05603391c0ed61df4150ff70af0ce3feb84c5e6c4bbb547a9"
+        },
+        {
+          "tick": 28,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "8002e13d3486fc10eb363d15094313660509aa13bf91fb09c8933594c0aa71b8",
+          "hash": "089d47ca778cf19879e929b2e1685b076784711b77a504774e6ae772ac568337"
+        },
+        {
+          "tick": 29,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "a9b457315a61955056becb23a83f70a5c1518cbae4bb73b7303ff0f51a67622c",
+          "hash": "bc179b70d762ee2e3db326c71c2dc4f51ee084acc3a1abe5511e791daa45561c"
+        },
+        {
+          "tick": 30,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "019740c6b68990b54ed904f62b2042fa76e37d1b4ed9c6198346257ec817093c",
+          "hash": "2e11c171d0c9b5cf446308f57748aa1bae887292f2da118a48b2933d885621bb"
+        },
+        {
+          "tick": 31,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "6ed7734ae3c9ff937a13b2fb8d988bbb733afcf0df5bd5f846328b7e5bc98ffe",
+          "hash": "93bc90bcc974e7200c95646f2cb504b75015e5be455c10f7c266682e880e5eeb"
+        },
+        {
+          "tick": 32,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "f5050cb80cda9795bdf0f731eec5ce0f30ac3c08a11549dbdd2039a200ea4551",
+          "hash": "f52fa556e54080fd4996a755fd707a4b9e7f5356e5cff2d551c007d6701ce675"
+        },
+        {
+          "tick": 33,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "2d7424b260a1d3e5a68f8e2c666508ddc4316f95a49706b268c2ee376ea7f2d6",
+          "hash": "a1c0f96076f6590c6b40362ad60efb4d97cb340997b176edde76582b3d86289c"
+        },
+        {
+          "tick": 34,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "198cfb33a1e0813c631654d2414d67b3bb22585b42d4289e12d6c299c64f47a9",
+          "hash": "b610d44338e7beba218be91311f19427f2f772f0abe99ad45e85e2a7e539722e"
+        },
+        {
+          "tick": 35,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "1da213371a80ec8af2b0a6f714a4890f86588bc182b05960801b6118d7245c68",
+          "hash": "982a3ab7a1a6af42854cd403a89dd6e16cc1f524615a3228013f770d0358b04e"
+        },
+        {
+          "tick": 36,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "42cf2d138aeda93719257807c6de4fa1a3a6d237e63e4dfce1271a30c644437e",
+          "hash": "c37a305fd42f5ab2b437d35e5a9371f4d99204999a6092579d68587fc40e6ec0"
+        },
+        {
+          "tick": 37,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "aada0b77d21fb83cdb82df4863509349d12d3b47b7aa2de3d474a8e432e5e8f5",
+          "hash": "c2b14d5d1c1ec8c5aeef0cf788e057dddb7a5914b2f3907aa0cdfc3ad4c4b1bc"
+        },
+        {
+          "tick": 38,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "03f8eea0d831ba8bf4671dcc4f4fcd44c929582958a91ee054c7a8f0680bc240",
+          "hash": "13e583a9ddbbfdc580fb3ed21bfb5c90802b47460d28ee0d3a3c5e1e22aa76fc"
+        },
+        {
+          "tick": 39,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "0c5fe6b95cad9cb2c40d85e9ca6a41c4ac8d7504664c3a3f54ad7b6dcbcbd751",
+          "hash": "f871b41ad326004cec8bc97cad9b358513bf67e585a60b7012523c347babe379"
+        },
+        {
+          "tick": 40,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "c4b33064f92194dda093242c8750025ec759a102a8305fda5a2a43437fcf43f8",
+          "hash": "9ebbe7401de520a7d35c1326e1948e5aa13913e99155f6c205d323d9689db09a"
+        },
+        {
+          "tick": 41,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "d0fb39a50106f7360c7decf5db48d9cc3887f4c1cccad31ccd4c188d3de74f2c",
+          "hash": "545a1f6d623f7a6c5b64e8c5d865e9dcf733ba4a23256421f0dca039a66fdf11"
+        },
+        {
+          "tick": 42,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "6b07d8cc50f30396175d939ad5f58016c1dae248206a71b6ecd2fd67adcf1b75",
+          "hash": "3b7215e11bb5fdff06469a3750ce830387bb61d041b9a30e7d68fccb019f6f5b"
+        },
+        {
+          "tick": 43,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "77b84398501fac8378379120c2e2193541985e277dac28ab1d9dc853f2738cfb",
+          "hash": "13f05afed9db14911028619955215638b15b32a1aa1993c7d7b14b02ec24aa6b"
+        },
+        {
+          "tick": 44,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "d0c4ee8c77cf495960addef0465286211160a5ead7d7c46603ce58324bca30cf",
+          "hash": "a658f028f99b09edab06d64aa6009de83a40131d4ba899d2a248ed8692900c59"
+        },
+        {
+          "tick": 45,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "69b50fe9f1829d7a1a9c84e6d81dcedc0e279f6f83db3afd893e9cbb10c7b62e",
+          "hash": "af75cf4a28a0c85eaa22a7c9380a530bb54200ceff3e4bdf471968a55ace2ef2"
+        },
+        {
+          "tick": 46,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "d77a592c882a1fe450343ad0940a1195217d802504d66fb89f4a8b5be01b625e",
+          "hash": "24ed1b4520bd2092518d3d46b58ef0093e338562d396b90e104e5b5890ed26b6"
+        },
+        {
+          "tick": 47,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "db74ff53ddd8e70bfa685a44a48b655451fddcca2511f76b76f871ddcab3d631",
+          "hash": "a7216819a3b1bfc2285280a658e62380be673ea9b2f78d5629f6a85f1a95f87c"
+        },
+        {
+          "tick": 48,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "fd1dcd7477a1b2b965205477586e386afafafdc5e62fe6585a4e9a8a8de609bd",
+          "hash": "731db03750f4da90207ca8591222af188a92ab70dff6b836b0e81d0c19d0fbb4"
+        },
+        {
+          "tick": 49,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "ce8ea28f85ba05a14415090149457fe7f916f3989c7d402d4d8761971915ad45",
+          "hash": "e706493ea1d51debeb7cbd3faa76dc3f13ca8399b8c422c31776f4ab2295ffa2"
+        },
+        {
+          "tick": 50,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "f61cef837db9e939232067f1a76e3e81ef372850e1a9ea944961a828bbf2cf57",
+          "hash": "2b47d444fb7f717f45f171f7f0b819997eb7f74bf1465b3bdc87ca20af2622c8"
+        },
+        {
+          "tick": 51,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "3e5f86afbcdd33e3d570096d63e4dd91a20cdebcedef118a50a8d69e74dde180",
+          "hash": "ee54aa27ddfa9f4390cc4d224f0835e4c87c968f283e93694ae99bb4b0ded13e"
+        },
+        {
+          "tick": 52,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "c0fa5c12a591c72c966414403eeac347f18c23b56a9d8c30235cfb71df9ce48d",
+          "hash": "d85b1e7ce5bb2f92e1952d7118a6f767a90392f9579158eb5db158e0d7468613"
+        },
+        {
+          "tick": 53,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "c703adccc34e3cc48158887edbcbd05e196763e516ec218becf4b8c00ebb4a00",
+          "hash": "40b6405912f0ce091265af071a32feb3d8512f222b754c5de6f816c404283441"
+        },
+        {
+          "tick": 54,
+          "action": "RESTOCK",
+          "origin": "rules",
+          "preparedHash": "d93a69c1067ff467918b691d116222b631523f351b23e772745ce9fb60c7dc2e",
+          "hash": "5fc3007c9929f99d7b58e1e8b9a18caf1965267cc3fe0232db12f6ad26b3a54b"
+        },
+        {
+          "tick": 55,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "90f414fe773b38abc86e3b07c3fda0321265cade83ffb5a9e582f3bdf2480e6e",
+          "hash": "dabe29b60a767977339e55dbcadf71dca5ff1507d66d1350f208b6d37d755624"
+        },
+        {
+          "tick": 56,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "9a66db0d42b4a7f654af6fb6b34a77cb1f8b34b64ff647154b4144e885a213c7",
+          "hash": "dea15b69e17a2c28bd36e78eb7729d5cb851c43a5fea204153f391b9348c0976"
+        },
+        {
+          "tick": 57,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "5c953887e87d346f5dd2931afcfc9fa7edfd86470a03fc63d8123a4354d519a5",
+          "hash": "3970be9850e239823c3935595fd23ddefa60405d6a05fab5109c6cbd35fcd95f"
+        },
+        {
+          "tick": 58,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "3f3b8718ab3a3ba675fe0e0213e5ed5dc49d62c36639c6997ec642f0f58f3cfc",
+          "hash": "94e5874799ce485e75d58f52f021b7105f39c63ab2b68211bb0fd46ab2cd747b"
+        },
+        {
+          "tick": 59,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "8f1076afa4270625a48ec746573acf611e8707a74dcba32082c4fd30cbe2005e",
+          "hash": "871fd6f5a66f3e8da14c088973b46849734ac4a378c398d6bb040c4e6f7cf45d"
+        },
+        {
+          "tick": 60,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "a5c9c73fa9e5a4d130117d71a28aa477178566545ea67b6c87d85eb00cb00e56",
+          "hash": "76c19ca7481d041df137c75fad26b60acf590fde1807721b07ba037c3dd84628"
+        },
+        {
+          "tick": 61,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "f7db8a73fd22ce2abd27756b69d869171276cc14478a15e60d3ee82991959c71",
+          "hash": "9de74d0f28f45a8976940e93c58da10123ba6922bf3ccf2a1efaa782edc730fa"
+        },
+        {
+          "tick": 62,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "fa598068a9d685583e42d133e830a16f5eaffe722f0ad587c1f3bb550a933d18",
+          "hash": "faff7ee914e54258234bbafce0ef843bc5507034497af2d663dc1f41db2ab9ee"
+        },
+        {
+          "tick": 63,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "7457351e1001e68e337f8f8d1db3468f6df6afa809c15a9ef274b0ea6528f710",
+          "hash": "a5042883b23248cb203547f2c09717d88dd8d142698d01dd20413e7d612c067c"
+        },
+        {
+          "tick": 64,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "05957ab13da474888bdbf81b914c0be2ddf89480c7c8369158259f6e7bdecd0c",
+          "hash": "e225422300b1ec48ac4fd4952c36c0401c3a5dd29e7b9d3edd3b069aa0fc5035"
+        },
+        {
+          "tick": 65,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "0bf78395c2780e3310b260e92502b74d915e7b79d89b8192822edc03bc5b50d9",
+          "hash": "034551afd27aa4112ccd37f938c21e4228a7782ad86c15e87125a6f88b271bcd"
+        },
+        {
+          "tick": 66,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "14d7a3c97065d7e59459991eabd62e4a8c4d2042dec2dde178d796e7b5f0ae37",
+          "hash": "a522a614ceda1d8a9ce36883a2756b4e773310ff6e5cacd1d2495808e702603d"
+        },
+        {
+          "tick": 67,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "eb3943a864842199176b51e28949c7c68b19065ce1ef09dde826be60b5ae2aae",
+          "hash": "ca33eb8e94c3dd068367fd3fbb6e685d641d0632c183d830c39b02e0dd6d1e53"
+        },
+        {
+          "tick": 68,
+          "action": "RESTOCK",
+          "origin": "rules",
+          "preparedHash": "eb08419a92845aec0ff532f597791a7c03602597a15d1f5837dd83f4cc1a22eb",
+          "hash": "6a40cb560b6fa8f1d86c63b4987b1ea4265d6491d2d1bf47da230504ab372d0e"
+        },
+        {
+          "tick": 69,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "7c66cf2d412ca762fbbef46fc16afa6bce7bf034cfd5568448679df7247e7796",
+          "hash": "c4258c82b939912d65ac6dc7155dcc9a4dc9d9caacd4fdfe4eda733538ac9245"
+        },
+        {
+          "tick": 70,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "9043342edecdbdbb95c8b83749f22cee80131efabbb965090a49db37b0b08efd",
+          "hash": "20de336b35ebbb5e9148447253a8f47fe45f109967412e74e650e25ea13a93d1"
+        },
+        {
+          "tick": 71,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "1a0d63c20c5e2520a54d64c5d89cfeed0c62038fde16c3755377e5b89099432f",
+          "hash": "c06e35e78aafc9350de5036453d44ff15e518262caa55cb2c13bbb35d953496a"
+        },
+        {
+          "tick": 72,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "257708bb72b989e6f904357b1f933d8caebc30950efc076714b0c4d5708acbd8",
+          "hash": "9bbb1ea9b7ac406243d78402162a54e0abb99169c8ffc408e395a19ef12b55f6"
+        },
+        {
+          "tick": 73,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "c707f263887f49bfaf650dbd343c8c68331c5995bb8e7f7e47f8138d00928540",
+          "hash": "51b9db8160f0b222573a130262b780ce4df60038aa038e85762b33f7f07d3294"
+        },
+        {
+          "tick": 74,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "ec8c69a3301b2aa5856bc8e26b395ea93568dbfcadd50778280f370cc6ddc71c",
+          "hash": "74a8053fde0f668ee0db447352251616f867f2837a70bc9f8e8b381897fa4994"
+        },
+        {
+          "tick": 75,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "14a85c48fba40babb669b22417a3c1396413d16fd94109416c115a007c28ef83",
+          "hash": "26972642f96a5a349ada6f6dc74f307e2779134d93e707c0ad4ca3917d0dfe73"
+        },
+        {
+          "tick": 76,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "33c2f90c926a9caa8513d70309dd154906018970d0718ce8bc15334cc8f4c787",
+          "hash": "77ee7863d4314b6e94cdba3c513d88b5a3effe5ec45930d5fdd850337adae448"
+        },
+        {
+          "tick": 77,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "4e0b5f8f1989b7bf840383cd026cbb9dd65d0b6be744d943e88ed4b3d98906a0",
+          "hash": "6065856d8ea219c63b6c1d587234b0830e5753cc25995d4335acefadffb57839"
+        },
+        {
+          "tick": 78,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "a513684f30ad2be8302d8a5e67c84cc5edeb0f2b87195998bacd89d5c7652180",
+          "hash": "761cb5b99c1ef67fb1e74be874b978e12125febbc76c00e79d930a80e30d5902"
+        },
+        {
+          "tick": 79,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "2946cba20fec2b0bb9aa6e2b4dc9dd1b0bb572dc1306590b94754b2a63fbbbfb",
+          "hash": "98b8fdf467a7276840f5a9eaed0bf08a7d26415e482bdd47b834b00a1e93bc75"
+        },
+        {
+          "tick": 80,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "2ca74055dbb27601a78180b939993ccbc0b8ce0795a4bf87832f2f2ca3e2acc5",
+          "hash": "3b91aa1c7a979fa3879596983a92d207ab88f79a0568900697d2be31ca95690a"
+        },
+        {
+          "tick": 81,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "a6dde63fee4b28af3a74631e97d786b81160c49681c6aa7b44ec850dddda7769",
+          "hash": "1f2b57e81b9a67e6e8b9755a018d80791732332fa33da15297a8fa5841aa85db"
+        },
+        {
+          "tick": 82,
+          "action": "RESTOCK",
+          "origin": "rules",
+          "preparedHash": "72c5d1c882956069ad80584c96f7d0eab7ba0c69e022bf850eb2669b486a94e9",
+          "hash": "41770cb0c464c6a0a27b155c710f1d2f27e2cfaf914a4dbb3d1508e703f55dd2"
+        },
+        {
+          "tick": 83,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "9e47c9b493d73667d59776eb3043edcb1a052aa0a40d188dcef244a53cd1b2f8",
+          "hash": "890b78a99bbcb25d98cb8e02642102a6c9d770abb8c71f5cfd451be11b4e6af0"
+        },
+        {
+          "tick": 84,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "ddd1c804ef7ba76bbdaf60075d8dc3b02f0a7cb3f2dc5563c50def31ba0c7240",
+          "hash": "f81558458a4e08c2c876b7a53c5f3d7fcf61d027f9630b12691f6b71526a8660"
+        },
+        {
+          "tick": 85,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "fb4dd0d870912f59eed3ba1f607557a35e8cc5722b89c39e593d78a21a723ee8",
+          "hash": "f602769d4a35f124db2e688eb79b34d7ee8b6f8a6229f04b50cbe2f0df712198"
+        },
+        {
+          "tick": 86,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "9d89307cf231a13e531f415e2092b7d1ed990c6b64e38924d5d0e48109cb4a28",
+          "hash": "3de5979241625d07a222be6875cdac7af4012e7c7fe7393d73cefef6853d0db1"
+        },
+        {
+          "tick": 87,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "d1d520a769086a67706676e16aad39d9c7b3ca8a88cd061bf5da2b0624f5e9ae",
+          "hash": "5840d8c80802dbc4ff8929c5f3e5a5ea7e0bcaaae5292f7b1786717677d70344"
+        },
+        {
+          "tick": 88,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "ab424ec2d0b326a18201070b68d3a5607847766c239c15bf22461e426dbb2b08",
+          "hash": "0e8a812e97b424b74e8af253f38a2f357a4cc4a6f2f3ebf4a2a5607f8f00c254"
+        },
+        {
+          "tick": 89,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "6ca16927d42096425d8c98b509efed550f26bd93fbf4877c488e0a3ac50383b9",
+          "hash": "cb1e999afe62e29acf6922960d2176df3b498cf34b5a30ffceec738aed830094"
+        },
+        {
+          "tick": 90,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "4201ca24cfd1721941f3f9ff75b1646a7d333da8fad311ad799a699031fd2823",
+          "hash": "ad5039489150caffa3624f8709b901803e978b88421d0df814cf683e270daf8c"
+        },
+        {
+          "tick": 91,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "0cd7d5298f5b202af4844c08c3df836dc770dbdeeac11a9cd36236dfbd2cd000",
+          "hash": "70d696f583b0f3b70067334ff30fc6c67182329a47ee4bd50d4e498d01338c56"
+        },
+        {
+          "tick": 92,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "e0d383ed2fd7003be8c5cad23649e66d58aa2de3ef0d99131f235f0d045c87f7",
+          "hash": "7dcbc8450467150da11ff6bbb7652cd8a514e11bcbb0687f82f278584d951610"
+        },
+        {
+          "tick": 93,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "847a7f5327e5ce10928bbfb72b52b54f26913c25c0412453f1f2f4daf65618ce",
+          "hash": "0e0701e2c0570baf744d0371d9abcc7c224d6b488f0fc535c91b4c51c6f54b12"
+        },
+        {
+          "tick": 94,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "35df9584d16b63c53970ad5d8f7d153df1d80cbbd0d5578ca0bed0396d0b7562",
+          "hash": "c0a30f4b60626dccb638cad138163f5e316f4b65b13ae5db495279079b98b16d"
+        },
+        {
+          "tick": 95,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "ee424c3fa746b69390e25d92f6666bc6e3da3e59296111c1ae90eb84dc975746",
+          "hash": "771c59705fb968715a4c9520d4433040e82f038730d815ce9e29ff6a6f183869"
+        },
+        {
+          "tick": 96,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "e8b6b5c25baa4e9295bda8b6bc6cbf8a0962525e36848f2ca18c3db80424a05d",
+          "hash": "ba291072846802e40a54184c748ca6b4e487cf2b12c64bc999f4defca1790045"
+        },
+        {
+          "tick": 97,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "897c594077851bf2985355a2395fbde65876d06fcfd7e3a8830652d0f39aebf9",
+          "hash": "5a2ab2afdc9a724b58f38cc56a5e6353fa5cf3eb557d659b5070c500c2df9d22"
+        },
+        {
+          "tick": 98,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "3e4c0a87a6494477d37f0d26f979cc33b654043e91595b5472742796c7caf498",
+          "hash": "34b4f1c5a9385ba7a8c091ebd0c3bfa09bb1e391d45059836b93d67619734eb3"
+        },
+        {
+          "tick": 99,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "ef861f38ea84d80ef006cf89b6a86b17675540e3fda332fad88c5cd65e1bfa3d",
+          "hash": "0aadc185eb38c1904217c12eeaffc14e6eab8c109c10f376fe300454464fc26c"
+        },
+        {
+          "tick": 100,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "c587acaa6bd3d9b4a5c24a63af2742f52ad70d02d3dd5f8d01b2497dc8adb636",
+          "hash": "e81eeb99123113ef04a9f8a35fbbbb3d0bd62852cf364bdfedd4bdce5d16a559"
+        },
+        {
+          "tick": 101,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "15926add3baafea5ba4aaff14f671e5522df3606d3032728484a8ef6ecdd16ad",
+          "hash": "59271a43d2f7587f216ee8409f5092e653b0c36d5c96fdeef1532ac3ceb707fc"
+        },
+        {
+          "tick": 102,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "679bfe8e81c7d72c17a94c9e879309da6c53a2d04778485351d706b8fb096748",
+          "hash": "167002f6463e1b2229f098289e3b8507d4d1a6b667fb8be07c055845b6c23f5a"
+        },
+        {
+          "tick": 103,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "fc0fd24fe4def933838da61c2d09b79dd2c8a29e6819a52da3a7bf3d7d2c6dd7",
+          "hash": "cf95dbe0c7e6b4a583c132a1231cfed18f8448d566dbd1da0f4bcf536ac643d4"
+        },
+        {
+          "tick": 104,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "b0af96aaeef1d81d4d226e466dc86a90745e9f3fe799f15866c34f281fb611bb",
+          "hash": "85c42176c822bc2cb679e3c870ddb84ff0f82965b5cc0c02410e9d8f641ee879"
+        },
+        {
+          "tick": 105,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "23e349c998c78683cc2d0aa93147a0b7055883fa6a265086d777920e97855bef",
+          "hash": "92788a26109aa693250a45f938f37a8ce04b7c0c602e5b6d41dd4b561b07385d"
+        },
+        {
+          "tick": 106,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "45f33afdff7834eb63ab63565ec97c773a81004681664d5e508b4befd0b569a8",
+          "hash": "a700221159dcd519b379bf8082fe1ebd688e4942cdfb9894db783ae98feb8780"
+        },
+        {
+          "tick": 107,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "430f47f62d59b68e2e8ecb0c8d8a0db04b69e310b9fe09470acc0519de728c60",
+          "hash": "6cef7fe8185d9f29ad052c17a6f999e2120abe97ef45f019554b1bde36586b82"
+        },
+        {
+          "tick": 108,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "4ba130237e197bfef50b69c448ea6fe841fd1f77eab0458a44c337f4eff12bb3",
+          "hash": "bbdc7c87350063bdafbdb262187dabca12d84e0aa07cccc3f33c0cd95f800174"
+        },
+        {
+          "tick": 109,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "fd66a001fe6d4ddd4c1624dcf698e185a7a59a7b0a8ae68c376f4f258c927a76",
+          "hash": "cb73a2b3c1fd8e2f0686191f9967009d20caff8392b62217a094e06b18aaf42f"
+        },
+        {
+          "tick": 110,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "9cb05c41585af4c6966ea3f056a248ff51c3a25f6021ca2b22ed4a5f31dde0e7",
+          "hash": "86a38864bc62ffdc346d42d6eebc744844b041a60e28fc0488dab250e7bfa8e0"
+        },
+        {
+          "tick": 111,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "6283042187dc23d32dd95c79a7c6d1f04ce54f30502f6a279be1f2a8cde259f1",
+          "hash": "b81ebb7d7ca82d607f9af065363a7e81584b44e70a63edb010cbba18e4da04f3"
+        },
+        {
+          "tick": 112,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "13df39e48887c63549eb21d246e799cfe120d5d59ea3f9deef73332160dc2bf8",
+          "hash": "abf1e466bfe5f8b32e94ce1df80fce312dd5b50c7d6f313d20a7136ae2b726d5"
+        },
+        {
+          "tick": 113,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "01546788db495dfce0a4d47bf540c7172014fa8a8f3cff52c7a519980576367e",
+          "hash": "a7cb0b5380bf1c23039f803fa8aeecb4189c8b87d7caf864e341faedcebcef15"
+        },
+        {
+          "tick": 114,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "56cd7536409e7310d987fdd48922f508c3ccf26cabde155e19c8e241950987f1",
+          "hash": "98a315e3fb79a1ce2e8c49d076b527f350ba4016a4d86c1c21aabf1bc062376b"
+        },
+        {
+          "tick": 115,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "8025556ceae1cfc81ff95d3d94393a539b9ac06cce78903b33aca9d4478ffd84",
+          "hash": "b015435973f45026816039d738b2468bddfa8fe43058ec8d09e2427fc1893990"
+        },
+        {
+          "tick": 116,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "4411ee9d7786440ea523c995ce6e737cf6f0c50b6a0b9681cbdf15e9755e1e72",
+          "hash": "881f8fc128f30f47c667772b5ca9847474a1e7fe7a148701ffd7b5e1025b7204"
+        },
+        {
+          "tick": 117,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "15136e49cb34c762ebe01835e320c9f3193e96cfd828e9ea0cedd8fa613fc8d5",
+          "hash": "499822dbb0bb8ec461a23f5c7a7c117922d18b38dc0e21f04ed131d2b8f3f6fc"
+        },
+        {
+          "tick": 118,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "670f2dbfffa1b5d0f285603eaf14e59fc496c00e51b6a1039b3bae69badf33bb",
+          "hash": "e04cd0f414a1a9ae2ad91b6cbf8c677981782f02adf3c6a439ed58d5d352e9d4"
+        },
+        {
+          "tick": 119,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "dd24c8662c78e34eced596bd36b3408282923780973edb9c5cf49ed95f7b3268",
+          "hash": "01343efafc09e7e824127ff79f00add2d734e13f34b917f73150786754d69a81"
+        }
+      ],
+      "finalHash": "1a3dfa4a8e2dec5a9a0f1d14050f0160a52f2494200665bb610c83928e0aa066",
+      "traceHash": "2c73ab41b95bea84737d258b632ec14b42cc12ccebfc588557af514e60657697",
+      "score": {
+        "profitCents": 34600,
+        "utilityPoints": 33070,
+        "meanWaitMinutes": 0.7384615384615385,
+        "satisfaction": 91,
+        "provisional": false
+      },
+      "metrics": {
+        "profitCents": 34600,
+        "utilityPoints": 33070,
+        "meanWaitMinutes": 0.7384615384615385,
+        "satisfaction": 91,
+        "provisional": false,
+        "served": 127,
+        "abandoned": 3,
+        "wasted": 15,
+        "waitMinutes": 96,
+        "servedMeanWaitMinutes": 0.6850393700787402,
+        "fillRate": 0.9769230769230769,
+        "stockoutTicks": 15
+      }
+    },
+    {
+      "seed": 0,
+      "scenario": "bus",
+      "scheduleHash": "95cb39aa5eb80c45732ebd1724475a8c6f7d7f0d4461f089bfb805748ed4cec7",
+      "turns": [
+        {
+          "tick": 0,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "18c390d9119667bf0d7977358af05956b45401ea014dea1224f46a92551bdf7a",
+          "hash": "9b45372de1d0eb5eb3a2f196852092346c73bb2000d683548125d4daf25904f7"
+        },
+        {
+          "tick": 1,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "6dcd3ef22d24b873c11281abfde4a26e8d0f2176f1ce0fcc1eb923b217948d28",
+          "hash": "3b9ec882c877f903a9bd8138a3668cb9578166bb8869e2edda713f2a7215fdd2"
+        },
+        {
+          "tick": 2,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "4055710ae2b6a159bf0dcb0d77ec2bf323eeded6e09dc20a42e24e790f58d575",
+          "hash": "3875ca06766e7708edaabb3a5a1935b653b20558c591c988f2159c4331ade0e8"
+        },
+        {
+          "tick": 3,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "87dab07491ba50bd4683d6ae961e72704a93d52de76e425db49286fb3b2c9a86",
+          "hash": "5d35da5f146ebfcfed19c412223c21904939848c6322fe389257e47370f37726"
+        },
+        {
+          "tick": 4,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "cf6a1ea2036de24531c2852556ffc10d53e90927e594c07e7a2ddf82e91f13af",
+          "hash": "b0e4d118fac1dbd0ca202387611bf71a6726399a2375c9569727af937f16875b"
+        },
+        {
+          "tick": 5,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "d7282efa0a029918a0e2bc47d894e3c361f2dee915ddee114a01ad4b9b8c5606",
+          "hash": "005e9f057923e06bcf1c9e44a9978644e589a4d1ee302112c49afb19bec8c238"
+        },
+        {
+          "tick": 6,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "51af67d74566b1a50199d619e5f32448526e09f6c7b2f9c8957d95b051ec4d6c",
+          "hash": "1df9fc92ed36da7cd2c3620bdf0d9d06e41d11ddcf07151e30f95e103fce4e2e"
+        },
+        {
+          "tick": 7,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "81c79b02fd84b78a8195cd67d08ab12717d267afeb2ee156ffea3871f9d282eb",
+          "hash": "a94fac5434d46ac8e4d4731550b14e229ca5917c9ef525bf11de25151ee087b5"
+        },
+        {
+          "tick": 8,
+          "action": "RESTOCK",
+          "origin": "rules",
+          "preparedHash": "d3c3fb77c4d0d9a19131b1465e0ca35188a0409bc4e703764d6f55b501338dc9",
+          "hash": "9d8455166bd022858bbf1e30bfed28fc106820924e8c96869f0c5a026507a5bf"
+        },
+        {
+          "tick": 9,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "8f2192cee78c22f36da20b0f472b81f593d086c72c8edc19c75e8c6fa862a2e0",
+          "hash": "12639a77bf880e1153e43fa4932f672defab81dc87a94f6727e306c31a071c3d"
+        },
+        {
+          "tick": 10,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "b85b10b3d9b38f8bad538edc803f7639409c69a58a73196328ee1f0ab4669da9",
+          "hash": "ddd0b8446ad91b4b334a5a45b48df5fe36096e085e1ee69d07e6252784b2e5a1"
+        },
+        {
+          "tick": 11,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "9a36e1ddc44cc300934a4723cea83f2276a95cfc71baba947fee379205ac8967",
+          "hash": "56199cba49eae347f038d21f4fa5c133736114913d8c46b9177fd734a5915b50"
+        },
+        {
+          "tick": 12,
+          "action": "PROMOTE",
+          "origin": "rules",
+          "preparedHash": "0b6033f152c6dca4d47c81b3148351188bb313372a9a0864aa126a905cd4e7a4",
+          "hash": "bb7cf3b40aecbb49af99f2d6c5e2fabe01b4015bc314c55aa3ebdad22f8bb184"
+        },
+        {
+          "tick": 13,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "83be7e8001b1221c9a1ad3688605387915d346a2555a35791201204c7b736942",
+          "hash": "14fa6e7fd19eaf2ce6de0173e5e08937c8bef1dbcff30ecd1988e385038393e7"
+        },
+        {
+          "tick": 14,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "67ec3e9552e8392254a8f64a048f882be8546bb77118b691dea8273ebadb2f96",
+          "hash": "8dbc91e8e506d2d2af27665c417d94a735ba5cd90bf0680db2defb69edab4818"
+        },
+        {
+          "tick": 15,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "84081fabd72b0a53b5dac473925913b87c1b56cf5c5014fc4dce874e7ea768d7",
+          "hash": "fc1733a7b2f5c0598937b570f77f179412de7410118638ff34bcf0a9ebd41010"
+        },
+        {
+          "tick": 16,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "7c6ad04c5e0b3a3afd57f88244824bac75938721da9bfbf3dca7d4ba038bfd83",
+          "hash": "7a4fba9137bd30264decea6103ba1a31f2af388f3801ba63fd5b9e7898ae1a18"
+        },
+        {
+          "tick": 17,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "954467b8d56a9d2b0e3318d599be37637ba2c1d4e19076b060fc507d86af86e3",
+          "hash": "12da86d75518e6dde1bffb413cae6d6a482488856754590d1792d20979c16f6a"
+        },
+        {
+          "tick": 18,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "55916f239316eeb2701bc27d5704558fb4b230a4b3f0fa058f83744ac195885a",
+          "hash": "01c7d314463931d583d2602e35b4d0e99cdc6634f64b63da463506b6411005bf"
+        },
+        {
+          "tick": 19,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "aed6655bb3a99387c84a34de4fc73565c0a31ba234f4598ea8cec1d11278883f",
+          "hash": "a200bd8c18dd02cefe6916449494b28bd3565310ff2961258fe043f5d0dccdf2"
+        },
+        {
+          "tick": 20,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "f626268c8d84b18d672923733330bacee785610619560d3d1146827ac98bf15b",
+          "hash": "e996ad741fb0311339e45d37b1458051558195ee23b0545a503620066d816596"
+        },
+        {
+          "tick": 21,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "b98888933ddabf49d7764e0245f8d34a152e2f409e5acfa9efbb9c1db0f8f8ca",
+          "hash": "f941cf47b06404c726698ddddc516e217fd2ed33ed5b76090684b84ba8176d83"
+        },
+        {
+          "tick": 22,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "9331ace0f9e41258cf023ed042c6bb85f95d2784b8c8602a1f72cfdc8a161feb",
+          "hash": "5e758886825627682cc8748c3954518469e0659005bc9fb7f18106be799c8ae1"
+        },
+        {
+          "tick": 23,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "c3321046e021bd6e57328f60fde7fc4a7a3e0c7006ffbfb42e4ef1b6b34ae52f",
+          "hash": "3b813e7cfa0035af5383451a7f85471a9c9201f10147a412e49064e90cdd8bb1"
+        },
+        {
+          "tick": 24,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "4ed9ecc51447e96a52583cf0ad2062a969ea0c5a0a9bc7e52b0c595828a53d5a",
+          "hash": "d237485d495110f931abf5d0227655c39d7cf9f57d2cdfd03195e2cd0d5bd868"
+        },
+        {
+          "tick": 25,
+          "action": "RESTOCK",
+          "origin": "rules",
+          "preparedHash": "47ad2be216539ef2af4ff36fc8491d4edd75b55c172a172da444fbceacdd3c64",
+          "hash": "db551625efd2d4ac40703127d85893445f2c668f600bf70bfbbb1b42e810da4a"
+        },
+        {
+          "tick": 26,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "dde1bd6e28afb003262f6c00202bc6cd612395dc4c7f402b2e4b1b72269b4ffb",
+          "hash": "bf810a70f40b5d09cd4dc1d14fb212b4ded198525252641a7ba9cc0f81d01117"
+        },
+        {
+          "tick": 27,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "8a3100d37612aa5f2d5c88fed940862adb9450ff6f04c05bcd915dc68d784559",
+          "hash": "902a946c513457ce350faa3bcf3bccda88d21e25a63a2696c83c4115222403b3"
+        },
+        {
+          "tick": 28,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "cb41da147db758f36ae5c2eb3e6e6e7f1e804ae49b8f1f7f399cbb4c35643882",
+          "hash": "1e39695cb2abee59b0657982ede27354818e32e7270e99018fbbe490722e449b"
+        },
+        {
+          "tick": 29,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "7336d4a329a652f362724453a54519bb482d4229b5730076f0b641ad0d464efb",
+          "hash": "b310da5c3b7310f762c77a2db2b28efefc545126c64279f27ea9d3adbcc76d59"
+        },
+        {
+          "tick": 30,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "bdf33bb2e7d5b3a793682cce024a37b3241d3bfab666d2bd1bac7dd813882544",
+          "hash": "4c9a82a0851aa3228123825ff9484a7d06555f87ecc480638b880945403e522f"
+        },
+        {
+          "tick": 31,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "7b921a59b3bd2a5a4c8d0c424d5a47e5b621558db1d309ac589f995064ba89c1",
+          "hash": "9d6256207358b78c7b77da3d2d877065b5d0f5e9fa8993315c4dd0b82d82b78e"
+        },
+        {
+          "tick": 32,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "7ea715001f9a8be7e06122c46b99f2ca116646e58b0d6d1e4b38349879c2c970",
+          "hash": "c7ee9152ef1bb968cc7d90f6e0e3a9f00af660b3a99c0abd83c7c8f058246dd4"
+        },
+        {
+          "tick": 33,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "80890d921d6aa432b751d5b9f888dc5c13d0e7b02f7b338fb781361eeda8d2ba",
+          "hash": "4f824b491715a9840cf3cc140bfb53859be8db2126b70b4a4a4dcb79ed8c9601"
+        },
+        {
+          "tick": 34,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "314edd42a8459bcd65c24e8f01089311e84259e9355b09fec4fe86af58123a8a",
+          "hash": "d95ca05af90fae304fbd747c81085a46e57346ecfedf5413587806c00728f613"
+        },
+        {
+          "tick": 35,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "9771dfcea7aa0fa8335ae8b0029e7e3a54ffc3b8880514cd2b1a1728c8982db8",
+          "hash": "d9c05b287c820d34a598b56232954c2ea540fbfa251f6ceb7ba4af3c5cc57e67"
+        },
+        {
+          "tick": 36,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "3ed07725762826669edf70ddb6afa50e23277cf659ea5420e976d7eee49bf513",
+          "hash": "2ae89fb4e2840e0f12373c0780c8af1e469c18c66812c113e83fe84eab8a9f12"
+        },
+        {
+          "tick": 37,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "632c7cf3a1dd8094e92f11a231942a0357222a5a9465cb69fc92c46a020395cc",
+          "hash": "cb54fa1c735927d21be9dd6dd24e661264b109c6185ac62be10c64dbd4b5fdf9"
+        },
+        {
+          "tick": 38,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "33f3a26b2cbeabaa8deb129180b40995d67faa49b444b24336084f3c134db1cf",
+          "hash": "a5edc4e3b9ea2023022fd799df6cd57e52dd6d2d7df4258952b5f89eef0dceba"
+        },
+        {
+          "tick": 39,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "cbe897b32304409d8be3aaefac221c39692f7d274ddb433ec61ee2c4fd53787e",
+          "hash": "8333251750da74b89d1cc721309e3206e186a43edfc042885d9a33d2fd0df686"
+        },
+        {
+          "tick": 40,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "a1f05d4c26ae6e798b8c09b7e68c974d8dc4144f3247027318784c8b19bff251",
+          "hash": "27a180f92dc5346986a78e65b998542662b76b305cf037e8f2c7312694445820"
+        },
+        {
+          "tick": 41,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "560c2ed1f47b9b935404cd9ada9ed0691e68cdb011e5af83d027dc39e20fd2b4",
+          "hash": "bf676f639c7ea76409c26b64c39652123546e732733115206ba33feb98d4a7bb"
+        },
+        {
+          "tick": 42,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "ca04ad6e445c93242d53728df837ee1481505814f5d5c4129bda6d15f3281ca4",
+          "hash": "6bb0ab297beb9ab2688adc32efadfffd566fc0748524aea31e3257c6ad71de7b"
+        },
+        {
+          "tick": 43,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "4c08860ce47ca3ecba168e02c042efbe1005447b7f789c6321bad0cb4b54394c",
+          "hash": "25ec2e860aa06a765b2b7f8a79a60a5cf85fc625ac11ae3d24d9d5ca9cfa0c50"
+        },
+        {
+          "tick": 44,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "0a8f7741777acee8d324743789ad7e8cf243aba921d23ff3147f19fcf7aa1527",
+          "hash": "229285e2362d630f11d126d70f56ef0ad8bd948c26aad25e0258b46714983fc7"
+        },
+        {
+          "tick": 45,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "4b1d699f5fce46ba562a37b075e716d321726d57b6159568feef497c9c40cb90",
+          "hash": "b42ec60519f6877971da16ac2855c6736dd63da3b586adfa1a211a780f20b9eb"
+        },
+        {
+          "tick": 46,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "b0bd7127ee7649e28c1234cd2f23b431cee734d4bdb3f240b481979aaffbb69a",
+          "hash": "29161cf37d8ed8c08786b599ed00d23910078120e77fb0df2d5189506058981d"
+        },
+        {
+          "tick": 47,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "ec9e34b79fc3d564045708fad4effff67eebd3d2079fddc8acbedcd0aa306ae8",
+          "hash": "7208442525bbc40f274df979c52c20a44cb50330a0702165c4409063a05da9af"
+        },
+        {
+          "tick": 48,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "15c03994f60cba6bf300921590e6f5686a61ade11095b6140f7ed95da6badc46",
+          "hash": "fb530aa5f701198b8f02a6b065fb1b135dca05d08a4992001d6e72acb0aa1ad4"
+        },
+        {
+          "tick": 49,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "7efc596912e2f2714c14a874a9c218729491adc4c46cfb29d38bca029aff3ba5",
+          "hash": "fc13db84372aaee5fb5605fb15ac169eb61cbe51935f95c08238894e44bd2736"
+        },
+        {
+          "tick": 50,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "4bd27e21a74baef08c3b7b508d48889aea5df82197dd0a0575e08116cc643880",
+          "hash": "f735099d83acc3ec629d4876920245f7acf47857ea43df3df590b52dab4677c0"
+        },
+        {
+          "tick": 51,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "a26c5ac19c31437656a160cfd52b20728e6e57a71bba4ac3e9a12de80738ed49",
+          "hash": "0ebdac5903c9479fd7446bfa0b2c6a96acb21e0d68c71eb076d98c61ea67dd41"
+        },
+        {
+          "tick": 52,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "2225cb7518bedd5fb0e3af47aab76441d457c6766beb36f05ec27975ca49ec52",
+          "hash": "ce3999400a16f1951770fae821bc35640ff0d268a7f52907c3b9c674d4ee1102"
+        },
+        {
+          "tick": 53,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "b1f1e08cdd605ff7b507b586857415ffe0d94b65821fab3f8ca5a97c2dac4941",
+          "hash": "51b40877cf73b35cb0a85ac93c4ac7c878bff5b33251efb67babf156a9cf95c9"
+        },
+        {
+          "tick": 54,
+          "action": "RESTOCK",
+          "origin": "rules",
+          "preparedHash": "b226762344798ce33b4901dd3b0990ac6d42155216f4b97ca9acecc7bb4c7681",
+          "hash": "655fbb756e650b0b85fad122ae6ada1125992b33e59e1d023ae69637cce0f454"
+        },
+        {
+          "tick": 55,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "84e4c6a442bea933d80356ae56f46adba6bd3e1ad97cd4f9871ea7e90559bbe0",
+          "hash": "7e7dc97be218cf3144555aa9f3f022807ac5c175bab6db03b0ac9b310540b505"
+        },
+        {
+          "tick": 56,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "04b1f6d1d885f9774aa390cfb6662dd00f84db8c95bcfbc4b104cf03219d795c",
+          "hash": "05cf0fc2c17102fc3084d4a57109191d44d620360334b4a27c05d8ffc54ce810"
+        },
+        {
+          "tick": 57,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "4a975b5fab407c74f9b368caa9d0ade7113b28df3c96a3272f37c85f6f663716",
+          "hash": "a5952fcf4f390a946e12a0adffcfcf302d2f36d2bd9c8df1d75555be56f4bd65"
+        },
+        {
+          "tick": 58,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "ed5ebdce7aa55c150bd1a1ade8683cdf8a544b63f0af83667df97822a86eed47",
+          "hash": "8ba58f16965a092bab1ccef9abcc13e257531e7ff89192020cf9f14218e034f6"
+        },
+        {
+          "tick": 59,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "56c4cfa64d15f400c9cc7fc3bfe9a6a5a77db77cce2764c4ed73fec9faa6dd36",
+          "hash": "b0b59f40e190d5a61aef85c870f8e4a352efd03c00c2e12b49325618713a0e89"
+        },
+        {
+          "tick": 60,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "648e2514557b89afeeb8e74229eb8f09096ac24b1f1d45c6bb3ceaf1f2b977dd",
+          "hash": "a5114f9c70ec63d99f5e68638c840e73ea2b8e75c13c3034249f34054302db24"
+        },
+        {
+          "tick": 61,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "86ae397cc7c52ef866f4dd86a8d955b639f180ec89995b6926814a157c49e211",
+          "hash": "45613305368f0570c95c5a25a09ef98b1775737ecfcd479cfa67b75eba09bc49"
+        },
+        {
+          "tick": 62,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "0d678ec247cf7b945da4d9b4e110677f7781bf733fa7f585acfdba9661cce7f6",
+          "hash": "d3b8313f4bb408749ddbc58f9e5bf64d82063370c37f33ceeb173db0e03b3245"
+        },
+        {
+          "tick": 63,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "3406495036fd81dc694d8a5fc9d1a20b334c3d93710638f86b1b5f53ab00dab5",
+          "hash": "7e9a50656ea81e0f2983a5c947b6a741d4b8f35da8bf761a22672920d5f27fbe"
+        },
+        {
+          "tick": 64,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "676acd59b7bdf74bdca047cd7dd6a85a9587bc896954f74a41e0874b6aa3e35d",
+          "hash": "41d8a193a32d29813f1684e2766d12000592f115ae989fb7cba0637d716e24e1"
+        },
+        {
+          "tick": 65,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "19f9dcb3ecdc7da32d4415c81d52c4fef5e2524e604a8a99b90e5baf1d671545",
+          "hash": "9bba3f3f9057d14342b1b6c641b4941e3705a3b58ed50048bf25c259139107f9"
+        },
+        {
+          "tick": 66,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "aa7048529fcedf928a7b8c2513cefb7e6be66bf6d5542b1da879d4f48135a67a",
+          "hash": "433ba0667e5d8ddc2123c9d05927a526a52bf048f9f555d1f635fb749a97c5e6"
+        },
+        {
+          "tick": 67,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "8a2e79f651a737fd22b8a6a3bd60adae209827fe07636bcb0b09d0116e78cda0",
+          "hash": "664a89fe3bd4a623361e901ac19298347b4430432a10f0054eb4a7c1e356e7fe"
+        },
+        {
+          "tick": 68,
+          "action": "RESTOCK",
+          "origin": "rules",
+          "preparedHash": "265d82ac33a608a649f6ef67d6f110d826d530efff9689bf3b352cb54b44208a",
+          "hash": "b2fc158228f96a56eea59e4f1563132e99b15df0979d9ed3f5d0398daad9e4e6"
+        },
+        {
+          "tick": 69,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "fd3b453ba677360e46eb3c3ad64bb05044fb020b7056b6381bbe3838b10bdcc7",
+          "hash": "95d9617079f92d31832f221d31ba9ec88378a65fcd42e1f51cae2fe450452553"
+        },
+        {
+          "tick": 70,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "418cc2f2e5d16ceacc9ab22d08728b52579224eed60335aede43449dc006971d",
+          "hash": "fe5490a257f2a803a6f527a5d02c8c5c8018f27cc204657ed720cededc35323a"
+        },
+        {
+          "tick": 71,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "acbe40e3ae556934a557175ff8dd1bf29a3a57dc8b0c6c64ee4421dea9538094",
+          "hash": "8620198a6ba996da2162c70e645c3ed24a3e874cdde6a79810064f874ac0b644"
+        },
+        {
+          "tick": 72,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "db2f0b371fff6d34b816447212474e4d32c1883165d5f54af621ccd5b72af7e6",
+          "hash": "f9b1f64c46e89b0116b891de38f32639be5bde60d9a0ab8e0aaf1da7471a53eb"
+        },
+        {
+          "tick": 73,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "0944bb919d843c170311d94e749de226037c6999c78afb7ffc27cef36a7e2e95",
+          "hash": "ae2e233f5dc87c2e09a84d43aaeaa93f1eec0891cb9d54590625d337e84d9dee"
+        },
+        {
+          "tick": 74,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "e8d5fe8d966aa56280a143c88f0a5faeb24b949665900777af07f798c94fed70",
+          "hash": "3d5945b922bc787a21cef9562fa2274880bb3146e8a4d77c9b6d75c12fea7556"
+        },
+        {
+          "tick": 75,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "a24fd7c778c201658ec6c2ce90a8aab69d2165d0d41dd8e78693e68eb0d5e7b6",
+          "hash": "b4dd00a010c42cfb1aab438fe0ccd5846d7cefcfee678aef866780c81e9f9a40"
+        },
+        {
+          "tick": 76,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "c8ed9ffaceb2e998f3e97b7b5533ef127b93002be027979702df18a084eccf70",
+          "hash": "81679e7c1082f3de0db7710ff20083d09bca77658416e415fe69854081e8c200"
+        },
+        {
+          "tick": 77,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "1e31ffd92d18ac9526c7a4e6435260a1fa9484bf6cd1bf59bb96cf9fc949c260",
+          "hash": "6f47345452af925a3d0eaccb99a41a464102c91ddf16a955ac33f3d9a2424c1d"
+        },
+        {
+          "tick": 78,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "3af53d02708a366b157398696dec81e9eabc0e1de5fdf44af9d8ac61bd82b75b",
+          "hash": "9192566fa6289b43b850d3ea197cac78c699da85cd4d9399bc140bd275772c13"
+        },
+        {
+          "tick": 79,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "b7d0b45778f22eaf8c24c175e2f0aef02ad3f85f303ffd44e5a090da89a5caa9",
+          "hash": "e13a53a4414882d93d53ad60575a4b91766eada830eb552484dd5bd590abd705"
+        },
+        {
+          "tick": 80,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "cff0111cb8b24f328f71c46fba81229454dbc9c223d3c40c0f8a8aba1318e52a",
+          "hash": "3c0f7b6caacb15c4e160623e2ba799258b937d8ff4585b66bd5942e63d2a0438"
+        },
+        {
+          "tick": 81,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "7cf10019272002f7626af1f270e63ffa6ee875d4ab8b8f768f7bc6e6435698ef",
+          "hash": "8cb4f653e8111cd1cd5901e0bf21e68fb7826e2416af2987b3f6cae6e7838510"
+        },
+        {
+          "tick": 82,
+          "action": "RESTOCK",
+          "origin": "rules",
+          "preparedHash": "905c980992674ae76ef093429b70a7450bba54df2516338bc077c286d296ce66",
+          "hash": "f7fedee3c540011cf224dacd10a8e977f6f2e3bdeb6b70fc9b743cb720a33c8c"
+        },
+        {
+          "tick": 83,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "f920aa07f4d85ce2d6926312294c2ccc4ede44cb1dda7d3dc0d8256b21df67af",
+          "hash": "e815bd81c6f389e6fa341750c6ae28e22285f9e58b953202771e30a279c8bad2"
+        },
+        {
+          "tick": 84,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "efc426f2dbad5ce73982ea26edfe0a36668194773dcd221bded667ab8a992597",
+          "hash": "9f87e81106e56220e99a5b370c2adb1927a7380bcffc209551e1c52f0cc91c57"
+        },
+        {
+          "tick": 85,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "a5cd6f6c06855b75b639c3ca1d977f5f8fdd48d6b2a07f2c862b076dcadf7141",
+          "hash": "58fe1867d1f8aca7b95eff297386594ca3d5847b67760c1d23097296adf31b26"
+        },
+        {
+          "tick": 86,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "d111fad06e79c4a6aedca77af0dc42594b844c2f09cda04368f3714e8c210d40",
+          "hash": "b1d976d354cfae7b5d21d0933e9e6c542d3f384dbd05ebda0d83a67441131e86"
+        },
+        {
+          "tick": 87,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "e2c4b800da241ad8fca0ba4fb9499b69f8a968e34e701be49b316cc7384a5d2f",
+          "hash": "eb69f7086882819612d0b4345bc0111c1c9ab212e20216bff0fbd15e85ebfb18"
+        },
+        {
+          "tick": 88,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "e1270635b86423a499b56997cecd644432ed0829c774a9787a94a38012837754",
+          "hash": "2535839d226d7f5c49a0cad35628c8d305073034cf8b078f642e487e6ee19954"
+        },
+        {
+          "tick": 89,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "56f3151b2292b3eb596d6dd4d78034f5ce952a05e8a35e829bee15512968bd49",
+          "hash": "9ab70a192c81160759de0936ef114f1d1c3aaeaf769e9330f78f2becfd5c5ed4"
+        },
+        {
+          "tick": 90,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "4b8f045c6fb7442ca65960a806e661aa14b8e33dd0d069cd0796cac2ab60cf9d",
+          "hash": "df273ee9a0a2e976820ddfc692e1e708c7351fb7947277ec91f0a2c591537c84"
+        },
+        {
+          "tick": 91,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "caa9dfe9477541ec25fde3798ca5369c5fbec41ce11b07b73ba0023cf3442a69",
+          "hash": "f98dd14b4f659c450c397ae5c48c2664faf78013de0d942541df4d248861cf82"
+        },
+        {
+          "tick": 92,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "17cf52714543f6c7fef43fdb0ecba07d7e9ddd8081ff9231db3b25dc0dc31d94",
+          "hash": "34934deab30828237152e208fc4e43eca69e87d5f364d07b004d51dac7ba5a85"
+        },
+        {
+          "tick": 93,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "65504b4cb972e0b56045eb86554a8a2886e8aa871dd131920f257933d36c8ed0",
+          "hash": "8ed8c73cc82cbefa1d000d0e2b6233108395dd31d01ff2c623888080cdbe546c"
+        },
+        {
+          "tick": 94,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "194c3139f602852091e2183ed63b1f781be23f214c66d8dd01f8586427f7971b",
+          "hash": "30e0e7b01a63e2a507f6e9f37e98cfb7c30458c2408a97d22e6791480c72ce7e"
+        },
+        {
+          "tick": 95,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "36ddc6b24ec1688d180e30564647fac8a21a38c078947a32a999a927d2ac3e7c",
+          "hash": "4ffaa45143c48b4a05254fb0dc80966fdee7a316dabe6535a289a826cd030c89"
+        },
+        {
+          "tick": 96,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "2a28900b4178ad1d0d6e073315b7dc20f7ddb924038c80b6c16a43d761c3dfaf",
+          "hash": "4b8ac6cc4a53d196a5c0e2a8921543d353e8c2a7a41705db77aee3f2294f06b6"
+        },
+        {
+          "tick": 97,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "391bd0159202cf8979d4bd3a6b2b6691108147e976192c8e98ced085a7df3e3d",
+          "hash": "0bc849ba333f24768c22787f66e32777af490318f8c031aa7d37e033a50d8392"
+        },
+        {
+          "tick": 98,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "5ce87cf2511025723a677193c11e3444c246fbe403e7669cd71302ace31672cd",
+          "hash": "d2e917ec690862f053ae355f76cc2cb57a053e812f61d876a9492c7f942d94bf"
+        },
+        {
+          "tick": 99,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "e2be2788a2c43f73f1e4ec8cf65bbb2acedb5e56e902acd0aebf625f266d7449",
+          "hash": "475b4fb0df84a0e4d79928b61877d0551b8d7d92a03c11bb61e1d1d9e8bafe56"
+        },
+        {
+          "tick": 100,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "9253bdfbb116c5af7b9dfe65e8b80a1314633363bb64b6c0e847f72abfec2819",
+          "hash": "88be87c620cb01e6fbd1d5808c733d37a13bc32ebe7dfa6de03017c6e96a320c"
+        },
+        {
+          "tick": 101,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "8be985a412d0dfc3eb5e34440858bb2fd6ce84f499e2fa528e4f85a92ef9a27e",
+          "hash": "d37714fecf94c147f722d0066f586972fd648c8c6f5563331b9880f941adedb4"
+        },
+        {
+          "tick": 102,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "7bda350657c49a38aeec009b173c50ca02be1ebcdfd2b11cedd2341b3e950d33",
+          "hash": "277a6ee3ded6120b09d77223f2409a3fb0b5287c802e51e1492098256d46f3bf"
+        },
+        {
+          "tick": 103,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "d19ba0104d1e1555c04ce3a4e580e0a4b3c38f63025af0c714651caf9aaa20c2",
+          "hash": "61cf670dd04b5e699f8330ea235ea91da9cf3261d81ce7252796193e56140c45"
+        },
+        {
+          "tick": 104,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "316d7cc37767ed73cdce2c1ed077a3192a6a64a45a8002ab6bc68f43e1a1a7cd",
+          "hash": "3ca5da51aaeee13d7e4c2cfab256ca05ce72eaa85d46b447a4c6ecfd1da78c98"
+        },
+        {
+          "tick": 105,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "c63280c885edcd923a9b19503f794de9cf63b37277ff0ea1f4e7f894b590f95f",
+          "hash": "0f95bad96d033aa4915ede386dcd7eaeec887818fa7024c28afd42ed9c10e4c1"
+        },
+        {
+          "tick": 106,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "c5bcc4e3d00073681f517c1098e470a53fa224378377fec2a5384c273e858293",
+          "hash": "c088bdce80694426ea89d582a6303f9e47f605f038c39d4bab7ea603547a64ea"
+        },
+        {
+          "tick": 107,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "5ff89896ff6e19cdfc0ff2c3f2985be852d23d1ee0e028153afad495a36f8785",
+          "hash": "f3c39d3f3436a3f0d7560ce2d2d2d163a65cab49fe3698ad6aad2367882ba582"
+        },
+        {
+          "tick": 108,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "4b2c3c31b75c17e414d15616b142c63bda2955e7f1ef00472434c0ebea8d50ed",
+          "hash": "3daa45b4d2f4b267c8f581006228f31d20b38f74fd4323ebf7d4a6f14989bb29"
+        },
+        {
+          "tick": 109,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "80633469358607a8870ed3849c721af30375810a22af7892ff8d9f26040441dc",
+          "hash": "db2dfbcbabc5621ab8ce27e644f0dbf8dea4186372a6719145fc2227f1e4e9bc"
+        },
+        {
+          "tick": 110,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "27667f28cdcfb9bdc61850e8f29f2e41621e889ee6155ac0f455e8318c60c7ba",
+          "hash": "5800e37cc41eccd0a8999f98b7e02ad5533a0c67d0ff777185ccb95f1c344b45"
+        },
+        {
+          "tick": 111,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "ddaf81aba6e869dc6b485365c261bcf6305fa0a3307989bf0da9f912b1f74ebc",
+          "hash": "b554cde0d834e807ee5b2bdd38feb271bf66e50389d3460c56483c5ef8bbb120"
+        },
+        {
+          "tick": 112,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "b8ee6f3637f1c7c7b4a975f757ba6df0983879019dd9d2415377c99ffddc4f3b",
+          "hash": "047f93df3adf5451d4f686fad490a241c181f7996c479df264fb60d414363da0"
+        },
+        {
+          "tick": 113,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "0eb16f6906a6aeb7b0703ba4048d1fb17a9d657de49c6d79a0f111bab2162140",
+          "hash": "7f6d991ac8ee2ec8cc0d5a04b49ae474f78e7677eea5c8ba57026ab1007fb959"
+        },
+        {
+          "tick": 114,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "e6587709d051b08df8e519d6ee5832be159ff925bcd56e01943967daaa3cd1a1",
+          "hash": "711e21e0981b1b9a15815cd13b10a1b3e7b38b4b0a2f2fd1de34470eadd8ae16"
+        },
+        {
+          "tick": 115,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "925319203e81b1798c2c5dd3a3f55484f6622840fb2d7fc40f695c69ad686b03",
+          "hash": "eb9df684963ed80a4f9842e8656416d91298f85faaf33f6dd4ee64d756fb7fd3"
+        },
+        {
+          "tick": 116,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "cab554d180acbbb90afb3e061969e04f2f210ed0f600681d23302d1850803319",
+          "hash": "c193dd070d2e0beb74531f00323a42e93e9f15e4bf2007202d9fc6dcf653b1c9"
+        },
+        {
+          "tick": 117,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "245726b6b29b6a10748a8f8fd654154caa9e355e114e61e5c52989dae2cbb531",
+          "hash": "88fbcd0fe4773945494e5bb0840e71083872c68148ad243c35ad95de982f6789"
+        },
+        {
+          "tick": 118,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "f923558833b8d9d33a3e600cb9677b6debc63205390e770c83692882c0c0a9a9",
+          "hash": "fdb6eb633f5be02939b8fc4795b820c2c8ddc2903627c4966ec73ceeb7c671a0"
+        },
+        {
+          "tick": 119,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "3de79101f61bbc6854fbacc04d19a840724bbeca8a5a83dd224b7c802c804b56",
+          "hash": "7202090231b07a5affad7865c6d61936cf644c9b33a45d26ec80b89199e8c844"
+        }
+      ],
+      "finalHash": "bd483d979ca01af7347c8b5318822f168cd7028a8d826fb09ffe6f89a579c25e",
+      "traceHash": "9ce8796ec03c9b925af430cb663b56b3c616abb486749e8c8385f088701e0be3",
+      "score": {
+        "profitCents": 35100,
+        "utilityPoints": 32675,
+        "meanWaitMinutes": 1.3602941176470589,
+        "satisfaction": 82.42647058823529,
+        "provisional": false
+      },
+      "metrics": {
+        "profitCents": 35100,
+        "utilityPoints": 32675,
+        "meanWaitMinutes": 1.3602941176470589,
+        "satisfaction": 82.42647058823529,
+        "provisional": false,
+        "served": 128,
+        "abandoned": 8,
+        "wasted": 14,
+        "waitMinutes": 185,
+        "servedMeanWaitMinutes": 1.2421875,
+        "fillRate": 0.9411764705882353,
+        "stockoutTicks": 16
+      }
+    },
+    {
+      "seed": 0,
+      "scenario": "rain",
+      "scheduleHash": "76e4d5c082bdf593df83f7053404a46a42506d1038ac4b088898c1d691814589",
+      "turns": [
+        {
+          "tick": 0,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "b444e2f5c9a40744778ee4c61eec9666e985c5eca48a495b1f9a9aa41ae73ca3",
+          "hash": "804ce84987d1f1a6c8a29ce1c12e22247e693f577d1c31858cae18719ebf6fa5"
+        },
+        {
+          "tick": 1,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "d713e5228d08ba13ff25d01946cd0c7aeedad285a4ff40018c21fe79a5a9ded7",
+          "hash": "39090fb44eaae140135b09b45e531b3e2002d61e8a5e9162480533e29b6be6b8"
+        },
+        {
+          "tick": 2,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "57c0aa688210a11bf4f16cbf653c017f04d6b329f4be21cfef22f7acbd6cb249",
+          "hash": "c02e191847b6e88c62f5395957ec37dc8496d91b159ad8850edffe0fcf77e357"
+        },
+        {
+          "tick": 3,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "df9e205ca6029513884b120e32820a0008e6576911bbda7e2932844c91b4e182",
+          "hash": "82f3ed70b3fb3147aadfbbd36a3d9652a73e8d5cc7e642b7657a76554818d7e8"
+        },
+        {
+          "tick": 4,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "bf61ed0abf195658b52da2ef3768f28ab2df9b9eba0fe9b17c0737d9c3c30e23",
+          "hash": "5c10f674e65cc0742bcdd958eb5ce34cc33301d2bf32cc2ca606a3a3faed7d81"
+        },
+        {
+          "tick": 5,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "15f8a621ac99a34886f8ae60f722634334ad9389890f5406636aaffd1123a717",
+          "hash": "9b9fe4b7a087d78a7580f5291215c348d1fb96cf80f4303ca447da28dd95dfd8"
+        },
+        {
+          "tick": 6,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "84b43fd2d3c648c70933e4c32010587bc826d2332a0708be5bff39b5648a2b22",
+          "hash": "6d4358e78142e4fcef538bd659b6b5490ed6456fc95bda312cafdc264bf9044a"
+        },
+        {
+          "tick": 7,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "62148fe1cfdd9b5abbd7cff7a00b6c8a402b7f7365749bbe1b2f65e1753eb9eb",
+          "hash": "15f11f45f7113212dc3b75bc39b7c79e705dae7013907f0a2db61320d1a457df"
+        },
+        {
+          "tick": 8,
+          "action": "RESTOCK",
+          "origin": "rules",
+          "preparedHash": "b4268704a8e4622911767e9ed148948f104833fbbf7049a68f81424f20515183",
+          "hash": "b3b9d5e39515a5f716c533d8c4b745cc0f6a4ffc1d5f4fe145ba26ec59d71f73"
+        },
+        {
+          "tick": 9,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "4471bf7279c69b7cc19c7b3940796981fd48a8a647c1a0d3de8944755fc064a8",
+          "hash": "92375fc56fb46f025f9585ec9b4621d533677fdab03693c72b82a96e8cc88c9a"
+        },
+        {
+          "tick": 10,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "d6f96b336463152f0a5e546c27d17c54dbf51e667e3663c1527dd4c6758ebd54",
+          "hash": "735f09a2dbefe22fca6ccfd3818aeb127ac536af70fa9d1059feb8b09fbb3dc2"
+        },
+        {
+          "tick": 11,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "85b82629433dd793c06423f8953996dd24ae61d96b4568605b99bd46cdd42fe3",
+          "hash": "6496bcdc080449c4bbccfab9f3cb43c9951be8ec0a2773e421667ed2d71c03f8"
+        },
+        {
+          "tick": 12,
+          "action": "PROMOTE",
+          "origin": "rules",
+          "preparedHash": "4e457f11a722dc345ce958347790fb90edbdfa64a0d0be248acbd02fd1393285",
+          "hash": "8b4caa1377c458016466e2828afd835d15d39d7d01677df38d685eb6c2b38c34"
+        },
+        {
+          "tick": 13,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "d337ace3cda26f89e1f8783de5c5f6bbfeed03161dfd78e5c8ad7f75605e485b",
+          "hash": "b991baf76d9af42d05ebb87c15499031c2257e2fb9a7cca85692b5812273f011"
+        },
+        {
+          "tick": 14,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "6472be5bfcf943a43b47b52cd0a18565b7d30eb308e420a5cd4ac0efe9dd5a26",
+          "hash": "72839794453252fdc25c1fe4a8bf194652011445e6b978d4595e6f9fa2e45a33"
+        },
+        {
+          "tick": 15,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "84e954f58fa9db529384ba4f98814a47bb459bf9f327abc5d31f3badc5a43ad7",
+          "hash": "7bf9857a49de4c1f53f5b20aa01c31cb977a4d3c126f7fbb0500963b0d8f3f48"
+        },
+        {
+          "tick": 16,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "e489629340a0fe40ca9407f466bb774ffd656b60898933e823dcaf19181b6ee0",
+          "hash": "d076b0feb7fdca3f6d303fb2c4fbafcded9d931116504af1fc16948b899873df"
+        },
+        {
+          "tick": 17,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "7cb189d81f06bde43cfd658651a3547b8a9042b2a7ffa6e3640b0e13f4b5bfc4",
+          "hash": "a34e5c74ba4cf5878e7f46330a395dac16619d970aaceb284501c57b9409ce7b"
+        },
+        {
+          "tick": 18,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "c3d1a2e320eef6f3eb7cf63c6e1779220f747536fa56ad6bb2f0f8029ce752ea",
+          "hash": "2222307a4923bd9c2c3ec4f5d4ce1d1d8c858109d48724115ae441d6627c7128"
+        },
+        {
+          "tick": 19,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "b82791b5ff30d00e9cbfe75f7310350a74afb03e7075939a9dfe014050b95341",
+          "hash": "0c25528de254ca2cddf78e2d2210ce3265abee1e3a9e9951297b373550229697"
+        },
+        {
+          "tick": 20,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "540509bd2484d15c1cd99a5f1ec64f351c15260134cd57b813417121e017187c",
+          "hash": "e71e29bcef32bb405009c94fe26df31a4946853e6343b972078c264af2d4dbca"
+        },
+        {
+          "tick": 21,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "8290411b8bb3c5fe319c2712b88537c2fb5b8a4a976d68ffb6d9dae2857da353",
+          "hash": "f9d09063d9f1e0b350010ac1034fc48134df1920cfb45bd8d4d899a97dd43118"
+        },
+        {
+          "tick": 22,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "0752a84656202aa1fcd706b1242b25e2b07fb07ec8dc73e2170cd46667a8302e",
+          "hash": "bd22f2a63066a95f646217f21e61de751c39d0e61d4ceaca5432e6f0ce768b95"
+        },
+        {
+          "tick": 23,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "77311b3e4f7af433c8a7ef2a08f04ebc6397c9c31193777f2000ffc2b23314f0",
+          "hash": "0bc9b6cc1c46b10faf0249fac1b49c820e2a161bbff922a5ad9927c6ebb6d0df"
+        },
+        {
+          "tick": 24,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "3683f99abb4d5457094e6a35d87dcf355af629e97b112d2f48fd4e5dccd0d29e",
+          "hash": "5f5c0bf573ca01ac1f3bbb3420ef1d67dd4c99cfbecf16b92f9bc4061d9ae2a9"
+        },
+        {
+          "tick": 25,
+          "action": "RESTOCK",
+          "origin": "rules",
+          "preparedHash": "7217982899da6a721eb368bd56b5cee545f7d2f78899330cf467f3aae99911fc",
+          "hash": "4566c74b5ed68ae5c5ac7df611e622d1512cb4353812f68850de34c383ea1d89"
+        },
+        {
+          "tick": 26,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "aee85fb15f620500d981ec7db3c5584b70904a5e901d4ba8f39282876941bd82",
+          "hash": "31b3d0bccebc14948d766bb2c63eac0da418bc01f6f6ea742895ef3c8d35b3c6"
+        },
+        {
+          "tick": 27,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "07f2c8333cb1d897e43594b6f5ab6f78f405132e62b0223bd90774027c148b6c",
+          "hash": "c4c4264baa589ce4fbc5eee6dc91b401ed0a41ed547bd08686b1cfb7e4b4b881"
+        },
+        {
+          "tick": 28,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "d001de6a3f3a6242322cc09b0f7e2be97c53471f3ce6d26e7fdb9c9114690ab6",
+          "hash": "f3b95039edfa748e149b8248975e3b3397a5e7862cc487b411a2e02f1499803e"
+        },
+        {
+          "tick": 29,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "a2989c800cc99261ef46b1490912ab0a14fbb4cfc44f64ad16633c58ef88ac1a",
+          "hash": "aca2ec8b294faff1fff81a55db1d85036deff3487c68d3360124923ffb0a7b8e"
+        },
+        {
+          "tick": 30,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "4f52796c1975185cea246edf88ecc3b6dfe1ee7861cf1ae51853d9b34ebdd3ef",
+          "hash": "efc8c3d0c2818ecb158ba9b5c1afbd3c3e527cf887aea3170deecc9753a7b3ad"
+        },
+        {
+          "tick": 31,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "7ef40f6bffb945daed192fa669df0645e4a4b4a2472715e650776fc1e3e79865",
+          "hash": "aaf34a52148a496f84c0ecec9266d763b2bfc6c2a8f912e01d9b852e70eb30d4"
+        },
+        {
+          "tick": 32,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "71ff7641f33b9b30d2f743e7cc5a128f319d2bb8f178dc55bc37fd3d45f57d7f",
+          "hash": "c09f7337c5965a41c4c43eae5674cd44c809a1cb8eb3bb5d8de46ea9e906185c"
+        },
+        {
+          "tick": 33,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "3bb3dc6e429fac5c8079d84f46b5fbc33beba743ba63bc250512fc48fc522ffe",
+          "hash": "06eeeb90774a472cdd051bf29068a143215e504ead1c37aa0db98a35a4175d98"
+        },
+        {
+          "tick": 34,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "a0243124957d6efccac2c29d67474e6728a775f0c866400aac2a9bcca8235ed8",
+          "hash": "261e446ad0cc0bb0361e37c8a390eb8efee91513da7829a349b872d16f195333"
+        },
+        {
+          "tick": 35,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "a36d123730f4b426185b4e562281e04c1c262b25bb8ff11f9c178ac07f2bfa80",
+          "hash": "bd8d9dea31ce415540675b8a7ad8a3b843f94171f22480bfb7fa303812cd0eec"
+        },
+        {
+          "tick": 36,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "d854e18eda102038b14202958358db4121c576e072faf51ff0ede0878132917c",
+          "hash": "9a05d1868934c97c65175930a0640c7240e2bd083d010e1092bb3c9fe9fc853e"
+        },
+        {
+          "tick": 37,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "3ec8096c179bfa5327cd4ca2b9c929c9ac630b742fe819826a833f7a1aa203d8",
+          "hash": "3067488f52a4913bc79b22f1a0f2ecde5ed34d7d96f85ed0942d9dde40481afd"
+        },
+        {
+          "tick": 38,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "e4e5d8ae46bab9dd017d1b44806d4c2b35197f8fce033c6f2c4a12da964026d7",
+          "hash": "946be40fd2812a5862db32ee2147d48ec1252f7835176f3b2119c2b98bb5f478"
+        },
+        {
+          "tick": 39,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "44ef551148fe23b22167e30ecf8567904b337efac25ba6798733e0ab08c08ffe",
+          "hash": "f109ea2996a387727cd9327b4e3dc7502b5d3ecf335e2a913597bf681e141398"
+        },
+        {
+          "tick": 40,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "a85b05e3de4e6a59ab0d8d2f8964114da7b096d8434898f71b9257125205965c",
+          "hash": "f891a2a93759e6781ab7ed01f7d4268c507c718f759674f3ee00606d2ddec8af"
+        },
+        {
+          "tick": 41,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "b612e6b7a2df6ad19ffba0d2b4a23bddfc8816366b2fda22243258dbfd2a498b",
+          "hash": "9a8f247bffce65c9525131c7f7d8e7c39b22d049d2c1f23186b7e22bfbfcfed4"
+        },
+        {
+          "tick": 42,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "e45cd70eba593d55c7e80aaae7ce9353ccdd2ddb83078658058cfe23cc610990",
+          "hash": "d8ab7b15e62ee665471f2428ee918b192160479ca2c03634e77502045006c278"
+        },
+        {
+          "tick": 43,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "a4860520ddd5ac94591d448f8f42552c3b3a3c670d04b3c65b61080e8f969f92",
+          "hash": "37f66bfd76b15ca7d5917076c56f11988c025c8008d600566d80dab05deb9e5c"
+        },
+        {
+          "tick": 44,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "9f158b5e064131c189e3080599995feda9fba67db49557351c3a79ff1d6b799f",
+          "hash": "ea6f6f195ad06598ec66b3f1222a7660d1111901fbc669b691da6ac68cc42441"
+        },
+        {
+          "tick": 45,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "a20d9505a707afd62193d2d7687bb182b99dddbdd162beae07e4301e7f4fc8f3",
+          "hash": "7a3b8cac8d8d0044d36abd916563f5b2a21c23ace4a520c79ad47c8959b66c77"
+        },
+        {
+          "tick": 46,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "2870175922c8c61ec43c63dbeae2a4a8c1f9bdb1c8ff902b9fc964934725e668",
+          "hash": "24a90a377a4668941dc47f28c6f8c9f98ced75200142e3371ad323f5fc648c75"
+        },
+        {
+          "tick": 47,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "7f5d4f138e7e97282fc91f42913a9f9c98384557450e9446de280d75cb2fcb59",
+          "hash": "32e610b995fd7dbfde618df389d2d0af79f05add201bb7da57574bcbb24bb317"
+        },
+        {
+          "tick": 48,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "ce2b7dd98e0bcc15d048ea7a0c5b467266be906b5c2883dbc553533f49e8dc0b",
+          "hash": "770852c341becd3e7a150ae9a9f55b37ec8ee87a76e115cf4309323fa86d7369"
+        },
+        {
+          "tick": 49,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "44749a06288340afa862f3355419f483249de597ab499ec37112a44704245c41",
+          "hash": "961c83036a5f1ff2ee0060cbcf9d75c51d4462c74939a2b56e931409d47f3331"
+        },
+        {
+          "tick": 50,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "180a0af13e6f754395152b2e7143ac3af3d0be4fa759240f6505f956a7501385",
+          "hash": "b78e15f1f3212ed6901d4ead54bb5e655b66c408c0eaaa78902deabeaf5073d8"
+        },
+        {
+          "tick": 51,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "353ddff90eadb168db7d4f14e50ffbddc2c534be36796327c552c3d627029eac",
+          "hash": "7ad8d06a64b162d10cc2729560beeb1a95230e0154d1c3cdc3b86b1c5f4f4d4e"
+        },
+        {
+          "tick": 52,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "a59306192b9d68b69198f2674c5ebc5f48f926277a129e8878cd24a28b209e95",
+          "hash": "530ad2c76ec639449c3ff7a71df658964c2ad70cf706dff2e1503a6425700e2c"
+        },
+        {
+          "tick": 53,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "642395a43856c7b3c9f178eb1a3e03fbd773e57a9c1f4525a740ce5c06af4ce5",
+          "hash": "0dd3a0d7a4d0d8645988aaa9f450fdca6b8dacec8ce120328ac08868a0dfd5b5"
+        },
+        {
+          "tick": 54,
+          "action": "RESTOCK",
+          "origin": "rules",
+          "preparedHash": "a330979769dffe4845dba0bacdcd740106c581b2fb65328a4162dfbfb18c3fe2",
+          "hash": "41ade8cd8d59bb78bb34594bc4090d385acadea99e78d3db604ef5b9c20f7588"
+        },
+        {
+          "tick": 55,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "7830b113bc6b4289243ef63e6a8cdf75c9c8a5f95ed88633d0646a642ff6d0da",
+          "hash": "82d0555ca9fd2ee7eefab32f22d3f822ef60a689067cb6e18db69ef4fbf56251"
+        },
+        {
+          "tick": 56,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "021c7a4b71de1e69b089c47c635be7529901ddd962c5ef670aaa15ca9d001fb5",
+          "hash": "3535bcc22eb3a27146fb71a58e0815377f1f60877b029e7846dd07a2f72f5cd9"
+        },
+        {
+          "tick": 57,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "84c19e43dac61f167b7ba98065f9c60d498ec3688ab91fa32da74dd1b3b0014e",
+          "hash": "60d383c761e5e28c1c4bb23b2e4525881d92894e0a3d22ebc6b7623448c0b548"
+        },
+        {
+          "tick": 58,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "94792874dcff918746522edef2bceec888cf9a2e0fda52104ff9fd615b3d6846",
+          "hash": "3ddf42ca7873210cd2a88b572ba4f21b64fb9f6fe9b791632c99b1fb8ad705d7"
+        },
+        {
+          "tick": 59,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "01af5ddd4785101a882ff0f7f02da8c33852fc8650fea03ab038d65f2abeeb80",
+          "hash": "aa5c4365c8c40a55be11310e166560119c9627e3bad9bd438da67f4a28fd2c76"
+        },
+        {
+          "tick": 60,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "af0f8f948ab287fded90be07f4c6c7aaf2b6afed28ea5c31ff0bd35100ea9f80",
+          "hash": "11e8db5585c5c4eaf699eb2024e88cbec0f810665beb2bc18d386dd61d1c56e1"
+        },
+        {
+          "tick": 61,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "52b6546326232b3ba56827fb5b6a184abcd069a9cf22ee5ae56e7a4f6beba8b8",
+          "hash": "b70f7ea0879e71edbbd65c4e1598cf93cd36c71be2dba31692225d8eead62b74"
+        },
+        {
+          "tick": 62,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "2c0dae53faaec9c475855ada60b849819d7449cc86d8076bab039a2aa3935d4d",
+          "hash": "4afd2454771d06ead3ea8946426d2cbb7842f507b35f91307f3567bc6c9362d0"
+        },
+        {
+          "tick": 63,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "f4518a0c6955014d40d42fa80adcda30c89711e7c457a868ddfb641881a6c86d",
+          "hash": "ebff4644bbe67da01e04800529d0f9cefa70d58d650f8cfb76f6388a7c012a7e"
+        },
+        {
+          "tick": 64,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "946a489a520e8da35864abb28073e139dfa3003e989c37c8ea288cf18bf4d973",
+          "hash": "d5741237809977c8cf06c69091e007b06588eac8235f7ef8639330144fdf9d0c"
+        },
+        {
+          "tick": 65,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "624a71361851bb5052612ebe13f6fd80db8bdc602402c0bc79ab2a676d2be689",
+          "hash": "f678be9195dbeae4655f9f2187d70b5a69a185a5d611d678adf7811f30ce7bb2"
+        },
+        {
+          "tick": 66,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "4b560daed03c2e3606075952c07d5e0b05b982f764585ac26e618b5e0e3328e3",
+          "hash": "6b1debdf81e889e2873c0b7e655660a4d2850b319904678a89b2aeb5b0859f10"
+        },
+        {
+          "tick": 67,
+          "action": "RESTOCK",
+          "origin": "rules",
+          "preparedHash": "0d9645c7ea3b196a983bde06950d0c974eca361f545b79a708d456cb54df8d68",
+          "hash": "31b2f839e3f930c29fe4c071a85379c662af4a606b1aa6e266cffb39d66fb76d"
+        },
+        {
+          "tick": 68,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "857b9f40059a111794a0be287b682ef21ed98628ff8367c1142d7ada0fa20e39",
+          "hash": "adf105c66a02f6bd1b10f782b9746db19be375491fe3529a1719d67e51be1f25"
+        },
+        {
+          "tick": 69,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "1b37384a228ee77f079766f86a7a3fe766feffc2cb75ddc9427c4a5bf25a0cc3",
+          "hash": "fa84bb0fafff11dbb039a9d3058dfc3264ad67671c39abd81adbf8e7266c8098"
+        },
+        {
+          "tick": 70,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "80d02fc63e4f5eba3f606ae33d8f988d98bb67807b1d01b7ea6f8b9420a78d4d",
+          "hash": "22f996713cdc38254e66f3a7a86da802cdefe40725c23ffd8abbf8a141b1d072"
+        },
+        {
+          "tick": 71,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "774cc89ea95b2dd234b24283ede1cf0dbf3e5db893eefef30c329eddff40e4f1",
+          "hash": "7c99e8f261e9212bcf87689dfc41c166269d24682612c6285b675bb76ad7d49b"
+        },
+        {
+          "tick": 72,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "95e63d15f2676a8daca5430d3a7b63631e28f929dd6ae198f487518a74face85",
+          "hash": "71690eb622efc125b67182beef047d484b97f536d693502a1f756c0a559c83a9"
+        },
+        {
+          "tick": 73,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "451ab952133bcec3246b94ef05c4883d45f1f7f8a7cf3213b7b70b59d7556691",
+          "hash": "a20380d67390c7ec4a606f47fbcd59b7af8773734809ce229cb01cb0c50b8b60"
+        },
+        {
+          "tick": 74,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "23a2ebc1638729d4b83cd4690d2f057802d590beabb39df51997799f4904f708",
+          "hash": "d3fb76835c5590496c21fdff576f9b076c9c7357e44d6d8b7f289c2b734c2372"
+        },
+        {
+          "tick": 75,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "91beadff96d5a6f3447ab803d795f8004908c6ebea8ef95274a57265aaff3aa0",
+          "hash": "3c400a7fa8f4f82eddccc55dde822b8866ea7606611f3134c43a5bb528635957"
+        },
+        {
+          "tick": 76,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "c0977df4e0b380d3a450f4f7a6f4f15289adc93561fb328674ea065ec5bd1caf",
+          "hash": "1adda728deb745fb544172ba8c9160fe599f7946155425743006712815e224e2"
+        },
+        {
+          "tick": 77,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "fb0382b6bdcc52c2d43d782602af7f6dcca9d4131c261ef9a9d66d759802806e",
+          "hash": "4fc8f5c2b698e942aab58aae015f8dc76ce96e4a083065c4719249e1d4412fdc"
+        },
+        {
+          "tick": 78,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "e7642c193809d698378d8a42fdee43bbe24e8ba6b5ea6c62fae6208099aa7bc7",
+          "hash": "9127b8ee470ec2fe22f8bc90d852e7dbac13c91243d4d3c2c75bf786b9890084"
+        },
+        {
+          "tick": 79,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "b3b22ca217f309a9a3ffa292a8081b310fa13ab0c9ec971480ff03ef491318f8",
+          "hash": "79e5061516686da488aef76f95030caf22bb450851a48d32b88a4df9620746fd"
+        },
+        {
+          "tick": 80,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "7d033e8c16bcfa063574270302c281cae5bb969a921e327921c5eef622a869ea",
+          "hash": "81aa7aca8744e9bd83afac05dd346ee6d2df2ff6e68b5515099ffa485a1f5e62"
+        },
+        {
+          "tick": 81,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "0ef322e4af9b0c71109c958efc4d22c65f5e09840c013b6d007bb67df88052c7",
+          "hash": "f47f93d0dc855749203fd78de207f4c2e0adfc603c004aea09378b024bca9569"
+        },
+        {
+          "tick": 82,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "90ff2a8114661af8ed5529e6aa0b5744d299861bb3dd668f7d4cadf5ddc63091",
+          "hash": "ecbecefda0870afc2f8d91972f03353fa47f167592cb747990c3eb11adc9a41f"
+        },
+        {
+          "tick": 83,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "53e03ba1914dca14a90858983fba978cb2f665dc2fea01a05ae549bca2928702",
+          "hash": "c60e5ab583e647a60a46a00f3e4ab66a4dbb1b1085a89645b2860a4b11c7e431"
+        },
+        {
+          "tick": 84,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "0c630fb891e1a7d5a2328f11e4fa9e7b1b8c70fb83463760e403e35bfbe0e9dc",
+          "hash": "41611850ce63937b86bca873b4e2789d93f3951c6156836e26a20cd1dd7e9cef"
+        },
+        {
+          "tick": 85,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "65393ac040611fdcf1e43be10b0257127b149185bc46b79fab05e01a8043308b",
+          "hash": "f36a2fb11e6507e5b8757eff62755700164181d2ad689bbbe9d1b2062fd27bbe"
+        },
+        {
+          "tick": 86,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "e3b3b513ac3101cd0f3f983a99b95262c77353c6606d38aeccb1ffdb187e42a1",
+          "hash": "bb1d49b30debb26f99fe6395ed9cb8186cadd42c8be9d949ddfa3b6451375fd3"
+        },
+        {
+          "tick": 87,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "6b727f25fc082ae2167245bbb1c733f904e16c9d325e95140b367e3a42245f18",
+          "hash": "22c6bc49afa8cb1157f3f512eec0d7e004ac2ca1c091cbc26ada99b09b67d661"
+        },
+        {
+          "tick": 88,
+          "action": "RESTOCK",
+          "origin": "rules",
+          "preparedHash": "3444702bd65a1d02f383551de0d779336682c24edf0a00f6d78e51237339b93a",
+          "hash": "c4b534149f597ade5bd2a5cfad672f563d609a6b17740c3bcf16f7ca4c96429f"
+        },
+        {
+          "tick": 89,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "eed59d611312d2371ea018a84c46dc1f52b5d6da9831f620136358ebb1deb55b",
+          "hash": "13a452e728314cd31ec68463c19db0215a716bc0726f5e58f3c86747310ccd5c"
+        },
+        {
+          "tick": 90,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "ef6ea74b780b1b7cbf1dd262a9668d54bb0274b51d7f94fa450159ecbf627409",
+          "hash": "d9e109f19122f3f2742b6bfe72cbb08cd2cef204d87db6fe202c5f96413aee0e"
+        },
+        {
+          "tick": 91,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "9e0534b036e6a4c8bfabdad70e53b852b754f374c7de4f4d3a6779ddb4ad669c",
+          "hash": "2c673be244aa93b6bfa38d73fbba37979424f189de705751636cd2619d1580ba"
+        },
+        {
+          "tick": 92,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "6d825b1d423a9cb5385cbd2f6483eef820d89e293f54e99a5dafc369c71b6e35",
+          "hash": "70c7bb36e74697c666078abbac4a629f36461087e10bdfbf22f05abcf16730ed"
+        },
+        {
+          "tick": 93,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "0472fe9ef666b96642af1c54fa3940861cc24bd9a14c790891d0746bb01ad382",
+          "hash": "e1acaf1b55ab10160e06399ed75c910f95c807f7fd9a681c84d3302957f0f9ee"
+        },
+        {
+          "tick": 94,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "85ad8d5dd76f49459904225a8ba9f96a419d5733cd643b92b6a87370b29266bd",
+          "hash": "0b0f66b26681182256fe3eb656a912026f809cb2b2f64ac54bd56f47ebebd705"
+        },
+        {
+          "tick": 95,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "dd2402838010920052ba94cb92555563fe736cddc83215e3c3e43e467435683d",
+          "hash": "f09c77d93073edc34a482ab923844ac64ce33d559f18748e84a481080c33311d"
+        },
+        {
+          "tick": 96,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "c7bed0267dbc326d3cfa293c7cf02d2631269441e83baa195214989671282830",
+          "hash": "26a6d0e841937a5e8c515dc1fc1c78240464acffb06c1ace33f55b6d853a4f41"
+        },
+        {
+          "tick": 97,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "00bdc609220f096f93010b8debfa6677328b93524dfacfbd5da54793b647845c",
+          "hash": "a4e7543a9c54d88e3db39ea0e7accec4e34ffdcd023b23bbc548482e22b320cf"
+        },
+        {
+          "tick": 98,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "6a068451ae4c3513c9130c46e9ae598eb1566a257d1d2b4a2b6d8ed111ba0ccf",
+          "hash": "bdd9138a946eccd58d97747b8a732af5fa6e9c0c357be64c585ed23cc68f157f"
+        },
+        {
+          "tick": 99,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "23723e8e62d6f115bc7a4a4d332075ef5955fb60456d590cc26752d816668486",
+          "hash": "f872cb721fe9462b4a0292d5f58fdbb8223617eaa26d466e299bd5b0228ed76a"
+        },
+        {
+          "tick": 100,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "ba81a699cc1ccf2e94b1a386be201fc05cb0a34fe7fd333ffe377fda7e88bba0",
+          "hash": "a7791788b757d27e69d2aecb28321481104cd3b113bf440d8e17fbfde08e7f8a"
+        },
+        {
+          "tick": 101,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "a545e0f9f2272b8cb3c5056fe94e763079d58689cffa026d41e2b4e5dacce9d5",
+          "hash": "c33b019c67ad5d2ba660137f6dbcfea17a5aa1e8489205bd8b0f47985c983c63"
+        },
+        {
+          "tick": 102,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "5427fe45c004db2eec77faf8847d6510439f51a0b5834d5049ccb518926cf3ab",
+          "hash": "884e164a003edfd95f5f5a4372925f13f167f3767c41297e8434895b97622d85"
+        },
+        {
+          "tick": 103,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "bd88c5b82c898ef8546ccc63eeb40370f86583bbc38261839a705a5cccb54fa6",
+          "hash": "4477b49398edf8652fd7986d55c7975ed6a075a57b55725452f6735ba62c7e42"
+        },
+        {
+          "tick": 104,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "4a894fb64f6b0c0ea1e3bfe78ccc2bda9792c9e8ac11d665d7656588ecd26a00",
+          "hash": "10877a23faadcfaab7b89bcaaaa2c040d49890ebb474c88a90d3b2c78f75433c"
+        },
+        {
+          "tick": 105,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "937af553ff60fe7ec11e7daea063eaad373a5a20f135458ebe4fbf22afc3101c",
+          "hash": "64b7404cc62afd1db0978314835c5a63b122182de85700b9eed87762b3159046"
+        },
+        {
+          "tick": 106,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "3302888498441239b0399626ed1b000efd9625b716353eb287008b675862580d",
+          "hash": "6c9e0c6da17ae1cb247c444b70baf95f10ecd838f6c0f23e9111caf2e002d94d"
+        },
+        {
+          "tick": 107,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "4d372cafeaaef1ba2817c79c5515402b9a97c5782309332de97092a6dd1f07f2",
+          "hash": "426b886edc321767006f3fdc7127c77c530b25f13a5a01c4d30334c2eefdc3ff"
+        },
+        {
+          "tick": 108,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "709acf0bbdb0409ccde3a3eadd4b0e7cc23521f8b4978b9badec6f9c84df9634",
+          "hash": "e8b9308e5d24581d13b011c2134eb8a1ec833ead582aed07110513e29ea03fe9"
+        },
+        {
+          "tick": 109,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "2084a5bcfcfbb1016e20749befeb61f8a528cd0fdfa385633964d4071556749f",
+          "hash": "71708a965d73bc6bc008714d7713f47219b8e8b714084be78ab5029644200a71"
+        },
+        {
+          "tick": 110,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "a13a7f694b0a03e01067fbee32c8af1297fbedca7db7edb9bff81c9b4e5057db",
+          "hash": "71d59f36647f9da9b762e67d8d03446f1e7ef2908d40219404368711bea8bb6f"
+        },
+        {
+          "tick": 111,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "1e889c96738bffa1d370b63b51b5ec249952ab2a2ba215164ad160a5fc844ee2",
+          "hash": "86f06d838a01113d6e347f9221feea0392fdcb4730c8eaeb2693addeeea852f8"
+        },
+        {
+          "tick": 112,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "7de2ecf3f340102ef2e1f84cf28f38906a8109822b87387898ecc73315a6a584",
+          "hash": "047839678bc0cd459ae6b0e6187ed7c40d2f84ea1252f58c0788b1cb9b164562"
+        },
+        {
+          "tick": 113,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "37e6a70683d2088680c405eda6478322bc99d3cd5e5d0b2b4463525bad41f4e2",
+          "hash": "28490b72ce47b184b9fd49c1e69eb3afabc618fce6f53058790ff7da49ae97cd"
+        },
+        {
+          "tick": 114,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "78fb2b8ac617e778d3cebdb10851aa161eb335644815cfafec483197a6341313",
+          "hash": "7b99abdc12dc9616a4512e9f295de92e9b4d213746bd624a33674c3a0efc3e81"
+        },
+        {
+          "tick": 115,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "357bdd7643e50d4a4101347c0ba34cb507e6789cc1f6bd5728451163d6e5b294",
+          "hash": "a8c90f3757da3e073ac71d28837f70eb44b5fca9514c0fe92c11ea5f462cd9f8"
+        },
+        {
+          "tick": 116,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "005d153e8a87fb4c1f240f7ea2a69b76264cedcbfe9ee05e4fbdf82432430a7c",
+          "hash": "eb5208c41f637fe3b510b87b2eb62b10f3f3d178e45c6998df68d67f2e9bffe7"
+        },
+        {
+          "tick": 117,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "678c30d9901f0cea422fff72d0d6a983d4b73fe32f7cbce15d6e0c71933474bc",
+          "hash": "a07f8e66534c1e868b546368c7b5ed2eb21451af040ca9e3330bb558727b4be3"
+        },
+        {
+          "tick": 118,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "dbde9ec06ec2242d7a4224c7af7f5887c0b901823768d3e1f35dfb5e06e74ab8",
+          "hash": "cf42802c96fb51b33c3f8f809c6786f446e75f715baed723be801b97ee157e6a"
+        },
+        {
+          "tick": 119,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "6b3845d9172a1a6f881ce54e78dcc0f93c6ecc69feb050712111728f5517f072",
+          "hash": "f09a866617e6c32fb6a5ed9285bf4a3d7b4a818bfd9a3c9cc6738d12b9350301"
+        }
+      ],
+      "finalHash": "64845a1ede010004f21499dd120215cfbb31b0a867a4ce8b6724d2c51fe753e7",
+      "traceHash": "2960a93a53fc6bc60c703f1ae8cf80e3e4f7b32172271307ca1f7a95726356e6",
+      "score": {
+        "profitCents": 34100,
+        "utilityPoints": 33235,
+        "meanWaitMinutes": 0.5983606557377049,
+        "satisfaction": 94.01639344262296,
+        "provisional": false
+      },
+      "metrics": {
+        "profitCents": 34100,
+        "utilityPoints": 33235,
+        "meanWaitMinutes": 0.5983606557377049,
+        "satisfaction": 94.01639344262296,
+        "provisional": false,
+        "served": 122,
+        "abandoned": 0,
+        "wasted": 10,
+        "waitMinutes": 73,
+        "servedMeanWaitMinutes": 0.5983606557377049,
+        "fillRate": 1,
+        "stockoutTicks": 12
+      }
+    },
+    {
+      "seed": 0,
+      "scenario": "supplier-delay",
+      "scheduleHash": "568614b3208c3f917457b13818b50b20670ce35af1608927b5e55a058f946287",
+      "turns": [
+        {
+          "tick": 0,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "42cb2beac5232c8b4563e48d17bdea3e44551c6abad3eb7f50147727306e2a9f",
+          "hash": "4ab186d818eaa4865c595094216ea17e0d23d3a3903746fc5e9fb7340c9b60ac"
+        },
+        {
+          "tick": 1,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "2851796aa67eecff6d23a6f3d8c802039e99e320d37e8cb1376818530a20a4b8",
+          "hash": "f590a0fe215cd84898eb05bc33e5a7c53c4218f0dde109def614200df21fed3d"
+        },
+        {
+          "tick": 2,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "d8babc39a693b41cb1e13f39332aac6fea623ca09d7b34705b952754bfca0761",
+          "hash": "1f244292c0482060674588f0c876066833bacd0834b0d6e23f11949f9bc12b3f"
+        },
+        {
+          "tick": 3,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "d22019c492e99fc56ae6838c4a059a00ac532d1363f990bc294d58a55ee5f04f",
+          "hash": "085eaca3b544d0b97da001f0b461915e4fe118bf73efc613d686874b7e690977"
+        },
+        {
+          "tick": 4,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "fb1c247993cc69b3792667f884e2e228f0d743c9275436853b8f0e287f569f87",
+          "hash": "2962007727746a05d0b8793a50ee6f8cb77c5a0764a388b79737d6b42d25d0cc"
+        },
+        {
+          "tick": 5,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "c01b3fa449a22d9243e7a50e7b2d5acc7c62cd5827a6f0e4aae94a7ca39070ed",
+          "hash": "661e332b27f7c6cd7e87eaa190c75cdda494334f50f48b73a7fdaf25d625e3fb"
+        },
+        {
+          "tick": 6,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "2f4bf8869b7d7cc8fbf7252af8fdb46ddb0efac927894c0ac9902258f8935431",
+          "hash": "48f7dabb399ca319bbaf46aa76652d903f2d70ae359399b11122734657a638cd"
+        },
+        {
+          "tick": 7,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "7bd3390f061b4f3581811ffbc00c6a82d0630506fe735148eaa10a282c69c221",
+          "hash": "ce02b822b384815aea5a3ed457db28d42f0cd18a683e70a57e1bda3477e87a0b"
+        },
+        {
+          "tick": 8,
+          "action": "RESTOCK",
+          "origin": "rules",
+          "preparedHash": "1171d1407f7d1019cce63a12060c4a34fb153ee9b17dd58f2ef22b5f329b2bd4",
+          "hash": "583514807120dba3008cb9459668f9026659b997277139b47cfda225b9a8dfcb"
+        },
+        {
+          "tick": 9,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "90c908ee7bf8dfba0ff4143e76744ce356827b0aa14a520f543b04a68a945781",
+          "hash": "068bd997bf811e4a3811f45c8b248444779e0f7c0c4a249b7826450621559ad1"
+        },
+        {
+          "tick": 10,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "8e22b69537fe54ed57da043faa32d69cbac4c812182f7272ecee50312696bfff",
+          "hash": "fe2b75064dc5018c66074c5537852a393aed6b3b2842abe9d848f64ed857a455"
+        },
+        {
+          "tick": 11,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "9ae59ebc04ebec583c52ccebb18f411601e12dd78ed3fd7a51e96e4cb38157d3",
+          "hash": "54b93524669420d1c289312271f18b9488872db9bb356ff814c7d3e69987c049"
+        },
+        {
+          "tick": 12,
+          "action": "PROMOTE",
+          "origin": "rules",
+          "preparedHash": "2832824f106d153276dfbd073f88762f2bca7ab62621a2f91e0a5290e3fef9a1",
+          "hash": "86fe4dcc3c86f5404071bde3909232b6deb0662d535ef422ffdcb86134ed961a"
+        },
+        {
+          "tick": 13,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "563a14e12d4bda1743d37a2314fb99103ef72b1bc0ef7767723ef45d51237f0f",
+          "hash": "06bc7953aac08fb692dce35e1b489c8b33db99562cde9a54fedc14c2971ab9b8"
+        },
+        {
+          "tick": 14,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "dd2dd925b66c730b367edf6f1214a1364be0313c5b533f870976452cc3605d47",
+          "hash": "a9f228e0b9b502815ebddceb791b246f110421b9a0a1affe3c6f7e8115211c18"
+        },
+        {
+          "tick": 15,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "60018f260a5b2f0c79e0032179b9dc8f1955177a6ef548516bb25ef45352e4f1",
+          "hash": "1ef4b6a1f870f5b26cff719ebd9f9f803747c280de1a13d8f3fb8c010687cfa6"
+        },
+        {
+          "tick": 16,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "4198bc2fac01afa3a9a8b85b02996e52aec006fd54f2e06a36bf1fab0f34df18",
+          "hash": "33a0c47cb7218a0db8606c34894fab95bad453fb60d337d85dbbf2dc1fe10b00"
+        },
+        {
+          "tick": 17,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "c6a3a01aaec874a2623c742e7132b15e074d7899fa4c9e5e856b46d7ffebbd4a",
+          "hash": "25b2115fa58a335f9423920f034a9520eefd44eac899f1aa23c23bc210ec6c2e"
+        },
+        {
+          "tick": 18,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "9e2c684123680a9b91f3ed1fdb2d79d5e08ea72cd1de7ef91d4fec2d7b385ea5",
+          "hash": "0c4dca03354d3f27fa6e5a97008e65f3a331ef0b49a3666b9df69a156d94f880"
+        },
+        {
+          "tick": 19,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "e9d4d0cbe05162b1b7d7e872c9458a3a91c13e1b2c1812b63405f83e934695e1",
+          "hash": "278c16be9a5106ccd977d8399a009c053133056331d16af3c3fc2e56af30fc2e"
+        },
+        {
+          "tick": 20,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "58f1946841c75c35795cea504e41e581123049520155a750e182c47b32258428",
+          "hash": "5ecd7ade5e414c1aa868c66d85f2a71409212c6f33680ff95de02daabc08f199"
+        },
+        {
+          "tick": 21,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "e8dc83cfa53935041ee68e8053822092b978dfbd5bcc6125c0592f422f931501",
+          "hash": "d49bcdf063b7878f09493b24e98788b4d64368ca4ae6aacc445365cef1c69db4"
+        },
+        {
+          "tick": 22,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "863599e64be7d38cc6f4332246cde0fdebcfe5563bf3e855f9185e56694d0ff6",
+          "hash": "0e8e2ecb449dacfd6fd7e1317f547b6229d2a42f606a45d3d2e46b6ce577b672"
+        },
+        {
+          "tick": 23,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "505167b69a75661023ce8b20e5fed76ee22f02cca17fcb422cd681128d32671a",
+          "hash": "5957f21e7245c66070cc9db4335190b64b680677d805efcd74c0b61a0a966329"
+        },
+        {
+          "tick": 24,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "4c63bd7ddcbebc6ba0f21e1a01c30aa36b0ed0269b135bbd4cdb077453ca15f7",
+          "hash": "4b61aa1cfae79ecbc6c7508067cdc0337605756ef6e3c0ef1b090b21081fa7c2"
+        },
+        {
+          "tick": 25,
+          "action": "RESTOCK",
+          "origin": "rules",
+          "preparedHash": "8e751523885410862a6c40ad8ba9138db8f2a4b39a851c38221928ce6c95e85e",
+          "hash": "2357c6598218a71aca71b14c6819eb071bcfadb77e9081476d2594ba3fcac88e"
+        },
+        {
+          "tick": 26,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "f4559ca455b98d568ead66835f015255c3ace0dec48fef3174bc99d1d535d8d0",
+          "hash": "2fe90340a6f39bd90ef38bc4137f048af8be80560075b6f9fb8a08f18a4919c3"
+        },
+        {
+          "tick": 27,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "1aeaaaefae6bf90dd4b22dd05ae5ea088dd4a02f5005f60d1f923256fbc5914c",
+          "hash": "7d2e7b9e66bf9d5f5862472441d2364440494ff4f42b6f04fa1f9e899c786bc9"
+        },
+        {
+          "tick": 28,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "b3733dfb29ba4eb5ad34e4c5e10feab425c02c994a8fcaaec995a9231445c9d9",
+          "hash": "d37a3c37204a1b6805ce3b20f7b3506a4c08359f9537b1ec42364500f54c68ac"
+        },
+        {
+          "tick": 29,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "d1b657e29324f0ac0a913954b914c818e89e56deb9abae1218ece3f9794f2e07",
+          "hash": "8e95f2a225646e241c45ff02fafac2afae5c37e122183ffdf371255edc27776c"
+        },
+        {
+          "tick": 30,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "9f12666de36dc903415058bafba33a3d5b544f0f2ddc80d4deabd47030490f28",
+          "hash": "61e2a8f178489f598c1c9169f1f9425abda1b2eb199878fb262d970ebaf99682"
+        },
+        {
+          "tick": 31,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "2bfdd09ef1c0fd4b39a84069e5d5930b4ea6bb26f74ae38e6b6c80aa4edff637",
+          "hash": "29c30b347e014a49fc628fe679ca4a51fde1ef4501ed9a456cf4a16de81b5123"
+        },
+        {
+          "tick": 32,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "a704d9e4e8051e32eca8b75f451440abc6ef6d483a97e8340ec13e1c10945bbc",
+          "hash": "3500547962da6e30efed5d607c2ae1bf0056bcdca3e958a709269fa460bbdc82"
+        },
+        {
+          "tick": 33,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "433620fdc87b18782070344843bdc5892f6c60c5af96ca139fce190241112e4c",
+          "hash": "b7c65314060108d36432f04f96f94042262f72cde6d80c919253d317d1f28ab4"
+        },
+        {
+          "tick": 34,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "edb70134344339a796d56f64856c57567b2962c6a451a58c532e749f37c96a47",
+          "hash": "429639cefe8459dfec88fffe34afdf7fe6633218aef7737ed164b55432eddd8f"
+        },
+        {
+          "tick": 35,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "45593bd19cf5f99d339b2cc961eca92a8f6a7ce0d68a93f2bcbb01b4dabff5d0",
+          "hash": "08a4e25edf5b011c4841d3c21e32d098ecf012f3f61bad1a6f305f4a27e0038a"
+        },
+        {
+          "tick": 36,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "342bf09e9f52692532ded2cd54719bb7844e3c15d47c721ed922f915f1e4af83",
+          "hash": "aaa1e7cf37f98bbd36a64770fef50e8819f8f8f0d8450b70f5bb947a0be2fb91"
+        },
+        {
+          "tick": 37,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "182e168d880032187ef5cae86af3cd81e7be8b287c97da220300ff33550d739b",
+          "hash": "737c00cdd54e344210466f1dce7a9d76cbda68fab8c58d7bfefefc61e2382a0b"
+        },
+        {
+          "tick": 38,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "2b388027e95a1ae36fe410b56cd70563ac5139b9f2e675bc7ae2201f53c0577b",
+          "hash": "1173928260dc53eb78bc2cbfb16e4bd1c4943dce720af4907a64cfd77e26d016"
+        },
+        {
+          "tick": 39,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "82fe4606c0e2b96f27dcd5e573737210ff819a216607a7420ad14aa8120c1b7e",
+          "hash": "13ee4ee50624157352194c900d984920b33df3e1b83415c1076be1d7e6c72f46"
+        },
+        {
+          "tick": 40,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "abf84f860fdfdc35db1aedffed86e19119891595398fe2bf516964856a37edf8",
+          "hash": "59d3008260cea136387ee43a70681f82f2e80c3ac7ea138bb577a6cc4bec6f90"
+        },
+        {
+          "tick": 41,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "59481dc061dddab9bcc8ee048f1d79ac87127c1ffd3572fabbc54aebaa80d473",
+          "hash": "c5c86f85b81270d0312a6b4a1e24947c9606143256b490be94302655e1451634"
+        },
+        {
+          "tick": 42,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "e9bd2abdb5904410d7371d8a29427d683c61624e0d051029ac68bee63c39d68a",
+          "hash": "35f6a30de4623a9cd5a1ec09d1f5293754ac71205b9f2d1182ebcbe3a196d34c"
+        },
+        {
+          "tick": 43,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "8e982c1e757770283581c459b246b84bdf3f93c1e4c68950a7055afa126faa15",
+          "hash": "36b383dd8dff005848a5a606ed7a91d10e4c8a0788097c31df1069347c4b56b8"
+        },
+        {
+          "tick": 44,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "851ac61dbdb34dd43ad28fef1d6cfe2176d712c763af8ef9ebfd45dbe09b3b63",
+          "hash": "9a3ad713b86eefba770cca28a662b624d998aa07fc151c87101b8afc009f9197"
+        },
+        {
+          "tick": 45,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "1741251683de2c863f4f0d1c1110a46a0141d8e469f4fcd1054808ddfbc63a0f",
+          "hash": "1e93f058e15bbb45667584b61860719bc0be101a516fe70ef0a72ed188715969"
+        },
+        {
+          "tick": 46,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "4f883615d7cd9d5339fb2d5abf474fa1c2af4fa2e9214653baa8afd6ae071fc9",
+          "hash": "42e47610790f5daadd86ecb0b456456251111848bdd58955dc9f06b1eab092ba"
+        },
+        {
+          "tick": 47,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "3da9620ae6756138d94cb9f0a53b5cb77e1c025a86f4bdfd388e1c6934276692",
+          "hash": "88bc6bb6e8e6961c3db07ef9758a2fec67d4e3ebe2a344d301575fb76505e568"
+        },
+        {
+          "tick": 48,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "d865cf2f926a4f76206a5c2cd4f4d3839919feb2825dda81836524440b125cc3",
+          "hash": "c5a157c6c2321d3cbfb0cb87d2f80cab4679a34bdc5589dcddb7caf257209f43"
+        },
+        {
+          "tick": 49,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "8c9935379213df56cb0311febaff703a248330cf19c6d3db380d41a008db0b2d",
+          "hash": "b64a7124b9cef8bce26cd940605f489ab4921608d2133d80e7ee2af97999ffdc"
+        },
+        {
+          "tick": 50,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "759eb28ce2fef28b9fa64423f6cae6812192b74b3a0135a25bd6eae79abcaedf",
+          "hash": "088caef88bbd7423a1734b5834281bcb8a5775d55ab88338d9c14d0810c0613b"
+        },
+        {
+          "tick": 51,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "0a4a55cfcd4461202a6eff175dd3f9c86f9318fbec00e4a8dbcf68b33597d719",
+          "hash": "cd06019ddb26ef933c34c3e76689f8a3f8fc397e6f00e532110f1223acc7ab7c"
+        },
+        {
+          "tick": 52,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "3ef18f541476f12ce40a2de12ea4f8a4287a2340cc4f6295c88a34f12bb4f3f6",
+          "hash": "852eaa34e9cef2b4131989cfb6980c565e33b42d1201c6f141cda213673fa519"
+        },
+        {
+          "tick": 53,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "e629d77cbc554fa2f6287bdc3605284d2d31e74b9944ed14d371dd9210e50055",
+          "hash": "af034fdae32da69fb868615c38a16eed59bae4e5d3384b48d2d592785c41c1d1"
+        },
+        {
+          "tick": 54,
+          "action": "RESTOCK",
+          "origin": "rules",
+          "preparedHash": "2197c04aff85b9c49eeeeffcb944ab0145a03f0c4be1d533f7e8bac50b9b72ba",
+          "hash": "11f2a4fb8f270f7dc1926fb19aebe2fa1eea57d00cd25f67598ccb01e03f89e4"
+        },
+        {
+          "tick": 55,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "f68094d0d321410e55ebf3f95491fe0f5c24e1743a8d58cece267ff639a768b9",
+          "hash": "67bd9ef609f30d9642ca83b23401b618bc98db738dc9cf0022245e59e49e2e08"
+        },
+        {
+          "tick": 56,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "aec179afeee317073cf4514cb8d9178a6cd7862a179d1718dd13f1cc2c182593",
+          "hash": "dd4b2d517033b07032c90f1fb198d932680e697ed84a5f480a406f913cadd4d0"
+        },
+        {
+          "tick": 57,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "6f85e846efe5409293472ed73d64ebfe1804518aa5d57042673a03badeff93a9",
+          "hash": "492febaf73f30b643fe6688eea0a6c7dfc077880f8cc451c071975b95f68b51d"
+        },
+        {
+          "tick": 58,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "53b9ffbe700aff50f253b3d8d61ac32ad8836f9a62b9e303f6cef5e2605c3c94",
+          "hash": "21e4bb782c2e643088d2ce3c3e4a98cec5d730e9c885e933df380f385b2bff36"
+        },
+        {
+          "tick": 59,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "d248773e53d56d3ecc591feabd9664121e705399d86867ddd4f693a402465400",
+          "hash": "6e193b14a7f6ef71ff726abb9df24adfd99cc79a1e5bc3e96019e1f3073ebcf1"
+        },
+        {
+          "tick": 60,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "5aa6bde3ea0dfee53a52e7ffec1b47219f471ec41051469c555f16b8d5246f5c",
+          "hash": "a921616346361b2cdd96e777765a353d07c47d58ecf1ac33f9e7e8540e143cb1"
+        },
+        {
+          "tick": 61,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "e61009ea3bef9bf7ae62fb044e5ba11464a19ebc593115ad7a314339087121e2",
+          "hash": "a22ba87e158689ea0f41c98fa7c0a10893236dcdc95be5cb8a99988c2556c75b"
+        },
+        {
+          "tick": 62,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "9bfb4629058f4d1f75ecddff000ff0c81133fbb642ae17fdaac2d8ebc8ec4796",
+          "hash": "438519cc10cc6be793353283bcdc5c9154ded04d110ee1fec2b46e3df7c596cf"
+        },
+        {
+          "tick": 63,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "58611baa67a9c990752119b376da90c8aaa8032c24ce07fb6f59b5e1f0572df0",
+          "hash": "ac63e35e9407bd42a81d2b2f32cf22cf37ef0e9751ed4cf6fa11fc22725b7df6"
+        },
+        {
+          "tick": 64,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "2abc902031cc7040ed4844a6634443b393a06744d4deeb888afdd71ab8d8acca",
+          "hash": "1543d2d7b9bf5499756accb481bf1035a5119b491385cb241dab9e3dc8f15ea2"
+        },
+        {
+          "tick": 65,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "c80c37ede94ed4354a32978570afc18526b57a3bb91556a7ca83ba1f7ba35607",
+          "hash": "5fa5b579f6d76beba5fd5723c2646acbc22026326134a6f8453f79849280a04c"
+        },
+        {
+          "tick": 66,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "6e973c1106f39a479cb38b0dc36674eddd0a69d209324cb6ad079b732191908c",
+          "hash": "f278d5d08a653d2bca79cc3376506a4046c2ec1842aefa57aa69b0956b7819c0"
+        },
+        {
+          "tick": 67,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "6171862e0f6853ec8f9cc7166bd3ff6148c066a22fc1d5d35d1e5f8f4bb860d2",
+          "hash": "c04ea4586ddfae8c99f80489a9c9127142fe416eb2a2a10afea2c2fa4b33dd1d"
+        },
+        {
+          "tick": 68,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "391ad184bb2d37c94a027adeb25370ca06cde5d80b3e6137e26231a9716298e7",
+          "hash": "c778c28d3ba1167d98a8f9afb47eb29b356a39990c3d9b099435740e40f73827"
+        },
+        {
+          "tick": 69,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "857d28ff681bb8b56c5a7c94028716c09a69bf61712493d326b6bada7c587a82",
+          "hash": "303fe8afb1fc9614d95c70e87579f084630c552f4727b24077dbce41159f9f94"
+        },
+        {
+          "tick": 70,
+          "action": "RESTOCK",
+          "origin": "rules",
+          "preparedHash": "4990cb57b350e7e675136c7c68bfee97e8ed00da9aabd5b5949df38816534614",
+          "hash": "4bc5c1fd372b9b6e745fb8715829ec8df454b0785d8a47cbba53b61998eb7523"
+        },
+        {
+          "tick": 71,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "ebb6a9f778d435cb105bdb6f71d27d5ee2ba04723563ab0d74d6e84b69df12c5",
+          "hash": "4497e3fe0f31931e4593eb8adcdb10893046925d5c81959f09971bce7c7cebf2"
+        },
+        {
+          "tick": 72,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "77c8da913d441b72bd7a28f61dde7231e70886a1ce0bd102c443fd172fb464b6",
+          "hash": "7c18fbc12c83ceecd8c014b677520845f7ccc6baa6c1f28736dc13811a339233"
+        },
+        {
+          "tick": 73,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "be17471d6a9a2d97982fdb664a5c206c993b989e3d679fd6c76393f131add62f",
+          "hash": "93af33c99b05cfc2123c0a6ce4b17e03887bb6826e61940b4b6f26cbb60dafa6"
+        },
+        {
+          "tick": 74,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "95a7ef976749649f8b49a1013858697607610a2ec622c0413d012aaec76cb347",
+          "hash": "9dab599091b4afe54823358383abe81b35b55e5a4ec5d948a076e5ffb05fee94"
+        },
+        {
+          "tick": 75,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "482a20ab85e6d0491228eb85af5b4331d5b8ef00e43e086fee41fffc1552bcb2",
+          "hash": "21dcb2c3c712927f05d2e598100e87c041b7e6641a95104fd9860f8c28794deb"
+        },
+        {
+          "tick": 76,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "a5b3a2d07a0fae3f97a12b3ad2acca0c50989966c3517d360757d67b4a411a2c",
+          "hash": "c33392533f984cc0ef7687b9d85c7c805a84df8467ca07f3ee4f678546337363"
+        },
+        {
+          "tick": 77,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "7c387b1a781b87c7d56eb2b350751f752030eb7f579e7329db4f0785281a0656",
+          "hash": "0145f83fda8276e6d70d305fe5eda2d2ce0cdc657f939d18621cda713ca1bb0e"
+        },
+        {
+          "tick": 78,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "1e21f46fe45ab028d9156f84a3e19c7fe846258463049adc3979f6c6cb520143",
+          "hash": "e57ca6c59cc128d403eca9693ce7e51cbc8143c6bdf32dffcea9538dc2149ac9"
+        },
+        {
+          "tick": 79,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "4e2c8762df4e56a6e901f51106b21e7dc8a4881e671447e2df95d929d57f192e",
+          "hash": "26678748004dd618d7efb7a80350de8645e11669f166be2a05423f833e8010fc"
+        },
+        {
+          "tick": 80,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "1aa1e42e15785b5c79cb3784fc3023a97776594966ff6aee4c6bd53917a1dd7c",
+          "hash": "47cfa23dafa22e7e44f5d3cdc38300cadfffc17833bcfdcf64600ef74ab36eca"
+        },
+        {
+          "tick": 81,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "7577831b8f6ff79d98d2114d9aba43ea68857c618379debeb049a1d95d168da5",
+          "hash": "08dbea67ac2887aaa389dce1ad5822eb87c5cf69e2a3a7d5260c01f973ef5cd4"
+        },
+        {
+          "tick": 82,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "3d5fb6a2133dc1d7ce3a3fd757a4dc0a5312b5f73f36952ca03d9e7dd450c7e4",
+          "hash": "960c8b25713710022c7e8930906da08368b2d3611b6c7e8e72fac08709b7c91a"
+        },
+        {
+          "tick": 83,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "370b8eda6f7785fd7ef5aa972aa4f7ff09763c720b7d186fbd9a8ee0a5bbe9ae",
+          "hash": "170374f47f2cd0251516a03f18c4aae4bfd58334f56ade566c40217eb9083339"
+        },
+        {
+          "tick": 84,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "6abad8fa44a266d25b5eaf228a392cf8f00eae6bd420aa860c379cd8a99d5474",
+          "hash": "66413556609c5e40170ccfe43ae5e3f079e3aa9edb4ca5b354528eaf28ecbdd2"
+        },
+        {
+          "tick": 85,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "0bf7ad15106feab5cb40e1e4e428061bd4f70498abac07edbcd821c64d645f70",
+          "hash": "db1d341880fd0abaa9fa4120650ca5ed66b6dcb2fb6ccabe0e20ebe96942a4ee"
+        },
+        {
+          "tick": 86,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "98ea786fdc4cd86984d41ea56b683ac3453845c97e9b504d2353bbd967010968",
+          "hash": "9a4f799a42b794dd9afc51b01debd06a631917e376006fd87667a374394ad4a5"
+        },
+        {
+          "tick": 87,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "392514da5a871c2cedaf7277b39e9493578e1c3c50d3d6f270476371822ad417",
+          "hash": "a285dbecab41856e130c8de7892c698b123de3c20ff5b9416d96f015426a1f9a"
+        },
+        {
+          "tick": 88,
+          "action": "RESTOCK",
+          "origin": "rules",
+          "preparedHash": "425c899aa59b4105fd90613fe94606f6b17bb4c3c35c9f3a669b315442a319e8",
+          "hash": "40593b675cf3602484874fce1a3023c09e69b62077083f4328fd3ceaf14f86c8"
+        },
+        {
+          "tick": 89,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "c3539b563578270c622fc607ed2aaefa6d0002b349f43e172ced555a9710fc69",
+          "hash": "91f6c2530b312c0f21722db5e8d3f8954b77e128597a66975e173521abca6085"
+        },
+        {
+          "tick": 90,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "7f04abb9a2b24451049bce9e438b96d4a7a87bef2f7f8f884b188652d862e8ce",
+          "hash": "81a0e5c3ff81de6cf6ec4c0a00bd822320de9ad453a7ea270d85b6ff64aa2459"
+        },
+        {
+          "tick": 91,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "ddd823ad30b0272e3679403f523c01cab26a2fd0e1ad1cdd920d3de37b3e3013",
+          "hash": "631d5e1ce8d433ea8f8041e51ad854620d02c306049e500feee1134e7e3b9be7"
+        },
+        {
+          "tick": 92,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "619ebf8926639aaee87df07ba1f7d29f691a9eeb666f22304bb0d7a579105bbe",
+          "hash": "f33a5049589d38fe65a0a5852f81760f26dcf18769642833380d70410d6d1915"
+        },
+        {
+          "tick": 93,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "e3e16f135e0908df343330e6387f83d56d62f43339850759cb605b3aca07e4e1",
+          "hash": "13cc6492bc2553a6fd84bef1c7d37deacfe94c9cd2852277c015c2039c16a9cf"
+        },
+        {
+          "tick": 94,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "4848adbe6bc2e5b5f0f33008b750ac0446a1b602808a1f4a1d7790846e534f22",
+          "hash": "35b12692b4b8a5a92f819d0c02504ba7fea20a38e6c6a0a972ee8b1ec2b55ac3"
+        },
+        {
+          "tick": 95,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "65d85b2f7da3abe14e6d94f5923d8cfa809edf8b713beece33e32deaf21b89f8",
+          "hash": "6353e9887cc69091fd496179f49af7ef96043fae14e5928b9935de43e5d630f8"
+        },
+        {
+          "tick": 96,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "44f2960eaea357a46f55f13abf3b644674162fc4189924d0c0ae216af392a93d",
+          "hash": "357a5c4d43e1945c739a2f115973666a2c47c916829843ea5110b6f1f0fddd44"
+        },
+        {
+          "tick": 97,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "8e3f89f561e694c4794cd3b570c1cb94875f3b23c2ded438b0689d56101bf6d5",
+          "hash": "3cddba94636fbb97852c0f4e4a423b53d7e89450dd3cb5b3b194bfb90a2799cd"
+        },
+        {
+          "tick": 98,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "226c51f5824a8eddeb8c50f4eb9b5d4d02b251b001f565216f15d8fe5ba97c4b",
+          "hash": "871ac23e71f0e239cb8b1769e7d452a0ddcb601bf0b2afeea4f63c5f3daf8673"
+        },
+        {
+          "tick": 99,
+          "action": "COOK",
+          "origin": "rules",
+          "preparedHash": "074bef0b67183159abebe5c2cc8f6fc9377914bfa65b953acd82918cd7a7e85b",
+          "hash": "221bb3f40e07b74b02f032269a042f01073c9557b5d0a1d0ca44031d50db1da7"
+        },
+        {
+          "tick": 100,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "5f3a94efa48828b9254e610d25e6a7ef4960aca31d0346931c1ffab24298f097",
+          "hash": "c28f7fdecc98ca39b492284ce4d8a1a16b054fa780d5af952da97a90c371e1cd"
+        },
+        {
+          "tick": 101,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "ae30fc9c40e6dce9d92646b67eb67023c2f605e24cee1274d74bff4b137cc97d",
+          "hash": "477fdda4610de9079ca55eb3920d686010cb5ce5e31b963069b61cbef56c2104"
+        },
+        {
+          "tick": 102,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "18619d34c8153796cd999f14f97343705b2fcd08e083980c2b0a899c5d3028ef",
+          "hash": "fbdd74b5e68625250c72366e9653705cf96d4d8ee53e4ca3e6b741afb4081bfb"
+        },
+        {
+          "tick": 103,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "adf1f0e73b98996ed7390732fa5ac64ecbdd580c264af9a03e9bdebd19a2026d",
+          "hash": "8d0b88208bf3d907dc8324f6f5896f3a6e5b27f4dcc738bb1fc7081d7f314ff9"
+        },
+        {
+          "tick": 104,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "f9d54c99c625ba3649bd2204ee09705a5b8f701f7e8404f1101a8b69bd204126",
+          "hash": "5eddda430cb416132d4397a6fb3cc26fd7541f33177c678c270c4aabcb48dcb8"
+        },
+        {
+          "tick": 105,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "622db23aa8175d291253735c79be4f164c9ece132c489a049931779b888cb118",
+          "hash": "0bfad7cc96c66800d82ab25b971a430657ebd631b7ddf096dd1d6de7ebe80262"
+        },
+        {
+          "tick": 106,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "d73167aca2fdf54db6925610021ad04f42da01f31fe62857ca369c7c24f59677",
+          "hash": "ec149fe9efb8a2e8ce0b1a4bda99156893c55c649377da58ed877d0d9939cb88"
+        },
+        {
+          "tick": 107,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "911a05de18a097f2c5b8a02afe0f981396564f78c3148ba3e5ac798f1fe7bd02",
+          "hash": "77980ee9748f7365f2d1a4178ded5a92b4372757cfbea3b7264acd6865898b31"
+        },
+        {
+          "tick": 108,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "96d8ecae57f28c324871e06632d5e6aff6d04fba46eaea6f4bb4a35f2baf8f1d",
+          "hash": "731806882b67eefd167ae5067aeafd6f038ce8187446159b9bfb1c2f0c5305c7"
+        },
+        {
+          "tick": 109,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "ecf148671833a5da196f947968eaeea70d7b23dbc4c51de01444fe762a3ad076",
+          "hash": "1f40a4b0702c07a376f24950d4e962a0b5e200b38d08781160dc5e9b77668df2"
+        },
+        {
+          "tick": 110,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "e97aea4d31174432cef252e91ecbaeb841fd04a47d23df71db2e3aa133d0e02c",
+          "hash": "36c58e4721950ef867932e0276364c8b16fa2de51601dde69f12ec90924aba78"
+        },
+        {
+          "tick": 111,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "6337c61b837c199494619003fb6bdf5d118f0cf10543089ec27f52b4bb83eeaa",
+          "hash": "386ca85652becd7ca6dceefd5d324a6e1e9913e28a9da3496714794910adbbd2"
+        },
+        {
+          "tick": 112,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "4c8573a18039aae666e880bf83f67a4df52726240d58e6623a6f6cda94369fb8",
+          "hash": "25a5fa18260cf09e78adc0bada1c37fdf1e4240b4d929e0e4390f709653a4202"
+        },
+        {
+          "tick": 113,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "04874f7e142cd5135ca9c469ed80313d6051774fd50dc973900db685ac0617fc",
+          "hash": "eb35bad1fef25d078ad32faa76e2ba968c7abb3d13f478a62e7e4e793f536016"
+        },
+        {
+          "tick": 114,
+          "action": "WAIT",
+          "origin": "rules",
+          "preparedHash": "21ca74bb8521419d37740057c59e3642f0c1a699f5d7cdfdd21ff59ca6b3c444",
+          "hash": "f1fdb32200c9e80ab40494b9d7e88fa7d2bf421451fca085b0e0464e5f15c601"
+        },
+        {
+          "tick": 115,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "98b3c28ec91ba8268c0d19f1a3b35e97c5131535379e47de299b0184de83c9dc",
+          "hash": "e16586394c8afe919bc7ca233e8b0d00a0fe9f921f19858f49a07e30c1e1b10b"
+        },
+        {
+          "tick": 116,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "b6398eff79772026575ae151031e55a64f41a77a685677f66c4ba3eff4036a17",
+          "hash": "c64c575755636bd3cc2ed9f6d48f96ecbc5e2274fc9f4ba73a10afcb06c0b532"
+        },
+        {
+          "tick": 117,
+          "action": "WAIT",
+          "origin": "forced_wait",
+          "preparedHash": "8a3f85aa1bbae71e79e635f079d9bb543ca9c291321fdbb17a60c636042fae2a",
+          "hash": "d3e2345eaaa8983a07aa26737fd6511884d7b81ce088f58416a64892757d0089"
+        },
+        {
+          "tick": 118,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "7328833e3572e819cfa73a89c2aed5431ffe5e9bcd8ab7bba50c05303acc0b8d",
+          "hash": "bb97e2469862b3323cca11c795527254e07bd08e78624890310b8fb103574b8a"
+        },
+        {
+          "tick": 119,
+          "action": "SERVE",
+          "origin": "rules",
+          "preparedHash": "ad787859f7948f685a89d6704238384a496c91c71446e63680e53f293f4cff22",
+          "hash": "cd1a04c6d246f745dca91925b8d10cad881c6b5c314dc377c46f3379a54b6ae7"
+        }
+      ],
+      "finalHash": "9921ccf4c96bace5c8011574d345ba822eebfd781b5f59c2e5856b705d2b0e58",
+      "traceHash": "8a9a9a5e47b4698a0c9bdc48b8458843341254bd02c18ddcb8f4c627ffe55bee",
+      "score": {
+        "profitCents": 34600,
+        "utilityPoints": 32525,
+        "meanWaitMinutes": 1.4230769230769231,
+        "satisfaction": 82.15384615384616,
+        "provisional": false
+      },
+      "metrics": {
+        "profitCents": 34600,
+        "utilityPoints": 32525,
+        "meanWaitMinutes": 1.4230769230769231,
+        "satisfaction": 82.15384615384616,
+        "provisional": false,
+        "served": 123,
+        "abandoned": 7,
+        "wasted": 9,
+        "waitMinutes": 185,
+        "servedMeanWaitMinutes": 1.3170731707317074,
+        "fillRate": 0.9461538461538461,
+        "stockoutTicks": 19
+      }
+    }
+  ],
+  "networkCalls": 0,
+  "trialManifestReferenceChecksumUnchanged": true
+}

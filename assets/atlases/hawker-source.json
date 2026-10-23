@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "hawker-source-1",
+  "author": "Hawker Wars project original artwork",
+  "source": "packages/art/src/hawker.ts",
+  "sourceSha256": "26741a83e393e4e85cb0d0b9a5df77f6c0434588be48b814dacc5937335db9ad",
+  "method": "Code-authored editable pixel rectangles; no external imagery",
+  "nativeAsepriteSource": false,
+  "exportCommand": "pnpm exec tsx scripts/export-hawker.ts",
+  "atlasSha256": "dcdd6a6a28022c4b8ebfe8ee23224e6562712e9242ab3edb4f4e3f387df39941"
+}

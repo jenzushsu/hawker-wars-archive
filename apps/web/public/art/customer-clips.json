@@ -1,0 +1,917 @@
+{
+  "schemaVersion": "customer-clips-1",
+  "artworkVersion": "customer-art-1",
+  "texture": "customer",
+  "frameSize": {
+    "w": 24,
+    "h": 32
+  },
+  "origin": {
+    "x": 0.5,
+    "y": 1
+  },
+  "skins": [
+    "terracotta",
+    "sage",
+    "saffron",
+    "slate",
+    "rose",
+    "cream"
+  ],
+  "directions": [
+    "down",
+    "left",
+    "right",
+    "up"
+  ],
+  "clips": {
+    "walk": {
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "durationMs": 500,
+      "frameNames": {
+        "terracotta": {
+          "down": [
+            "customer/terracotta/walk/down/0",
+            "customer/terracotta/walk/down/1",
+            "customer/terracotta/walk/down/2",
+            "customer/terracotta/walk/down/3"
+          ],
+          "left": [
+            "customer/terracotta/walk/left/0",
+            "customer/terracotta/walk/left/1",
+            "customer/terracotta/walk/left/2",
+            "customer/terracotta/walk/left/3"
+          ],
+          "right": [
+            "customer/terracotta/walk/right/0",
+            "customer/terracotta/walk/right/1",
+            "customer/terracotta/walk/right/2",
+            "customer/terracotta/walk/right/3"
+          ],
+          "up": [
+            "customer/terracotta/walk/up/0",
+            "customer/terracotta/walk/up/1",
+            "customer/terracotta/walk/up/2",
+            "customer/terracotta/walk/up/3"
+          ]
+        },
+        "sage": {
+          "down": [
+            "customer/sage/walk/down/0",
+            "customer/sage/walk/down/1",
+            "customer/sage/walk/down/2",
+            "customer/sage/walk/down/3"
+          ],
+          "left": [
+            "customer/sage/walk/left/0",
+            "customer/sage/walk/left/1",
+            "customer/sage/walk/left/2",
+            "customer/sage/walk/left/3"
+          ],
+          "right": [
+            "customer/sage/walk/right/0",
+            "customer/sage/walk/right/1",
+            "customer/sage/walk/right/2",
+            "customer/sage/walk/right/3"
+          ],
+          "up": [
+            "customer/sage/walk/up/0",
+            "customer/sage/walk/up/1",
+            "customer/sage/walk/up/2",
+            "customer/sage/walk/up/3"
+          ]
+        },
+        "saffron": {
+          "down": [
+            "customer/saffron/walk/down/0",
+            "customer/saffron/walk/down/1",
+            "customer/saffron/walk/down/2",
+            "customer/saffron/walk/down/3"
+          ],
+          "left": [
+            "customer/saffron/walk/left/0",
+            "customer/saffron/walk/left/1",
+            "customer/saffron/walk/left/2",
+            "customer/saffron/walk/left/3"
+          ],
+          "right": [
+            "customer/saffron/walk/right/0",
+            "customer/saffron/walk/right/1",
+            "customer/saffron/walk/right/2",
+            "customer/saffron/walk/right/3"
+          ],
+          "up": [
+            "customer/saffron/walk/up/0",
+            "customer/saffron/walk/up/1",
+            "customer/saffron/walk/up/2",
+            "customer/saffron/walk/up/3"
+          ]
+        },
+        "slate": {
+          "down": [
+            "customer/slate/walk/down/0",
+            "customer/slate/walk/down/1",
+            "customer/slate/walk/down/2",
+            "customer/slate/walk/down/3"
+          ],
+          "left": [
+            "customer/slate/walk/left/0",
+            "customer/slate/walk/left/1",
+            "customer/slate/walk/left/2",
+            "customer/slate/walk/left/3"
+          ],
+          "right": [
+            "customer/slate/walk/right/0",
+            "customer/slate/walk/right/1",
+            "customer/slate/walk/right/2",
+            "customer/slate/walk/right/3"
+          ],
+          "up": [
+            "customer/slate/walk/up/0",
+            "customer/slate/walk/up/1",
+            "customer/slate/walk/up/2",
+            "customer/slate/walk/up/3"
+          ]
+        },
+        "rose": {
+          "down": [
+            "customer/rose/walk/down/0",
+            "customer/rose/walk/down/1",
+            "customer/rose/walk/down/2",
+            "customer/rose/walk/down/3"
+          ],
+          "left": [
+            "customer/rose/walk/left/0",
+            "customer/rose/walk/left/1",
+            "customer/rose/walk/left/2",
+            "customer/rose/walk/left/3"
+          ],
+          "right": [
+            "customer/rose/walk/right/0",
+            "customer/rose/walk/right/1",
+            "customer/rose/walk/right/2",
+            "customer/rose/walk/right/3"
+          ],
+          "up": [
+            "customer/rose/walk/up/0",
+            "customer/rose/walk/up/1",
+            "customer/rose/walk/up/2",
+            "customer/rose/walk/up/3"
+          ]
+        },
+        "cream": {
+          "down": [
+            "customer/cream/walk/down/0",
+            "customer/cream/walk/down/1",
+            "customer/cream/walk/down/2",
+            "customer/cream/walk/down/3"
+          ],
+          "left": [
+            "customer/cream/walk/left/0",
+            "customer/cream/walk/left/1",
+            "customer/cream/walk/left/2",
+            "customer/cream/walk/left/3"
+          ],
+          "right": [
+            "customer/cream/walk/right/0",
+            "customer/cream/walk/right/1",
+            "customer/cream/walk/right/2",
+            "customer/cream/walk/right/3"
+          ],
+          "up": [
+            "customer/cream/walk/up/0",
+            "customer/cream/walk/up/1",
+            "customer/cream/walk/up/2",
+            "customer/cream/walk/up/3"
+          ]
+        }
+      }
+    },
+    "wait": {
+      "frames": 2,
+      "fps": 2,
+      "loop": true,
+      "durationMs": 1000,
+      "frameNames": {
+        "terracotta": {
+          "down": [
+            "customer/terracotta/wait/down/0",
+            "customer/terracotta/wait/down/1"
+          ],
+          "left": [
+            "customer/terracotta/wait/left/0",
+            "customer/terracotta/wait/left/1"
+          ],
+          "right": [
+            "customer/terracotta/wait/right/0",
+            "customer/terracotta/wait/right/1"
+          ],
+          "up": [
+            "customer/terracotta/wait/up/0",
+            "customer/terracotta/wait/up/1"
+          ]
+        },
+        "sage": {
+          "down": [
+            "customer/sage/wait/down/0",
+            "customer/sage/wait/down/1"
+          ],
+          "left": [
+            "customer/sage/wait/left/0",
+            "customer/sage/wait/left/1"
+          ],
+          "right": [
+            "customer/sage/wait/right/0",
+            "customer/sage/wait/right/1"
+          ],
+          "up": [
+            "customer/sage/wait/up/0",
+            "customer/sage/wait/up/1"
+          ]
+        },
+        "saffron": {
+          "down": [
+            "customer/saffron/wait/down/0",
+            "customer/saffron/wait/down/1"
+          ],
+          "left": [
+            "customer/saffron/wait/left/0",
+            "customer/saffron/wait/left/1"
+          ],
+          "right": [
+            "customer/saffron/wait/right/0",
+            "customer/saffron/wait/right/1"
+          ],
+          "up": [
+            "customer/saffron/wait/up/0",
+            "customer/saffron/wait/up/1"
+          ]
+        },
+        "slate": {
+          "down": [
+            "customer/slate/wait/down/0",
+            "customer/slate/wait/down/1"
+          ],
+          "left": [
+            "customer/slate/wait/left/0",
+            "customer/slate/wait/left/1"
+          ],
+          "right": [
+            "customer/slate/wait/right/0",
+            "customer/slate/wait/right/1"
+          ],
+          "up": [
+            "customer/slate/wait/up/0",
+            "customer/slate/wait/up/1"
+          ]
+        },
+        "rose": {
+          "down": [
+            "customer/rose/wait/down/0",
+            "customer/rose/wait/down/1"
+          ],
+          "left": [
+            "customer/rose/wait/left/0",
+            "customer/rose/wait/left/1"
+          ],
+          "right": [
+            "customer/rose/wait/right/0",
+            "customer/rose/wait/right/1"
+          ],
+          "up": [
+            "customer/rose/wait/up/0",
+            "customer/rose/wait/up/1"
+          ]
+        },
+        "cream": {
+          "down": [
+            "customer/cream/wait/down/0",
+            "customer/cream/wait/down/1"
+          ],
+          "left": [
+            "customer/cream/wait/left/0",
+            "customer/cream/wait/left/1"
+          ],
+          "right": [
+            "customer/cream/wait/right/0",
+            "customer/cream/wait/right/1"
+          ],
+          "up": [
+            "customer/cream/wait/up/0",
+            "customer/cream/wait/up/1"
+          ]
+        }
+      }
+    },
+    "impatient": {
+      "frames": 2,
+      "fps": 4,
+      "loop": true,
+      "durationMs": 500,
+      "frameNames": {
+        "terracotta": {
+          "down": [
+            "customer/terracotta/impatient/down/0",
+            "customer/terracotta/impatient/down/1"
+          ],
+          "left": [
+            "customer/terracotta/impatient/left/0",
+            "customer/terracotta/impatient/left/1"
+          ],
+          "right": [
+            "customer/terracotta/impatient/right/0",
+            "customer/terracotta/impatient/right/1"
+          ],
+          "up": [
+            "customer/terracotta/impatient/up/0",
+            "customer/terracotta/impatient/up/1"
+          ]
+        },
+        "sage": {
+          "down": [
+            "customer/sage/impatient/down/0",
+            "customer/sage/impatient/down/1"
+          ],
+          "left": [
+            "customer/sage/impatient/left/0",
+            "customer/sage/impatient/left/1"
+          ],
+          "right": [
+            "customer/sage/impatient/right/0",
+            "customer/sage/impatient/right/1"
+          ],
+          "up": [
+            "customer/sage/impatient/up/0",
+            "customer/sage/impatient/up/1"
+          ]
+        },
+        "saffron": {
+          "down": [
+            "customer/saffron/impatient/down/0",
+            "customer/saffron/impatient/down/1"
+          ],
+          "left": [
+            "customer/saffron/impatient/left/0",
+            "customer/saffron/impatient/left/1"
+          ],
+          "right": [
+            "customer/saffron/impatient/right/0",
+            "customer/saffron/impatient/right/1"
+          ],
+          "up": [
+            "customer/saffron/impatient/up/0",
+            "customer/saffron/impatient/up/1"
+          ]
+        },
+        "slate": {
+          "down": [
+            "customer/slate/impatient/down/0",
+            "customer/slate/impatient/down/1"
+          ],
+          "left": [
+            "customer/slate/impatient/left/0",
+            "customer/slate/impatient/left/1"
+          ],
+          "right": [
+            "customer/slate/impatient/right/0",
+            "customer/slate/impatient/right/1"
+          ],
+          "up": [
+            "customer/slate/impatient/up/0",
+            "customer/slate/impatient/up/1"
+          ]
+        },
+        "rose": {
+          "down": [
+            "customer/rose/impatient/down/0",
+            "customer/rose/impatient/down/1"
+          ],
+          "left": [
+            "customer/rose/impatient/left/0",
+            "customer/rose/impatient/left/1"
+          ],
+          "right": [
+            "customer/rose/impatient/right/0",
+            "customer/rose/impatient/right/1"
+          ],
+          "up": [
+            "customer/rose/impatient/up/0",
+            "customer/rose/impatient/up/1"
+          ]
+        },
+        "cream": {
+          "down": [
+            "customer/cream/impatient/down/0",
+            "customer/cream/impatient/down/1"
+          ],
+          "left": [
+            "customer/cream/impatient/left/0",
+            "customer/cream/impatient/left/1"
+          ],
+          "right": [
+            "customer/cream/impatient/right/0",
+            "customer/cream/impatient/right/1"
+          ],
+          "up": [
+            "customer/cream/impatient/up/0",
+            "customer/cream/impatient/up/1"
+          ]
+        }
+      }
+    },
+    "receive": {
+      "frames": 4,
+      "fps": 8,
+      "loop": false,
+      "durationMs": 500,
+      "frameNames": {
+        "terracotta": {
+          "down": [
+            "customer/terracotta/receive/down/0",
+            "customer/terracotta/receive/down/1",
+            "customer/terracotta/receive/down/2",
+            "customer/terracotta/receive/down/3"
+          ],
+          "left": [
+            "customer/terracotta/receive/left/0",
+            "customer/terracotta/receive/left/1",
+            "customer/terracotta/receive/left/2",
+            "customer/terracotta/receive/left/3"
+          ],
+          "right": [
+            "customer/terracotta/receive/right/0",
+            "customer/terracotta/receive/right/1",
+            "customer/terracotta/receive/right/2",
+            "customer/terracotta/receive/right/3"
+          ],
+          "up": [
+            "customer/terracotta/receive/up/0",
+            "customer/terracotta/receive/up/1",
+            "customer/terracotta/receive/up/2",
+            "customer/terracotta/receive/up/3"
+          ]
+        },
+        "sage": {
+          "down": [
+            "customer/sage/receive/down/0",
+            "customer/sage/receive/down/1",
+            "customer/sage/receive/down/2",
+            "customer/sage/receive/down/3"
+          ],
+          "left": [
+            "customer/sage/receive/left/0",
+            "customer/sage/receive/left/1",
+            "customer/sage/receive/left/2",
+            "customer/sage/receive/left/3"
+          ],
+          "right": [
+            "customer/sage/receive/right/0",
+            "customer/sage/receive/right/1",
+            "customer/sage/receive/right/2",
+            "customer/sage/receive/right/3"
+          ],
+          "up": [
+            "customer/sage/receive/up/0",
+            "customer/sage/receive/up/1",
+            "customer/sage/receive/up/2",
+            "customer/sage/receive/up/3"
+          ]
+        },
+        "saffron": {
+          "down": [
+            "customer/saffron/receive/down/0",
+            "customer/saffron/receive/down/1",
+            "customer/saffron/receive/down/2",
+            "customer/saffron/receive/down/3"
+          ],
+          "left": [
+            "customer/saffron/receive/left/0",
+            "customer/saffron/receive/left/1",
+            "customer/saffron/receive/left/2",
+            "customer/saffron/receive/left/3"
+          ],
+          "right": [
+            "customer/saffron/receive/right/0",
+            "customer/saffron/receive/right/1",
+            "customer/saffron/receive/right/2",
+            "customer/saffron/receive/right/3"
+          ],
+          "up": [
+            "customer/saffron/receive/up/0",
+            "customer/saffron/receive/up/1",
+            "customer/saffron/receive/up/2",
+            "customer/saffron/receive/up/3"
+          ]
+        },
+        "slate": {
+          "down": [
+            "customer/slate/receive/down/0",
+            "customer/slate/receive/down/1",
+            "customer/slate/receive/down/2",
+            "customer/slate/receive/down/3"
+          ],
+          "left": [
+            "customer/slate/receive/left/0",
+            "customer/slate/receive/left/1",
+            "customer/slate/receive/left/2",
+            "customer/slate/receive/left/3"
+          ],
+          "right": [
+            "customer/slate/receive/right/0",
+            "customer/slate/receive/right/1",
+            "customer/slate/receive/right/2",
+            "customer/slate/receive/right/3"
+          ],
+          "up": [
+            "customer/slate/receive/up/0",
+            "customer/slate/receive/up/1",
+            "customer/slate/receive/up/2",
+            "customer/slate/receive/up/3"
+          ]
+        },
+        "rose": {
+          "down": [
+            "customer/rose/receive/down/0",
+            "customer/rose/receive/down/1",
+            "customer/rose/receive/down/2",
+            "customer/rose/receive/down/3"
+          ],
+          "left": [
+            "customer/rose/receive/left/0",
+            "customer/rose/receive/left/1",
+            "customer/rose/receive/left/2",
+            "customer/rose/receive/left/3"
+          ],
+          "right": [
+            "customer/rose/receive/right/0",
+            "customer/rose/receive/right/1",
+            "customer/rose/receive/right/2",
+            "customer/rose/receive/right/3"
+          ],
+          "up": [
+            "customer/rose/receive/up/0",
+            "customer/rose/receive/up/1",
+            "customer/rose/receive/up/2",
+            "customer/rose/receive/up/3"
+          ]
+        },
+        "cream": {
+          "down": [
+            "customer/cream/receive/down/0",
+            "customer/cream/receive/down/1",
+            "customer/cream/receive/down/2",
+            "customer/cream/receive/down/3"
+          ],
+          "left": [
+            "customer/cream/receive/left/0",
+            "customer/cream/receive/left/1",
+            "customer/cream/receive/left/2",
+            "customer/cream/receive/left/3"
+          ],
+          "right": [
+            "customer/cream/receive/right/0",
+            "customer/cream/receive/right/1",
+            "customer/cream/receive/right/2",
+            "customer/cream/receive/right/3"
+          ],
+          "up": [
+            "customer/cream/receive/up/0",
+            "customer/cream/receive/up/1",
+            "customer/cream/receive/up/2",
+            "customer/cream/receive/up/3"
+          ]
+        }
+      }
+    },
+    "eat": {
+      "frames": 4,
+      "fps": 4,
+      "loop": true,
+      "durationMs": 1000,
+      "frameNames": {
+        "terracotta": {
+          "down": [
+            "customer/terracotta/eat/down/0",
+            "customer/terracotta/eat/down/1",
+            "customer/terracotta/eat/down/2",
+            "customer/terracotta/eat/down/3"
+          ],
+          "left": [
+            "customer/terracotta/eat/left/0",
+            "customer/terracotta/eat/left/1",
+            "customer/terracotta/eat/left/2",
+            "customer/terracotta/eat/left/3"
+          ],
+          "right": [
+            "customer/terracotta/eat/right/0",
+            "customer/terracotta/eat/right/1",
+            "customer/terracotta/eat/right/2",
+            "customer/terracotta/eat/right/3"
+          ],
+          "up": [
+            "customer/terracotta/eat/up/0",
+            "customer/terracotta/eat/up/1",
+            "customer/terracotta/eat/up/2",
+            "customer/terracotta/eat/up/3"
+          ]
+        },
+        "sage": {
+          "down": [
+            "customer/sage/eat/down/0",
+            "customer/sage/eat/down/1",
+            "customer/sage/eat/down/2",
+            "customer/sage/eat/down/3"
+          ],
+          "left": [
+            "customer/sage/eat/left/0",
+            "customer/sage/eat/left/1",
+            "customer/sage/eat/left/2",
+            "customer/sage/eat/left/3"
+          ],
+          "right": [
+            "customer/sage/eat/right/0",
+            "customer/sage/eat/right/1",
+            "customer/sage/eat/right/2",
+            "customer/sage/eat/right/3"
+          ],
+          "up": [
+            "customer/sage/eat/up/0",
+            "customer/sage/eat/up/1",
+            "customer/sage/eat/up/2",
+            "customer/sage/eat/up/3"
+          ]
+        },
+        "saffron": {
+          "down": [
+            "customer/saffron/eat/down/0",
+            "customer/saffron/eat/down/1",
+            "customer/saffron/eat/down/2",
+            "customer/saffron/eat/down/3"
+          ],
+          "left": [
+            "customer/saffron/eat/left/0",
+            "customer/saffron/eat/left/1",
+            "customer/saffron/eat/left/2",
+            "customer/saffron/eat/left/3"
+          ],
+          "right": [
+            "customer/saffron/eat/right/0",
+            "customer/saffron/eat/right/1",
+            "customer/saffron/eat/right/2",
+            "customer/saffron/eat/right/3"
+          ],
+          "up": [
+            "customer/saffron/eat/up/0",
+            "customer/saffron/eat/up/1",
+            "customer/saffron/eat/up/2",
+            "customer/saffron/eat/up/3"
+          ]
+        },
+        "slate": {
+          "down": [
+            "customer/slate/eat/down/0",
+            "customer/slate/eat/down/1",
+            "customer/slate/eat/down/2",
+            "customer/slate/eat/down/3"
+          ],
+          "left": [
+            "customer/slate/eat/left/0",
+            "customer/slate/eat/left/1",
+            "customer/slate/eat/left/2",
+            "customer/slate/eat/left/3"
+          ],
+          "right": [
+            "customer/slate/eat/right/0",
+            "customer/slate/eat/right/1",
+            "customer/slate/eat/right/2",
+            "customer/slate/eat/right/3"
+          ],
+          "up": [
+            "customer/slate/eat/up/0",
+            "customer/slate/eat/up/1",
+            "customer/slate/eat/up/2",
+            "customer/slate/eat/up/3"
+          ]
+        },
+        "rose": {
+          "down": [
+            "customer/rose/eat/down/0",
+            "customer/rose/eat/down/1",
+            "customer/rose/eat/down/2",
+            "customer/rose/eat/down/3"
+          ],
+          "left": [
+            "customer/rose/eat/left/0",
+            "customer/rose/eat/left/1",
+            "customer/rose/eat/left/2",
+            "customer/rose/eat/left/3"
+          ],
+          "right": [
+            "customer/rose/eat/right/0",
+            "customer/rose/eat/right/1",
+            "customer/rose/eat/right/2",
+            "customer/rose/eat/right/3"
+          ],
+          "up": [
+            "customer/rose/eat/up/0",
+            "customer/rose/eat/up/1",
+            "customer/rose/eat/up/2",
+            "customer/rose/eat/up/3"
+          ]
+        },
+        "cream": {
+          "down": [
+            "customer/cream/eat/down/0",
+            "customer/cream/eat/down/1",
+            "customer/cream/eat/down/2",
+            "customer/cream/eat/down/3"
+          ],
+          "left": [
+            "customer/cream/eat/left/0",
+            "customer/cream/eat/left/1",
+            "customer/cream/eat/left/2",
+            "customer/cream/eat/left/3"
+          ],
+          "right": [
+            "customer/cream/eat/right/0",
+            "customer/cream/eat/right/1",
+            "customer/cream/eat/right/2",
+            "customer/cream/eat/right/3"
+          ],
+          "up": [
+            "customer/cream/eat/up/0",
+            "customer/cream/eat/up/1",
+            "customer/cream/eat/up/2",
+            "customer/cream/eat/up/3"
+          ]
+        }
+      }
+    },
+    "depart": {
+      "frames": 4,
+      "fps": 8,
+      "loop": false,
+      "durationMs": 500,
+      "frameNames": {
+        "terracotta": {
+          "down": [
+            "customer/terracotta/depart/down/0",
+            "customer/terracotta/depart/down/1",
+            "customer/terracotta/depart/down/2",
+            "customer/terracotta/depart/down/3"
+          ],
+          "left": [
+            "customer/terracotta/depart/left/0",
+            "customer/terracotta/depart/left/1",
+            "customer/terracotta/depart/left/2",
+            "customer/terracotta/depart/left/3"
+          ],
+          "right": [
+            "customer/terracotta/depart/right/0",
+            "customer/terracotta/depart/right/1",
+            "customer/terracotta/depart/right/2",
+            "customer/terracotta/depart/right/3"
+          ],
+          "up": [
+            "customer/terracotta/depart/up/0",
+            "customer/terracotta/depart/up/1",
+            "customer/terracotta/depart/up/2",
+            "customer/terracotta/depart/up/3"
+          ]
+        },
+        "sage": {
+          "down": [
+            "customer/sage/depart/down/0",
+            "customer/sage/depart/down/1",
+            "customer/sage/depart/down/2",
+            "customer/sage/depart/down/3"
+          ],
+          "left": [
+            "customer/sage/depart/left/0",
+            "customer/sage/depart/left/1",
+            "customer/sage/depart/left/2",
+            "customer/sage/depart/left/3"
+          ],
+          "right": [
+            "customer/sage/depart/right/0",
+            "customer/sage/depart/right/1",
+            "customer/sage/depart/right/2",
+            "customer/sage/depart/right/3"
+          ],
+          "up": [
+            "customer/sage/depart/up/0",
+            "customer/sage/depart/up/1",
+            "customer/sage/depart/up/2",
+            "customer/sage/depart/up/3"
+          ]
+        },
+        "saffron": {
+          "down": [
+            "customer/saffron/depart/down/0",
+            "customer/saffron/depart/down/1",
+            "customer/saffron/depart/down/2",
+            "customer/saffron/depart/down/3"
+          ],
+          "left": [
+            "customer/saffron/depart/left/0",
+            "customer/saffron/depart/left/1",
+            "customer/saffron/depart/left/2",
+            "customer/saffron/depart/left/3"
+          ],
+          "right": [
+            "customer/saffron/depart/right/0",
+            "customer/saffron/depart/right/1",
+            "customer/saffron/depart/right/2",
+            "customer/saffron/depart/right/3"
+          ],
+          "up": [
+            "customer/saffron/depart/up/0",
+            "customer/saffron/depart/up/1",
+            "customer/saffron/depart/up/2",
+            "customer/saffron/depart/up/3"
+          ]
+        },
+        "slate": {
+          "down": [
+            "customer/slate/depart/down/0",
+            "customer/slate/depart/down/1",
+            "customer/slate/depart/down/2",
+            "customer/slate/depart/down/3"
+          ],
+          "left": [
+            "customer/slate/depart/left/0",
+            "customer/slate/depart/left/1",
+            "customer/slate/depart/left/2",
+            "customer/slate/depart/left/3"
+          ],
+          "right": [
+            "customer/slate/depart/right/0",
+            "customer/slate/depart/right/1",
+            "customer/slate/depart/right/2",
+            "customer/slate/depart/right/3"
+          ],
+          "up": [
+            "customer/slate/depart/up/0",
+            "customer/slate/depart/up/1",
+            "customer/slate/depart/up/2",
+            "customer/slate/depart/up/3"
+          ]
+        },
+        "rose": {
+          "down": [
+            "customer/rose/depart/down/0",
+            "customer/rose/depart/down/1",
+            "customer/rose/depart/down/2",
+            "customer/rose/depart/down/3"
+          ],
+          "left": [
+            "customer/rose/depart/left/0",
+            "customer/rose/depart/left/1",
+            "customer/rose/depart/left/2",
+            "customer/rose/depart/left/3"
+          ],
+          "right": [
+            "customer/rose/depart/right/0",
+            "customer/rose/depart/right/1",
+            "customer/rose/depart/right/2",
+            "customer/rose/depart/right/3"
+          ],
+          "up": [
+            "customer/rose/depart/up/0",
+            "customer/rose/depart/up/1",
+            "customer/rose/depart/up/2",
+            "customer/rose/depart/up/3"
+          ]
+        },
+        "cream": {
+          "down": [
+            "customer/cream/depart/down/0",
+            "customer/cream/depart/down/1",
+            "customer/cream/depart/down/2",
+            "customer/cream/depart/down/3"
+          ],
+          "left": [
+            "customer/cream/depart/left/0",
+            "customer/cream/depart/left/1",
+            "customer/cream/depart/left/2",
+            "customer/cream/depart/left/3"
+          ],
+          "right": [
+            "customer/cream/depart/right/0",
+            "customer/cream/depart/right/1",
+            "customer/cream/depart/right/2",
+            "customer/cream/depart/right/3"
+          ],
+          "up": [
+            "customer/cream/depart/up/0",
+            "customer/cream/depart/up/1",
+            "customer/cream/depart/up/2",
+            "customer/cream/depart/up/3"
+          ]
+        }
+      }
+    }
+  }
+}

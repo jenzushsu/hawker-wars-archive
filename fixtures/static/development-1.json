@@ -1,0 +1,1868 @@
+{
+  "schemaVersion": "static-dataset-1",
+  "manifest": {
+    "schemaVersion": "static-task-manifest-1",
+    "taskVersion": "static-task-1",
+    "generatorVersion": "static-generator-1",
+    "solverVersion": "tiny-oracle-1",
+    "simulationVersion": "poc-1",
+    "demandVersion": "demand-1",
+    "scorerVersion": "utility-1",
+    "observationVersion": "observation-2",
+    "terminalValuation": "utility-1-closing-settlement",
+    "horizonEndTick": 120,
+    "taskTicks": [
+      117,
+      118,
+      119
+    ],
+    "behaviorPolicies": [
+      "rules",
+      "mixed"
+    ],
+    "defaultDevelopmentSeeds": [
+      2000,
+      2001
+    ],
+    "developmentGeneratorSeeds": [
+      2000,
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026,
+      2027,
+      2028,
+      2029,
+      2030,
+      2031,
+      2032,
+      2033,
+      2034,
+      2035,
+      2036,
+      2037,
+      2038,
+      2039,
+      2040,
+      2041,
+      2042,
+      2043,
+      2044,
+      2045,
+      2046,
+      2047,
+      2048,
+      2049,
+      2050,
+      2051,
+      2052,
+      2053,
+      2054,
+      2055,
+      2056,
+      2057,
+      2058,
+      2059,
+      2060,
+      2061,
+      2062,
+      2063,
+      2064,
+      2065,
+      2066,
+      2067,
+      2068,
+      2069,
+      2070,
+      2071,
+      2072,
+      2073,
+      2074,
+      2075,
+      2076,
+      2077,
+      2078,
+      2079,
+      2080,
+      2081,
+      2082,
+      2083,
+      2084,
+      2085,
+      2086,
+      2087,
+      2088,
+      2089,
+      2090,
+      2091,
+      2092,
+      2093,
+      2094,
+      2095,
+      2096,
+      2097,
+      2098,
+      2099
+    ],
+    "heldOutGeneratorSeeds": [
+      3000,
+      3001,
+      3002,
+      3003,
+      3004,
+      3005,
+      3006,
+      3007,
+      3008,
+      3009,
+      3010,
+      3011,
+      3012,
+      3013,
+      3014,
+      3015,
+      3016,
+      3017,
+      3018,
+      3019,
+      3020,
+      3021,
+      3022,
+      3023,
+      3024,
+      3025,
+      3026,
+      3027,
+      3028,
+      3029,
+      3030,
+      3031,
+      3032,
+      3033,
+      3034,
+      3035,
+      3036,
+      3037,
+      3038,
+      3039,
+      3040,
+      3041,
+      3042,
+      3043,
+      3044,
+      3045,
+      3046,
+      3047,
+      3048,
+      3049,
+      3050,
+      3051,
+      3052,
+      3053,
+      3054,
+      3055,
+      3056,
+      3057,
+      3058,
+      3059,
+      3060,
+      3061,
+      3062,
+      3063,
+      3064,
+      3065,
+      3066,
+      3067,
+      3068,
+      3069,
+      3070,
+      3071,
+      3072,
+      3073,
+      3074,
+      3075,
+      3076,
+      3077,
+      3078,
+      3079,
+      3080,
+      3081,
+      3082,
+      3083,
+      3084,
+      3085,
+      3086,
+      3087,
+      3088,
+      3089,
+      3090,
+      3091,
+      3092,
+      3093,
+      3094,
+      3095,
+      3096,
+      3097,
+      3098,
+      3099
+    ],
+    "scenario": "clean",
+    "selection": "all-task-ticks-in-seed-policy-order-before-labels",
+    "categories": [
+      "serve-available",
+      "stockout-queue",
+      "no-queued-service"
+    ],
+    "exactArithmetic": "rational",
+    "includeAllOptimalActions": true,
+    "maxStates": 20000,
+    "maxBranches": 20000,
+    "capRejections": "record-and-exclude-from-exact-labeled-split",
+    "approximationLabels": "none",
+    "heldOutGenerationRequiresExplicitOptIn": true,
+    "deduplicateCanonicalStatesAcrossSplits": true,
+    "researchCandidateTarget": "300-500-deferred"
+  },
+  "manifestHash": "46c5cf4c472c8eac22d68dcd2dc85381678d91e3a20f48db5b1d7750ef348a21",
+  "split": "development",
+  "distribution": {
+    "version": "static-task-1-independent-demand-1",
+    "baseCount": [
+      {
+        "numerator": "1",
+        "denominator": "2"
+      },
+      {
+        "numerator": "1717986919",
+        "denominator": "4294967296"
+      },
+      {
+        "numerator": "429496729",
+        "denominator": "4294967296"
+      }
+    ],
+    "patienceEach": {
+      "numerator": "1",
+      "denominator": "8"
+    },
+    "promotionExtra": {
+      "numerator": "1",
+      "denominator": "2"
+    },
+    "rainKeep": {
+      "numerator": "1",
+      "denominator": "2"
+    },
+    "hiddenDraws": "independent finite-32-bit draw distributions; no realized seed schedule"
+  },
+  "generation": {
+    "requestedSeeds": [
+      2000,
+      2001
+    ],
+    "behaviorPolicies": [
+      "rules",
+      "mixed"
+    ],
+    "generatedCount": 12,
+    "duplicateRejections": [],
+    "uniqueCandidateCount": 12,
+    "excludedCanonicalStateHashes": []
+  },
+  "solverLimits": {
+    "maxStates": 20000,
+    "maxBranches": 20000
+  },
+  "records": [
+    {
+      "task": {
+        "taskId": "static-task-1-development-2000-rules-t117",
+        "taskVersion": "static-task-1",
+        "split": "development",
+        "category": "no-queued-service",
+        "canonicalStateHash": "237b43d551706553f60d2ff741418c48ed2fd63f9b8a450deeec2bb55f9cd4d9",
+        "initialState": {
+          "tick": 117,
+          "phase": "decision",
+          "cashCents": 63000,
+          "rawPortions": 0,
+          "readyBatches": [
+            {
+              "id": "batch-0",
+              "quantity": 5,
+              "expiresAt": 119
+            },
+            {
+              "id": "batch-1",
+              "quantity": 10,
+              "expiresAt": 127
+            }
+          ],
+          "cooking": null,
+          "pendingRestock": null,
+          "promotion": null,
+          "promotionEligibleAt": 36,
+          "queue": [],
+          "effects": [],
+          "totals": {
+            "served": 127,
+            "abandoned": 0,
+            "wasted": 0,
+            "waitMinutes": 45,
+            "arrivals": 127,
+            "purchasedPortions": 100,
+            "restockOrders": 5,
+            "promotions": 1
+          }
+        },
+        "observation": {
+          "schemaVersion": "observation-2",
+          "tick": 117,
+          "remainingMinutes": 3,
+          "cashCents": 63000,
+          "rawPortions": 0,
+          "readyBatches": [
+            {
+              "id": "batch-0",
+              "quantity": 5,
+              "expiresAt": 119
+            },
+            {
+              "id": "batch-1",
+              "quantity": 10,
+              "expiresAt": 127
+            }
+          ],
+          "cooking": null,
+          "pendingRestock": null,
+          "promotion": null,
+          "promotionEligibleAt": 36,
+          "queue": [],
+          "effects": [],
+          "demandPhase": "off-peak",
+          "cumulativeRevenueCents": 63500,
+          "cumulativePurchasesCents": 20000,
+          "cumulativePromotionSpendCents": 500,
+          "totals": {
+            "served": 127,
+            "abandoned": 0,
+            "wasted": 0,
+            "waitMinutes": 45,
+            "arrivals": 127,
+            "purchasedPortions": 100,
+            "restockOrders": 5,
+            "promotions": 1
+          },
+          "recentActions": [
+            {
+              "tick": 112,
+              "action": "WAIT"
+            },
+            {
+              "tick": 113,
+              "action": "SERVE"
+            },
+            {
+              "tick": 114,
+              "action": "SERVE"
+            },
+            {
+              "tick": 115,
+              "action": "WAIT"
+            },
+            {
+              "tick": 116,
+              "action": "WAIT"
+            }
+          ],
+          "legalActions": [
+            "WAIT"
+          ]
+        },
+        "legalActions": [
+          "WAIT"
+        ],
+        "horizonEndTick": 120,
+        "futureEvents": [],
+        "generator": {
+          "version": "static-generator-1",
+          "seed": 2000,
+          "behaviorPolicy": "rules",
+          "tick": 117
+        }
+      },
+      "oracle": {
+        "solverVersion": "tiny-oracle-1",
+        "status": "exact",
+        "optimalActions": [
+          "WAIT"
+        ],
+        "actionValues": [
+          {
+            "action": "WAIT",
+            "expectedFinalUtility": {
+              "numerator": "36813238435675",
+              "denominator": "1073741824"
+            },
+            "expectedRemainingUtility": {
+              "numerator": "-3317862236325",
+              "denominator": "1073741824"
+            }
+          }
+        ],
+        "exploredStates": 5549,
+        "exploredBranches": 10658
+      }
+    },
+    {
+      "task": {
+        "taskId": "static-task-1-development-2000-rules-t118",
+        "taskVersion": "static-task-1",
+        "split": "development",
+        "category": "no-queued-service",
+        "canonicalStateHash": "541ac6cc3b1e03be76d8e329a63fb7a1c7e7f68151d5f16f7cafe5dffab11470",
+        "initialState": {
+          "tick": 118,
+          "phase": "decision",
+          "cashCents": 63000,
+          "rawPortions": 0,
+          "readyBatches": [
+            {
+              "id": "batch-0",
+              "quantity": 5,
+              "expiresAt": 119
+            },
+            {
+              "id": "batch-1",
+              "quantity": 10,
+              "expiresAt": 127
+            }
+          ],
+          "cooking": null,
+          "pendingRestock": null,
+          "promotion": null,
+          "promotionEligibleAt": 36,
+          "queue": [],
+          "effects": [],
+          "totals": {
+            "served": 127,
+            "abandoned": 0,
+            "wasted": 0,
+            "waitMinutes": 45,
+            "arrivals": 127,
+            "purchasedPortions": 100,
+            "restockOrders": 5,
+            "promotions": 1
+          }
+        },
+        "observation": {
+          "schemaVersion": "observation-2",
+          "tick": 118,
+          "remainingMinutes": 2,
+          "cashCents": 63000,
+          "rawPortions": 0,
+          "readyBatches": [
+            {
+              "id": "batch-0",
+              "quantity": 5,
+              "expiresAt": 119
+            },
+            {
+              "id": "batch-1",
+              "quantity": 10,
+              "expiresAt": 127
+            }
+          ],
+          "cooking": null,
+          "pendingRestock": null,
+          "promotion": null,
+          "promotionEligibleAt": 36,
+          "queue": [],
+          "effects": [],
+          "demandPhase": "off-peak",
+          "cumulativeRevenueCents": 63500,
+          "cumulativePurchasesCents": 20000,
+          "cumulativePromotionSpendCents": 500,
+          "totals": {
+            "served": 127,
+            "abandoned": 0,
+            "wasted": 0,
+            "waitMinutes": 45,
+            "arrivals": 127,
+            "purchasedPortions": 100,
+            "restockOrders": 5,
+            "promotions": 1
+          },
+          "recentActions": [
+            {
+              "tick": 113,
+              "action": "SERVE"
+            },
+            {
+              "tick": 114,
+              "action": "SERVE"
+            },
+            {
+              "tick": 115,
+              "action": "WAIT"
+            },
+            {
+              "tick": 116,
+              "action": "WAIT"
+            },
+            {
+              "tick": 117,
+              "action": "WAIT"
+            }
+          ],
+          "legalActions": [
+            "WAIT"
+          ]
+        },
+        "legalActions": [
+          "WAIT"
+        ],
+        "horizonEndTick": 120,
+        "futureEvents": [],
+        "generator": {
+          "version": "static-generator-1",
+          "seed": 2000,
+          "behaviorPolicy": "rules",
+          "tick": 118
+        }
+      },
+      "oracle": {
+        "solverVersion": "tiny-oracle-1",
+        "status": "exact",
+        "optimalActions": [
+          "WAIT"
+        ],
+        "actionValues": [
+          {
+            "action": "WAIT",
+            "expectedFinalUtility": {
+              "numerator": "72917807267675",
+              "denominator": "2147483648"
+            },
+            "expectedRemainingUtility": {
+              "numerator": "-7344394076325",
+              "denominator": "2147483648"
+            }
+          }
+        ],
+        "exploredStates": 74,
+        "exploredBranches": 73
+      }
+    },
+    {
+      "task": {
+        "taskId": "static-task-1-development-2000-rules-t119",
+        "taskVersion": "static-task-1",
+        "split": "development",
+        "category": "serve-available",
+        "canonicalStateHash": "3f512642e7249ac4901c4652cfb018dffd7fa868179e6dffd6497cf9d4176322",
+        "initialState": {
+          "tick": 119,
+          "phase": "decision",
+          "cashCents": 63000,
+          "rawPortions": 0,
+          "readyBatches": [
+            {
+              "id": "batch-0",
+              "quantity": 10,
+              "expiresAt": 127
+            }
+          ],
+          "cooking": null,
+          "pendingRestock": null,
+          "promotion": null,
+          "promotionEligibleAt": 36,
+          "queue": [
+            {
+              "id": "customer-119-base-0",
+              "arrivalTick": 119,
+              "patience": 10,
+              "deadlineTick": 129
+            }
+          ],
+          "effects": [],
+          "totals": {
+            "served": 127,
+            "abandoned": 0,
+            "wasted": 5,
+            "waitMinutes": 45,
+            "arrivals": 128,
+            "purchasedPortions": 100,
+            "restockOrders": 5,
+            "promotions": 1
+          }
+        },
+        "observation": {
+          "schemaVersion": "observation-2",
+          "tick": 119,
+          "remainingMinutes": 1,
+          "cashCents": 63000,
+          "rawPortions": 0,
+          "readyBatches": [
+            {
+              "id": "batch-0",
+              "quantity": 10,
+              "expiresAt": 127
+            }
+          ],
+          "cooking": null,
+          "pendingRestock": null,
+          "promotion": null,
+          "promotionEligibleAt": 36,
+          "queue": [
+            {
+              "id": "customer-119-base-0",
+              "arrivalTick": 119,
+              "patience": 10,
+              "deadlineTick": 129
+            }
+          ],
+          "effects": [],
+          "demandPhase": "off-peak",
+          "cumulativeRevenueCents": 63500,
+          "cumulativePurchasesCents": 20000,
+          "cumulativePromotionSpendCents": 500,
+          "totals": {
+            "served": 127,
+            "abandoned": 0,
+            "wasted": 5,
+            "waitMinutes": 45,
+            "arrivals": 128,
+            "purchasedPortions": 100,
+            "restockOrders": 5,
+            "promotions": 1
+          },
+          "recentActions": [
+            {
+              "tick": 114,
+              "action": "SERVE"
+            },
+            {
+              "tick": 115,
+              "action": "WAIT"
+            },
+            {
+              "tick": 116,
+              "action": "WAIT"
+            },
+            {
+              "tick": 117,
+              "action": "WAIT"
+            },
+            {
+              "tick": 118,
+              "action": "WAIT"
+            }
+          ],
+          "legalActions": [
+            "SERVE",
+            "WAIT"
+          ]
+        },
+        "legalActions": [
+          "SERVE",
+          "WAIT"
+        ],
+        "horizonEndTick": 120,
+        "futureEvents": [],
+        "generator": {
+          "version": "static-generator-1",
+          "seed": 2000,
+          "behaviorPolicy": "rules",
+          "tick": 119
+        }
+      },
+      "oracle": {
+        "solverVersion": "tiny-oracle-1",
+        "status": "exact",
+        "optimalActions": [
+          "SERVE"
+        ],
+        "actionValues": [
+          {
+            "action": "SERVE",
+            "expectedFinalUtility": {
+              "numerator": "34175",
+              "denominator": "1"
+            },
+            "expectedRemainingUtility": {
+              "numerator": "-1950",
+              "denominator": "1"
+            }
+          },
+          {
+            "action": "WAIT",
+            "expectedFinalUtility": {
+              "numerator": "33520",
+              "denominator": "1"
+            },
+            "expectedRemainingUtility": {
+              "numerator": "-2605",
+              "denominator": "1"
+            }
+          }
+        ],
+        "exploredStates": 1,
+        "exploredBranches": 0
+      }
+    },
+    {
+      "task": {
+        "taskId": "static-task-1-development-2000-mixed-t117",
+        "taskVersion": "static-task-1",
+        "split": "development",
+        "category": "no-queued-service",
+        "canonicalStateHash": "a450ba1eba7daa3304ac9e652cdd5020f6133669f2de63249c456b5d2dec7122",
+        "initialState": {
+          "tick": 117,
+          "phase": "decision",
+          "cashCents": 46000,
+          "rawPortions": 30,
+          "readyBatches": [
+            {
+              "id": "batch-0",
+              "quantity": 9,
+              "expiresAt": 123
+            },
+            {
+              "id": "batch-1",
+              "quantity": 10,
+              "expiresAt": 134
+            }
+          ],
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 119
+          },
+          "pendingRestock": null,
+          "promotion": null,
+          "promotionEligibleAt": 116,
+          "queue": [],
+          "effects": [],
+          "totals": {
+            "served": 113,
+            "abandoned": 43,
+            "wasted": 10,
+            "waitMinutes": 522,
+            "arrivals": 156,
+            "purchasedPortions": 140,
+            "restockOrders": 7,
+            "promotions": 5
+          }
+        },
+        "observation": {
+          "schemaVersion": "observation-2",
+          "tick": 117,
+          "remainingMinutes": 3,
+          "cashCents": 46000,
+          "rawPortions": 30,
+          "readyBatches": [
+            {
+              "id": "batch-0",
+              "quantity": 9,
+              "expiresAt": 123
+            },
+            {
+              "id": "batch-1",
+              "quantity": 10,
+              "expiresAt": 134
+            }
+          ],
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 119
+          },
+          "pendingRestock": null,
+          "promotion": null,
+          "promotionEligibleAt": 116,
+          "queue": [],
+          "effects": [],
+          "demandPhase": "off-peak",
+          "cumulativeRevenueCents": 56500,
+          "cumulativePurchasesCents": 28000,
+          "cumulativePromotionSpendCents": 2500,
+          "totals": {
+            "served": 113,
+            "abandoned": 43,
+            "wasted": 10,
+            "waitMinutes": 522,
+            "arrivals": 156,
+            "purchasedPortions": 140,
+            "restockOrders": 7,
+            "promotions": 5
+          },
+          "recentActions": [
+            {
+              "tick": 112,
+              "action": "WAIT"
+            },
+            {
+              "tick": 113,
+              "action": "SERVE"
+            },
+            {
+              "tick": 114,
+              "action": "COOK"
+            },
+            {
+              "tick": 115,
+              "action": "SERVE"
+            },
+            {
+              "tick": 116,
+              "action": "WAIT"
+            }
+          ],
+          "legalActions": [
+            "WAIT"
+          ]
+        },
+        "legalActions": [
+          "WAIT"
+        ],
+        "horizonEndTick": 120,
+        "futureEvents": [],
+        "generator": {
+          "version": "static-generator-1",
+          "seed": 2000,
+          "behaviorPolicy": "mixed",
+          "tick": 117
+        }
+      },
+      "oracle": {
+        "solverVersion": "tiny-oracle-1",
+        "status": "exact",
+        "optimalActions": [
+          "WAIT"
+        ],
+        "actionValues": [
+          {
+            "action": "WAIT",
+            "expectedFinalUtility": {
+              "numerator": "16535624089435",
+              "denominator": "1073741824"
+            },
+            "expectedRemainingUtility": {
+              "numerator": "-7075958620325",
+              "denominator": "1073741824"
+            }
+          }
+        ],
+        "exploredStates": 5549,
+        "exploredBranches": 10658
+      }
+    },
+    {
+      "task": {
+        "taskId": "static-task-1-development-2000-mixed-t118",
+        "taskVersion": "static-task-1",
+        "split": "development",
+        "category": "no-queued-service",
+        "canonicalStateHash": "7c19735ffa0bc56df3f355d476bda005c545574af27c044cab1fc21877985644",
+        "initialState": {
+          "tick": 118,
+          "phase": "decision",
+          "cashCents": 46000,
+          "rawPortions": 30,
+          "readyBatches": [
+            {
+              "id": "batch-0",
+              "quantity": 9,
+              "expiresAt": 123
+            },
+            {
+              "id": "batch-1",
+              "quantity": 10,
+              "expiresAt": 134
+            }
+          ],
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 119
+          },
+          "pendingRestock": null,
+          "promotion": null,
+          "promotionEligibleAt": 116,
+          "queue": [],
+          "effects": [],
+          "totals": {
+            "served": 113,
+            "abandoned": 43,
+            "wasted": 10,
+            "waitMinutes": 522,
+            "arrivals": 156,
+            "purchasedPortions": 140,
+            "restockOrders": 7,
+            "promotions": 5
+          }
+        },
+        "observation": {
+          "schemaVersion": "observation-2",
+          "tick": 118,
+          "remainingMinutes": 2,
+          "cashCents": 46000,
+          "rawPortions": 30,
+          "readyBatches": [
+            {
+              "id": "batch-0",
+              "quantity": 9,
+              "expiresAt": 123
+            },
+            {
+              "id": "batch-1",
+              "quantity": 10,
+              "expiresAt": 134
+            }
+          ],
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 119
+          },
+          "pendingRestock": null,
+          "promotion": null,
+          "promotionEligibleAt": 116,
+          "queue": [],
+          "effects": [],
+          "demandPhase": "off-peak",
+          "cumulativeRevenueCents": 56500,
+          "cumulativePurchasesCents": 28000,
+          "cumulativePromotionSpendCents": 2500,
+          "totals": {
+            "served": 113,
+            "abandoned": 43,
+            "wasted": 10,
+            "waitMinutes": 522,
+            "arrivals": 156,
+            "purchasedPortions": 140,
+            "restockOrders": 7,
+            "promotions": 5
+          },
+          "recentActions": [
+            {
+              "tick": 113,
+              "action": "SERVE"
+            },
+            {
+              "tick": 114,
+              "action": "COOK"
+            },
+            {
+              "tick": 115,
+              "action": "SERVE"
+            },
+            {
+              "tick": 116,
+              "action": "WAIT"
+            },
+            {
+              "tick": 117,
+              "action": "WAIT"
+            }
+          ],
+          "legalActions": [
+            "WAIT"
+          ]
+        },
+        "legalActions": [
+          "WAIT"
+        ],
+        "horizonEndTick": 120,
+        "futureEvents": [],
+        "generator": {
+          "version": "static-generator-1",
+          "seed": 2000,
+          "behaviorPolicy": "mixed",
+          "tick": 118
+        }
+      },
+      "oracle": {
+        "solverVersion": "tiny-oracle-1",
+        "status": "exact",
+        "optimalActions": [
+          "WAIT"
+        ],
+        "actionValues": [
+          {
+            "action": "WAIT",
+            "expectedFinalUtility": {
+              "numerator": "32362578575195",
+              "denominator": "2147483648"
+            },
+            "expectedRemainingUtility": {
+              "numerator": "-14860586844325",
+              "denominator": "2147483648"
+            }
+          }
+        ],
+        "exploredStates": 74,
+        "exploredBranches": 73
+      }
+    },
+    {
+      "task": {
+        "taskId": "static-task-1-development-2000-mixed-t119",
+        "taskVersion": "static-task-1",
+        "split": "development",
+        "category": "serve-available",
+        "canonicalStateHash": "3d2a7af8372b5f1ce16616fa60310fa6895ac7654f7e973dd6cfeea361681726",
+        "initialState": {
+          "tick": 119,
+          "phase": "decision",
+          "cashCents": 46000,
+          "rawPortions": 30,
+          "readyBatches": [
+            {
+              "id": "batch-0",
+              "quantity": 9,
+              "expiresAt": 123
+            },
+            {
+              "id": "batch-1",
+              "quantity": 10,
+              "expiresAt": 134
+            },
+            {
+              "id": "batch-2",
+              "quantity": 10,
+              "expiresAt": 139
+            }
+          ],
+          "cooking": null,
+          "pendingRestock": null,
+          "promotion": null,
+          "promotionEligibleAt": 116,
+          "queue": [
+            {
+              "id": "customer-119-base-0",
+              "arrivalTick": 119,
+              "patience": 10,
+              "deadlineTick": 129
+            }
+          ],
+          "effects": [],
+          "totals": {
+            "served": 113,
+            "abandoned": 43,
+            "wasted": 10,
+            "waitMinutes": 522,
+            "arrivals": 157,
+            "purchasedPortions": 140,
+            "restockOrders": 7,
+            "promotions": 5
+          }
+        },
+        "observation": {
+          "schemaVersion": "observation-2",
+          "tick": 119,
+          "remainingMinutes": 1,
+          "cashCents": 46000,
+          "rawPortions": 30,
+          "readyBatches": [
+            {
+              "id": "batch-0",
+              "quantity": 9,
+              "expiresAt": 123
+            },
+            {
+              "id": "batch-1",
+              "quantity": 10,
+              "expiresAt": 134
+            },
+            {
+              "id": "batch-2",
+              "quantity": 10,
+              "expiresAt": 139
+            }
+          ],
+          "cooking": null,
+          "pendingRestock": null,
+          "promotion": null,
+          "promotionEligibleAt": 116,
+          "queue": [
+            {
+              "id": "customer-119-base-0",
+              "arrivalTick": 119,
+              "patience": 10,
+              "deadlineTick": 129
+            }
+          ],
+          "effects": [],
+          "demandPhase": "off-peak",
+          "cumulativeRevenueCents": 56500,
+          "cumulativePurchasesCents": 28000,
+          "cumulativePromotionSpendCents": 2500,
+          "totals": {
+            "served": 113,
+            "abandoned": 43,
+            "wasted": 10,
+            "waitMinutes": 522,
+            "arrivals": 157,
+            "purchasedPortions": 140,
+            "restockOrders": 7,
+            "promotions": 5
+          },
+          "recentActions": [
+            {
+              "tick": 114,
+              "action": "COOK"
+            },
+            {
+              "tick": 115,
+              "action": "SERVE"
+            },
+            {
+              "tick": 116,
+              "action": "WAIT"
+            },
+            {
+              "tick": 117,
+              "action": "WAIT"
+            },
+            {
+              "tick": 118,
+              "action": "WAIT"
+            }
+          ],
+          "legalActions": [
+            "SERVE",
+            "WAIT"
+          ]
+        },
+        "legalActions": [
+          "SERVE",
+          "WAIT"
+        ],
+        "horizonEndTick": 120,
+        "futureEvents": [],
+        "generator": {
+          "version": "static-generator-1",
+          "seed": 2000,
+          "behaviorPolicy": "mixed",
+          "tick": 119
+        }
+      },
+      "oracle": {
+        "solverVersion": "tiny-oracle-1",
+        "status": "exact",
+        "optimalActions": [
+          "SERVE"
+        ],
+        "actionValues": [
+          {
+            "action": "SERVE",
+            "expectedFinalUtility": {
+              "numerator": "15290",
+              "denominator": "1"
+            },
+            "expectedRemainingUtility": {
+              "numerator": "-6700",
+              "denominator": "1"
+            }
+          },
+          {
+            "action": "WAIT",
+            "expectedFinalUtility": {
+              "numerator": "14635",
+              "denominator": "1"
+            },
+            "expectedRemainingUtility": {
+              "numerator": "-7355",
+              "denominator": "1"
+            }
+          }
+        ],
+        "exploredStates": 1,
+        "exploredBranches": 0
+      }
+    },
+    {
+      "task": {
+        "taskId": "static-task-1-development-2001-rules-t118",
+        "taskVersion": "static-task-1",
+        "split": "development",
+        "category": "no-queued-service",
+        "canonicalStateHash": "5d37694250686c35ff23278196cd54a9dba0f13c1dbeb4861a125e5c78ff9809",
+        "initialState": {
+          "tick": 118,
+          "phase": "decision",
+          "cashCents": 64000,
+          "rawPortions": 0,
+          "readyBatches": [
+            {
+              "id": "batch-0",
+              "quantity": 8,
+              "expiresAt": 122
+            }
+          ],
+          "cooking": null,
+          "pendingRestock": null,
+          "promotion": null,
+          "promotionEligibleAt": 47,
+          "queue": [],
+          "effects": [],
+          "totals": {
+            "served": 130,
+            "abandoned": 0,
+            "wasted": 4,
+            "waitMinutes": 147,
+            "arrivals": 130,
+            "purchasedPortions": 100,
+            "restockOrders": 5,
+            "promotions": 2
+          }
+        },
+        "observation": {
+          "schemaVersion": "observation-2",
+          "tick": 118,
+          "remainingMinutes": 2,
+          "cashCents": 64000,
+          "rawPortions": 0,
+          "readyBatches": [
+            {
+              "id": "batch-0",
+              "quantity": 8,
+              "expiresAt": 122
+            }
+          ],
+          "cooking": null,
+          "pendingRestock": null,
+          "promotion": null,
+          "promotionEligibleAt": 47,
+          "queue": [],
+          "effects": [],
+          "demandPhase": "off-peak",
+          "cumulativeRevenueCents": 65000,
+          "cumulativePurchasesCents": 20000,
+          "cumulativePromotionSpendCents": 1000,
+          "totals": {
+            "served": 130,
+            "abandoned": 0,
+            "wasted": 4,
+            "waitMinutes": 147,
+            "arrivals": 130,
+            "purchasedPortions": 100,
+            "restockOrders": 5,
+            "promotions": 2
+          },
+          "recentActions": [
+            {
+              "tick": 113,
+              "action": "SERVE"
+            },
+            {
+              "tick": 114,
+              "action": "WAIT"
+            },
+            {
+              "tick": 115,
+              "action": "WAIT"
+            },
+            {
+              "tick": 116,
+              "action": "WAIT"
+            },
+            {
+              "tick": 117,
+              "action": "SERVE"
+            }
+          ],
+          "legalActions": [
+            "WAIT"
+          ]
+        },
+        "legalActions": [
+          "WAIT"
+        ],
+        "horizonEndTick": 120,
+        "futureEvents": [],
+        "generator": {
+          "version": "static-generator-1",
+          "seed": 2001,
+          "behaviorPolicy": "rules",
+          "tick": 118
+        }
+      },
+      "oracle": {
+        "solverVersion": "tiny-oracle-1",
+        "status": "exact",
+        "optimalActions": [
+          "WAIT"
+        ],
+        "actionValues": [
+          {
+            "action": "WAIT",
+            "expectedFinalUtility": {
+              "numerator": "74292196802395",
+              "denominator": "2147483648"
+            },
+            "expectedRemainingUtility": {
+              "numerator": "-3586297692325",
+              "denominator": "2147483648"
+            }
+          }
+        ],
+        "exploredStates": 74,
+        "exploredBranches": 73
+      }
+    },
+    {
+      "task": {
+        "taskId": "static-task-1-development-2001-rules-t119",
+        "taskVersion": "static-task-1",
+        "split": "development",
+        "category": "serve-available",
+        "canonicalStateHash": "74595f7713f6585b1d9a5a680f76e7b6e9d13d3b8209299540b0bf172934efea",
+        "initialState": {
+          "tick": 119,
+          "phase": "decision",
+          "cashCents": 64000,
+          "rawPortions": 0,
+          "readyBatches": [
+            {
+              "id": "batch-0",
+              "quantity": 8,
+              "expiresAt": 122
+            }
+          ],
+          "cooking": null,
+          "pendingRestock": null,
+          "promotion": null,
+          "promotionEligibleAt": 47,
+          "queue": [
+            {
+              "id": "customer-119-base-0",
+              "arrivalTick": 119,
+              "patience": 4,
+              "deadlineTick": 123
+            }
+          ],
+          "effects": [],
+          "totals": {
+            "served": 130,
+            "abandoned": 0,
+            "wasted": 4,
+            "waitMinutes": 147,
+            "arrivals": 131,
+            "purchasedPortions": 100,
+            "restockOrders": 5,
+            "promotions": 2
+          }
+        },
+        "observation": {
+          "schemaVersion": "observation-2",
+          "tick": 119,
+          "remainingMinutes": 1,
+          "cashCents": 64000,
+          "rawPortions": 0,
+          "readyBatches": [
+            {
+              "id": "batch-0",
+              "quantity": 8,
+              "expiresAt": 122
+            }
+          ],
+          "cooking": null,
+          "pendingRestock": null,
+          "promotion": null,
+          "promotionEligibleAt": 47,
+          "queue": [
+            {
+              "id": "customer-119-base-0",
+              "arrivalTick": 119,
+              "patience": 4,
+              "deadlineTick": 123
+            }
+          ],
+          "effects": [],
+          "demandPhase": "off-peak",
+          "cumulativeRevenueCents": 65000,
+          "cumulativePurchasesCents": 20000,
+          "cumulativePromotionSpendCents": 1000,
+          "totals": {
+            "served": 130,
+            "abandoned": 0,
+            "wasted": 4,
+            "waitMinutes": 147,
+            "arrivals": 131,
+            "purchasedPortions": 100,
+            "restockOrders": 5,
+            "promotions": 2
+          },
+          "recentActions": [
+            {
+              "tick": 114,
+              "action": "WAIT"
+            },
+            {
+              "tick": 115,
+              "action": "WAIT"
+            },
+            {
+              "tick": 116,
+              "action": "WAIT"
+            },
+            {
+              "tick": 117,
+              "action": "SERVE"
+            },
+            {
+              "tick": 118,
+              "action": "WAIT"
+            }
+          ],
+          "legalActions": [
+            "SERVE",
+            "WAIT"
+          ]
+        },
+        "legalActions": [
+          "SERVE",
+          "WAIT"
+        ],
+        "horizonEndTick": 120,
+        "futureEvents": [],
+        "generator": {
+          "version": "static-generator-1",
+          "seed": 2001,
+          "behaviorPolicy": "rules",
+          "tick": 119
+        }
+      },
+      "oracle": {
+        "solverVersion": "tiny-oracle-1",
+        "status": "exact",
+        "optimalActions": [
+          "SERVE"
+        ],
+        "actionValues": [
+          {
+            "action": "SERVE",
+            "expectedFinalUtility": {
+              "numerator": "34815",
+              "denominator": "1"
+            },
+            "expectedRemainingUtility": {
+              "numerator": "-1450",
+              "denominator": "1"
+            }
+          },
+          {
+            "action": "WAIT",
+            "expectedFinalUtility": {
+              "numerator": "34160",
+              "denominator": "1"
+            },
+            "expectedRemainingUtility": {
+              "numerator": "-2105",
+              "denominator": "1"
+            }
+          }
+        ],
+        "exploredStates": 1,
+        "exploredBranches": 0
+      }
+    },
+    {
+      "task": {
+        "taskId": "static-task-1-development-2001-mixed-t118",
+        "taskVersion": "static-task-1",
+        "split": "development",
+        "category": "serve-available",
+        "canonicalStateHash": "e3c781bcfab6f19c0b484217d206641503c04809ec478bd344d5abe30fca9170",
+        "initialState": {
+          "tick": 118,
+          "phase": "decision",
+          "cashCents": 45500,
+          "rawPortions": 50,
+          "readyBatches": [
+            {
+              "id": "batch-0",
+              "quantity": 10,
+              "expiresAt": 131
+            }
+          ],
+          "cooking": null,
+          "pendingRestock": null,
+          "promotion": null,
+          "promotionEligibleAt": 121,
+          "queue": [
+            {
+              "id": "customer-117-base-0",
+              "arrivalTick": 117,
+              "patience": 3,
+              "deadlineTick": 120
+            },
+            {
+              "id": "customer-117-base-1",
+              "arrivalTick": 117,
+              "patience": 10,
+              "deadlineTick": 127
+            }
+          ],
+          "effects": [],
+          "totals": {
+            "served": 120,
+            "abandoned": 21,
+            "wasted": 22,
+            "waitMinutes": 370,
+            "arrivals": 143,
+            "purchasedPortions": 160,
+            "restockOrders": 8,
+            "promotions": 5
+          }
+        },
+        "observation": {
+          "schemaVersion": "observation-2",
+          "tick": 118,
+          "remainingMinutes": 2,
+          "cashCents": 45500,
+          "rawPortions": 50,
+          "readyBatches": [
+            {
+              "id": "batch-0",
+              "quantity": 10,
+              "expiresAt": 131
+            }
+          ],
+          "cooking": null,
+          "pendingRestock": null,
+          "promotion": null,
+          "promotionEligibleAt": 121,
+          "queue": [
+            {
+              "id": "customer-117-base-0",
+              "arrivalTick": 117,
+              "patience": 3,
+              "deadlineTick": 120
+            },
+            {
+              "id": "customer-117-base-1",
+              "arrivalTick": 117,
+              "patience": 10,
+              "deadlineTick": 127
+            }
+          ],
+          "effects": [],
+          "demandPhase": "off-peak",
+          "cumulativeRevenueCents": 60000,
+          "cumulativePurchasesCents": 32000,
+          "cumulativePromotionSpendCents": 2500,
+          "totals": {
+            "served": 120,
+            "abandoned": 21,
+            "wasted": 22,
+            "waitMinutes": 370,
+            "arrivals": 143,
+            "purchasedPortions": 160,
+            "restockOrders": 8,
+            "promotions": 5
+          },
+          "recentActions": [
+            {
+              "tick": 113,
+              "action": "SERVE"
+            },
+            {
+              "tick": 114,
+              "action": "WAIT"
+            },
+            {
+              "tick": 115,
+              "action": "WAIT"
+            },
+            {
+              "tick": 116,
+              "action": "WAIT"
+            },
+            {
+              "tick": 117,
+              "action": "WAIT"
+            }
+          ],
+          "legalActions": [
+            "SERVE",
+            "WAIT"
+          ]
+        },
+        "legalActions": [
+          "SERVE",
+          "WAIT"
+        ],
+        "horizonEndTick": 120,
+        "futureEvents": [],
+        "generator": {
+          "version": "static-generator-1",
+          "seed": 2001,
+          "behaviorPolicy": "mixed",
+          "tick": 118
+        }
+      },
+      "oracle": {
+        "solverVersion": "tiny-oracle-1",
+        "status": "exact",
+        "optimalActions": [
+          "SERVE"
+        ],
+        "actionValues": [
+          {
+            "action": "SERVE",
+            "expectedFinalUtility": {
+              "numerator": "49327699394395",
+              "denominator": "2147483648"
+            },
+            "expectedRemainingUtility": {
+              "numerator": "-2319282340005",
+              "denominator": "2147483648"
+            }
+          },
+          {
+            "action": "WAIT",
+            "expectedFinalUtility": {
+              "numerator": "98331128758335",
+              "denominator": "4294967296"
+            },
+            "expectedRemainingUtility": {
+              "numerator": "-4962834710465",
+              "denominator": "4294967296"
+            }
+          }
+        ],
+        "exploredStates": 147,
+        "exploredBranches": 146
+      }
+    },
+    {
+      "task": {
+        "taskId": "static-task-1-development-2001-mixed-t119",
+        "taskVersion": "static-task-1",
+        "split": "development",
+        "category": "serve-available",
+        "canonicalStateHash": "76b968ec5634f2e5ac83f336c40de66f9d5439b463511db7cc75ca93c7b58448",
+        "initialState": {
+          "tick": 119,
+          "phase": "decision",
+          "cashCents": 45500,
+          "rawPortions": 50,
+          "readyBatches": [
+            {
+              "id": "batch-0",
+              "quantity": 10,
+              "expiresAt": 131
+            }
+          ],
+          "cooking": null,
+          "pendingRestock": null,
+          "promotion": null,
+          "promotionEligibleAt": 121,
+          "queue": [
+            {
+              "id": "customer-117-base-0",
+              "arrivalTick": 117,
+              "patience": 3,
+              "deadlineTick": 120
+            },
+            {
+              "id": "customer-117-base-1",
+              "arrivalTick": 117,
+              "patience": 10,
+              "deadlineTick": 127
+            },
+            {
+              "id": "customer-119-base-0",
+              "arrivalTick": 119,
+              "patience": 4,
+              "deadlineTick": 123
+            }
+          ],
+          "effects": [],
+          "totals": {
+            "served": 120,
+            "abandoned": 21,
+            "wasted": 22,
+            "waitMinutes": 370,
+            "arrivals": 144,
+            "purchasedPortions": 160,
+            "restockOrders": 8,
+            "promotions": 5
+          }
+        },
+        "observation": {
+          "schemaVersion": "observation-2",
+          "tick": 119,
+          "remainingMinutes": 1,
+          "cashCents": 45500,
+          "rawPortions": 50,
+          "readyBatches": [
+            {
+              "id": "batch-0",
+              "quantity": 10,
+              "expiresAt": 131
+            }
+          ],
+          "cooking": null,
+          "pendingRestock": null,
+          "promotion": null,
+          "promotionEligibleAt": 121,
+          "queue": [
+            {
+              "id": "customer-117-base-0",
+              "arrivalTick": 117,
+              "patience": 3,
+              "deadlineTick": 120
+            },
+            {
+              "id": "customer-117-base-1",
+              "arrivalTick": 117,
+              "patience": 10,
+              "deadlineTick": 127
+            },
+            {
+              "id": "customer-119-base-0",
+              "arrivalTick": 119,
+              "patience": 4,
+              "deadlineTick": 123
+            }
+          ],
+          "effects": [],
+          "demandPhase": "off-peak",
+          "cumulativeRevenueCents": 60000,
+          "cumulativePurchasesCents": 32000,
+          "cumulativePromotionSpendCents": 2500,
+          "totals": {
+            "served": 120,
+            "abandoned": 21,
+            "wasted": 22,
+            "waitMinutes": 370,
+            "arrivals": 144,
+            "purchasedPortions": 160,
+            "restockOrders": 8,
+            "promotions": 5
+          },
+          "recentActions": [
+            {
+              "tick": 114,
+              "action": "WAIT"
+            },
+            {
+              "tick": 115,
+              "action": "WAIT"
+            },
+            {
+              "tick": 116,
+              "action": "WAIT"
+            },
+            {
+              "tick": 117,
+              "action": "WAIT"
+            },
+            {
+              "tick": 118,
+              "action": "WAIT"
+            }
+          ],
+          "legalActions": [
+            "SERVE",
+            "WAIT"
+          ]
+        },
+        "legalActions": [
+          "SERVE",
+          "WAIT"
+        ],
+        "horizonEndTick": 120,
+        "futureEvents": [],
+        "generator": {
+          "version": "static-generator-1",
+          "seed": 2001,
+          "behaviorPolicy": "mixed",
+          "tick": 119
+        }
+      },
+      "oracle": {
+        "solverVersion": "tiny-oracle-1",
+        "status": "exact",
+        "optimalActions": [
+          "SERVE"
+        ],
+        "actionValues": [
+          {
+            "action": "SERVE",
+            "expectedFinalUtility": {
+              "numerator": "23180",
+              "denominator": "1"
+            },
+            "expectedRemainingUtility": {
+              "numerator": "-870",
+              "denominator": "1"
+            }
+          },
+          {
+            "action": "WAIT",
+            "expectedFinalUtility": {
+              "numerator": "21215",
+              "denominator": "1"
+            },
+            "expectedRemainingUtility": {
+              "numerator": "-2835",
+              "denominator": "1"
+            }
+          }
+        ],
+        "exploredStates": 1,
+        "exploredBranches": 0
+      }
+    }
+  ],
+  "rejections": [
+    {
+      "taskId": "static-task-1-development-2001-rules-t117",
+      "canonicalStateHash": "08bec67dd8b2d0950fcd58d22a80520016e420430ea7b4a8dc48850af1c22047",
+      "reason": "oracle-limit",
+      "limitKind": "branches",
+      "exploredStates": 10949,
+      "exploredBranches": 20001
+    },
+    {
+      "taskId": "static-task-1-development-2001-mixed-t117",
+      "canonicalStateHash": "99d2d670f499ea0c695cb1c0bc07f2bf74b49f041059b4c047b309a9313865c0",
+      "reason": "oracle-limit",
+      "limitKind": "branches",
+      "exploredStates": 10949,
+      "exploredBranches": 20001
+    }
+  ],
+  "counts": {
+    "generated": 12,
+    "duplicates": 0,
+    "exactLabeled": 10,
+    "oracleRejected": 2
+  },
+  "datasetHash": "0e4e973c9e4c162354ab158b3127d1a7629d4f9f17b81233deecaaa6923341d7"
+}
