@@ -1,0 +1,41 @@
+\set ON_ERROR_STOP on
+-- The previous fixture leaves a resolved voting window. Its projection stays coherent.
+set role anon;
+select test.assert((public.live_get_view('11111111-1111-4111-8111-111111111111')->'vote_result'->>'winner')='supplier-delay','view includes sanitized resolved result');
+reset role;
+delete from public.rounds;
+set role service_role;
+select public.live_create_round('11111111-1111-4111-8111-111111111111','exhibition',array['rules','jev'],repeat('a',64),repeat('b',64),test.recovery(),false);
+select test.assert(public.live_get_view('11111111-1111-4111-8111-111111111111') is null,'service cannot expose hidden view');
+set role anon;
+select test.assert(public.live_get_view('11111111-1111-4111-8111-111111111111') is null,'hidden view is null');
+select test.assert(public.live_get_view('22222222-2222-4222-8222-222222222222') is null,'missing view is null');
+reset role;
+update public.rounds set published=true;
+set role authenticated;
+select test.assert(public.live_get_view('11111111-1111-4111-8111-111111111111') @> '{"schemaVersion":"live-view-1","snapshot":{"tick":-1,"sequence":0},"events":{"high_water":0,"events":[]},"vote_window":null,"vote_result":null}','authenticated initial view');
+set role service_role;
+select public.live_acquire_lease('11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',60);
+select test.commit(0,0,'00000000-0000-4000-8000-000000000601');
+select test.commit(1,1,'00000000-0000-4000-8000-000000000602');
+select test.commit(2,2,'00000000-0000-4000-8000-000000000603');
+reset role;
+create temp table view_state_before as select to_jsonb(s) state from live_private.round_state s;
+set role anon;
+select test.assert(public.live_get_view('11111111-1111-4111-8111-111111111111',0,2) @> '{"snapshot":{"tick":2,"sequence":3},"events":{"high_water":3,"events":[{"sequence":1},{"sequence":2}]}}','bounded page at current boundary');
+select test.assert(jsonb_array_length(public.live_get_view('11111111-1111-4111-8111-111111111111',0,2)->'events'->'events')=2,'limit is honored');
+select test.assert(public.live_get_view('11111111-1111-4111-8111-111111111111',2,100) @> '{"events":{"high_water":3,"events":[{"sequence":3}]}}','resume after cursor');
+select test.assert(jsonb_array_length(public.live_get_view('11111111-1111-4111-8111-111111111111',3)->'events'->'events')=0,'caught up page empty');
+select test.assert((public.live_get_view('11111111-1111-4111-8111-111111111111')->>'server_time_ms')::bigint between 1 and 9007199254740991,'safe database time');
+select test.assert(public.live_get_view('11111111-1111-4111-8111-111111111111')::text !~ 'private-canary|private_seed|owner_id|expires_at|recovery|session_id|fence','view excludes private state');
+select test.rejects($q$select public.live_get_view('11111111-1111-4111-8111-111111111111',4)$q$,'future cursor conflicts');
+select test.rejects($q$select public.live_get_view('11111111-1111-4111-8111-111111111111',-1)$q$,'negative cursor');
+select test.rejects($q$select public.live_get_view('11111111-1111-4111-8111-111111111111',122)$q$,'cursor bound');
+select test.rejects($q$select public.live_get_view('11111111-1111-4111-8111-111111111111',0,0)$q$,'zero limit');
+select test.rejects($q$select public.live_get_view('11111111-1111-4111-8111-111111111111',0,101)$q$,'page bound');
+select test.rejects($q$select public.live_get_view(null)$q$,'null round');
+reset role;
+select test.assert((select to_jsonb(s)=b.state from live_private.round_state s cross join view_state_before b),'reads leave all private state unchanged');
+select test.assert((select count(*) from public.game_events)=3,'reads create no events');
+select test.assert((select count(*) from live_private.tick_commits)=3,'reads create no commits');
+\echo 'Atomic public view, pagination, privacy and read-only checks passed.'

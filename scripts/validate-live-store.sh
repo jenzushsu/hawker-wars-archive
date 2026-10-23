@@ -124,4 +124,6 @@ psql_db -qAt -c "select test.assert((select count(*) from live_private.vote_rece
 printf '%s\n' 'Concurrent vote duplicate and lock-wait deadline checks passed.'
 psql_db -qAt < "$repo_root/supabase/tests/live-vote-effects.sql" > "$race_directory/vote-effects.log"
 rg '\S' "$race_directory/vote-effects.log"
+psql_db -qAt < "$repo_root/supabase/tests/live-view.sql" > "$race_directory/view.log"
+rg '\S' "$race_directory/view.log"
 printf '%s\n' 'P5 SQL lifecycle and permission validation passed (local Postgres; no PostgREST/Realtime claim).'

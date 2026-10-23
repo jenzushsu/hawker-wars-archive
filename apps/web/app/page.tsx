@@ -282,6 +282,7 @@ export default function Home() {
           <span className="status">OFFLINE DEMO</span>
         </div>
         <div className="top-actions">
+          <a href="/live">Watch live</a>
           <div className="mode" aria-label="Viewing mode">
             <button
               aria-pressed={mode === "cinematic"}

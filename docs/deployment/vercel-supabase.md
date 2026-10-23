@@ -1,6 +1,6 @@
 # Vercel and Supabase deployment
 
-The application is aligned with a Vercel frontend and Supabase shared backend. A [bounded rules-only worker](../p5-c-rules-worker.md) is now available with verified recovery and database pacing; rules-only rounds can explicitly opt into [durable vote effects](../p5-f-vote-effects.md), while multi-policy inference and live browser integration remain pending. The current browser is still an offline recorded replay; deploying it does not activate shared rounds, real audience votes or model inference. P5 is adding the backend in verified increments. No hosted deployment or production migration has been performed by these changes.
+The application is aligned with a Vercel frontend and Supabase shared backend. A [bounded rules-only worker](../p5-c-rules-worker.md) is now available with verified recovery and database pacing; rules-only rounds can explicitly opt into [durable vote effects](../p5-f-vote-effects.md), and a [shared live score/voting view](../p5-g-live-viewer.md) is available. Multi-policy inference and the live animated arena remain pending. The homepage remains an offline recorded replay; `/live` connects to configured published rounds. Deploying the frontend does not start a worker or enable model inference. P5 is adding the backend in verified increments. No hosted deployment or production migration has been performed by these changes.
 
 ## Execution boundaries
 
@@ -8,7 +8,7 @@ The application is aligned with a Vercel frontend and Supabase shared backend. A
 |---|---|---|
 | Next.js UI and static assets | Vercel | Spectator interface, replay, short request/response API handlers |
 | PostgreSQL | Supabase | Durable state, atomic commits, lease fencing, public projections and private recovery records |
-| Live event delivery | Supabase Realtime, with persisted cursor recovery | Deliver committed public changes; never the sole source of truth |
+| Live event delivery | Bounded API polling with persisted cursor recovery; Supabase Realtime planned | Deliver committed public changes; never the sole source of truth |
 | Round worker | Separate durable Node worker | Five-second pacing, fenced tick execution, operator controls and future gated provider dispatch |
 
 Do not start a round from a page read, run the game loop in a browser, or leave an unawaited background loop inside a Vercel request. Serverless invocations can end or overlap. A separate worker is the recommended PoC deployment. A bounded-job scheduler could replace it later only with demonstrated scheduling, recovery and fencing; Vercel plus Supabase alone does not supply that implemented orchestration today.
@@ -17,7 +17,7 @@ Do not start a round from a page read, run the game loop in a browser, or leave 
 
 Import `jenzushsu/hawker-wars` and set **Root Directory** to `apps/web`, with access to files outside that directory enabled. Use the Next.js framework preset and the Node 24 runtime compatible with the root manifest. Keep the default Next.js output directory; do not select a static-export override. `apps/web/vercel.json` installs from the workspace root with the pinned package manager and builds the web package. The root `packageManager` pins pnpm 11.25.0; Corepack must be available in the build image. Do not silently replace the pinned runtime/package manager to make a hosted build pass.
 
-The production build includes `/`, `/decision-states`, the dynamic `/api/admin/rounds/control` and `/api/votes` endpoints and the public art/replay assets. Local reproduction is `corepack pnpm install --frozen-lockfile`, followed by `pnpm build:web`. A successful local Next build is evidence of compilation, not evidence that the hosted Vercel deployment has been validated.
+The production build includes `/`, `/decision-states`, `/live`, `/live/[roundId]`, the dynamic `/api/admin/rounds/control`, `/api/votes` and `/api/live/rounds/[roundId]` endpoints and the public art/replay assets. Local reproduction is `corepack pnpm install --frozen-lockfile`, followed by `pnpm build:web`. A successful local Next build is evidence of compilation, not evidence that the hosted Vercel deployment has been validated.
 
 The offline frontend needs no provider or Supabase secret. Keep server credentials out of `NEXT_PUBLIC_*`, static JSON, source control and logs. The [operator control endpoint](../p5-d-operator-controls.md) requires a dedicated `HAWKER_OPERATOR_TOKEN`, server audit identity `HAWKER_OPERATOR_ID` and Supabase server credentials. Configure them separately for Preview and Production; use separate Supabase projects or isolated test data. Never point preview mutation tests at production.
 
@@ -32,7 +32,7 @@ The provider reservation ledger currently uses a local SQLite file. It cannot be
 ## Deployment acceptance still required
 
 - Provision the Vercel project, Supabase staging/production projects and a durable worker host.
-- Connect the implemented rules/voting worker to live viewer state, acknowledged votes and reconnect; demonstrate two viewers sharing one round.
+- Verify the implemented rules/voting worker and polling viewer in hosted staging, then add Realtime and authoritative live arena projection; demonstrate two viewers sharing one round.
 - Apply reviewed migrations in staging and test actual anonymous/authenticated/service-role HTTP and Realtime access.
 - Configure server secrets, origin/cookie policy and operational limits; verify none appear in public bundles or responses.
 - Verify persistent provider reservations and independently satisfy each enabled provider's access/budget gates.

@@ -1,6 +1,7 @@
 import { versions } from 'node:process';
 import { z } from 'zod';
 import { ResolutionSchema } from './vote-resolution-schema.ts';
+import { PublicViewSchema, type PublicView } from './public-view.ts';
 
 const MAX_REQUEST_BYTES = 1_048_576;
 const MAX_RESPONSE_BYTES = 2_097_152;
@@ -251,6 +252,15 @@ export class LiveStore {
     const value = parse(z.object({ roundId: uuid, afterSequence: nonnegative.refine(n => n <= 121), limit: integer.refine(n => n >= 1 && n <= 100).default(100) }).strict(), input, 'input');
     const result = await this.#request('/rpc/live_get_events', { p_round_id: value.roundId, p_after_sequence: value.afterSequence, p_limit: value.limit }, eventPage);
     if (result.high_water < value.afterSequence || result.events.length !== Math.min(value.limit, Math.max(0, result.high_water - value.afterSequence)) || result.events.some((item, index) => item.round_id !== value.roundId || item.sequence !== value.afterSequence + index + 1 || item.sequence > result.high_water)) throw new LiveStoreError('response');
+    return result;
+  }
+  /** Published atomic viewer bundle. No worker lease or simulation is invoked by this read. */
+  async getView(input: { roundId: string; afterSequence: number; limit?: number }): Promise<PublicView | null> {
+    const value = parse(z.object({ roundId: uuid, afterSequence: nonnegative.refine(n => n <= 121), limit: integer.refine(n => n >= 1 && n <= 100).default(100) }).strict(), input, 'input');
+    const result = await this.#request('/rpc/live_get_view', { p_round_id: value.roundId, p_after_sequence: value.afterSequence, p_limit: value.limit }, PublicViewSchema.nullable());
+    if (result !== null && (result.snapshot.round_id !== value.roundId || result.events.high_water < value.afterSequence ||
+      result.events.events.length !== Math.min(value.limit, result.events.high_water - value.afterSequence) ||
+      result.events.events.some((item, index) => item.round_id !== value.roundId || item.sequence !== value.afterSequence + index + 1))) throw new LiveStoreError('response');
     return result;
   }
   /** Service-only metadata, including unpublished and completed rounds; never acquires or advances work. */

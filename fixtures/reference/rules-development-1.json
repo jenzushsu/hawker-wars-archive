@@ -22,12 +22,16 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "7dbf29a0797cd0417b30d2be5ba6209f2c15902cee771c15b7cc7f3d2e3fe489",
+    "sourceTreeHash": "cab33d7fc25f8647be48109e81533e2c9d7fe7e0c3fd4068df9e920639f9e977",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
       {
         "path": "apps/web/app/api/admin/rounds/control/route.ts",
         "sha256": "eedc1829a36ee735eca610955a872df8e1951e5117d67583aa3077eb80501153"
+      },
+      {
+        "path": "apps/web/app/api/live/rounds/[roundId]/route.ts",
+        "sha256": "076a77a03cddfaaa231491f44e89690f0116c99a070946f5c3013189f5159a95"
       },
       {
         "path": "apps/web/app/api/votes/route.ts",
@@ -54,8 +58,20 @@
         "sha256": "95e76c31fc86a33a32d2a7a330db9ea26480d9cf19781dae5e44a75414404968"
       },
       {
+        "path": "apps/web/app/live/[roundId]/page.tsx",
+        "sha256": "6b7aa5a68b6aa0b58e75ab14a12dbb6f1a01f8af97fe66be5bfd651cf314068e"
+      },
+      {
+        "path": "apps/web/app/live/layout.tsx",
+        "sha256": "4e2d2fed0fb1a74407f3230d4b35b59dce2f857bbca80ea46aab3fa2af5c93d0"
+      },
+      {
+        "path": "apps/web/app/live/page.tsx",
+        "sha256": "7fed1ae05a5e7d7614b915f4b2c546a43b7750ca0dcd1179d00ceff61e3c4a9e"
+      },
+      {
         "path": "apps/web/app/page.tsx",
-        "sha256": "b86e778686bf29677893b4e3aff56a4ecc923d4ea75cba0b64fefe459671bf15"
+        "sha256": "f454929f2bc2901ee564cc4a55d1f306908e38f685fc3d25b747c1399391c77c"
       },
       {
         "path": "apps/web/components/AnalysisTabs.module.css",
@@ -68,6 +84,14 @@
       {
         "path": "apps/web/components/Arena.tsx",
         "sha256": "49d41c9c4ded59bcb0ad3b03773440db03bcc150bb0960b40230ae42111123b8"
+      },
+      {
+        "path": "apps/web/components/LiveRound.module.css",
+        "sha256": "ce32f762e93f66c10e096359671f7e465789e73825dc486699c626c6a3a30cfc"
+      },
+      {
+        "path": "apps/web/components/LiveRound.tsx",
+        "sha256": "0c39ab20e8fcc87317696cd0a497a59a4190d070b83e005e60eebaf14e1cde01"
       },
       {
         "path": "apps/web/components/Pictogram.tsx",
@@ -92,6 +116,14 @@
       {
         "path": "apps/web/lib/effects.ts",
         "sha256": "aaef5a0ffe12e574977728650afb73655d224ea7b61c309ac7e8e0ae91bb8e65"
+      },
+      {
+        "path": "apps/web/lib/live-view.ts",
+        "sha256": "c190425006ceea7221c95dd66b16d0d407fd7a78eb900c853869b1e20c4dc3d5"
+      },
+      {
+        "path": "apps/web/lib/live-votes.ts",
+        "sha256": "dc75fab27b5fa2d59334c157b4689fbf43e9cd1d59a883784bc989a0bd7e485f"
       },
       {
         "path": "apps/web/lib/load-demo.ts",
@@ -402,6 +434,10 @@
         "sha256": "2240437a7805c3d7a075afa72a55d6c27369017a53f797467b5b83d7d59d1be6"
       },
       {
+        "path": "e2e/live-view.spec.ts",
+        "sha256": "a86e2fc33326e15d6e97ea6ebc046c90f6839c244438d2742a85d0c1a1616f37"
+      },
+      {
         "path": "e2e/p4-controls.spec.ts",
         "sha256": "bfe3ea4e34749cdecff2c69a8f814aba9b09523e02ffbb995cc8292e5ec380df"
       },
@@ -435,7 +471,7 @@
       },
       {
         "path": "package.json",
-        "sha256": "7d37b637350e572b64fb87ff9f85e51ebb6506bbfdde2e7c4fd1ca45cef2a617"
+        "sha256": "43d41668a219433f839c05da2a331cc69ab772a8dc58eed081ada9c92409fbae"
       },
       {
         "path": "packages/art/src/customer.ts",
@@ -510,12 +546,20 @@
         "sha256": "bef96f828254012d240c02d84a4b31a89062572c0ac83c292718ef9e52a8738c"
       },
       {
+        "path": "packages/live/src/public-view.ts",
+        "sha256": "1686380d16f83c17057e1ac872aba22b26bfaf0bac2918e0603513a2db3318d8"
+      },
+      {
         "path": "packages/live/src/session.ts",
         "sha256": "b5ea05c282d50cbd1cf70e4958bb11090d5a72e1c52fca2ea95f48f52bc4a19a"
       },
       {
         "path": "packages/live/src/store.ts",
-        "sha256": "3e24aae23d794e418d11ac0025d19440be3923960fc40ce7af7e125f7c7f9c32"
+        "sha256": "9e6b390468be525fd5925e72885d952bc92cad8a698272d3729e12d14ee62ddb"
+      },
+      {
+        "path": "packages/live/src/view-gateway.ts",
+        "sha256": "968975c5380ae27d2b7cbeee859514774c4b2fff609712b2610dd11c68173cfc"
       },
       {
         "path": "packages/live/src/vote-gateway.ts",
@@ -763,7 +807,15 @@
       },
       {
         "path": "scripts/validate-live-store.sh",
-        "sha256": "de62e9d6cadbe1ae902c90c74b87dbd938ad6711b09c02ac6b62876ee3222fdc"
+        "sha256": "71bdb6b65e5fa4096a696da1cbb9d1832d0fde84716c960f7d77acce2f17d51e"
+      },
+      {
+        "path": "scripts/validate-live-view-http.sh",
+        "sha256": "8c9a4d081bf263cf79c9022b7a7f2027bc6dbfa51f3e82b8ca4655da55ef8e2a"
+      },
+      {
+        "path": "scripts/validate-live-view-http.ts",
+        "sha256": "016f4438857da1c1e3c293132d709d49b3d70b321821e7a51310f32e870a0235"
       },
       {
         "path": "scripts/validate-p0.ts",
@@ -814,8 +866,16 @@
         "sha256": "9f77930060834a9ddf8bb0fb80a0988aa7479eaaec9369e9b24b39318a543a3a"
       },
       {
+        "path": "supabase/migrations/202610230006_live_view.sql",
+        "sha256": "c1ebdbe26bb7d414adcb94fc590ef6a660371cb974f8c6ce1037fc44679be160"
+      },
+      {
         "path": "supabase/tests/live-store.sql",
         "sha256": "d0fe345c6226087973b44a6132a1ee7d8609ed3255a80266d91485f9bf4eb9b9"
+      },
+      {
+        "path": "supabase/tests/live-view.sql",
+        "sha256": "732f169033cc6b0d63907032b2ca27b8e6c1618f345c2573789ad6b3dee3aa9c"
       },
       {
         "path": "supabase/tests/live-vote-effects.sql",
@@ -872,6 +932,14 @@
       {
         "path": "tests/live-store.test.ts",
         "sha256": "6d90c0483f394a6b828bfabbe7b896d252e4d20477bd4e670598075b2338088c"
+      },
+      {
+        "path": "tests/live-view-gateway.test.ts",
+        "sha256": "21cd5fdead5ebff139a501d12751c90c7bbda50b5f2025010e867c008f358999"
+      },
+      {
+        "path": "tests/live-view.test.ts",
+        "sha256": "2d3c390bba0fcde3f6d0851377f6a820df34d9c3c7383547f63da4229876b4a8"
       },
       {
         "path": "tests/live-vote-effects-store.test.ts",
