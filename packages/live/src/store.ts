@@ -62,6 +62,30 @@ const controlInput = z.object({ roundId: uuid, requestId: uuid, action: controlA
 const controlResult = z.object({ schemaVersion: z.literal('live-control-1'), round_id: uuid, request_id: uuid, action: controlAction,
   ...controlFields, tick: integer.refine(value => value >= -1 && value <= 119), sequence: nonnegative, replayed: z.boolean(),
 }).strict().refine(value => value.sequence === value.tick + 1);
+const voteOption = z.enum(['bus', 'rain', 'supplier-delay']);
+const voteCount = nonnegative.refine(value => value <= 400);
+const voteWindow = z.object({ schemaVersion: z.literal('live-vote-window-1'), round_id: uuid, window_index: z.literal(0),
+  status: z.enum(['open', 'locked', 'disabled']), paused: z.boolean(), deadline_ms: nonnegative.nullable(),
+  remaining_ms: nonnegative.refine(value => value <= 20_000),
+  counts: z.object({ bus: voteCount, rain: voteCount, 'supplier-delay': voteCount }).strict(),
+  eligible_options: z.array(voteOption).max(3),
+}).strict().refine(value => Object.values(value.counts).reduce((total, count) => total + count, 0) <= 400)
+  .refine(value => {
+    const accepting = value.status === 'open' && !value.paused;
+    return accepting
+      ? value.eligible_options.length === 3 && new Set(value.eligible_options).size === 3
+      : value.eligible_options.length === 0;
+  }).refine(value => value.status === 'open'
+    ? value.remaining_ms > 0 && (value.paused ? value.deadline_ms === null : value.deadline_ms !== null)
+    : value.remaining_ms === 0 && value.deadline_ms === null);
+const voteReceipt = z.object({ schemaVersion: z.literal('live-vote-receipt-1'), round_id: uuid, window_index: z.literal(0),
+  request_id: uuid, option_id: voteOption, accepted_at_ms: nonnegative, replayed: z.boolean(),
+}).strict();
+const voteIdentityInput = z.object({ roundId: uuid, sessionId: uuid }).strict();
+const submitVoteInput = voteIdentityInput.extend({ requestId: uuid, optionId: voteOption }).strict();
+export type LiveVoteWindow = z.infer<typeof voteWindow>;
+export type LiveVoteReceipt = z.infer<typeof voteReceipt>;
+export type LiveVoteSubmission = z.input<typeof submitVoteInput>;
 export type LiveControlInput = z.input<typeof controlInput>;
 export type LiveControlResult = z.infer<typeof controlResult>;
 export type LivePublicSnapshot = z.infer<typeof publicSnapshot>;
@@ -133,6 +157,35 @@ export class LiveStore {
     const state = { pause: 'paused', resume: 'active', stop: 'stopped' }[value.action];
     if (result.round_id !== value.roundId || result.request_id !== value.requestId || result.action !== value.action ||
       result.control_state !== state || result.control_revision !== value.expectedRevision + 1) throw new LiveStoreError('response');
+    return result;
+  }
+  /** Fenced worker only. Current rules workers do not opt into audience voting. */
+  async openVoteWindow(input: z.input<typeof releaseInput>): Promise<LiveVoteWindow> {
+    const value = parse(releaseInput, input, 'input');
+    const result = await this.#request('/rpc/live_open_vote_window', { p_round_id: value.roundId, p_owner_id: value.ownerId, p_fence: value.fence }, voteWindow);
+    if (result.round_id !== value.roundId) throw new LiveStoreError('response');
+    return result;
+  }
+  /** Trusted session-authenticating service only. Never take a session ID directly from a browser body. */
+  async submitVote(input: LiveVoteSubmission): Promise<LiveVoteReceipt> {
+    const value = parse(submitVoteInput, input, 'input');
+    const result = await this.#request('/rpc/live_submit_vote', { p_round_id: value.roundId, p_session_id: value.sessionId,
+      p_request_id: value.requestId, p_option_id: value.optionId }, voteReceipt);
+    if (result.round_id !== value.roundId || result.request_id !== value.requestId || result.option_id !== value.optionId) throw new LiveStoreError('response');
+    return result;
+  }
+  /** Sanitized published window only. Database time determines eligibility and remaining duration. */
+  async getVoteWindow(roundId: string): Promise<LiveVoteWindow | null> {
+    const id = parse(uuid, roundId, 'input');
+    const result = await this.#request('/rpc/live_get_vote_window', { p_round_id: id }, voteWindow.nullable());
+    if (result !== null && result.round_id !== id) throw new LiveStoreError('response');
+    return result;
+  }
+  /** Session-private current selection. Authenticate the session before calling. */
+  async getVoteReceipt(input: z.input<typeof voteIdentityInput>): Promise<LiveVoteReceipt | null> {
+    const value = parse(voteIdentityInput, input, 'input');
+    const result = await this.#request('/rpc/live_get_vote_receipt', { p_round_id: value.roundId, p_session_id: value.sessionId }, voteReceipt.nullable());
+    if (result !== null && result.round_id !== value.roundId) throw new LiveStoreError('response');
     return result;
   }
   async acquireLease(input: z.input<typeof acquireInput>): Promise<LiveLease> {

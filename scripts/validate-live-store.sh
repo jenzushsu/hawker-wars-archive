@@ -89,4 +89,37 @@ select test.assert((select count(*) from live_private.control_receipts)=1,'pause
 SQL
 printf '%s\n' 'Concurrent control/commit lock and fence checks passed.'
 
+psql_db -qAt < "$repo_root/supabase/tests/live-votes.sql" > "$race_directory/votes.log"
+rg '\S' "$race_directory/votes.log"
+# Concurrent duplicate requests share one durable receipt; deadline is sampled after locking.
+psql_db -qAt <<'SQL' > "$race_directory/vote-race-setup.log"
+delete from live_private.vote_receipts;
+update live_private.vote_windows set deadline_ms=floor(extract(epoch from clock_timestamp())*1000)::bigint+20000;
+SQL
+vote_duplicate="set role service_role; select public.live_submit_vote('11111111-1111-4111-8111-111111111111','cccccccc-cccc-4ccc-8ccc-cccccccccccc','00000000-0000-4000-8000-000000000401','rain');"
+psql_db -qAt -c "$vote_duplicate" > "$race_directory/vote-a.log" 2>&1 &
+vote_a_pid=$!
+psql_db -qAt -c "$vote_duplicate" > "$race_directory/vote-b.log" 2>&1 &
+vote_b_pid=$!
+wait "$vote_a_pid"
+wait "$vote_b_pid"
+psql_db -qAt <<'SQL'
+select test.assert((select count(*) from live_private.vote_receipts)=1,'duplicate race has one receipt');
+select test.assert((select count(*) from live_private.audience_votes)=1,'duplicate race has one selection');
+SQL
+psql_db -qAt -c "set application_name='p5-vote-deadline-blocker'; begin; select round_id from live_private.round_state for update; update live_private.vote_windows set deadline_ms=floor(extract(epoch from clock_timestamp())*1000)::bigint+500; select pg_sleep(1); commit;" > "$race_directory/vote-deadline-blocker.log" 2>&1 &
+vote_blocker_pid=$!
+vote_blocker_ready=false
+for ((attempt=0; attempt<50; attempt++)); do
+  if [[ "$(psql_db -qAt -c "select count(*) from pg_stat_activity where application_name='p5-vote-deadline-blocker' and wait_event='PgSleep';")" == 1 ]]; then vote_blocker_ready=true; break; fi
+  sleep 0.02
+done
+if [[ "$vote_blocker_ready" != true ]]; then wait "$vote_blocker_pid" || true; echo 'Could not observe vote lock blocker' >&2; exit 1; fi
+vote_late_status=0
+psql_db -qAt -c "set role service_role; select public.live_submit_vote('11111111-1111-4111-8111-111111111111','dddddddd-dddd-4ddd-8ddd-dddddddddddd','00000000-0000-4000-8000-000000000402','bus');" > "$race_directory/vote-late.log" 2>&1 || vote_late_status=$?
+wait "$vote_blocker_pid"
+if [[ "$vote_late_status" -eq 0 ]]; then echo 'Lock-waiting vote crossed deadline' >&2; exit 1; fi
+rg -q 'voting closed' "$race_directory/vote-late.log"
+psql_db -qAt -c "select test.assert((select count(*) from live_private.vote_receipts)=1,'late lock-waiting vote adds no receipt');"
+printf '%s\n' 'Concurrent vote duplicate and lock-wait deadline checks passed.'
 printf '%s\n' 'P5 SQL lifecycle and permission validation passed (local Postgres; no PostgREST/Realtime claim).'

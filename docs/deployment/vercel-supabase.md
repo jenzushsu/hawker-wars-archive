@@ -17,7 +17,7 @@ Do not start a round from a page read, run the game loop in a browser, or leave 
 
 Import `jenzushsu/hawker-wars` and set **Root Directory** to `apps/web`, with access to files outside that directory enabled. Use the Next.js framework preset and the Node 24 runtime compatible with the root manifest. Keep the default Next.js output directory; do not select a static-export override. `apps/web/vercel.json` installs from the workspace root with the pinned package manager and builds the web package. The root `packageManager` pins pnpm 11.25.0; Corepack must be available in the build image. Do not silently replace the pinned runtime/package manager to make a hosted build pass.
 
-The production build includes `/`, `/decision-states`, the dynamic `/api/admin/rounds/control` endpoint and the public art/replay assets. Local reproduction is `corepack pnpm install --frozen-lockfile`, followed by `pnpm build:web`. A successful local Next build is evidence of compilation, not evidence that the hosted Vercel deployment has been validated.
+The production build includes `/`, `/decision-states`, the dynamic `/api/admin/rounds/control` and `/api/votes` endpoints and the public art/replay assets. Local reproduction is `corepack pnpm install --frozen-lockfile`, followed by `pnpm build:web`. A successful local Next build is evidence of compilation, not evidence that the hosted Vercel deployment has been validated.
 
 The offline frontend needs no provider or Supabase secret. Keep server credentials out of `NEXT_PUBLIC_*`, static JSON, source control and logs. The [operator control endpoint](../p5-d-operator-controls.md) requires a dedicated `HAWKER_OPERATOR_TOKEN`, server audit identity `HAWKER_OPERATOR_ID` and Supabase server credentials. Configure them separately for Preview and Production; use separate Supabase projects or isolated test data. Never point preview mutation tests at production.
 
@@ -32,7 +32,7 @@ The provider reservation ledger currently uses a local SQLite file. It cannot be
 ## Deployment acceptance still required
 
 - Provision the Vercel project, Supabase staging/production projects and a durable worker host.
-- Extend the rules worker to the intended policy/voting integration, signed audience sessions, durable votes and reconnect; demonstrate two viewers sharing one round.
+- Integrate winning vote effects into the worker and enable the gated [voting foundation](../p5-e-durable-voting.md), then add viewer reconnect; demonstrate two viewers sharing one round.
 - Apply reviewed migrations in staging and test actual anonymous/authenticated/service-role HTTP and Realtime access.
 - Configure server secrets, origin/cookie policy and operational limits; verify none appear in public bundles or responses.
 - Verify persistent provider reservations and independently satisfy each enabled provider's access/budget gates.
