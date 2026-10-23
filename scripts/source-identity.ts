@@ -12,7 +12,7 @@ export function sourceIdentity() {
       const path=relative?`${relative}/${entry.name}`:entry.name;
       if(entry.isSymbolicLink())throw new Error(`Unexpected source symlink ${path}`);
       if(entry.isDirectory())walk(path);
-      else if(entry.isFile()&&path!=='apps/web/next-env.d.ts'&&(path.endsWith('.ts')||path.endsWith('.tsx')||path.endsWith('.css')||path.endsWith('.svg')||path.endsWith('.mjs')||path.startsWith('assets/')||path.startsWith('apps/web/public/art/')||path==='apps/web/public/demo.json'||path==='apps/web/tsconfig.json'||path==='pnpm-lock.yaml'||path==='pnpm-workspace.yaml'||path.endsWith('package.json')||path==='tsconfig.json'||path.startsWith('fixtures/')&&path.endsWith('.json')&&!path.startsWith('fixtures/reference/rules-development-'))){files.push(path);}
+      else if(entry.isFile()&&path!=='apps/web/next-env.d.ts'&&(path.endsWith('.ts')||path.endsWith('.tsx')||path.endsWith('.css')||path.endsWith('.svg')||path.endsWith('.mjs')||path.endsWith('.sql')||path.endsWith('.sh')||path==='apps/web/vercel.json'||path.startsWith('assets/')||path.startsWith('apps/web/public/art/')||path==='apps/web/public/demo.json'||path==='apps/web/tsconfig.json'||path==='pnpm-lock.yaml'||path==='pnpm-workspace.yaml'||path.endsWith('package.json')||path==='tsconfig.json'||path.startsWith('fixtures/')&&path.endsWith('.json')&&!path.startsWith('fixtures/reference/rules-development-'))){files.push(path);}
     }
   }
   walk('');files.sort();
