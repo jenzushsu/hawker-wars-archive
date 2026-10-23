@@ -39,3 +39,5 @@ The provider reservation ledger currently uses a local SQLite file. It cannot be
 - Run hosted build, asset, API, reconnect, restart and permission checks before promoting a live deployment.
 
 The offline site can be deployed independently while those live-service gates remain closed.
+
+Use the [rules-only staging runbook](staging-runbook.md) for host-specific configuration, preflight, rollout order and the hosted acceptance record. P5-H prepares this handoff; it does not claim hosted acceptance.

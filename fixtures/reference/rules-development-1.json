@@ -22,7 +22,7 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "cab33d7fc25f8647be48109e81533e2c9d7fe7e0c3fd4068df9e920639f9e977",
+    "sourceTreeHash": "b4bc953ad8cd37f0a71bfa1645e5b7891b24b65d2a07b50742a14b4f1159b360",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
       {
@@ -471,7 +471,7 @@
       },
       {
         "path": "package.json",
-        "sha256": "43d41668a219433f839c05da2a331cc69ab772a8dc58eed081ada9c92409fbae"
+        "sha256": "55847b9463773cb09d0411bdb906fe7421bf2dd8dacf40b8dab061816efb3d3b"
       },
       {
         "path": "packages/art/src/customer.ts",
@@ -718,6 +718,10 @@
         "sha256": "7d6ba77f9900226b86bc8c7e4e2b4b35799ae9a07658069d01f72acdcfbdf9e9"
       },
       {
+        "path": "scripts/deployment-preflight.ts",
+        "sha256": "92a57e17a5135e3cb3eadb3a2bdc5d64f7778fd3f0d365b8b759034b23371efe"
+      },
+      {
         "path": "scripts/export-customer.ts",
         "sha256": "e90bb49ff68b938a1fccaeee7f718db6fcea942d6b780441c2841adc745e814a"
       },
@@ -896,6 +900,10 @@
       {
         "path": "tests/decision-state.test.ts",
         "sha256": "b5e8a8060e537593301c30f30e3c397f65670267ffd8f433e54ed6011b4c5a88"
+      },
+      {
+        "path": "tests/deployment-preflight.test.ts",
+        "sha256": "a7e6c4e75cab042faf8f4f67dcc06cc029841cd4db104bc1a56aa687d05e7be3"
       },
       {
         "path": "tests/effects-art.test.ts",

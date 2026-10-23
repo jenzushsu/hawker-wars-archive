@@ -105,3 +105,5 @@ Hawkers, customers, environment, effects and pictograms use the reproducible atl
 [P5-F vote effects](docs/p5-f-vote-effects.md) connects durable vote resolution to explicit rules-worker opt-in (`--voting`), preserving atomic application and restart recovery. This supersedes the P5-E worker activation gate; live browser integration remains pending.
 
 [P5-G live viewing](docs/p5-g-live-viewer.md) adds `/live` and shareable round views with committed scores, cursor recovery and acknowledged voting. The offline arena remains available at `/`; hosted deployment and live arena projection still need acceptance.
+
+Staging rollout: [configuration, preflight and acceptance](docs/deployment/staging-runbook.md).
