@@ -86,7 +86,7 @@ pnpm test:web           # system Chromium; PLAYWRIGHT_CHROMIUM_PATH overrides it
 
 The Next.js/React interface renders a Phaser pixel arena, recorded playback, four scenario fixtures, analytical metrics, a pinned decision inspector and a local voting preview. All three named stalls explicitly mirror the same real rules trace; they are not model comparison results. Final settlement is a separate timeline position. Rendering and vote previews cannot mutate the fixture. No provider credentials enter the frontend.
 
-Analysis provides Match, Decisions and Benchmarks tabs. Filter recorded decisions by policy or action, pin a record, and copy or download its public details. History stops at the selected replay boundary. Help includes Restore view defaults, which preserves replay and selections. See [P4 controls validation](docs/p4-controls-validation.md).
+Analysis provides Match, Decisions and Benchmarks tabs. Filter recorded decisions by policy or action, pin a record, and copy or download its public details. History stops at the selected replay boundary. Help includes Restore view defaults, which preserves replay and selections. See [P4 controls validation](docs/p4-controls-validation.md). Help also opens [decision state examples](docs/p4-decision-states-validation.md) in a separate tab: pending, invalid, timeout, rules fallback and missing usage. These labelled presentation examples do not alter the recording or invoke providers.
 
 Hawkers, customers, environment, effects and pictograms use the reproducible atlases below. Shared voting and live coordinator/reconnect behavior remain later phases. Manual art/accessibility acceptance remains open; earlier composition evidence is in [P1 validation](docs/p1-validation.md).
 

@@ -649,6 +649,15 @@ export default function Home() {
                   : ""}
               </p>
             </div>
+            <p>
+              <a
+                href="/decision-states"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Decision state examples (opens in new tab)
+              </a>
+            </p>
             <p>{data?.scoreDefinitions.utility}</p>
             <a href="/demo.json" download>
               Download the recorded results

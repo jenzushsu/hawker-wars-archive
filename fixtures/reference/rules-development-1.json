@@ -22,9 +22,17 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "6119265c5a94c3269265b4b0e42b89206118a4f9146067be4a1c5aef16ccd80a",
+    "sourceTreeHash": "ff10a7de1e996dc317106c24f56e89908c8b07bd2be22de78a7de7eeea29749d",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
+      {
+        "path": "apps/web/app/decision-states/page.module.css",
+        "sha256": "4d885644361993f1d3f4ddebd286b9902b0412bde373a5cc8b9a72df00f20a45"
+      },
+      {
+        "path": "apps/web/app/decision-states/page.tsx",
+        "sha256": "2233c3bb06e2cdab6e7da5eb39b42e9a679546e595cdca185c137366ffd54746"
+      },
       {
         "path": "apps/web/app/globals.css",
         "sha256": "685412ad5c2c31153c3830d1e3bdde99159ad53ff4dcbcc051da14aef9709f25"
@@ -39,7 +47,7 @@
       },
       {
         "path": "apps/web/app/page.tsx",
-        "sha256": "cb8897630dbc089911239ffec0b0c2958c30b9663e32bdd95fe173a2126b84ac"
+        "sha256": "b86e778686bf29677893b4e3aff56a4ecc923d4ea75cba0b64fefe459671bf15"
       },
       {
         "path": "apps/web/components/AnalysisTabs.module.css",
@@ -64,6 +72,10 @@
       {
         "path": "apps/web/lib/customers.ts",
         "sha256": "a6a051dc3ec2c3e07c87af5ae67289bc9f0c6d802f2e1e69d7b93f207062014c"
+      },
+      {
+        "path": "apps/web/lib/decision-state.ts",
+        "sha256": "fdc67e15e9c56aeb251e9363dbdfb20626af1272b0bf40d9e33a849634caa3cb"
       },
       {
         "path": "apps/web/lib/demo.ts",
@@ -364,6 +376,10 @@
       {
         "path": "e2e/customers.spec.ts",
         "sha256": "160b2f04388f9af0de6c8420172e68b61bf930ff22a49c09845504bab924559b"
+      },
+      {
+        "path": "e2e/decision-states.spec.ts",
+        "sha256": "4f33e15190b6f7cfd90e321f680303ae36907b6d909ad90dc7bb322615e184a3"
       },
       {
         "path": "e2e/effects.spec.ts",
@@ -704,6 +720,10 @@
       {
         "path": "tests/customer-projection.test.ts",
         "sha256": "6933aa78e36460dd1b300f2518a8d4ce85552439eb591efeb4b6a869aefe6499"
+      },
+      {
+        "path": "tests/decision-state.test.ts",
+        "sha256": "b5e8a8060e537593301c30f30e3c397f65670267ffd8f433e54ed6011b4c5a88"
       },
       {
         "path": "tests/effects-art.test.ts",
