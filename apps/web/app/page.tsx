@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Arena from "../components/Arena";
+import AnalysisTabs from "../components/AnalysisTabs";
 import { Pictogram } from "../components/Pictogram";
 import { parseDemoData, DemoLoadError } from "../lib/load-demo";
 import {
@@ -9,7 +10,6 @@ import {
   getTurn,
   type DemoData,
   type DemoScenarioId,
-  type DemoPolicySnapshot,
 } from "../lib/demo";
 const accents = { green: "#246848", blue: "#245e91", amber: "#8b5b15" };
 const votes = [
@@ -53,12 +53,19 @@ export default function Home() {
     [vote, setVote] = useState<string | null>(null),
     [shortcuts, setShortcuts] = useState(true),
     [reducedMotion, setReducedMotion] = useState(false),
+    [copyStatus, setCopyStatus] = useState<{
+      key: string;
+      message: string;
+    } | null>(null),
+    [defaultsRestored, setDefaultsRestored] = useState(false),
     [dialogType, setDialogType] = useState<"inspect" | "help">("inspect");
   const dialog = useRef<HTMLDialogElement>(null),
     railRef = useRef<HTMLElement>(null),
     returnFocus = useRef<HTMLElement | null>(null),
     voteToggle = useRef<HTMLButtonElement>(null),
-    hudToggle = useRef<HTMLButtonElement>(null);
+    hudToggle = useRef<HTMLButtonElement>(null),
+    copyRequest = useRef(0),
+    copyIdentity = useRef("");
   useEffect(() => {
     const controller = new AbortController();
     fetch("/demo.json", { signal: controller.signal })
@@ -87,10 +94,9 @@ export default function Home() {
   useEffect(() => {
     try {
       const saved = localStorage.getItem("hawker-view");
-      if (saved === "analytical") {
-        setMode(saved);
-        setExpanded(true);
-      }
+      if (saved === "analytical") setMode(saved);
+      const savedHud = localStorage.getItem("hawker-hud");
+      setExpanded(savedHud ? savedHud === "expanded" : saved === "analytical");
       setShortcuts(localStorage.getItem("hawker-shortcuts") !== "off");
     } catch {}
   }, []);
@@ -116,11 +122,16 @@ export default function Home() {
     setExpanded(next === "analytical");
     try {
       localStorage.setItem("hawker-view", next);
+      localStorage.setItem(
+        "hawker-hud",
+        next === "analytical" ? "expanded" : "collapsed",
+      );
     } catch {}
   }
   function openDialog(type: "inspect" | "help") {
     returnFocus.current = document.activeElement as HTMLElement;
     setDialogType(type);
+    if (type === "help") setDefaultsRestored(false);
     if (type === "inspect" && pinned === null)
       setPinned(Math.min(position, 119));
     dialog.current?.showModal();
@@ -133,11 +144,30 @@ export default function Home() {
     if (expanded && document.activeElement?.closest(".hud-body"))
       hudToggle.current?.focus();
     setExpanded((v) => !v);
+    try {
+      localStorage.setItem("hawker-hud", expanded ? "collapsed" : "expanded");
+    } catch {}
+  }
+  function restoreDefaults() {
+    if (document.activeElement?.closest(".hud-body"))
+      hudToggle.current?.focus();
+    setMode("cinematic");
+    setExpanded(false);
+    setShortcuts(true);
+    setDefaultsRestored(true);
+    try {
+      localStorage.setItem("hawker-view", "cinematic");
+      localStorage.setItem("hawker-hud", "collapsed");
+      localStorage.setItem("hawker-shortcuts", "on");
+    } catch {}
   }
   function selectStall(index: number) {
     setSelected(index);
     setPinned(Math.min(position, 119));
     setExpanded(true);
+    try {
+      localStorage.setItem("hawker-hud", "expanded");
+    } catch {}
   }
   useEffect(() => {
     function key(e: KeyboardEvent) {
@@ -184,10 +214,66 @@ export default function Home() {
     ? getTurn(scenario, pinned ?? Math.min(position, 119))
     : null;
   const detail = decision?.stalls[selected];
-  function metric(s: DemoPolicySnapshot) {
-    return s.utilityPoints.toFixed(1);
-  }
   const selectedName = data?.competitors[selected]?.name ?? "Jev";
+  const decisionKey = `${scenarioId}:${selected}:${decision?.tick ?? "none"}:${dialogType}`;
+  copyIdentity.current = decisionKey;
+  useEffect(() => {
+    copyRequest.current += 1;
+    setCopyStatus(null);
+  }, [decisionKey]);
+  const decisionPayload =
+    detail && decision && data
+      ? {
+          schemaVersion: data.schemaVersion,
+          classification: data.classification,
+          baselineVersion: data.baselineVersion,
+          simulationVersion: data.simulationVersion,
+          scorerVersion: data.scorerVersion,
+          scenario: scenarioId,
+          tick: decision.tick,
+          modelInferencePerformed: false,
+          wallTimeMs: null,
+          nativeUsage: null,
+          canonicalStateHash: null,
+          decision: detail,
+        }
+      : null;
+  async function copyDecision() {
+    if (!decisionPayload) return;
+    const key = decisionKey,
+      request = ++copyRequest.current;
+    setCopyStatus(null);
+    try {
+      if (!navigator.clipboard?.writeText)
+        throw new Error("Clipboard unavailable");
+      await navigator.clipboard.writeText(
+        JSON.stringify(decisionPayload, null, 2),
+      );
+      if (
+        request === copyRequest.current &&
+        copyIdentity.current === key &&
+        dialog.current?.open
+      )
+        setCopyStatus({ key, message: "Decision copied." });
+    } catch {
+      if (
+        request === copyRequest.current &&
+        copyIdentity.current === key &&
+        dialog.current?.open
+      )
+        setCopyStatus({
+          key,
+          message: "Copy failed. Download this decision instead.",
+        });
+    }
+  }
+  function restoreDialogFocus() {
+    copyRequest.current += 1;
+    setCopyStatus(null);
+    const target = returnFocus.current;
+    if (target?.isConnected && target.getClientRects().length) target.focus();
+    else hudToggle.current?.focus();
+  }
   return (
     <main className={`app ${expanded ? "analysis-open" : ""}`}>
       <header className="topbar">
@@ -423,84 +509,64 @@ export default function Home() {
                 {expanded ? "Hide analysis" : "Show analysis"}
               </button>
             </div>
-            {expanded && (
-              <div className="hud-body">
-                <table className="comparison">
-                  <caption>
-                    {position === 120
-                      ? "Final settled"
-                      : "Provisional cumulative"}{" "}
-                    results · identical rules-demo mirrors
-                  </caption>
-                  <thead>
-                    <tr>
-                      <th scope="col">Policy position</th>
-                      <th scope="col">Served</th>
-                      <th scope="col">Profit SGD</th>
-                      <th scope="col">Utility pts</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {data.competitors.map((c, i) => (
-                      <tr key={c.id}>
-                        <td>
-                          {c.shortName} <small>· demo</small>
-                        </td>
-                        <td>{frame.stalls[i]!.served}</td>
-                        <td>{formatGameMoney(frame.stalls[i]!.profitCents)}</td>
-                        <td>{metric(frame.stalls[i]!)}</td>
-                      </tr>
-                    ))}
-                    <tr>
-                      <td>
-                        <strong>Rules baseline</strong>
-                      </td>
-                      <td>{frame.rulesBaseline.served}</td>
-                      <td>
-                        {formatGameMoney(frame.rulesBaseline.profitCents)}
-                      </td>
-                      <td>{metric(frame.rulesBaseline)}</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <section
-                  className="inspector-compact"
-                  aria-label="Selected decision"
-                >
-                  <div className="inspector-heading">
-                    <h3>
-                      {selectedName} · tick {decision?.tick}
-                    </h3>
-                    <button onClick={() => openDialog("inspect")}>
-                      <Pictogram name="expand" /> Expand decision
-                    </button>
-                  </div>
-                  <span className="valid">
-                    <Pictogram
-                      name={
-                        detail?.validation === "forced-wait"
-                          ? "warning"
-                          : "validation"
-                      }
-                    />{" "}
-                    {detail?.validation === "forced-wait"
-                      ? "Forced WAIT"
-                      : "Validated local rules"}{" "}
-                    · {detail?.action}
-                  </span>
-                  <p>{detail?.consequence}</p>
-                  <small>
-                    <Pictogram name="latency" /> Pinned decision · latency not
-                    measured
-                  </small>
-                  {pinned !== null && position > pinned && (
-                    <button onClick={() => setPinned(Math.min(position, 119))}>
-                      Jump to latest ({Math.min(position, 119) - pinned})
-                    </button>
-                  )}
-                </section>
-              </div>
-            )}
+            <div className="hud-body" hidden={!expanded}>
+              <AnalysisTabs
+                data={data}
+                scenario={scenario}
+                position={position}
+                selected={selected}
+                pinned={pinned}
+                onSelectDecision={(policyIndex, tick) => {
+                  setSelected(policyIndex);
+                  setPinned(tick);
+                  setPlaying(false);
+                }}
+              />
+              <section
+                className="inspector-compact"
+                aria-label="Selected decision"
+              >
+                <div className="inspector-heading">
+                  <h3>
+                    {selectedName} · tick {decision?.tick}
+                  </h3>
+                  <button onClick={() => openDialog("inspect")}>
+                    <Pictogram name="expand" /> Expand decision
+                  </button>
+                </div>
+                <span className="valid">
+                  <Pictogram
+                    name={
+                      detail?.validation === "forced-wait"
+                        ? "warning"
+                        : "validation"
+                    }
+                  />{" "}
+                  {detail?.validation === "forced-wait"
+                    ? "Forced WAIT"
+                    : "Validated local rules"}{" "}
+                  · {detail?.action}
+                </span>
+                <div className="observation-compact">
+                  Observed: {detail?.observationSummary?.queueCount ?? "—"}{" "}
+                  waiting · {detail?.observationSummary?.readyPortions ?? "—"}{" "}
+                  ready · {detail?.observationSummary?.rawPortions ?? "—"} raw
+                </div>
+                <p>{detail?.consequence}</p>
+                <small>
+                  <Pictogram name="latency" />{" "}
+                  {pinned === null
+                    ? "Latest recorded tick"
+                    : "Pinned recorded tick"}{" "}
+                  · latency not measured
+                </small>
+                {pinned !== null && position > pinned && (
+                  <button onClick={() => setPinned(Math.min(position, 119))}>
+                    Jump to latest ({Math.min(position, 119) - pinned})
+                  </button>
+                )}
+              </section>
+            </div>
           </section>
           <footer className="footer">
             <span>
@@ -516,7 +582,7 @@ export default function Home() {
       <dialog
         ref={dialog}
         aria-labelledby="dialog-title"
-        onClose={() => returnFocus.current?.focus()}
+        onClose={restoreDialogFocus}
       >
         <div className="dialog-header">
           <h2 id="dialog-title">
@@ -570,6 +636,19 @@ export default function Home() {
               Shortcuts are inactive in form fields. Browser zoom and standard
               keyboard navigation always work.
             </p>
+            <div className="restore-preferences">
+              <button onClick={restoreDefaults}>Restore view defaults</button>
+              <p>
+                Returns to Cinematic, hides analysis and enables shortcuts.
+                Replay position, scenario, pinned decision and local vote are
+                kept.
+              </p>
+              <p role="status">
+                {defaultsRestored
+                  ? "View defaults restored. Replay and selections kept."
+                  : ""}
+              </p>
+            </div>
             <p>{data?.scoreDefinitions.utility}</p>
             <a href="/demo.json" download>
               Download the recorded results
@@ -636,25 +715,42 @@ export default function Home() {
                   Public observation and committed outcome only. No credentials,
                   hidden demand schedule or model reasoning is included.
                 </p>
+                <dl className="technical-versions">
+                  <dt>Schema</dt>
+                  <dd>{data?.schemaVersion}</dd>
+                  <dt>Baseline</dt>
+                  <dd>{data?.baselineVersion}</dd>
+                  <dt>Simulation</dt>
+                  <dd>{data?.simulationVersion}</dd>
+                  <dt>Scorer</dt>
+                  <dd>{data?.scorerVersion}</dd>
+                  <dt>Wall time</dt>
+                  <dd>Not recorded in this offline replay</dd>
+                  <dt>Native usage</dt>
+                  <dd>Not recorded in this offline replay</dd>
+                  <dt>Canonical state hash</dt>
+                  <dd>Not recorded in this offline replay</dd>
+                </dl>
                 <details>
                   <summary>Inspect sanitized record</summary>
-                  <pre>{JSON.stringify(detail, null, 2)}</pre>
+                  <pre>{JSON.stringify(decisionPayload, null, 2)}</pre>
                 </details>
-                <button
-                  onClick={() =>
-                    saveJson(
-                      {
-                        schemaVersion: data?.schemaVersion,
-                        scenario: scenarioId,
-                        tick: decision.tick,
-                        decision: detail,
-                      },
-                      `hawker-decision-${scenarioId}-${decision.tick}.json`,
-                    )
-                  }
-                >
-                  Download decision
-                </button>
+                <div className="decision-exports">
+                  <button onClick={copyDecision}>Copy decision</button>
+                  <button
+                    onClick={() =>
+                      saveJson(
+                        decisionPayload,
+                        `hawker-decision-${scenarioId}-${decision.tick}.json`,
+                      )
+                    }
+                  >
+                    Download decision
+                  </button>
+                </div>
+                <p className="copy-status" role="status">
+                  {copyStatus?.key === decisionKey ? copyStatus.message : ""}
+                </p>
               </section>
             </div>
             <div className="dialog-nav">
@@ -664,10 +760,12 @@ export default function Home() {
               >
                 Previous
               </button>
-              <span>Tick {decision.tick} · pinned</span>
+              <span>Pinned recorded tick {decision.tick}</span>
               <button
-                disabled={decision.tick === 119}
-                onClick={() => setPinned(Math.min(119, decision.tick + 1))}
+                disabled={decision.tick >= Math.min(position, 119)}
+                onClick={() =>
+                  setPinned(Math.min(position, 119, decision.tick + 1))
+                }
               >
                 Next
               </button>

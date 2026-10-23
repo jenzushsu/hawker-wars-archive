@@ -22,12 +22,12 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "c8fd07db1e3ef4e57c20dc8e5f49b544b0d3804b0e4b18345d9f84f27baa60fd",
+    "sourceTreeHash": "6119265c5a94c3269265b4b0e42b89206118a4f9146067be4a1c5aef16ccd80a",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
       {
         "path": "apps/web/app/globals.css",
-        "sha256": "0e4fc41b59719f40b01acc5e5a06f6bc5af1a980d53c939819312e86e709d98a"
+        "sha256": "685412ad5c2c31153c3830d1e3bdde99159ad53ff4dcbcc051da14aef9709f25"
       },
       {
         "path": "apps/web/app/icon.svg",
@@ -39,7 +39,15 @@
       },
       {
         "path": "apps/web/app/page.tsx",
-        "sha256": "06e6c8744fa5e35900a63f9fb0a907ef811cd84522b5f4fa108d9f74bb464692"
+        "sha256": "cb8897630dbc089911239ffec0b0c2958c30b9663e32bdd95fe173a2126b84ac"
+      },
+      {
+        "path": "apps/web/components/AnalysisTabs.module.css",
+        "sha256": "2776f6319f9eee478d3de550fbe7e210e741b8beb76c414f528d97fe1e075748"
+      },
+      {
+        "path": "apps/web/components/AnalysisTabs.tsx",
+        "sha256": "0a84b5005e625e41df697a5197fca48e99c24d70db441f28ff38f2cb96aad8b3"
       },
       {
         "path": "apps/web/components/Arena.tsx",
@@ -363,7 +371,15 @@
       },
       {
         "path": "e2e/hawker.spec.ts",
-        "sha256": "9dd4c8a8e232f01b3977cf39e5e1da576fc2489705c7300475e796c37e73b9b4"
+        "sha256": "2240437a7805c3d7a075afa72a55d6c27369017a53f797467b5b83d7d59d1be6"
+      },
+      {
+        "path": "e2e/p4-controls.spec.ts",
+        "sha256": "bfe3ea4e34749cdecff2c69a8f814aba9b09523e02ffbb995cc8292e5ec380df"
+      },
+      {
+        "path": "e2e/p4-resilience.spec.ts",
+        "sha256": "984e9f9eff415dc178bfab59dbd02a83e5a85de28b3f831cf31d9881c2e64dca"
       },
       {
         "path": "fixtures/observation-2-initial.json",

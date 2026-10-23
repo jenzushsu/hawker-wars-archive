@@ -120,7 +120,10 @@ test('advances rendered frames while playing, freezes on pause and resets on see
 
 test('uses 800 ms recorded ticks and completes the non-looping terminal celebration without changing results', async ({ page }) => {
   await openArena(page);
-  await page.clock.install();
+  const clockStart = Date.UTC(2026, 9, 23);
+  await page.clock.install({ time: clockStart });
+  // Freeze before Play so click/expect latency cannot cross the 800 ms boundary.
+  await page.clock.pauseAt(clockStart + 1000);
   await page.getByRole('button', { name: 'Play', exact: true }).click();
   await page.clock.runFor(750);
   await expect(page.getByRole('slider', { name: 'Replay tick' })).toHaveValue('0');

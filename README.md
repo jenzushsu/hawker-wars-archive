@@ -74,7 +74,7 @@ See [P2-B validation](docs/p2-b-validation.md) and the [dataset card](docs/datas
 
 For additions that leave P2-A behavior unchanged, `pnpm reference:p2-a --refresh-provenance` explicitly refuses behavioral drift before updating source provenance. Intentional changes to simulation expectations still require the original contract/version review.
 
-## Desktop offline interface (P1)
+## Desktop offline interface
 
 ```sh
 pnpm dev:web             # http://localhost:3000
@@ -86,8 +86,10 @@ pnpm test:web           # system Chromium; PLAYWRIGHT_CHROMIUM_PATH overrides it
 
 The Next.js/React interface renders a Phaser pixel arena, recorded playback, four scenario fixtures, analytical metrics, a pinned decision inspector and a local voting preview. All three named stalls explicitly mirror the same real rules trace; they are not model comparison results. Final settlement is a separate timeline position. Rendering and vote previews cannot mutate the fixture. No provider credentials enter the frontend.
 
-The environment and customer art remain original procedural drafts; hawkers now use the versioned atlas described below. Shared voting, live coordinator/reconnect behavior and production assets remain later phases. See [P1 validation](docs/p1-validation.md) for scope and browser evidence.
+Analysis provides Match, Decisions and Benchmarks tabs. Filter recorded decisions by policy or action, pin a record, and copy or download its public details. History stops at the selected replay boundary. Help includes Restore view defaults, which preserves replay and selections. See [P4 controls validation](docs/p4-controls-validation.md).
 
-## Hawker animation assets
+Hawkers, customers, environment, effects and pictograms use the reproducible atlases below. Shared voting and live coordinator/reconnect behavior remain later phases. Manual art/accessibility acceptance remains open; earlier composition evidence is in [P1 validation](docs/p1-validation.md).
+
+## Pixel asset pipeline
 
 `pnpm art:export` regenerates the original hawker, customer, environment, effects and UI pictogram atlases. `pnpm art:check` verifies generated assets and provenance without writing. With the web app running, open `/art/hawker-review.html`, `/art/customer-review.html` or `/art/environment-review.html`; effects and pictograms have `/art/effects-review.html` and `/art/ui-review.html`. See [parallel P3/P4 validation](docs/parallel-p3-p4-validation.md), [P3 asset validation](docs/p3-assets-validation.md) and [G1 art validation](docs/g1-art-validation.md) for scope and remaining acceptance limits.
