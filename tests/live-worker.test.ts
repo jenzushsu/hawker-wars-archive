@@ -1,3 +1,4 @@
+import { LiveActivitySchema } from '../packages/live/src/activity.ts';
 import { describe, expect, it, vi } from 'vitest';
 import { createRulesRoundInput, runRulesTick, rulesCommitKey, type RulesWorkerStore } from '../packages/live/src/worker.ts';
 import type { LiveCommitInput, LiveStore } from '../packages/live/src/store.ts';
@@ -47,6 +48,13 @@ describe('bounded rules-only worker and semantic recovery', () => {
     expect(commits[0]!.decisions).toEqual([{ policy_id: 'rules', action: expected.trace[0]!.decision.appliedAction, source: 'rules', fallback_reason: null }]);
     expect(commits[0]!.recovery.stateHash).toBe(expected.trace[0]!.hash);
     expect(JSON.stringify(commits[0]!.snapshot)).not.toMatch(/seed|schedule|recovery|private|owner|fence/);
+    const activity = LiveActivitySchema.parse(commits[0]!.snapshot.policies[0]!.activity);
+    expect(activity.queue).toBe(expected.trace[0]!.observation.queue.length - activity.received);
+    expect(activity.queuePoses).toEqual(Array(Math.min(3, activity.queue)).fill('walk'));
+    expect(activity.received).toBe(commits[0]!.snapshot.policies[0]!.served);
+    expect(activity.departed).toBe(commits[0]!.snapshot.policies[0]!.abandoned);
+    expect(() => LiveActivitySchema.parse({ ...activity, customerIds: ['private'] })).toThrow();
+    expect(() => LiveActivitySchema.parse({ ...activity, queue: 31 })).toThrow();
     expect(store.renewLease).toHaveBeenCalledTimes(1);
     expect(store.releaseLease).toHaveBeenCalledTimes(1);
   });
@@ -57,6 +65,7 @@ describe('bounded rules-only worker and semantic recovery', () => {
       for (let tick = 0; tick <= 120; tick++) {
         if (tick === 31 || tick === 89) state = memory(7, state.saved());
         const result = await runRulesTick(state.store, { roundId, ownerId });
+        expect(LiveActivitySchema.safeParse(state.commits.at(-1)!.snapshot.policies[0]!.activity).success).toBe(true);
         expect(result).toMatchObject({ tick, sequence: tick + 1, status: tick === 120 ? 'completed' : 'committed' });
       }
       const expected = runEpisode({ seed: 7, policy: 'rules', roundId });

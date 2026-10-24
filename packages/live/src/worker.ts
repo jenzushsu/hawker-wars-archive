@@ -156,7 +156,17 @@ export async function runRulesTick(store: RulesWorkerStore, input: z.input<typeo
     const score = scoreState(next.frame.state);
     const snapshot = { policies: [{ policy_id: 'rules' as const, cash_cents: next.frame.state.cashCents,
       profit_cents: score.profitCents, utility_points: score.utilityPoints,
-      served: next.frame.state.totals.served, abandoned: next.frame.state.totals.abandoned }] };
+      served: next.frame.state.totals.served, abandoned: next.frame.state.totals.abandoned,
+      activity: {
+        queue: next.frame.state.queue.length,
+        queuePoses: next.frame.state.queue.slice(0, 3).map(customer => customer.arrivalTick === tick ? 'walk' as const : customer.deadlineTick - tick <= 1 ? 'impatient' as const : 'wait' as const),
+        received: next.frame.state.totals.served - position.frame.state.totals.served,
+        departed: next.frame.state.totals.abandoned - position.frame.state.totals.abandoned,
+        cooking: next.frame.state.cooking !== null,
+        ready: next.frame.state.readyBatches.reduce((sum, batch) => sum + batch.quantity, 0),
+        raw: next.frame.state.rawPortions,
+        action: tick === 120 ? null : next.recentActions.at(-1)!.action,
+      } }] };
     const decisions = tick === 120 ? [] : [{ policy_id: 'rules' as const, action: next.recentActions.at(-1)!.action,
       source: 'rules' as const, fallback_reason: null }];
     await store.renewLease({ ...ownership, ttlSeconds: options.ttlSeconds });

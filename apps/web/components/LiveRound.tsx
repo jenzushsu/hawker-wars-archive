@@ -4,6 +4,7 @@ import { createLiveViewer, initialLiveViewerState } from '../lib/live-view';
 import { requestVote, VoteError, type VoteOption } from '../lib/live-votes';
 import type { PublicVoteReceipt } from '../../../packages/live/src/public-view';
 import styles from './LiveRound.module.css';
+import LiveArena from './LiveArena';
 
 const labels: Record<VoteOption,string> = {bus:'Bus arrival',rain:'Afternoon rain','supplier-delay':'Supplier delay'};
 const descriptions: Record<VoteOption,string> = {bus:'Bring a new crowd to the stall.',rain:'Change demand during a rainy spell.','supplier-delay':'Put the supply plan under pressure.'};
@@ -90,6 +91,7 @@ export default function LiveRound({roundId}: {roundId:string}) {
     <a className={styles.voteJump} href="#vote-title"><strong>Audience voting</strong><span>{!connected ? 'Waiting for connection' : !window ? 'Check availability' : window.status==='disabled' ? 'Disabled' : window.status==='locked' ? 'View result' : window.paused ? 'Paused' : remaining>0 ? `Open · about ${Math.ceil(remaining/1000)}s left` : 'Awaiting closure'}</span></a>
     <div className={styles.columns}><section className={styles.results} aria-labelledby="service-title">
       <div className={styles.sectionHeading}><h2 id="service-title">{snapshot ? statusLabel : 'Waiting for service'}</h2><strong>{snapshot && snapshot.tick>=0 ? `Minute ${snapshot.tick} / 120` : 'Not started'}</strong></div>
+      {snapshot && <LiveArena snapshot={snapshot} connected={connected} />}
       <p className={styles.muted}>Confirmed results from this round. Money is shown in SGD; utility is measured in points.</p>
       {snapshot?.snapshot.policies.length ? <div className={styles.tableScroll} tabIndex={0} role="region" aria-label="Live stall results"><table className={styles.table}><caption>Latest committed results · tick {snapshot.tick}</caption><thead><tr><th scope="col">Stall</th><th scope="col">Cash</th><th scope="col">Profit</th><th scope="col">Utility</th><th scope="col">Served</th><th scope="col">Abandoned</th></tr></thead><tbody>{snapshot.snapshot.policies.map(policy=><tr key={policy.policy_id}><th scope="row">{names[policy.policy_id]}</th><td>{money.format(policy.cash_cents/100)}</td><td>{money.format(policy.profit_cents/100)}</td><td>{policy.utility_points}</td><td>{policy.served}</td><td>{policy.abandoned}</td></tr>)}</tbody></table></div> : <p className={styles.empty}>Results appear after the first committed tick.</p>}
 

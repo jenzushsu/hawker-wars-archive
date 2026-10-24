@@ -221,6 +221,30 @@ SELECT test.rejects($q$select test.control('00000000-0000-4000-8000-000000000201
 RESET ROLE;
 \echo 'Durable control transitions, receipts, fences, benchmark isolation and permissions passed.'
 
+-- Activity is bounded, public, durable and covered by commit idempotency.
+BEGIN;
+DELETE FROM public.rounds;
+SET LOCAL ROLE service_role;
+SELECT public.live_create_round('11111111-1111-4111-8111-111111111111','exhibition',array['rules','jev'],repeat('a',64),repeat('b',64),test.recovery(),true);
+SELECT public.live_acquire_lease('11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',60);
+DO $$
+DECLARE activity jsonb := '{"queue":1,"queuePoses":["walk"],"received":0,"departed":0,"cooking":false,"ready":0,"raw":42,"action":"WAIT"}';
+  snapshot jsonb; malformed jsonb; command text; patch jsonb;
+BEGIN
+  FOREACH patch IN ARRAY ARRAY['{"customerIds":["private"]}'::jsonb, '{"queue":31}'::jsonb, '{"queuePoses":["unknown"]}'::jsonb, '{"queuePoses":[]}'::jsonb, '{"action":"INVALID"}'::jsonb] LOOP
+    malformed := jsonb_set(test.snapshot(),'{policies,0,activity}',activity || patch);
+    command := format('select public.live_commit_tick(%L,%L,1,0,0,%L,%L,%L,%L)',
+      '11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa','00000000-0000-4000-8000-000000000777',malformed,test.decisions(),test.recovery());
+    PERFORM test.rejects(command,'invalid activity rejected');
+  END LOOP;
+  snapshot := jsonb_set(test.snapshot(),'{policies,0,activity}',activity);
+  PERFORM public.live_commit_tick('11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',1,0,0,'00000000-0000-4000-8000-000000000777',snapshot,test.decisions(),test.recovery());
+  PERFORM test.assert(public.live_get_snapshot('11111111-1111-4111-8111-111111111111')->'snapshot' = snapshot,'activity survives public snapshot');
+  PERFORM test.assert(public.live_commit_tick('11111111-1111-4111-8111-111111111111','aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',1,0,0,'00000000-0000-4000-8000-000000000777',snapshot,test.decisions(),test.recovery())->>'replayed'='true','activity retry is idempotent');
+END $$;
+ROLLBACK;
+\echo 'Public activity validation and persistence passed.'
+
 -- Leave a fresh clean round for the separate-process lease and lock-wait races.
 DELETE FROM public.rounds;
 SET ROLE service_role;

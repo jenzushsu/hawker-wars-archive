@@ -25,6 +25,8 @@ import type { DemoCustomerActivity, DemoEffect } from "../lib/demo";
 import { projectEffects } from "../lib/effects";
 import { effectFrameName } from "../../../packages/art/src/effects";
 export interface ArenaProps extends HawkerObservation {
+  /** Live scenes show one selected policy, not three mirrored competitors. */
+  singleStall?: boolean;
   customers: DemoCustomerActivity;
   delivered: boolean;
   effects: DemoEffect[];
@@ -234,6 +236,13 @@ export default function Arena(props: ArenaProps) {
             this.lastCooking = current.cooking;
             this.lastReducedMotion = current.reducedMotion;
             for (const [index, stall] of STALLS.entries()) {
+              const visible = !current.singleStall || index === 1;
+              this.crew[index]!.setVisible(visible);
+              if (!visible) {
+                this.customers[index]!.forEach(sprite => sprite.setVisible(false));
+                this.effects[index]!.forEach(sprite => sprite.setVisible(false));
+                continue;
+              }
               this.crew[index]!.setFrame(
                 hawkerFrameName(HAWKER_SKINS[index]!, clip, hawkerFrame),
               );

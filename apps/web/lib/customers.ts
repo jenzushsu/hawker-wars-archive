@@ -47,11 +47,11 @@ export function projectCustomers(
       pose(
         "queue",
         index,
-        clip,
+        clip === "walk" && time >= 650 ? "wait" : clip,
         "up",
         0,
         clip === "walk" && !reducedMotion
-          ? Math.round(8 * (1 - Math.min(time / 800, 1)))
+          ? Math.round(36 * (1 - Math.min(time / 650, 1)))
           : 0,
       ),
     );
@@ -61,9 +61,9 @@ export function projectCustomers(
       pose(
         "depart",
         0,
-        "depart",
+        reducedMotion ? "depart" : time < 750 ? "walk" : "wait",
         "right",
-        reducedMotion ? 0 : Math.round(Math.min(time / 500, 1) * 12),
+        reducedMotion ? 0 : Math.round(Math.min(time / 750, 1) * 36),
       ),
     );
   if (servedTotal > 0) result.push(pose("eat", 0, "eat", "down"));

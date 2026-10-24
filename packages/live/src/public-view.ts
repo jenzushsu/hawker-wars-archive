@@ -1,3 +1,4 @@
+import { LiveActivitySchema } from './activity.ts';
 import { z } from 'zod';
 
 // Browser-safe public protocol only. Never import the privileged store or simulator here.
@@ -10,7 +11,7 @@ const counts = z.object({ bus: bounded(0, 400), rain: bounded(0, 400), 'supplier
   .refine(value => Object.values(value).reduce((sum, count) => sum + count, 0) <= 400);
 const metrics = z.object({ policies: z.array(z.object({
   policy_id: z.enum(['rules', 'jev', 'zoom', 'zoom-pro']), cash_cents: positive,
-  profit_cents: integer, utility_points: integer, served: positive, abandoned: positive,
+  profit_cents: integer, utility_points: integer, served: positive, abandoned: positive, activity: LiveActivitySchema.optional(),
 }).strict()).min(1).max(4).refine(values => new Set(values.map(value => value.policy_id)).size === values.length) }).strict();
 const snapshot = z.object({ schemaVersion: z.literal('live-snapshot-1'), round_id: uuid,
   classification: z.enum(['offline-contract', 'clean', 'stress', 'exhibition', 'replay']),
