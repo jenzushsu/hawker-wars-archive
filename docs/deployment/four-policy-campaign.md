@@ -24,7 +24,8 @@ USD 0.34 campaign cap, including its prior smoke reservation.
 
 The original ledger is amended in place with an audit entry. A separate one-use
 Coolify bootstrap resource imports a SHA-256-pinned snapshot into the named
-`hawker-provider-ledger` volume and sets private ownership for UID 1000. It refuses
+`muvfmjgpedffyk919kl40eid_provider-ledger` volume (the physical name
+assigned by Coolify during provisioning) and sets private ownership for UID 1000. It refuses
 any existing campaign directory. This provisioner is stopped and its snapshot
 secret removed after successful import; it is never part of worker startup.
 The worker requires the existing external volume and never initializes storage.
@@ -39,3 +40,7 @@ read-projection SECURITY DEFINER warnings and informational private-schema RLS
 and vote-index notices; these are unchanged by this worker rollout. Public read
 RPCs intentionally check published status and expose only allowlisted views.
 See [Supabase function-advisor guidance](https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable).
+
+Coolify normalizes underscore aliases when rewriting volume mounts. The worker
+uses the hyphenated `campaign-ledger` alias and an explicit external physical
+volume name to attach the provisioned ledger rather than create an empty volume.

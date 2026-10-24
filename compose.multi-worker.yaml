@@ -18,7 +18,7 @@ services:
       TYPESAFE_API_KEY: ${TYPESAFE_API_KEY:?Configure the approved provider credential}
       ZOOM_AI_SERVICES_API_KEY: ${ZOOM_AI_SERVICES_API_KEY:?Configure the approved provider credential}
     volumes:
-      - provider_ledger:/var/lib/hawker
+      - campaign-ledger:/var/lib/hawker
     read_only: true
     tmpfs:
       - /tmp:rw,noexec,nosuid,size=64m
@@ -32,6 +32,6 @@ services:
         max-size: 10m
         max-file: "3"
 volumes:
-  provider_ledger:
+  campaign-ledger:
     external: true
-    name: hawker-provider-ledger
+    name: muvfmjgpedffyk919kl40eid_provider-ledger
