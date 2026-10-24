@@ -33,6 +33,25 @@ describe('wire requests', () => {
     expect(z.choices.map(c => c.value)).toEqual(Object.keys(j.criteria));
     expect(Object.values(j.criteria)).toEqual([null, null, null, null]);
   });
+  it('presents identical stockout choices and consequences to Jev, Standard and Pro', () => {
+    const value = input();
+    value.legalActions = ['RESTOCK', 'WAIT']; value.observation.legalActions = ['RESTOCK', 'WAIT'];
+    value.observation.rawPortions = 0; value.observation.readyBatches = [];
+    value.observation.cooking = null; value.observation.pendingRestock = null;
+    value.observation.totals.wasted = 42; // Preserve the initial 42-portion inventory ledger.
+    const requests = ['jev', 'zoom', 'zoom-pro'].map(provider => buildRequest(provider as 'jev'|'zoom'|'zoom-pro', value, 'jev-preview'));
+    const questions = requests.map((r, i) => i === 0
+      ? (r.body.questions as { action: { instructions: string } }).action
+      : (r.body.questions as { instructions: string }[])[0]!);
+    expect(questions[1]!.instructions).toBe(questions[0]!.instructions);
+    expect(questions[2]!.instructions).toBe(questions[0]!.instructions);
+    expect(questions[0]!.instructions).toContain('RESTOCK: Pay 4000 cents for 20 raw portions');
+    expect(questions[0]!.instructions).toContain('WAIT does not place an order');
+    expect(questions[0]!.instructions).not.toContain('COOK:');
+    expect(requests[1]!.body.input).toBe(requests[0]!.body.state);
+    expect(requests[2]!.body.input).toBe(requests[0]!.body.state);
+    expect(JSON.parse(requests[0]!.body.state as string).promptVersion).toBe('hawker-decision-prompt-2');
+  });
   it('requires explicit Jev model and never silently defaults to latest', () => {
     expect(() => buildRequest('jev', input())).toThrow(WireContractError);
     expect(buildRequest('jev', input(), 'jev-preview').requestedModel).toBe('jev-preview');

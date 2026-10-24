@@ -4,7 +4,7 @@ import {
 } from '../../shared/src/index.js';
 
 export type WireProvider = 'jev' | 'zoom' | 'zoom-pro';
-export const PROVIDER_PROMPT_VERSION = 'hawker-decision-prompt-1' as const;
+export const PROVIDER_PROMPT_VERSION = 'hawker-decision-prompt-2' as const;
 export const ZOOM_ENDPOINT = 'https://api.zoom.us/v2/aiservices/decisions/decide';
 export const JEV_ENDPOINT = 'https://api.typesafe.ai/v1/systemone';
 export interface WireRequest { endpoint: string; body: Record<string, unknown>; requestedModel: string }
@@ -34,6 +34,13 @@ const ACTION_RULES = Object.freeze({
   PROMOTE: 'Pay 500 cents for extra arrival opportunities over next 10 ticks, with next activation at t+20; otherwise unchanged mechanics.',
   WAIT: 'Consume this turn without direct action; background arrivals, patience, spoilage and timers continue.',
 });
+/** Identical option descriptions accompany the question for every model. */
+function choiceInstructions(input: DecisionInput): string {
+  return [QUESTION_INSTRUCTIONS, 'Allowed actions and consequences:',
+    ...input.legalActions.map(action => `${action}: ${ACTION_RULES[action]}`),
+    'Consider delivery and cooking delays, remaining time, customer patience and closing inventory value. WAIT does not place an order, start cooking or serve customers.',
+  ].join('\n');
+}
 function canonicalJson(value: unknown): string {
   if (value === null || typeof value === 'string' || typeof value === 'boolean') return JSON.stringify(value);
   if (typeof value === 'number' && Number.isFinite(value) && !Object.is(value, -0)) return JSON.stringify(value);
@@ -76,10 +83,11 @@ function selectedModel(provider: WireProvider, jevModel?: string): string {
 export function buildRequest(provider: WireProvider, input: DecisionInput, jevModel?: string): WireRequest {
   const checked = inputForWire(input), requestedModel = selectedModel(provider, jevModel);
   const context = canonicalDecisionContext(checked);
+  const instructions = choiceInstructions(checked);
   if (provider === 'jev') {
-    return { endpoint: JEV_ENDPOINT, requestedModel, body: { model: requestedModel, state: context, questions: { action: { type: 'choice', instructions: QUESTION_INSTRUCTIONS, criteria: Object.fromEntries(checked.legalActions.map(action => [action, null])) } } } };
+    return { endpoint: JEV_ENDPOINT, requestedModel, body: { model: requestedModel, state: context, questions: { action: { type: 'choice', instructions, criteria: Object.fromEntries(checked.legalActions.map(action => [action, null])) } } } };
   }
-  return { endpoint: ZOOM_ENDPOINT, requestedModel, body: { model: requestedModel, input: context, questions: [{ name: 'action', type: 'choice', instructions: QUESTION_INSTRUCTIONS, choices: checked.legalActions.map(value => ({ value })) }] } };
+  return { endpoint: ZOOM_ENDPOINT, requestedModel, body: { model: requestedModel, input: context, questions: [{ name: 'action', type: 'choice', instructions, choices: checked.legalActions.map(value => ({ value })) }] } };
 }
 function record(value: unknown, code: 'invalid-response' | 'invalid-usage' = 'invalid-response'): Record<string, unknown> {
   if (!value || typeof value !== 'object' || Array.isArray(value)) throw new WireContractError(code);
