@@ -1,0 +1,30 @@
+{
+  "startupFailures": [
+    {
+      "deployment": "msfbi5bn3vd4yogay34vx6tn",
+      "detail": "Container exited; runtime logs unavailable via Coolify API."
+    },
+    {
+      "deployment": "a3oilomxysthk4hun3enacpx",
+      "detail": "open-ledger: Unexpected files in ledger directory"
+    },
+    {
+      "deployment": "d138q2icsr0x2r3lzoay5cjd",
+      "detail": "Report relocation failed before ledger access; no dispatch."
+    },
+    {
+      "deployment": "w12pgm5rv07a6exd0i7mkx6t",
+      "detail": "relocate-report: EACCES creating sibling reports directory."
+    }
+  ],
+  "inspection": {
+    "deployment": "rsvps3feqz0yjqiq23pfyetf",
+    "dispatch": false,
+    "attempts": 632,
+    "jevReservedMicros": 616672,
+    "zoomReservedMicros": 410000,
+    "configurationHash": "047258bfe4110271134b8e9a60319c22b4313cde82ca9031f5a7bc44c87c9811"
+  },
+  "cause": "Previous experiment wrote planning-experiment.json into the strict ledger directory.",
+  "repair": "Validate and relocate the historical report intact to /var/lib/hawker/reports; store future reports outside campaign ledger directory. No ledger reset or deletion. A setup service creates only the private reports directory for UID 1000; the ledger directory is not chowned or reset."
+}
