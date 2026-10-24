@@ -22,7 +22,7 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "7ef5fdd96386b6086317b6b0f6c7421fcbc9c8873d44d0ef2a6333a5898d98cd",
+    "sourceTreeHash": "2f2998280e123a60bd4ecd1e8879f7c8872f063aea3c12596422360a7a1de752",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
       {
@@ -634,6 +634,10 @@
         "sha256": "cc742b89773df24b078102c797112f000790f443cafadbc8cbcbdefae682adcf"
       },
       {
+        "path": "packages/providers/src/short-plan-experiment.ts",
+        "sha256": "1f3eaeee4966b15ada0fee639b231610420ce4c9dd4271a658605ed02f2ed3d6"
+      },
+      {
         "path": "packages/providers/src/wire.ts",
         "sha256": "7c37c40b971a80f9e1ee2974a6afc04b0d2f97146d3704bdc0d5448347fdeb76"
       },
@@ -852,6 +856,10 @@
       {
         "path": "scripts/run-rules-worker.ts",
         "sha256": "8b472a88e21f05cc00d59c05761dbd9d0878d88042df2c1c429d138f710567bc"
+      },
+      {
+        "path": "scripts/run-short-plan-experiment.ts",
+        "sha256": "5be2a489e519f9717e265c59f551987ac09947f7f2cb4372468a58bf89b736d1"
       },
       {
         "path": "scripts/source-identity.ts",
@@ -1156,6 +1164,10 @@
       {
         "path": "tests/providers-wire.test.ts",
         "sha256": "8bbe51cef715b365cac2aa64556cd7972a1bbcd288e311b7ff8bf660a710749a"
+      },
+      {
+        "path": "tests/short-plan-experiment.test.ts",
+        "sha256": "a0031db67c6d759d3e330457fac10a08628a7697cbc6324648a337922bac1e6c"
       },
       {
         "path": "tests/ui-art.test.ts",

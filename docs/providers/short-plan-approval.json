@@ -1,0 +1,15 @@
+{
+  "status": "approved",
+  "approvalSource": "User: proceed, following the proposed short-plan investigation; existing cumulative spending caps remain unchanged.",
+  "scope": "Two captured states (57 and 109), one short-plan prompt, three models; six calls total, no retries or repetition.",
+  "callsPerModel": 2,
+  "jevAdditionalMaximumMicros": 5506,
+  "jevPriorReservedMicros": 616672,
+  "jevCumulativeCapMicros": 622178,
+  "zoomAdditionalAllocationMicros": 4000,
+  "zoomRunCapMicros": 250000,
+  "zoomCampaignCapMicros": 5000000,
+  "runIds": [
+    "9464d32e-4183-416a-8f29-9d2abae3df86"
+  ]
+}
