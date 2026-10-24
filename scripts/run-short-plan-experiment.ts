@@ -61,4 +61,4 @@ async function main() {
   ledger.close();
   setInterval(()=>{},30000);
 }
-main().catch((error)=>{console.error(JSON.stringify({status:'experiment-failed',stage,code:error instanceof LedgerError ? error.code : 'unclassified',detail:error instanceof LedgerError ? error.message : null,instruction:'Inspect retained ledger and partial logs; do not retry automatically.'}));setInterval(()=>{},30000);});
+main().catch((error)=>{console.error(JSON.stringify({status:'experiment-failed',stage,code:error instanceof LedgerError ? error.code : ['EACCES','EPERM','ENOENT','EEXIST'].includes(error?.code) ? error.code : 'unclassified',detail:error instanceof LedgerError || ['Unexpected historical report','Report is not a regular file','Refusing to overwrite retained report','Reports directory cannot be a symlink'].includes(error?.message) ? error.message : null,instruction:'Inspect retained ledger and partial logs; do not retry automatically.'}));setInterval(()=>{},30000);});
