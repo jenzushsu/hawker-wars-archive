@@ -5,8 +5,7 @@ with the completed prompt-v1 round, record all errors and analyze the result.
 
 Run ID: `32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863`.
 Previous round: `d7f7da47-8b31-4465-8cf9-77773683da3f`.
-The round has not been created or dispatched. The additional Jev budget is
-pending confirmation in `docs/providers/prompt-v2-comparison-approval.json`.
+The additional Jev budget was explicitly approved. The authorization is recorded in `docs/providers/prompt-v2-comparison-approval.json`.
 
 The one-use preparation service verifies that approval and completion of the
 previous round, then amends the existing Coolify ledger in place. It retains all
