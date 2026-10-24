@@ -87,6 +87,7 @@ describe('atomic multi-policy comparison worker',()=>{
  it('requires campaign scope and keeps missing Zoom billing evidence closed',()=>{
   const config=ProviderRuntimeSchema.parse(readProjectJson('manifests/provider-runtime.json'));
   config.jevSpendApproval!.scope='smoke';
+  config.providers.zoom.smoke=null;config.providers['zoom-pro'].smoke=null;
   expect(activationBlockers(config,'jev','live')).toContain('jev-live-campaign-spend-unapproved');
   expect(multiProviderBlockers(config,{TYPESAFE_API_KEY:'test',ZOOM_AI_SERVICES_API_KEY:'test'})).toEqual(expect.arrayContaining(['jev:jev-live-campaign-spend-unapproved','zoom:maximum-request-charge-unverified','zoom-pro:credentialed-smoke-pending']));
  });

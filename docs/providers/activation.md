@@ -1,5 +1,29 @@
 # Adapter activation status
 
+## Zoom smoke exception completed — 2026-10-24 UTC
+
+The user explicitly instructed “skip 1. proceed 2.”, waiving verified maximum
+charge evidence for the two requested smoke calls. See
+[exception approval](zoom-smoke-exception-approval.json),
+[Standard receipt](zoom-smoke-result.json) and [Pro receipt](zoom-pro-smoke-result.json).
+Exactly one text-only opening-state request was sent to each model, with no
+retries. Both returned legal COOK decisions and 1,482 input tokens. Standard
+returned its canonical `zoom-decisions` identity; Pro returned
+`zoom-decisions-pro`. Measured end-to-end latencies were 1,397 ms and 648 ms.
+
+Intent was durably recorded before each POST in the retained local
+`results/zoom-smoke-exception-2026-10-24` audit directory, and results were saved
+before updating runtime receipts. Existing intents are never redispatched.
+These exception attempts are outside the verified-cost ledger and must be
+reconciled before future Zoom campaign dispatch. Their actual billed charges
+remain unknown; native usage is not an invoice. Existing budget caps remain
+unchanged, and no maximum request cost has been invented.
+
+Successful credentialed smoke evidence is now recorded for all three providers.
+The normal four-policy worker still requires Zoom billing bounds; the exception
+does not authorize or enable a campaign. Earlier sections below are historical.
+
+
 ## Approved Jev campaign — 2026-10-24 UTC
 
 The user approved the proposed USD 0.34 Jev campaign cap for one comparison,
