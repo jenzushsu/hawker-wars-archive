@@ -32,6 +32,7 @@ export function multiControllers(config: ProviderRuntimeConfig, ledger: Ledger):
       if (turn.result.status === 'fallback') console.error(JSON.stringify({
         status: 'provider-fallback', roundId: input.roundId, tick: input.tick, provider,
         reason: turn.result.fallbackReason, diagnostic: turn.diagnostic,
+        ...(turn.probabilityDiagnostic ? {probabilityDiagnostic:turn.probabilityDiagnostic} : {}),
         attemptCount: turn.attemptCount, legalActions: input.legalActions,
       }));
       return turn;

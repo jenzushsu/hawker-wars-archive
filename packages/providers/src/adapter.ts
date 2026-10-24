@@ -4,7 +4,7 @@ import { DecisionInputSchema, DecisionResultSchema, IdentifierSchema, type Decis
 import { chooseRules } from '../../decisions/src/rules.js';
 import { canonicalState as canonicalJson } from '../../simulation/src/hash.js';
 import { activationBlockers, requestAccounting, ProviderRuntimeSchema, type LiveProvider, type ProviderRuntimeConfig } from './activation.js';
-import { buildRequest, parseResponse, WireContractError } from './wire.js';
+import { buildRequest, parseResponse, WireContractError, type ProbabilityDiagnostic } from './wire.js';
 import type { Ledger } from './ledger.js';
 
 export interface AdapterOptions {
@@ -15,6 +15,8 @@ export interface AdapterOptions {
   /** Tests only; production defaults to the inherited server-side environment and fetch. */
   fetch?: typeof globalThis.fetch;
   credential?: () => string|undefined;
+  /** Explicit offline-state experiments; the resulting body participates in the durable input hash. */
+  requestBuilder?: typeof buildRequest;
 }
 export interface LiveTurn {
   mode: 'live'; origin: 'provider'|'fallback'|'forced_wait'|'recovered';
@@ -22,6 +24,7 @@ export interface LiveTurn {
   result: DecisionResult;
   nativeUsage?: ReturnType<typeof parseResponse>['nativeUsage'];
   diagnostic: string|null;
+  probabilityDiagnostic?: ProbabilityDiagnostic;
 }
 class TransportFailure extends Error {
   constructor(readonly reason: 'timeout'|'network'|'invalid'|'rate-limit') { super(reason); }
@@ -80,7 +83,7 @@ export function createProviderAdapter(options: AdapterOptions) {
         process.env.NODE_USE_ENV_PROXY !== '1' && !process.execArgv.includes('--use-env-proxy')) {
       return fail('network','start-node-with-env-proxy');
     }
-    const request = buildRequest(provider,input,settings.model!);
+    const request = (options.requestBuilder ?? buildRequest)(provider,input,settings.model!);
     const body = JSON.stringify(request.body);
     if (Buffer.byteLength(body,'utf8') > bound.maxRequestBytes) return fail('quota','verified-request-size-bound-exceeded');
     const inputHash = createHash('sha256').update(canonicalJson({input,requestedModel:request.requestedModel,body:request.body})).digest('hex');
@@ -142,6 +145,7 @@ export function createProviderAdapter(options: AdapterOptions) {
       // Never expose SDK/fetch messages, raw payloads, headers or secrets in diagnostics.
       const reason = controller.signal.aborted ? 'timeout' : error instanceof TransportFailure ? error.reason : error instanceof Error && error.name==='WireContractError' ? 'invalid' : 'network';
       result=fail(reason,error instanceof WireContractError ? `wire-contract:${error.code}` : `provider-request-failed:${reason}`,1);
+      if (error instanceof WireContractError && error.probabilityDiagnostic) result.probabilityDiagnostic = error.probabilityDiagnostic;
       try { options.ledger.finishAttempt(attempt.id,{status:'uncertain'}); } catch { /* Existing durable intent already prevents retransmission. */ }
     } finally { if (timer) clearTimeout(timer); controller.abort(); }
     return result;

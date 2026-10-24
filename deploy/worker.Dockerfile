@@ -14,6 +14,8 @@ RUN --mount=type=secret,id=proxy_ca \
 COPY --chown=node:node scripts ./scripts
 COPY --chown=node:node manifests ./manifests
 COPY --chown=node:node docs/providers/prompt-v2-comparison-approval.json ./docs/providers/prompt-v2-comparison-approval.json
+COPY --chown=node:node docs/providers/planning-experiment-approval.json ./docs/providers/planning-experiment-approval.json
+COPY --chown=node:node docs/deployment/evidence/prompt-v2/jev-investigation.json ./docs/deployment/evidence/prompt-v2/jev-investigation.json
 USER node
 ENV NODE_ENV=production
 CMD ["node", "--use-env-proxy", "--import", "tsx", "scripts/supervise-rules-worker.ts"]

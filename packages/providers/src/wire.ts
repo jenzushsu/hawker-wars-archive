@@ -17,8 +17,30 @@ export interface NativeUsage {
   cachedInputTokens?: number;
 }
 export interface ParsedWireResponse { result: DecisionResult; nativeUsage?: NativeUsage }
+export interface ProbabilityDiagnostic {
+  shapeValid: boolean;
+  missingLabels: DecisionInput['legalActions'];
+  unexpectedLabelCount: number;
+  duplicateLabelCount: number;
+  invalidValueCount: number;
+  sum: number | null;
+}
+/** Only legal enum labels and bounded aggregate numbers; never provider text. */
+function probabilityFailure(input: DecisionInput, entries: readonly { action: unknown; probability: unknown }[], shapeValid = true): ProbabilityDiagnostic {
+  const seen = new Set<string>();
+  let unexpectedLabelCount = 0, duplicateLabelCount = 0, invalidValueCount = 0, sum = 0;
+  for (const { action, probability } of entries) {
+    if (typeof action !== 'string' || !input.legalActions.includes(action as DecisionResult['action'] & string)) unexpectedLabelCount++;
+    else { if (seen.has(action)) duplicateLabelCount++; seen.add(action); }
+    if (typeof probability !== 'number' || !Number.isFinite(probability) || probability < 0 || probability > 1) invalidValueCount++;
+    else sum += probability;
+  }
+  return { shapeValid, missingLabels: input.legalActions.filter(a => !seen.has(a)),
+    unexpectedLabelCount, duplicateLabelCount, invalidValueCount,
+    sum: shapeValid && invalidValueCount === 0 ? sum : null };
+}
 export class WireContractError extends Error {
-  constructor(readonly code: 'invalid-input' | 'model-required' | 'invalid-model' | 'invalid-response' | 'illegal-action' | 'model-mismatch' | 'refusal' | 'invalid-usage' | 'invalid-probabilities' | 'late-response') {
+  constructor(readonly code: 'invalid-input' | 'model-required' | 'invalid-model' | 'invalid-response' | 'illegal-action' | 'model-mismatch' | 'refusal' | 'invalid-usage' | 'invalid-probabilities' | 'late-response', readonly probabilityDiagnostic?: ProbabilityDiagnostic) {
     super(`Provider wire contract rejected (${code})`); this.name = 'WireContractError';
   }
 }
@@ -102,13 +124,11 @@ function count(value: unknown): number {
   return value as number;
 }
 function normalizedProbabilities(input: DecisionInput, entries: readonly { action: unknown; probability: unknown }[]): NonNullable<DecisionResult['probabilities']> {
-  if (entries.length !== input.legalActions.length) throw new WireContractError('invalid-probabilities');
-  const probabilities = new Map<string, number>();
-  for (const { action, probability } of entries) {
-    if (typeof action !== 'string' || !input.legalActions.includes(action as DecisionResult['action'] & string) || probabilities.has(action) || typeof probability !== 'number' || !Number.isFinite(probability) || probability < 0 || probability > 1) throw new WireContractError('invalid-probabilities');
-    probabilities.set(action, probability);
+  const diagnostic = probabilityFailure(input, entries);
+  if (diagnostic.missingLabels.length || diagnostic.unexpectedLabelCount || diagnostic.duplicateLabelCount || diagnostic.invalidValueCount || diagnostic.sum === null || Math.abs(diagnostic.sum - 1) > 0.000001) {
+    throw new WireContractError('invalid-probabilities', diagnostic);
   }
-  if (Math.abs([...probabilities.values()].reduce((sum, probability) => sum + probability, 0) - 1) > 0.000001) throw new WireContractError('invalid-probabilities');
+  const probabilities = new Map(entries.map(({action, probability}) => [action as string, probability as number]));
   return input.legalActions.map(action => ({ action, probability: probabilities.get(action)! }));
 }
 export function parseResponse(provider: WireProvider, input: DecisionInput, requestedModel: string, raw: unknown, latencyMs: number): ParsedWireResponse {
@@ -136,9 +156,14 @@ export function parseResponse(provider: WireProvider, input: DecisionInput, requ
   const result: DecisionResult = { provider, status: 'success', action: answer.choice as DecisionResult['action'], latencyMs, modelVersion: model };
   if (body.request_id !== undefined) result.requestId = safeId(body.request_id);
   if (answer.probabilities !== undefined) {
-    const entries = provider === 'jev'
-      ? Object.entries(record(answer.probabilities)).map(([action, probability]) => ({ action, probability }))
-      : (() => { if (!Array.isArray(answer.probabilities)) throw new WireContractError('invalid-probabilities'); return answer.probabilities.map(value => { const p = record(value); return { action: p.value, probability: p.probability }; }); })();
+    let entries: {action: unknown; probability: unknown}[];
+    try {
+      entries = provider === 'jev'
+        ? Object.entries(record(answer.probabilities)).map(([action, probability]) => ({action, probability}))
+        : (() => { if (!Array.isArray(answer.probabilities)) throw new Error(); return answer.probabilities.map(value => { const p = record(value); return {action:p.value, probability:p.probability}; }); })();
+    } catch {
+      throw new WireContractError('invalid-probabilities', probabilityFailure(checked, [], false));
+    }
     result.probabilities = normalizedProbabilities(checked, entries);
     result.probabilitySemantics = provider === 'jev' ? 'Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.' : 'Provider-reported probability of each allowed choice per official Zoom Decisions contract; no cross-provider calibration claim.';
   }

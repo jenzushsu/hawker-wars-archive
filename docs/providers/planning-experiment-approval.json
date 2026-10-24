@@ -1,0 +1,14 @@
+{
+  "status": "approved",
+  "approvalSource": "User: proceed, following the proposal to add probability diagnostics and test explicit planning criteria on captured stockout states across all models.",
+  "scope": "One captured-state baseline/planning comparison: four states, two variants, three models; no retries or automatic repetition.",
+  "callsPerModel": 8,
+  "jevAdditionalMaximumMicros": 22024,
+  "jevPriorReservedMicros": 594648,
+  "jevCumulativeCapMicros": 622178,
+  "zoomAdditionalAllocationMicros": 16000,
+  "zoomRunCapMicros": 250000,
+  "zoomCampaignCapMicros": 5000000,
+  "runIds": ["b7e8b014-2415-48f0-8bfd-5365a228e2c4", "577bb9e5-36df-49e1-895c-880e66d656ee"],
+  "accounting": "Existing caps unchanged; Zoom operator allocations are not verified billed charges."
+}
