@@ -41,6 +41,8 @@ and vote-index notices; these are unchanged by this worker rollout. Public read
 RPCs intentionally check published status and expose only allowlisted views.
 See [Supabase function-advisor guidance](https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable).
 
-Coolify normalizes underscore aliases when rewriting volume mounts. The worker
-uses the hyphenated `campaign-ledger` alias and an explicit external physical
-volume name to attach the provisioned ledger rather than create an empty volume.
+This Coolify installation rewrites external named-volume aliases. The worker
+therefore binds the provisioned volume's existing host data directory explicitly,
+with `create_host_path: false`. This host-specific mount must be reviewed if the
+Docker data root or server changes. The worker still refuses missing ledgers;
+it never creates a replacement budget history.

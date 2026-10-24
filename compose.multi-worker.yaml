@@ -18,7 +18,11 @@ services:
       TYPESAFE_API_KEY: ${TYPESAFE_API_KEY:?Configure the approved provider credential}
       ZOOM_AI_SERVICES_API_KEY: ${ZOOM_AI_SERVICES_API_KEY:?Configure the approved provider credential}
     volumes:
-      - campaign-ledger:/var/lib/hawker
+      - type: bind
+        source: /var/lib/docker/volumes/muvfmjgpedffyk919kl40eid_provider-ledger/_data
+        target: /var/lib/hawker
+        bind:
+          create_host_path: false
     read_only: true
     tmpfs:
       - /tmp:rw,noexec,nosuid,size=64m
@@ -31,7 +35,3 @@ services:
       options:
         max-size: 10m
         max-file: "3"
-volumes:
-  campaign-ledger:
-    external: true
-    name: muvfmjgpedffyk919kl40eid_provider-ledger
