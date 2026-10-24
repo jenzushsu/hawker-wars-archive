@@ -28,5 +28,5 @@ fixture responses. Local validation also covers PostgreSQL persistence/rejection
 and worker/recovery behaviour.
 
 Persistent worker deployment is described in
-[the Coolify runbook](deployment/coolify-worker.md). Its host acceptance remains
-separate from the hosted browser checks above.
+[the Coolify runbook](deployment/coolify-worker.md). The worker now runs persistently on Coolify. The integrated public exhibition
+acceptance record is in [the staging runbook](deployment/staging-runbook.md).

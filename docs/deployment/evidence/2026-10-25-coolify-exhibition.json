@@ -1,0 +1,90 @@
+{
+  "workerRevision": "c99d3db624a8e15e947711cccb3555851f1df337",
+  "webRevision": "98e7658049fd795287733b872a94a188419238da",
+  "workerApplication": "b6uq4r8vks9fdliv3j88yhda",
+  "workerRestartDeployment": "e1jkr8yq227pmn0sjrycas2a",
+  "stagingOrigin": "https://hawker-wars-staging.vercel.app",
+  "completion": {
+    "round": "3651e688-9ee3-4d97-a9a8-b01458e4d9bb",
+    "completedAt": "2026-10-24T17:56:36.910Z",
+    "status": {
+      "schemaVersion": "live-round-status-1",
+      "round_id": "3651e688-9ee3-4d97-a9a8-b01458e4d9bb",
+      "classification": "exhibition",
+      "policy_ids": [
+        "rules"
+      ],
+      "status": "completed",
+      "control_state": "active",
+      "control_revision": 4,
+      "tick": 120,
+      "sequence": 121,
+      "configuration_hash": "9b088ecdbca6d50dca76a78a4e98872b0b8751d3b63ac881cbcb2704358236d6",
+      "schedule_hash": "491c659fbe9155215dea1b453318262cfe1347f052b02b96b5dc2105cc5a2657",
+      "ready": false
+    },
+    "vote": {
+      "schemaVersion": "live-vote-result-1",
+      "round_id": "3651e688-9ee3-4d97-a9a8-b01458e4d9bb",
+      "winner": "bus",
+      "effective_tick": 34,
+      "ends_at": 34,
+      "counts": {
+        "bus": 2,
+        "rain": 0,
+        "supplier-delay": 0
+      },
+      "applied": true
+    },
+    "eventCount": 121,
+    "sequential": true,
+    "completionStable": true
+  },
+  "browser": {
+    "round": "3651e688-9ee3-4d97-a9a8-b01458e4d9bb",
+    "twoViewersAgree": true,
+    "completedUI": true,
+    "completionAnimationFrozen": true,
+    "browserErrors": [],
+    "results": "Latest committed results \u00b7 tick 120\nStall\tCash\tProfit\tUtility\tServed\tAbandoned\nRules stall\t$615.00\t$331.00\t31630\t124\t0"
+  },
+  "animation": {
+    "round": "3651e688-9ee3-4d97-a9a8-b01458e4d9bb",
+    "animationClock": true,
+    "pause": {
+      "tick": 17,
+      "frozen": true
+    },
+    "resume": true,
+    "disconnectRecovery": true,
+    "reducedMotion": true
+  },
+  "voting": {
+    "round": "3651e688-9ee3-4d97-a9a8-b01458e4d9bb",
+    "twoVotesConfirmed": true,
+    "cookies": [
+      {
+        "name": "__Host-hawker-session",
+        "httpOnly": true,
+        "secure": true,
+        "sameSite": "Strict",
+        "path": "/"
+      }
+    ]
+  },
+  "httpBoundaries": [
+    {
+      "path": "/api/votes",
+      "status": 403
+    },
+    {
+      "path": "/api/admin/rounds/control",
+      "status": 401
+    }
+  ],
+  "publicView": {
+    "publicViewPrivacy": true,
+    "cacheControl": "no-store",
+    "http": 200
+  }
+}

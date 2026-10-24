@@ -88,3 +88,58 @@ Coolify supports [Git-based Compose applications](https://coolify.io/docs/applic
 Its [API](https://coolify.io/docs/api/overview) requires enabled API access and a
 team-scoped token with permissions for the requested operations. This cloud
 chat also requires `i.makeitclick.dev` in its network allowlist before API access.
+
+## Coolify deployment recorded on 2026-10-25 (Singapore)
+
+- Project: `hawker-wars` (`z6nc29udzn1pv55wgctvi0sh`), on the existing
+  `localhost` Coolify server.
+- Application: `hawker-wars-staging-worker` (`b6uq4r8vks9fdliv3j88yhda`).
+- Revision: `c99d3db624a8e15e947711cccb3555851f1df337`.
+- The repository is private. Use the existing `jenzushsu-coolify` GitHub App,
+  which has access to this repository; anonymous HTTPS cloning fails.
+- Runtime variables are configured with build-time availability disabled.
+  The staging URL is `https://csgyhgamvpcmemlhrwdk.supabase.co`.
+- Private validation round: `2e90bcaf-1a00-4da3-ab93-2645e27ba5f4`.
+  The hosted worker committed ticks 0–3, remained paused at tick 3 across
+  a Coolify restart, and committed ticks 4–5 after explicit resume.
+  The operator then stopped the round at tick 5, sequence 6. A second Coolify
+  restart preserved that stopped boundary; the container remains running and idle.
+- Server reboot recovery remains untested because this server hosts other apps.
+  The worker retains `restart: unless-stopped` and a 120-second stop grace period.
+
+The subsequent published exhibition `3651e688-9ee3-4d97-a9a8-b01458e4d9bb`
+completed at tick 120 on this worker, including two accepted audience votes and
+an active restart after the selected effect was applied. This completed public
+round is now selected in Coolify; the container is running and idle. See the
+[integrated staging acceptance record](staging-runbook.md).
+
+The worker is configured for one explicitly selected round. A stopped validation
+round must not be resumed implicitly; select a new round and redeploy to run
+another exhibition.
+
+## Operating the deployed worker
+
+Open the `hawker-wars` project and `hawker-wars-staging-worker` application in
+Coolify. Its Coolify environment is named `production`, but its database and
+audience website are the isolated staging services listed above.
+
+1. Create a fresh rules-only exhibition round explicitly using trusted operator
+   tooling. Set publication and voting deliberately; never create from startup.
+2. Change runtime `HAWKER_ROUND_ID` to the new UUID and deploy the application.
+   Keep auto-deploy disabled and review the pinned Git revision independently.
+3. Check worker logs and the authoritative round status. `committed` entries
+   must advance sequence and tick; `running:unknown` in Coolify is expected for
+   this outbound-only container without an HTTP health check.
+4. Use the authenticated application controls or trusted `LiveStore.controlRound`
+   operator tooling to pause, resume or stop. Restarting the container alone
+   must not override a durable pause/stop or create a round.
+5. After completion the supervisor stays running and idle. Select a new round
+   and redeploy when another exhibition is wanted.
+
+For automation, use a Coolify API token with read/write permissions for resource
+configuration and a deploy-capable token for deployment/restart. Reading
+deployment logs also requires `read:sensitive`; keep log output sanitized.
+These tokens belong in operator environment secrets, not in the worker's runtime
+environment. Only its staging database credentials and selected round are needed
+by the worker. Keep the Cloudflare exception scoped to the Coolify API access
+needed by the operator; a new operator egress IP may require a rule update.
