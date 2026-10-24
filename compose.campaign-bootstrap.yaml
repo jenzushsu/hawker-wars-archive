@@ -1,0 +1,18 @@
+# One-use operator provisioner; remove its secret and stop after successful import.
+services:
+  bootstrap:
+    build:
+      context: .
+      dockerfile: deploy/worker.Dockerfile
+    user: "0:0"
+    command: ["node", "--import", "tsx", "scripts/bootstrap-campaign-ledger.ts"]
+    restart: "no"
+    environment:
+      HAWKER_CAMPAIGN_EXCEPTION_FILE: /app/manifests/campaign-exception.json
+      HAWKER_LEDGER_SNAPSHOT_BASE64: ${HAWKER_LEDGER_SNAPSHOT_BASE64:?Existing ledger snapshot required}
+      HAWKER_LEDGER_SNAPSHOT_SHA256: ${HAWKER_LEDGER_SNAPSHOT_SHA256:?Pinned digest required}
+    volumes:
+      - provider_ledger:/var/lib/hawker
+volumes:
+  provider_ledger:
+    name: hawker-provider-ledger

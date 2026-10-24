@@ -1,0 +1,10 @@
+{
+  "roundId": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+  "approvalReference": "docs/providers/four-policy-campaign-approval.json",
+  "allocationMicrosPerRequest": 1000,
+  "maxRequestBytes": 8192,
+  "priorSmokeAllocations": [
+    "docs/providers/zoom-smoke-result.json",
+    "docs/providers/zoom-pro-smoke-result.json"
+  ]
+}

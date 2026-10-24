@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "explicit-smoke-exception-1",
+  "provider": "zoom-pro",
+  "requestedModel": "zoom-decisions-pro",
+  "endpoint": "https://api.zoom.us/v2/aiservices/decisions/decide",
+  "bodySha256": "8c6a7a72500f59362cc2f6052d3b7da4fcca196d36b9c1fba69ff1b6f7bdb5ba",
+  "requestBytes": 5498,
+  "maximumRequests": 1,
+  "retries": 0,
+  "deadlineMs": 4000,
+  "maximumRequestChargeVerified": false,
+  "approvalReference": "docs/providers/zoom-smoke-exception-approval.json",
+  "accounting": "Separate durable exception audit; actual charge unresolved and must be reconciled before campaign activation.",
+  "status": "smoke-passed",
+  "result": {
+    "provider": "zoom-pro",
+    "action": "COOK",
+    "latencyMs": 648,
+    "status": "success",
+    "modelVersion": "zoom-decisions-pro",
+    "requestId": "WEB_cecef0d2ab5970e8966c3e1d29224c87",
+    "probabilities": [
+      {
+        "action": "COOK",
+        "probability": 0.886617751076304
+      },
+      {
+        "action": "RESTOCK",
+        "probability": 0.0012011110044003346
+      },
+      {
+        "action": "PROMOTE",
+        "probability": 0.0017843965641997598
+      },
+      {
+        "action": "WAIT",
+        "probability": 0.11039674135509596
+      }
+    ],
+    "probabilitySemantics": "Provider-reported probability of each allowed choice per official Zoom Decisions contract; no cross-provider calibration claim."
+  },
+  "nativeUsage": {
+    "schemaVersion": "provider-native-usage-1",
+    "provider": "zoom-pro",
+    "inputUnits": 1482,
+    "outputUnits": 1,
+    "unitType": "tokens"
+  },
+  "checkedAt": "2026-10-24T18:22:47.776Z",
+  "newProviderRequests": 1,
+  "actualChargeUsd": null
+}

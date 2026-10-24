@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "single-campaign-exception-1",
+  "approvalSource": "User: proceed with four policy campaign, after both explicitly authorized unbounded-billing smoke tests passed.",
+  "roundId": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+  "scope": "One private clean exhibition, seed 7, up to 120 decisions per model, no automatic rerun.",
+  "jevCampaignCapMicros": 340000,
+  "zoomRunCapMicros": 250000,
+  "zoomCampaignCapMicros": 5000000,
+  "zoomAllocationMicrosPerRequest": 1000,
+  "zoomPriorSmokeAllocationMicros": 2000,
+  "zoomMaximumRequestCostVerified": false,
+  "hardActualChargeCapGuaranteed": false,
+  "accounting": "Operator allocations, not maximum cost estimates or measured charges. Native input usage and advertised-rate estimates will be reported separately. Prior smoke receipts remain preserved."
+}

@@ -29,6 +29,11 @@ export const ProviderRuntimeSchema = z.object({
     approvalReference: z.string().min(1).max(512),
     scope: z.enum(['smoke', 'campaign']).optional(),
   }).strict().refine(b=>b.perRunCapMicros<=b.campaignCapMicros,'Run cap cannot exceed campaign cap').nullable(),
+  zoomCampaignException: z.object({
+    roundId: z.string().uuid(), approvalReference: z.string().min(1).max(512),
+    allocationMicrosPerRequest: z.literal(1000), maxRequestBytes: z.literal(8192),
+    priorSmokeAllocations: z.tuple([z.literal('docs/providers/zoom-smoke-result.json'),z.literal('docs/providers/zoom-pro-smoke-result.json')]),
+  }).strict().optional(),
   providers: z.object({jev: ProviderSettingsSchema, zoom: ProviderSettingsSchema, 'zoom-pro': ProviderSettingsSchema}).strict(),
 }).strict().superRefine((config, ctx) => {
   for (const provider of ['zoom', 'zoom-pro'] as const) {
@@ -42,7 +47,7 @@ export function activationBlockers(config: ProviderRuntimeConfig, provider: Live
   const blockers: string[] = [];
   if (!settings.activationRequested) blockers.push('activation-not-requested');
   if (!settings.model) blockers.push('model-unverified');
-  if (!settings.maximumRequestCost) blockers.push('maximum-request-charge-unverified');
+  if (!settings.maximumRequestCost && !(provider !== 'jev' && mode === 'live' && config.zoomCampaignException)) blockers.push('maximum-request-charge-unverified');
   if (provider === 'jev') {
     if (mode === 'live' && config.jevSpendApproval?.scope !== 'campaign') blockers.push('jev-live-campaign-spend-unapproved');
     // Freemium alone cannot fund reservations. A future paid approval has its own pool.
@@ -56,4 +61,14 @@ export function activationBlockers(config: ProviderRuntimeConfig, provider: Live
     : settings.smoke.returnedModel === settings.model);
   if (mode === 'live' && (!settings.smoke || settings.smoke.requestedModel !== settings.model || !returnedModelValid)) blockers.push('credentialed-smoke-pending');
   return blockers;
+}
+
+/** Operator allocation is not a verified cost bound; scope is enforced again by the ledger. */
+export function requestAccounting(config:ProviderRuntimeConfig,provider:LiveProvider,mode:'live'|'smoke',roundId?:string) {
+  const exception=config.zoomCampaignException;
+  if(exception && roundId && roundId!==exception.roundId)return null;
+  const bound=config.providers[provider].maximumRequestCost;
+  if(bound)return {micros:bound.micros,maxRequestBytes:bound.maxRequestBytes,basis:'verified-bound' as const};
+  if(provider!=='jev' && mode==='live' && exception)return {micros:exception.allocationMicrosPerRequest,maxRequestBytes:exception.maxRequestBytes,basis:'operator-allocation-unverified' as const};
+  return null;
 }

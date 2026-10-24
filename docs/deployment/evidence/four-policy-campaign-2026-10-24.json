@@ -1,0 +1,218 @@
+{
+  "schemaVersion": "four-policy-campaign-evidence-1",
+  "roundId": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+  "seed": 7,
+  "published": false,
+  "workerCommit": "2afd3d78172c5246065afb832d924c602c352ad4",
+  "coolifyApplication": "uv3z47fpgf70scuxg70dy56w",
+  "deployment": "b443eq3mijrmojiy1ic3q6wp",
+  "restartDeployment": "swl7se85rrb20ymtzxzytyhk",
+  "pauseResume": {
+    "pauseRequest": "6597cacc-ba88-4f69-baa7-544630a0ab1b",
+    "resumeRequest": "f0c9aa07-ea5e-438f-a82e-310d4dcaa21e",
+    "pausedTick": 4,
+    "pausedSequence": 5,
+    "controlRevisionAfterResume": 2,
+    "restartWhilePaused": true,
+    "workerObservedPausedBeforeAndAfterRestart": true
+  },
+  "ledgerSnapshotSha256": "7c314705332ea1db50d88685b623280443032c0c09cc3c61afe5addcd016f055",
+  "completedAtVerified": "2026-10-24T18:49:03.080871+00:00",
+  "database": {
+    "round": {
+      "id": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+      "tick": 120,
+      "scores": [
+        {
+          "served": 116,
+          "abandoned": 2,
+          "policy_id": "rules",
+          "cash_cents": 57500,
+          "profit_cents": 31100,
+          "utility_points": 29790
+        },
+        {
+          "served": 46,
+          "abandoned": 66,
+          "policy_id": "jev",
+          "cash_cents": 39000,
+          "profit_cents": 10600,
+          "utility_points": 700
+        },
+        {
+          "served": 98,
+          "abandoned": 14,
+          "policy_id": "zoom",
+          "cash_cents": 45000,
+          "profit_cents": 22600,
+          "utility_points": 18390
+        },
+        {
+          "served": 101,
+          "abandoned": 11,
+          "policy_id": "zoom-pro",
+          "cash_cents": 54500,
+          "profit_cents": 26100,
+          "utility_points": 22955
+        }
+      ],
+      "status": "completed",
+      "sequence": 121,
+      "published": false,
+      "control_state": "active",
+      "control_revision": 2,
+      "configuration_hash": "9b088ecdbca6d50dca76a78a4e98872b0b8751d3b63ac881cbcb2704358236d6"
+    },
+    "events": {
+      "count": 121,
+      "last_tick": 120,
+      "first_tick": 0,
+      "closing_events": 1,
+      "unique_sequences": 121
+    },
+    "decisions": [
+      {
+        "count": 15,
+        "source": "forced_wait",
+        "policy_id": "jev",
+        "fallback_reason": null
+      },
+      {
+        "count": 104,
+        "source": "model",
+        "policy_id": "jev",
+        "fallback_reason": null
+      },
+      {
+        "count": 1,
+        "source": "rules",
+        "policy_id": "jev",
+        "fallback_reason": "invalid"
+      },
+      {
+        "count": 120,
+        "source": "rules",
+        "policy_id": "rules",
+        "fallback_reason": null
+      },
+      {
+        "count": 24,
+        "source": "forced_wait",
+        "policy_id": "zoom",
+        "fallback_reason": null
+      },
+      {
+        "count": 96,
+        "source": "model",
+        "policy_id": "zoom",
+        "fallback_reason": null
+      },
+      {
+        "count": 17,
+        "source": "forced_wait",
+        "policy_id": "zoom-pro",
+        "fallback_reason": null
+      },
+      {
+        "count": 103,
+        "source": "model",
+        "policy_id": "zoom-pro",
+        "fallback_reason": null
+      }
+    ]
+  },
+  "accounting": {
+    "status": "campaign-accounting",
+    "roundId": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+    "summary": {
+      "campaignId": "zoom-trial-campaign-1",
+      "pools": [
+        {
+          "id": "jev-separate",
+          "reservedMicros": 291818,
+          "capMicros": 340000,
+          "lastDispatchAtMs": 1792867633045
+        },
+        {
+          "id": "zoom-shared",
+          "reservedMicros": 201000,
+          "capMicros": 5000000,
+          "lastDispatchAtMs": 1792867700107
+        }
+      ],
+      "attempts": 305
+    },
+    "usage": {
+      "accountingBasis": "Jev verified reservations; Zoom operator allocations, not guaranteed charges",
+      "priorExposure": [
+        {
+          "micros": 1000,
+          "evidenceId": "docs/providers/zoom-smoke-result.json"
+        },
+        {
+          "micros": 1000,
+          "evidenceId": "docs/providers/zoom-pro-smoke-result.json"
+        }
+      ],
+      "providers": [
+        {
+          "provider": "jev",
+          "state": "success",
+          "attempts": 105,
+          "allocated_micros": 289065,
+          "reported_input_tokens": 226169
+        },
+        {
+          "provider": "jev",
+          "state": "uncertain",
+          "attempts": 1,
+          "allocated_micros": 2753,
+          "reported_input_tokens": 0
+        },
+        {
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 96,
+          "allocated_micros": 96000,
+          "reported_input_tokens": 154995
+        },
+        {
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 103,
+          "allocated_micros": 103000,
+          "reported_input_tokens": 165692
+        }
+      ]
+    }
+  },
+  "verification": {
+    "currentRoundProviderAttempts": {
+      "jev": 105,
+      "zoom": 96,
+      "zoom-pro": 103
+    },
+    "duplicateDispatchesDetected": 0,
+    "zoomCurrentRunAllocationMicros": 199000,
+    "zoomCampaignAllocationIncludingSmokesMicros": 201000,
+    "jevCampaignReservationIncludingSmokeMicros": 291818,
+    "zoomReportedInputRateEstimateUsd": {
+      "zoom": 0.00650979,
+      "zoom-pro": 0.0165692
+    },
+    "actualBilledChargesUsd": null,
+    "zoomChargeBoundVerified": false,
+    "bootstrapProductionAndPreviewSnapshotEntriesRemoved": true,
+    "idleAfterCompletionVerifiedAt": "2026-10-24T18:49:18.515645+00:00"
+  },
+  "validation": {
+    "fullSuiteTestsPassed": 619,
+    "subsequentTargetedTestsPassed": 18,
+    "additionalCostOverrunTestIncluded": true,
+    "typecheck": "passed",
+    "dockerBuildAndSnapshotImport": "passed",
+    "P0": "passed",
+    "P2-A": "passed: 800 rules episodes",
+    "P2-B": "passed: 72 replays"
+  }
+}

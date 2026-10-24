@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "explicit-smoke-exception-approval-1",
+  "approvedAt": "2026-10-24T18:22:41.251693+00:00",
+  "approvalSource": "User: skip 1. proceed 2. Item 1 was verified Zoom billing bound; item 2 was activation and one smoke per model.",
+  "scope": "One text-only opening-state request to Zoom Standard and one to Pro; no retries and no live campaign.",
+  "providers": [
+    "zoom",
+    "zoom-pro"
+  ],
+  "maximumRequestsPerProvider": 1,
+  "maximumRequestBytes": 8192,
+  "deadlineMs": 4000,
+  "verifiedChargeBoundRequirementWaivedForTheseSmokes": true,
+  "maximumRequestCostVerified": false,
+  "existingPerRunCapUsd": "0.25",
+  "existingCampaignCapUsd": "5.00",
+  "hardDollarCapEnforcementGuaranteed": false,
+  "accounting": "Separate durable intent/result audit. Reconcile actual charges into retained campaign accounting before enabling future Zoom dispatch. Do not initialize or reset the campaign ledger.",
+  "automaticRetryAllowed": false
+}

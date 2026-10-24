@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import { canonicalState } from '../../simulation/src/hash.ts';
-import { activationBlockers, ProviderRuntimeSchema, type ProviderRuntimeConfig } from '../../providers/src/activation.ts';
+import { activationBlockers, requestAccounting, ProviderRuntimeSchema, type ProviderRuntimeConfig } from '../../providers/src/activation.ts';
 import { createProviderAdapter } from '../../providers/src/adapter.ts';
 import type { Ledger } from '../../providers/src/ledger.ts';
 import type { MultiControllers } from './multi-worker.ts';
@@ -24,7 +24,7 @@ export function multiControllers(config: ProviderRuntimeConfig, ledger: Ledger):
   if (ledger.config.campaignId !== config.campaignId) throw new Error('Ledger campaign mismatch');
   ledger.validateStorage();
   const adapter = (provider: 'jev' | 'zoom' | 'zoom-pro') => {
-    if (ledger.getCostBound(provider) !== config.providers[provider].maximumRequestCost!.micros) throw new Error('Ledger request bound mismatch');
+    if (ledger.getCostBound(provider) !== requestAccounting(config,provider,'live')!.micros) throw new Error('Ledger request bound mismatch');
     return createProviderAdapter({ provider, config, ledger });
   };
   return { jev: adapter('jev'), zoom: adapter('zoom'), 'zoom-pro': adapter('zoom-pro') };

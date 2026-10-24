@@ -22,7 +22,7 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "1a134cebd3ffdfc1c6e65f4aaf37e93ad9d1b03871856aa58779de27d023fc5f",
+    "sourceTreeHash": "436fd9736bf76d226e7eb5ab7d8422fdb53fd5c44ccc6deb3eba8668f260075e",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
       {
@@ -559,7 +559,7 @@
       },
       {
         "path": "packages/live/src/multi-runtime.ts",
-        "sha256": "c378e663f36707fd2768d4f73d65a1cdb3fa511f690f0b6b74966a148dd1b39e"
+        "sha256": "99d5956fa25e90289427a1d5b4e6b651e61aa7678f8b75b5943a9787d4d0e3f9"
       },
       {
         "path": "packages/live/src/multi-worker.ts",
@@ -615,11 +615,11 @@
       },
       {
         "path": "packages/providers/src/activation.ts",
-        "sha256": "f74028fad18160964849d1faac3ca02fb724835e25d4acc4519b6193bde6b200"
+        "sha256": "6527d05e1bca79d4e2705cf5a462108017a5a640adae7daaaea78a6765861462"
       },
       {
         "path": "packages/providers/src/adapter.ts",
-        "sha256": "d5db5c2fde17b4bd98930294ec57beae95e2e116bbf03d093e1ea6df9984c94a"
+        "sha256": "4dd89c0ed3c008a5454bb5750734e7def0aaa9406ce1453b935545260b665f47"
       },
       {
         "path": "packages/providers/src/index.ts",
@@ -627,7 +627,7 @@
       },
       {
         "path": "packages/providers/src/ledger.ts",
-        "sha256": "9419850b74cd83a158ea5248df852efce7252b739094c7434986b7436e499f68"
+        "sha256": "f33b6e3d6a767bda02a4993d04148d947bfb8b9826643ba8a1d063dbef8217b9"
       },
       {
         "path": "packages/providers/src/wire.ts",
@@ -734,6 +734,10 @@
         "sha256": "9c16c184d13efe0668ea99a4e1216492e1ce3be8b51e7c3643a288f16712b39c"
       },
       {
+        "path": "scripts/bootstrap-campaign-ledger.ts",
+        "sha256": "705f68015be224e21ba9dd027b8a6b9815326155c0858494e3311cfd8345cf88"
+      },
+      {
         "path": "scripts/config-snapshot.ts",
         "sha256": "dec57fb08c1cc548253375a55c46ccb29c2be1b0219040a5852ac4062c65b184"
       },
@@ -743,7 +747,7 @@
       },
       {
         "path": "scripts/create-multi-round.ts",
-        "sha256": "3f06afd63fa8ddfc1bb396239142b9ded5a06fdadd6442fd9538015551207ab3"
+        "sha256": "d1ae8f8ea71174c73b0240a37414ba5893d62d19c392df0b3b329a7fb13adff7"
       },
       {
         "path": "scripts/demo-rules.ts",
@@ -803,7 +807,7 @@
       },
       {
         "path": "scripts/provider-config.ts",
-        "sha256": "a77b8255115f87aab05e3bfbe215957c810428e48834ca6cb2578857c0b73979"
+        "sha256": "ae5d483c25e01734a482b12479de921c2069a133bf37dad9162c195f58361345"
       },
       {
         "path": "scripts/provider-init-ledger.ts",
@@ -835,7 +839,7 @@
       },
       {
         "path": "scripts/supervise-multi-worker.ts",
-        "sha256": "5a53f37ebceb99be9384f1daadeeea332f1471ecceb389fad7bea8805acffd3b"
+        "sha256": "833c5c92247b03e8ff5428f2ad5df947726ab7c1b800baec51fbe26e8d043c32"
       },
       {
         "path": "scripts/supervise-rules-worker.ts",
@@ -946,6 +950,10 @@
         "sha256": "58ec5517492b01d3e94f8204d89b90d354d8298c7d3170c92d40096e6dfa55ae"
       },
       {
+        "path": "tests/campaign-exception.test.ts",
+        "sha256": "6394e52b2d99718392c62c32783c313a69bcaba1dd22734fad8edc8f96243555"
+      },
+      {
         "path": "tests/customer-art.test.ts",
         "sha256": "fb10c7ff740917e5640cbdcf9ab350862738d332273ecd8514ce698a446b3884"
       },
@@ -987,7 +995,7 @@
       },
       {
         "path": "tests/live-multi-worker.test.ts",
-        "sha256": "81b6b1042c9b82b7fcfb8235b13cb094772f3d0a39ba679d8954e058edcba6ea"
+        "sha256": "5e44a57be12ad65c109159a77bcfd493b3817b594601a0c71246ad9ea163cc27"
       },
       {
         "path": "tests/live-operator.test.ts",
@@ -1111,7 +1119,7 @@
       },
       {
         "path": "tests/providers-adversarial.test.ts",
-        "sha256": "4f3b057082fb0277ec40eb45a8cee94781892f3cbb4c451f735560b497982f5c"
+        "sha256": "50a06bc44eeeb1ac62eaec0b301f5c572bcdfe88a571b6826f8781d90bcd84c1"
       },
       {
         "path": "tests/providers-jev-smoke.test.ts",

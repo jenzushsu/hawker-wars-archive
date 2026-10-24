@@ -3,7 +3,7 @@ import { performance } from 'node:perf_hooks';
 import { DecisionInputSchema, DecisionResultSchema, IdentifierSchema, type DecisionInput, type DecisionResult } from '../../shared/src/schemas.js';
 import { chooseRules } from '../../decisions/src/rules.js';
 import { canonicalState as canonicalJson } from '../../simulation/src/hash.js';
-import { activationBlockers, ProviderRuntimeSchema, type LiveProvider, type ProviderRuntimeConfig } from './activation.js';
+import { activationBlockers, requestAccounting, ProviderRuntimeSchema, type LiveProvider, type ProviderRuntimeConfig } from './activation.js';
 import { buildRequest, parseResponse } from './wire.js';
 import type { Ledger } from './ledger.js';
 
@@ -71,7 +71,8 @@ export function createProviderAdapter(options: AdapterOptions) {
     const blockers = activationBlockers(config,provider,mode);
     if (blockers.length) return fail('budget',blockers.join(','));
     const settings = config.providers[provider];
-    const bound = settings.maximumRequestCost!;
+    const bound = requestAccounting(config,provider,mode,input.roundId);
+    if(!bound)return fail('budget','round-not-approved-or-accounting-unavailable');
     const key = credential();
     if (!key) return fail('network','credential-unavailable');
     // Node's startup switch makes native fetch honor the managed HTTP(S) proxy and CA trust.
