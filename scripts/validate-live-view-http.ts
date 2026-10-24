@@ -137,3 +137,36 @@ const stopped = await view(stoppedId, 1);
 assert.equal(stopped.snapshot.control_state, 'stopped'); assert.equal(stopped.snapshot.sequence, 1);
 assert.equal(stopped.events.events.length, 0);
 console.log('Local shared-view HTTP validation passed: coherent concurrent readers/worker, complete cursor catchup, control-only updates, read-only permissions and no extra decisions. Test-only pacing override; no hosted or Realtime claim.');
+
+// Real local PostgREST and PostgreSQL with explicitly mocked provider controllers.
+// No provider transport or credential is used by this integration fixture.
+const { createMultiRoundInput, runMultiTick } = await import('../packages/live/src/multi-worker.ts');
+const { chooseRules } = await import('../packages/decisions/src/rules.ts');
+const multiId = randomUUID(), providerConfigurationHash = 'a'.repeat(64);
+assert.equal(await store.getMultiWorkerProtocol(), 'multi-policy-worker-1');
+await store.createRound(createMultiRoundInput(multiId, 7, providerConfigurationHash, true));
+let providerCalls = 0;
+const controller = (provider: 'jev' | 'zoom' | 'zoom-pro') => ({ async decideTurn(input: import('../packages/shared/src/schemas.ts').DecisionInput): Promise<import('../packages/providers/src/adapter.ts').LiveTurn> {
+  providerCalls++;
+  return { mode: 'live', origin: 'provider', attemptedProvider: provider, attemptCount: 1, diagnostic: 'local-test-only',
+    result: { provider, action: provider === 'jev' ? 'WAIT' : chooseRules(input.observation, input.legalActions).action, status: 'success', latencyMs: 0 } };
+} });
+const controllers = { jev: controller('jev'), zoom: controller('zoom'), 'zoom-pro': controller('zoom-pro') };
+for (let tick = 0; tick < 8; tick++) {
+  // A fresh client/owner exercises persisted recovery at every boundary.
+  const fresh = new LiveStore({ supabaseUrl: 'https://view-test.invalid', serviceRoleKey: tokens.service_role, fetch: localFetch });
+  assert.equal((await runMultiTick(fresh, { roundId: multiId, ownerId: randomUUID(), providerConfigurationHash }, controllers)).tick, tick);
+  const calls = providerCalls;
+  const [a,b] = await Promise.all([view(multiId), view(multiId)]);
+  assert.deepEqual(a.snapshot, b.snapshot); assert.equal(a.snapshot.snapshot.policies.length, 4);
+  assert.equal(providerCalls, calls, 'Viewer reads cannot dispatch providers');
+}
+const multiView = await view(multiId);
+assert.notDeepEqual(multiView.snapshot.snapshot.policies[0]!.served, multiView.snapshot.snapshot.policies[1]!.served, 'Independent choices create independent stall outcomes');
+await store.controlRound({ roundId: multiId, requestId: randomUUID(), action: 'pause', expectedRevision: 0, actorId: 'multi-http-test' });
+const before = providerCalls;
+assert.equal((await runMultiTick(store, { roundId: multiId, ownerId: randomUUID(), providerConfigurationHash }, controllers)).status, 'paused');
+assert.equal(providerCalls, before);
+await store.controlRound({ roundId: multiId, requestId: randomUUID(), action: 'stop', expectedRevision: 1, actorId: 'multi-http-test' });
+assert.equal((await view(multiId)).snapshot.control_state, 'stopped');
+console.log('Local multi-policy HTTP integration passed: four atomic stall states, independent decisions, persisted recovery, read-only viewers and durable controls. Mock controllers; zero remote provider requests.');

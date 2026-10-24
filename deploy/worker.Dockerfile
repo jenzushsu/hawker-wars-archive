@@ -12,6 +12,7 @@ RUN --mount=type=secret,id=proxy_ca \
     if [ -f /run/secrets/proxy_ca ]; then export NODE_EXTRA_CA_CERTS=/run/secrets/proxy_ca; fi; \
     pnpm install --frozen-lockfile
 COPY --chown=node:node scripts ./scripts
+COPY --chown=node:node manifests ./manifests
 USER node
 ENV NODE_ENV=production
 CMD ["node", "--use-env-proxy", "--import", "tsx", "scripts/supervise-rules-worker.ts"]

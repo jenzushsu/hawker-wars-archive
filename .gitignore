@@ -13,3 +13,6 @@ results/
 *.tsbuildinfo
 playwright-report/
 test-results/
+
+# Local Supabase CLI metadata
+supabase/.temp/
