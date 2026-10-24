@@ -1,0 +1,44 @@
+{
+  "status": "amended-existing-ledger",
+  "roundId": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+  "previousConfigurationHash": "18d1fb3865e4d4152a402f866c7ec50b74aa57ab190d458ca16f74173fc17a1d",
+  "configurationHash": "258d11401fbda6130a956f865005c5cc05d24a47d980d59094a5224814966906",
+  "before": {
+    "campaignId": "zoom-trial-campaign-1",
+    "pools": [
+      {
+        "id": "jev-separate",
+        "reservedMicros": 2753,
+        "capMicros": 340000,
+        "lastDispatchAtMs": 1792741222388
+      },
+      {
+        "id": "zoom-shared",
+        "reservedMicros": 0,
+        "capMicros": 5000000,
+        "lastDispatchAtMs": null
+      }
+    ],
+    "attempts": 1
+  },
+  "after": {
+    "campaignId": "zoom-trial-campaign-1",
+    "pools": [
+      {
+        "id": "jev-separate",
+        "reservedMicros": 2753,
+        "capMicros": 340000,
+        "lastDispatchAtMs": 1792741222388
+      },
+      {
+        "id": "zoom-shared",
+        "reservedMicros": 2000,
+        "capMicros": 5000000,
+        "lastDispatchAtMs": null
+      }
+    ],
+    "attempts": 1
+  },
+  "providerDispatch": false,
+  "zoomAccountingBasis": "Unverified operator allocations; not actual or maximum billed charges"
+}

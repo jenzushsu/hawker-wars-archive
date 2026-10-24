@@ -9,10 +9,11 @@ export type LedgerErrorCode='budget'|'quota'|'duplicate'|'rate-limit'|'invalid';
 export class LedgerError extends Error {
   constructor(public readonly code:LedgerErrorCode,message:string){super(message);this.name='LedgerError';}
 }
-export interface BudgetPool {id:string;providers:LedgerProvider[];perRunCapMicros:number;campaignCapMicros:number}
+export interface BudgetPool {id:string;providers:LedgerProvider[];perRunCapMicros:number;campaignCapMicros:number;priorExposure?:{micros:number;evidenceId:string}[]}
 export interface VerifiedCostBound {costBoundMicros:number;evidenceId:string}
 export interface LedgerConfig {
   schemaVersion:'provider-ledger-1';campaignId:string;configurationHash:string;
+  allowedRunId?:string;unverifiedAllocations?:Partial<Record<LedgerProvider,VerifiedCostBound>>;
   pools:BudgetPool[];verifiedCostBounds:Partial<Record<LedgerProvider,VerifiedCostBound>>;
 }
 export type AttemptState='reserved'|'dispatch_intent'|'success'|'error'|'uncertain';
@@ -64,18 +65,20 @@ function nativeUsage(input:unknown):LedgerNativeUsage {
 }
 
 function normalizeConfig(input:unknown):LedgerConfig {
-  const v=object(input,['schemaVersion','campaignId','configurationHash','pools','verifiedCostBounds'],'ledger configuration');
+  const v=object(input,['schemaVersion','campaignId','configurationHash','pools','verifiedCostBounds','allowedRunId','unverifiedAllocations'],'ledger configuration');
   if(v.schemaVersion!=='provider-ledger-1')invalid('Unsupported ledger configuration version');
   if(!Array.isArray(v.pools)||v.pools.length<1||v.pools.length>3)invalid('One to three budget pools required');
   const pools:BudgetPool[]=v.pools.map(raw=>{
-    const p=object(raw,['id','providers','perRunCapMicros','campaignCapMicros'],'pool');
+    const p=object(raw,['id','providers','perRunCapMicros','campaignCapMicros','priorExposure'],'pool');
     if(!Array.isArray(p.providers)||p.providers.length<1||p.providers.length>3)invalid('Invalid pool providers');
     const providers=p.providers.map(provider);
     if(new Set(providers).size!==providers.length)invalid('Duplicate provider in pool');
     const perRunCapMicros=integer(p.perRunCapMicros,'run cap',1),campaignCapMicros=integer(p.campaignCapMicros,'campaign cap',1);
     if(perRunCapMicros>campaignCapMicros)invalid('Run cap exceeds campaign cap');
     if(providers.some(p=>p==='zoom'||p==='zoom-pro')&&(providers.length!==2||!providers.includes('zoom')||!providers.includes('zoom-pro')||perRunCapMicros!==250000||campaignCapMicros!==5000000))invalid('Zoom must share the approved 0.25 USD run / 5 USD campaign caps');
-    return {id:id(p.id,'pool id'),providers:providers.sort(),perRunCapMicros,campaignCapMicros};
+    const priorExposure=p.priorExposure===undefined?undefined:(()=>{if(!Array.isArray(p.priorExposure)||p.priorExposure.length>10)invalid('Invalid prior exposure');return p.priorExposure.map(raw=>{const e=object(raw,['micros','evidenceId'],'prior exposure');if(typeof e.evidenceId!=='string'||e.evidenceId.length<1||e.evidenceId.length>512)invalid('Missing exposure provenance');return {micros:integer(e.micros,'prior allocation',1),evidenceId:e.evidenceId};});})();
+    if(priorExposure && new Set(priorExposure.map(e=>e.evidenceId)).size!==priorExposure.length)invalid('Duplicate prior exposure');
+    return {id:id(p.id,'pool id'),providers:providers.sort(),perRunCapMicros,campaignCapMicros,...(priorExposure?{priorExposure}:{})};
   }).sort((a,b)=>a.id.localeCompare(b.id));
   if(new Set(pools.map(p=>p.id)).size!==pools.length||new Set(pools.flatMap(p=>p.providers)).size!==pools.reduce((n,p)=>n+p.providers.length,0))invalid('Duplicate pool/provider assignment');
   const bounds=object(v.verifiedCostBounds,PROVIDERS,'verified cost bounds');
@@ -89,7 +92,14 @@ function normalizeConfig(input:unknown):LedgerConfig {
     if(typeof b.evidenceId!=='string'||b.evidenceId.length<1||b.evidenceId.length>512||!(/^[\x20-\x7e]+$/).test(b.evidenceId))invalid('Cost bound needs bounded evidence provenance');
     verifiedCostBounds[p]={costBoundMicros,evidenceId:b.evidenceId};
   }
-  return {schemaVersion:'provider-ledger-1',campaignId:id(v.campaignId,'campaign id'),configurationHash:hash(v.configurationHash,'configuration hash'),pools,verifiedCostBounds};
+  const allowedRunId=v.allowedRunId===undefined?undefined:id(v.allowedRunId,'approved run');
+  let unverifiedAllocations:LedgerConfig['unverifiedAllocations'];
+  if(v.unverifiedAllocations!==undefined){
+    if(!allowedRunId)invalid('Unverified allocations require one approved run');
+    const values=object(v.unverifiedAllocations,['zoom','zoom-pro'],'unverified allocations');unverifiedAllocations={};
+    for(const key of Object.keys(values)){const p=provider(key),b=object(values[p],['costBoundMicros','evidenceId'],'allocation');if(verifiedCostBounds[p])invalid('Cannot label allocation as verified');if(b.costBoundMicros!==1000||typeof b.evidenceId!=='string'||b.evidenceId.length<1||b.evidenceId.length>512)invalid('Invalid operator allocation');unverifiedAllocations[p]={costBoundMicros:1000,evidenceId:b.evidenceId};}
+  }
+  return {schemaVersion:'provider-ledger-1',campaignId:id(v.campaignId,'campaign id'),configurationHash:hash(v.configurationHash,'configuration hash'),pools,verifiedCostBounds,...(allowedRunId?{allowedRunId}:{}),...(unverifiedAllocations?{unverifiedAllocations}:{})};
 }
 const schemaSQL=`
 PRAGMA user_version=2;
@@ -141,7 +151,7 @@ export class Ledger {
     this.#directory=directory;this.#path=join(directory,DATABASE_NAME);this.#db=db;this.#config=structuredClone(config);this.#configDigest=digest(config);this.#identity=secureFile(this.#path);this.#directoryIdentity=secureDirectory(directory);
   }
   get config():LedgerConfig{return structuredClone(this.#config);}
-  getCostBound(p:LedgerProvider):number|null{return this.#config.verifiedCostBounds[provider(p)]?.costBoundMicros??null;}
+  getCostBound(p:LedgerProvider):number|null{return (this.#config.verifiedCostBounds[provider(p)]??this.#config.unverifiedAllocations?.[provider(p)])?.costBoundMicros??null;}
   #guard():void {
     if(this.#closed)invalid('Ledger is closed');
     try{
@@ -162,11 +172,16 @@ export class Ledger {
     if(tick>119)invalid('Tick must be 0 through 119');if(r.inputHash!==undefined)hash(r.inputHash,'input hash');
     return this.#transaction(()=>{const row=this.#db.prepare('SELECT * FROM attempts WHERE run_id=? AND tick=? AND provider=?').get(runId,tick,p);if(!row)return null;const a=rowToAttempt(row);if(r.inputHash!==undefined&&a.inputHash!==r.inputHash)invalid('Attempt input differs from original captured input');return a;});
   }
+  #reportedExposure(poolId:string,runId:string|null):number {
+    const rows=this.#db.prepare('SELECT provider,cost_bound_micros,native_usage_json FROM attempts WHERE pool_id=? AND (? IS NULL OR run_id=?)').all(poolId,runId,runId);
+    return rows.reduce((sum,row)=>{const usage=row.native_usage_json?nativeUsage(JSON.parse(String(row.native_usage_json))):null;const rate=row.provider==='zoom'?0.042:row.provider==='zoom-pro'?0.10:0;const metered=usage?.unitType==='tokens'&&usage.inputUnits!==undefined?Math.ceil(usage.inputUnits*rate):0;return sum+Math.max(Number(row.cost_bound_micros),metered);},0);
+  }
   reserveAttempt(input:ReserveAttempt):Attempt {
     const r=object(input,['runId','tick','provider','inputHash','costBoundMicros','deadlineAtMs'],'reservation');
     const runId=id(r.runId,'run id'),tick=integer(r.tick,'tick'),p=provider(r.provider),inputHash=hash(r.inputHash,'input hash'),costBoundMicros=integer(r.costBoundMicros,'cost bound',1);
     if(tick>119)invalid('Tick must be 0 through 119');
-    const bound=this.#config.verifiedCostBounds[p],pool=this.#config.pools.find(pool=>pool.providers.includes(p));
+    if(this.#config.allowedRunId && runId!==this.#config.allowedRunId)invalid('Run is outside campaign approval');
+    const bound=this.#config.verifiedCostBounds[p]??this.#config.unverifiedAllocations?.[p],pool=this.#config.pools.find(pool=>pool.providers.includes(p));
     if(!bound||!pool)throw new LedgerError('quota','Provider lacks a configured verified request bound and budget');
     if(costBoundMicros!==bound.costBoundMicros)invalid('Request cost bound differs from verified configuration');
     return this.#transaction(()=>{
@@ -176,7 +191,10 @@ export class Ledger {
       if(requests>=REQUEST_LIMIT)throw new LedgerError('quota','Provider request limit reached for this run');
       const poolRow=this.#db.prepare('SELECT reserved_micros FROM pools WHERE pool_id=?').get(pool.id)as {reserved_micros:number};
       const runRow=this.#db.prepare('SELECT reserved_micros FROM runs WHERE pool_id=? AND run_id=?').get(pool.id,runId)as {reserved_micros:number}|undefined;
-      if(poolRow.reserved_micros+costBoundMicros>pool.campaignCapMicros||(runRow?.reserved_micros??0)+costBoundMicros>pool.perRunCapMicros)throw new LedgerError('budget','Approved shared run or campaign budget exhausted');
+      const unverified=!!this.#config.unverifiedAllocations?.[p];
+      const campaignExposure=unverified?this.#reportedExposure(pool.id,null)+(pool.priorExposure??[]).reduce((n,e)=>n+e.micros,0):poolRow.reserved_micros;
+      const runExposure=unverified?this.#reportedExposure(pool.id,runId):(runRow?.reserved_micros??0);
+      if(campaignExposure+costBoundMicros>pool.campaignCapMicros||runExposure+costBoundMicros>pool.perRunCapMicros)throw new LedgerError('budget','Approved shared run or campaign budget exhausted');
       const now=integer(Date.now(),'current time'),deadline=r.deadlineAtMs===undefined?now+DEADLINE_MS:integer(r.deadlineAtMs,'deadline');
       if(deadline<now||deadline>now+DEADLINE_MS)invalid('Deadline must be within the original four-second window');
       const attemptId=randomUUID();
@@ -229,10 +247,17 @@ export class Ledger {
     });
   }
   summary():LedgerSummary {return this.#transaction(()=>({campaignId:this.#config.campaignId,pools:this.#config.pools.map(pool=>{const row=this.#db.prepare('SELECT reserved_micros,last_dispatch_ms FROM pools WHERE pool_id=?').get(pool.id)as {reserved_micros:number;last_dispatch_ms:number|null};return {id:pool.id,reservedMicros:row.reserved_micros,capMicros:pool.campaignCapMicros,lastDispatchAtMs:row.last_dispatch_ms};}),attempts:Number((this.#db.prepare('SELECT COUNT(*) AS n FROM attempts').get()as {n:number}).n)}));}
+  usageReport():unknown {return this.#transaction(()=>({
+    accountingBasis:this.#config.unverifiedAllocations?'Jev verified reservations; Zoom operator allocations, not guaranteed charges':'verified reservations',
+    priorExposure:this.#config.pools.flatMap(p=>p.priorExposure??[]),
+    providers:this.#db.prepare("SELECT provider,state,COUNT(*) attempts, SUM(cost_bound_micros) allocated_micros, SUM(CASE WHEN json_extract(native_usage_json,'$.unitType')='tokens' THEN json_extract(native_usage_json,'$.inputUnits') ELSE 0 END) reported_input_tokens FROM attempts GROUP BY provider,state ORDER BY provider,state").all(),
+  }));}
   /** Explicit operator amendment; retains every attempt, reservation and dispatch timestamp.
    * Close all workers first. Existing handles fail closed after the identity changes. */
   amendBudget(input:LedgerConfig,approvalReference:string):void {
     const next=normalizeConfig(input);
+    if(this.#config.allowedRunId && next.allowedRunId!==this.#config.allowedRunId)invalid('Cannot replace approved run');
+    if(this.#config.unverifiedAllocations && canonical(next.unverifiedAllocations)!==canonical(this.#config.unverifiedAllocations))invalid('Cannot replace operator allocations');
     if(!approvalReference || approvalReference.length>512 || !/^[\x20-\x7e]+$/.test(approvalReference))invalid('Approval reference required');
     if(next.campaignId!==this.#config.campaignId || next.configurationHash===this.#config.configurationHash)invalid('Amendment requires the same campaign and a new configuration identity');
     if(canonical(next.verifiedCostBounds)!==canonical(this.#config.verifiedCostBounds))invalid('Budget amendment cannot change verified request bounds');
@@ -241,8 +266,10 @@ export class Ledger {
       const pool=next.pools.find(p=>p.id===old.id);
       if(!pool || canonical(pool.providers)!==canonical(old.providers) || pool.perRunCapMicros<old.perRunCapMicros || pool.campaignCapMicros<old.campaignCapMicros)invalid('Budget amendment cannot remove assignments or lower caps');
     }
+    for(const old of this.#config.pools){const pool=next.pools.find(p=>p.id===old.id)!;for(const exposure of old.priorExposure??[]){if(!(pool.priorExposure??[]).some(e=>canonical(e)===canonical(exposure)))invalid('Cannot remove prior exposure');}}
     this.validateStorage();
-    this.#transaction(()=>{
+    this.#transaction(()=>{for(const old of this.#config.pools){const pool=next.pools.find(p=>p.id===old.id)!;const added=(pool.priorExposure??[]).reduce((n,e)=>n+e.micros,0)-(old.priorExposure??[]).reduce((n,e)=>n+e.micros,0);this.#db.prepare('UPDATE pools SET reserved_micros=reserved_micros+? WHERE pool_id=?').run(added,old.id);const row=this.#db.prepare('SELECT reserved_micros FROM pools WHERE pool_id=?').get(old.id) as {reserved_micros:number};if(row.reserved_micros>pool.campaignCapMicros)invalid('Prior exposure exceeds cap');}
+
       this.#db.exec('CREATE TABLE IF NOT EXISTS budget_amendments (id INTEGER PRIMARY KEY, previous_configuration TEXT NOT NULL, next_configuration TEXT NOT NULL, approval_reference TEXT NOT NULL, amended_ms INTEGER NOT NULL) STRICT');
       this.#db.prepare('INSERT INTO budget_amendments(previous_configuration,next_configuration,approval_reference,amended_ms) VALUES(?,?,?,?)').run(canonical(this.#config),canonical(next),approvalReference,integer(Date.now(),'amendment time'));
       this.#db.prepare('UPDATE metadata SET configuration=?,digest=? WHERE id=1').run(canonical(next),digest(next));
@@ -258,7 +285,7 @@ export class Ledger {
     for(const pool of this.#config.pools){
       const stored=actualPools.find(row=>row.pool_id===pool.id);if(!stored)invalid('Ledger budget pool missing');
       const total=Number((this.#db.prepare('SELECT COALESCE(SUM(cost_bound_micros),0) AS n FROM attempts WHERE pool_id=?').get(pool.id)as {n:number}).n);
-      if(total!==stored.reserved_micros||total>pool.campaignCapMicros)invalid('Campaign reservation totals mismatch');
+      if(total+(pool.priorExposure??[]).reduce((n,e)=>n+e.micros,0)!==stored.reserved_micros||Number(stored.reserved_micros)>pool.campaignCapMicros)invalid('Campaign reservation totals mismatch');
       const last=this.#db.prepare('SELECT MAX(dispatch_ms) AS n FROM attempts WHERE pool_id=?').get(pool.id)as {n:number|null};
       if(last.n!==stored.last_dispatch_ms)invalid('Dispatch spacing state mismatch');
     }
@@ -268,7 +295,7 @@ export class Ledger {
       if(total!==row.reserved_micros||total>pool.perRunCapMicros)invalid('Run reservation totals mismatch');
     }
     for(const row of this.#db.prepare('SELECT * FROM attempts').all()){
-      const a=rowToAttempt(row),pool=this.#config.pools.find(p=>p.id===a.poolId),bound=this.#config.verifiedCostBounds[a.provider];
+      const a=rowToAttempt(row),pool=this.#config.pools.find(p=>p.id===a.poolId),bound=this.#config.verifiedCostBounds[a.provider]??this.#config.unverifiedAllocations?.[a.provider];
       if(!pool?.providers.includes(a.provider)||!bound||a.costBoundMicros!==bound.costBoundMicros)invalid('Stored attempt bound/provider mismatch');
       if(!this.#db.prepare('SELECT 1 AS n FROM runs WHERE pool_id=? AND run_id=?').get(a.poolId,a.runId))invalid('Attempt run reservation missing');
     }
@@ -284,7 +311,7 @@ export function initializeLedger(directory:string,input:LedgerConfig):Ledger {
     const fd=openSync(path,constants.O_CREAT|constants.O_EXCL|constants.O_RDWR,0o600);closeSync(fd);
     db=connection(path);db.exec('BEGIN IMMEDIATE');db.exec(schemaSQL);
     db.prepare('INSERT INTO metadata(id,configuration,digest) VALUES(1,?,?)').run(canonical(config),digest(config));
-    for(const pool of config.pools)db.prepare('INSERT INTO pools(pool_id,reserved_micros,last_dispatch_ms) VALUES(?,0,NULL)').run(pool.id);
+    for(const pool of config.pools)db.prepare('INSERT INTO pools(pool_id,reserved_micros,last_dispatch_ms) VALUES(?,?,NULL)').run(pool.id,(pool.priorExposure??[]).reduce((n,e)=>n+e.micros,0));
     db.exec('COMMIT');const ledger=new Ledger(root,db,config);ledger.validateStorage();return ledger;
   }catch(e){
     try{db?.close();}catch{/* leave original error */}

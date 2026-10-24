@@ -7,7 +7,7 @@ import { configurationHash } from './config-snapshot.js';
 
 export const runtimeConfigPath = fileURLToPath(new URL('../manifests/provider-runtime.json',import.meta.url));
 export const ledgerDirectory = fileURLToPath(new URL('../results/live-provider-campaign',import.meta.url));
-export const readRuntimeConfig = ()=>ProviderRuntimeSchema.parse(JSON.parse(readFileSync(runtimeConfigPath,'utf8')));
+export const readRuntimeConfig = ()=>{const config=JSON.parse(readFileSync(runtimeConfigPath,'utf8'));if(process.env.HAWKER_CAMPAIGN_EXCEPTION_FILE)config.zoomCampaignException=JSON.parse(readFileSync(process.env.HAWKER_CAMPAIGN_EXCEPTION_FILE,'utf8'));return ProviderRuntimeSchema.parse(config);};
 export function makeLedgerConfig(config: ProviderRuntimeConfig): LedgerConfig {
   const verifiedCostBounds: LedgerConfig['verifiedCostBounds']={};
   for (const provider of ['zoom','zoom-pro',...(config.jevSpendApproval?['jev' as const]:[])] as const) {
@@ -15,9 +15,9 @@ export function makeLedgerConfig(config: ProviderRuntimeConfig): LedgerConfig {
     if(bound)verifiedCostBounds[provider]={costBoundMicros:bound.micros,evidenceId:bound.evidenceUrl};
   }
   return {schemaVersion:'provider-ledger-1',campaignId:config.campaignId,
-    configurationHash:createHash('sha256').update(JSON.stringify({configurationHash,verifiedCostBounds,models:{zoom:config.providers.zoom.model,pro:config.providers['zoom-pro'].model,jev:config.providers.jev.model},jevSpendApproval:config.jevSpendApproval})).digest('hex'),
-    pools:[{id:'zoom-shared',providers:['zoom','zoom-pro'],perRunCapMicros:250000,campaignCapMicros:5000000},
-      ...(config.jevSpendApproval?[{id:'jev-separate',providers:['jev' as const],perRunCapMicros:config.jevSpendApproval.perRunCapMicros,campaignCapMicros:config.jevSpendApproval.campaignCapMicros}]:[])],verifiedCostBounds};
+    configurationHash:createHash('sha256').update(JSON.stringify({configurationHash,verifiedCostBounds,models:{zoom:config.providers.zoom.model,pro:config.providers['zoom-pro'].model,jev:config.providers.jev.model},jevSpendApproval:config.jevSpendApproval,...(config.zoomCampaignException?{zoomCampaignException:config.zoomCampaignException}:{})})).digest('hex'),
+    pools:[{id:'zoom-shared',providers:['zoom','zoom-pro'],perRunCapMicros:250000,campaignCapMicros:5000000,...(config.zoomCampaignException?{priorExposure:config.zoomCampaignException.priorSmokeAllocations.map(evidenceId=>({micros:1000,evidenceId}))}:{})},
+      ...(config.jevSpendApproval?[{id:'jev-separate',providers:['jev' as const],perRunCapMicros:config.jevSpendApproval.perRunCapMicros,campaignCapMicros:config.jevSpendApproval.campaignCapMicros}]:[])],verifiedCostBounds,...(config.zoomCampaignException?{allowedRunId:config.zoomCampaignException.roundId,unverifiedAllocations:{zoom:{costBoundMicros:1000,evidenceId:config.zoomCampaignException.approvalReference},'zoom-pro':{costBoundMicros:1000,evidenceId:config.zoomCampaignException.approvalReference}}}:{})};
 }
 export function networkSnapshotBlockers(provider: LiveProvider): string[] {
   const path='/etc/codex/network-policy.json';

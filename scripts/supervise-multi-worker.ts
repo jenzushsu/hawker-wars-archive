@@ -17,6 +17,7 @@ async function main() {
     process.exitCode = 2; return;
   }
   const roundId = z.string().uuid().parse(process.env.HAWKER_ROUND_ID).toLowerCase();
+  if(config.zoomCampaignException && roundId!==config.zoomCampaignException.roundId)throw new Error('Round outside approval');
   // Never initialize storage at startup. A missing or changed volume cannot
   // silently replenish the approved campaign or permit replaying requests.
   const expected = makeLedgerConfig(config);
@@ -30,7 +31,7 @@ async function main() {
     const ownerId = randomUUID(), identity = providerConfigurationHash(config);
     console.log(JSON.stringify({ status: 'supervising', roundId, policyIds: ['rules', 'jev', 'zoom', 'zoom-pro'], voting: false }));
     await superviseRulesWorker({ tick: () => runMultiTick(store, { roundId, ownerId, providerConfigurationHash: identity }, controllers),
-      signal: controller.signal, report: event => console.log(JSON.stringify({ roundId, ...event })) });
-  } finally { ledger.close(); process.removeListener('SIGTERM', stop); process.removeListener('SIGINT', stop); }
+      signal: controller.signal, report: event => {console.log(JSON.stringify({roundId,...event}));if(event.status==='completed'||event.status==='stopped'||event.status==='halted')console.log(JSON.stringify({status:'campaign-accounting',roundId,summary:ledger.summary(),usage:ledger.usageReport()}));} });
+  } finally { console.log(JSON.stringify({status:'ledger-summary',summary:ledger.summary()})); ledger.close(); process.removeListener('SIGTERM', stop); process.removeListener('SIGINT', stop); }
 }
 main().catch(() => { console.error(JSON.stringify({ status: 'configuration-error', message: 'Check the selected round, staging credentials, approved runtime manifest and existing persistent ledger.' })); process.exitCode = 1; });

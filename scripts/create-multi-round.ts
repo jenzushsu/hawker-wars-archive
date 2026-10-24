@@ -16,7 +16,7 @@ async function main() {
   const seed = z.string().regex(/^(0|[1-9]\d?)$/).transform(Number).parse(values.seed);
   const ledger = openLedger(directory!, makeLedgerConfig(config));
   try { multiControllers(config, ledger); } finally { ledger.close(); }
-  const roundId = randomUUID();
+  const roundId = config.zoomCampaignException?.roundId ?? randomUUID();
   const store = new LiveStore({ supabaseUrl: process.env.SUPABASE_URL ?? '', serviceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY ?? '' });
   await store.getMultiWorkerProtocol();
   await store.createRound(createMultiRoundInput(roundId, seed, providerConfigurationHash(config), values.publish));
