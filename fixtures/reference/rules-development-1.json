@@ -22,7 +22,7 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "2f2998280e123a60bd4ecd1e8879f7c8872f063aea3c12596422360a7a1de752",
+    "sourceTreeHash": "670a3e555de2c0038a58b1fd36aa8da26bcb948ab3358fa64295ff6a636f59f3",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
       {
@@ -804,6 +804,10 @@
       {
         "path": "scripts/generate-web-demo.ts",
         "sha256": "a4a6dedc714202ff4585eff051ee7c1f6eb53db57ceafa6219986e10d5884249"
+      },
+      {
+        "path": "scripts/inspect-experiment-ledger.ts",
+        "sha256": "a70ccf821ee8c1dde8e1aad8b30f469d50520207b95462280013e4d610a8f5c3"
       },
       {
         "path": "scripts/investigate-jev.ts",
