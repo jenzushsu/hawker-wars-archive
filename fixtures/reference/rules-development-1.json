@@ -22,7 +22,7 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "126aef24bdec867549cb9208340a52f2d0bf0f2fd2f0c5746b965d402c166b1f",
+    "sourceTreeHash": "90c38cf341f85cfa2f7fa77efbcdfa0ae0ebeb3f1896dc4ab519833122c78a43",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
       {
@@ -728,6 +728,10 @@
       {
         "path": "scripts/amend-provider-budget.ts",
         "sha256": "ae5d7fe2f18b63690cae4c9fdc02fa8378a26703949119e42defe8a127282f2d"
+      },
+      {
+        "path": "scripts/analyze-recorded-comparison.ts",
+        "sha256": "3923a216ce5e1d4bcedf2d5d94bf7c7c096b2dcf6643aaa62758ba1e561e0aba"
       },
       {
         "path": "scripts/artifact-output.ts",

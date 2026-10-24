@@ -1,0 +1,43 @@
+{
+  "status": "next-campaign-prepared",
+  "oldRun": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+  "roundId": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+  "configurationHash": "d6a90c6710024a2be91db62f2c4c7a99e8cb73279644f340f16a78538f3f15d4",
+  "before": {
+    "campaignId": "zoom-trial-campaign-1",
+    "pools": [
+      {
+        "id": "jev-separate",
+        "reservedMicros": 291818,
+        "capMicros": 340000,
+        "lastDispatchAtMs": 1792867633045
+      },
+      {
+        "id": "zoom-shared",
+        "reservedMicros": 201000,
+        "capMicros": 5000000,
+        "lastDispatchAtMs": 1792867700107
+      }
+    ],
+    "attempts": 305
+  },
+  "after": {
+    "campaignId": "zoom-trial-campaign-1",
+    "pools": [
+      {
+        "id": "jev-separate",
+        "reservedMicros": 291818,
+        "capMicros": 622178,
+        "lastDispatchAtMs": 1792867633045
+      },
+      {
+        "id": "zoom-shared",
+        "reservedMicros": 201000,
+        "capMicros": 5000000,
+        "lastDispatchAtMs": 1792867700107
+      }
+    ],
+    "attempts": 305
+  },
+  "providerDispatch": false
+}

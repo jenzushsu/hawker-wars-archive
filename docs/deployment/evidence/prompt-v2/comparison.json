@@ -1,0 +1,307 @@
+{
+  "schemaVersion": "prompt-v2-comparison-evidence-1",
+  "verifiedAt": "2026-10-24T19:28:59.572167+00:00",
+  "workerCommit": "902f451568047ba7b387f44230efd27eacf67329",
+  "workerDeployment": "qtnxnlrbddunybw6vh1vlya1",
+  "preparationDeployment": "lfh6aagy8m36wuffh5rew16d",
+  "database": {
+    "round": {
+      "id": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+      "tick": 120,
+      "scores": [
+        {
+          "served": 116,
+          "abandoned": 2,
+          "policy_id": "rules",
+          "cash_cents": 57500,
+          "profit_cents": 31100,
+          "utility_points": 29790
+        },
+        {
+          "served": 46,
+          "abandoned": 66,
+          "policy_id": "jev",
+          "cash_cents": 39000,
+          "profit_cents": 10600,
+          "utility_points": 870
+        },
+        {
+          "served": 109,
+          "abandoned": 14,
+          "policy_id": "zoom",
+          "cash_cents": 45500,
+          "profit_cents": 25100,
+          "utility_points": 20765
+        },
+        {
+          "served": 101,
+          "abandoned": 11,
+          "policy_id": "zoom-pro",
+          "cash_cents": 54500,
+          "profit_cents": 28100,
+          "utility_points": 25260
+        }
+      ],
+      "status": "completed",
+      "sequence": 121,
+      "published": false,
+      "control_state": "active",
+      "control_revision": 0,
+      "configuration_hash": "9b088ecdbca6d50dca76a78a4e98872b0b8751d3b63ac881cbcb2704358236d6"
+    },
+    "events": {
+      "count": 121,
+      "last_tick": 120,
+      "first_tick": 0,
+      "closing_events": 1,
+      "unique_sequences": 121
+    },
+    "decisions": [
+      {
+        "count": 10,
+        "source": "forced_wait",
+        "policy_id": "jev",
+        "fallback_reason": null
+      },
+      {
+        "count": 109,
+        "source": "model",
+        "policy_id": "jev",
+        "fallback_reason": null
+      },
+      {
+        "count": 1,
+        "source": "rules",
+        "policy_id": "jev",
+        "fallback_reason": "invalid"
+      },
+      {
+        "count": 120,
+        "source": "rules",
+        "policy_id": "rules",
+        "fallback_reason": null
+      },
+      {
+        "count": 31,
+        "source": "forced_wait",
+        "policy_id": "zoom",
+        "fallback_reason": null
+      },
+      {
+        "count": 89,
+        "source": "model",
+        "policy_id": "zoom",
+        "fallback_reason": null
+      },
+      {
+        "count": 16,
+        "source": "forced_wait",
+        "policy_id": "zoom-pro",
+        "fallback_reason": null
+      },
+      {
+        "count": 104,
+        "source": "model",
+        "policy_id": "zoom-pro",
+        "fallback_reason": null
+      }
+    ]
+  },
+  "accounting": {
+    "status": "campaign-accounting",
+    "roundId": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+    "summary": {
+      "campaignId": "zoom-trial-campaign-1",
+      "pools": [
+        {
+          "id": "jev-separate",
+          "reservedMicros": 594648,
+          "capMicros": 622178,
+          "lastDispatchAtMs": 1792870031051
+        },
+        {
+          "id": "zoom-shared",
+          "reservedMicros": 394000,
+          "capMicros": 5000000,
+          "lastDispatchAtMs": 1792870098249
+        }
+      ],
+      "attempts": 608
+    },
+    "usage": {
+      "accountingBasis": "Jev verified reservations; Zoom operator allocations, not guaranteed charges",
+      "priorExposure": [
+        {
+          "micros": 1000,
+          "evidenceId": "docs/providers/zoom-smoke-result.json"
+        },
+        {
+          "micros": 1000,
+          "evidenceId": "docs/providers/zoom-pro-smoke-result.json"
+        }
+      ],
+      "runs": [
+        {
+          "run_id": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 109,
+          "allocated_micros": 300077,
+          "reported_input_units": 246637,
+          "mean_latency_ms": 282.11009174311926,
+          "max_latency_ms": 485
+        },
+        {
+          "run_id": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+          "provider": "jev",
+          "state": "uncertain",
+          "attempts": 1,
+          "allocated_micros": 2753,
+          "reported_input_units": null,
+          "mean_latency_ms": null,
+          "max_latency_ms": null
+        },
+        {
+          "run_id": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 89,
+          "allocated_micros": 89000,
+          "reported_input_units": 155569,
+          "mean_latency_ms": 526.8876404494382,
+          "max_latency_ms": 1202
+        },
+        {
+          "run_id": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 104,
+          "allocated_micros": 104000,
+          "reported_input_units": 181591,
+          "mean_latency_ms": 583.1538461538462,
+          "max_latency_ms": 1291
+        },
+        {
+          "run_id": "76af5727-7871-4ea3-89be-16cf4a459dde",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 1,
+          "allocated_micros": 2753,
+          "reported_input_units": 1969,
+          "mean_latency_ms": 439,
+          "max_latency_ms": 439
+        },
+        {
+          "run_id": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 104,
+          "allocated_micros": 286312,
+          "reported_input_units": 224200,
+          "mean_latency_ms": 276.4326923076923,
+          "max_latency_ms": 345
+        },
+        {
+          "run_id": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+          "provider": "jev",
+          "state": "uncertain",
+          "attempts": 1,
+          "allocated_micros": 2753,
+          "reported_input_units": null,
+          "mean_latency_ms": null,
+          "max_latency_ms": null
+        },
+        {
+          "run_id": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 96,
+          "allocated_micros": 96000,
+          "reported_input_units": 154995,
+          "mean_latency_ms": 593.7291666666666,
+          "max_latency_ms": 1232
+        },
+        {
+          "run_id": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 103,
+          "allocated_micros": 103000,
+          "reported_input_units": 165692,
+          "mean_latency_ms": 596.2330097087379,
+          "max_latency_ms": 1413
+        }
+      ],
+      "providers": [
+        {
+          "provider": "jev",
+          "state": "success",
+          "attempts": 214,
+          "allocated_micros": 589142,
+          "reported_input_tokens": 472806
+        },
+        {
+          "provider": "jev",
+          "state": "uncertain",
+          "attempts": 2,
+          "allocated_micros": 5506,
+          "reported_input_tokens": 0
+        },
+        {
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 185,
+          "allocated_micros": 185000,
+          "reported_input_tokens": 310564
+        },
+        {
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 207,
+          "allocated_micros": 207000,
+          "reported_input_tokens": 347283
+        }
+      ]
+    }
+  },
+  "errors": [
+    {
+      "status": "provider-fallback",
+      "roundId": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+      "tick": 1,
+      "provider": "jev",
+      "reason": "invalid",
+      "diagnostic": "wire-contract:invalid-probabilities",
+      "attemptCount": 1,
+      "legalActions": [
+        "COOK",
+        "RESTOCK",
+        "PROMOTE",
+        "WAIT"
+      ]
+    }
+  ],
+  "verification": {
+    "replayedScoresMatchDatabase": true,
+    "rulesSnapshotsMatchingV1": 121,
+    "rulesSnapshotDifferences": 0,
+    "newProviderCalls": 303,
+    "priorLedgerRecords": 305,
+    "totalLedgerRecords": 608,
+    "duplicateDispatchesDetected": 0,
+    "newJevReservedMicros": 302830,
+    "newZoomAllocatedMicros": 193000,
+    "zoomReportedInputRateEstimateUsd": 0.024692998,
+    "actualBilledChargesUsd": null,
+    "bootstrapServiceCredentialRemoved": true,
+    "idleAfterCompletionVerifiedAt": "2026-10-24T19:29:52.963906+00:00"
+  },
+  "operatorObservabilityErrors": [
+    {
+      "operation": "Coolify logs with lines=all",
+      "response": "HTTP 500",
+      "resolution": "Used supported integer lines=1000; full logs retrieved",
+      "campaignImpact": "None; read-only monitoring call"
+    }
+  ]
+}
