@@ -69,7 +69,21 @@ describe("committed customer art projection", () => {
       "eat",
     ]);
     expect(poses.find((p) => p.role === "receive")?.frame).toBe(2);
-    expect(poses.find((p) => p.role === "depart")?.offsetX).toBe(8);
+    expect(poses.find((p) => p.role === "depart")?.offsetX).toBe(17);
+  });
+  it("walks visibly into the queue and settles before the next 800ms tick", () => {
+    const activity = { queuePoses: ["walk"] as "walk"[], received: 0, departed: 1 };
+    const start = projectCustomers(activity, 0, 0, false);
+    const middle = projectCustomers(activity, 0, 325, false);
+    const end = projectCustomers(activity, 0, 750, false);
+    expect(start[0]?.offsetY).toBe(36);
+    expect(middle[0]?.offsetY).toBe(18);
+    expect(middle[0]?.clip).toBe("walk");
+    expect(end[0]?.offsetY).toBe(0);
+    expect(end[0]?.clip).toBe("wait");
+    expect(middle[1]?.clip).toBe("walk");
+    expect(end[1]?.offsetX).toBe(36);
+    expect(end[1]?.clip).toBe("wait");
   });
   it("reconstructs bounded poses on seek and suppresses decorative movement with reduced motion", () => {
     const activity = {

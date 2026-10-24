@@ -1,3 +1,4 @@
+import { LiveActivitySchema } from './activity.ts';
 import { versions } from 'node:process';
 import { z } from 'zod';
 import { ResolutionSchema } from './vote-resolution-schema.ts';
@@ -19,7 +20,7 @@ const policyIds = z.array(policy).min(1).max(4).refine(values => new Set(values)
 const tick = integer.refine(value => value >= 0 && value <= 120);
 const snapshot = z.object({ policies: z.array(z.object({
   policy_id: policy, cash_cents: nonnegative, profit_cents: integer, utility_points: integer,
-  served: nonnegative, abandoned: nonnegative,
+  served: nonnegative, abandoned: nonnegative, activity: LiveActivitySchema.optional(),
 }).strict()).min(1).max(4).refine(values => new Set(values.map(item => item.policy_id)).size === values.length) }).strict();
 const decision = z.object({ policy_id: policy, action: z.enum(['SERVE', 'COOK', 'RESTOCK', 'PROMOTE', 'WAIT']),
   source: z.enum(['rules', 'model']), fallback_reason: z.enum(['invalid', 'illegal', 'network', 'rate-limit', 'timeout', 'uncertain', 'budget', 'quota']).nullable(),
