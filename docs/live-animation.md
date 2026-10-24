@@ -11,4 +11,22 @@ The live page reuses the demo renderer with only the centre stall active. A sele
 3. Restart the rules worker with the updated code. Subsequent committed ticks contain activity; previous ticks are not rewritten.
 4. Verify a running round in the hosted browser, including walking and operator pause/resume.
 
-The migration and deployment have not been applied to the hosted environment by this change. Local validation covers PostgreSQL persistence/rejection, worker/recovery behaviour and browser interaction with fixture-backed live responses.
+## Staging verification
+
+The activity migration is installed on `hawker-wars-staging`. Vercel deployment
+`dpl_GhcHZRV8JR9aJR33JtrXfrnSQoLQ` serves commit
+`98e7658049fd795287733b872a94a188419238da` at
+`https://hawker-wars-staging.vercel.app`.
+
+Hosted Chromium checks on 2026-10-24 UTC passed against round
+`e388e9f8-3720-430d-ab4f-14e96ba91392`: the scene loaded, customer walking changed
+position, operator pause froze animation, resume continued it, reduced motion
+removed positional movement, and disconnection/reconnection froze/resumed the
+clock. No browser runtime errors occurred. The test round was stopped afterward.
+These checks used the actual hosted API and committed worker activity, not
+fixture responses. Local validation also covers PostgreSQL persistence/rejection
+and worker/recovery behaviour.
+
+Persistent worker deployment is described in
+[the Coolify runbook](deployment/coolify-worker.md). Its host acceptance remains
+separate from the hosted browser checks above.

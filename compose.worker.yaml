@@ -1,0 +1,27 @@
+services:
+  worker:
+    build:
+      context: .
+      dockerfile: deploy/worker.Dockerfile
+    restart: unless-stopped
+    init: true
+    stop_grace_period: 120s
+    environment:
+      SUPABASE_URL: ${SUPABASE_URL:?Set the full staging HTTPS URL}
+      SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY:?Set the server-only staging key}
+      HAWKER_ROUND_ID: ${HAWKER_ROUND_ID:?Select an existing staging round UUID}
+    # Outbound-only worker: no domain, published port, or HTTP health check.
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=64m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 512m
+    cpus: 1
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"

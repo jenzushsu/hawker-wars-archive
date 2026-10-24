@@ -35,6 +35,7 @@
     "validate:p5-store": "bash scripts/validate-live-store.sh",
     "validate:p5-http": "bash scripts/validate-live-http.sh",
     "worker:rules": "node --use-env-proxy --import tsx scripts/run-rules-worker.ts",
+    "worker:supervise": "node --use-env-proxy --import tsx scripts/supervise-rules-worker.ts",
     "validate:p5-votes": "bash scripts/validate-votes-http.sh",
     "validate:p5-effects": "bash scripts/validate-vote-effects-http.sh",
     "validate:p5-view": "bash scripts/validate-live-view-http.sh",
