@@ -46,6 +46,11 @@ describe('atomic multi-policy comparison worker',()=>{
   for(let tick=0;tick<=120;tick++){if(tick===21||tick===87)f=memory(f.saved());await expect(runMultiTick(f.store,options,c)).resolves.toMatchObject({tick,sequence:tick+1});}
   const expected=runEpisode({seed:7,policy:'rules',roundId});const recovery=f.saved().recovery as MultiRecovery;
   for(const p of recovery.policies){expect(p.stateHash).toBe(expected.finalHash);expect(p.actions).toHaveLength(120);}
+  // Identical policies must see identical observations and receive identical scores.
+  const inputs=vi.mocked(c.jev.decideTurn).mock.calls;
+  for(const id of ['zoom','zoom-pro'] as const)expect(vi.mocked(c[id].decideTurn).mock.calls).toEqual(inputs);
+  const scores=f.commits.at(-1)!.snapshot.policies.map(({policy_id,...score})=>score);
+  for(const score of scores)expect(score).toEqual(scores[0]);
   expect(f.commits.at(-1)!.decisions).toEqual([]);const calls=vi.mocked(c.jev.decideTurn).mock.calls.length;
   expect(await runMultiTick(f.store,options,c)).toMatchObject({status:'completed'});expect(vi.mocked(c.jev.decideTurn).mock.calls).toHaveLength(calls);
  },60000);
