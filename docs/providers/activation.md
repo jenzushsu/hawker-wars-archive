@@ -1,5 +1,16 @@
 # Adapter activation status
 
+## Multi-policy worker readiness — 2026-10-24 UTC
+
+The four-policy worker is implemented and locally validated with mocks. A Jev
+smoke receipt no longer makes live campaign mode ready: the existing approval
+is smoke-only, and live mode requires explicit campaign scope. Zoom still lacks
+verified request-charge bounds and bounded smoke receipts. No new provider
+inference was made. See the [Coolify multi-policy runbook](../deployment/multi-policy-worker.md)
+for deployment prerequisites and retained-ledger requirements. Earlier entries
+below describe the evidence available at their recorded dates.
+
+
 23 October 2026 (UTC).
 
 The user requested activation of Jev, Zoom Standard and Zoom Pro. Runnable adapters, a persistent local reservation ledger and smoke commands are now implemented. **Jev's single approved inference smoke passed.** Its activation configuration has a valid receipt, but the retained single-test budget cannot fund another request. Zoom remains disabled pending maximum-charge evidence and its own smoke tests. This is partial P2-C implementation, not a live benchmark campaign or the complete phase exit.

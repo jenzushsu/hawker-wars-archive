@@ -1,0 +1,36 @@
+# Use only after provider gates and persistent campaign migration are verified.
+# Exactly one Coolify host, one replica, one retained campaign ledger volume.
+services:
+  worker:
+    build:
+      context: .
+      dockerfile: deploy/worker.Dockerfile
+    command: ["node", "--use-env-proxy", "--import", "tsx", "scripts/supervise-multi-worker.ts"]
+    restart: unless-stopped
+    init: true
+    stop_grace_period: 120s
+    environment:
+      SUPABASE_URL: ${SUPABASE_URL:?Set the full staging HTTPS URL}
+      SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY:?Set the server-only staging key}
+      HAWKER_ROUND_ID: ${HAWKER_ROUND_ID:?Select an existing multi-policy round}
+      HAWKER_PROVIDER_LEDGER_DIRECTORY: /var/lib/hawker/campaign
+      TYPESAFE_API_KEY: ${TYPESAFE_API_KEY:?Configure the approved provider credential}
+      ZOOM_AI_SERVICES_API_KEY: ${ZOOM_AI_SERVICES_API_KEY:?Configure the approved provider credential}
+    volumes:
+      - provider_ledger:/var/lib/hawker
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=64m
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 512m
+    cpus: 1
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+volumes:
+  provider_ledger:
+    external: true
+    name: hawker-provider-ledger

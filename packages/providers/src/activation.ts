@@ -27,6 +27,7 @@ export const ProviderRuntimeSchema = z.object({
     perRunCapMicros: z.number().int().positive().safe(),
     campaignCapMicros: z.number().int().positive().safe(),
     approvalReference: z.string().min(1).max(512),
+    scope: z.enum(['smoke', 'campaign']).optional(),
   }).strict().refine(b=>b.perRunCapMicros<=b.campaignCapMicros,'Run cap cannot exceed campaign cap').nullable(),
   providers: z.object({jev: ProviderSettingsSchema, zoom: ProviderSettingsSchema, 'zoom-pro': ProviderSettingsSchema}).strict(),
 }).strict().superRefine((config, ctx) => {
@@ -43,6 +44,7 @@ export function activationBlockers(config: ProviderRuntimeConfig, provider: Live
   if (!settings.model) blockers.push('model-unverified');
   if (!settings.maximumRequestCost) blockers.push('maximum-request-charge-unverified');
   if (provider === 'jev') {
+    if (mode === 'live' && config.jevSpendApproval?.scope !== 'campaign') blockers.push('jev-live-campaign-spend-unapproved');
     // Freemium alone cannot fund reservations. A future paid approval has its own pool.
     if (!config.jevSpendApproval) {
       if (!settings.freeTierVerified) blockers.push('free-tier-allowance-and-overage-unverified');

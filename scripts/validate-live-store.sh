@@ -126,4 +126,6 @@ psql_db -qAt < "$repo_root/supabase/tests/live-vote-effects.sql" > "$race_direct
 rg '\S' "$race_directory/vote-effects.log"
 psql_db -qAt < "$repo_root/supabase/tests/live-view.sql" > "$race_directory/view.log"
 rg '\S' "$race_directory/view.log"
+psql_db -qAt < "$repo_root/supabase/tests/live-multi-worker.sql" > "$race_directory/multi-worker.log"
+rg '\S' "$race_directory/multi-worker.log"
 printf '%s\n' 'P5 SQL lifecycle and permission validation passed (local Postgres; no PostgREST/Realtime claim).'

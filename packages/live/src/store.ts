@@ -23,8 +23,8 @@ const snapshot = z.object({ policies: z.array(z.object({
   served: nonnegative, abandoned: nonnegative, activity: LiveActivitySchema.optional(),
 }).strict()).min(1).max(4).refine(values => new Set(values.map(item => item.policy_id)).size === values.length) }).strict();
 const decision = z.object({ policy_id: policy, action: z.enum(['SERVE', 'COOK', 'RESTOCK', 'PROMOTE', 'WAIT']),
-  source: z.enum(['rules', 'model']), fallback_reason: z.enum(['invalid', 'illegal', 'network', 'rate-limit', 'timeout', 'uncertain', 'budget', 'quota']).nullable(),
-}).strict().refine(value => value.policy_id === 'rules' ? value.source === 'rules' && value.fallback_reason === null : value.source === 'model' ? value.fallback_reason === null : value.fallback_reason !== null);
+  source: z.enum(['rules', 'model', 'forced_wait']), fallback_reason: z.enum(['invalid', 'illegal', 'network', 'rate-limit', 'timeout', 'uncertain', 'budget', 'quota']).nullable(),
+}).strict().refine(value => value.policy_id === 'rules' ? value.source === 'rules' && value.fallback_reason === null : value.source === 'forced_wait' ? value.action === 'WAIT' && value.fallback_reason === null : value.source === 'model' ? value.fallback_reason === null : value.fallback_reason !== null);
 // A private JSON envelope only, not validation of simulator recovery semantics.
 const recovery = z.record(z.unknown()).refine(value => value.schemaVersion === 'recovery-1');
 const lease = z.object({ fence: nonnegative.refine(value => value > 0), expires_at: z.string().datetime({ offset: true }) }).strict();
@@ -157,6 +157,9 @@ export class LiveStore {
       this.#fetch = input.fetch ?? fetch;
       this.#timeoutMs = timeoutMs;
     } catch { throw new LiveStoreError('configuration'); }
+  }
+  async getMultiWorkerProtocol(): Promise<'multi-policy-worker-1'> {
+    return this.#request('/rpc/live_multi_worker_protocol', {}, z.literal('multi-policy-worker-1'));
   }
   async createRound(input: LiveCreateInput): Promise<{ round_id: string; tick: -1; sequence: 0 }> {
     const value = parse(createInput, input, 'input');
