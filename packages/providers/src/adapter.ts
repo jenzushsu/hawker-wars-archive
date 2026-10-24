@@ -4,7 +4,7 @@ import { DecisionInputSchema, DecisionResultSchema, IdentifierSchema, type Decis
 import { chooseRules } from '../../decisions/src/rules.js';
 import { canonicalState as canonicalJson } from '../../simulation/src/hash.js';
 import { activationBlockers, requestAccounting, ProviderRuntimeSchema, type LiveProvider, type ProviderRuntimeConfig } from './activation.js';
-import { buildRequest, parseResponse } from './wire.js';
+import { buildRequest, parseResponse, WireContractError } from './wire.js';
 import type { Ledger } from './ledger.js';
 
 export interface AdapterOptions {
@@ -141,7 +141,7 @@ export function createProviderAdapter(options: AdapterOptions) {
     } catch (error) {
       // Never expose SDK/fetch messages, raw payloads, headers or secrets in diagnostics.
       const reason = controller.signal.aborted ? 'timeout' : error instanceof TransportFailure ? error.reason : error instanceof Error && error.name==='WireContractError' ? 'invalid' : 'network';
-      result=fail(reason,'provider-request-failed',1);
+      result=fail(reason,error instanceof WireContractError ? `wire-contract:${error.code}` : `provider-request-failed:${reason}`,1);
       try { options.ledger.finishAttempt(attempt.id,{status:'uncertain'}); } catch { /* Existing durable intent already prevents retransmission. */ }
     } finally { if (timer) clearTimeout(timer); controller.abort(); }
     return result;

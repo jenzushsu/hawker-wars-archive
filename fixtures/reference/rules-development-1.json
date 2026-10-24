@@ -22,7 +22,7 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "ee7e19bc5c2ea799f091d4908a2f8cd60cefd2eff0dd1d5449e21d690e7cb90c",
+    "sourceTreeHash": "126aef24bdec867549cb9208340a52f2d0bf0f2fd2f0c5746b965d402c166b1f",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
       {
@@ -559,7 +559,7 @@
       },
       {
         "path": "packages/live/src/multi-runtime.ts",
-        "sha256": "69c160e05c735a862591c6aa4b0efdf7ea5f601385ae391bf8d5b637340aa685"
+        "sha256": "2c6f05ae0d812452f5d129f537a0ebc3f99faa81d4e8d423d58051365e45922b"
       },
       {
         "path": "packages/live/src/multi-worker.ts",
@@ -619,7 +619,7 @@
       },
       {
         "path": "packages/providers/src/adapter.ts",
-        "sha256": "4dd89c0ed3c008a5454bb5750734e7def0aaa9406ce1453b935545260b665f47"
+        "sha256": "ba5d24f60d7fe265a9346b003de68513cb37d8068dff09c07f68bab35513cd48"
       },
       {
         "path": "packages/providers/src/index.ts",
@@ -627,7 +627,7 @@
       },
       {
         "path": "packages/providers/src/ledger.ts",
-        "sha256": "f33b6e3d6a767bda02a4993d04148d947bfb8b9826643ba8a1d063dbef8217b9"
+        "sha256": "41a72de083e310475ac78bb50f965dd2a52301ac3ed7506df4ff5b4cc17c5761"
       },
       {
         "path": "packages/providers/src/wire.ts",
@@ -806,8 +806,12 @@
         "sha256": "576bb565c2b2af9f74ed8f78b246e17ef300e785a850b7d6f69c8691ae6b78d0"
       },
       {
+        "path": "scripts/prepare-next-campaign.ts",
+        "sha256": "b17ef62d03ec0cbc0b99a371b5c1c2e08bf7735270baed3c0c9451679ddb8f30"
+      },
+      {
         "path": "scripts/provider-config.ts",
-        "sha256": "ae5d483c25e01734a482b12479de921c2069a133bf37dad9162c195f58361345"
+        "sha256": "f1477cae60477a9b53d7fcc50bdd2cf4e9a070497679087c0f364266c6f05a79"
       },
       {
         "path": "scripts/provider-init-ledger.ts",
@@ -951,7 +955,7 @@
       },
       {
         "path": "tests/campaign-exception.test.ts",
-        "sha256": "6394e52b2d99718392c62c32783c313a69bcaba1dd22734fad8edc8f96243555"
+        "sha256": "bd2c12a9066ad87f54a3ce854ddc4e1b161a674e68ee1a1a426b2f225921bef0"
       },
       {
         "path": "tests/customer-art.test.ts",
@@ -1119,7 +1123,7 @@
       },
       {
         "path": "tests/providers-adversarial.test.ts",
-        "sha256": "50a06bc44eeeb1ac62eaec0b301f5c572bcdfe88a571b6826f8781d90bcd84c1"
+        "sha256": "d59f73d318ee40e60e79be3dbb6776d40a54a48451d7775e0212fc35a5adacb8"
       },
       {
         "path": "tests/providers-jev-smoke.test.ts",

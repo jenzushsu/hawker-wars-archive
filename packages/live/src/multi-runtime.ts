@@ -26,7 +26,17 @@ export function multiControllers(config: ProviderRuntimeConfig, ledger: Ledger):
   ledger.validateStorage();
   const adapter = (provider: 'jev' | 'zoom' | 'zoom-pro') => {
     if (ledger.getCostBound(provider) !== requestAccounting(config,provider,'live')!.micros) throw new Error('Ledger request bound mismatch');
-    return createProviderAdapter({ provider, config, ledger });
+    const controller = createProviderAdapter({ provider, config, ledger });
+    return { async decideTurn(input: Parameters<typeof controller.decideTurn>[0]) {
+      const turn = await controller.decideTurn(input);
+      if (turn.result.status === 'fallback') console.error(JSON.stringify({
+        status: 'provider-fallback', roundId: input.roundId, tick: input.tick, provider,
+        reason: turn.result.fallbackReason, diagnostic: turn.diagnostic,
+        attemptCount: turn.attemptCount, legalActions: input.legalActions,
+      }));
+      return turn;
+    } };
+
   };
   return { jev: adapter('jev'), zoom: adapter('zoom'), 'zoom-pro': adapter('zoom-pro') };
 }

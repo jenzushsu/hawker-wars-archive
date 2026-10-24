@@ -250,14 +250,21 @@ export class Ledger {
   usageReport():unknown {return this.#transaction(()=>({
     accountingBasis:this.#config.unverifiedAllocations?'Jev verified reservations; Zoom operator allocations, not guaranteed charges':'verified reservations',
     priorExposure:this.#config.pools.flatMap(p=>p.priorExposure??[]),
+    runs:this.#db.prepare("SELECT run_id,provider,state,COUNT(*) attempts,SUM(cost_bound_micros) allocated_micros,SUM(json_extract(native_usage_json,'$.inputUnits')) reported_input_units,AVG(json_extract(result_json,'$.latencyMs')) mean_latency_ms,MAX(json_extract(result_json,'$.latencyMs')) max_latency_ms FROM attempts GROUP BY run_id,provider,state ORDER BY run_id,provider,state").all(),
     providers:this.#db.prepare("SELECT provider,state,COUNT(*) attempts, SUM(cost_bound_micros) allocated_micros, SUM(CASE WHEN json_extract(native_usage_json,'$.unitType')='tokens' THEN json_extract(native_usage_json,'$.inputUnits') ELSE 0 END) reported_input_tokens FROM attempts GROUP BY provider,state ORDER BY provider,state").all(),
   }));}
   /** Explicit operator amendment; retains every attempt, reservation and dispatch timestamp.
    * Close all workers first. Existing handles fail closed after the identity changes. */
-  amendBudget(input:LedgerConfig,approvalReference:string):void {
+  amendBudget(input:LedgerConfig,approvalReference:string,previousRunId?:string):void {
     const next=normalizeConfig(input);
-    if(this.#config.allowedRunId && next.allowedRunId!==this.#config.allowedRunId)invalid('Cannot replace approved run');
-    if(this.#config.unverifiedAllocations && canonical(next.unverifiedAllocations)!==canonical(this.#config.unverifiedAllocations))invalid('Cannot replace operator allocations');
+    const transition = previousRunId !== undefined;
+    if(transition && (!this.#config.allowedRunId || previousRunId!==this.#config.allowedRunId || !next.allowedRunId || next.allowedRunId===previousRunId))invalid('Run transition requires the current and a different next run');
+    if(this.#config.allowedRunId && next.allowedRunId!==this.#config.allowedRunId && !transition)invalid('Cannot replace approved run');
+    if(this.#config.unverifiedAllocations && canonical(next.unverifiedAllocations)!==canonical(this.#config.unverifiedAllocations)) {
+      if(!transition)invalid('Cannot replace operator allocations');
+      for(const p of PROVIDERS)if(this.#config.unverifiedAllocations[p]?.costBoundMicros!==next.unverifiedAllocations?.[p]?.costBoundMicros)invalid('Run transition cannot change operator allocation amounts');
+    }
+
     if(!approvalReference || approvalReference.length>512 || !/^[\x20-\x7e]+$/.test(approvalReference))invalid('Approval reference required');
     if(next.campaignId!==this.#config.campaignId || next.configurationHash===this.#config.configurationHash)invalid('Amendment requires the same campaign and a new configuration identity');
     if(canonical(next.verifiedCostBounds)!==canonical(this.#config.verifiedCostBounds))invalid('Budget amendment cannot change verified request bounds');
