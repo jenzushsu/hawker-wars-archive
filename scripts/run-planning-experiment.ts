@@ -1,4 +1,4 @@
-import {readFileSync,writeFileSync} from 'node:fs';
+import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
 import {DecisionInputSchema} from '../packages/shared/src/index.js';
 import {openLedger} from '../packages/providers/src/ledger.ts';
 import {createProviderAdapter} from '../packages/providers/src/adapter.ts';
@@ -43,7 +43,8 @@ async function main() {
     previousRun = roundId;
   }
   const report = {status:'experiment-completed',before,after:ledger.summary(),usage:ledger.usageReport(),results};
-  writeFileSync(directory+'/planning-experiment.json',JSON.stringify(report,null,2),{mode:0o600});
+  mkdirSync('/var/lib/hawker/reports',{recursive:true,mode:0o700});
+  writeFileSync('/var/lib/hawker/reports/planning-experiment.json',JSON.stringify(report,null,2),{mode:0o600});
   console.log(JSON.stringify(report));
   ledger.close();
   setInterval(()=>{},30000);

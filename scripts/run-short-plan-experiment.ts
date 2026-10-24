@@ -1,4 +1,5 @@
-import {readFileSync,writeFileSync} from 'node:fs';
+import {relocatePlanningReport} from './experiment-reports.ts';
+import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
 import {DecisionInputSchema} from '../packages/shared/src/index.js';
 import {openLedger,LedgerError} from '../packages/providers/src/ledger.ts';
 import {createProviderAdapter} from '../packages/providers/src/adapter.ts';
@@ -18,6 +19,8 @@ async function main() {
   const approved = JSON.parse(readFileSync(approval,'utf8'));
   if (approved.status !== 'approved' || approved.callsPerModel !== 2) throw new Error('Missing bounded approval');
   let previousRun = '577bb9e5-36df-49e1-895c-880e66d656ee';
+  stage='relocate-report';
+  console.log(JSON.stringify({status:'report-relocation',moved:relocatePlanningReport('/var/lib/hawker'),ledgerRecordsModified:false}));
   stage='open-ledger';
   let ledger = openLedger(directory,{campaignId:config.campaignId,configurationHash:process.env.HAWKER_PREVIOUS_LEDGER_HASH!});
   stage='check-ledger';
@@ -52,7 +55,8 @@ async function main() {
     previousRun = roundId;
   }
   const report = {status:'experiment-completed',before,after:ledger.summary(),usage:ledger.usageReport(),results};
-  writeFileSync(directory+'/short-plan-experiment.json',JSON.stringify(report,null,2),{mode:0o600});
+  mkdirSync('/var/lib/hawker/reports',{recursive:true,mode:0o700});
+  writeFileSync('/var/lib/hawker/reports/short-plan-experiment.json',JSON.stringify(report,null,2),{mode:0o600});
   console.log(JSON.stringify(report));
   ledger.close();
   setInterval(()=>{},30000);

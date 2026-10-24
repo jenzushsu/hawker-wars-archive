@@ -22,7 +22,7 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "5d0e23107e22ba11357cea6b218a1e389ed90646b919427896ef2c5f8d80959b",
+    "sourceTreeHash": "21f9bb3daafbc8542ac788b6c16b16681622190a9b43d4bc4ab278c1ea722afa",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
       {
@@ -774,6 +774,10 @@
         "sha256": "92a57e17a5135e3cb3eadb3a2bdc5d64f7778fd3f0d365b8b759034b23371efe"
       },
       {
+        "path": "scripts/experiment-reports.ts",
+        "sha256": "59db4951ccc2c3ffac9dbf17794bcedc70dc27786f28cd1564873fdd05b9f5c0"
+      },
+      {
         "path": "scripts/export-customer.ts",
         "sha256": "e90bb49ff68b938a1fccaeee7f718db6fcea942d6b780441c2841adc745e814a"
       },
@@ -855,7 +859,7 @@
       },
       {
         "path": "scripts/run-planning-experiment.ts",
-        "sha256": "bf90a89b9f03d3df60c8e32ea865122292384fab91a78f0d0f60f282dc46f07c"
+        "sha256": "7f64bedecf07d502fed53817ef9eba6c3efece989a6aa65855388b72c8215b50"
       },
       {
         "path": "scripts/run-rules-worker.ts",
@@ -863,7 +867,7 @@
       },
       {
         "path": "scripts/run-short-plan-experiment.ts",
-        "sha256": "2973ee088eaf077378231de19f7d5141d9a1870fc04b514900d87334c0481b4d"
+        "sha256": "b9fe32ec16aa43d22d9b50e95f715a45cc449208ec678cabbedc7cac1dc4f2da"
       },
       {
         "path": "scripts/source-identity.ts",
@@ -1012,6 +1016,10 @@
       {
         "path": "tests/environment-art.test.ts",
         "sha256": "598423b8cc15cacee9fe28505cd45f5d7eefe545067c7b4f05b8bfbb0e199915"
+      },
+      {
+        "path": "tests/experiment-reports.test.ts",
+        "sha256": "b540f41afc7af03209d6a8cff008ad30a2db7b2f6ad9aa89a5856fc9a8a3b253"
       },
       {
         "path": "tests/hawker-art.test.ts",
