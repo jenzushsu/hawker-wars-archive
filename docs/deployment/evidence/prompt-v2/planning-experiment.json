@@ -1238,7 +1238,9 @@
     "sha": "a870e574ccc2c9f12f8cdb464e93cfe8da3e7312",
     "workerStopped": "uv3z47fpgf70scuxg70dy56w",
     "credentialsRemoved": true,
-    "stopped": true
+    "stopped": false,
+    "stopRequested": true,
+    "stopConfirmed": false
   },
   "finalServiceStatuses": {
     "app": "running:unknown:excluded",

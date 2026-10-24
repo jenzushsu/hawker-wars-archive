@@ -63,8 +63,11 @@ each experimental run allocated $0.008 against the $0.25 run cap. These allocati
 are not verified invoices. Only $0.005506 of Jev reservation capacity remains.
 
 The old completed simulation worker was stopped before the ledger transition.
-The experiment service was stopped afterward and its inference credentials removed
-from production and preview configuration. Its storage remains authoritative.
+A stop was requested for the completed experiment service and its configured inference
+credentials were removed from production and preview. Coolify still reports
+`running:unknown:excluded`, so container shutdown is not confirmed. The completed
+process is idle with no dispatch loop; removing configured keys does not erase
+the running process environment. Its storage remains authoritative.
 Do not restart an old worker with the previous ledger configuration or rerun the
 single-use experiment script. The final ledger identity and run ID are recorded
 in the transition events. Historical simulation data remains intact.
