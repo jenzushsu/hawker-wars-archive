@@ -15,17 +15,17 @@ The new migration has not been applied to hosted Supabase.
 
 The runtime manifest intentionally remains blocked:
 
-- Jev approval in `docs/providers/jev-smoke-approval.json` covers one smoke only.
-  Its successful smoke does not authorize a campaign. Live activation now
-  requires an explicit `jevSpendApproval.scope: "campaign"` and approved caps.
+- Jev campaign spending is now approved at USD 0.34, including the prior
+  USD 0.002753 smoke reservation. Its local ledger was amended without resetting
+  any attempts or counters; see `docs/providers/jev-campaign-amendment.json`.
 - Both Zoom models still lack a verified maximum request charge and successful
   bounded smoke results. A response deadline or input byte limit is not a
   billing bound. The current Zoom documentation does not establish the missing
   maximum charge; no guessed value has been inserted.
-- The existing ledger must retain its prior smoke reservation. Changing the
-  runtime budget configuration changes its identity; a reviewed amendment that
-  preserves all reservations and attempt records is required before deployment.
-  Startup deliberately rejects an old or missing ledger instead of replacing it.
+- The existing ledger must retain its prior smoke reservation when transferred
+  to Coolify. The Jev-only cap amendment is complete locally; adding verified
+  Zoom charge bounds will require a separate validated configuration amendment.
+  Startup rejects an old or missing ledger instead of replacing it.
 
 No remote inference was invoked during this implementation. Mock validation is
 not evidence of model performance or live account readiness.

@@ -2,9 +2,10 @@
   "schemaVersion": "provider-runtime-1",
   "campaignId": "zoom-trial-campaign-1",
   "jevSpendApproval": {
-    "perRunCapMicros": 3000,
-    "campaignCapMicros": 3000,
-    "approvalReference": "docs/providers/jev-smoke-approval.json"
+    "perRunCapMicros": 340000,
+    "campaignCapMicros": 340000,
+    "approvalReference": "docs/providers/jev-campaign-approval.json",
+    "scope": "campaign"
   },
   "providers": {
     "jev": {

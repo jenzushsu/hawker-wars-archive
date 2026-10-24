@@ -153,7 +153,7 @@ export class Ledger {
   }
   #transaction<T>(operation:()=>T):T {
     this.#guard();let began=false;
-    try{this.#db.exec('BEGIN IMMEDIATE');began=true;const value=operation();this.#db.exec('COMMIT');return value;}
+    try{this.#db.exec('BEGIN IMMEDIATE');began=true;this.#guard();const value=operation();this.#db.exec('COMMIT');return value;}
     catch(e){if(began){try{this.#db.exec('ROLLBACK');}catch{/* fail closed */}}if(e instanceof LedgerError)throw e;return invalid('Ledger transaction failed; no dispatch authorized');}
   }
   #byId(attemptId:string):Attempt {const row=this.#db.prepare('SELECT * FROM attempts WHERE id=?').get(id(attemptId,'attempt id'));if(!row)invalid('Unknown attempt');return rowToAttempt(row);}
@@ -229,6 +229,26 @@ export class Ledger {
     });
   }
   summary():LedgerSummary {return this.#transaction(()=>({campaignId:this.#config.campaignId,pools:this.#config.pools.map(pool=>{const row=this.#db.prepare('SELECT reserved_micros,last_dispatch_ms FROM pools WHERE pool_id=?').get(pool.id)as {reserved_micros:number;last_dispatch_ms:number|null};return {id:pool.id,reservedMicros:row.reserved_micros,capMicros:pool.campaignCapMicros,lastDispatchAtMs:row.last_dispatch_ms};}),attempts:Number((this.#db.prepare('SELECT COUNT(*) AS n FROM attempts').get()as {n:number}).n)}));}
+  /** Explicit operator amendment; retains every attempt, reservation and dispatch timestamp.
+   * Close all workers first. Existing handles fail closed after the identity changes. */
+  amendBudget(input:LedgerConfig,approvalReference:string):void {
+    const next=normalizeConfig(input);
+    if(!approvalReference || approvalReference.length>512 || !/^[\x20-\x7e]+$/.test(approvalReference))invalid('Approval reference required');
+    if(next.campaignId!==this.#config.campaignId || next.configurationHash===this.#config.configurationHash)invalid('Amendment requires the same campaign and a new configuration identity');
+    if(canonical(next.verifiedCostBounds)!==canonical(this.#config.verifiedCostBounds))invalid('Budget amendment cannot change verified request bounds');
+    if(next.pools.length!==this.#config.pools.length)invalid('Budget amendment cannot change pools');
+    for(const old of this.#config.pools){
+      const pool=next.pools.find(p=>p.id===old.id);
+      if(!pool || canonical(pool.providers)!==canonical(old.providers) || pool.perRunCapMicros<old.perRunCapMicros || pool.campaignCapMicros<old.campaignCapMicros)invalid('Budget amendment cannot remove assignments or lower caps');
+    }
+    this.validateStorage();
+    this.#transaction(()=>{
+      this.#db.exec('CREATE TABLE IF NOT EXISTS budget_amendments (id INTEGER PRIMARY KEY, previous_configuration TEXT NOT NULL, next_configuration TEXT NOT NULL, approval_reference TEXT NOT NULL, amended_ms INTEGER NOT NULL) STRICT');
+      this.#db.prepare('INSERT INTO budget_amendments(previous_configuration,next_configuration,approval_reference,amended_ms) VALUES(?,?,?,?)').run(canonical(this.#config),canonical(next),approvalReference,integer(Date.now(),'amendment time'));
+      this.#db.prepare('UPDATE metadata SET configuration=?,digest=? WHERE id=1').run(canonical(next),digest(next));
+    });
+    this.close();
+  }
   close():void {if(!this.#closed){this.#db.close();this.#closed=true;}}
   /** Validate persisted totals and states while holding an exclusive transaction snapshot. */
   validateStorage():void {this.#transaction(()=>{

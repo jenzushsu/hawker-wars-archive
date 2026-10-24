@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "provider-budget-approval-1",
+  "provider": "jev",
+  "approvedAt": "2026-10-24T18:16:09.425160Z",
+  "approvalSource": "User said: There is no cap for zoom at the moment. proceed with both Jev and Zoom, following the proposal of a USD 0.34 Jev campaign cap for one comparison including the prior smoke. User subsequently confirmed Zoom must keep its existing spending limits.",
+  "currency": "USD",
+  "runCapMicros": 340000,
+  "campaignCapMicros": 340000,
+  "scope": "One four-policy comparison, maximum 120 new Jev requests, including prior smoke reservation in campaign total. No automatic repeat campaign.",
+  "maximumNewRequests": 120,
+  "priorReservationMicros": 2753,
+  "maximumRequestReservationMicros": 2753,
+  "maximumCombinedReservationMicros": 333113,
+  "automaticIncreaseAllowed": false,
+  "previousConfigurationHash": "b1f30b3dc6991e14f657378f1c10300336cde98bf071912ed6f47e0336162861",
+  "status": "approved"
+}

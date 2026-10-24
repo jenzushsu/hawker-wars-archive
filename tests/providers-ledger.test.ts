@@ -94,3 +94,26 @@ describe('durable conservative attempt and budget ledger',()=>{
   expect(l.summary().pools[0]!.reservedMicros).toBe(3);expect(l.summary().attempts).toBe(3);
  },10000);
 });
+
+
+describe('explicit campaign budget amendment',()=>{
+ const jevConfig=():LedgerConfig=>({...zoomConfig(),pools:[...zoomConfig().pools,{id:'jev-separate',providers:['jev'],perRunCapMicros:3000,campaignCapMicros:3000}],verifiedCostBounds:{...zoomConfig().verifiedCostBounds,jev:{costBoundMicros:2753,evidenceId:'test-jev-bound'}}});
+ it('preserves prior attempts and counters, rejects stale handles, and audits the approved increase',()=>{
+  const directory=path(),old=jevConfig(),l=init(directory,old),stale=reopen(directory);
+  const a=l.reserveAttempt({runId:'smoke',tick:0,provider:'jev',inputHash,costBoundMicros:2753});l.markDispatchIntent(a.id);l.finishAttempt(a.id,{status:'uncertain'});
+  const next=structuredClone(old);next.configurationHash='c'.repeat(64);next.pools[1]!.perRunCapMicros=340000;next.pools[1]!.campaignCapMicros=340000;
+  l.amendBudget(next,'test-approval');expect(()=>stale.summary()).toThrow('configuration changed');expect(()=>reopen(directory)).toThrow();
+  const updated=openLedger(directory,next);handles.push(updated);
+  expect(updated.lookupAttempt({runId:'smoke',tick:0,provider:'jev'})).toEqual({...a,state:'uncertain',dispatchAtMs:expect.any(Number),finishedAtMs:expect.any(Number)});
+  expect(updated.summary()).toMatchObject({attempts:1,pools:expect.arrayContaining([{id:'jev-separate',reservedMicros:2753,capMicros:340000,lastDispatchAtMs:expect.any(Number)}])});
+  for(let tick=0;tick<120;tick++)updated.reserveAttempt({runId:'comparison',tick,provider:'jev',inputHash,costBoundMicros:2753});
+  expect(updated.summary().pools.find(p=>p.id==='jev-separate')!.reservedMicros).toBe(333113);
+  const db=new DatabaseSync(join(directory,'ledger.sqlite'));expect(db.prepare('SELECT approval_reference FROM budget_amendments').get()?.approval_reference).toBe('test-approval');db.close();
+ });
+ it('rejects changed charge bounds or reduced caps without touching the ledger',()=>{
+  const directory=path(),old=jevConfig(),l=init(directory,old),before=l.summary();
+  const next=structuredClone(old);next.configurationHash='c'.repeat(64);next.verifiedCostBounds.jev!.costBoundMicros=1;
+  expect(()=>l.amendBudget(next,'approval')).toThrow('request bounds');next.verifiedCostBounds.jev!.costBoundMicros=2753;next.pools[1]!.campaignCapMicros=2999;next.pools[1]!.perRunCapMicros=2999;
+  expect(()=>l.amendBudget(next,'approval')).toThrow('lower caps');expect(l.summary()).toEqual(before);
+ });
+});

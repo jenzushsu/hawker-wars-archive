@@ -1,0 +1,43 @@
+{
+  "status": "amended",
+  "approvalReference": "docs/providers/jev-campaign-approval.json",
+  "previousConfigurationHash": "b1f30b3dc6991e14f657378f1c10300336cde98bf071912ed6f47e0336162861",
+  "configurationHash": "18d1fb3865e4d4152a402f866c7ec50b74aa57ab190d458ca16f74173fc17a1d",
+  "before": {
+    "campaignId": "zoom-trial-campaign-1",
+    "pools": [
+      {
+        "id": "jev-separate",
+        "reservedMicros": 2753,
+        "capMicros": 3000,
+        "lastDispatchAtMs": 1792741222388
+      },
+      {
+        "id": "zoom-shared",
+        "reservedMicros": 0,
+        "capMicros": 5000000,
+        "lastDispatchAtMs": null
+      }
+    ],
+    "attempts": 1
+  },
+  "after": {
+    "campaignId": "zoom-trial-campaign-1",
+    "pools": [
+      {
+        "id": "jev-separate",
+        "reservedMicros": 2753,
+        "capMicros": 340000,
+        "lastDispatchAtMs": 1792741222388
+      },
+      {
+        "id": "zoom-shared",
+        "reservedMicros": 0,
+        "capMicros": 5000000,
+        "lastDispatchAtMs": null
+      }
+    ],
+    "attempts": 1
+  },
+  "providerDispatch": false
+}

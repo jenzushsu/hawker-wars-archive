@@ -1,5 +1,26 @@
 # Adapter activation status
 
+## Approved Jev campaign — 2026-10-24 UTC
+
+The user approved the proposed USD 0.34 Jev campaign cap for one comparison,
+including the prior smoke, and explicitly retained Zoom's USD 0.25/run and
+USD 5/campaign limits. See [approval](jev-campaign-approval.json) and
+[applied ledger amendment](jev-campaign-amendment.json). The existing local ledger
+now retains its original attempt and USD 0.002753 reservation under the larger
+Jev cap. Jev readiness checks pass; no new inference was made.
+
+The explicit budget-amendment operation preserves attempts, run totals, pool
+assignments, request bounds and dispatch timestamps, records an audit row, and
+invalidates old worker handles. It never runs at startup. Stop workers before
+amending and reopen with the new configuration identity afterward.
+
+Both Zoom smoke commands still return `maximum-request-charge-unverified` with
+zero network calls. The official API reference was fetched again; it specifies
+input tokens and output question counts but no numeric maximum request charge.
+The existing spending limits cannot yet be enforced against an unbounded charge.
+This is partial activation: the four-policy comparison has not run.
+
+
 ## Multi-policy worker readiness — 2026-10-24 UTC
 
 The four-policy worker is implemented and locally validated with mocks. A Jev
