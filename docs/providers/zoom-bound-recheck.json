@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-10-24T18:16:56.514974+00:00",
+  "url": "https://developers.zoom.us/docs/api/ai-services.md",
+  "sha256": "467e5130212a6ed8cac16d1359d21fc9cf9ce326b5f1e1a23e1cee027bcbb681",
+  "finding": "Input units are tokens; output units count questions. No numeric maximum billed request charge established.",
+  "userInstruction": "Keep existing spending limits",
+  "perRunCapMicros": 250000,
+  "campaignCapMicros": 5000000,
+  "inferenceRequests": 0,
+  "remainingPrerequisite": "Verified conservative maximum request charge for each Zoom model."
+}

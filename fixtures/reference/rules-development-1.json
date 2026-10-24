@@ -22,7 +22,7 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "0f41b383b794b9411777f2b17868296aace4a32a291c6d486220a3762244a8d4",
+    "sourceTreeHash": "1a134cebd3ffdfc1c6e65f4aaf37e93ad9d1b03871856aa58779de27d023fc5f",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
       {
@@ -627,7 +627,7 @@
       },
       {
         "path": "packages/providers/src/ledger.ts",
-        "sha256": "19a40cafde60c8da5dd7d1133b4f2d2b0abf1d55eca3e7d8629b991d62189d1c"
+        "sha256": "9419850b74cd83a158ea5248df852efce7252b739094c7434986b7436e499f68"
       },
       {
         "path": "packages/providers/src/wire.ts",
@@ -724,6 +724,10 @@
       {
         "path": "pnpm-workspace.yaml",
         "sha256": "4a4e154eac1f34ba2d32f96b0b7c714d905ab1fdff24a372965e4bb21381cb08"
+      },
+      {
+        "path": "scripts/amend-provider-budget.ts",
+        "sha256": "ae5d7fe2f18b63690cae4c9fdc02fa8378a26703949119e42defe8a127282f2d"
       },
       {
         "path": "scripts/artifact-output.ts",
@@ -983,7 +987,7 @@
       },
       {
         "path": "tests/live-multi-worker.test.ts",
-        "sha256": "d47ed791cd5f556f92078c9a71abce0d899cae880b3bc5d055b2cf42ac373eca"
+        "sha256": "81b6b1042c9b82b7fcfb8235b13cb094772f3d0a39ba679d8954e058edcba6ea"
       },
       {
         "path": "tests/live-operator.test.ts",
@@ -1115,7 +1119,7 @@
       },
       {
         "path": "tests/providers-ledger.test.ts",
-        "sha256": "e1562db5c61f9333e05f4c8efb415135ddad666d7ae63f7f980cb2493a81aa40"
+        "sha256": "75f025e2ecf56e83a600ff0cec45017beb4ae2b3371a014948c10c8b5b43a86d"
       },
       {
         "path": "tests/providers-wire.test.ts",

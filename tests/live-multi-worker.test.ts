@@ -84,8 +84,9 @@ describe('atomic multi-policy comparison worker',()=>{
   const original=memory();const saved={...original.saved(),control_state};const f=memory(saved),c=controllers();
   expect(await runMultiTick(f.store,options,c)).toMatchObject({status:control_state});expect(f.store.acquireLease).not.toHaveBeenCalled();expect(c.jev.decideTurn).not.toHaveBeenCalled();
  });
- it('keeps the spent Jev smoke and missing Zoom billing evidence closed for live comparisons',()=>{
+ it('requires campaign scope and keeps missing Zoom billing evidence closed',()=>{
   const config=ProviderRuntimeSchema.parse(readProjectJson('manifests/provider-runtime.json'));
+  config.jevSpendApproval!.scope='smoke';
   expect(activationBlockers(config,'jev','live')).toContain('jev-live-campaign-spend-unapproved');
   expect(multiProviderBlockers(config,{TYPESAFE_API_KEY:'test',ZOOM_AI_SERVICES_API_KEY:'test'})).toEqual(expect.arrayContaining(['jev:jev-live-campaign-spend-unapproved','zoom:maximum-request-charge-unverified','zoom-pro:credentialed-smoke-pending']));
  });
