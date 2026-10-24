@@ -22,7 +22,7 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "90c38cf341f85cfa2f7fa77efbcdfa0ae0ebeb3f1896dc4ab519833122c78a43",
+    "sourceTreeHash": "7ef5fdd96386b6086317b6b0f6c7421fcbc9c8873d44d0ef2a6333a5898d98cd",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
       {
@@ -559,7 +559,7 @@
       },
       {
         "path": "packages/live/src/multi-runtime.ts",
-        "sha256": "2c6f05ae0d812452f5d129f537a0ebc3f99faa81d4e8d423d58051365e45922b"
+        "sha256": "0cd9e0708e74bd302004f9b18787f2ad7e1b155b78cf6224dbe871c5b091a1ed"
       },
       {
         "path": "packages/live/src/multi-worker.ts",
@@ -619,7 +619,7 @@
       },
       {
         "path": "packages/providers/src/adapter.ts",
-        "sha256": "ba5d24f60d7fe265a9346b003de68513cb37d8068dff09c07f68bab35513cd48"
+        "sha256": "2f5eeefbee866b17dfade251ad29c22a800d35e321dea6f79ca8f34ef5296982"
       },
       {
         "path": "packages/providers/src/index.ts",
@@ -630,8 +630,12 @@
         "sha256": "41a72de083e310475ac78bb50f965dd2a52301ac3ed7506df4ff5b4cc17c5761"
       },
       {
+        "path": "packages/providers/src/planning-experiment.ts",
+        "sha256": "cc742b89773df24b078102c797112f000790f443cafadbc8cbcbdefae682adcf"
+      },
+      {
         "path": "packages/providers/src/wire.ts",
-        "sha256": "a7f1726b74e6b6580bbb90184fc340649dd8f7bc5ea7afbe8e9924392ddd7ed6"
+        "sha256": "7c37c40b971a80f9e1ee2974a6afc04b0d2f97146d3704bdc0d5448347fdeb76"
       },
       {
         "path": "packages/replay/package.json",
@@ -798,6 +802,10 @@
         "sha256": "a4a6dedc714202ff4585eff051ee7c1f6eb53db57ceafa6219986e10d5884249"
       },
       {
+        "path": "scripts/investigate-jev.ts",
+        "sha256": "b65aca0b0080d9a5853fa905e6c7b19d62d0a81089f1b4ff7fe275f0e2f571ae"
+      },
+      {
         "path": "scripts/offline-episode.ts",
         "sha256": "332317a8df05c9b5a7d4ffecc70fb18cb82fc94caa55190a77f90fb1aabf41fd"
       },
@@ -836,6 +844,10 @@
       {
         "path": "scripts/replay-episode.ts",
         "sha256": "96a003105becb4f413b86a5c5a57fcdca9e2ae53dd798b594e129ac982a41078"
+      },
+      {
+        "path": "scripts/run-planning-experiment.ts",
+        "sha256": "bf90a89b9f03d3df60c8e32ea865122292384fab91a78f0d0f60f282dc46f07c"
       },
       {
         "path": "scripts/run-rules-worker.ts",
@@ -1126,8 +1138,12 @@
         "sha256": "babcc37c9b32562a201bbe655ef4df4fccf1766220a44c3bd3cfb95436816784"
       },
       {
+        "path": "tests/provider-planning-experiment.test.ts",
+        "sha256": "91fabbf74d1c06d7d456149bf4f999f96475973bc0a5aa0a2c5c1f44b0eea8ec"
+      },
+      {
         "path": "tests/providers-adversarial.test.ts",
-        "sha256": "d59f73d318ee40e60e79be3dbb6776d40a54a48451d7775e0212fc35a5adacb8"
+        "sha256": "770fe9d5d52d822c45ed9f3601af54c54b56585629f5a4691148cd93d8bcb664"
       },
       {
         "path": "tests/providers-jev-smoke.test.ts",

@@ -17,7 +17,9 @@ describe('captured-state planning experiment',()=>{
     const input = states[index];
     const requests = (['jev','zoom','zoom-pro'] as const).map(provider=>{
       expect(buildPlanningExperimentRequest(provider,input,'baseline','jev-1.13.0')).toEqual(buildRequest(provider,input,'jev-1.13.0'));
-      return buildPlanningExperimentRequest(provider,input,'planning','jev-1.13.0');
+      const request = buildPlanningExperimentRequest(provider,input,'planning','jev-1.13.0');
+      expect(Buffer.byteLength(JSON.stringify(request.body))).toBeLessThanOrEqual(8192);
+      return request;
     });
     const j = (requests[0]!.body.questions as any).action;
     for(const r of requests.slice(1)) {
