@@ -173,6 +173,7 @@ describe('independent provider adapter activation and durable safety review', ()
       const blocked = await createProviderAdapter({ provider: 'zoom', config: noBound, ledger, mode: 'smoke', fetch: fetcher, credential }).decideTurn(input());
       expect(blocked).toMatchObject({ origin: 'fallback', attemptCount: 0 });
       expect(blocked.diagnostic).toContain('maximum-request-charge-unverified');
+      config.providers.zoom.smoke = null; // Explicit missing-receipt fixture, independent of recorded live smokes.
       const noSmoke = await createProviderAdapter({ provider: 'zoom', config, ledger, mode: 'live', fetch: fetcher, credential }).decideTurn(input());
       expect(noSmoke.diagnostic).toContain('credentialed-smoke-pending');
       expect(fetcher).not.toHaveBeenCalled(); expect(credential).not.toHaveBeenCalled();

@@ -22,7 +22,7 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "1a134cebd3ffdfc1c6e65f4aaf37e93ad9d1b03871856aa58779de27d023fc5f",
+    "sourceTreeHash": "4c54bd9bef848dbd5219de5a1441b4e52517ada73fd77c3fb5302c71b8a7212b",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
       {
@@ -987,7 +987,7 @@
       },
       {
         "path": "tests/live-multi-worker.test.ts",
-        "sha256": "81b6b1042c9b82b7fcfb8235b13cb094772f3d0a39ba679d8954e058edcba6ea"
+        "sha256": "5e44a57be12ad65c109159a77bcfd493b3817b594601a0c71246ad9ea163cc27"
       },
       {
         "path": "tests/live-operator.test.ts",
@@ -1111,7 +1111,7 @@
       },
       {
         "path": "tests/providers-adversarial.test.ts",
-        "sha256": "4f3b057082fb0277ec40eb45a8cee94781892f3cbb4c451f735560b497982f5c"
+        "sha256": "50a06bc44eeeb1ac62eaec0b301f5c572bcdfe88a571b6826f8781d90bcd84c1"
       },
       {
         "path": "tests/providers-jev-smoke.test.ts",

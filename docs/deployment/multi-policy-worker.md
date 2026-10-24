@@ -18,8 +18,8 @@ The runtime manifest intentionally remains blocked:
 - Jev campaign spending is now approved at USD 0.34, including the prior
   USD 0.002753 smoke reservation. Its local ledger was amended without resetting
   any attempts or counters; see `docs/providers/jev-campaign-amendment.json`.
-- Both Zoom models still lack a verified maximum request charge and successful
-  bounded smoke results. A response deadline or input byte limit is not a
+- Both Zoom models passed explicitly authorized exception smoke tests. They
+  still lack a verified maximum request charge for normal campaign dispatch. A response deadline or input byte limit is not a
   billing bound. The current Zoom documentation does not establish the missing
   maximum charge; no guessed value has been inserted.
 - The existing ledger must retain its prior smoke reservation when transferred
@@ -27,7 +27,9 @@ The runtime manifest intentionally remains blocked:
   Zoom charge bounds will require a separate validated configuration amendment.
   Startup rejects an old or missing ledger instead of replacing it.
 
-No remote inference was invoked during this implementation. Mock validation is
+The original worker implementation used no remote inference. Subsequently,
+one authorized exception smoke per Zoom model passed; see the provider activation
+record. Their charges need reconciliation before campaign dispatch. Mock validation is
 not evidence of model performance or live account readiness.
 
 ## Deployment sequence after gates are resolved
