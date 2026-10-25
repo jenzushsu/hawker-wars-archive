@@ -1,0 +1,20 @@
+{
+  "status": "approved",
+  "approvalSource": "User: next, following the proposed current-queue versus future-customer diagnostic",
+  "scope": "One timeline-plus-future-demand call per model on the same captured Jev tick-63 state. Prior baseline and timeline calls are historical controls. Three calls total; no automatic repetition.",
+  "roundId": "56b798e3-cd14-4a71-9132-1fcb18058fd5",
+  "previousRoundId": "5277c2c3-4f6f-4aec-a910-938a62ef9594",
+  "previousLedgerHash": "6405fae2770da1640df3b4bb7d2de56bfd064635e5a6b0338eac2fcd1015ddc2",
+  "expectedPriorAttempts": 1882,
+  "jevPriorReservedMicros": 1874793,
+  "jevCumulativeCapMicros": 1896817,
+  "zoomPriorAllocatedMicros": 1203000,
+  "jevAdditionalMaximumMicros": 2753,
+  "zoomAdditionalAllocationMicros": 2000,
+  "zoomCampaignCapMicros": 5000000,
+  "callsPerModel": 1,
+  "promptVersion": "hawker-decision-prompt-4",
+  "sourcePolicy": "jev",
+  "sourceTick": 63,
+  "experimentVersion": "tick63-future-demand-1"
+}
