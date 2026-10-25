@@ -1,0 +1,37 @@
+services:
+  experiment:
+    depends_on:
+      prepare-reports:
+        condition: service_completed_successfully
+    build:
+      context: .
+      dockerfile: deploy/worker.Dockerfile
+    command: ["node", "--use-env-proxy", "--import", "tsx", "scripts/run-short-plan-experiment.ts"]
+    restart: "no"
+    environment:
+      TYPESAFE_API_KEY: ${TYPESAFE_API_KEY:?Required}
+      ZOOM_AI_SERVICES_API_KEY: ${ZOOM_AI_SERVICES_API_KEY:?Required}
+      HAWKER_PREVIOUS_LEDGER_HASH: ${HAWKER_PREVIOUS_LEDGER_HASH:?Required}
+      HAWKER_PROVIDER_RUNTIME_FILE: /app/manifests/provider-runtime-v2-comparison.json
+      HAWKER_CAMPAIGN_EXCEPTION_FILE: /app/manifests/campaign-exception-v2.json
+    volumes:
+      - /var/lib/docker/volumes/muvfmjgpedffyk919kl40eid_provider-ledger/_data:/var/lib/hawker
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+  prepare-reports:
+    image: node:24.19.0-bookworm-slim
+    user: "0:0"
+    command:
+      - node
+      - --input-type=module
+      - -e
+      - "import {mkdirSync,lstatSync,chownSync,chmodSync} from 'node:fs'; const p='/var/lib/hawker/reports'; mkdirSync(p,{recursive:true,mode:0o700}); if(!lstatSync(p).isDirectory() || lstatSync(p).isSymbolicLink()) throw new Error('Unsafe reports directory'); chownSync(p,1000,1000); chmodSync(p,0o700);"
+    restart: "no"
+    volumes:
+      - /var/lib/docker/volumes/muvfmjgpedffyk919kl40eid_provider-ledger/_data:/var/lib/hawker
+    read_only: true
+    cap_drop: [ALL]
+    cap_add: [CHOWN, FOWNER, DAC_OVERRIDE]
+    security_opt: [no-new-privileges:true]

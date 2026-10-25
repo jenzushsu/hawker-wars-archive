@@ -1,0 +1,1249 @@
+{
+  "status": "experiment-completed",
+  "before": {
+    "campaignId": "zoom-trial-campaign-1",
+    "pools": [
+      {
+        "id": "jev-separate",
+        "reservedMicros": 594648,
+        "capMicros": 622178,
+        "lastDispatchAtMs": 1792870031051
+      },
+      {
+        "id": "zoom-shared",
+        "reservedMicros": 394000,
+        "capMicros": 5000000,
+        "lastDispatchAtMs": 1792870098249
+      }
+    ],
+    "attempts": 608
+  },
+  "after": {
+    "campaignId": "zoom-trial-campaign-1",
+    "pools": [
+      {
+        "id": "jev-separate",
+        "reservedMicros": 616672,
+        "capMicros": 622178,
+        "lastDispatchAtMs": 1792873185723
+      },
+      {
+        "id": "zoom-shared",
+        "reservedMicros": 410000,
+        "capMicros": 5000000,
+        "lastDispatchAtMs": 1792873188746
+      }
+    ],
+    "attempts": 632
+  },
+  "usage": {
+    "accountingBasis": "Jev verified reservations; Zoom operator allocations, not guaranteed charges",
+    "priorExposure": [
+      {
+        "micros": 1000,
+        "evidenceId": "docs/providers/zoom-smoke-result.json"
+      },
+      {
+        "micros": 1000,
+        "evidenceId": "docs/providers/zoom-pro-smoke-result.json"
+      }
+    ],
+    "runs": [
+      {
+        "run_id": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+        "provider": "jev",
+        "state": "success",
+        "attempts": 109,
+        "allocated_micros": 300077,
+        "reported_input_units": 246637,
+        "mean_latency_ms": 282.11009174311926,
+        "max_latency_ms": 485
+      },
+      {
+        "run_id": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+        "provider": "jev",
+        "state": "uncertain",
+        "attempts": 1,
+        "allocated_micros": 2753,
+        "reported_input_units": null,
+        "mean_latency_ms": null,
+        "max_latency_ms": null
+      },
+      {
+        "run_id": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+        "provider": "zoom",
+        "state": "success",
+        "attempts": 89,
+        "allocated_micros": 89000,
+        "reported_input_units": 155569,
+        "mean_latency_ms": 526.8876404494382,
+        "max_latency_ms": 1202
+      },
+      {
+        "run_id": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+        "provider": "zoom-pro",
+        "state": "success",
+        "attempts": 104,
+        "allocated_micros": 104000,
+        "reported_input_units": 181591,
+        "mean_latency_ms": 583.1538461538462,
+        "max_latency_ms": 1291
+      },
+      {
+        "run_id": "577bb9e5-36df-49e1-895c-880e66d656ee",
+        "provider": "jev",
+        "state": "success",
+        "attempts": 4,
+        "allocated_micros": 11012,
+        "reported_input_units": 9830,
+        "mean_latency_ms": 273.5,
+        "max_latency_ms": 309
+      },
+      {
+        "run_id": "577bb9e5-36df-49e1-895c-880e66d656ee",
+        "provider": "zoom",
+        "state": "success",
+        "attempts": 4,
+        "allocated_micros": 4000,
+        "reported_input_units": 7563,
+        "mean_latency_ms": 449,
+        "max_latency_ms": 474
+      },
+      {
+        "run_id": "577bb9e5-36df-49e1-895c-880e66d656ee",
+        "provider": "zoom-pro",
+        "state": "success",
+        "attempts": 4,
+        "allocated_micros": 4000,
+        "reported_input_units": 7563,
+        "mean_latency_ms": 855,
+        "max_latency_ms": 1261
+      },
+      {
+        "run_id": "76af5727-7871-4ea3-89be-16cf4a459dde",
+        "provider": "jev",
+        "state": "success",
+        "attempts": 1,
+        "allocated_micros": 2753,
+        "reported_input_units": 1969,
+        "mean_latency_ms": 439,
+        "max_latency_ms": 439
+      },
+      {
+        "run_id": "b7e8b014-2415-48f0-8bfd-5365a228e2c4",
+        "provider": "jev",
+        "state": "success",
+        "attempts": 4,
+        "allocated_micros": 11012,
+        "reported_input_units": 8872,
+        "mean_latency_ms": 273.25,
+        "max_latency_ms": 280
+      },
+      {
+        "run_id": "b7e8b014-2415-48f0-8bfd-5365a228e2c4",
+        "provider": "zoom",
+        "state": "success",
+        "attempts": 4,
+        "allocated_micros": 4000,
+        "reported_input_units": 6917,
+        "mean_latency_ms": 834.75,
+        "max_latency_ms": 1236
+      },
+      {
+        "run_id": "b7e8b014-2415-48f0-8bfd-5365a228e2c4",
+        "provider": "zoom-pro",
+        "state": "success",
+        "attempts": 4,
+        "allocated_micros": 4000,
+        "reported_input_units": 6917,
+        "mean_latency_ms": 676,
+        "max_latency_ms": 1225
+      },
+      {
+        "run_id": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+        "provider": "jev",
+        "state": "success",
+        "attempts": 104,
+        "allocated_micros": 286312,
+        "reported_input_units": 224200,
+        "mean_latency_ms": 276.4326923076923,
+        "max_latency_ms": 345
+      },
+      {
+        "run_id": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+        "provider": "jev",
+        "state": "uncertain",
+        "attempts": 1,
+        "allocated_micros": 2753,
+        "reported_input_units": null,
+        "mean_latency_ms": null,
+        "max_latency_ms": null
+      },
+      {
+        "run_id": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+        "provider": "zoom",
+        "state": "success",
+        "attempts": 96,
+        "allocated_micros": 96000,
+        "reported_input_units": 154995,
+        "mean_latency_ms": 593.7291666666666,
+        "max_latency_ms": 1232
+      },
+      {
+        "run_id": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+        "provider": "zoom-pro",
+        "state": "success",
+        "attempts": 103,
+        "allocated_micros": 103000,
+        "reported_input_units": 165692,
+        "mean_latency_ms": 596.2330097087379,
+        "max_latency_ms": 1413
+      }
+    ],
+    "providers": [
+      {
+        "provider": "jev",
+        "state": "success",
+        "attempts": 222,
+        "allocated_micros": 611166,
+        "reported_input_tokens": 491508
+      },
+      {
+        "provider": "jev",
+        "state": "uncertain",
+        "attempts": 2,
+        "allocated_micros": 5506,
+        "reported_input_tokens": 0
+      },
+      {
+        "provider": "zoom",
+        "state": "success",
+        "attempts": 193,
+        "allocated_micros": 193000,
+        "reported_input_tokens": 325044
+      },
+      {
+        "provider": "zoom-pro",
+        "state": "success",
+        "attempts": 215,
+        "allocated_micros": 215000,
+        "reported_input_tokens": 361763
+      }
+    ]
+  },
+  "results": [
+    {
+      "variant": "baseline",
+      "provider": "jev",
+      "tick": 26,
+      "roundId": "b7e8b014-2415-48f0-8bfd-5365a228e2c4",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "jev",
+        "attemptCount": 1,
+        "result": {
+          "provider": "jev",
+          "action": "WAIT",
+          "latencyMs": 270,
+          "status": "success",
+          "modelVersion": "jev-1.13.0",
+          "probabilities": [
+            {
+              "action": "PROMOTE",
+              "probability": 0.27
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.73
+            }
+          ],
+          "confidence": 0.46,
+          "confidenceSemantics": "Provider-reported confidence in selected label per @typesafe-ai/sdk@0.7.0; not claimed calibrated.",
+          "probabilitySemantics": "Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.",
+          "usage": {
+            "inputTokens": 2128,
+            "outputTokens": 32
+          },
+          "requestId": "req_01a16f91350d782496fe90b1e8fd70bc"
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "jev",
+          "inputUnits": 2128,
+          "outputUnits": 32,
+          "unitType": "tokens"
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "baseline",
+      "provider": "zoom",
+      "tick": 26,
+      "roundId": "b7e8b014-2415-48f0-8bfd-5365a228e2c4",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "zoom",
+        "attemptCount": 1,
+        "result": {
+          "provider": "zoom",
+          "action": "PROMOTE",
+          "latencyMs": 1236,
+          "status": "success",
+          "modelVersion": "zoom-decisions",
+          "requestId": "WEB_8b6e3d038c3ee421b0595201084cc76f",
+          "probabilities": [
+            {
+              "action": "PROMOTE",
+              "probability": 0.6607563676524153
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.3392436323475846
+            }
+          ],
+          "probabilitySemantics": "Provider-reported probability of each allowed choice per official Zoom Decisions contract; no cross-provider calibration claim."
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "zoom",
+          "inputUnits": 1649,
+          "outputUnits": 1,
+          "unitType": "tokens",
+          "cachedInputTokens": 128
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "baseline",
+      "provider": "zoom-pro",
+      "tick": 26,
+      "roundId": "b7e8b014-2415-48f0-8bfd-5365a228e2c4",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "zoom-pro",
+        "attemptCount": 1,
+        "result": {
+          "provider": "zoom-pro",
+          "action": "WAIT",
+          "latencyMs": 520,
+          "status": "success",
+          "modelVersion": "zoom-decisions-pro",
+          "requestId": "WEB_8ba9fc83cb67f32897bbbf0b5554916c",
+          "probabilities": [
+            {
+              "action": "PROMOTE",
+              "probability": 0.02814965558167024
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.9718503444183297
+            }
+          ],
+          "probabilitySemantics": "Provider-reported probability of each allowed choice per official Zoom Decisions contract; no cross-provider calibration claim."
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "zoom-pro",
+          "inputUnits": 1649,
+          "outputUnits": 1,
+          "unitType": "tokens"
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "baseline",
+      "provider": "jev",
+      "tick": 57,
+      "roundId": "b7e8b014-2415-48f0-8bfd-5365a228e2c4",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "jev",
+        "attemptCount": 1,
+        "result": {
+          "provider": "jev",
+          "action": "WAIT",
+          "latencyMs": 272,
+          "status": "success",
+          "modelVersion": "jev-1.13.0",
+          "probabilities": [
+            {
+              "action": "RESTOCK",
+              "probability": 0.39
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.61
+            }
+          ],
+          "confidence": 0.22,
+          "confidenceSemantics": "Provider-reported confidence in selected label per @typesafe-ai/sdk@0.7.0; not claimed calibrated.",
+          "probabilitySemantics": "Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.",
+          "usage": {
+            "inputTokens": 2275,
+            "outputTokens": 32
+          },
+          "requestId": "req_01a16f914a2d788bacc552b7a5387c38"
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "jev",
+          "inputUnits": 2275,
+          "outputUnits": 32,
+          "unitType": "tokens"
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "baseline",
+      "provider": "zoom",
+      "tick": 57,
+      "roundId": "b7e8b014-2415-48f0-8bfd-5365a228e2c4",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "zoom",
+        "attemptCount": 1,
+        "result": {
+          "provider": "zoom",
+          "action": "RESTOCK",
+          "latencyMs": 1201,
+          "status": "success",
+          "modelVersion": "zoom-decisions",
+          "requestId": "WEB_ca2ff7ec0b8818d91931e0d26d0d362a",
+          "probabilities": [
+            {
+              "action": "RESTOCK",
+              "probability": 0.9611466752894589
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.038853324710541134
+            }
+          ],
+          "probabilitySemantics": "Provider-reported probability of each allowed choice per official Zoom Decisions contract; no cross-provider calibration claim."
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "zoom",
+          "inputUnits": 1779,
+          "outputUnits": 1,
+          "unitType": "tokens",
+          "cachedInputTokens": 128
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "baseline",
+      "provider": "zoom-pro",
+      "tick": 57,
+      "roundId": "b7e8b014-2415-48f0-8bfd-5365a228e2c4",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "zoom-pro",
+        "attemptCount": 1,
+        "result": {
+          "provider": "zoom-pro",
+          "action": "RESTOCK",
+          "latencyMs": 488,
+          "status": "success",
+          "modelVersion": "zoom-decisions-pro",
+          "requestId": "WEB_f587f3935501c6ada6f52ac293674372",
+          "probabilities": [
+            {
+              "action": "RESTOCK",
+              "probability": 0.9998088956309759
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.00019110436902422653
+            }
+          ],
+          "probabilitySemantics": "Provider-reported probability of each allowed choice per official Zoom Decisions contract; no cross-provider calibration claim."
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "zoom-pro",
+          "inputUnits": 1779,
+          "outputUnits": 1,
+          "unitType": "tokens",
+          "cachedInputTokens": 128
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "baseline",
+      "provider": "jev",
+      "tick": 95,
+      "roundId": "b7e8b014-2415-48f0-8bfd-5365a228e2c4",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "jev",
+        "attemptCount": 1,
+        "result": {
+          "provider": "jev",
+          "action": "WAIT",
+          "latencyMs": 280,
+          "status": "success",
+          "modelVersion": "jev-1.13.0",
+          "probabilities": [
+            {
+              "action": "RESTOCK",
+              "probability": 0.29
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.71
+            }
+          ],
+          "confidence": 0.42,
+          "confidenceSemantics": "Provider-reported confidence in selected label per @typesafe-ai/sdk@0.7.0; not claimed calibrated.",
+          "probabilitySemantics": "Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.",
+          "usage": {
+            "inputTokens": 2242,
+            "outputTokens": 32
+          },
+          "requestId": "req_01a16f915f207ccbaacd875638e6fa97"
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "jev",
+          "inputUnits": 2242,
+          "outputUnits": 32,
+          "unitType": "tokens"
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "baseline",
+      "provider": "zoom",
+      "tick": 95,
+      "roundId": "b7e8b014-2415-48f0-8bfd-5365a228e2c4",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "zoom",
+        "attemptCount": 1,
+        "result": {
+          "provider": "zoom",
+          "action": "RESTOCK",
+          "latencyMs": 439,
+          "status": "success",
+          "modelVersion": "zoom-decisions",
+          "requestId": "WEB_54ac54aad23593d3b3b306455f9520aa",
+          "probabilities": [
+            {
+              "action": "RESTOCK",
+              "probability": 0.8892726846068162
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.11072731539318383
+            }
+          ],
+          "probabilitySemantics": "Provider-reported probability of each allowed choice per official Zoom Decisions contract; no cross-provider calibration claim."
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "zoom",
+          "inputUnits": 1750,
+          "outputUnits": 1,
+          "unitType": "tokens",
+          "cachedInputTokens": 128
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "baseline",
+      "provider": "zoom-pro",
+      "tick": 95,
+      "roundId": "b7e8b014-2415-48f0-8bfd-5365a228e2c4",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "zoom-pro",
+        "attemptCount": 1,
+        "result": {
+          "provider": "zoom-pro",
+          "action": "RESTOCK",
+          "latencyMs": 471,
+          "status": "success",
+          "modelVersion": "zoom-decisions-pro",
+          "requestId": "WEB_d5b8307371d0a748c76b502b434f686b",
+          "probabilities": [
+            {
+              "action": "RESTOCK",
+              "probability": 0.8112776387977976
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.18872236120220234
+            }
+          ],
+          "probabilitySemantics": "Provider-reported probability of each allowed choice per official Zoom Decisions contract; no cross-provider calibration claim."
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "zoom-pro",
+          "inputUnits": 1750,
+          "outputUnits": 1,
+          "unitType": "tokens",
+          "cachedInputTokens": 128
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "baseline",
+      "provider": "jev",
+      "tick": 109,
+      "roundId": "b7e8b014-2415-48f0-8bfd-5365a228e2c4",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "jev",
+        "attemptCount": 1,
+        "result": {
+          "provider": "jev",
+          "action": "WAIT",
+          "latencyMs": 271,
+          "status": "success",
+          "modelVersion": "jev-1.13.0",
+          "probabilities": [
+            {
+              "action": "RESTOCK",
+              "probability": 0.24
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.76
+            }
+          ],
+          "confidence": 0.52,
+          "confidenceSemantics": "Provider-reported confidence in selected label per @typesafe-ai/sdk@0.7.0; not claimed calibrated.",
+          "probabilitySemantics": "Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.",
+          "usage": {
+            "inputTokens": 2227,
+            "outputTokens": 32
+          },
+          "requestId": "req_01a16f91712474438fb8c240d2365127"
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "jev",
+          "inputUnits": 2227,
+          "outputUnits": 32,
+          "unitType": "tokens"
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "baseline",
+      "provider": "zoom",
+      "tick": 109,
+      "roundId": "b7e8b014-2415-48f0-8bfd-5365a228e2c4",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "zoom",
+        "attemptCount": 1,
+        "result": {
+          "provider": "zoom",
+          "action": "RESTOCK",
+          "latencyMs": 463,
+          "status": "success",
+          "modelVersion": "zoom-decisions",
+          "requestId": "WEB_d47197127b17798849e61bbd110b239b",
+          "probabilities": [
+            {
+              "action": "RESTOCK",
+              "probability": 0.7772998628943327
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.22270013710566727
+            }
+          ],
+          "probabilitySemantics": "Provider-reported probability of each allowed choice per official Zoom Decisions contract; no cross-provider calibration claim."
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "zoom",
+          "inputUnits": 1739,
+          "outputUnits": 1,
+          "unitType": "tokens",
+          "cachedInputTokens": 128
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "baseline",
+      "provider": "zoom-pro",
+      "tick": 109,
+      "roundId": "b7e8b014-2415-48f0-8bfd-5365a228e2c4",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "zoom-pro",
+        "attemptCount": 1,
+        "result": {
+          "provider": "zoom-pro",
+          "action": "WAIT",
+          "latencyMs": 1225,
+          "status": "success",
+          "modelVersion": "zoom-decisions-pro",
+          "requestId": "WEB_a8527d5696ad899b0bb5757e9ecaf80d",
+          "probabilities": [
+            {
+              "action": "RESTOCK",
+              "probability": 0.022977368125260286
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.9770226318747398
+            }
+          ],
+          "probabilitySemantics": "Provider-reported probability of each allowed choice per official Zoom Decisions contract; no cross-provider calibration claim."
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "zoom-pro",
+          "inputUnits": 1739,
+          "outputUnits": 1,
+          "unitType": "tokens",
+          "cachedInputTokens": 128
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "planning",
+      "provider": "jev",
+      "tick": 26,
+      "roundId": "577bb9e5-36df-49e1-895c-880e66d656ee",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "jev",
+        "attemptCount": 1,
+        "result": {
+          "provider": "jev",
+          "action": "WAIT",
+          "latencyMs": 257,
+          "status": "success",
+          "modelVersion": "jev-1.13.0",
+          "probabilities": [
+            {
+              "action": "PROMOTE",
+              "probability": 0.12
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.88
+            }
+          ],
+          "confidence": 0.76,
+          "confidenceSemantics": "Provider-reported confidence in selected label per @typesafe-ai/sdk@0.7.0; not claimed calibrated.",
+          "probabilitySemantics": "Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.",
+          "usage": {
+            "inputTokens": 2330,
+            "outputTokens": 32
+          },
+          "requestId": "req_01a16f918626790c936309ba7f114bbc"
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "jev",
+          "inputUnits": 2330,
+          "outputUnits": 32,
+          "unitType": "tokens"
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "planning",
+      "provider": "zoom",
+      "tick": 26,
+      "roundId": "577bb9e5-36df-49e1-895c-880e66d656ee",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "zoom",
+        "attemptCount": 1,
+        "result": {
+          "provider": "zoom",
+          "action": "WAIT",
+          "latencyMs": 459,
+          "status": "success",
+          "modelVersion": "zoom-decisions",
+          "requestId": "WEB_e746cd24eb9f9cc52ded335c3f892777",
+          "probabilities": [
+            {
+              "action": "PROMOTE",
+              "probability": 0.3973146620215083
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.6026853379784917
+            }
+          ],
+          "probabilitySemantics": "Provider-reported probability of each allowed choice per official Zoom Decisions contract; no cross-provider calibration claim."
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "zoom",
+          "inputUnits": 1791,
+          "outputUnits": 1,
+          "unitType": "tokens",
+          "cachedInputTokens": 128
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "planning",
+      "provider": "zoom-pro",
+      "tick": 26,
+      "roundId": "577bb9e5-36df-49e1-895c-880e66d656ee",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "zoom-pro",
+        "attemptCount": 1,
+        "result": {
+          "provider": "zoom-pro",
+          "action": "WAIT",
+          "latencyMs": 1261,
+          "status": "success",
+          "modelVersion": "zoom-decisions-pro",
+          "requestId": "WEB_5850f10bf065d7b828afe02df837b422",
+          "probabilities": [
+            {
+              "action": "PROMOTE",
+              "probability": 0.014957087178543538
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.9850429128214564
+            }
+          ],
+          "probabilitySemantics": "Provider-reported probability of each allowed choice per official Zoom Decisions contract; no cross-provider calibration claim."
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "zoom-pro",
+          "inputUnits": 1791,
+          "outputUnits": 1,
+          "unitType": "tokens",
+          "cachedInputTokens": 128
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "planning",
+      "provider": "jev",
+      "tick": 57,
+      "roundId": "577bb9e5-36df-49e1-895c-880e66d656ee",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "jev",
+        "attemptCount": 1,
+        "result": {
+          "provider": "jev",
+          "action": "WAIT",
+          "latencyMs": 268,
+          "status": "success",
+          "modelVersion": "jev-1.13.0",
+          "probabilities": [
+            {
+              "action": "RESTOCK",
+              "probability": 0.4
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.6
+            }
+          ],
+          "confidence": 0.2,
+          "confidenceSemantics": "Provider-reported confidence in selected label per @typesafe-ai/sdk@0.7.0; not claimed calibrated.",
+          "probabilitySemantics": "Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.",
+          "usage": {
+            "inputTokens": 2527,
+            "outputTokens": 32
+          },
+          "requestId": "req_01a16f919b5376fe89567ae9a3674d65"
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "jev",
+          "inputUnits": 2527,
+          "outputUnits": 32,
+          "unitType": "tokens"
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "planning",
+      "provider": "zoom",
+      "tick": 57,
+      "roundId": "577bb9e5-36df-49e1-895c-880e66d656ee",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "zoom",
+        "attemptCount": 1,
+        "result": {
+          "provider": "zoom",
+          "action": "RESTOCK",
+          "latencyMs": 406,
+          "status": "success",
+          "modelVersion": "zoom-decisions",
+          "requestId": "WEB_628401fd2a07122563347c88071a737c",
+          "probabilities": [
+            {
+              "action": "RESTOCK",
+              "probability": 0.977022630982687
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.02297736901731285
+            }
+          ],
+          "probabilitySemantics": "Provider-reported probability of each allowed choice per official Zoom Decisions contract; no cross-provider calibration claim."
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "zoom",
+          "inputUnits": 1947,
+          "outputUnits": 1,
+          "unitType": "tokens",
+          "cachedInputTokens": 1728
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "planning",
+      "provider": "zoom-pro",
+      "tick": 57,
+      "roundId": "577bb9e5-36df-49e1-895c-880e66d656ee",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "zoom-pro",
+        "attemptCount": 1,
+        "result": {
+          "provider": "zoom-pro",
+          "action": "RESTOCK",
+          "latencyMs": 1220,
+          "status": "success",
+          "modelVersion": "zoom-decisions-pro",
+          "requestId": "WEB_ff10a7e9cca1d1beb3af11e5ebad09fe",
+          "probabilities": [
+            {
+              "action": "RESTOCK",
+              "probability": 0.9997276998131024
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.00027230018689752437
+            }
+          ],
+          "probabilitySemantics": "Provider-reported probability of each allowed choice per official Zoom Decisions contract; no cross-provider calibration claim."
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "zoom-pro",
+          "inputUnits": 1947,
+          "outputUnits": 1,
+          "unitType": "tokens",
+          "cachedInputTokens": 128
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "planning",
+      "provider": "jev",
+      "tick": 95,
+      "roundId": "577bb9e5-36df-49e1-895c-880e66d656ee",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "jev",
+        "attemptCount": 1,
+        "result": {
+          "provider": "jev",
+          "action": "WAIT",
+          "latencyMs": 260,
+          "status": "success",
+          "modelVersion": "jev-1.13.0",
+          "probabilities": [
+            {
+              "action": "RESTOCK",
+              "probability": 0.24
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.76
+            }
+          ],
+          "confidence": 0.52,
+          "confidenceSemantics": "Provider-reported confidence in selected label per @typesafe-ai/sdk@0.7.0; not claimed calibrated.",
+          "probabilitySemantics": "Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.",
+          "usage": {
+            "inputTokens": 2494,
+            "outputTokens": 32
+          },
+          "requestId": "req_01a16f91b00279b99e23a9f27c077021"
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "jev",
+          "inputUnits": 2494,
+          "outputUnits": 32,
+          "unitType": "tokens"
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "planning",
+      "provider": "zoom",
+      "tick": 95,
+      "roundId": "577bb9e5-36df-49e1-895c-880e66d656ee",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "zoom",
+        "attemptCount": 1,
+        "result": {
+          "provider": "zoom",
+          "action": "RESTOCK",
+          "latencyMs": 474,
+          "status": "success",
+          "modelVersion": "zoom-decisions",
+          "requestId": "WEB_21b95b6ff152aaaedeb8bacc0aafc333",
+          "probabilities": [
+            {
+              "action": "RESTOCK",
+              "probability": 0.8892726767049591
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.11072732329504073
+            }
+          ],
+          "probabilitySemantics": "Provider-reported probability of each allowed choice per official Zoom Decisions contract; no cross-provider calibration claim."
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "zoom",
+          "inputUnits": 1918,
+          "outputUnits": 1,
+          "unitType": "tokens",
+          "cachedInputTokens": 128
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "planning",
+      "provider": "zoom-pro",
+      "tick": 95,
+      "roundId": "577bb9e5-36df-49e1-895c-880e66d656ee",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "zoom-pro",
+        "attemptCount": 1,
+        "result": {
+          "provider": "zoom-pro",
+          "action": "RESTOCK",
+          "latencyMs": 483,
+          "status": "success",
+          "modelVersion": "zoom-decisions-pro",
+          "requestId": "WEB_f538a8ed3b4ccea1ae49762384a883fb",
+          "probabilities": [
+            {
+              "action": "RESTOCK",
+              "probability": 0.8670357648842224
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.13296423511577757
+            }
+          ],
+          "probabilitySemantics": "Provider-reported probability of each allowed choice per official Zoom Decisions contract; no cross-provider calibration claim."
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "zoom-pro",
+          "inputUnits": 1918,
+          "outputUnits": 1,
+          "unitType": "tokens",
+          "cachedInputTokens": 128
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "planning",
+      "provider": "jev",
+      "tick": 109,
+      "roundId": "577bb9e5-36df-49e1-895c-880e66d656ee",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "jev",
+        "attemptCount": 1,
+        "result": {
+          "provider": "jev",
+          "action": "WAIT",
+          "latencyMs": 309,
+          "status": "success",
+          "modelVersion": "jev-1.13.0",
+          "probabilities": [
+            {
+              "action": "RESTOCK",
+              "probability": 0.22
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.78
+            }
+          ],
+          "confidence": 0.56,
+          "confidenceSemantics": "Provider-reported confidence in selected label per @typesafe-ai/sdk@0.7.0; not claimed calibrated.",
+          "probabilitySemantics": "Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.",
+          "usage": {
+            "inputTokens": 2479,
+            "outputTokens": 32
+          },
+          "requestId": "req_01a16f91c24370aea99a64c0805c8c50"
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "jev",
+          "inputUnits": 2479,
+          "outputUnits": 32,
+          "unitType": "tokens"
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "planning",
+      "provider": "zoom",
+      "tick": 109,
+      "roundId": "577bb9e5-36df-49e1-895c-880e66d656ee",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "zoom",
+        "attemptCount": 1,
+        "result": {
+          "provider": "zoom",
+          "action": "RESTOCK",
+          "latencyMs": 457,
+          "status": "success",
+          "modelVersion": "zoom-decisions",
+          "requestId": "WEB_772d437308a3d6d553aaae64bb7042ce",
+          "probabilities": [
+            {
+              "action": "RESTOCK",
+              "probability": 0.8519527980723218
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.14804720192767817
+            }
+          ],
+          "probabilitySemantics": "Provider-reported probability of each allowed choice per official Zoom Decisions contract; no cross-provider calibration claim."
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "zoom",
+          "inputUnits": 1907,
+          "outputUnits": 1,
+          "unitType": "tokens",
+          "cachedInputTokens": 128
+        },
+        "diagnostic": null
+      }
+    },
+    {
+      "variant": "planning",
+      "provider": "zoom-pro",
+      "tick": 109,
+      "roundId": "577bb9e5-36df-49e1-895c-880e66d656ee",
+      "outcome": {
+        "mode": "live",
+        "origin": "provider",
+        "attemptedProvider": "zoom-pro",
+        "attemptCount": 1,
+        "result": {
+          "provider": "zoom-pro",
+          "action": "WAIT",
+          "latencyMs": 456,
+          "status": "success",
+          "modelVersion": "zoom-decisions-pro",
+          "requestId": "WEB_c9e78f40707dca38e1e8c8f6331f0848",
+          "probabilities": [
+            {
+              "action": "RESTOCK",
+              "probability": 0.12364752750309269
+            },
+            {
+              "action": "WAIT",
+              "probability": 0.8763524724969073
+            }
+          ],
+          "probabilitySemantics": "Provider-reported probability of each allowed choice per official Zoom Decisions contract; no cross-provider calibration claim."
+        },
+        "nativeUsage": {
+          "schemaVersion": "provider-native-usage-1",
+          "provider": "zoom-pro",
+          "inputUnits": 1907,
+          "outputUnits": 1,
+          "unitType": "tokens",
+          "cachedInputTokens": 128
+        },
+        "diagnostic": null
+      }
+    }
+  ],
+  "deployment": {
+    "app": "muvfmjgpedffyk919kl40eid",
+    "deployment": "emqvjw643wxc3rklwyhfrequ",
+    "sha": "a870e574ccc2c9f12f8cdb464e93cfe8da3e7312",
+    "workerStopped": "uv3z47fpgf70scuxg70dy56w",
+    "credentialsRemoved": true,
+    "stopped": false,
+    "stopRequested": true,
+    "stopConfirmed": false
+  },
+  "finalServiceStatuses": {
+    "app": "running:unknown:excluded",
+    "workerStopped": "exited:unhealthy"
+  }
+}

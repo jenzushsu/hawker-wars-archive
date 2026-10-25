@@ -1,0 +1,21 @@
+services:
+  prepare:
+    build:
+      context: .
+      dockerfile: deploy/worker.Dockerfile
+    command: ["node", "--use-env-proxy", "--import", "tsx", "scripts/prepare-next-campaign.ts"]
+    restart: "no"
+    environment:
+      SUPABASE_URL: ${SUPABASE_URL:?Required}
+      SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY:?Required}
+      HAWKER_PREVIOUS_LEDGER_HASH: ${HAWKER_PREVIOUS_LEDGER_HASH:?Required}
+      HAWKER_PREVIOUS_ROUND_ID: ${HAWKER_PREVIOUS_ROUND_ID:?Required}
+      HAWKER_PROVIDER_LEDGER_DIRECTORY: /var/lib/hawker/campaign
+      HAWKER_PROVIDER_RUNTIME_FILE: /app/manifests/provider-runtime-v2-comparison.json
+      HAWKER_CAMPAIGN_EXCEPTION_FILE: /app/manifests/campaign-exception-v2.json
+    volumes:
+      - /var/lib/docker/volumes/muvfmjgpedffyk919kl40eid_provider-ledger/_data:/var/lib/hawker
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]

@@ -32,6 +32,25 @@ describe('single-round unverified-charge exception',()=>{
   l.amendBudget(next,'test-approval');const updated=openLedger(directory,next);
   try{expect(updated.summary()).toMatchObject({attempts:1,pools:expect.arrayContaining([expect.objectContaining({id:'jev-separate',reservedMicros:2753}),expect.objectContaining({id:'zoom-shared',reservedMicros:2000})])});expect(()=>updated.amendBudget({...next,allowedRunId:'another',configurationHash:'b'.repeat(64)},'test')).toThrow('replace approved run');}finally{updated.close();}
  }));
+ it('explicitly advances a run without resetting reservations or allowing the previous run',()=>withDir(directory=>{
+  const c=config(),old=makeLedgerConfig(c),l=initializeLedger(directory,old);
+  l.reserveAttempt({runId:run,tick:0,provider:'jev',inputHash:'a'.repeat(64),costBoundMicros:2753});
+  l.reserveAttempt({runId:run,tick:0,provider:'zoom',inputHash:'b'.repeat(64),costBoundMicros:1000});
+  c.zoomCampaignException!.roundId='11111111-1111-4111-8111-111111111111';
+  c.zoomCampaignException!.approvalReference='test-new-run-approval';
+  const next=makeLedgerConfig(c);
+  expect(()=>l.amendBudget(next,'test','wrong-run')).toThrow('current');
+  expect(()=>l.amendBudget(next,'test')).toThrow('replace approved run');
+  l.amendBudget(next,'test-new-run-approval',run);
+  const fresh=openLedger(directory,next);
+  try {
+    expect(fresh.summary().attempts).toBe(2);
+    expect(fresh.summary().pools.find(p=>p.id==='zoom-shared')!.reservedMicros).toBe(3000);
+    expect(()=>fresh.reserveAttempt({runId:run,tick:1,provider:'jev',inputHash:'c'.repeat(64),costBoundMicros:2753})).toThrow('outside');
+    fresh.reserveAttempt({runId:c.zoomCampaignException!.roundId,tick:0,provider:'jev',inputHash:'c'.repeat(64),costBoundMicros:2753});
+    expect(fresh.summary().pools.find(p=>p.id==='jev-separate')!.reservedMicros).toBe(5506);
+  } finally {fresh.close();}
+ }));
  it('dispatches only the approved round and recovers a saved response without a second HTTP request',async()=>{
   const root=mkdtempSync(join(tmpdir(),'campaign-adapter-')),directory=join(root,'ledger'),c=config(),expected=makeLedgerConfig(c);let l=initializeLedger(directory,expected);
   const fetcher=vi.fn<typeof fetch>(async()=>new Response(JSON.stringify({model:'zoom-decisions',request_id:'test-receipt',answers:[{name:'action',type:'choice',choice:'COOK'}],usage:{input_units:1482,output_units:1,unit_type:'tokens'}})));

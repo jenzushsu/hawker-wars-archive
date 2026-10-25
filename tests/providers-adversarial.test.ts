@@ -219,6 +219,33 @@ describe('independent provider adapter activation and durable safety review', ()
     });
   });
 
+  it('records a bounded wire validation code without retaining the raw response', async () => {
+    await withLedger(async (ledger, _dir, config) => {
+      const captured = input();
+      const fetcher = vi.fn<typeof globalThis.fetch>(async () => new Response(JSON.stringify({
+        model: 'zoom-decisions', answers: [{name: 'action', type: 'choice', choice: 'SERVE'}], debug: sensitiveTestKey,
+      })));
+      const turn = await createProviderAdapter({provider: 'zoom', config, ledger, mode: 'smoke', fetch: fetcher, credential: () => sensitiveTestKey}).decideTurn(captured);
+      expect(turn.diagnostic).toBe('wire-contract:illegal-action');
+      expect(JSON.stringify(turn)).not.toContain(sensitiveTestKey);
+      expect(fetcher).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  it('passes bounded probability diagnostics through the adapter without retries', async () => {
+    await withLedger(async (ledger, _dir, config) => {
+      const fetcher = vi.fn<typeof globalThis.fetch>(async () => new Response(JSON.stringify({
+        model: 'zoom-decisions', answers: [{name:'action',type:'choice',choice:'WAIT',probabilities:[{value:'WAIT',probability:0.99}]}], debug:sensitiveTestKey,
+      })));
+      const turn = await createProviderAdapter({provider:'zoom',config,ledger,mode:'smoke',fetch:fetcher,credential:()=>sensitiveTestKey}).decideTurn(input());
+      expect(turn.diagnostic).toBe('wire-contract:invalid-probabilities');
+      expect(turn.probabilityDiagnostic).toMatchObject({shapeValid:true,sum:0.99,invalidValueCount:0});
+      expect(turn.probabilityDiagnostic!.missingLabels).toContain('RESTOCK');
+      expect(JSON.stringify(turn)).not.toContain(sensitiveTestKey);
+      expect(fetcher).toHaveBeenCalledTimes(1);
+    });
+  });
+
   it('redacts transport errors and does not retry even when the error contains the credential', async () => {
     await withLedger(async (ledger, _dir, config) => {
       const fetcher = vi.fn<typeof globalThis.fetch>(async () => { throw new Error(`Injected upstream error ${sensitiveTestKey}`); });

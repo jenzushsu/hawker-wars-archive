@@ -1,0 +1,264 @@
+[
+  {
+    "policy": "rules",
+    "actionCounts": {
+      "SERVE": 71,
+      "COOK": 12,
+      "WAIT": 31,
+      "RESTOCK": 5,
+      "PROMOTE": 1
+    },
+    "fallbacks": [],
+    "voluntaryWaits": 20,
+    "forcedWaits": 11,
+    "emptyStockWaitsWithRestockAvailable": [],
+    "waitsWithServeAvailable": [],
+    "cookTicks": [
+      1,
+      19,
+      25,
+      40,
+      48,
+      55,
+      62,
+      69,
+      77,
+      85,
+      93,
+      102
+    ],
+    "restockTicks": [
+      7,
+      44,
+      58,
+      72,
+      90
+    ],
+    "lastServeTick": 119,
+    "score": {
+      "profitCents": 31100,
+      "utilityPoints": 29790,
+      "meanWaitMinutes": 0.5254237288135594,
+      "satisfaction": null,
+      "provisional": false
+    },
+    "totals": {
+      "served": 116,
+      "abandoned": 2,
+      "wasted": 16,
+      "waitMinutes": 62,
+      "arrivals": 118,
+      "purchasedPortions": 100,
+      "restockOrders": 5,
+      "promotions": 1
+    }
+  },
+  {
+    "policy": "jev",
+    "actionCounts": {
+      "SERVE": 28,
+      "COOK": 5,
+      "WAIT": 86,
+      "RESTOCK": 1
+    },
+    "fallbacks": [
+      {
+        "tick": 1,
+        "reason": "invalid"
+      }
+    ],
+    "voluntaryWaits": 76,
+    "forcedWaits": 10,
+    "emptyStockWaitsWithRestockAvailable": [
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109
+    ],
+    "waitsWithServeAvailable": [],
+    "cookTicks": [
+      1,
+      7,
+      21,
+      39,
+      48
+    ],
+    "restockTicks": [
+      25
+    ],
+    "lastServeTick": 56,
+    "score": {
+      "profitCents": 10600,
+      "utilityPoints": 870,
+      "meanWaitMinutes": 4.160714285714286,
+      "satisfaction": null,
+      "provisional": false
+    },
+    "totals": {
+      "served": 46,
+      "abandoned": 66,
+      "wasted": 16,
+      "waitMinutes": 466,
+      "arrivals": 112,
+      "purchasedPortions": 20,
+      "restockOrders": 1,
+      "promotions": 0
+    }
+  },
+  {
+    "policy": "zoom",
+    "actionCounts": {
+      "SERVE": 61,
+      "COOK": 13,
+      "WAIT": 37,
+      "RESTOCK": 7,
+      "PROMOTE": 2
+    },
+    "fallbacks": [],
+    "voluntaryWaits": 6,
+    "forcedWaits": 31,
+    "emptyStockWaitsWithRestockAvailable": [],
+    "waitsWithServeAvailable": [],
+    "cookTicks": [
+      1,
+      7,
+      17,
+      37,
+      46,
+      55,
+      64,
+      73,
+      83,
+      91,
+      97,
+      102,
+      114
+    ],
+    "restockTicks": [
+      3,
+      18,
+      38,
+      49,
+      65,
+      84,
+      98
+    ],
+    "lastServeTick": 119,
+    "score": {
+      "profitCents": 25100,
+      "utilityPoints": 20765,
+      "meanWaitMinutes": 2.089430894308943,
+      "satisfaction": null,
+      "provisional": false
+    },
+    "totals": {
+      "served": 109,
+      "abandoned": 14,
+      "wasted": 33,
+      "waitMinutes": 257,
+      "arrivals": 123,
+      "purchasedPortions": 140,
+      "restockOrders": 7,
+      "promotions": 2
+    }
+  },
+  {
+    "policy": "zoom-pro",
+    "actionCounts": {
+      "SERVE": 55,
+      "WAIT": 51,
+      "COOK": 10,
+      "RESTOCK": 4
+    },
+    "fallbacks": [],
+    "voluntaryWaits": 35,
+    "forcedWaits": 16,
+    "emptyStockWaitsWithRestockAvailable": [],
+    "waitsWithServeAvailable": [],
+    "cookTicks": [
+      18,
+      25,
+      41,
+      50,
+      58,
+      67,
+      76,
+      85,
+      99,
+      105
+    ],
+    "restockTicks": [
+      26,
+      42,
+      60,
+      77
+    ],
+    "lastServeTick": 119,
+    "score": {
+      "profitCents": 28100,
+      "utilityPoints": 25260,
+      "meanWaitMinutes": 2.125,
+      "satisfaction": null,
+      "provisional": false
+    },
+    "totals": {
+      "served": 101,
+      "abandoned": 11,
+      "wasted": 11,
+      "waitMinutes": 238,
+      "arrivals": 112,
+      "purchasedPortions": 80,
+      "restockOrders": 4,
+      "promotions": 0
+    }
+  }
+]

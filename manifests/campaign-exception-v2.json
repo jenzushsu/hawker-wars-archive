@@ -1,0 +1,10 @@
+{
+  "roundId": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+  "approvalReference": "docs/providers/prompt-v2-comparison-approval.json",
+  "allocationMicrosPerRequest": 1000,
+  "maxRequestBytes": 8192,
+  "priorSmokeAllocations": [
+    "docs/providers/zoom-smoke-result.json",
+    "docs/providers/zoom-pro-smoke-result.json"
+  ]
+}

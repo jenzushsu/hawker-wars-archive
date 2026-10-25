@@ -7,7 +7,7 @@ import { configurationHash } from './config-snapshot.js';
 
 export const runtimeConfigPath = fileURLToPath(new URL('../manifests/provider-runtime.json',import.meta.url));
 export const ledgerDirectory = fileURLToPath(new URL('../results/live-provider-campaign',import.meta.url));
-export const readRuntimeConfig = ()=>{const config=JSON.parse(readFileSync(runtimeConfigPath,'utf8'));if(process.env.HAWKER_CAMPAIGN_EXCEPTION_FILE)config.zoomCampaignException=JSON.parse(readFileSync(process.env.HAWKER_CAMPAIGN_EXCEPTION_FILE,'utf8'));return ProviderRuntimeSchema.parse(config);};
+export const readRuntimeConfig = ()=>{const config=JSON.parse(readFileSync(process.env.HAWKER_PROVIDER_RUNTIME_FILE ?? runtimeConfigPath,'utf8'));if(process.env.HAWKER_CAMPAIGN_EXCEPTION_FILE)config.zoomCampaignException=JSON.parse(readFileSync(process.env.HAWKER_CAMPAIGN_EXCEPTION_FILE,'utf8'));return ProviderRuntimeSchema.parse(config);};
 export function makeLedgerConfig(config: ProviderRuntimeConfig): LedgerConfig {
   const verifiedCostBounds: LedgerConfig['verifiedCostBounds']={};
   for (const provider of ['zoom','zoom-pro',...(config.jevSpendApproval?['jev' as const]:[])] as const) {

@@ -1,0 +1,16 @@
+{
+  "status": "approved",
+  "roundId": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+  "previousRoundId": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+  "request": "Run prompt-v2 four-policy comparison, compare with v1, log and analyze errors",
+  "seed": 7,
+  "jevPriorReservedMicros": 291818,
+  "jevAdditionalMaximumMicros": 330360,
+  "jevCumulativeCapMicros": 622178,
+  "zoomRunCapMicros": 250000,
+  "zoomCampaignCapMicros": 5000000,
+  "scope": "One private round, at most 120 calls per model, no automatic repetition",
+  "zoomAccounting": "Existing unverified USD 0.001 operator allocations retained; actual billed charges not guaranteed",
+  "approvedAt": "2026-10-24T19:13:38.827064+00:00",
+  "approvalSource": "User: increase the call and proceed with run; in response to the proposed additional USD 0.330360 Jev reservation and cumulative USD 0.622178 cap."
+}

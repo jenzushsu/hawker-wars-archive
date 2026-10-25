@@ -1,0 +1,17 @@
+services:
+  experiment:
+    build:
+      context: .
+      dockerfile: deploy/worker.Dockerfile
+    command: ["node", "--use-env-proxy", "--import", "tsx", "scripts/inspect-experiment-ledger.ts"]
+    restart: "no"
+    environment:
+      HAWKER_PREVIOUS_LEDGER_HASH: ${HAWKER_PREVIOUS_LEDGER_HASH:?Required}
+      HAWKER_PROVIDER_RUNTIME_FILE: /app/manifests/provider-runtime-v2-comparison.json
+      HAWKER_CAMPAIGN_EXCEPTION_FILE: /app/manifests/campaign-exception-v2.json
+    volumes:
+      - /var/lib/docker/volumes/muvfmjgpedffyk919kl40eid_provider-ledger/_data:/var/lib/hawker:ro
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]

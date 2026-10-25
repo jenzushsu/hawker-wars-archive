@@ -22,7 +22,7 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "ee7e19bc5c2ea799f091d4908a2f8cd60cefd2eff0dd1d5449e21d690e7cb90c",
+    "sourceTreeHash": "21a2aa4d900663bd47b40686b6274fde22918b413bb179417fc961132678b027",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
       {
@@ -559,7 +559,7 @@
       },
       {
         "path": "packages/live/src/multi-runtime.ts",
-        "sha256": "69c160e05c735a862591c6aa4b0efdf7ea5f601385ae391bf8d5b637340aa685"
+        "sha256": "0cd9e0708e74bd302004f9b18787f2ad7e1b155b78cf6224dbe871c5b091a1ed"
       },
       {
         "path": "packages/live/src/multi-worker.ts",
@@ -619,7 +619,7 @@
       },
       {
         "path": "packages/providers/src/adapter.ts",
-        "sha256": "4dd89c0ed3c008a5454bb5750734e7def0aaa9406ce1453b935545260b665f47"
+        "sha256": "2f5eeefbee866b17dfade251ad29c22a800d35e321dea6f79ca8f34ef5296982"
       },
       {
         "path": "packages/providers/src/index.ts",
@@ -627,11 +627,19 @@
       },
       {
         "path": "packages/providers/src/ledger.ts",
-        "sha256": "f33b6e3d6a767bda02a4993d04148d947bfb8b9826643ba8a1d063dbef8217b9"
+        "sha256": "41a72de083e310475ac78bb50f965dd2a52301ac3ed7506df4ff5b4cc17c5761"
+      },
+      {
+        "path": "packages/providers/src/planning-experiment.ts",
+        "sha256": "cc742b89773df24b078102c797112f000790f443cafadbc8cbcbdefae682adcf"
+      },
+      {
+        "path": "packages/providers/src/short-plan-experiment.ts",
+        "sha256": "1f3eaeee4966b15ada0fee639b231610420ce4c9dd4271a658605ed02f2ed3d6"
       },
       {
         "path": "packages/providers/src/wire.ts",
-        "sha256": "a7f1726b74e6b6580bbb90184fc340649dd8f7bc5ea7afbe8e9924392ddd7ed6"
+        "sha256": "7c37c40b971a80f9e1ee2974a6afc04b0d2f97146d3704bdc0d5448347fdeb76"
       },
       {
         "path": "packages/replay/package.json",
@@ -730,6 +738,10 @@
         "sha256": "ae5d7fe2f18b63690cae4c9fdc02fa8378a26703949119e42defe8a127282f2d"
       },
       {
+        "path": "scripts/analyze-recorded-comparison.ts",
+        "sha256": "3923a216ce5e1d4bcedf2d5d94bf7c7c096b2dcf6643aaa62758ba1e561e0aba"
+      },
+      {
         "path": "scripts/artifact-output.ts",
         "sha256": "9c16c184d13efe0668ea99a4e1216492e1ce3be8b51e7c3643a288f16712b39c"
       },
@@ -760,6 +772,10 @@
       {
         "path": "scripts/deployment-preflight.ts",
         "sha256": "92a57e17a5135e3cb3eadb3a2bdc5d64f7778fd3f0d365b8b759034b23371efe"
+      },
+      {
+        "path": "scripts/experiment-reports.ts",
+        "sha256": "59db4951ccc2c3ffac9dbf17794bcedc70dc27786f28cd1564873fdd05b9f5c0"
       },
       {
         "path": "scripts/export-customer.ts",
@@ -794,6 +810,14 @@
         "sha256": "a4a6dedc714202ff4585eff051ee7c1f6eb53db57ceafa6219986e10d5884249"
       },
       {
+        "path": "scripts/inspect-experiment-ledger.ts",
+        "sha256": "536e423409e470069e9581598971fc628150b9a984533c4671b69fc0fcdd0d2c"
+      },
+      {
+        "path": "scripts/investigate-jev.ts",
+        "sha256": "b65aca0b0080d9a5853fa905e6c7b19d62d0a81089f1b4ff7fe275f0e2f571ae"
+      },
+      {
         "path": "scripts/offline-episode.ts",
         "sha256": "332317a8df05c9b5a7d4ffecc70fb18cb82fc94caa55190a77f90fb1aabf41fd"
       },
@@ -806,8 +830,12 @@
         "sha256": "576bb565c2b2af9f74ed8f78b246e17ef300e785a850b7d6f69c8691ae6b78d0"
       },
       {
+        "path": "scripts/prepare-next-campaign.ts",
+        "sha256": "b17ef62d03ec0cbc0b99a371b5c1c2e08bf7735270baed3c0c9451679ddb8f30"
+      },
+      {
         "path": "scripts/provider-config.ts",
-        "sha256": "ae5d483c25e01734a482b12479de921c2069a133bf37dad9162c195f58361345"
+        "sha256": "f1477cae60477a9b53d7fcc50bdd2cf4e9a070497679087c0f364266c6f05a79"
       },
       {
         "path": "scripts/provider-init-ledger.ts",
@@ -830,8 +858,16 @@
         "sha256": "96a003105becb4f413b86a5c5a57fcdca9e2ae53dd798b594e129ac982a41078"
       },
       {
+        "path": "scripts/run-planning-experiment.ts",
+        "sha256": "7f64bedecf07d502fed53817ef9eba6c3efece989a6aa65855388b72c8215b50"
+      },
+      {
         "path": "scripts/run-rules-worker.ts",
         "sha256": "8b472a88e21f05cc00d59c05761dbd9d0878d88042df2c1c429d138f710567bc"
+      },
+      {
+        "path": "scripts/run-short-plan-experiment.ts",
+        "sha256": "f5b22c6b4a0fa63beee69d22e2059c09b527447841f2698548519c62c233d974"
       },
       {
         "path": "scripts/source-identity.ts",
@@ -951,7 +987,7 @@
       },
       {
         "path": "tests/campaign-exception.test.ts",
-        "sha256": "6394e52b2d99718392c62c32783c313a69bcaba1dd22734fad8edc8f96243555"
+        "sha256": "bd2c12a9066ad87f54a3ce854ddc4e1b161a674e68ee1a1a426b2f225921bef0"
       },
       {
         "path": "tests/customer-art.test.ts",
@@ -980,6 +1016,10 @@
       {
         "path": "tests/environment-art.test.ts",
         "sha256": "598423b8cc15cacee9fe28505cd45f5d7eefe545067c7b4f05b8bfbb0e199915"
+      },
+      {
+        "path": "tests/experiment-reports.test.ts",
+        "sha256": "b540f41afc7af03209d6a8cff008ad30a2db7b2f6ad9aa89a5856fc9a8a3b253"
       },
       {
         "path": "tests/hawker-art.test.ts",
@@ -1118,8 +1158,12 @@
         "sha256": "babcc37c9b32562a201bbe655ef4df4fccf1766220a44c3bd3cfb95436816784"
       },
       {
+        "path": "tests/provider-planning-experiment.test.ts",
+        "sha256": "91fabbf74d1c06d7d456149bf4f999f96475973bc0a5aa0a2c5c1f44b0eea8ec"
+      },
+      {
         "path": "tests/providers-adversarial.test.ts",
-        "sha256": "50a06bc44eeeb1ac62eaec0b301f5c572bcdfe88a571b6826f8781d90bcd84c1"
+        "sha256": "770fe9d5d52d822c45ed9f3601af54c54b56585629f5a4691148cd93d8bcb664"
       },
       {
         "path": "tests/providers-jev-smoke.test.ts",
@@ -1132,6 +1176,10 @@
       {
         "path": "tests/providers-wire.test.ts",
         "sha256": "8bbe51cef715b365cac2aa64556cd7972a1bbcd288e311b7ff8bf660a710749a"
+      },
+      {
+        "path": "tests/short-plan-experiment.test.ts",
+        "sha256": "a0031db67c6d759d3e330457fac10a08628a7697cbc6324648a337922bac1e6c"
       },
       {
         "path": "tests/ui-art.test.ts",
