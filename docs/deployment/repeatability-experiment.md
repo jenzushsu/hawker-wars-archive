@@ -71,3 +71,8 @@ The next meaningful performance test would execute an explicitly labelled
 plan-selection policy across multiple seeds, after defining its control and
 replanning rules. It would require a separate scope and budget; these results
 do not justify silently replacing the existing single-action policy.
+
+Subsequently, the user requested execution of the selected plans. The
+[offline execution report](executed-plans.md) measures their realized results
+from these captured states, including renewed inactivity after the single order
+is consumed. That follow-up uses the recorded choices and makes no new API calls.

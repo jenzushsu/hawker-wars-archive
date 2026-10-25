@@ -1,0 +1,5919 @@
+{
+  "scope": "Offline execution of previously selected one-order plans on the captured Jev trajectory, clean seed 7. No new inference or live deployment.",
+  "providerCalls": 0,
+  "outcomes": [
+    {
+      "startTick": 57,
+      "mode": "recorded",
+      "startObservation": {
+        "schemaVersion": "observation-2",
+        "tick": 57,
+        "remainingMinutes": 63,
+        "cashCents": 39000,
+        "rawPortions": 0,
+        "readyBatches": [],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [
+          {
+            "id": "customer-54-base-1",
+            "arrivalTick": 54,
+            "patience": 5,
+            "deadlineTick": 59
+          },
+          {
+            "id": "customer-55-base-0",
+            "arrivalTick": 55,
+            "patience": 10,
+            "deadlineTick": 65
+          },
+          {
+            "id": "customer-55-base-1",
+            "arrivalTick": 55,
+            "patience": 10,
+            "deadlineTick": 65
+          },
+          {
+            "id": "customer-56-base-0",
+            "arrivalTick": 56,
+            "patience": 10,
+            "deadlineTick": 66
+          },
+          {
+            "id": "customer-56-base-1",
+            "arrivalTick": 56,
+            "patience": 10,
+            "deadlineTick": 66
+          },
+          {
+            "id": "customer-57-base-0",
+            "arrivalTick": 57,
+            "patience": 3,
+            "deadlineTick": 60
+          }
+        ],
+        "effects": [],
+        "demandPhase": "peak",
+        "cumulativeRevenueCents": 23000,
+        "cumulativePurchasesCents": 4000,
+        "cumulativePromotionSpendCents": 0,
+        "totals": {
+          "served": 46,
+          "abandoned": 2,
+          "wasted": 16,
+          "waitMinutes": 68,
+          "arrivals": 54,
+          "purchasedPortions": 20,
+          "restockOrders": 1,
+          "promotions": 0
+        },
+        "recentActions": [
+          {
+            "tick": 52,
+            "action": "WAIT"
+          },
+          {
+            "tick": 53,
+            "action": "SERVE"
+          },
+          {
+            "tick": 54,
+            "action": "SERVE"
+          },
+          {
+            "tick": 55,
+            "action": "SERVE"
+          },
+          {
+            "tick": 56,
+            "action": "SERVE"
+          }
+        ],
+        "legalActions": [
+          "RESTOCK",
+          "WAIT"
+        ]
+      },
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "totals": {
+        "served": 46,
+        "abandoned": 66,
+        "wasted": 16,
+        "waitMinutes": 466,
+        "arrivals": 112,
+        "purchasedPortions": 20,
+        "restockOrders": 1,
+        "promotions": 0
+      },
+      "closingRaw": 0,
+      "continuation": {
+        "restockTicks": [],
+        "cookTicks": [],
+        "serveTicks": [],
+        "emptyPipelineWaitTicks": [
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119
+        ]
+      },
+      "trace": [
+        {
+          "tick": 57,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 6
+        },
+        {
+          "tick": 58,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 8
+        },
+        {
+          "tick": 59,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 9
+        },
+        {
+          "tick": 60,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 9
+        },
+        {
+          "tick": 61,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 10
+        },
+        {
+          "tick": 62,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 11
+        },
+        {
+          "tick": 63,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 13
+        },
+        {
+          "tick": 64,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 13
+        },
+        {
+          "tick": 65,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 11
+        },
+        {
+          "tick": 66,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 10
+        },
+        {
+          "tick": 67,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 9
+        },
+        {
+          "tick": 68,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 8
+        },
+        {
+          "tick": 69,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 8
+        },
+        {
+          "tick": 70,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 8
+        },
+        {
+          "tick": 71,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 9
+        },
+        {
+          "tick": 72,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 10
+        },
+        {
+          "tick": 73,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 11
+        },
+        {
+          "tick": 74,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 8
+        },
+        {
+          "tick": 75,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 6
+        },
+        {
+          "tick": 76,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 77,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 6
+        },
+        {
+          "tick": 78,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 6
+        },
+        {
+          "tick": 79,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 6
+        },
+        {
+          "tick": 80,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 6
+        },
+        {
+          "tick": 81,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 7
+        },
+        {
+          "tick": 82,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 7
+        },
+        {
+          "tick": 83,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 7
+        },
+        {
+          "tick": 84,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 8
+        },
+        {
+          "tick": 85,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 8
+        },
+        {
+          "tick": 86,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 8
+        },
+        {
+          "tick": 87,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 9
+        },
+        {
+          "tick": 88,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 7
+        },
+        {
+          "tick": 89,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 7
+        },
+        {
+          "tick": 90,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 91,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 92,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 93,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 94,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 95,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 96,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 97,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 98,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 99,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 100,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 101,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 102,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 103,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 104,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 105,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 106,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 6
+        },
+        {
+          "tick": 107,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 108,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 109,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 110,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 111,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 112,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 113,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 114,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 115,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 116,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 117,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 118,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 119,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        }
+      ]
+    },
+    {
+      "startTick": 57,
+      "mode": "RESTOCK",
+      "startObservation": {
+        "schemaVersion": "observation-2",
+        "tick": 57,
+        "remainingMinutes": 63,
+        "cashCents": 39000,
+        "rawPortions": 0,
+        "readyBatches": [],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [
+          {
+            "id": "customer-54-base-1",
+            "arrivalTick": 54,
+            "patience": 5,
+            "deadlineTick": 59
+          },
+          {
+            "id": "customer-55-base-0",
+            "arrivalTick": 55,
+            "patience": 10,
+            "deadlineTick": 65
+          },
+          {
+            "id": "customer-55-base-1",
+            "arrivalTick": 55,
+            "patience": 10,
+            "deadlineTick": 65
+          },
+          {
+            "id": "customer-56-base-0",
+            "arrivalTick": 56,
+            "patience": 10,
+            "deadlineTick": 66
+          },
+          {
+            "id": "customer-56-base-1",
+            "arrivalTick": 56,
+            "patience": 10,
+            "deadlineTick": 66
+          },
+          {
+            "id": "customer-57-base-0",
+            "arrivalTick": 57,
+            "patience": 3,
+            "deadlineTick": 60
+          }
+        ],
+        "effects": [],
+        "demandPhase": "peak",
+        "cumulativeRevenueCents": 23000,
+        "cumulativePurchasesCents": 4000,
+        "cumulativePromotionSpendCents": 0,
+        "totals": {
+          "served": 46,
+          "abandoned": 2,
+          "wasted": 16,
+          "waitMinutes": 68,
+          "arrivals": 54,
+          "purchasedPortions": 20,
+          "restockOrders": 1,
+          "promotions": 0
+        },
+        "recentActions": [
+          {
+            "tick": 52,
+            "action": "WAIT"
+          },
+          {
+            "tick": 53,
+            "action": "SERVE"
+          },
+          {
+            "tick": 54,
+            "action": "SERVE"
+          },
+          {
+            "tick": 55,
+            "action": "SERVE"
+          },
+          {
+            "tick": 56,
+            "action": "SERVE"
+          }
+        ],
+        "legalActions": [
+          "RESTOCK",
+          "WAIT"
+        ]
+      },
+      "score": {
+        "profitCents": 16600,
+        "utilityPoints": 9215,
+        "meanWaitMinutes": 3.544642857142857,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "totals": {
+        "served": 66,
+        "abandoned": 46,
+        "wasted": 16,
+        "waitMinutes": 397,
+        "arrivals": 112,
+        "purchasedPortions": 40,
+        "restockOrders": 2,
+        "promotions": 0
+      },
+      "closingRaw": 0,
+      "continuation": {
+        "restockTicks": [
+          57
+        ],
+        "cookTicks": [
+          67,
+          76
+        ],
+        "serveTicks": [
+          72,
+          73,
+          74,
+          75,
+          81,
+          82,
+          83,
+          84
+        ],
+        "emptyPipelineWaitTicks": [
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119
+        ]
+      },
+      "trace": [
+        {
+          "tick": 57,
+          "action": "RESTOCK",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 6
+        },
+        {
+          "tick": 58,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 67,
+            "delayApplied": false
+          },
+          "queue": 8
+        },
+        {
+          "tick": 59,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 67,
+            "delayApplied": false
+          },
+          "queue": 9
+        },
+        {
+          "tick": 60,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 67,
+            "delayApplied": false
+          },
+          "queue": 9
+        },
+        {
+          "tick": 61,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 67,
+            "delayApplied": false
+          },
+          "queue": 10
+        },
+        {
+          "tick": 62,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 67,
+            "delayApplied": false
+          },
+          "queue": 11
+        },
+        {
+          "tick": 63,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 67,
+            "delayApplied": false
+          },
+          "queue": 13
+        },
+        {
+          "tick": 64,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 67,
+            "delayApplied": false
+          },
+          "queue": 13
+        },
+        {
+          "tick": 65,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 67,
+            "delayApplied": false
+          },
+          "queue": 11
+        },
+        {
+          "tick": 66,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 67,
+            "delayApplied": false
+          },
+          "queue": 10
+        },
+        {
+          "tick": 67,
+          "action": "COOK",
+          "legalActions": [
+            "COOK",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 20,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 9
+        },
+        {
+          "tick": 68,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 72
+          },
+          "pendingRestock": null,
+          "queue": 8
+        },
+        {
+          "tick": 69,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 72
+          },
+          "pendingRestock": null,
+          "queue": 8
+        },
+        {
+          "tick": 70,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 72
+          },
+          "pendingRestock": null,
+          "queue": 8
+        },
+        {
+          "tick": 71,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 72
+          },
+          "pendingRestock": null,
+          "queue": 9
+        },
+        {
+          "tick": 72,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 10,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 10
+        },
+        {
+          "tick": 73,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 7,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 8
+        },
+        {
+          "tick": 74,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 4,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 75,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 1,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 76,
+          "action": "COOK",
+          "legalActions": [
+            "COOK",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 77,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 81
+          },
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 78,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 81
+          },
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 79,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 81
+          },
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 80,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 81
+          },
+          "pendingRestock": null,
+          "queue": 6
+        },
+        {
+          "tick": 81,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 10,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 7
+        },
+        {
+          "tick": 82,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 7,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 83,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 4,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 84,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 1,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 1
+        },
+        {
+          "tick": 85,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 86,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 87,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 88,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 89,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 90,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 91,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 92,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 93,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 94,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 95,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 96,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 97,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 98,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 99,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 100,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 101,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 102,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 103,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 104,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 105,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 106,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 6
+        },
+        {
+          "tick": 107,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 108,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 109,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 110,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 111,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 112,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 113,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 114,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 115,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 116,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 117,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 118,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 119,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        }
+      ]
+    },
+    {
+      "startTick": 57,
+      "mode": "WAIT",
+      "startObservation": {
+        "schemaVersion": "observation-2",
+        "tick": 57,
+        "remainingMinutes": 63,
+        "cashCents": 39000,
+        "rawPortions": 0,
+        "readyBatches": [],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [
+          {
+            "id": "customer-54-base-1",
+            "arrivalTick": 54,
+            "patience": 5,
+            "deadlineTick": 59
+          },
+          {
+            "id": "customer-55-base-0",
+            "arrivalTick": 55,
+            "patience": 10,
+            "deadlineTick": 65
+          },
+          {
+            "id": "customer-55-base-1",
+            "arrivalTick": 55,
+            "patience": 10,
+            "deadlineTick": 65
+          },
+          {
+            "id": "customer-56-base-0",
+            "arrivalTick": 56,
+            "patience": 10,
+            "deadlineTick": 66
+          },
+          {
+            "id": "customer-56-base-1",
+            "arrivalTick": 56,
+            "patience": 10,
+            "deadlineTick": 66
+          },
+          {
+            "id": "customer-57-base-0",
+            "arrivalTick": 57,
+            "patience": 3,
+            "deadlineTick": 60
+          }
+        ],
+        "effects": [],
+        "demandPhase": "peak",
+        "cumulativeRevenueCents": 23000,
+        "cumulativePurchasesCents": 4000,
+        "cumulativePromotionSpendCents": 0,
+        "totals": {
+          "served": 46,
+          "abandoned": 2,
+          "wasted": 16,
+          "waitMinutes": 68,
+          "arrivals": 54,
+          "purchasedPortions": 20,
+          "restockOrders": 1,
+          "promotions": 0
+        },
+        "recentActions": [
+          {
+            "tick": 52,
+            "action": "WAIT"
+          },
+          {
+            "tick": 53,
+            "action": "SERVE"
+          },
+          {
+            "tick": 54,
+            "action": "SERVE"
+          },
+          {
+            "tick": 55,
+            "action": "SERVE"
+          },
+          {
+            "tick": 56,
+            "action": "SERVE"
+          }
+        ],
+        "legalActions": [
+          "RESTOCK",
+          "WAIT"
+        ]
+      },
+      "score": {
+        "profitCents": 16600,
+        "utilityPoints": 9330,
+        "meanWaitMinutes": 3.3392857142857144,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "totals": {
+        "served": 66,
+        "abandoned": 46,
+        "wasted": 16,
+        "waitMinutes": 374,
+        "arrivals": 112,
+        "purchasedPortions": 40,
+        "restockOrders": 2,
+        "promotions": 0
+      },
+      "closingRaw": 0,
+      "continuation": {
+        "restockTicks": [
+          67
+        ],
+        "cookTicks": [
+          77,
+          86
+        ],
+        "serveTicks": [
+          82,
+          83,
+          84,
+          85,
+          91,
+          92,
+          94,
+          100,
+          101
+        ],
+        "emptyPipelineWaitTicks": [
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119
+        ]
+      },
+      "trace": [
+        {
+          "tick": 57,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 6
+        },
+        {
+          "tick": 58,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 8
+        },
+        {
+          "tick": 59,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 9
+        },
+        {
+          "tick": 60,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 9
+        },
+        {
+          "tick": 61,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 10
+        },
+        {
+          "tick": 62,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 11
+        },
+        {
+          "tick": 63,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 13
+        },
+        {
+          "tick": 64,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 13
+        },
+        {
+          "tick": 65,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 11
+        },
+        {
+          "tick": 66,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 10
+        },
+        {
+          "tick": 67,
+          "action": "RESTOCK",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 9
+        },
+        {
+          "tick": 68,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 77,
+            "delayApplied": false
+          },
+          "queue": 8
+        },
+        {
+          "tick": 69,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 77,
+            "delayApplied": false
+          },
+          "queue": 8
+        },
+        {
+          "tick": 70,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 77,
+            "delayApplied": false
+          },
+          "queue": 8
+        },
+        {
+          "tick": 71,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 77,
+            "delayApplied": false
+          },
+          "queue": 9
+        },
+        {
+          "tick": 72,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 77,
+            "delayApplied": false
+          },
+          "queue": 10
+        },
+        {
+          "tick": 73,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 77,
+            "delayApplied": false
+          },
+          "queue": 11
+        },
+        {
+          "tick": 74,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 77,
+            "delayApplied": false
+          },
+          "queue": 8
+        },
+        {
+          "tick": 75,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 77,
+            "delayApplied": false
+          },
+          "queue": 6
+        },
+        {
+          "tick": 76,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 77,
+            "delayApplied": false
+          },
+          "queue": 5
+        },
+        {
+          "tick": 77,
+          "action": "COOK",
+          "legalActions": [
+            "COOK",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 20,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 6
+        },
+        {
+          "tick": 78,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 82
+          },
+          "pendingRestock": null,
+          "queue": 6
+        },
+        {
+          "tick": 79,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 82
+          },
+          "pendingRestock": null,
+          "queue": 6
+        },
+        {
+          "tick": 80,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 82
+          },
+          "pendingRestock": null,
+          "queue": 6
+        },
+        {
+          "tick": 81,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 82
+          },
+          "pendingRestock": null,
+          "queue": 7
+        },
+        {
+          "tick": 82,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 10,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 7
+        },
+        {
+          "tick": 83,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 7,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 84,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 4,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 85,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 1,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 86,
+          "action": "COOK",
+          "legalActions": [
+            "COOK",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 87,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 91
+          },
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 88,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 91
+          },
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 89,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 91
+          },
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 90,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 91
+          },
+          "pendingRestock": null,
+          "queue": 5
+        },
+        {
+          "tick": 91,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "RESTOCK",
+            "PROMOTE",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 10,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 92,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 7,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 93,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 4,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 0
+        },
+        {
+          "tick": 94,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 4,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 95,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 2,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 0
+        },
+        {
+          "tick": 96,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 2,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 0
+        },
+        {
+          "tick": 97,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 2,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 0
+        },
+        {
+          "tick": 98,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 2,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 0
+        },
+        {
+          "tick": 99,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 2,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 0
+        },
+        {
+          "tick": 100,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 2,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 1
+        },
+        {
+          "tick": 101,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 1,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 102,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 1
+        },
+        {
+          "tick": 103,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 104,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 105,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 106,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 107,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 108,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 109,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 110,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 111,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 112,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 113,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 114,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 115,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 116,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 117,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 118,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 119,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        }
+      ]
+    },
+    {
+      "startTick": 57,
+      "mode": "rules",
+      "startObservation": {
+        "schemaVersion": "observation-2",
+        "tick": 57,
+        "remainingMinutes": 63,
+        "cashCents": 39000,
+        "rawPortions": 0,
+        "readyBatches": [],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [
+          {
+            "id": "customer-54-base-1",
+            "arrivalTick": 54,
+            "patience": 5,
+            "deadlineTick": 59
+          },
+          {
+            "id": "customer-55-base-0",
+            "arrivalTick": 55,
+            "patience": 10,
+            "deadlineTick": 65
+          },
+          {
+            "id": "customer-55-base-1",
+            "arrivalTick": 55,
+            "patience": 10,
+            "deadlineTick": 65
+          },
+          {
+            "id": "customer-56-base-0",
+            "arrivalTick": 56,
+            "patience": 10,
+            "deadlineTick": 66
+          },
+          {
+            "id": "customer-56-base-1",
+            "arrivalTick": 56,
+            "patience": 10,
+            "deadlineTick": 66
+          },
+          {
+            "id": "customer-57-base-0",
+            "arrivalTick": 57,
+            "patience": 3,
+            "deadlineTick": 60
+          }
+        ],
+        "effects": [],
+        "demandPhase": "peak",
+        "cumulativeRevenueCents": 23000,
+        "cumulativePurchasesCents": 4000,
+        "cumulativePromotionSpendCents": 0,
+        "totals": {
+          "served": 46,
+          "abandoned": 2,
+          "wasted": 16,
+          "waitMinutes": 68,
+          "arrivals": 54,
+          "purchasedPortions": 20,
+          "restockOrders": 1,
+          "promotions": 0
+        },
+        "recentActions": [
+          {
+            "tick": 52,
+            "action": "WAIT"
+          },
+          {
+            "tick": 53,
+            "action": "SERVE"
+          },
+          {
+            "tick": 54,
+            "action": "SERVE"
+          },
+          {
+            "tick": 55,
+            "action": "SERVE"
+          },
+          {
+            "tick": 56,
+            "action": "SERVE"
+          }
+        ],
+        "legalActions": [
+          "RESTOCK",
+          "WAIT"
+        ]
+      },
+      "score": {
+        "profitCents": 20600,
+        "utilityPoints": 15525,
+        "meanWaitMinutes": 2.2767857142857144,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "totals": {
+        "served": 90,
+        "abandoned": 22,
+        "wasted": 32,
+        "waitMinutes": 255,
+        "arrivals": 112,
+        "purchasedPortions": 80,
+        "restockOrders": 4,
+        "promotions": 0
+      },
+      "closingRaw": 0,
+      "continuation": {
+        "restockTicks": [
+          57,
+          68,
+          84
+        ],
+        "cookTicks": [
+          67,
+          74,
+          81,
+          88,
+          95,
+          104
+        ],
+        "serveTicks": [
+          72,
+          73,
+          75,
+          76,
+          79,
+          80,
+          82,
+          83,
+          86,
+          87,
+          89,
+          92,
+          94,
+          100,
+          101,
+          103,
+          106,
+          109,
+          112,
+          113,
+          115,
+          116,
+          117,
+          119
+        ],
+        "emptyPipelineWaitTicks": []
+      },
+      "trace": [
+        {
+          "tick": 57,
+          "action": "RESTOCK",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 6
+        },
+        {
+          "tick": 58,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 67,
+            "delayApplied": false
+          },
+          "queue": 8
+        },
+        {
+          "tick": 59,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 67,
+            "delayApplied": false
+          },
+          "queue": 9
+        },
+        {
+          "tick": 60,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 67,
+            "delayApplied": false
+          },
+          "queue": 9
+        },
+        {
+          "tick": 61,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 67,
+            "delayApplied": false
+          },
+          "queue": 10
+        },
+        {
+          "tick": 62,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 67,
+            "delayApplied": false
+          },
+          "queue": 11
+        },
+        {
+          "tick": 63,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 67,
+            "delayApplied": false
+          },
+          "queue": 13
+        },
+        {
+          "tick": 64,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 67,
+            "delayApplied": false
+          },
+          "queue": 13
+        },
+        {
+          "tick": 65,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 67,
+            "delayApplied": false
+          },
+          "queue": 11
+        },
+        {
+          "tick": 66,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 67,
+            "delayApplied": false
+          },
+          "queue": 10
+        },
+        {
+          "tick": 67,
+          "action": "COOK",
+          "legalActions": [
+            "COOK",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 20,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 9
+        },
+        {
+          "tick": 68,
+          "action": "RESTOCK",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 72
+          },
+          "pendingRestock": null,
+          "queue": 8
+        },
+        {
+          "tick": 69,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 72
+          },
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 78,
+            "delayApplied": false
+          },
+          "queue": 8
+        },
+        {
+          "tick": 70,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 72
+          },
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 78,
+            "delayApplied": false
+          },
+          "queue": 8
+        },
+        {
+          "tick": 71,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 72
+          },
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 78,
+            "delayApplied": false
+          },
+          "queue": 9
+        },
+        {
+          "tick": 72,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 10,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 78,
+            "delayApplied": false
+          },
+          "queue": 10
+        },
+        {
+          "tick": 73,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 7,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 78,
+            "delayApplied": false
+          },
+          "queue": 8
+        },
+        {
+          "tick": 74,
+          "action": "COOK",
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 4,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 78,
+            "delayApplied": false
+          },
+          "queue": 5
+        },
+        {
+          "tick": 75,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 4,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 79
+          },
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 78,
+            "delayApplied": false
+          },
+          "queue": 5
+        },
+        {
+          "tick": 76,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 1,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 79
+          },
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 78,
+            "delayApplied": false
+          },
+          "queue": 3
+        },
+        {
+          "tick": 77,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 79
+          },
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 78,
+            "delayApplied": false
+          },
+          "queue": 3
+        },
+        {
+          "tick": 78,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 20,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 79
+          },
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 79,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "RESTOCK",
+            "PROMOTE",
+            "WAIT"
+          ],
+          "raw": 20,
+          "ready": 10,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 80,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 20,
+          "ready": 7,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 81,
+          "action": "COOK",
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 20,
+          "ready": 4,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 1
+        },
+        {
+          "tick": 82,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 4,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 86
+          },
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 83,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 2,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 86
+          },
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 84,
+          "action": "RESTOCK",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 86
+          },
+          "pendingRestock": null,
+          "queue": 1
+        },
+        {
+          "tick": 85,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 0,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 86
+          },
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 94,
+            "delayApplied": false
+          },
+          "queue": 3
+        },
+        {
+          "tick": 86,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "PROMOTE",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 10,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 94,
+            "delayApplied": false
+          },
+          "queue": 4
+        },
+        {
+          "tick": 87,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 7,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 94,
+            "delayApplied": false
+          },
+          "queue": 2
+        },
+        {
+          "tick": 88,
+          "action": "COOK",
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 5,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 94,
+            "delayApplied": false
+          },
+          "queue": 1
+        },
+        {
+          "tick": 89,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 5,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 93
+          },
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 94,
+            "delayApplied": false
+          },
+          "queue": 2
+        },
+        {
+          "tick": 90,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 3,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 93
+          },
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 94,
+            "delayApplied": false
+          },
+          "queue": 0
+        },
+        {
+          "tick": 91,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 3,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 93
+          },
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 94,
+            "delayApplied": false
+          },
+          "queue": 0
+        },
+        {
+          "tick": 92,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 3,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 93
+          },
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 94,
+            "delayApplied": false
+          },
+          "queue": 2
+        },
+        {
+          "tick": 93,
+          "action": "WAIT",
+          "legalActions": [
+            "PROMOTE",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 11,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 94,
+            "delayApplied": false
+          },
+          "queue": 0
+        },
+        {
+          "tick": 94,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "RESTOCK",
+            "PROMOTE",
+            "WAIT"
+          ],
+          "raw": 20,
+          "ready": 11,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 95,
+          "action": "COOK",
+          "legalActions": [
+            "COOK",
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 20,
+          "ready": 9,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 0
+        },
+        {
+          "tick": 96,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 9,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 100
+          },
+          "pendingRestock": null,
+          "queue": 0
+        },
+        {
+          "tick": 97,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 9,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 100
+          },
+          "pendingRestock": null,
+          "queue": 0
+        },
+        {
+          "tick": 98,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 9,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 100
+          },
+          "pendingRestock": null,
+          "queue": 0
+        },
+        {
+          "tick": 99,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 9,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 100
+          },
+          "pendingRestock": null,
+          "queue": 0
+        },
+        {
+          "tick": 100,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "RESTOCK",
+            "PROMOTE",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 19,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 1
+        },
+        {
+          "tick": 101,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "RESTOCK",
+            "PROMOTE",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 18,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 102,
+          "action": "WAIT",
+          "legalActions": [
+            "COOK",
+            "RESTOCK",
+            "PROMOTE",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 16,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 0
+        },
+        {
+          "tick": 103,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "RESTOCK",
+            "PROMOTE",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 16,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 1
+        },
+        {
+          "tick": 104,
+          "action": "COOK",
+          "legalActions": [
+            "COOK",
+            "RESTOCK",
+            "PROMOTE",
+            "WAIT"
+          ],
+          "raw": 10,
+          "ready": 15,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 0
+        },
+        {
+          "tick": 105,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "PROMOTE",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 15,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 109
+          },
+          "pendingRestock": null,
+          "queue": 0
+        },
+        {
+          "tick": 106,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "RESTOCK",
+            "PROMOTE",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 15,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 109
+          },
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 107,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "PROMOTE",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 13,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 109
+          },
+          "pendingRestock": null,
+          "queue": 0
+        },
+        {
+          "tick": 108,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "PROMOTE",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 13,
+          "cooking": {
+            "quantity": 10,
+            "dueTick": 109
+          },
+          "pendingRestock": null,
+          "queue": 0
+        },
+        {
+          "tick": 109,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "RESTOCK",
+            "PROMOTE",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 23,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 1
+        },
+        {
+          "tick": 110,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 22,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 0
+        },
+        {
+          "tick": 111,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 22,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 0
+        },
+        {
+          "tick": 112,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 22,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 1
+        },
+        {
+          "tick": 113,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 20,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 1
+        },
+        {
+          "tick": 114,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 19,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 0
+        },
+        {
+          "tick": 115,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 19,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 1
+        },
+        {
+          "tick": 116,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 18,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 1
+        },
+        {
+          "tick": 117,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 17,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 1
+        },
+        {
+          "tick": 118,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 16,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 0
+        },
+        {
+          "tick": 119,
+          "action": "SERVE",
+          "legalActions": [
+            "SERVE",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 16,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 1
+        }
+      ]
+    },
+    {
+      "startTick": 109,
+      "mode": "recorded",
+      "startObservation": {
+        "schemaVersion": "observation-2",
+        "tick": 109,
+        "remainingMinutes": 11,
+        "cashCents": 39000,
+        "rawPortions": 0,
+        "readyBatches": [],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [
+          {
+            "id": "customer-103-base-0",
+            "arrivalTick": 103,
+            "patience": 8,
+            "deadlineTick": 111
+          },
+          {
+            "id": "customer-106-base-0",
+            "arrivalTick": 106,
+            "patience": 5,
+            "deadlineTick": 111
+          },
+          {
+            "id": "customer-106-base-1",
+            "arrivalTick": 106,
+            "patience": 10,
+            "deadlineTick": 116
+          },
+          {
+            "id": "customer-109-base-0",
+            "arrivalTick": 109,
+            "patience": 7,
+            "deadlineTick": 116
+          }
+        ],
+        "effects": [],
+        "demandPhase": "off-peak",
+        "cumulativeRevenueCents": 23000,
+        "cumulativePurchasesCents": 4000,
+        "cumulativePromotionSpendCents": 0,
+        "totals": {
+          "served": 46,
+          "abandoned": 56,
+          "wasted": 16,
+          "waitMinutes": 416,
+          "arrivals": 106,
+          "purchasedPortions": 20,
+          "restockOrders": 1,
+          "promotions": 0
+        },
+        "recentActions": [
+          {
+            "tick": 104,
+            "action": "WAIT"
+          },
+          {
+            "tick": 105,
+            "action": "WAIT"
+          },
+          {
+            "tick": 106,
+            "action": "WAIT"
+          },
+          {
+            "tick": 107,
+            "action": "WAIT"
+          },
+          {
+            "tick": 108,
+            "action": "WAIT"
+          }
+        ],
+        "legalActions": [
+          "RESTOCK",
+          "WAIT"
+        ]
+      },
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "totals": {
+        "served": 46,
+        "abandoned": 66,
+        "wasted": 16,
+        "waitMinutes": 466,
+        "arrivals": 112,
+        "purchasedPortions": 20,
+        "restockOrders": 1,
+        "promotions": 0
+      },
+      "closingRaw": 0,
+      "continuation": {
+        "restockTicks": [],
+        "cookTicks": [],
+        "serveTicks": [],
+        "emptyPipelineWaitTicks": [
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119
+        ]
+      },
+      "trace": [
+        {
+          "tick": 109,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 110,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 111,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 112,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 113,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 114,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 115,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 116,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 117,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 118,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 119,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        }
+      ]
+    },
+    {
+      "startTick": 109,
+      "mode": "RESTOCK",
+      "startObservation": {
+        "schemaVersion": "observation-2",
+        "tick": 109,
+        "remainingMinutes": 11,
+        "cashCents": 39000,
+        "rawPortions": 0,
+        "readyBatches": [],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [
+          {
+            "id": "customer-103-base-0",
+            "arrivalTick": 103,
+            "patience": 8,
+            "deadlineTick": 111
+          },
+          {
+            "id": "customer-106-base-0",
+            "arrivalTick": 106,
+            "patience": 5,
+            "deadlineTick": 111
+          },
+          {
+            "id": "customer-106-base-1",
+            "arrivalTick": 106,
+            "patience": 10,
+            "deadlineTick": 116
+          },
+          {
+            "id": "customer-109-base-0",
+            "arrivalTick": 109,
+            "patience": 7,
+            "deadlineTick": 116
+          }
+        ],
+        "effects": [],
+        "demandPhase": "off-peak",
+        "cumulativeRevenueCents": 23000,
+        "cumulativePurchasesCents": 4000,
+        "cumulativePromotionSpendCents": 0,
+        "totals": {
+          "served": 46,
+          "abandoned": 56,
+          "wasted": 16,
+          "waitMinutes": 416,
+          "arrivals": 106,
+          "purchasedPortions": 20,
+          "restockOrders": 1,
+          "promotions": 0
+        },
+        "recentActions": [
+          {
+            "tick": 104,
+            "action": "WAIT"
+          },
+          {
+            "tick": 105,
+            "action": "WAIT"
+          },
+          {
+            "tick": 106,
+            "action": "WAIT"
+          },
+          {
+            "tick": 107,
+            "action": "WAIT"
+          },
+          {
+            "tick": 108,
+            "action": "WAIT"
+          }
+        ],
+        "legalActions": [
+          "RESTOCK",
+          "WAIT"
+        ]
+      },
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "totals": {
+        "served": 46,
+        "abandoned": 66,
+        "wasted": 16,
+        "waitMinutes": 466,
+        "arrivals": 112,
+        "purchasedPortions": 40,
+        "restockOrders": 2,
+        "promotions": 0
+      },
+      "closingRaw": 20,
+      "continuation": {
+        "restockTicks": [
+          109
+        ],
+        "cookTicks": [],
+        "serveTicks": [],
+        "emptyPipelineWaitTicks": []
+      },
+      "trace": [
+        {
+          "tick": 109,
+          "action": "RESTOCK",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 110,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 119,
+            "delayApplied": false
+          },
+          "queue": 4
+        },
+        {
+          "tick": 111,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 119,
+            "delayApplied": false
+          },
+          "queue": 2
+        },
+        {
+          "tick": 112,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 119,
+            "delayApplied": false
+          },
+          "queue": 3
+        },
+        {
+          "tick": 113,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 119,
+            "delayApplied": false
+          },
+          "queue": 4
+        },
+        {
+          "tick": 114,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 119,
+            "delayApplied": false
+          },
+          "queue": 4
+        },
+        {
+          "tick": 115,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 119,
+            "delayApplied": false
+          },
+          "queue": 4
+        },
+        {
+          "tick": 116,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 119,
+            "delayApplied": false
+          },
+          "queue": 3
+        },
+        {
+          "tick": 117,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 119,
+            "delayApplied": false
+          },
+          "queue": 3
+        },
+        {
+          "tick": 118,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": {
+            "quantity": 20,
+            "dueTick": 119,
+            "delayApplied": false
+          },
+          "queue": 3
+        },
+        {
+          "tick": 119,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 20,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        }
+      ]
+    },
+    {
+      "startTick": 109,
+      "mode": "WAIT",
+      "startObservation": {
+        "schemaVersion": "observation-2",
+        "tick": 109,
+        "remainingMinutes": 11,
+        "cashCents": 39000,
+        "rawPortions": 0,
+        "readyBatches": [],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [
+          {
+            "id": "customer-103-base-0",
+            "arrivalTick": 103,
+            "patience": 8,
+            "deadlineTick": 111
+          },
+          {
+            "id": "customer-106-base-0",
+            "arrivalTick": 106,
+            "patience": 5,
+            "deadlineTick": 111
+          },
+          {
+            "id": "customer-106-base-1",
+            "arrivalTick": 106,
+            "patience": 10,
+            "deadlineTick": 116
+          },
+          {
+            "id": "customer-109-base-0",
+            "arrivalTick": 109,
+            "patience": 7,
+            "deadlineTick": 116
+          }
+        ],
+        "effects": [],
+        "demandPhase": "off-peak",
+        "cumulativeRevenueCents": 23000,
+        "cumulativePurchasesCents": 4000,
+        "cumulativePromotionSpendCents": 0,
+        "totals": {
+          "served": 46,
+          "abandoned": 56,
+          "wasted": 16,
+          "waitMinutes": 416,
+          "arrivals": 106,
+          "purchasedPortions": 20,
+          "restockOrders": 1,
+          "promotions": 0
+        },
+        "recentActions": [
+          {
+            "tick": 104,
+            "action": "WAIT"
+          },
+          {
+            "tick": 105,
+            "action": "WAIT"
+          },
+          {
+            "tick": 106,
+            "action": "WAIT"
+          },
+          {
+            "tick": 107,
+            "action": "WAIT"
+          },
+          {
+            "tick": 108,
+            "action": "WAIT"
+          }
+        ],
+        "legalActions": [
+          "RESTOCK",
+          "WAIT"
+        ]
+      },
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "totals": {
+        "served": 46,
+        "abandoned": 66,
+        "wasted": 16,
+        "waitMinutes": 466,
+        "arrivals": 112,
+        "purchasedPortions": 20,
+        "restockOrders": 1,
+        "promotions": 0
+      },
+      "closingRaw": 0,
+      "continuation": {
+        "restockTicks": [],
+        "cookTicks": [],
+        "serveTicks": [],
+        "emptyPipelineWaitTicks": [
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119
+        ]
+      },
+      "trace": [
+        {
+          "tick": 109,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 110,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 111,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 112,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 113,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 114,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 115,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 116,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 117,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 118,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 119,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        }
+      ]
+    },
+    {
+      "startTick": 109,
+      "mode": "rules",
+      "startObservation": {
+        "schemaVersion": "observation-2",
+        "tick": 109,
+        "remainingMinutes": 11,
+        "cashCents": 39000,
+        "rawPortions": 0,
+        "readyBatches": [],
+        "cooking": null,
+        "pendingRestock": null,
+        "promotion": null,
+        "promotionEligibleAt": 0,
+        "queue": [
+          {
+            "id": "customer-103-base-0",
+            "arrivalTick": 103,
+            "patience": 8,
+            "deadlineTick": 111
+          },
+          {
+            "id": "customer-106-base-0",
+            "arrivalTick": 106,
+            "patience": 5,
+            "deadlineTick": 111
+          },
+          {
+            "id": "customer-106-base-1",
+            "arrivalTick": 106,
+            "patience": 10,
+            "deadlineTick": 116
+          },
+          {
+            "id": "customer-109-base-0",
+            "arrivalTick": 109,
+            "patience": 7,
+            "deadlineTick": 116
+          }
+        ],
+        "effects": [],
+        "demandPhase": "off-peak",
+        "cumulativeRevenueCents": 23000,
+        "cumulativePurchasesCents": 4000,
+        "cumulativePromotionSpendCents": 0,
+        "totals": {
+          "served": 46,
+          "abandoned": 56,
+          "wasted": 16,
+          "waitMinutes": 416,
+          "arrivals": 106,
+          "purchasedPortions": 20,
+          "restockOrders": 1,
+          "promotions": 0
+        },
+        "recentActions": [
+          {
+            "tick": 104,
+            "action": "WAIT"
+          },
+          {
+            "tick": 105,
+            "action": "WAIT"
+          },
+          {
+            "tick": 106,
+            "action": "WAIT"
+          },
+          {
+            "tick": 107,
+            "action": "WAIT"
+          },
+          {
+            "tick": 108,
+            "action": "WAIT"
+          }
+        ],
+        "legalActions": [
+          "RESTOCK",
+          "WAIT"
+        ]
+      },
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "totals": {
+        "served": 46,
+        "abandoned": 66,
+        "wasted": 16,
+        "waitMinutes": 466,
+        "arrivals": 112,
+        "purchasedPortions": 20,
+        "restockOrders": 1,
+        "promotions": 0
+      },
+      "closingRaw": 0,
+      "continuation": {
+        "restockTicks": [],
+        "cookTicks": [],
+        "serveTicks": [],
+        "emptyPipelineWaitTicks": [
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119
+        ]
+      },
+      "trace": [
+        {
+          "tick": 109,
+          "action": "WAIT",
+          "legalActions": [
+            "RESTOCK",
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 110,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 111,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 2
+        },
+        {
+          "tick": 112,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 113,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 114,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 115,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        },
+        {
+          "tick": 116,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 117,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 118,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 3
+        },
+        {
+          "tick": 119,
+          "action": "WAIT",
+          "legalActions": [
+            "WAIT"
+          ],
+          "raw": 0,
+          "ready": 0,
+          "cooking": null,
+          "pendingRestock": null,
+          "queue": 4
+        }
+      ]
+    }
+  ],
+  "modelExecutions": [
+    {
+      "provider": "jev",
+      "replicate": 1,
+      "order": "normal",
+      "requestId": "req_01a170c2a72b7bdb8d90af0a7a91e1fa",
+      "startTick": 57,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 16600,
+        "utilityPoints": 9215,
+        "meanWaitMinutes": 3.544642857142857,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 66,
+      "abandoned": 46
+    },
+    {
+      "provider": "zoom",
+      "replicate": 1,
+      "order": "normal",
+      "requestId": "WEB_5685cf76520fdaa7eb9b0bc1c6cda279",
+      "startTick": 57,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 16600,
+        "utilityPoints": 9215,
+        "meanWaitMinutes": 3.544642857142857,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 66,
+      "abandoned": 46
+    },
+    {
+      "provider": "zoom-pro",
+      "replicate": 1,
+      "order": "normal",
+      "requestId": "WEB_ef2c5736f3caf8d48070082e4aa60936",
+      "startTick": 57,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 16600,
+        "utilityPoints": 9215,
+        "meanWaitMinutes": 3.544642857142857,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 66,
+      "abandoned": 46
+    },
+    {
+      "provider": "jev",
+      "replicate": 1,
+      "order": "normal",
+      "requestId": "req_01a170c2b94a7085b1b6aa50c5b58070",
+      "startTick": 109,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 46,
+      "abandoned": 66
+    },
+    {
+      "provider": "zoom",
+      "replicate": 1,
+      "order": "normal",
+      "requestId": "WEB_0fa1365aedeef543fb57bfe1ee9a72e9",
+      "startTick": 109,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 46,
+      "abandoned": 66
+    },
+    {
+      "provider": "zoom-pro",
+      "replicate": 1,
+      "order": "normal",
+      "requestId": "WEB_5f19aa55cc965819ad59eeeb2ba1c2a4",
+      "startTick": 109,
+      "selectedPlan": "WAIT",
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 46,
+      "abandoned": 66
+    },
+    {
+      "provider": "jev",
+      "replicate": 1,
+      "order": "reversed",
+      "requestId": "req_01a170c2cc377fb1b4beff208cbf82ba",
+      "startTick": 57,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 16600,
+        "utilityPoints": 9215,
+        "meanWaitMinutes": 3.544642857142857,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 66,
+      "abandoned": 46
+    },
+    {
+      "provider": "zoom",
+      "replicate": 1,
+      "order": "reversed",
+      "requestId": "WEB_67225439062fa3288ef98a1676aafde3",
+      "startTick": 57,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 16600,
+        "utilityPoints": 9215,
+        "meanWaitMinutes": 3.544642857142857,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 66,
+      "abandoned": 46
+    },
+    {
+      "provider": "zoom-pro",
+      "replicate": 1,
+      "order": "reversed",
+      "requestId": "WEB_c8019ebcd2f3a5c12b23f41ea3e6f6aa",
+      "startTick": 57,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 16600,
+        "utilityPoints": 9215,
+        "meanWaitMinutes": 3.544642857142857,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 66,
+      "abandoned": 46
+    },
+    {
+      "provider": "jev",
+      "replicate": 1,
+      "order": "reversed",
+      "requestId": "req_01a170c2dfa575ee8c9fbba960415441",
+      "startTick": 109,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 46,
+      "abandoned": 66
+    },
+    {
+      "provider": "zoom",
+      "replicate": 1,
+      "order": "reversed",
+      "requestId": "WEB_9dbc200e805abb2b5b3185e1b13110da",
+      "startTick": 109,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 46,
+      "abandoned": 66
+    },
+    {
+      "provider": "zoom-pro",
+      "replicate": 1,
+      "order": "reversed",
+      "requestId": "WEB_4c21ec188077edbac7a1deb396ffdb47",
+      "startTick": 109,
+      "selectedPlan": "WAIT",
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 46,
+      "abandoned": 66
+    },
+    {
+      "provider": "jev",
+      "replicate": 2,
+      "order": "reversed",
+      "requestId": "req_01a170c2f2187d7a9399e3f2dbd2f251",
+      "startTick": 57,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 16600,
+        "utilityPoints": 9215,
+        "meanWaitMinutes": 3.544642857142857,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 66,
+      "abandoned": 46
+    },
+    {
+      "provider": "zoom",
+      "replicate": 2,
+      "order": "reversed",
+      "requestId": "WEB_8d45317eb6dd9ce71d7ca318bf28d0a4",
+      "startTick": 57,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 16600,
+        "utilityPoints": 9215,
+        "meanWaitMinutes": 3.544642857142857,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 66,
+      "abandoned": 46
+    },
+    {
+      "provider": "zoom-pro",
+      "replicate": 2,
+      "order": "reversed",
+      "requestId": "WEB_cc366d256b73209ff83fd3955ee0cb37",
+      "startTick": 57,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 16600,
+        "utilityPoints": 9215,
+        "meanWaitMinutes": 3.544642857142857,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 66,
+      "abandoned": 46
+    },
+    {
+      "provider": "jev",
+      "replicate": 2,
+      "order": "reversed",
+      "requestId": "req_01a170c3040774f680e2d18a70602c61",
+      "startTick": 109,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 46,
+      "abandoned": 66
+    },
+    {
+      "provider": "zoom",
+      "replicate": 2,
+      "order": "reversed",
+      "requestId": "WEB_b2cf14f01249c8baec4c658777e3e3f0",
+      "startTick": 109,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 46,
+      "abandoned": 66
+    },
+    {
+      "provider": "zoom-pro",
+      "replicate": 2,
+      "order": "reversed",
+      "requestId": "WEB_b061be1d24199448c8124fa6f4c82891",
+      "startTick": 109,
+      "selectedPlan": "WAIT",
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 46,
+      "abandoned": 66
+    },
+    {
+      "provider": "jev",
+      "replicate": 2,
+      "order": "normal",
+      "requestId": "req_01a170c3170d7fbba0a5e68fe8bd6a72",
+      "startTick": 57,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 16600,
+        "utilityPoints": 9215,
+        "meanWaitMinutes": 3.544642857142857,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 66,
+      "abandoned": 46
+    },
+    {
+      "provider": "zoom",
+      "replicate": 2,
+      "order": "normal",
+      "requestId": "WEB_b210fc0c7b2e773f546f409b2240241a",
+      "startTick": 57,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 16600,
+        "utilityPoints": 9215,
+        "meanWaitMinutes": 3.544642857142857,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 66,
+      "abandoned": 46
+    },
+    {
+      "provider": "zoom-pro",
+      "replicate": 2,
+      "order": "normal",
+      "requestId": "WEB_f1263f1d87a1b3c9bf3e874b50b3d49f",
+      "startTick": 57,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 16600,
+        "utilityPoints": 9215,
+        "meanWaitMinutes": 3.544642857142857,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 66,
+      "abandoned": 46
+    },
+    {
+      "provider": "jev",
+      "replicate": 2,
+      "order": "normal",
+      "requestId": "req_01a170c3292a7790993cdf4859eb6ed0",
+      "startTick": 109,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 46,
+      "abandoned": 66
+    },
+    {
+      "provider": "zoom",
+      "replicate": 2,
+      "order": "normal",
+      "requestId": "WEB_80a2c928062089ffa49a03d23ab03d6f",
+      "startTick": 109,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 46,
+      "abandoned": 66
+    },
+    {
+      "provider": "zoom-pro",
+      "replicate": 2,
+      "order": "normal",
+      "requestId": "WEB_cd8e7020e2c138fa2cf3acca1c98bf1c",
+      "startTick": 109,
+      "selectedPlan": "WAIT",
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 46,
+      "abandoned": 66
+    },
+    {
+      "provider": "jev",
+      "replicate": 3,
+      "order": "normal",
+      "requestId": "req_01a170c33b537b1db0c55a82336ef7dc",
+      "startTick": 57,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 16600,
+        "utilityPoints": 9215,
+        "meanWaitMinutes": 3.544642857142857,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 66,
+      "abandoned": 46
+    },
+    {
+      "provider": "zoom",
+      "replicate": 3,
+      "order": "normal",
+      "requestId": "WEB_56399033a9e41610d179b50aed58fe91",
+      "startTick": 57,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 16600,
+        "utilityPoints": 9215,
+        "meanWaitMinutes": 3.544642857142857,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 66,
+      "abandoned": 46
+    },
+    {
+      "provider": "zoom-pro",
+      "replicate": 3,
+      "order": "normal",
+      "requestId": "WEB_7b049d2b41045e295f56ad61dccd0298",
+      "startTick": 57,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 16600,
+        "utilityPoints": 9215,
+        "meanWaitMinutes": 3.544642857142857,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 66,
+      "abandoned": 46
+    },
+    {
+      "provider": "jev",
+      "replicate": 3,
+      "order": "normal",
+      "requestId": "req_01a170c34d8a74f99ab5a268a14cec42",
+      "startTick": 109,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 46,
+      "abandoned": 66
+    },
+    {
+      "provider": "zoom",
+      "replicate": 3,
+      "order": "normal",
+      "requestId": "WEB_e46755ace8c6a17bdbc056121dbaf6d6",
+      "startTick": 109,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 46,
+      "abandoned": 66
+    },
+    {
+      "provider": "zoom-pro",
+      "replicate": 3,
+      "order": "normal",
+      "requestId": "WEB_7694e0292f77beba15da54ca81fee168",
+      "startTick": 109,
+      "selectedPlan": "WAIT",
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 46,
+      "abandoned": 66
+    },
+    {
+      "provider": "jev",
+      "replicate": 3,
+      "order": "reversed",
+      "requestId": "req_01a170c35fd37e39815c1d356210a28d",
+      "startTick": 57,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 16600,
+        "utilityPoints": 9215,
+        "meanWaitMinutes": 3.544642857142857,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 66,
+      "abandoned": 46
+    },
+    {
+      "provider": "zoom",
+      "replicate": 3,
+      "order": "reversed",
+      "requestId": "WEB_ad61a465cfadb8abfbe49d6d74c28d6c",
+      "startTick": 57,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 16600,
+        "utilityPoints": 9215,
+        "meanWaitMinutes": 3.544642857142857,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 66,
+      "abandoned": 46
+    },
+    {
+      "provider": "zoom-pro",
+      "replicate": 3,
+      "order": "reversed",
+      "requestId": "WEB_bee9b439d58d2101868c17b80f445755",
+      "startTick": 57,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 16600,
+        "utilityPoints": 9215,
+        "meanWaitMinutes": 3.544642857142857,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 66,
+      "abandoned": 46
+    },
+    {
+      "provider": "jev",
+      "replicate": 3,
+      "order": "reversed",
+      "requestId": "req_01a170c372357bf693994eb3bb5465e5",
+      "startTick": 109,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 46,
+      "abandoned": 66
+    },
+    {
+      "provider": "zoom",
+      "replicate": 3,
+      "order": "reversed",
+      "requestId": "WEB_101cc5123bb8b57d959c3971fafe1664",
+      "startTick": 109,
+      "selectedPlan": "RESTOCK",
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 46,
+      "abandoned": 66
+    },
+    {
+      "provider": "zoom-pro",
+      "replicate": 3,
+      "order": "reversed",
+      "requestId": "WEB_def8bfb574161a8a3cadf55391f8a46b",
+      "startTick": 109,
+      "selectedPlan": "WAIT",
+      "score": {
+        "profitCents": 10600,
+        "utilityPoints": 870,
+        "meanWaitMinutes": 4.160714285714286,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "served": 46,
+      "abandoned": 66
+    }
+  ]
+}

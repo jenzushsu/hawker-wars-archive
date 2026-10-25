@@ -22,7 +22,7 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "b991d5b416b00ebe29af7b8ea026f995bec4b3686a5d11b3997c7eed7e659e82",
+    "sourceTreeHash": "61768d139376e2d4a168c925b36b7b3f0f8143799ad3e10de3af2c3cc26dd123",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
       {
@@ -554,6 +554,10 @@
         "sha256": "ba4911a2393b6de4b1348a7e97df773f6912345902538227a0379de0b431ca77"
       },
       {
+        "path": "packages/decisions/src/short-plan.ts",
+        "sha256": "a30dd41d7bdcb1d5dfac0ebafd13f12ce0328f3937e1a6fa95f7495cd8ca13cc"
+      },
+      {
         "path": "packages/live/src/activity.ts",
         "sha256": "55da633e1752e5556f1a88ab658cb674454b85dbaa05b6db923427c9d454752e"
       },
@@ -772,6 +776,10 @@
       {
         "path": "scripts/deployment-preflight.ts",
         "sha256": "92a57e17a5135e3cb3eadb3a2bdc5d64f7778fd3f0d365b8b759034b23371efe"
+      },
+      {
+        "path": "scripts/execute-recorded-plans.ts",
+        "sha256": "5cbc4bc78f44602bfca47cc6760acede16bd3b16a0ff1347735c033ea2da9bd8"
       },
       {
         "path": "scripts/experiment-reports.ts",
@@ -1020,6 +1028,10 @@
       {
         "path": "tests/environment-art.test.ts",
         "sha256": "598423b8cc15cacee9fe28505cd45f5d7eefe545067c7b4f05b8bfbb0e199915"
+      },
+      {
+        "path": "tests/execute-recorded-plans.test.ts",
+        "sha256": "d607079fc9ad450b8cffb0b9fbd5ceac4f24bf5b227638028107dc3631d2a820"
       },
       {
         "path": "tests/experiment-reports.test.ts",
