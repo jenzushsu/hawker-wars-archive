@@ -1,5 +1,7 @@
 # Shared action-criteria prompt: offline validation and authorized Jev run
 
+Status: completed. See [results and idle analysis](criteria-comparison.md).
+
 User authorized: “avoid safe guard and run a full tick. increase jev threshold.
 jev to maintain 1.13.0”. Execute one private seed-23 run of 120 ticks plus closing
 on Jev 1.13.0, with no action overrides or Zoom calls.
