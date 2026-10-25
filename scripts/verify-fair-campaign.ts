@@ -11,7 +11,7 @@ for(const run of plan.runs) {
   const database=read(prefix+'-database.json'),decisions=read(prefix+'-decisions.json');
   const analyses=read(prefix+'-analysis.json'),receipt=read(prefix+'-receipt.json');
   const config=ProviderRuntimeSchema.parse({...read(`manifests/provider-runtime-fair-seed-${run.seed}.json`),zoomCampaignException:read(`manifests/campaign-exception-fair-seed-${run.seed}.json`)});
-  if(database.id!==run.roundId||database.seed!==run.seed||database.status!=='completed'||database.tick!==120||database.sequence!==121||database.published!==false||database.providerConfigurationHash!==providerConfigurationHash(config))throw new Error('Round identity or completion mismatch');
+  if(database.id!==run.roundId||database.seed!==run.seed||database.status!=='completed'||database.tick!==120||database.sequence!==121||database.published!==false||database.providerConfigurationHash!==providerConfigurationHash(config,plan.promptVersion))throw new Error('Round identity or completion mismatch');
   if(database.events.count!==121||database.events.unique_ticks!==121||database.events.unique_sequences!==121||database.events.closing_events!==1||decisions.length!==480)throw new Error('Event or decision coverage mismatch');
   const accounting=receipt.accounting;
   if(receipt.preparation.before.attempts!==previousAttempts||receipt.preparation.after.attempts!==previousAttempts)throw new Error('Ledger continuity mismatch');

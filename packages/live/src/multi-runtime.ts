@@ -2,12 +2,12 @@ import { createHash } from 'node:crypto';
 import { canonicalState } from '../../simulation/src/hash.ts';
 import { activationBlockers, requestAccounting, ProviderRuntimeSchema, type ProviderRuntimeConfig } from '../../providers/src/activation.ts';
 import { createProviderAdapter } from '../../providers/src/adapter.ts';
-import { PROVIDER_PROMPT_VERSION } from '../../providers/src/wire.ts';
+import { PROVIDER_PROMPT_VERSION, type ProviderPromptVersion } from '../../providers/src/wire.ts';
 import type { Ledger } from '../../providers/src/ledger.ts';
 import type { MultiControllers } from './multi-worker.ts';
 
-export function providerConfigurationHash(config: ProviderRuntimeConfig): string {
-  return createHash('sha256').update('hawker-wars|live-provider-config-2\n').update(PROVIDER_PROMPT_VERSION+'\n').update(canonicalState(ProviderRuntimeSchema.parse(config))).digest('hex');
+export function providerConfigurationHash(config: ProviderRuntimeConfig, promptVersion: ProviderPromptVersion = PROVIDER_PROMPT_VERSION): string {
+  return createHash('sha256').update('hawker-wars|live-provider-config-2\n').update(promptVersion+'\n').update(canonicalState(ProviderRuntimeSchema.parse(config))).digest('hex');
 }
 /** Configuration-only check. No account checks, reservations, or remote inference. */
 export function multiProviderBlockers(config: ProviderRuntimeConfig, env: NodeJS.ProcessEnv = process.env): string[] {

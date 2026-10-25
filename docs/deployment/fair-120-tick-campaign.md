@@ -168,3 +168,37 @@ timeout and shared rolling-window rate checks. The initial Coolify build failed
 before any ledger transition because its seed selector was runtime-only; exposing
 only that non-secret selector at build time resolved Compose path interpolation.
 Credentials remain runtime-only.
+
+## Request-envelope fix: prompt v4 (not yet deployed)
+
+The follow-up fix replaces repeated queue, ready-batch and recent-action field
+names with tables containing explicit column names and ordered rows. Customer
+IDs, quantities, deadlines, expiry, FIFO order and every other observation field
+are retained. Legal actions appear once at the top level. All models receive
+byte-identical context and identical planning instructions for the same input.
+
+Action consequences remain in `publicRules.actions`; the question references
+that definition instead of duplicating its prose. Explicit demand probabilities,
+phases, patience, event effects, mechanics, objective and closing rules remain.
+The duplicate `demandDefaults` implementation configuration (hash streams, draw
+plumbing and UI vote timing) is omitted. Shared planning guidance remains in v4.
+
+The two tick-80 requests now fit at approximately 6.4 KB each. Regression tests
+reconstruct every decision on all four recorded policy trajectories for seeds
+7, 11 and 23, then construct requests for all three providers. They reproduce the
+exact old 8,216/8,207-byte failures, check the unchanged 8,192-byte bound, compare
+provider context/instructions, and decode the tables back to the complete input
+observation. Conservative envelope cases include 30 queued customers, up to 30
+ready batches, in-flight work, long counters, five prior actions and all five
+action descriptions, including combinations larger than a real legal state.
+
+Prompt v2/v3 serialization stays available for historical reproduction. The
+provider configuration hash incorporates v4, so a v4 worker cannot silently
+continue a v3 round. Historical campaign verification explicitly uses the
+recorded prompt version and still passes. The adapter's size gate and all
+spending limits remain unchanged. Typecheck and 86 targeted tests passed across
+wire, size regressions, adversarial validation, full-round worker behavior and
+historical planning/short-plan experiments.
+
+This is a code fix in PR #7, with no new deployment or paid inference. Any future
+comparison must start fresh rounds under v4; these v3 results are unchanged.
