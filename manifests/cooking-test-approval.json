@@ -1,0 +1,90 @@
+{
+  "status": "approved",
+  "approvalSource": "User: test, following cooking-clarification candidate",
+  "scope": "12 Jev 1.13.0 calls: saved states86/87, v1/v2 prompts, three repetitions, alternating predetermined order. No full run, guard, Zoom calls or cap increase.",
+  "previousRoundId": "3136cde0-c6ae-4f6a-af4d-29621f1a9370",
+  "previousLedgerHash": "74d6ad291320466f67e2258002c8995061b25aab81e80413456e9f80c1dbed7f",
+  "expectedPriorAttempts": 2404,
+  "jevPriorReservedMicros": 2747494,
+  "zoomPriorAllocatedMicros": 1408000,
+  "jevCumulativeCapMicros": 2788789,
+  "jevAdditionalMaximumMicros": 33036,
+  "zoomAdditionalAllocationMicros": 0,
+  "callsPerModel": 12,
+  "promptVersion": "hawker-decision-prompt-4",
+  "experimentVersion": "action-criteria-prompt-2",
+  "runs": [
+    {
+      "roundId": "7383ca18-6b12-4910-84e6-0dc0d5366b62",
+      "tick": 86,
+      "variant": "baseline",
+      "repetition": 1
+    },
+    {
+      "roundId": "acb9e2e6-faf1-483f-a7e8-03c20a87ad37",
+      "tick": 86,
+      "variant": "treatment",
+      "repetition": 1
+    },
+    {
+      "roundId": "08914e82-16a0-4e41-b63c-c52c9d05f121",
+      "tick": 87,
+      "variant": "treatment",
+      "repetition": 1
+    },
+    {
+      "roundId": "5e9f6dd6-b251-4cb4-bb0c-b3ef6f1f348c",
+      "tick": 87,
+      "variant": "baseline",
+      "repetition": 1
+    },
+    {
+      "roundId": "83ef50fb-3650-4dff-b7c9-0a84e60cdbda",
+      "tick": 86,
+      "variant": "treatment",
+      "repetition": 2
+    },
+    {
+      "roundId": "5ea24c76-990a-4247-9758-c68214bfc03d",
+      "tick": 86,
+      "variant": "baseline",
+      "repetition": 2
+    },
+    {
+      "roundId": "7b03c4ed-0d2a-489c-b4a6-6bec13c07899",
+      "tick": 87,
+      "variant": "baseline",
+      "repetition": 2
+    },
+    {
+      "roundId": "147a8552-d717-449c-bcd1-8a694eef1461",
+      "tick": 87,
+      "variant": "treatment",
+      "repetition": 2
+    },
+    {
+      "roundId": "74df032a-a5a4-4da7-8b6d-e2c7d6679594",
+      "tick": 86,
+      "variant": "baseline",
+      "repetition": 3
+    },
+    {
+      "roundId": "f04cf05b-46e8-4bb5-9098-64d169823bc2",
+      "tick": 86,
+      "variant": "treatment",
+      "repetition": 3
+    },
+    {
+      "roundId": "eb3762f3-850c-46b8-9644-cc95a603edeb",
+      "tick": 87,
+      "variant": "treatment",
+      "repetition": 3
+    },
+    {
+      "roundId": "3c3ed075-d9f9-4970-bf1e-6ef737f2c28f",
+      "tick": 87,
+      "variant": "baseline",
+      "repetition": 3
+    }
+  ]
+}
