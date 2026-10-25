@@ -1,0 +1,13 @@
+What happens when AI runs a hawker stall? 🍚
+
+Four policies. One lunch rush. Decisions about cooking, restocking, serving—and when to wait.
+
+In this run of Hawker Wars, hand-written rules still earned the most. But the more interesting result was a stall that ran out of food and kept choosing WAIT, even with money and time to restock.
+
+Describing the actions more clearly didn't change that choice. Asking the model to choose a complete short plan did—and the choice held when I reversed the option order in repeated diagnostic tests.
+
+Does that make it a better stall operator? That's the next test.
+
+Here's a quick replay of the latest completed campaign. One seed, not a general model ranking. Game profits exclude API fees.
+
+#AI #BuildingInPublic #Simulation
