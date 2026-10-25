@@ -1,7 +1,7 @@
 # Jev 1.14.0 raw full-run plan
 
-Prepared at the user's request: “proceed with just jev 1.14.0 run”. Execution is
-pending the cap extension below. No paid calls, ledger amendments or deployment
+Prepared at the user's request: “proceed with just jev 1.14.0 run”. The user approved
+the cap extension below. No paid calls, ledger amendments or deployment
 have occurred for this plan; Coolify remains in standby.
 
 One private 120-tick seed-23 run plus closing uses `jev-1.14.0`, unchanged prompt
@@ -31,7 +31,7 @@ input, provider result and executed action to the retained volume.
 - Zoom additional allocation: **$0**; existing limits remain unchanged.
 
 [Approval record](../providers/fair-campaign-approval-jev114.json) remains
-`pending-budget-approval`. The runner checks approval before opening or amending
+`approved`. The runner checks approval before opening or amending
 the ledger. An exclusive one-use lock and expected prior ledger identity prevent
 accidental replay or resetting retained exposure.
 

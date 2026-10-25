@@ -1,5 +1,5 @@
 {
-  "status": "pending-budget-approval",
+  "status": "approved",
   "requestSource": "User: proceed with just jev 1.14.0 run",
   "scope": "One private seed-23 full 120-tick Jev 1.14.0 run, unchanged v4 prompt, no safeguard, no Zoom calls. Tick zero doubles as model identity smoke. No automatic repeat.",
   "roundId": "b09d4e88-6c4b-499b-9b63-75ef24964743",
@@ -17,5 +17,7 @@
   "jevAdditionalMaximumMicros": 330360,
   "maximumCalls": 120,
   "zoomPriorAllocatedMicros": 1408000,
-  "zoomAdditionalMaximumMicros": 0
+  "zoomAdditionalMaximumMicros": 0,
+  "approvalSource": "User: approve",
+  "approvedAt": "2026-10-25T06:06:43.293056+00:00"
 }
