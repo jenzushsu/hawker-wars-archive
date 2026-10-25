@@ -169,7 +169,7 @@ before any ledger transition because its seed selector was runtime-only; exposin
 only that non-secret selector at build time resolved Compose path interpolation.
 Credentials remain runtime-only.
 
-## Request-envelope fix: prompt v4 (not yet deployed)
+## Request-envelope fix: prompt v4
 
 The follow-up fix replaces repeated queue, ready-batch and recent-action field
 names with tables containing explicit column names and ordered rows. Customer
@@ -200,5 +200,16 @@ spending limits remain unchanged. Typecheck and 86 targeted tests passed across
 wire, size regressions, adversarial validation, full-round worker behavior and
 historical planning/short-plan experiments.
 
-This is a code fix in PR #7, with no new deployment or paid inference. Any future
-comparison must start fresh rounds under v4; these v3 results are unchanged.
+Prompt v4 was subsequently deployed to Coolify in standby mode at revision
+`6417e7c68504cbaff79c746c03c9a9d2a7832dab`, deployment
+`rs2cch1idrsofqoowvziweay`. Coolify reports `running:healthy`; the container emitted
+`standby-ready` with prompt v4 and `providerDispatch:false`. Its offline initial
+requests measure 5,882 / 5,921 / 5,916 bytes for Jev / Standard / Pro.
+
+`compose.multi-worker-standby.yaml` performs an offline wire readiness check and
+keeps a health-checked process running without mounting the ledger or injecting
+provider/datastore credentials. This deploys the release without opening or
+replaying a campaign. Local typecheck, readiness and graceful shutdown passed.
+A fresh approved campaign must select an execution compose explicitly. No paid
+inference was made; the v3 results remain unchanged. Deployment evidence is in
+[v4-standby-deployment.json](evidence/fair-120-tick/v4-standby-deployment.json).
