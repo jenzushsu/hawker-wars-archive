@@ -1,8 +1,6 @@
 # Jev 1.14.0 raw full-run plan
 
-Prepared at the user's request: “proceed with just jev 1.14.0 run”. The user approved
-the cap extension below. No paid calls, ledger amendments or deployment
-have occurred for this plan; Coolify remains in standby.
+Completed after user approval. See [results and idle analysis](jev114-comparison.md).
 
 One private 120-tick seed-23 run plus closing uses `jev-1.14.0`, unchanged prompt
 v4, and no safeguard. Zoom activation is disabled and its credential is absent
@@ -21,7 +19,7 @@ model mismatch or accounting failure stops the run without automatic retry.
 Original choices are executed unchanged, including WAIT. Every tick checkpoints
 input, provider result and executed action to the retained volume.
 
-## Budget required
+## Approved budget
 
 - Prior retained attempts: 2,194.
 - Jev reserved: $2.169364; existing cap: $2.224424.

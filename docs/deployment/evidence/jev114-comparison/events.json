@@ -1,0 +1,95 @@
+[
+  {
+    "status": "jev114-ledger-transition",
+    "roundId": "b09d4e88-6c4b-499b-9b63-75ef24964743",
+    "configurationHash": "a616eb1077a07c5c4eb8762054e0020b1c9e51ddc61d19e66e42365621a1ff73",
+    "before": {
+      "campaignId": "zoom-trial-campaign-1",
+      "pools": [
+        {
+          "id": "jev-separate",
+          "reservedMicros": 2169364,
+          "capMicros": 2224424,
+          "lastDispatchAtMs": 1792906590712
+        },
+        {
+          "id": "zoom-shared",
+          "reservedMicros": 1408000,
+          "capMicros": 5000000,
+          "lastDispatchAtMs": 1792906593773
+        }
+      ],
+      "attempts": 2194
+    }
+  },
+  {
+    "status": "jev114-smoke-passed",
+    "tick": 0,
+    "smoke": {
+      "requestId": "req_01a171ab930f77a1a983a33eba51ff8c",
+      "requestedModel": "jev-1.14.0",
+      "returnedModel": "jev-1.14.0",
+      "checkedAt": "2026-10-25T06:07:12.301Z"
+    }
+  },
+  {
+    "status": "jev114-progress",
+    "roundId": "b09d4e88-6c4b-499b-9b63-75ef24964743",
+    "tick": 0
+  },
+  {
+    "status": "jev114-progress",
+    "roundId": "b09d4e88-6c4b-499b-9b63-75ef24964743",
+    "tick": 10
+  },
+  {
+    "status": "jev114-progress",
+    "roundId": "b09d4e88-6c4b-499b-9b63-75ef24964743",
+    "tick": 20
+  },
+  {
+    "status": "jev114-progress",
+    "roundId": "b09d4e88-6c4b-499b-9b63-75ef24964743",
+    "tick": 30
+  },
+  {
+    "status": "jev114-progress",
+    "roundId": "b09d4e88-6c4b-499b-9b63-75ef24964743",
+    "tick": 40
+  },
+  {
+    "status": "jev114-progress",
+    "roundId": "b09d4e88-6c4b-499b-9b63-75ef24964743",
+    "tick": 50
+  },
+  {
+    "status": "jev114-progress",
+    "roundId": "b09d4e88-6c4b-499b-9b63-75ef24964743",
+    "tick": 60
+  },
+  {
+    "status": "jev114-progress",
+    "roundId": "b09d4e88-6c4b-499b-9b63-75ef24964743",
+    "tick": 70
+  },
+  {
+    "status": "jev114-progress",
+    "roundId": "b09d4e88-6c4b-499b-9b63-75ef24964743",
+    "tick": 80
+  },
+  {
+    "status": "jev114-progress",
+    "roundId": "b09d4e88-6c4b-499b-9b63-75ef24964743",
+    "tick": 90
+  },
+  {
+    "status": "jev114-progress",
+    "roundId": "b09d4e88-6c4b-499b-9b63-75ef24964743",
+    "tick": 100
+  },
+  {
+    "status": "jev114-progress",
+    "roundId": "b09d4e88-6c4b-499b-9b63-75ef24964743",
+    "tick": 110
+  }
+]
