@@ -1,4 +1,6 @@
-# Prepared live comparison with retained prompt
+# Live comparison with retained prompt
+
+Status: completed and verified. See [results](live-retained-results.md).
 
 User requested rerunning the retained prompt across all models and watching live.
 One published seed23 round will run 120 decision ticks plus closing:
@@ -10,7 +12,7 @@ One published seed23 round will run 120 decision ticks plus closing:
   ten minutes of visible simulation, plus provider/store latency.
 
 Planned round ID: `a4366c8c-a68e-4699-adcc-f06e754ef352`.
-Planned viewer URL (not created yet):
+Published viewer URL:
 `https://hawker-wars-staging.vercel.app/live/a4366c8c-a68e-4699-adcc-f06e754ef352`.
 The existing `/live` page responds HTTP200. Read-only database inspection confirms
 recent four-policy database rounds are completed; the latest is private at tick120.
@@ -32,8 +34,8 @@ blindly after a partial amendment. The prepared worker compose uses the same
 runtime/exception files and explicit prompt selector, on the existing retained
 volume. Both preparation and worker commits must be pinned to the same revision.
 
-No deployment, database publication, ledger amendment or paid calls have happened
-for this plan. Budget extension approved by the user: “extend limit”.
+Budget extension approved by the user: “extend limit”. Execution completed; the
+results report supersedes the preparation status below.
 
 ## Exact budget extension
 

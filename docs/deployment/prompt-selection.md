@@ -19,8 +19,8 @@ select v2 for a future run without a new explicit instruction.
 This selection does not replay a completed run or reset a ledger. Existing run
 manifests are historical approvals, not reusable launch configurations. A future
 run needs a fresh identity and sufficient authorized budget. The retained ledger
-remains at 2,526 attempts with $3.083360 Jev reservations against the $3.110890 cap;
-Zoom remains $1.408000.
+is at 2,817 attempts with $3.366919 Jev reservations against the $3.413720 cap;
+Zoom is $1.596000.
 
 Deployment remains healthy standby with inference credentials removed. Production
 v4 has not been replaced: the selected action-criteria prompt is still a separate
@@ -28,3 +28,7 @@ experimental builder. This decision does not launch calls or deploy new behavior
 
 Evidence: [retained v1 full round](criteria-comparison.md),
 [rejected v2 full round](criteria-v2-full.md).
+
+The user-authorized published all-model repeat is now completed: see
+[live retained-prompt results](live-retained-results.md). Jev repeated $241/85 served;
+current ledger totals and standby evidence are in that report.

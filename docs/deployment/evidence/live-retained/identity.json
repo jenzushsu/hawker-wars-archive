@@ -1,0 +1,13 @@
+{
+  "source": "Read-only database query before worker start",
+  "roundId": "a4366c8c-a68e-4699-adcc-f06e754ef352",
+  "seed": 23,
+  "published": true,
+  "policyIds": [
+    "rules",
+    "jev",
+    "zoom",
+    "zoom-pro"
+  ],
+  "providerConfigurationHash": "2b4bbac07b7ca75d93aabd27bcd14fa712442ad1cd8f9487cde38e85d2f3fbb3"
+}
