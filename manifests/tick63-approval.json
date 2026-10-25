@@ -1,0 +1,19 @@
+{
+  "status": "approved",
+  "approvalSource": "User: proceed with exact tick 63",
+  "scope": "One decision per model on the exact captured Jev tick-63 observation/history, unchanged v4 instructions and option ordering. Three calls total, no retries or automatic repetition.",
+  "roundId": "c7ff5c31-65ed-4e78-bb20-8fb77e859ce3",
+  "previousRoundId": "81180c83-7388-4540-a46d-6602049e403c",
+  "previousLedgerHash": "861ff22cbe20dbdbce836afa353d304b7bf77e69cac4ab376f35392e13f7570d",
+  "expectedPriorAttempts": 1876,
+  "jevPriorReservedMicros": 1869287,
+  "jevCumulativeCapMicros": 1896817,
+  "zoomPriorAllocatedMicros": 1199000,
+  "jevAdditionalMaximumMicros": 2753,
+  "zoomAdditionalAllocationMicros": 2000,
+  "zoomCampaignCapMicros": 5000000,
+  "callsPerModel": 1,
+  "promptVersion": "hawker-decision-prompt-4",
+  "sourcePolicy": "jev",
+  "sourceTick": 63
+}
