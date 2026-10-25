@@ -22,7 +22,7 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "21a2aa4d900663bd47b40686b6274fde22918b413bb179417fc961132678b027",
+    "sourceTreeHash": "b991d5b416b00ebe29af7b8ea026f995bec4b3686a5d11b3997c7eed7e659e82",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
       {
@@ -635,7 +635,7 @@
       },
       {
         "path": "packages/providers/src/short-plan-experiment.ts",
-        "sha256": "1f3eaeee4966b15ada0fee639b231610420ce4c9dd4271a658605ed02f2ed3d6"
+        "sha256": "5671d0a6a89546445d6b65c8ee4dfdb45b845397bf686a1c7bcad9b98ca8c6e7"
       },
       {
         "path": "packages/providers/src/wire.ts",
@@ -860,6 +860,10 @@
       {
         "path": "scripts/run-planning-experiment.ts",
         "sha256": "7f64bedecf07d502fed53817ef9eba6c3efece989a6aa65855388b72c8215b50"
+      },
+      {
+        "path": "scripts/run-repeatability-experiment.ts",
+        "sha256": "4e55fb0bd1f59880d488732c91d4b1bcdd3ee2e122e5b089bee391e15070a039"
       },
       {
         "path": "scripts/run-rules-worker.ts",
@@ -1179,7 +1183,7 @@
       },
       {
         "path": "tests/short-plan-experiment.test.ts",
-        "sha256": "a0031db67c6d759d3e330457fac10a08628a7697cbc6324648a337922bac1e6c"
+        "sha256": "db11e21b826d6e33f1fdfbd6ef5f9450663da4cc90e0aa520cc25dc29263ad16"
       },
       {
         "path": "tests/ui-art.test.ts",
