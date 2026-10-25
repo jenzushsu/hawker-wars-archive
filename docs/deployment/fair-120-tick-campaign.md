@@ -213,3 +213,41 @@ replaying a campaign. Local typecheck, readiness and graceful shutdown passed.
 A fresh approved campaign must select an execution compose explicitly. No paid
 inference was made; the v3 results remain unchanged. Deployment evidence is in
 [v4-standby-deployment.json](evidence/fair-120-tick/v4-standby-deployment.json).
+
+## Paid v4 large-queue smoke
+
+After the user requested a paid call, one request per model was dispatched from
+Coolify using the same captured seed-23 Standard tick-80 observation. This was a
+three-call smoke test, not a new simulation round or model ranking. The single-use
+approval is [v4-paid-smoke-approval.json](../../manifests/v4-paid-smoke-approval.json).
+
+| Provider | Request bytes | Result | Latency |
+| --- | ---: | --- | ---: |
+| Jev | 6,389 | SERVE, success | 300 ms |
+| Zoom Standard | 6,423 | SERVE, success | 537 ms |
+| Zoom Pro | 6,418 | SERVE, success | 1,272 ms |
+
+All calls returned validated legal choices without retries or fallbacks. This
+confirms live acceptance of the compact v4 input; it does not establish improved
+full-round performance or resolve Jev's earlier replenishment behavior.
+
+The existing ledger was amended to run `d022e144-c2f1-428d-9894-3504edbefff8` without
+resetting prior exposure. Records increased from 1,573 to 1,576. Jev added $0.002753
+in reservations, totaling $1.566457 of its unchanged $1.646294 cap. Zoom added
+$0.002000 in allocations, totaling $1.009000 of its unchanged $5 campaign cap.
+Reservations/allocations are not invoices. The final ledger configuration hash is
+`c13b86a2d78855dc557dd71cca13a38e5f65476f87b26e24a6a0c7789484e656`.
+
+The runner was pinned to `4395b947f5829fa2d2d08e5556a558f5d13456eb`. It checks the
+prior ledger identity/count before amendment and cannot automatically repeat
+calls. Local typecheck and zero-dispatch preflight passed. The three successful
+provider receipts reconcile exactly with ledger increments. Results and logs:
+[v4-paid-smoke-result.json](evidence/fair-120-tick/v4-paid-smoke-result.json) and
+[v4-paid-smoke-events.json](evidence/fair-120-tick/v4-paid-smoke-events.json).
+
+After the smoke, inference credentials were removed from Coolify configuration
+and standby was restored at the same revision. The initial compose switch
+reported degraded, so the application was stopped and standby redeployed.
+Final status is `running:healthy`, with `standby-ready` and no dispatch. Deployment
+and cleanup receipts are in
+[v4-paid-smoke-deployment.json](evidence/fair-120-tick/v4-paid-smoke-deployment.json).
