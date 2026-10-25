@@ -92,9 +92,10 @@ fixed. This demonstrates recoverable opportunity; it does not predict Jev's
 response to one forced restock, and it changes the controller for every remaining
 turn. No paid counterfactual run was made.
 
-A future matched-state diagnostic could present Jev's exact tick-63 observation
-to all three models and compare RESTOCK versus WAIT choices. That would separate
-state differences from model differences. Any execution safeguard (for example,
+The subsequently approved [matched-state diagnostic](tick63-comparison.md)
+presented this exact tick-63 observation to all three models. Jev selected WAIT;
+Standard and Pro selected RESTOCK. This isolates the state difference for this
+one decision, without establishing repeatability across states. Any execution safeguard (for example,
 restock when the entire pipeline is empty and sufficient delivery/cooking/service
 time remains) should be applied equally across models and reported as a hybrid
 policy, rather than silently attributed to the model.
