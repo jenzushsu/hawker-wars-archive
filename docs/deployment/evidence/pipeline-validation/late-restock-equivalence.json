@@ -1,0 +1,45 @@
+{
+  "scope": "Offline replay, replacing only Jev tick109 WAIT with RESTOCK; later recorded WAITs unchanged.",
+  "wait": {
+    "score": {
+      "profitCents": 9600,
+      "utilityPoints": -1680,
+      "meanWaitMinutes": 4.840336134453781,
+      "satisfaction": null,
+      "provisional": false
+    },
+    "totals": {
+      "served": 44,
+      "abandoned": 75,
+      "wasted": 18,
+      "waitMinutes": 576,
+      "arrivals": 119,
+      "purchasedPortions": 20,
+      "restockOrders": 1,
+      "promotions": 0
+    },
+    "rawAtClosing": 0,
+    "cashAtClosing": 38000
+  },
+  "restock": {
+    "score": {
+      "profitCents": 9600,
+      "utilityPoints": -1680,
+      "meanWaitMinutes": 4.840336134453781,
+      "satisfaction": null,
+      "provisional": false
+    },
+    "totals": {
+      "served": 44,
+      "abandoned": 75,
+      "wasted": 18,
+      "waitMinutes": 576,
+      "arrivals": 119,
+      "purchasedPortions": 40,
+      "restockOrders": 2,
+      "promotions": 0
+    },
+    "rawAtClosing": 20,
+    "cashAtClosing": 34000
+  }
+}
