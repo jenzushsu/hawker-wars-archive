@@ -1,0 +1,902 @@
+[
+  {
+    "status": "experiment-transition",
+    "roundId": "7383ca18-6b12-4910-84e6-0dc0d5366b62",
+    "tick": 86,
+    "variant": "baseline",
+    "repetition": 1,
+    "configurationHash": "ff8e235ca410584bef08364ab0468aa02dc70115e1cc823b043d4ebd01b32aaf",
+    "summary": {
+      "campaignId": "zoom-trial-campaign-1",
+      "pools": [
+        {
+          "id": "jev-separate",
+          "reservedMicros": 2747494,
+          "capMicros": 2788789,
+          "lastDispatchAtMs": 1792909273378
+        },
+        {
+          "id": "zoom-shared",
+          "reservedMicros": 1408000,
+          "capMicros": 5000000,
+          "lastDispatchAtMs": 1792906593773
+        }
+      ],
+      "attempts": 2404
+    }
+  },
+  {
+    "status": "experiment-result",
+    "roundId": "7383ca18-6b12-4910-84e6-0dc0d5366b62",
+    "tick": 86,
+    "variant": "baseline",
+    "repetition": 1,
+    "contextHash": "b7f4c82912482e14ba02c7a1f0e63ae3b1ba6a98631c2e9a4ddeef9c6c0808a4",
+    "bodyHash": "247627bdf356172d05331c76adb8ddfc3d5ce12e8784a27fe9fd487df70a252f",
+    "provider": "jev",
+    "outcome": {
+      "mode": "live",
+      "origin": "provider",
+      "attemptedProvider": "jev",
+      "attemptCount": 1,
+      "result": {
+        "provider": "jev",
+        "action": "WAIT",
+        "latencyMs": 344,
+        "status": "success",
+        "modelVersion": "jev-1.13.0",
+        "probabilities": [
+          {
+            "action": "COOK",
+            "probability": 0.37
+          },
+          {
+            "action": "WAIT",
+            "probability": 0.63
+          }
+        ],
+        "confidence": 0.26,
+        "confidenceSemantics": "Provider-reported confidence in selected label per @typesafe-ai/sdk@0.7.0; not claimed calibrated.",
+        "probabilitySemantics": "Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.",
+        "usage": {
+          "inputTokens": 1988,
+          "outputTokens": 32
+        },
+        "requestId": "req_01a171defe707270acd45600eab5a93c"
+      },
+      "nativeUsage": {
+        "schemaVersion": "provider-native-usage-1",
+        "provider": "jev",
+        "inputUnits": 1988,
+        "outputUnits": 32,
+        "unitType": "tokens"
+      },
+      "diagnostic": null
+    }
+  },
+  {
+    "status": "experiment-transition",
+    "roundId": "acb9e2e6-faf1-483f-a7e8-03c20a87ad37",
+    "tick": 86,
+    "variant": "treatment",
+    "repetition": 1,
+    "configurationHash": "809c17a90b01477c0da1b43c71e27ebaf8eed4e0ece0515f52c900694489a633",
+    "summary": {
+      "campaignId": "zoom-trial-campaign-1",
+      "pools": [
+        {
+          "id": "jev-separate",
+          "reservedMicros": 2750247,
+          "capMicros": 2788789,
+          "lastDispatchAtMs": 1792911801825
+        },
+        {
+          "id": "zoom-shared",
+          "reservedMicros": 1408000,
+          "capMicros": 5000000,
+          "lastDispatchAtMs": 1792906593773
+        }
+      ],
+      "attempts": 2405
+    }
+  },
+  {
+    "status": "experiment-result",
+    "roundId": "acb9e2e6-faf1-483f-a7e8-03c20a87ad37",
+    "tick": 86,
+    "variant": "treatment",
+    "repetition": 1,
+    "contextHash": "b7f4c82912482e14ba02c7a1f0e63ae3b1ba6a98631c2e9a4ddeef9c6c0808a4",
+    "bodyHash": "05bb89229b1324bd66644129d18a49e04d944b9a2b43f7257658e5de809c3edc",
+    "provider": "jev",
+    "outcome": {
+      "mode": "live",
+      "origin": "provider",
+      "attemptedProvider": "jev",
+      "attemptCount": 1,
+      "result": {
+        "provider": "jev",
+        "action": "COOK",
+        "latencyMs": 266,
+        "status": "success",
+        "modelVersion": "jev-1.13.0",
+        "probabilities": [
+          {
+            "action": "COOK",
+            "probability": 0.95
+          },
+          {
+            "action": "WAIT",
+            "probability": 0.05
+          }
+        ],
+        "confidence": 0.9,
+        "confidenceSemantics": "Provider-reported confidence in selected label per @typesafe-ai/sdk@0.7.0; not claimed calibrated.",
+        "probabilitySemantics": "Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.",
+        "usage": {
+          "inputTokens": 2108,
+          "outputTokens": 33
+        },
+        "requestId": "req_01a171df04747cd59ebb709811e40aa8"
+      },
+      "nativeUsage": {
+        "schemaVersion": "provider-native-usage-1",
+        "provider": "jev",
+        "inputUnits": 2108,
+        "outputUnits": 33,
+        "unitType": "tokens"
+      },
+      "diagnostic": null
+    }
+  },
+  {
+    "status": "experiment-transition",
+    "roundId": "08914e82-16a0-4e41-b63c-c52c9d05f121",
+    "tick": 87,
+    "variant": "treatment",
+    "repetition": 1,
+    "configurationHash": "bb8d30780e28996c07a583002b7a2ad7558e149612cc280e19ed2f797aba42a5",
+    "summary": {
+      "campaignId": "zoom-trial-campaign-1",
+      "pools": [
+        {
+          "id": "jev-separate",
+          "reservedMicros": 2753000,
+          "capMicros": 2788789,
+          "lastDispatchAtMs": 1792911803414
+        },
+        {
+          "id": "zoom-shared",
+          "reservedMicros": 1408000,
+          "capMicros": 5000000,
+          "lastDispatchAtMs": 1792906593773
+        }
+      ],
+      "attempts": 2406
+    }
+  },
+  {
+    "status": "experiment-result",
+    "roundId": "08914e82-16a0-4e41-b63c-c52c9d05f121",
+    "tick": 87,
+    "variant": "treatment",
+    "repetition": 1,
+    "contextHash": "c57d6a7d719cd8167f44e9199a05b8cefd77a7a1be1d68ffb5dedde65ac62aa3",
+    "bodyHash": "bd36bc23de247286627e269d6a46c990ddfcf899f328a567be1b69415a3f7c07",
+    "provider": "jev",
+    "outcome": {
+      "mode": "live",
+      "origin": "provider",
+      "attemptedProvider": "jev",
+      "attemptCount": 1,
+      "result": {
+        "provider": "jev",
+        "action": "COOK",
+        "latencyMs": 220,
+        "status": "success",
+        "modelVersion": "jev-1.13.0",
+        "probabilities": [
+          {
+            "action": "COOK",
+            "probability": 0.96
+          },
+          {
+            "action": "WAIT",
+            "probability": 0.04
+          }
+        ],
+        "confidence": 0.92,
+        "confidenceSemantics": "Provider-reported confidence in selected label per @typesafe-ai/sdk@0.7.0; not claimed calibrated.",
+        "probabilitySemantics": "Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.",
+        "usage": {
+          "inputTokens": 2125,
+          "outputTokens": 33
+        },
+        "requestId": "req_01a171df0a87716aa2e2c1774fc27571"
+      },
+      "nativeUsage": {
+        "schemaVersion": "provider-native-usage-1",
+        "provider": "jev",
+        "inputUnits": 2125,
+        "outputUnits": 33,
+        "unitType": "tokens"
+      },
+      "diagnostic": null
+    }
+  },
+  {
+    "status": "experiment-transition",
+    "roundId": "5e9f6dd6-b251-4cb4-bb0c-b3ef6f1f348c",
+    "tick": 87,
+    "variant": "baseline",
+    "repetition": 1,
+    "configurationHash": "a9f7faf359595794311be42cf3551b43371fa258ee18a4ee7b5833e9bfe7f44e",
+    "summary": {
+      "campaignId": "zoom-trial-campaign-1",
+      "pools": [
+        {
+          "id": "jev-separate",
+          "reservedMicros": 2755753,
+          "capMicros": 2788789,
+          "lastDispatchAtMs": 1792911804976
+        },
+        {
+          "id": "zoom-shared",
+          "reservedMicros": 1408000,
+          "capMicros": 5000000,
+          "lastDispatchAtMs": 1792906593773
+        }
+      ],
+      "attempts": 2407
+    }
+  },
+  {
+    "status": "experiment-result",
+    "roundId": "5e9f6dd6-b251-4cb4-bb0c-b3ef6f1f348c",
+    "tick": 87,
+    "variant": "baseline",
+    "repetition": 1,
+    "contextHash": "c57d6a7d719cd8167f44e9199a05b8cefd77a7a1be1d68ffb5dedde65ac62aa3",
+    "bodyHash": "c971d9d836b4c234015362f98a8be7625742838734441d1af3156ec8febac78b",
+    "provider": "jev",
+    "outcome": {
+      "mode": "live",
+      "origin": "provider",
+      "attemptedProvider": "jev",
+      "attemptCount": 1,
+      "result": {
+        "provider": "jev",
+        "action": "WAIT",
+        "latencyMs": 264,
+        "status": "success",
+        "modelVersion": "jev-1.13.0",
+        "probabilities": [
+          {
+            "action": "COOK",
+            "probability": 0.32
+          },
+          {
+            "action": "WAIT",
+            "probability": 0.68
+          }
+        ],
+        "confidence": 0.36,
+        "confidenceSemantics": "Provider-reported confidence in selected label per @typesafe-ai/sdk@0.7.0; not claimed calibrated.",
+        "probabilitySemantics": "Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.",
+        "usage": {
+          "inputTokens": 2005,
+          "outputTokens": 32
+        },
+        "requestId": "req_01a171df106a7e26812f39a8bdaaadcd"
+      },
+      "nativeUsage": {
+        "schemaVersion": "provider-native-usage-1",
+        "provider": "jev",
+        "inputUnits": 2005,
+        "outputUnits": 32,
+        "unitType": "tokens"
+      },
+      "diagnostic": null
+    }
+  },
+  {
+    "status": "experiment-transition",
+    "roundId": "83ef50fb-3650-4dff-b7c9-0a84e60cdbda",
+    "tick": 86,
+    "variant": "treatment",
+    "repetition": 2,
+    "configurationHash": "b48f8a469194d5ff6ce8a0ff5ad6f557530847e770d4440839bb10d027aa249b",
+    "summary": {
+      "campaignId": "zoom-trial-campaign-1",
+      "pools": [
+        {
+          "id": "jev-separate",
+          "reservedMicros": 2758506,
+          "capMicros": 2788789,
+          "lastDispatchAtMs": 1792911806478
+        },
+        {
+          "id": "zoom-shared",
+          "reservedMicros": 1408000,
+          "capMicros": 5000000,
+          "lastDispatchAtMs": 1792906593773
+        }
+      ],
+      "attempts": 2408
+    }
+  },
+  {
+    "status": "experiment-result",
+    "roundId": "83ef50fb-3650-4dff-b7c9-0a84e60cdbda",
+    "tick": 86,
+    "variant": "treatment",
+    "repetition": 2,
+    "contextHash": "b7f4c82912482e14ba02c7a1f0e63ae3b1ba6a98631c2e9a4ddeef9c6c0808a4",
+    "bodyHash": "05bb89229b1324bd66644129d18a49e04d944b9a2b43f7257658e5de809c3edc",
+    "provider": "jev",
+    "outcome": {
+      "mode": "live",
+      "origin": "provider",
+      "attemptedProvider": "jev",
+      "attemptCount": 1,
+      "result": {
+        "provider": "jev",
+        "action": "COOK",
+        "latencyMs": 278,
+        "status": "success",
+        "modelVersion": "jev-1.13.0",
+        "probabilities": [
+          {
+            "action": "COOK",
+            "probability": 0.95
+          },
+          {
+            "action": "WAIT",
+            "probability": 0.05
+          }
+        ],
+        "confidence": 0.9,
+        "confidenceSemantics": "Provider-reported confidence in selected label per @typesafe-ai/sdk@0.7.0; not claimed calibrated.",
+        "probabilitySemantics": "Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.",
+        "usage": {
+          "inputTokens": 2108,
+          "outputTokens": 33
+        },
+        "requestId": "req_01a171df162a7808918fe615cf2bd0cc"
+      },
+      "nativeUsage": {
+        "schemaVersion": "provider-native-usage-1",
+        "provider": "jev",
+        "inputUnits": 2108,
+        "outputUnits": 33,
+        "unitType": "tokens"
+      },
+      "diagnostic": null
+    }
+  },
+  {
+    "status": "experiment-transition",
+    "roundId": "5ea24c76-990a-4247-9758-c68214bfc03d",
+    "tick": 86,
+    "variant": "baseline",
+    "repetition": 2,
+    "configurationHash": "7a145e53648d56b5101c03dbfd1547480333ebe4437c68105e95332cbd964244",
+    "summary": {
+      "campaignId": "zoom-trial-campaign-1",
+      "pools": [
+        {
+          "id": "jev-separate",
+          "reservedMicros": 2761259,
+          "capMicros": 2788789,
+          "lastDispatchAtMs": 1792911807948
+        },
+        {
+          "id": "zoom-shared",
+          "reservedMicros": 1408000,
+          "capMicros": 5000000,
+          "lastDispatchAtMs": 1792906593773
+        }
+      ],
+      "attempts": 2409
+    }
+  },
+  {
+    "status": "experiment-result",
+    "roundId": "5ea24c76-990a-4247-9758-c68214bfc03d",
+    "tick": 86,
+    "variant": "baseline",
+    "repetition": 2,
+    "contextHash": "b7f4c82912482e14ba02c7a1f0e63ae3b1ba6a98631c2e9a4ddeef9c6c0808a4",
+    "bodyHash": "247627bdf356172d05331c76adb8ddfc3d5ce12e8784a27fe9fd487df70a252f",
+    "provider": "jev",
+    "outcome": {
+      "mode": "live",
+      "origin": "provider",
+      "attemptedProvider": "jev",
+      "attemptCount": 1,
+      "result": {
+        "provider": "jev",
+        "action": "COOK",
+        "latencyMs": 247,
+        "status": "success",
+        "modelVersion": "jev-1.13.0",
+        "probabilities": [
+          {
+            "action": "COOK",
+            "probability": 0.51
+          },
+          {
+            "action": "WAIT",
+            "probability": 0.49
+          }
+        ],
+        "confidence": 0.02,
+        "confidenceSemantics": "Provider-reported confidence in selected label per @typesafe-ai/sdk@0.7.0; not claimed calibrated.",
+        "probabilitySemantics": "Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.",
+        "usage": {
+          "inputTokens": 1988,
+          "outputTokens": 33
+        },
+        "requestId": "req_01a171df1c307dfd87a97b653e35ef98"
+      },
+      "nativeUsage": {
+        "schemaVersion": "provider-native-usage-1",
+        "provider": "jev",
+        "inputUnits": 1988,
+        "outputUnits": 33,
+        "unitType": "tokens"
+      },
+      "diagnostic": null
+    }
+  },
+  {
+    "status": "experiment-transition",
+    "roundId": "7b03c4ed-0d2a-489c-b4a6-6bec13c07899",
+    "tick": 87,
+    "variant": "baseline",
+    "repetition": 2,
+    "configurationHash": "f40527b2470ac6c68c6411f8657f319647e777f1de6363985f64c7573214618a",
+    "summary": {
+      "campaignId": "zoom-trial-campaign-1",
+      "pools": [
+        {
+          "id": "jev-separate",
+          "reservedMicros": 2764012,
+          "capMicros": 2788789,
+          "lastDispatchAtMs": 1792911809496
+        },
+        {
+          "id": "zoom-shared",
+          "reservedMicros": 1408000,
+          "capMicros": 5000000,
+          "lastDispatchAtMs": 1792906593773
+        }
+      ],
+      "attempts": 2410
+    }
+  },
+  {
+    "status": "experiment-result",
+    "roundId": "7b03c4ed-0d2a-489c-b4a6-6bec13c07899",
+    "tick": 87,
+    "variant": "baseline",
+    "repetition": 2,
+    "contextHash": "c57d6a7d719cd8167f44e9199a05b8cefd77a7a1be1d68ffb5dedde65ac62aa3",
+    "bodyHash": "c971d9d836b4c234015362f98a8be7625742838734441d1af3156ec8febac78b",
+    "provider": "jev",
+    "outcome": {
+      "mode": "live",
+      "origin": "provider",
+      "attemptedProvider": "jev",
+      "attemptCount": 1,
+      "result": {
+        "provider": "jev",
+        "action": "WAIT",
+        "latencyMs": 222,
+        "status": "success",
+        "modelVersion": "jev-1.13.0",
+        "probabilities": [
+          {
+            "action": "COOK",
+            "probability": 0.34
+          },
+          {
+            "action": "WAIT",
+            "probability": 0.66
+          }
+        ],
+        "confidence": 0.32,
+        "confidenceSemantics": "Provider-reported confidence in selected label per @typesafe-ai/sdk@0.7.0; not claimed calibrated.",
+        "probabilitySemantics": "Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.",
+        "usage": {
+          "inputTokens": 2005,
+          "outputTokens": 32
+        },
+        "requestId": "req_01a171df223775b2b81ab79bc1bdd8f9"
+      },
+      "nativeUsage": {
+        "schemaVersion": "provider-native-usage-1",
+        "provider": "jev",
+        "inputUnits": 2005,
+        "outputUnits": 32,
+        "unitType": "tokens"
+      },
+      "diagnostic": null
+    }
+  },
+  {
+    "status": "experiment-transition",
+    "roundId": "147a8552-d717-449c-bcd1-8a694eef1461",
+    "tick": 87,
+    "variant": "treatment",
+    "repetition": 2,
+    "configurationHash": "53a0450640cd9edce00d0720aeb41f2957cb522f915d77ed94b5e418a2ec3957",
+    "summary": {
+      "campaignId": "zoom-trial-campaign-1",
+      "pools": [
+        {
+          "id": "jev-separate",
+          "reservedMicros": 2766765,
+          "capMicros": 2788789,
+          "lastDispatchAtMs": 1792911811038
+        },
+        {
+          "id": "zoom-shared",
+          "reservedMicros": 1408000,
+          "capMicros": 5000000,
+          "lastDispatchAtMs": 1792906593773
+        }
+      ],
+      "attempts": 2411
+    }
+  },
+  {
+    "status": "experiment-result",
+    "roundId": "147a8552-d717-449c-bcd1-8a694eef1461",
+    "tick": 87,
+    "variant": "treatment",
+    "repetition": 2,
+    "contextHash": "c57d6a7d719cd8167f44e9199a05b8cefd77a7a1be1d68ffb5dedde65ac62aa3",
+    "bodyHash": "bd36bc23de247286627e269d6a46c990ddfcf899f328a567be1b69415a3f7c07",
+    "provider": "jev",
+    "outcome": {
+      "mode": "live",
+      "origin": "provider",
+      "attemptedProvider": "jev",
+      "attemptCount": 1,
+      "result": {
+        "provider": "jev",
+        "action": "COOK",
+        "latencyMs": 246,
+        "status": "success",
+        "modelVersion": "jev-1.13.0",
+        "probabilities": [
+          {
+            "action": "COOK",
+            "probability": 0.95
+          },
+          {
+            "action": "WAIT",
+            "probability": 0.05
+          }
+        ],
+        "confidence": 0.9,
+        "confidenceSemantics": "Provider-reported confidence in selected label per @typesafe-ai/sdk@0.7.0; not claimed calibrated.",
+        "probabilitySemantics": "Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.",
+        "usage": {
+          "inputTokens": 2125,
+          "outputTokens": 33
+        },
+        "requestId": "req_01a171df27fb7277a53c5bcab8bc6aae"
+      },
+      "nativeUsage": {
+        "schemaVersion": "provider-native-usage-1",
+        "provider": "jev",
+        "inputUnits": 2125,
+        "outputUnits": 33,
+        "unitType": "tokens"
+      },
+      "diagnostic": null
+    }
+  },
+  {
+    "status": "experiment-transition",
+    "roundId": "74df032a-a5a4-4da7-8b6d-e2c7d6679594",
+    "tick": 86,
+    "variant": "baseline",
+    "repetition": 3,
+    "configurationHash": "54aa625a2eea57de2cc1d294a137793ece43d54314b235a40fac42889f2fc2fd",
+    "summary": {
+      "campaignId": "zoom-trial-campaign-1",
+      "pools": [
+        {
+          "id": "jev-separate",
+          "reservedMicros": 2769518,
+          "capMicros": 2788789,
+          "lastDispatchAtMs": 1792911812516
+        },
+        {
+          "id": "zoom-shared",
+          "reservedMicros": 1408000,
+          "capMicros": 5000000,
+          "lastDispatchAtMs": 1792906593773
+        }
+      ],
+      "attempts": 2412
+    }
+  },
+  {
+    "status": "experiment-result",
+    "roundId": "74df032a-a5a4-4da7-8b6d-e2c7d6679594",
+    "tick": 86,
+    "variant": "baseline",
+    "repetition": 3,
+    "contextHash": "b7f4c82912482e14ba02c7a1f0e63ae3b1ba6a98631c2e9a4ddeef9c6c0808a4",
+    "bodyHash": "247627bdf356172d05331c76adb8ddfc3d5ce12e8784a27fe9fd487df70a252f",
+    "provider": "jev",
+    "outcome": {
+      "mode": "live",
+      "origin": "provider",
+      "attemptedProvider": "jev",
+      "attemptCount": 1,
+      "result": {
+        "provider": "jev",
+        "action": "WAIT",
+        "latencyMs": 266,
+        "status": "success",
+        "modelVersion": "jev-1.13.0",
+        "probabilities": [
+          {
+            "action": "COOK",
+            "probability": 0.43
+          },
+          {
+            "action": "WAIT",
+            "probability": 0.57
+          }
+        ],
+        "confidence": 0.14,
+        "confidenceSemantics": "Provider-reported confidence in selected label per @typesafe-ai/sdk@0.7.0; not claimed calibrated.",
+        "probabilitySemantics": "Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.",
+        "usage": {
+          "inputTokens": 1988,
+          "outputTokens": 32
+        },
+        "requestId": "req_01a171df2de879fab8e991fa1ca8fedf"
+      },
+      "nativeUsage": {
+        "schemaVersion": "provider-native-usage-1",
+        "provider": "jev",
+        "inputUnits": 1988,
+        "outputUnits": 32,
+        "unitType": "tokens"
+      },
+      "diagnostic": null
+    }
+  },
+  {
+    "status": "experiment-transition",
+    "roundId": "f04cf05b-46e8-4bb5-9098-64d169823bc2",
+    "tick": 86,
+    "variant": "treatment",
+    "repetition": 3,
+    "configurationHash": "0f26a49344af46a61a67337d72e842159f4f21d6d3f036a5c600837ea55d4d5a",
+    "summary": {
+      "campaignId": "zoom-trial-campaign-1",
+      "pools": [
+        {
+          "id": "jev-separate",
+          "reservedMicros": 2772271,
+          "capMicros": 2788789,
+          "lastDispatchAtMs": 1792911814028
+        },
+        {
+          "id": "zoom-shared",
+          "reservedMicros": 1408000,
+          "capMicros": 5000000,
+          "lastDispatchAtMs": 1792906593773
+        }
+      ],
+      "attempts": 2413
+    }
+  },
+  {
+    "status": "experiment-result",
+    "roundId": "f04cf05b-46e8-4bb5-9098-64d169823bc2",
+    "tick": 86,
+    "variant": "treatment",
+    "repetition": 3,
+    "contextHash": "b7f4c82912482e14ba02c7a1f0e63ae3b1ba6a98631c2e9a4ddeef9c6c0808a4",
+    "bodyHash": "05bb89229b1324bd66644129d18a49e04d944b9a2b43f7257658e5de809c3edc",
+    "provider": "jev",
+    "outcome": {
+      "mode": "live",
+      "origin": "provider",
+      "attemptedProvider": "jev",
+      "attemptCount": 1,
+      "result": {
+        "provider": "jev",
+        "action": "COOK",
+        "latencyMs": 278,
+        "status": "success",
+        "modelVersion": "jev-1.13.0",
+        "probabilities": [
+          {
+            "action": "COOK",
+            "probability": 0.96
+          },
+          {
+            "action": "WAIT",
+            "probability": 0.04
+          }
+        ],
+        "confidence": 0.92,
+        "confidenceSemantics": "Provider-reported confidence in selected label per @typesafe-ai/sdk@0.7.0; not claimed calibrated.",
+        "probabilitySemantics": "Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.",
+        "usage": {
+          "inputTokens": 2108,
+          "outputTokens": 33
+        },
+        "requestId": "req_01a171df33d17427b1458b23dbb7c656"
+      },
+      "nativeUsage": {
+        "schemaVersion": "provider-native-usage-1",
+        "provider": "jev",
+        "inputUnits": 2108,
+        "outputUnits": 33,
+        "unitType": "tokens"
+      },
+      "diagnostic": null
+    }
+  },
+  {
+    "status": "experiment-transition",
+    "roundId": "eb3762f3-850c-46b8-9644-cc95a603edeb",
+    "tick": 87,
+    "variant": "treatment",
+    "repetition": 3,
+    "configurationHash": "12c3d82cad4ae94e12adedabffe81f4d2d0883222ddea48f0ad301bab9621710",
+    "summary": {
+      "campaignId": "zoom-trial-campaign-1",
+      "pools": [
+        {
+          "id": "jev-separate",
+          "reservedMicros": 2775024,
+          "capMicros": 2788789,
+          "lastDispatchAtMs": 1792911815545
+        },
+        {
+          "id": "zoom-shared",
+          "reservedMicros": 1408000,
+          "capMicros": 5000000,
+          "lastDispatchAtMs": 1792906593773
+        }
+      ],
+      "attempts": 2414
+    }
+  },
+  {
+    "status": "experiment-result",
+    "roundId": "eb3762f3-850c-46b8-9644-cc95a603edeb",
+    "tick": 87,
+    "variant": "treatment",
+    "repetition": 3,
+    "contextHash": "c57d6a7d719cd8167f44e9199a05b8cefd77a7a1be1d68ffb5dedde65ac62aa3",
+    "bodyHash": "bd36bc23de247286627e269d6a46c990ddfcf899f328a567be1b69415a3f7c07",
+    "provider": "jev",
+    "outcome": {
+      "mode": "live",
+      "origin": "provider",
+      "attemptedProvider": "jev",
+      "attemptCount": 1,
+      "result": {
+        "provider": "jev",
+        "action": "COOK",
+        "latencyMs": 234,
+        "status": "success",
+        "modelVersion": "jev-1.13.0",
+        "probabilities": [
+          {
+            "action": "COOK",
+            "probability": 0.95
+          },
+          {
+            "action": "WAIT",
+            "probability": 0.05
+          }
+        ],
+        "confidence": 0.9,
+        "confidenceSemantics": "Provider-reported confidence in selected label per @typesafe-ai/sdk@0.7.0; not claimed calibrated.",
+        "probabilitySemantics": "Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.",
+        "usage": {
+          "inputTokens": 2125,
+          "outputTokens": 33
+        },
+        "requestId": "req_01a171df39f577469ef9b2e729c04d20"
+      },
+      "nativeUsage": {
+        "schemaVersion": "provider-native-usage-1",
+        "provider": "jev",
+        "inputUnits": 2125,
+        "outputUnits": 33,
+        "unitType": "tokens"
+      },
+      "diagnostic": null
+    }
+  },
+  {
+    "status": "experiment-transition",
+    "roundId": "3c3ed075-d9f9-4970-bf1e-6ef737f2c28f",
+    "tick": 87,
+    "variant": "baseline",
+    "repetition": 3,
+    "configurationHash": "f47283f4a7a14331faeec245296b9ab005c1b575766e06ecb7be882ef6d3a6b6",
+    "summary": {
+      "campaignId": "zoom-trial-campaign-1",
+      "pools": [
+        {
+          "id": "jev-separate",
+          "reservedMicros": 2777777,
+          "capMicros": 2788789,
+          "lastDispatchAtMs": 1792911817117
+        },
+        {
+          "id": "zoom-shared",
+          "reservedMicros": 1408000,
+          "capMicros": 5000000,
+          "lastDispatchAtMs": 1792906593773
+        }
+      ],
+      "attempts": 2415
+    }
+  },
+  {
+    "status": "experiment-result",
+    "roundId": "3c3ed075-d9f9-4970-bf1e-6ef737f2c28f",
+    "tick": 87,
+    "variant": "baseline",
+    "repetition": 3,
+    "contextHash": "c57d6a7d719cd8167f44e9199a05b8cefd77a7a1be1d68ffb5dedde65ac62aa3",
+    "bodyHash": "c971d9d836b4c234015362f98a8be7625742838734441d1af3156ec8febac78b",
+    "provider": "jev",
+    "outcome": {
+      "mode": "live",
+      "origin": "provider",
+      "attemptedProvider": "jev",
+      "attemptCount": 1,
+      "result": {
+        "provider": "jev",
+        "action": "WAIT",
+        "latencyMs": 232,
+        "status": "success",
+        "modelVersion": "jev-1.13.0",
+        "probabilities": [
+          {
+            "action": "COOK",
+            "probability": 0.41
+          },
+          {
+            "action": "WAIT",
+            "probability": 0.59
+          }
+        ],
+        "confidence": 0.18,
+        "confidenceSemantics": "Provider-reported confidence in selected label per @typesafe-ai/sdk@0.7.0; not claimed calibrated.",
+        "probabilitySemantics": "Provider-reported per-label choice probabilities per @typesafe-ai/sdk@0.7.0; no cross-provider calibration claim.",
+        "usage": {
+          "inputTokens": 2005,
+          "outputTokens": 32
+        },
+        "requestId": "req_01a171df3fea7ae793c8e2bbd791d4e0"
+      },
+      "nativeUsage": {
+        "schemaVersion": "provider-native-usage-1",
+        "provider": "jev",
+        "inputUnits": 2005,
+        "outputUnits": 32,
+        "unitType": "tokens"
+      },
+      "diagnostic": null
+    }
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "app": "uv3z47fpgf70scuxg70dy56w",
+  "sha": "e5a86be6eab84fd6eea6ecb2602bbb842ff7d758",
+  "deployment": "j25497cvmozf0c7gspp3uw6x",
+  "standbyDeployment": "n16gg7k9veqnnsvp95eahaho",
+  "inferenceCredentialsRemoved": true,
+  "failedStandbyDeployment": "gpyntr063kdid9rfvx92nfyb",
+  "standbyError": "External Docker network missing during standby restoration",
+  "status": "running:healthy",
+  "readiness": {
+    "status": "standby-ready",
+    "promptVersion": "hawker-decision-prompt-4",
+    "requestBytes": [
+      5882,
+      5921,
+      5916
+    ],
+    "providerDispatch": false
+  }
+}

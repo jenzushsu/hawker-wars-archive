@@ -1,0 +1,82 @@
+{
+  "status": "verified",
+  "groups": [
+    {
+      "tick": 86,
+      "variant": "baseline",
+      "choices": [
+        "WAIT",
+        "COOK",
+        "WAIT"
+      ],
+      "cookProbabilities": [
+        0.37,
+        0.51,
+        0.43
+      ]
+    },
+    {
+      "tick": 86,
+      "variant": "treatment",
+      "choices": [
+        "COOK",
+        "COOK",
+        "COOK"
+      ],
+      "cookProbabilities": [
+        0.95,
+        0.95,
+        0.96
+      ]
+    },
+    {
+      "tick": 87,
+      "variant": "baseline",
+      "choices": [
+        "WAIT",
+        "WAIT",
+        "WAIT"
+      ],
+      "cookProbabilities": [
+        0.32,
+        0.34,
+        0.41
+      ]
+    },
+    {
+      "tick": 87,
+      "variant": "treatment",
+      "choices": [
+        "COOK",
+        "COOK",
+        "COOK"
+      ],
+      "cookProbabilities": [
+        0.96,
+        0.95,
+        0.95
+      ]
+    }
+  ],
+  "calls": 12,
+  "addedReservedMicros": 33036,
+  "ledger": {
+    "campaignId": "zoom-trial-campaign-1",
+    "pools": [
+      {
+        "id": "jev-separate",
+        "reservedMicros": 2780530,
+        "capMicros": 2788789,
+        "lastDispatchAtMs": 1792911818644
+      },
+      {
+        "id": "zoom-shared",
+        "reservedMicros": 1408000,
+        "capMicros": 5000000,
+        "lastDispatchAtMs": 1792906593773
+      }
+    ],
+    "attempts": 2416
+  },
+  "caveat": "Three repetitions per condition, alternating predetermined order; not randomized or statistically conclusive. Same-state choices do not establish full-round gains."
+}
