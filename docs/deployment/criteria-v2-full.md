@@ -1,5 +1,7 @@
 # Full Jev 1.13.0 round: action-criteria v2 regressed
 
+**Selection: rejected for promotion; historical experiment only.** The user retained action-criteria-prompt-1. See [selection record](prompt-selection.md).
+
 Completed the approved clean seed23 run with Jev1.13.0, action-criteria-prompt-2,
 all120 ticks plus closing, and no safeguard. Every model choice was executed
 unchanged. No Zoom calls or live-web publication. Run

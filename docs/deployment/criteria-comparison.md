@@ -1,5 +1,7 @@
 # Jev 1.13.0 with concise action criteria
 
+**Selection: retained by user instruction.** Jev 1.13.0, action-criteria-prompt-1, no safeguard. See [selection record](prompt-selection.md).
+
 Completed all 120 ticks plus closing on clean seed 23 using **Jev 1.13.0**, the
 experimental `action-criteria-prompt-1` instructions and **no safeguard**. Every
 model choice was executed unchanged. No Zoom calls or live-web publication were
