@@ -33,7 +33,7 @@ runtime/exception files and explicit prompt selector, on the existing retained
 volume. Both preparation and worker commits must be pinned to the same revision.
 
 No deployment, database publication, ledger amendment or paid calls have happened
-for this plan. Budget approval is still pending.
+for this plan. Budget extension approved by the user: “extend limit”.
 
 ## Exact budget extension
 
@@ -46,8 +46,8 @@ unchanged $0.25/run and $5/campaign limits. Prior Zoom allocation: $1.408000.
 Total maximum additional reservations/allocations: **$0.570360**. These are
 conservative accounting bounds, not invoice charges.
 
-[Approval record](../providers/fair-campaign-approval-live-retained.json) remains
-pending. Existing manifests are historical runs; do not reset or replay them.
+[Approval record](../providers/fair-campaign-approval-live-retained.json) is
+approved. Existing manifests are historical runs; do not reset or replay them.
 Expected retained attempts:2,526. Prior ledger identity comes from the completed
 v2 experiment, independently of the older DB round used to verify completion.
 

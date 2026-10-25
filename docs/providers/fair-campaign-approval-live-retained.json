@@ -1,5 +1,5 @@
 {
-  "status": "pending-budget-approval",
+  "status": "approved",
   "requestSource": "User: re-run the current prompt for all the models. I want to view live",
   "scope": "One published live 120-tick seed23 comparison: Rules frozen, Jev1.13.0 and both Zoom models use retained action-criteria-prompt-1; no safeguard.",
   "roundId": "a4366c8c-a68e-4699-adcc-f06e754ef352",
@@ -21,5 +21,7 @@
   "promptTreatment": "action-criteria-prompt-1",
   "published": true,
   "tickIntervalMs": 5000,
-  "previousCompletedRoundId": "81180c83-7388-4540-a46d-6602049e403c"
+  "previousCompletedRoundId": "81180c83-7388-4540-a46d-6602049e403c",
+  "approvalSource": "User: extend limit",
+  "approvedAt": "2026-10-25T07:44:00.894391+00:00"
 }
