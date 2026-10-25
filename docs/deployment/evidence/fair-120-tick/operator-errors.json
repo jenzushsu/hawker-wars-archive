@@ -1,0 +1,8 @@
+{
+  "deployment": "igqpx8oxumwbpxfycl5b0h1m",
+  "stage": "compose-build",
+  "error": "HAWKER_SEED runtime-only variable unavailable for embedded Compose path interpolation",
+  "resolution": "Expose only non-secret HAWKER_SEED at both build and runtime; credentials remain runtime-only",
+  "providerDispatch": false,
+  "ledgerAmendment": false
+}

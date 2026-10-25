@@ -22,7 +22,7 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "781ba70d5c674cb085a4e848b6641e85004cb3426a0a4fe71ff33602cae43aff",
+    "sourceTreeHash": "11101ef920aa91b9dec8377ff51fdf4165c477040a6d344f446aa15efd360945",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
       {
@@ -743,7 +743,7 @@
       },
       {
         "path": "scripts/analyze-recorded-comparison.ts",
-        "sha256": "3923a216ce5e1d4bcedf2d5d94bf7c7c096b2dcf6643aaa62758ba1e561e0aba"
+        "sha256": "495c3471d221c67d96d7fc86fe0a9071d05d86550fca032db4e0a98d880d1dd2"
       },
       {
         "path": "scripts/artifact-output.ts",
@@ -944,6 +944,10 @@
       {
         "path": "scripts/validate-votes-http.ts",
         "sha256": "62940867a6a381f43913d49029e2eb9af50e633356a27a78e7e28cd28d46c1da"
+      },
+      {
+        "path": "scripts/verify-fair-campaign.ts",
+        "sha256": "af41b8b883560429cad90df9a0f32496712f5e6e37cd8de909a9f794616fcaea"
       },
       {
         "path": "supabase/migrations/202610230001_live_store.sql",

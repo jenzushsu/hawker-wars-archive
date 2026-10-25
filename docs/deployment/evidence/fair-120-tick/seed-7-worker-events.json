@@ -1,0 +1,2157 @@
+[
+  {
+    "status": "supervising",
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "policyIds": [
+      "rules",
+      "jev",
+      "zoom",
+      "zoom-pro"
+    ],
+    "voting": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 0,
+    "sequence": 1,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 0,
+    "sequence": 1,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 1,
+    "sequence": 2,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 1,
+    "sequence": 2,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 2,
+    "sequence": 3,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 2,
+    "sequence": 3,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 3,
+    "sequence": 4,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 3,
+    "sequence": 4,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 4,
+    "sequence": 5,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 4,
+    "sequence": 5,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 5,
+    "sequence": 6,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 5,
+    "sequence": 6,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 6,
+    "sequence": 7,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 6,
+    "sequence": 7,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 7,
+    "sequence": 8,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 7,
+    "sequence": 8,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 8,
+    "sequence": 9,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 8,
+    "sequence": 9,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 9,
+    "sequence": 10,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 9,
+    "sequence": 10,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 10,
+    "sequence": 11,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 10,
+    "sequence": 11,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 11,
+    "sequence": 12,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 11,
+    "sequence": 12,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 12,
+    "sequence": 13,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 12,
+    "sequence": 13,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 13,
+    "sequence": 14,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 13,
+    "sequence": 14,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 14,
+    "sequence": 15,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 14,
+    "sequence": 15,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 15,
+    "sequence": 16,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 15,
+    "sequence": 16,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 16,
+    "sequence": 17,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 16,
+    "sequence": 17,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 17,
+    "sequence": 18,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 17,
+    "sequence": 18,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 18,
+    "sequence": 19,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 18,
+    "sequence": 19,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 19,
+    "sequence": 20,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 19,
+    "sequence": 20,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 20,
+    "sequence": 21,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 20,
+    "sequence": 21,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 21,
+    "sequence": 22,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 21,
+    "sequence": 22,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 22,
+    "sequence": 23,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 22,
+    "sequence": 23,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 23,
+    "sequence": 24,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 23,
+    "sequence": 24,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 24,
+    "sequence": 25,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 24,
+    "sequence": 25,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 25,
+    "sequence": 26,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 25,
+    "sequence": 26,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 26,
+    "sequence": 27,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 26,
+    "sequence": 27,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 27,
+    "sequence": 28,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 27,
+    "sequence": 28,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 28,
+    "sequence": 29,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 28,
+    "sequence": 29,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 29,
+    "sequence": 30,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 29,
+    "sequence": 30,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 30,
+    "sequence": 31,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 30,
+    "sequence": 31,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 31,
+    "sequence": 32,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 31,
+    "sequence": 32,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 32,
+    "sequence": 33,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 32,
+    "sequence": 33,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 33,
+    "sequence": 34,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 33,
+    "sequence": 34,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 34,
+    "sequence": 35,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 34,
+    "sequence": 35,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 35,
+    "sequence": 36,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 35,
+    "sequence": 36,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 36,
+    "sequence": 37,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 36,
+    "sequence": 37,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 37,
+    "sequence": 38,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 37,
+    "sequence": 38,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 38,
+    "sequence": 39,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 38,
+    "sequence": 39,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 39,
+    "sequence": 40,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 39,
+    "sequence": 40,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 40,
+    "sequence": 41,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 40,
+    "sequence": 41,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 41,
+    "sequence": 42,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 41,
+    "sequence": 42,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 42,
+    "sequence": 43,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 42,
+    "sequence": 43,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 43,
+    "sequence": 44,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 43,
+    "sequence": 44,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 44,
+    "sequence": 45,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 44,
+    "sequence": 45,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 45,
+    "sequence": 46,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 45,
+    "sequence": 46,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 46,
+    "sequence": 47,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 46,
+    "sequence": 47,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 47,
+    "sequence": 48,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 47,
+    "sequence": 48,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 48,
+    "sequence": 49,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 48,
+    "sequence": 49,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 49,
+    "sequence": 50,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 49,
+    "sequence": 50,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 50,
+    "sequence": 51,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 50,
+    "sequence": 51,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 51,
+    "sequence": 52,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 51,
+    "sequence": 52,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 52,
+    "sequence": 53,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 52,
+    "sequence": 53,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 53,
+    "sequence": 54,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 53,
+    "sequence": 54,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 54,
+    "sequence": 55,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 54,
+    "sequence": 55,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 55,
+    "sequence": 56,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 55,
+    "sequence": 56,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 56,
+    "sequence": 57,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 56,
+    "sequence": 57,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 57,
+    "sequence": 58,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 57,
+    "sequence": 58,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 58,
+    "sequence": 59,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 58,
+    "sequence": 59,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 59,
+    "sequence": 60,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 59,
+    "sequence": 60,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 60,
+    "sequence": 61,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 60,
+    "sequence": 61,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 61,
+    "sequence": 62,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 61,
+    "sequence": 62,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 62,
+    "sequence": 63,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 62,
+    "sequence": 63,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 63,
+    "sequence": 64,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 63,
+    "sequence": 64,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 64,
+    "sequence": 65,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 64,
+    "sequence": 65,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 65,
+    "sequence": 66,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 65,
+    "sequence": 66,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 66,
+    "sequence": 67,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 66,
+    "sequence": 67,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 67,
+    "sequence": 68,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 67,
+    "sequence": 68,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 68,
+    "sequence": 69,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 68,
+    "sequence": 69,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 69,
+    "sequence": 70,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 69,
+    "sequence": 70,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 70,
+    "sequence": 71,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 70,
+    "sequence": 71,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 71,
+    "sequence": 72,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 71,
+    "sequence": 72,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 72,
+    "sequence": 73,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 72,
+    "sequence": 73,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 73,
+    "sequence": 74,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 73,
+    "sequence": 74,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 74,
+    "sequence": 75,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 74,
+    "sequence": 75,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 75,
+    "sequence": 76,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 75,
+    "sequence": 76,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 76,
+    "sequence": 77,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 76,
+    "sequence": 77,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 77,
+    "sequence": 78,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 77,
+    "sequence": 78,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 78,
+    "sequence": 79,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 78,
+    "sequence": 79,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 79,
+    "sequence": 80,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 79,
+    "sequence": 80,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 80,
+    "sequence": 81,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 80,
+    "sequence": 81,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 81,
+    "sequence": 82,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 81,
+    "sequence": 82,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 82,
+    "sequence": 83,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 82,
+    "sequence": 83,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 83,
+    "sequence": 84,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 83,
+    "sequence": 84,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 84,
+    "sequence": 85,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 84,
+    "sequence": 85,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 85,
+    "sequence": 86,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 85,
+    "sequence": 86,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 86,
+    "sequence": 87,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 86,
+    "sequence": 87,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 87,
+    "sequence": 88,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 87,
+    "sequence": 88,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 88,
+    "sequence": 89,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 88,
+    "sequence": 89,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 89,
+    "sequence": 90,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 89,
+    "sequence": 90,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 90,
+    "sequence": 91,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 90,
+    "sequence": 91,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 91,
+    "sequence": 92,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 91,
+    "sequence": 92,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 92,
+    "sequence": 93,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 92,
+    "sequence": 93,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 93,
+    "sequence": 94,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 93,
+    "sequence": 94,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 94,
+    "sequence": 95,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 94,
+    "sequence": 95,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 95,
+    "sequence": 96,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 95,
+    "sequence": 96,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 96,
+    "sequence": 97,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 96,
+    "sequence": 97,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 97,
+    "sequence": 98,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 97,
+    "sequence": 98,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 98,
+    "sequence": 99,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 98,
+    "sequence": 99,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 99,
+    "sequence": 100,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 99,
+    "sequence": 100,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 100,
+    "sequence": 101,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 100,
+    "sequence": 101,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 101,
+    "sequence": 102,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 101,
+    "sequence": 102,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 102,
+    "sequence": 103,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 102,
+    "sequence": 103,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 103,
+    "sequence": 104,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 103,
+    "sequence": 104,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 104,
+    "sequence": 105,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 104,
+    "sequence": 105,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 105,
+    "sequence": 106,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 105,
+    "sequence": 106,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 106,
+    "sequence": 107,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 106,
+    "sequence": 107,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 107,
+    "sequence": 108,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 107,
+    "sequence": 108,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 108,
+    "sequence": 109,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 108,
+    "sequence": 109,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 109,
+    "sequence": 110,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 109,
+    "sequence": 110,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 110,
+    "sequence": 111,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 110,
+    "sequence": 111,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 111,
+    "sequence": 112,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 111,
+    "sequence": 112,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 112,
+    "sequence": 113,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 112,
+    "sequence": 113,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 113,
+    "sequence": 114,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 113,
+    "sequence": 114,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 114,
+    "sequence": 115,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 114,
+    "sequence": 115,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 115,
+    "sequence": 116,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 115,
+    "sequence": 116,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 116,
+    "sequence": 117,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 116,
+    "sequence": 117,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 117,
+    "sequence": 118,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 117,
+    "sequence": 118,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 118,
+    "sequence": 119,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 118,
+    "sequence": 119,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "committed",
+    "tick": 119,
+    "sequence": 120,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "waiting",
+    "tick": 119,
+    "sequence": 120,
+    "replayed": false
+  },
+  {
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "status": "completed",
+    "tick": 120,
+    "sequence": 121,
+    "replayed": false
+  },
+  {
+    "status": "campaign-accounting",
+    "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "summary": {
+      "campaignId": "zoom-trial-campaign-1",
+      "pools": [
+        {
+          "id": "jev-separate",
+          "reservedMicros": 958044,
+          "capMicros": 1646294,
+          "lastDispatchAtMs": 1792895946303
+        },
+        {
+          "id": "zoom-shared",
+          "reservedMicros": 631000,
+          "capMicros": 5000000,
+          "lastDispatchAtMs": 1792896021377
+        }
+      ],
+      "attempts": 977
+    },
+    "usage": {
+      "accountingBasis": "Jev verified reservations; Zoom operator allocations, not guaranteed charges",
+      "priorExposure": [
+        {
+          "micros": 1000,
+          "evidenceId": "docs/providers/zoom-smoke-result.json"
+        },
+        {
+          "micros": 1000,
+          "evidenceId": "docs/providers/zoom-pro-smoke-result.json"
+        }
+      ],
+      "runs": [
+        {
+          "run_id": "0f6ce385-6a7c-4eb7-8097-5014bcab50aa",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 5506,
+          "reported_input_units": 5126,
+          "mean_latency_ms": 302.5,
+          "max_latency_ms": 331
+        },
+        {
+          "run_id": "0f6ce385-6a7c-4eb7-8097-5014bcab50aa",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3774,
+          "mean_latency_ms": 504,
+          "max_latency_ms": 512
+        },
+        {
+          "run_id": "0f6ce385-6a7c-4eb7-8097-5014bcab50aa",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3774,
+          "mean_latency_ms": 463.5,
+          "max_latency_ms": 478
+        },
+        {
+          "run_id": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 109,
+          "allocated_micros": 300077,
+          "reported_input_units": 246637,
+          "mean_latency_ms": 282.11009174311926,
+          "max_latency_ms": 485
+        },
+        {
+          "run_id": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+          "provider": "jev",
+          "state": "uncertain",
+          "attempts": 1,
+          "allocated_micros": 2753,
+          "reported_input_units": null,
+          "mean_latency_ms": null,
+          "max_latency_ms": null
+        },
+        {
+          "run_id": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 89,
+          "allocated_micros": 89000,
+          "reported_input_units": 155569,
+          "mean_latency_ms": 526.8876404494382,
+          "max_latency_ms": 1202
+        },
+        {
+          "run_id": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 104,
+          "allocated_micros": 104000,
+          "reported_input_units": 181591,
+          "mean_latency_ms": 583.1538461538462,
+          "max_latency_ms": 1291
+        },
+        {
+          "run_id": "577bb9e5-36df-49e1-895c-880e66d656ee",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 4,
+          "allocated_micros": 11012,
+          "reported_input_units": 9830,
+          "mean_latency_ms": 273.5,
+          "max_latency_ms": 309
+        },
+        {
+          "run_id": "577bb9e5-36df-49e1-895c-880e66d656ee",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 4,
+          "allocated_micros": 4000,
+          "reported_input_units": 7563,
+          "mean_latency_ms": 449,
+          "max_latency_ms": 474
+        },
+        {
+          "run_id": "577bb9e5-36df-49e1-895c-880e66d656ee",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 4,
+          "allocated_micros": 4000,
+          "reported_input_units": 7563,
+          "mean_latency_ms": 855,
+          "max_latency_ms": 1261
+        },
+        {
+          "run_id": "7268f741-0399-4473-b20e-f1c8bb7605eb",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 5506,
+          "reported_input_units": 5126,
+          "mean_latency_ms": 258.5,
+          "max_latency_ms": 264
+        },
+        {
+          "run_id": "7268f741-0399-4473-b20e-f1c8bb7605eb",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3774,
+          "mean_latency_ms": 437.5,
+          "max_latency_ms": 457
+        },
+        {
+          "run_id": "7268f741-0399-4473-b20e-f1c8bb7605eb",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3774,
+          "mean_latency_ms": 551.5,
+          "max_latency_ms": 575
+        },
+        {
+          "run_id": "76af5727-7871-4ea3-89be-16cf4a459dde",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 1,
+          "allocated_micros": 2753,
+          "reported_input_units": 1969,
+          "mean_latency_ms": 439,
+          "max_latency_ms": 439
+        },
+        {
+          "run_id": "8771792d-7132-46cb-9209-cbd5aaf71a75",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 5506,
+          "reported_input_units": 5126,
+          "mean_latency_ms": 302,
+          "max_latency_ms": 338
+        },
+        {
+          "run_id": "8771792d-7132-46cb-9209-cbd5aaf71a75",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3776,
+          "mean_latency_ms": 447,
+          "max_latency_ms": 494
+        },
+        {
+          "run_id": "8771792d-7132-46cb-9209-cbd5aaf71a75",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3776,
+          "mean_latency_ms": 523.5,
+          "max_latency_ms": 536
+        },
+        {
+          "run_id": "9464d32e-4183-416a-8f29-9d2abae3df86",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 5506,
+          "reported_input_units": 5126,
+          "mean_latency_ms": 277,
+          "max_latency_ms": 282
+        },
+        {
+          "run_id": "9464d32e-4183-416a-8f29-9d2abae3df86",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3776,
+          "mean_latency_ms": 490.5,
+          "max_latency_ms": 520
+        },
+        {
+          "run_id": "9464d32e-4183-416a-8f29-9d2abae3df86",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3776,
+          "mean_latency_ms": 479.5,
+          "max_latency_ms": 510
+        },
+        {
+          "run_id": "9f0d746b-b4a6-4efe-bc14-6047976f7bfb",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 5506,
+          "reported_input_units": 5126,
+          "mean_latency_ms": 257.5,
+          "max_latency_ms": 280
+        },
+        {
+          "run_id": "9f0d746b-b4a6-4efe-bc14-6047976f7bfb",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3776,
+          "mean_latency_ms": 468.5,
+          "max_latency_ms": 501
+        },
+        {
+          "run_id": "9f0d746b-b4a6-4efe-bc14-6047976f7bfb",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3776,
+          "mean_latency_ms": 433.5,
+          "max_latency_ms": 473
+        },
+        {
+          "run_id": "a99560e6-ac22-443f-9126-d186175d7092",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 5506,
+          "reported_input_units": 5126,
+          "mean_latency_ms": 264,
+          "max_latency_ms": 271
+        },
+        {
+          "run_id": "a99560e6-ac22-443f-9126-d186175d7092",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3774,
+          "mean_latency_ms": 536.5,
+          "max_latency_ms": 546
+        },
+        {
+          "run_id": "a99560e6-ac22-443f-9126-d186175d7092",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3774,
+          "mean_latency_ms": 605.5,
+          "max_latency_ms": 732
+        },
+        {
+          "run_id": "b7e8b014-2415-48f0-8bfd-5365a228e2c4",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 4,
+          "allocated_micros": 11012,
+          "reported_input_units": 8872,
+          "mean_latency_ms": 273.25,
+          "max_latency_ms": 280
+        },
+        {
+          "run_id": "b7e8b014-2415-48f0-8bfd-5365a228e2c4",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 4,
+          "allocated_micros": 4000,
+          "reported_input_units": 6917,
+          "mean_latency_ms": 834.75,
+          "max_latency_ms": 1236
+        },
+        {
+          "run_id": "b7e8b014-2415-48f0-8bfd-5365a228e2c4",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 4,
+          "allocated_micros": 4000,
+          "reported_input_units": 6917,
+          "mean_latency_ms": 676,
+          "max_latency_ms": 1225
+        },
+        {
+          "run_id": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 104,
+          "allocated_micros": 286312,
+          "reported_input_units": 224200,
+          "mean_latency_ms": 276.4326923076923,
+          "max_latency_ms": 345
+        },
+        {
+          "run_id": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+          "provider": "jev",
+          "state": "uncertain",
+          "attempts": 1,
+          "allocated_micros": 2753,
+          "reported_input_units": null,
+          "mean_latency_ms": null,
+          "max_latency_ms": null
+        },
+        {
+          "run_id": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 96,
+          "allocated_micros": 96000,
+          "reported_input_units": 154995,
+          "mean_latency_ms": 593.7291666666666,
+          "max_latency_ms": 1232
+        },
+        {
+          "run_id": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 103,
+          "allocated_micros": 103000,
+          "reported_input_units": 165692,
+          "mean_latency_ms": 596.2330097087379,
+          "max_latency_ms": 1413
+        },
+        {
+          "run_id": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 110,
+          "allocated_micros": 302830,
+          "reported_input_units": 268811,
+          "mean_latency_ms": 282.3909090909091,
+          "max_latency_ms": 464
+        },
+        {
+          "run_id": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 90,
+          "allocated_micros": 90000,
+          "reported_input_units": 172711,
+          "mean_latency_ms": 527.2666666666667,
+          "max_latency_ms": 1269
+        },
+        {
+          "run_id": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 103,
+          "allocated_micros": 103000,
+          "reported_input_units": 197087,
+          "mean_latency_ms": 584.7766990291262,
+          "max_latency_ms": 1485
+        },
+        {
+          "run_id": "fd8e5428-cd0c-4f7b-abdf-aa391a3132e3",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 5506,
+          "reported_input_units": 5126,
+          "mean_latency_ms": 264,
+          "max_latency_ms": 272
+        },
+        {
+          "run_id": "fd8e5428-cd0c-4f7b-abdf-aa391a3132e3",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3776,
+          "mean_latency_ms": 442,
+          "max_latency_ms": 458
+        },
+        {
+          "run_id": "fd8e5428-cd0c-4f7b-abdf-aa391a3132e3",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3776,
+          "mean_latency_ms": 447.5,
+          "max_latency_ms": 483
+        }
+      ],
+      "providers": [
+        {
+          "provider": "jev",
+          "state": "success",
+          "attempts": 346,
+          "allocated_micros": 952538,
+          "reported_input_tokens": 796201
+        },
+        {
+          "provider": "jev",
+          "state": "uncertain",
+          "attempts": 2,
+          "allocated_micros": 5506,
+          "reported_input_tokens": 0
+        },
+        {
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 297,
+          "allocated_micros": 297000,
+          "reported_input_tokens": 524181
+        },
+        {
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 332,
+          "allocated_micros": 332000,
+          "reported_input_tokens": 585276
+        }
+      ]
+    }
+  }
+]

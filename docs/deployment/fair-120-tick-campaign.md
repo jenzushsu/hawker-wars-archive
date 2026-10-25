@@ -1,8 +1,8 @@
 # Shared planning over complete 120-tick rounds
 
 Prepared for clean seeds 7, 11 and 23, with Rules, Jev, Zoom Standard and Zoom Pro
-in each private round. Status: code and run definitions prepared; paid execution
-requires the additional budget recorded below. No round has been dispatched.
+in each private round. The user approved the additional budget and execution is
+in progress. Results and reconciliation will be added after all rounds finish.
 
 ## Behavior
 
@@ -35,23 +35,22 @@ repetition beyond these three run IDs is authorized by this preparation.
 | Jev, 360 × $0.002753 | $0.991080 |
 | Zoom Standard + Pro, 720 × $0.001 | $0.720000 |
 
-Jev's existing $0.655214 cap is fully reserved. The proposed cumulative cap is
+Jev's existing $0.655214 cap is fully reserved. The approved cumulative cap is
 $1.646294. Its existing $0.34 per-run cap covers all 120 calls ($0.330360). Zoom's
 $0.25 per-run shared cap covers 240 calls ($0.24); the $5 campaign cap stays
 unchanged. These are ledger reservations/operator allocations, not invoices.
 
-The three approval records remain `pending-budget-approval`, and all provider
-activation flags in the prepared runtime manifests are false. Neither deployment
-nor paid inference has occurred. The run IDs and seeds are in
+The three approval records are now `approved`, and the model activation flags
+are enabled only for the defined run scope. The run IDs and seeds are in
 [`fair-campaign-plan.json`](../providers/fair-campaign-plan.json).
 
-## Deployment procedure after approval
+## Deployment procedure
 
-1. Record the approved cap and enable the three model flags in the prepared
-   per-seed manifests. Keep the specified run IDs and exact scope.
+1. The approved cap and model flags are recorded in the per-seed manifests.
+   Keep the specified run IDs and exact scope.
 2. Use the retained Coolify volume and last experiment ledger identity, never a
    newly initialized ledger. First preparation requires exactly 674 prior records.
-3. Deploy `compose.prepare-fair-campaign.yaml` with `HAWKER_SEED=7`, the current
+3. Deploy `compose.prepare-fair-campaign.yaml` with `HAWKER_SEED=7` (build-time and runtime, non-secret), the current
    ledger hash and previous run ID. The operator validates approval, checks the
    preceding completed simulation, amends the existing ledger and creates a
    private seed-7 round. It performs no provider dispatch.
@@ -78,4 +77,10 @@ prove future model trajectories always fit; oversize requests retain the existin
 explicit quota fallback and must be reported if encountered.
 
 Budget tests verify worst-case call coverage, retained campaign exposure and
-disabled dispatch while approval is pending. Production state has not been changed.
+explicitly approved run identities. A 1,100 ms supervisor polling pause is used
+for these private runs; the database still enforces its unchanged five-second
+minimum between committed simulation ticks. Provider calls retain the same
+timeout and shared rolling-window rate checks. The initial Coolify build failed
+before any ledger transition because its seed selector was runtime-only; exposing
+only that non-secret selector at build time resolved Compose path interpolation.
+Credentials remain runtime-only.
