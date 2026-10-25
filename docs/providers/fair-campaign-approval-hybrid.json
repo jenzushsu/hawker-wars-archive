@@ -1,0 +1,22 @@
+{
+  "status": "pending-budget-approval",
+  "requestSource": "User: next, following the proposed shared hybrid comparison",
+  "scope": "One standalone private Coolify hybrid experiment: seed23, 120ticks, three live models with identical shared restock recovery plus frozen Rules baseline. No full-round repeat.",
+  "roundId": "2a818689-d18d-4810-9d18-aeca4607cf42",
+  "seed": 23,
+  "promptVersion": "hawker-decision-prompt-4",
+  "hybridVersion": "shared-restock-hybrid-1",
+  "previousRoundId": "cdeb4749-9f09-4276-b6e5-efff4d99158e",
+  "previousLedgerHash": "bf633701e84ab4202d53bde186484eddc674bc4908736c91f2d9efc932cd4f8f",
+  "expectedPriorAttempts": 1903,
+  "jevPriorReservedMicros": 1894064,
+  "jevCurrentCapMicros": 1896817,
+  "jevCumulativeCapMicros": 2224424,
+  "jevCapIncreaseMicros": 327607,
+  "jevAdditionalMaximumMicros": 330360,
+  "maximumCallsPerModel": 120,
+  "zoomPriorAllocatedMicros": 1217000,
+  "zoomAdditionalMaximumMicros": 240000,
+  "zoomRunCapMicros": 250000,
+  "zoomCampaignCapMicros": 5000000
+}

@@ -3,7 +3,7 @@ import {effectiveRestockDueTick,getLegalActions} from '../../simulation/src/lega
 export const RESTOCK_RECOVERY_VERSION='restock-recovery-shadow-1';
 // Heuristic margin, not an optimality claim: leave at least ten service ticks.
 export const MIN_RECOVERY_SERVICE_TICKS=10;
-/** Offline proposal only. No production controller imports or applies this function. */
+/** Proposal primitive for offline analysis and explicitly versioned hybrid experiments; not used by the production worker. */
 export function proposeRestockRecovery(value:DecisionInput,selected:DecisionInput['legalActions'][number]){
  const input=DecisionInputSchema.parse(value),o=input.observation;
  if(selected!=='WAIT'||!input.legalActions.includes('WAIT')||!input.legalActions.includes('RESTOCK')||!getLegalActions(o).includes('RESTOCK'))return null;
