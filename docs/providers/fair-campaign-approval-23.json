@@ -1,0 +1,14 @@
+{
+  "status": "pending-budget-approval",
+  "request": "Apply shared per-tick planning guidance and run complete fair 120-tick comparisons.",
+  "seed": 23,
+  "roundId": "c836aab3-96fc-47a5-a3d2-64c6c3400812",
+  "previousRoundId": "f71d3a2b-6ad1-4e69-bebf-4a9bc68bfe37",
+  "jevCumulativeCapMicros": 1646294,
+  "jevAdditionalMaximumAcrossThreeRunsMicros": 991080,
+  "jevPriorReservedMicros": 655214,
+  "maximumCallsPerModelThisRound": 120,
+  "zoomRunCapMicros": 250000,
+  "zoomCampaignCapMicros": 5000000,
+  "scope": "One of three private clean-seed rounds (7,11,23), 120 decisions each; no automatic repetition outside these rounds."
+}

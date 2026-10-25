@@ -47,10 +47,12 @@ describe('wire requests', () => {
     expect(questions[2]!.instructions).toBe(questions[0]!.instructions);
     expect(questions[0]!.instructions).toContain('RESTOCK: Pay 4000 cents for 20 raw portions');
     expect(questions[0]!.instructions).toContain('WAIT does not place an order');
+    expect(questions[0]!.instructions).toContain('There is no one-order limit');
+    expect(questions[0]!.instructions).toContain('reassess on every following decision turn');
     expect(questions[0]!.instructions).not.toContain('COOK:');
     expect(requests[1]!.body.input).toBe(requests[0]!.body.state);
     expect(requests[2]!.body.input).toBe(requests[0]!.body.state);
-    expect(JSON.parse(requests[0]!.body.state as string).promptVersion).toBe('hawker-decision-prompt-2');
+    expect(JSON.parse(requests[0]!.body.state as string).promptVersion).toBe('hawker-decision-prompt-3');
   });
   it('requires explicit Jev model and never silently defaults to latest', () => {
     expect(() => buildRequest('jev', input())).toThrow(WireContractError);

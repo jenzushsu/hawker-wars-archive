@@ -1,0 +1,10 @@
+{
+  "roundId": "f71d3a2b-6ad1-4e69-bebf-4a9bc68bfe37",
+  "approvalReference": "docs/providers/fair-campaign-approval-11.json",
+  "allocationMicrosPerRequest": 1000,
+  "maxRequestBytes": 8192,
+  "priorSmokeAllocations": [
+    "docs/providers/zoom-smoke-result.json",
+    "docs/providers/zoom-pro-smoke-result.json"
+  ]
+}

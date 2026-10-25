@@ -14,15 +14,19 @@ async function main() {
   const authorization=JSON.parse(readFileSync(approval,'utf8'));
   if(authorization.status!=='approved' || authorization.roundId!==roundId || authorization.previousRoundId!==oldRun || authorization.jevCumulativeCapMicros!==config.jevSpendApproval!.campaignCapMicros)throw new Error('Matching approved budget record required');
   const store=new LiveStore({supabaseUrl:process.env.SUPABASE_URL!,serviceRoleKey:process.env.SUPABASE_SERVICE_ROLE_KEY!});
-  const previous=await store.getRoundStatus(oldRun);
+  const seed=authorization.seed??7;
+  if(!Number.isInteger(seed)||seed<0||seed>99)throw new Error('Invalid approved seed');
+  const previous=await store.getRoundStatus(authorization.previousCompletedRoundId??oldRun);
   if(previous?.status!=='completed')throw new Error('Previous round must be completed before operator transition');
   // Existing storage only. This provisioner is intentionally not rerunnable after amendment.
   const old=openLedger(directory,{campaignId:config.campaignId,configurationHash:oldHash});
-  const before=old.summary();old.amendBudget(next,approval,oldRun);
+  const before=old.summary();
+  if(authorization.expectedPriorAttempts!==undefined && before.attempts!==authorization.expectedPriorAttempts)throw new Error('Unexpected prior ledger records');
+  old.amendBudget(next,approval,oldRun);
   const ledger=openLedger(directory,next);
   try {
-    await store.createRound(createMultiRoundInput(roundId,7,providerConfigurationHash(config),false));
-    console.log(JSON.stringify({status:'next-campaign-prepared',oldRun,roundId,configurationHash:next.configurationHash,before,after:ledger.summary(),providerDispatch:false}));
+    await store.createRound(createMultiRoundInput(roundId,seed,providerConfigurationHash(config),false));
+    console.log(JSON.stringify({status:'next-campaign-prepared',oldRun,roundId,seed,configurationHash:next.configurationHash,before,after:ledger.summary(),providerDispatch:false}));
   } finally {ledger.close();}
   // Stay readable for operator log verification, then stop this one-use service.
   setInterval(()=>{},30_000);

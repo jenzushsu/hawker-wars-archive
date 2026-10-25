@@ -47,7 +47,7 @@ const report = {
   scope:'Offline seed-7 counterfactuals; continuations are rules or recorded actions, not predictions of Jev.',
   stockoutInput:input,
   capturedStates,
-  reconstructedPromptV2Request:buildRequest('jev',input,'jev-1.13.0'),
+  reconstructedPromptV2Request:buildRequest('jev',input,'jev-1.13.0','hawker-decision-prompt-2'),
   parserReproduction:{synthetic:true,roundedMetadataResult,withoutProbabilities:parseResponse('jev',input,'jev-1.13.0',withoutProbabilities,100).result.action},
   outcomes,
 };

@@ -4,7 +4,8 @@ import {
 } from '../../shared/src/index.js';
 
 export type WireProvider = 'jev' | 'zoom' | 'zoom-pro';
-export const PROVIDER_PROMPT_VERSION = 'hawker-decision-prompt-2' as const;
+export type ProviderPromptVersion = 'hawker-decision-prompt-2'|'hawker-decision-prompt-3';
+export const PROVIDER_PROMPT_VERSION = 'hawker-decision-prompt-3' as const;
 export const ZOOM_ENDPOINT = 'https://api.zoom.us/v2/aiservices/decisions/decide';
 export const JEV_ENDPOINT = 'https://api.typesafe.ai/v1/systemone';
 export interface WireRequest { endpoint: string; body: Record<string, unknown>; requestedModel: string }
@@ -57,10 +58,16 @@ const ACTION_RULES = Object.freeze({
   WAIT: 'Consume this turn without direct action; background arrivals, patience, spoilage and timers continue.',
 });
 /** Identical option descriptions accompany the question for every model. */
-function choiceInstructions(input: DecisionInput): string {
+function choiceInstructions(input: DecisionInput, version:ProviderPromptVersion): string {
   return [QUESTION_INSTRUCTIONS, 'Allowed actions and consequences:',
     ...input.legalActions.map(action => `${action}: ${ACTION_RULES[action]}`),
     'Consider delivery and cooking delays, remaining time, customer patience and closing inventory value. WAIT does not place an order, start cooking or serve customers.',
+    ...(version==='hawker-decision-prompt-3' ? [
+      'Plan across future turns: replenishing raw stock enables later cooking and serving. Consider future customer arrivals as well as the current queue, using only the public demand rates.',
+      'Choose only the next action now. You will receive an updated observation and reassess on every following decision turn unless WAIT is the only legal action. A plan does not automatically execute later actions.',
+      'There is no one-order limit. RESTOCK may be chosen repeatedly across the round whenever legal, after earlier orders complete. Reconsider the stock pipeline throughout all 120 decision ticks.',
+      'Compare the next 20 minutes and closing value. Account for delivery and cooking delays, spoilage, customer patience and retained raw inventory. WAIT can be appropriate while work is in progress or when further action has no expected benefit. Do not force restocking or cooking near closing.',
+    ] : []),
   ].join('\n');
 }
 function canonicalJson(value: unknown): string {
@@ -80,10 +87,10 @@ function inputForWire(input: DecisionInput): DecisionInput {
   return checked.data;
 }
 /** The same semantic context bytes are sent as Jev state and Zoom input. */
-export function canonicalDecisionContext(input: DecisionInput): string {
+export function canonicalDecisionContext(input: DecisionInput, version:ProviderPromptVersion=PROVIDER_PROMPT_VERSION): string {
   const checked = inputForWire(input);
   return canonicalJson({
-    promptVersion: PROVIDER_PROMPT_VERSION,
+    promptVersion: version,
     observation: checked.observation, legalActions: checked.legalActions,
     objective: { scorer: 'utility-1', maximize: 'finalUtilityPoints', formula: 'closingCashCents + 200*closingRawPortions - 28400 - 100*abandoned - 5*allResolvedCustomerWaitMinutes - 50*wastedReadyPortions', weights: SCORE_CONFIG },
     publicRules: {
@@ -102,10 +109,10 @@ function selectedModel(provider: WireProvider, jevModel?: string): string {
   if (!IdentifierSchema.safeParse(jevModel).success) throw new WireContractError('invalid-model');
   return jevModel;
 }
-export function buildRequest(provider: WireProvider, input: DecisionInput, jevModel?: string): WireRequest {
+export function buildRequest(provider: WireProvider, input: DecisionInput, jevModel?: string, version:ProviderPromptVersion=PROVIDER_PROMPT_VERSION): WireRequest {
   const checked = inputForWire(input), requestedModel = selectedModel(provider, jevModel);
-  const context = canonicalDecisionContext(checked);
-  const instructions = choiceInstructions(checked);
+  const context = canonicalDecisionContext(checked,version);
+  const instructions = choiceInstructions(checked,version);
   if (provider === 'jev') {
     return { endpoint: JEV_ENDPOINT, requestedModel, body: { model: requestedModel, state: context, questions: { action: { type: 'choice', instructions, criteria: Object.fromEntries(checked.legalActions.map(action => [action, null])) } } } };
   }

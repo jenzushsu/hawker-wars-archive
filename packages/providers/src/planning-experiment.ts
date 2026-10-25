@@ -3,7 +3,7 @@ import { buildRequest, type WireProvider, type WireRequest } from './wire.js';
 
 /** Experiment only. Production adapter continues to call buildRequest directly. */
 export function buildPlanningExperimentRequest(provider: WireProvider, input: DecisionInput, variant: 'baseline'|'planning', jevModel: string): WireRequest {
-  const request = buildRequest(provider,input,jevModel);
+  const request = buildRequest(provider,input,jevModel,'hawker-decision-prompt-2');
   if (variant === 'baseline') return request;
   const criteria = {
     SERVE: 'Convert ready food and waiting customers into sales before patience or food expires.',

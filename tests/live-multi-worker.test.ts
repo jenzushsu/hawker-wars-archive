@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import { createMultiRoundInput, runMultiTick, MULTI_POLICIES, type MultiControllers, type MultiRecovery } from '../packages/live/src/multi-worker.ts';
+import {buildRequest} from '../packages/providers/src/wire.ts';
 import { multiProviderBlockers } from '../packages/live/src/multi-runtime.ts';
 import { ProviderRuntimeSchema, activationBlockers } from '../packages/providers/src/activation.ts';
 import { readProjectJson } from '../scripts/config-snapshot.ts';
@@ -12,8 +13,8 @@ import type { RulesWorkerStore } from '../packages/live/src/worker.ts';
 const roundId='11111111-1111-4111-8111-111111111111',ownerId='22222222-2222-4222-8222-222222222222',providerConfigurationHash='a'.repeat(64);
 const options={roundId,ownerId,providerConfigurationHash};
 type Record=Awaited<ReturnType<LiveStore['getRecovery']>>;
-function memory(saved?:Record){
- const input=createMultiRoundInput(roundId,7,providerConfigurationHash);
+function memory(saved?:Record,seed=7){
+ const input=createMultiRoundInput(roundId,seed,providerConfigurationHash);
  let record:Record=saved??{schemaVersion:'live-recovery-1',round_id:roundId,classification:'exhibition',policy_ids:[...MULTI_POLICIES],status:'running',control_state:'active',control_revision:0,tick:-1,sequence:0,configuration_hash:input.configurationHash,schedule_hash:input.scheduleHash,recovery:input.recovery};
  let fence=0;const commits:LiveCommitInput[]=[];
  const store={
@@ -41,11 +42,17 @@ describe('atomic multi-policy comparison worker',()=>{
   expect(f.commits[0]!.decisions.map(d=>d.source)).toEqual(['rules','model','model','model']);expect(f.store.renewLease).toHaveBeenCalledTimes(2);
   expect(JSON.stringify(f.commits[0]!.snapshot)).not.toMatch(/seed|recovery|requestId|credential|owner/);
  });
- it('replays recorded actions after process replacement and completes without terminal model calls',async()=>{
-  let f=memory();const c=controllers();
-  for(let tick=0;tick<=120;tick++){if(tick===21||tick===87)f=memory(f.saved());await expect(runMultiTick(f.store,options,c)).resolves.toMatchObject({tick,sequence:tick+1});}
-  const expected=runEpisode({seed:7,policy:'rules',roundId});const recovery=f.saved().recovery as MultiRecovery;
-  for(const p of recovery.policies){expect(p.stateHash).toBe(expected.finalHash);expect(p.actions).toHaveLength(120);}
+ it.each([7,11,23])('replays all 120 decisions fairly at seed %s, including repeated restocks',async(seed)=>{
+  let f=memory(undefined,seed);const c=controllers();
+  for(let tick=0;tick<=120;tick++){if(tick===21||tick===87)f=memory(f.saved(),seed);await expect(runMultiTick(f.store,options,c)).resolves.toMatchObject({tick,sequence:tick+1});}
+  const expected=runEpisode({seed,policy:'rules',roundId});const recovery=f.saved().recovery as MultiRecovery;
+  for(const p of recovery.policies){expect(p.stateHash).toBe(expected.finalHash);expect(p.actions).toHaveLength(120);expect(p.actions.filter(a=>a.action==='RESTOCK').length).toBeGreaterThan(1);}
+  for(const [input] of vi.mocked(c.jev.decideTurn).mock.calls){
+    const requests=(['jev','zoom','zoom-pro'] as const).map(p=>buildRequest(p,input,'jev-1.13.0'));
+    const j=(requests[0]!.body.questions as any).action;
+    for(const r of requests.slice(1)){expect(r.body.input).toBe(requests[0]!.body.state);expect((r.body.questions as any)[0].instructions).toBe(j.instructions);}
+    for(const r of requests)expect(Buffer.byteLength(JSON.stringify(r.body))).toBeLessThanOrEqual(8192);
+  }
   // Identical policies must see identical observations and receive identical scores.
   const inputs=vi.mocked(c.jev.decideTurn).mock.calls;
   for(const id of ['zoom','zoom-pro'] as const)expect(vi.mocked(c[id].decideTurn).mock.calls).toEqual(inputs);

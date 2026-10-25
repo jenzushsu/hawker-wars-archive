@@ -22,7 +22,7 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "61768d139376e2d4a168c925b36b7b3f0f8143799ad3e10de3af2c3cc26dd123",
+    "sourceTreeHash": "caa9a7e609223c77c82e6c6976f9ada8971076b2829a7f2c622a8b320a4c0b59",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
       {
@@ -635,15 +635,15 @@
       },
       {
         "path": "packages/providers/src/planning-experiment.ts",
-        "sha256": "cc742b89773df24b078102c797112f000790f443cafadbc8cbcbdefae682adcf"
+        "sha256": "10ff3642462502183a96a19c19791e87a56858f8598ccdf86805e619c27c7dd4"
       },
       {
         "path": "packages/providers/src/short-plan-experiment.ts",
-        "sha256": "5671d0a6a89546445d6b65c8ee4dfdb45b845397bf686a1c7bcad9b98ca8c6e7"
+        "sha256": "a31425e489c465f902f43e48b9167c102dfaeedeed8227c128c78b81b8c6df52"
       },
       {
         "path": "packages/providers/src/wire.ts",
-        "sha256": "7c37c40b971a80f9e1ee2974a6afc04b0d2f97146d3704bdc0d5448347fdeb76"
+        "sha256": "a881e27da7b0e6402938ed7fc56198e17016619fa69f3a22b8bccdbde90f403e"
       },
       {
         "path": "packages/replay/package.json",
@@ -823,7 +823,7 @@
       },
       {
         "path": "scripts/investigate-jev.ts",
-        "sha256": "b65aca0b0080d9a5853fa905e6c7b19d62d0a81089f1b4ff7fe275f0e2f571ae"
+        "sha256": "0fbb9df824b2da6bb2d23d8c661ad264f7a6243fdb080cd760fea32b3d96c6aa"
       },
       {
         "path": "scripts/offline-episode.ts",
@@ -839,7 +839,7 @@
       },
       {
         "path": "scripts/prepare-next-campaign.ts",
-        "sha256": "b17ef62d03ec0cbc0b99a371b5c1c2e08bf7735270baed3c0c9451679ddb8f30"
+        "sha256": "444b2d684bbffc2633885a30b8c0fa8d01a721811defc88e217461037da387f1"
       },
       {
         "path": "scripts/provider-config.ts",
@@ -1038,6 +1038,10 @@
         "sha256": "b540f41afc7af03209d6a8cff008ad30a2db7b2f6ad9aa89a5856fc9a8a3b253"
       },
       {
+        "path": "tests/fair-campaign-plan.test.ts",
+        "sha256": "e1a57f2e69dd90d30be53363824ef9987c7d7501d7580d2fea64f9838eaa0b60"
+      },
+      {
         "path": "tests/hawker-art.test.ts",
         "sha256": "157369ab2026a4b07a18745ac5faeffd94fa6ec7fc83a1027ab1e4ede3175cf6"
       },
@@ -1051,7 +1055,7 @@
       },
       {
         "path": "tests/live-multi-worker.test.ts",
-        "sha256": "91a1d4da06ee6f4922223ae033e9a7e2f85ce1bc373bb0004abe645941ee6766"
+        "sha256": "fef715d0b6321e76ee3bdf9bae52afb6bf298c0d32d6998f8bbaf76920633010"
       },
       {
         "path": "tests/live-operator.test.ts",
@@ -1175,7 +1179,7 @@
       },
       {
         "path": "tests/provider-planning-experiment.test.ts",
-        "sha256": "91fabbf74d1c06d7d456149bf4f999f96475973bc0a5aa0a2c5c1f44b0eea8ec"
+        "sha256": "3cd9fa411df593664f58c02c33b24ee383aaaeb8f1bcddf6d351cbf2fee53b20"
       },
       {
         "path": "tests/providers-adversarial.test.ts",
@@ -1191,7 +1195,7 @@
       },
       {
         "path": "tests/providers-wire.test.ts",
-        "sha256": "8bbe51cef715b365cac2aa64556cd7972a1bbcd288e311b7ff8bf660a710749a"
+        "sha256": "60d0b4c5f7fde684efb09440426c96a21b0888d0ea1164ae87a750849ff509b4"
       },
       {
         "path": "tests/short-plan-experiment.test.ts",

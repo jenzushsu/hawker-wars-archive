@@ -18,6 +18,7 @@ COPY --chown=node:node docs/providers/planning-experiment-approval.json ./docs/p
 COPY --chown=node:node docs/deployment/evidence/prompt-v2/jev-investigation.json ./docs/deployment/evidence/prompt-v2/jev-investigation.json
 COPY --chown=node:node docs/providers/short-plan-approval.json ./docs/providers/short-plan-approval.json
 COPY --chown=node:node docs/providers/repeatability-approval.json ./docs/providers/repeatability-approval.json
+COPY --chown=node:node docs/providers/fair-campaign-approval-*.json ./docs/providers/
 USER node
 ENV NODE_ENV=production
 CMD ["node", "--use-env-proxy", "--import", "tsx", "scripts/supervise-rules-worker.ts"]
