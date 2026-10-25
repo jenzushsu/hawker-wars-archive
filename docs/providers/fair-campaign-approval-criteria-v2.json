@@ -1,5 +1,5 @@
 {
-  "status": "pending-budget-approval",
+  "status": "approved",
   "requestSource": "User: go with full round performance",
   "scope": "One private seed23 120-tick Jev1.13.0 round using action-criteria-prompt-2, no safeguard, no Zoom dispatch, no repeat.",
   "roundId": "371de41b-8241-4514-ba95-52c7ddcdcac2",
@@ -18,5 +18,7 @@
   "maximumCalls": 120,
   "zoomPriorAllocatedMicros": 1408000,
   "zoomAdditionalMaximumMicros": 0,
-  "promptTreatment": "action-criteria-prompt-2"
+  "promptTreatment": "action-criteria-prompt-2",
+  "approvalSource": "User: yes raise",
+  "approvedAt": "2026-10-25T07:34:50.014820+00:00"
 }

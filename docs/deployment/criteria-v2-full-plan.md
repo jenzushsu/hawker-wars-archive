@@ -8,7 +8,7 @@ also verifies the returned model identity; no extra smoke call is needed.
 
 Round ID: `371de41b-8241-4514-ba95-52c7ddcdcac2`.
 
-## Budget extension needed before execution
+## Approved budget extension
 
 The previous approval explicitly capped cumulative reservations at $2.788789.
 After the 12-call test, Jev reservations total $2.780530, leaving $0.008259 (three
@@ -17,8 +17,8 @@ calls). A full round needs at most $0.330360 (120 × $0.002753).
 Requested new cumulative cap: **$3.110890**. Increase over current cap:
 **$0.322101**. The existing $0.34 per-run cap remains sufficient; Zoom exposure
 and limits stay unchanged. No refund/reset of prior reservations is assumed.
-[Approval record](../providers/fair-campaign-approval-criteria-v2.json) is pending.
-The user authorized the full run, but has not yet explicitly extended this cap.
+[Approval record](../providers/fair-campaign-approval-criteria-v2.json) is approved.
+The user explicitly approved this cap with “yes raise”.
 
 ## Prepared execution and validation
 
