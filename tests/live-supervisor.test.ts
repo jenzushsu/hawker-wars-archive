@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { RulesWorkerError, type RulesTickResult } from '../packages/live/src/worker.ts';
 import { superviseRulesWorker, type SupervisorEvent } from '../packages/live/src/supervisor.ts';
 
@@ -6,6 +6,16 @@ const result = (status: RulesTickResult['status'], tick = 0): RulesTickResult =>
   ({ status, tick, sequence: tick + 1, replayed: false });
 
 describe('persistent rules supervisor', () => {
+  it('supports bounded faster wall-clock pacing without changing terminal idling',async()=>{
+    const control=new AbortController(),sleeps:number[]=[];let calls=0;
+    await superviseRulesWorker({signal:control.signal,tickIntervalMs:1100,tick:async()=>++calls===1?result('committed',0):result('completed',120),report:()=>{},wait:async ms=>{sleeps.push(ms);if(ms===30000)control.abort();}});
+    expect(calls).toBe(2);expect(sleeps).toEqual([1100,30000]);
+  });
+  it.each([0,1000,1100.5,60001])('rejects unsafe pacing %s before any dispatch',async tickIntervalMs=>{
+    const tick=vi.fn();
+    await expect(superviseRulesWorker({signal:new AbortController().signal,tickIntervalMs,tick,report:()=>{}})).rejects.toThrow('pacing');
+    expect(tick).not.toHaveBeenCalled();
+  });
   it('serializes paced work and observes an explicit resume from pause', async () => {
     const control = new AbortController(), sleeps: number[] = [], events: SupervisorEvent[] = [];
     const replies = [result('waiting'), result('committed'), result('paused'), result('committed', 1), result('completed', 120)];

@@ -19,8 +19,12 @@ export async function superviseRulesWorker(options: {
   signal: AbortSignal;
   report: (event: SupervisorEvent) => void;
   wait?: (ms: number, signal: AbortSignal) => Promise<void>;
+  /** Wall-clock pacing only; simulation time still advances by one tick. */
+  tickIntervalMs?: number;
 }): Promise<void> {
   const wait = options.wait ?? waitForWorker;
+  const tickIntervalMs=options.tickIntervalMs??5000;
+  if(!Number.isSafeInteger(tickIntervalMs)||tickIntervalMs<1100||tickIntervalMs>60000)throw new Error('Invalid worker pacing');
   let failures = 0, idle = false, previous = '';
   while (!options.signal.aborted) {
     if (idle) { await wait(30_000, options.signal); continue; }
@@ -47,6 +51,6 @@ export async function superviseRulesWorker(options: {
     if (identity !== previous) options.report(result);
     previous = identity;
     idle = result.status === 'completed' || result.status === 'stopped';
-    if (!idle) await wait(result.status === 'paused' ? 10_000 : 5_000, options.signal);
+    if (!idle) await wait(result.status === 'paused' ? 10_000 : tickIntervalMs, options.signal);
   }
 }

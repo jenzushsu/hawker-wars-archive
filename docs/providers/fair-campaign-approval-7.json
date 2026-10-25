@@ -1,5 +1,5 @@
 {
-  "status": "pending-budget-approval",
+  "status": "approved",
   "request": "Apply shared per-tick planning guidance and run complete fair 120-tick comparisons.",
   "seed": 7,
   "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
@@ -12,5 +12,7 @@
   "zoomCampaignCapMicros": 5000000,
   "scope": "One of three private clean-seed rounds (7,11,23), 120 decisions each; no automatic repetition outside these rounds.",
   "previousCompletedRoundId": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
-  "expectedPriorAttempts": 674
+  "expectedPriorAttempts": 674,
+  "approvalSource": "User: approve, in response to the proposal for up to $0.991080 additional Jev reservations across seeds 7, 11 and 23, raising the cumulative cap to $1.646294 with Zoom limits unchanged.",
+  "approvedAt": "2026-10-25T02:23:02.376614+00:00"
 }

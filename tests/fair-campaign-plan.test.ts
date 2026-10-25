@@ -12,20 +12,20 @@ it('reserves a full 120-call allowance per model across all three seeds',()=>{
   expect(2*120*1000).toBeLessThanOrEqual(250000);
   expect(prior.pools.find((p:{id:string})=>p.id==='zoom-shared').reservedMicros+plan.zoomAdditionalMaximumAllocationMicros).toBeLessThanOrEqual(plan.zoomCampaignCapMicros);
 });
-it('keeps every proposed run disabled until budget approval and chains identities',()=>{
+it('activates only the approved bounded run definitions and chains identities',()=>{
   const plan=read('docs/providers/fair-campaign-plan.json');
   let previous='7268f741-0399-4473-b20e-f1c8bb7605eb';
   for(const run of plan.runs) {
     const approval=read(run.approval);
-    expect(approval.status).toBe('pending-budget-approval');
+    expect(approval.status).toBe('approved');
     expect(approval.previousRoundId).toBe(previous);
     const config=ProviderRuntimeSchema.parse({...read(`manifests/provider-runtime-fair-seed-${run.seed}.json`),zoomCampaignException:read(`manifests/campaign-exception-fair-seed-${run.seed}.json`)});
     expect(config.zoomCampaignException!.roundId).toBe(run.roundId);
     expect(config.jevSpendApproval!.approvalReference).toBe(run.approval);
     expect(config.jevSpendApproval!.campaignCapMicros).toBe(plan.jevCumulativeCapMicros);
     for(const provider of ['jev','zoom','zoom-pro'] as const) {
-      expect(config.providers[provider].activationRequested).toBe(false);
-      expect(activationBlockers(config,provider,'live').length).toBeGreaterThan(0);
+      expect(config.providers[provider].activationRequested).toBe(true);
+      expect(activationBlockers(config,provider,'live')).toEqual([]);
     }
     previous=run.roundId;
   }

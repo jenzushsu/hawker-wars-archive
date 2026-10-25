@@ -9,7 +9,7 @@
   },
   "providers": {
     "jev": {
-      "activationRequested": false,
+      "activationRequested": true,
       "model": "jev-1.13.0",
       "maximumRequestCost": {
         "micros": 2753,
@@ -27,7 +27,7 @@
       }
     },
     "zoom": {
-      "activationRequested": false,
+      "activationRequested": true,
       "model": "zoom-decisions-standard",
       "maximumRequestCost": null,
       "freeTierVerified": false,
@@ -39,7 +39,7 @@
       }
     },
     "zoom-pro": {
-      "activationRequested": false,
+      "activationRequested": true,
       "model": "zoom-decisions-pro",
       "maximumRequestCost": null,
       "freeTierVerified": false,

@@ -10,6 +10,7 @@ services:
     init: true
     stop_grace_period: 120s
     environment:
+      HAWKER_TICK_INTERVAL_MS: "1100"
       SUPABASE_URL: ${SUPABASE_URL:?Set the full staging HTTPS URL}
       SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY:?Set the server-only staging key}
       HAWKER_ROUND_ID: ${HAWKER_ROUND_ID:?Select an existing multi-policy round}

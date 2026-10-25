@@ -1,5 +1,5 @@
 {
-  "status": "pending-budget-approval",
+  "status": "approved",
   "promptVersion": "hawker-decision-prompt-3",
   "runs": [
     {
@@ -22,5 +22,7 @@
   "jevAdditionalMaximumMicros": 991080,
   "jevCumulativeCapMicros": 1646294,
   "zoomAdditionalMaximumAllocationMicros": 720000,
-  "zoomCampaignCapMicros": 5000000
+  "zoomCampaignCapMicros": 5000000,
+  "approvalSource": "User: approve, in response to the proposal for up to $0.991080 additional Jev reservations across seeds 7, 11 and 23, raising the cumulative cap to $1.646294 with Zoom limits unchanged.",
+  "approvedAt": "2026-10-25T02:23:02.376614+00:00"
 }

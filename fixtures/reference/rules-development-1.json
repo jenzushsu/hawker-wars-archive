@@ -22,7 +22,7 @@
   "sourceRevisionStatus": "unborn-repository-using-source-content-digest",
   "sourceIdentity": {
     "method": "p2-a-source-1",
-    "sourceTreeHash": "caa9a7e609223c77c82e6c6976f9ada8971076b2829a7f2c622a8b320a4c0b59",
+    "sourceTreeHash": "781ba70d5c674cb085a4e848b6641e85004cb3426a0a4fe71ff33602cae43aff",
     "dependencyLockHash": "ebcae8492f435909802ef0a426539ce6483c541a0189d9564ec69efc398ad504",
     "files": [
       {
@@ -587,7 +587,7 @@
       },
       {
         "path": "packages/live/src/supervisor.ts",
-        "sha256": "c351314eafa478ad9f1c8b659049f30ac4872e319e7c4b53a84a6727811aacfd"
+        "sha256": "0519f71c3bcd6e738683c32e58787ecaca61ec8316a6f775b2f0e1084065abc5"
       },
       {
         "path": "packages/live/src/view-gateway.ts",
@@ -839,7 +839,7 @@
       },
       {
         "path": "scripts/prepare-next-campaign.ts",
-        "sha256": "444b2d684bbffc2633885a30b8c0fa8d01a721811defc88e217461037da387f1"
+        "sha256": "e88e7c5c78fb5508cf3cc6fc5c66e0de5829be99206aee181707eaf2fa9847c3"
       },
       {
         "path": "scripts/provider-config.ts",
@@ -887,7 +887,7 @@
       },
       {
         "path": "scripts/supervise-multi-worker.ts",
-        "sha256": "833c5c92247b03e8ff5428f2ad5df947726ab7c1b800baec51fbe26e8d043c32"
+        "sha256": "9b880038be7686798e9f0c40d5181d33dc095b5d5e1929b1d1e9e56fe108d959"
       },
       {
         "path": "scripts/supervise-rules-worker.ts",
@@ -1039,7 +1039,7 @@
       },
       {
         "path": "tests/fair-campaign-plan.test.ts",
-        "sha256": "e1a57f2e69dd90d30be53363824ef9987c7d7501d7580d2fea64f9838eaa0b60"
+        "sha256": "42677be69a534db90f6065c6af9f968be6ffe91ab1d883a0c2cb221a7e5edbec"
       },
       {
         "path": "tests/hawker-art.test.ts",
@@ -1071,7 +1071,7 @@
       },
       {
         "path": "tests/live-supervisor.test.ts",
-        "sha256": "4e45d1ed4b500d3b3c4780194cc16256f9b1c3e322d91310f49d571154fe594e"
+        "sha256": "c5a99029972dd350b8c106886e2dcaf2b26ad290adb94cd4617266a9844571d1"
       },
       {
         "path": "tests/live-view-gateway.test.ts",
