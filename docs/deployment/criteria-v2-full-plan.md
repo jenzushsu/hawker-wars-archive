@@ -1,4 +1,6 @@
-# Prepared full-round action-criteria v2 evaluation
+# Full-round action-criteria v2 evaluation
+
+Status: completed; see [results and regression analysis](criteria-v2-full.md).
 
 User requested full-round performance after the repeated tick86/87 comparison.
 Prepared one private clean seed23 run: 120 decision ticks plus closing, Jev1.13.0,
