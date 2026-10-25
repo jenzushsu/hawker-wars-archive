@@ -1,0 +1,551 @@
+{
+  "status": "completed",
+  "promptVersion": "hawker-decision-prompt-3",
+  "scope": "Three private clean-seed full 120-tick rounds; rounds with fallbacks are not pure model comparisons. No general model ranking claim.",
+  "rounds": [
+    {
+      "seed": 7,
+      "roundId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+      "providers": [
+        {
+          "policy": "rules",
+          "profitCents": 31100,
+          "utilityPoints": 29790,
+          "served": 116,
+          "abandoned": 2,
+          "wasted": 16,
+          "waitMinutes": 62,
+          "restocks": 5,
+          "emptyStockWaitsWithRestockAvailable": 0,
+          "waitsWithServeAvailable": 0,
+          "waitsWithCookAvailable": 6,
+          "forcedWaits": 11,
+          "voluntaryWaits": 20,
+          "providerCalls": 0,
+          "fallbacks": [],
+          "usage": []
+        },
+        {
+          "policy": "jev",
+          "profitCents": 10600,
+          "utilityPoints": 685,
+          "served": 46,
+          "abandoned": 66,
+          "wasted": 16,
+          "waitMinutes": 503,
+          "restocks": 1,
+          "emptyStockWaitsWithRestockAvailable": 51,
+          "waitsWithServeAvailable": 0,
+          "waitsWithCookAvailable": 7,
+          "forcedWaits": 10,
+          "voluntaryWaits": 79,
+          "providerCalls": 110,
+          "fallbacks": [],
+          "usage": [
+            {
+              "run_id": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+              "provider": "jev",
+              "state": "success",
+              "attempts": 110,
+              "allocated_micros": 302830,
+              "reported_input_units": 268811,
+              "mean_latency_ms": 282.3909090909091,
+              "max_latency_ms": 464
+            }
+          ]
+        },
+        {
+          "policy": "zoom",
+          "profitCents": 25100,
+          "utilityPoints": 20765,
+          "served": 109,
+          "abandoned": 14,
+          "wasted": 33,
+          "waitMinutes": 257,
+          "restocks": 6,
+          "emptyStockWaitsWithRestockAvailable": 0,
+          "waitsWithServeAvailable": 0,
+          "waitsWithCookAvailable": 0,
+          "forcedWaits": 30,
+          "voluntaryWaits": 8,
+          "providerCalls": 90,
+          "fallbacks": [],
+          "usage": [
+            {
+              "run_id": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+              "provider": "zoom",
+              "state": "success",
+              "attempts": 90,
+              "allocated_micros": 90000,
+              "reported_input_units": 172711,
+              "mean_latency_ms": 527.2666666666667,
+              "max_latency_ms": 1269
+            }
+          ]
+        },
+        {
+          "policy": "zoom-pro",
+          "profitCents": 28600,
+          "utilityPoints": 25865,
+          "served": 98,
+          "abandoned": 14,
+          "wasted": 4,
+          "waitMinutes": 227,
+          "restocks": 4,
+          "emptyStockWaitsWithRestockAvailable": 0,
+          "waitsWithServeAvailable": 0,
+          "waitsWithCookAvailable": 20,
+          "forcedWaits": 17,
+          "voluntaryWaits": 36,
+          "providerCalls": 103,
+          "fallbacks": [],
+          "usage": [
+            {
+              "run_id": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+              "provider": "zoom-pro",
+              "state": "success",
+              "attempts": 103,
+              "allocated_micros": 103000,
+              "reported_input_units": 197087,
+              "mean_latency_ms": 584.7766990291262,
+              "max_latency_ms": 1485
+            }
+          ]
+        }
+      ],
+      "calls": 303,
+      "jevReservedMicros": 302830,
+      "zoomAllocatedMicros": 193000,
+      "errors": [],
+      "ledger": {
+        "campaignId": "zoom-trial-campaign-1",
+        "pools": [
+          {
+            "id": "jev-separate",
+            "reservedMicros": 958044,
+            "capMicros": 1646294,
+            "lastDispatchAtMs": 1792895946303
+          },
+          {
+            "id": "zoom-shared",
+            "reservedMicros": 631000,
+            "capMicros": 5000000,
+            "lastDispatchAtMs": 1792896021377
+          }
+        ],
+        "attempts": 977
+      },
+      "verification": {
+        "scoresMatchReplay": true,
+        "completeDecisionCoverage": true,
+        "callsReconciled": true
+      }
+    },
+    {
+      "seed": 11,
+      "roundId": "f71d3a2b-6ad1-4e69-bebf-4a9bc68bfe37",
+      "providers": [
+        {
+          "policy": "rules",
+          "profitCents": 33600,
+          "utilityPoints": 32370,
+          "served": 125,
+          "abandoned": 0,
+          "wasted": 17,
+          "waitMinutes": 76,
+          "restocks": 5,
+          "emptyStockWaitsWithRestockAvailable": 0,
+          "waitsWithServeAvailable": 0,
+          "waitsWithCookAvailable": 0,
+          "forcedWaits": 14,
+          "voluntaryWaits": 20,
+          "providerCalls": 0,
+          "fallbacks": [],
+          "usage": []
+        },
+        {
+          "policy": "jev",
+          "profitCents": 13600,
+          "utilityPoints": 4195,
+          "served": 52,
+          "abandoned": 66,
+          "wasted": 10,
+          "waitMinutes": 461,
+          "restocks": 1,
+          "emptyStockWaitsWithRestockAvailable": 53,
+          "waitsWithServeAvailable": 0,
+          "waitsWithCookAvailable": 6,
+          "forcedWaits": 10,
+          "voluntaryWaits": 75,
+          "providerCalls": 110,
+          "fallbacks": [],
+          "usage": [
+            {
+              "run_id": "f71d3a2b-6ad1-4e69-bebf-4a9bc68bfe37",
+              "provider": "jev",
+              "state": "success",
+              "attempts": 110,
+              "allocated_micros": 302830,
+              "reported_input_units": 268130,
+              "mean_latency_ms": 280.24545454545455,
+              "max_latency_ms": 389
+            }
+          ]
+        },
+        {
+          "policy": "zoom",
+          "profitCents": 24100,
+          "utilityPoints": 19975,
+          "served": 106,
+          "abandoned": 14,
+          "wasted": 36,
+          "waitMinutes": 185,
+          "restocks": 6,
+          "emptyStockWaitsWithRestockAvailable": 0,
+          "waitsWithServeAvailable": 0,
+          "waitsWithCookAvailable": 0,
+          "forcedWaits": 28,
+          "voluntaryWaits": 10,
+          "providerCalls": 92,
+          "fallbacks": [],
+          "usage": [
+            {
+              "run_id": "f71d3a2b-6ad1-4e69-bebf-4a9bc68bfe37",
+              "provider": "zoom",
+              "state": "success",
+              "attempts": 92,
+              "allocated_micros": 92000,
+              "reported_input_units": 175066,
+              "mean_latency_ms": 553.6413043478261,
+              "max_latency_ms": 1253
+            }
+          ]
+        },
+        {
+          "policy": "zoom-pro",
+          "profitCents": 28100,
+          "utilityPoints": 25200,
+          "served": 105,
+          "abandoned": 13,
+          "wasted": 17,
+          "waitMinutes": 150,
+          "restocks": 5,
+          "emptyStockWaitsWithRestockAvailable": 0,
+          "waitsWithServeAvailable": 0,
+          "waitsWithCookAvailable": 9,
+          "forcedWaits": 17,
+          "voluntaryWaits": 25,
+          "providerCalls": 103,
+          "fallbacks": [],
+          "usage": [
+            {
+              "run_id": "f71d3a2b-6ad1-4e69-bebf-4a9bc68bfe37",
+              "provider": "zoom-pro",
+              "state": "success",
+              "attempts": 103,
+              "allocated_micros": 103000,
+              "reported_input_units": 197168,
+              "mean_latency_ms": 537.7087378640776,
+              "max_latency_ms": 1286
+            }
+          ]
+        }
+      ],
+      "calls": 305,
+      "jevReservedMicros": 302830,
+      "zoomAllocatedMicros": 195000,
+      "errors": [],
+      "ledger": {
+        "campaignId": "zoom-trial-campaign-1",
+        "pools": [
+          {
+            "id": "jev-separate",
+            "reservedMicros": 1260874,
+            "capMicros": 1646294,
+            "lastDispatchAtMs": 1792896884300
+          },
+          {
+            "id": "zoom-shared",
+            "reservedMicros": 826000,
+            "capMicros": 5000000,
+            "lastDispatchAtMs": 1792896927809
+          }
+        ],
+        "attempts": 1282
+      },
+      "verification": {
+        "scoresMatchReplay": true,
+        "completeDecisionCoverage": true,
+        "callsReconciled": true
+      }
+    },
+    {
+      "seed": 23,
+      "roundId": "c836aab3-96fc-47a5-a3d2-64c6c3400812",
+      "providers": [
+        {
+          "policy": "rules",
+          "profitCents": 31100,
+          "utilityPoints": 29165,
+          "served": 120,
+          "abandoned": 2,
+          "wasted": 22,
+          "waitMinutes": 127,
+          "restocks": 5,
+          "emptyStockWaitsWithRestockAvailable": 0,
+          "waitsWithServeAvailable": 0,
+          "waitsWithCookAvailable": 7,
+          "forcedWaits": 17,
+          "voluntaryWaits": 21,
+          "providerCalls": 0,
+          "fallbacks": [],
+          "usage": []
+        },
+        {
+          "policy": "jev",
+          "profitCents": 7100,
+          "utilityPoints": -5075,
+          "served": 39,
+          "abandoned": 80,
+          "wasted": 23,
+          "waitMinutes": 605,
+          "restocks": 1,
+          "emptyStockWaitsWithRestockAvailable": 53,
+          "waitsWithServeAvailable": 0,
+          "waitsWithCookAvailable": 7,
+          "forcedWaits": 10,
+          "voluntaryWaits": 84,
+          "providerCalls": 110,
+          "fallbacks": [],
+          "usage": [
+            {
+              "run_id": "c836aab3-96fc-47a5-a3d2-64c6c3400812",
+              "provider": "jev",
+              "state": "success",
+              "attempts": 110,
+              "allocated_micros": 302830,
+              "reported_input_units": 271286,
+              "mean_latency_ms": 284.06363636363636,
+              "max_latency_ms": 425
+            }
+          ]
+        },
+        {
+          "policy": "zoom",
+          "profitCents": 21600,
+          "utilityPoints": 15605,
+          "served": 106,
+          "abandoned": 21,
+          "wasted": 46,
+          "waitMinutes": 319,
+          "restocks": 7,
+          "emptyStockWaitsWithRestockAvailable": 0,
+          "waitsWithServeAvailable": 0,
+          "waitsWithCookAvailable": 0,
+          "forcedWaits": 36,
+          "voluntaryWaits": 6,
+          "providerCalls": 83,
+          "fallbacks": [
+            {
+              "tick": 80,
+              "reason": "quota"
+            }
+          ],
+          "usage": [
+            {
+              "run_id": "c836aab3-96fc-47a5-a3d2-64c6c3400812",
+              "provider": "zoom",
+              "state": "success",
+              "attempts": 83,
+              "allocated_micros": 83000,
+              "reported_input_units": 160322,
+              "mean_latency_ms": 555.6024096385543,
+              "max_latency_ms": 1370
+            }
+          ]
+        },
+        {
+          "policy": "zoom-pro",
+          "profitCents": 24600,
+          "utilityPoints": 19550,
+          "served": 94,
+          "abandoned": 25,
+          "wasted": 18,
+          "waitMinutes": 330,
+          "restocks": 5,
+          "emptyStockWaitsWithRestockAvailable": 0,
+          "waitsWithServeAvailable": 0,
+          "waitsWithCookAvailable": 15,
+          "forcedWaits": 21,
+          "voluntaryWaits": 34,
+          "providerCalls": 98,
+          "fallbacks": [
+            {
+              "tick": 80,
+              "reason": "quota"
+            }
+          ],
+          "usage": [
+            {
+              "run_id": "c836aab3-96fc-47a5-a3d2-64c6c3400812",
+              "provider": "zoom-pro",
+              "state": "success",
+              "attempts": 98,
+              "allocated_micros": 98000,
+              "reported_input_units": 188580,
+              "mean_latency_ms": 572.8877551020408,
+              "max_latency_ms": 1366
+            }
+          ]
+        }
+      ],
+      "calls": 291,
+      "jevReservedMicros": 302830,
+      "zoomAllocatedMicros": 181000,
+      "errors": [
+        {
+          "status": "provider-fallback",
+          "roundId": "c836aab3-96fc-47a5-a3d2-64c6c3400812",
+          "tick": 80,
+          "provider": "zoom",
+          "reason": "quota",
+          "diagnostic": "verified-request-size-bound-exceeded",
+          "attemptCount": 0,
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "WAIT"
+          ]
+        },
+        {
+          "status": "provider-fallback",
+          "roundId": "c836aab3-96fc-47a5-a3d2-64c6c3400812",
+          "tick": 80,
+          "provider": "zoom-pro",
+          "reason": "quota",
+          "diagnostic": "verified-request-size-bound-exceeded",
+          "attemptCount": 0,
+          "legalActions": [
+            "SERVE",
+            "COOK",
+            "WAIT"
+          ]
+        }
+      ],
+      "ledger": {
+        "campaignId": "zoom-trial-campaign-1",
+        "pools": [
+          {
+            "id": "jev-separate",
+            "reservedMicros": 1563704,
+            "capMicros": 1646294,
+            "lastDispatchAtMs": 1792897865943
+          },
+          {
+            "id": "zoom-shared",
+            "reservedMicros": 1007000,
+            "capMicros": 5000000,
+            "lastDispatchAtMs": 1792897919157
+          }
+        ],
+        "attempts": 1573
+      },
+      "verification": {
+        "scoresMatchReplay": true,
+        "completeDecisionCoverage": true,
+        "callsReconciled": true
+      }
+    }
+  ],
+  "averages": [
+    {
+      "policy": "rules",
+      "meanProfitCents": 31933.333333333332,
+      "meanUtilityPoints": 30441.666666666668,
+      "meanServed": 120.33333333333333,
+      "meanAbandoned": 1.3333333333333333,
+      "meanWasted": 18.333333333333332
+    },
+    {
+      "policy": "jev",
+      "meanProfitCents": 10433.333333333334,
+      "meanUtilityPoints": -65,
+      "meanServed": 45.666666666666664,
+      "meanAbandoned": 70.66666666666667,
+      "meanWasted": 16.333333333333332
+    },
+    {
+      "policy": "zoom",
+      "meanProfitCents": 23600,
+      "meanUtilityPoints": 18781.666666666668,
+      "meanServed": 107,
+      "meanAbandoned": 16.333333333333332,
+      "meanWasted": 38.333333333333336
+    },
+    {
+      "policy": "zoom-pro",
+      "meanProfitCents": 27100,
+      "meanUtilityPoints": 23538.333333333332,
+      "meanServed": 99,
+      "meanAbandoned": 17.333333333333332,
+      "meanWasted": 13
+    }
+  ],
+  "fallbackFreeSeeds": [
+    7,
+    11
+  ],
+  "fallbackFreeAverages": [
+    {
+      "policy": "rules",
+      "meanProfitCents": 32350,
+      "meanUtilityPoints": 31080,
+      "meanServed": 120.5,
+      "meanAbandoned": 1,
+      "meanWasted": 16.5
+    },
+    {
+      "policy": "jev",
+      "meanProfitCents": 12100,
+      "meanUtilityPoints": 2440,
+      "meanServed": 49,
+      "meanAbandoned": 66,
+      "meanWasted": 13
+    },
+    {
+      "policy": "zoom",
+      "meanProfitCents": 24600,
+      "meanUtilityPoints": 20370,
+      "meanServed": 107.5,
+      "meanAbandoned": 14,
+      "meanWasted": 34.5
+    },
+    {
+      "policy": "zoom-pro",
+      "meanProfitCents": 28350,
+      "meanUtilityPoints": 25532.5,
+      "meanServed": 101.5,
+      "meanAbandoned": 13.5,
+      "meanWasted": 10.5
+    }
+  ],
+  "newProviderCalls": 899,
+  "finalLedger": {
+    "campaignId": "zoom-trial-campaign-1",
+    "pools": [
+      {
+        "id": "jev-separate",
+        "reservedMicros": 1563704,
+        "capMicros": 1646294,
+        "lastDispatchAtMs": 1792897865943
+      },
+      {
+        "id": "zoom-shared",
+        "reservedMicros": 1007000,
+        "capMicros": 5000000,
+        "lastDispatchAtMs": 1792897919157
+      }
+    ],
+    "attempts": 1573
+  }
+}

@@ -24,7 +24,10 @@ for(const run of plan.runs) {
     if(choices.length!==120||choices.some((d:any,i:number)=>d.tick!==i))throw new Error('Missing/duplicate decision');
     const usage=accounting.usage.runs.filter((u:any)=>u.run_id===run.roundId&&u.provider===policy);
     const actualCalls=usage.reduce((n:number,u:any)=>n+u.attempts,0);
-    const expectedCalls=policy==='rules'?0:choices.filter((d:any)=>d.source!=='forced_wait').length;
+    const noDispatchFallbacks=receipt.errors.filter((e:any)=>e.status==='provider-fallback'&&e.provider===policy&&e.attemptCount===0);
+    if(noDispatchFallbacks.some((e:any)=>!choices.some((d:any)=>d.tick===e.tick&&d.fallback===e.reason)))throw new Error('Fallback log/decision mismatch');
+    const skippedTicks=new Set(noDispatchFallbacks.map((e:any)=>e.tick));
+    const expectedCalls=policy==='rules'?0:choices.filter((d:any)=>d.source!=='forced_wait'&&!skippedTicks.has(d.tick)).length;
     if(actualCalls!==expectedCalls)throw new Error('Provider call reconciliation failed');
     calls+=actualCalls;
     providers.push({policy,profitCents:score.profit_cents,utilityPoints:score.utility_points,served:score.served,abandoned:score.abandoned,wasted:analysis.totals.wasted,waitMinutes:analysis.totals.waitMinutes,restocks:analysis.restockTicks.length,emptyStockWaitsWithRestockAvailable:analysis.emptyStockWaitsWithRestockAvailable.length,waitsWithServeAvailable:analysis.waitsWithServeAvailable.length,waitsWithCookAvailable:analysis.waitsWithCookAvailable.length,forcedWaits:analysis.forcedWaits,voluntaryWaits:analysis.voluntaryWaits,providerCalls:actualCalls,fallbacks:analysis.fallbacks,usage});
@@ -38,11 +41,13 @@ for(const run of plan.runs) {
   previousAttempts=accounting.summary.attempts;
   rounds.push({seed:run.seed,roundId:run.roundId,providers,calls,jevReservedMicros,zoomAllocatedMicros,errors:receipt.errors,ledger:accounting.summary,verification:{scoresMatchReplay:true,completeDecisionCoverage:true,callsReconciled:true}});
 }
-const averages=['rules','jev','zoom','zoom-pro'].map(policy=>{
-  const rows=rounds.map(r=>r.providers.find((p:any)=>p.policy===policy)!);
+const summarize=(selected:any[])=>['rules','jev','zoom','zoom-pro'].map(policy=>{
+  const rows=selected.map(r=>r.providers.find((p:any)=>p.policy===policy)!);
   const mean=(key:'profitCents'|'utilityPoints'|'served'|'abandoned'|'wasted')=>rows.reduce((n,r)=>n+r[key],0)/rows.length;
   return {policy,meanProfitCents:mean('profitCents'),meanUtilityPoints:mean('utilityPoints'),meanServed:mean('served'),meanAbandoned:mean('abandoned'),meanWasted:mean('wasted')};
 });
-const report={status:'completed',promptVersion:plan.promptVersion,scope:'Three private clean-seed full 120-tick rounds; no general model ranking claim.',rounds,averages,newProviderCalls:previousAttempts-674,finalLedger:rounds.at(-1)!.ledger};
+const averages=summarize(rounds);
+const fallbackFreeRounds=rounds.filter(r=>r.providers.every((p:any)=>p.fallbacks.length===0));
+const report={status:'completed',promptVersion:plan.promptVersion,scope:'Three private clean-seed full 120-tick rounds; rounds with fallbacks are not pure model comparisons. No general model ranking claim.',rounds,averages,fallbackFreeSeeds:fallbackFreeRounds.map(r=>r.seed),fallbackFreeAverages:fallbackFreeRounds.length?summarize(fallbackFreeRounds):[],newProviderCalls:previousAttempts-674,finalLedger:rounds.at(-1)!.ledger};
 writeFileSync(directory+'/comparison.json',JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({averages,newProviderCalls:report.newProviderCalls,finalLedger:report.finalLedger},null,2));

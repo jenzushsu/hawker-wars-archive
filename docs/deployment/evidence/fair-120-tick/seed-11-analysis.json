@@ -1,0 +1,662 @@
+[
+  {
+    "policy": "rules",
+    "actionCounts": {
+      "COOK": 13,
+      "WAIT": 34,
+      "SERVE": 67,
+      "RESTOCK": 5,
+      "PROMOTE": 1
+    },
+    "fallbacks": [],
+    "voluntaryWaits": 20,
+    "forcedWaits": 14,
+    "emptyStockWaitsWithRestockAvailable": [],
+    "waitsWithServeAvailable": [],
+    "waitsWithCookAvailable": [],
+    "waitsWithReadyStock": [
+      {
+        "tick": 1,
+        "ready": 12,
+        "queue": 0
+      },
+      {
+        "tick": 3,
+        "ready": 11,
+        "queue": 0
+      },
+      {
+        "tick": 22,
+        "ready": 8,
+        "queue": 0
+      },
+      {
+        "tick": 23,
+        "ready": 8,
+        "queue": 0
+      },
+      {
+        "tick": 25,
+        "ready": 7,
+        "queue": 0
+      },
+      {
+        "tick": 92,
+        "ready": 8,
+        "queue": 0
+      },
+      {
+        "tick": 93,
+        "ready": 8,
+        "queue": 0
+      },
+      {
+        "tick": 98,
+        "ready": 15,
+        "queue": 0
+      },
+      {
+        "tick": 99,
+        "ready": 15,
+        "queue": 0
+      },
+      {
+        "tick": 101,
+        "ready": 14,
+        "queue": 0
+      },
+      {
+        "tick": 102,
+        "ready": 24,
+        "queue": 0
+      },
+      {
+        "tick": 107,
+        "ready": 20,
+        "queue": 0
+      },
+      {
+        "tick": 108,
+        "ready": 20,
+        "queue": 0
+      },
+      {
+        "tick": 109,
+        "ready": 20,
+        "queue": 0
+      },
+      {
+        "tick": 110,
+        "ready": 20,
+        "queue": 0
+      },
+      {
+        "tick": 111,
+        "ready": 20,
+        "queue": 0
+      },
+      {
+        "tick": 112,
+        "ready": 20,
+        "queue": 0
+      },
+      {
+        "tick": 114,
+        "ready": 18,
+        "queue": 0
+      },
+      {
+        "tick": 116,
+        "ready": 10,
+        "queue": 0
+      },
+      {
+        "tick": 117,
+        "ready": 10,
+        "queue": 0
+      },
+      {
+        "tick": 118,
+        "ready": 10,
+        "queue": 0
+      },
+      {
+        "tick": 119,
+        "ready": 10,
+        "queue": 0
+      }
+    ],
+    "cookTicks": [
+      0,
+      15,
+      21,
+      36,
+      43,
+      50,
+      57,
+      64,
+      71,
+      78,
+      85,
+      91,
+      97
+    ],
+    "restockTicks": [
+      5,
+      27,
+      53,
+      67,
+      81
+    ],
+    "lastServeTick": 115,
+    "score": {
+      "profitCents": 33600,
+      "utilityPoints": 32370,
+      "meanWaitMinutes": 0.608,
+      "satisfaction": null,
+      "provisional": false
+    },
+    "totals": {
+      "served": 125,
+      "abandoned": 0,
+      "wasted": 17,
+      "waitMinutes": 76,
+      "arrivals": 125,
+      "purchasedPortions": 100,
+      "restockOrders": 5,
+      "promotions": 1
+    },
+    "closingCashCents": 62000,
+    "closingRawPortions": 0,
+    "seed": 11
+  },
+  {
+    "policy": "jev",
+    "actionCounts": {
+      "COOK": 5,
+      "WAIT": 85,
+      "SERVE": 29,
+      "RESTOCK": 1
+    },
+    "fallbacks": [],
+    "voluntaryWaits": 75,
+    "forcedWaits": 10,
+    "emptyStockWaitsWithRestockAvailable": [
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109
+    ],
+    "waitsWithServeAvailable": [],
+    "waitsWithCookAvailable": [
+      20,
+      21,
+      22,
+      23,
+      25,
+      27
+    ],
+    "waitsWithReadyStock": [
+      {
+        "tick": 1,
+        "ready": 12,
+        "queue": 0
+      },
+      {
+        "tick": 3,
+        "ready": 11,
+        "queue": 0
+      },
+      {
+        "tick": 9,
+        "ready": 16,
+        "queue": 0
+      },
+      {
+        "tick": 13,
+        "ready": 22,
+        "queue": 0
+      },
+      {
+        "tick": 20,
+        "ready": 15,
+        "queue": 0
+      },
+      {
+        "tick": 21,
+        "ready": 15,
+        "queue": 0
+      },
+      {
+        "tick": 22,
+        "ready": 15,
+        "queue": 0
+      },
+      {
+        "tick": 23,
+        "ready": 15,
+        "queue": 0
+      },
+      {
+        "tick": 25,
+        "ready": 10,
+        "queue": 0
+      },
+      {
+        "tick": 27,
+        "ready": 9,
+        "queue": 0
+      }
+    ],
+    "cookTicks": [
+      0,
+      5,
+      30,
+      39,
+      48
+    ],
+    "restockTicks": [
+      7
+    ],
+    "lastServeTick": 56,
+    "score": {
+      "profitCents": 13600,
+      "utilityPoints": 4195,
+      "meanWaitMinutes": 3.906779661016949,
+      "satisfaction": null,
+      "provisional": false
+    },
+    "totals": {
+      "served": 52,
+      "abandoned": 66,
+      "wasted": 10,
+      "waitMinutes": 461,
+      "arrivals": 118,
+      "purchasedPortions": 20,
+      "restockOrders": 1,
+      "promotions": 0
+    },
+    "closingCashCents": 42000,
+    "closingRawPortions": 0,
+    "seed": 11
+  },
+  {
+    "policy": "zoom",
+    "actionCounts": {
+      "COOK": 13,
+      "WAIT": 38,
+      "SERVE": 62,
+      "RESTOCK": 6,
+      "PROMOTE": 1
+    },
+    "fallbacks": [],
+    "voluntaryWaits": 10,
+    "forcedWaits": 28,
+    "emptyStockWaitsWithRestockAvailable": [],
+    "waitsWithServeAvailable": [],
+    "waitsWithCookAvailable": [],
+    "waitsWithReadyStock": [
+      {
+        "tick": 1,
+        "ready": 12,
+        "queue": 0
+      },
+      {
+        "tick": 7,
+        "ready": 18,
+        "queue": 0
+      },
+      {
+        "tick": 9,
+        "ready": 16,
+        "queue": 0
+      },
+      {
+        "tick": 22,
+        "ready": 15,
+        "queue": 0
+      },
+      {
+        "tick": 98,
+        "ready": 5,
+        "queue": 0
+      },
+      {
+        "tick": 99,
+        "ready": 5,
+        "queue": 0
+      },
+      {
+        "tick": 101,
+        "ready": 4,
+        "queue": 0
+      },
+      {
+        "tick": 108,
+        "ready": 20,
+        "queue": 0
+      },
+      {
+        "tick": 109,
+        "ready": 20,
+        "queue": 0
+      },
+      {
+        "tick": 110,
+        "ready": 20,
+        "queue": 0
+      },
+      {
+        "tick": 111,
+        "ready": 20,
+        "queue": 0
+      },
+      {
+        "tick": 112,
+        "ready": 30,
+        "queue": 0
+      },
+      {
+        "tick": 114,
+        "ready": 28,
+        "queue": 0
+      },
+      {
+        "tick": 116,
+        "ready": 27,
+        "queue": 0
+      },
+      {
+        "tick": 117,
+        "ready": 27,
+        "queue": 0
+      },
+      {
+        "tick": 118,
+        "ready": 27,
+        "queue": 0
+      },
+      {
+        "tick": 119,
+        "ready": 27,
+        "queue": 0
+      }
+    ],
+    "cookTicks": [
+      0,
+      5,
+      20,
+      25,
+      43,
+      52,
+      61,
+      70,
+      79,
+      89,
+      97,
+      102,
+      107
+    ],
+    "restockTicks": [
+      3,
+      13,
+      23,
+      44,
+      64,
+      80
+    ],
+    "lastServeTick": 115,
+    "score": {
+      "profitCents": 24100,
+      "utilityPoints": 19975,
+      "meanWaitMinutes": 1.5416666666666667,
+      "satisfaction": null,
+      "provisional": false
+    },
+    "totals": {
+      "served": 106,
+      "abandoned": 14,
+      "wasted": 36,
+      "waitMinutes": 185,
+      "arrivals": 120,
+      "purchasedPortions": 120,
+      "restockOrders": 6,
+      "promotions": 1
+    },
+    "closingCashCents": 48500,
+    "closingRawPortions": 20,
+    "seed": 11
+  },
+  {
+    "policy": "zoom-pro",
+    "actionCounts": {
+      "COOK": 11,
+      "WAIT": 42,
+      "SERVE": 62,
+      "RESTOCK": 5
+    },
+    "fallbacks": [],
+    "voluntaryWaits": 25,
+    "forcedWaits": 17,
+    "emptyStockWaitsWithRestockAvailable": [],
+    "waitsWithServeAvailable": [],
+    "waitsWithCookAvailable": [
+      5,
+      7,
+      25,
+      108,
+      109,
+      110,
+      111,
+      112,
+      114
+    ],
+    "waitsWithReadyStock": [
+      {
+        "tick": 1,
+        "ready": 12,
+        "queue": 0
+      },
+      {
+        "tick": 3,
+        "ready": 11,
+        "queue": 0
+      },
+      {
+        "tick": 5,
+        "ready": 20,
+        "queue": 0
+      },
+      {
+        "tick": 7,
+        "ready": 18,
+        "queue": 0
+      },
+      {
+        "tick": 21,
+        "ready": 15,
+        "queue": 0
+      },
+      {
+        "tick": 22,
+        "ready": 15,
+        "queue": 0
+      },
+      {
+        "tick": 23,
+        "ready": 15,
+        "queue": 0
+      },
+      {
+        "tick": 25,
+        "ready": 20,
+        "queue": 0
+      },
+      {
+        "tick": 93,
+        "ready": 4,
+        "queue": 0
+      },
+      {
+        "tick": 99,
+        "ready": 11,
+        "queue": 0
+      },
+      {
+        "tick": 101,
+        "ready": 10,
+        "queue": 0
+      },
+      {
+        "tick": 102,
+        "ready": 20,
+        "queue": 0
+      },
+      {
+        "tick": 107,
+        "ready": 16,
+        "queue": 0
+      },
+      {
+        "tick": 108,
+        "ready": 16,
+        "queue": 0
+      },
+      {
+        "tick": 109,
+        "ready": 16,
+        "queue": 0
+      },
+      {
+        "tick": 110,
+        "ready": 16,
+        "queue": 0
+      },
+      {
+        "tick": 111,
+        "ready": 16,
+        "queue": 0
+      },
+      {
+        "tick": 112,
+        "ready": 16,
+        "queue": 0
+      },
+      {
+        "tick": 114,
+        "ready": 14,
+        "queue": 0
+      },
+      {
+        "tick": 116,
+        "ready": 13,
+        "queue": 0
+      },
+      {
+        "tick": 117,
+        "ready": 10,
+        "queue": 0
+      },
+      {
+        "tick": 118,
+        "ready": 10,
+        "queue": 0
+      },
+      {
+        "tick": 119,
+        "ready": 10,
+        "queue": 0
+      }
+    ],
+    "cookTicks": [
+      0,
+      9,
+      20,
+      27,
+      47,
+      58,
+      67,
+      76,
+      85,
+      92,
+      97
+    ],
+    "restockTicks": [
+      13,
+      48,
+      59,
+      69,
+      98
+    ],
+    "lastServeTick": 115,
+    "score": {
+      "profitCents": 28100,
+      "utilityPoints": 25200,
+      "meanWaitMinutes": 1.271186440677966,
+      "satisfaction": null,
+      "provisional": false
+    },
+    "totals": {
+      "served": 105,
+      "abandoned": 13,
+      "wasted": 17,
+      "waitMinutes": 150,
+      "arrivals": 118,
+      "purchasedPortions": 100,
+      "restockOrders": 5,
+      "promotions": 0
+    },
+    "closingCashCents": 52500,
+    "closingRawPortions": 20,
+    "seed": 11
+  }
+]
