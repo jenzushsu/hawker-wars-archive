@@ -17,7 +17,7 @@ it.each(inputs)('preserves state/choices and shares bounded guidance at tick $ti
  expect(new Set(instructions).size).toBe(1);expect(JSON.stringify(input)).toBe(before);
 });
 it('distinguishes existing work, recoverable stockout and too-late replenishment',()=>{
- const at=(tick:number)=>pipelineGuidance(inputs.find((i:any)=>i.tick===tick));
+ const at=(tick:number)=>pipelineGuidance(inputs.find(i=>i.tick===tick)!);
  expect(at(58)).toContain('already cooking and is due at tick 59');expect(at(58)).toContain('ready at tick 73');
  expect(at(73)).toContain('ready at tick 88, leaving 32 decision ticks');
  expect(at(109)).toContain('cannot be cooked and served before closing');expect(at(109)).toContain('200 cents per portion');
