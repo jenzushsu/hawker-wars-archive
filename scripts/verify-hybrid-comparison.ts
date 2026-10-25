@@ -1,0 +1,54 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {createInitialFrame,prepareTick,applyAction,advanceTick,settle} from '../packages/simulation/src/engine.ts';
+import {createDemandSchedule,arrivalsAt,toEngineArrival,eventAt} from '../packages/simulation/src/demand.ts';
+import {decisionInput} from '../packages/simulation/src/observation.ts';
+import {scoreState} from '../packages/simulation/src/scoring.ts';
+import {chooseRules} from '../packages/decisions/src/rules.ts';
+import {canonicalDecisionContext} from '../packages/providers/src/wire.ts';
+import {hybridExecution,HYBRID_POLICIES} from './hybrid-comparison.ts';
+import type {DecisionInput} from '../packages/shared/src/index.ts';
+const dir='docs/deployment/evidence/hybrid-comparison';
+const r=JSON.parse(readFileSync(dir+'/result.json','utf8'));
+const prior=JSON.parse(readFileSync('docs/deployment/evidence/v4-full/analysis.json','utf8'));
+const assert=(ok:boolean,message:string)=>{if(!ok)throw new Error(message);};
+const hash=(s:string)=>createHash('sha256').update(s).digest('hex');
+const approval=JSON.parse(readFileSync('docs/providers/fair-campaign-approval-hybrid.json','utf8'));
+assert(approval.status==='approved'&&r.roundId===approval.roundId&&r.version===approval.hybridVersion,'Approval identity');
+assert(r.status==='completed'&&r.seed===23&&r.decisions.length===480,'Incomplete run');
+const policies=HYBRID_POLICIES.map(policy=>{
+ const rows=r.decisions.filter((d:any)=>d.policy===policy),schedule=createDemandSchedule(r.seed,'clean');let frame=createInitialFrame();
+ const history:{tick:number;action:DecisionInput['legalActions'][number]}[]=[],ticks=[];
+ assert(rows.length===120,'Missing decisions');
+ for(let tick=0;tick<120;tick++){
+  const d=rows[tick];assert(d.tick===tick,'Tick ordering');
+  if(frame.stage==='committed')frame=advanceTick(frame);
+  const promo=frame.state.promotion,event=eventAt(schedule,tick),arrivals=arrivalsAt(schedule,tick,!!promo&&promo.startsAt<=tick&&promo.endsAt>=tick).map(toEngineArrival);
+  frame=prepareTick(frame,event?{arrivals,event}:{arrivals});
+  const input=decisionInput(frame.state,r.roundId,history.slice(-5)),o=input.observation;
+  assert(hash(JSON.stringify(input))===d.inputHash,`Input hash ${policy}/${tick}`);
+  assert((input.legalActions.length>1?hash(canonicalDecisionContext(input)):null)===d.contextHash,'Context hash');
+  if(policy==='rules')assert(chooseRules(o,input.legalActions).action===d.executedAction,'Rules changed');
+  else {const e=hybridExecution(input,d.turn);for(const k of ['modelSelectedAction','executedAction','source','intervention'] as const)assert(JSON.stringify(e[k])===JSON.stringify(d[k]),`Attribution ${policy}/${tick}/${k}`);}
+  assert(input.legalActions.includes(d.executedAction),'Illegal action');
+  ticks.push({tick,selected:d.modelSelectedAction,executed:d.executedAction,source:d.source,intervention:d.intervention,raw:o.rawPortions,ready:o.readyBatches.reduce((n,b)=>n+b.quantity,0),cooking:o.cooking,pending:o.pendingRestock,queue:o.queue.length,legal:input.legalActions});
+  frame=applyAction(frame,d.executedAction);history.push({tick,action:d.executedAction});
+ }
+ const final=settle(advanceTick(frame)),result=r.results.find((x:any)=>x.policy===policy);
+ assert(JSON.stringify(rows.filter((d:any)=>d.intervention).map((d:any)=>d.tick))===JSON.stringify(result.interventions),'Intervention summary');
+ assert(JSON.stringify(scoreState(final.state))===JSON.stringify(result.score)&&JSON.stringify(final.state.totals)===JSON.stringify(result.totals)&&final.state.cashCents===result.closingCashCents&&final.state.rawPortions===result.closingRawPortions,'Final score mismatch');
+ const usage=r.usage.runs.filter((x:any)=>x.run_id===r.roundId&&x.provider===policy),calls=usage.reduce((n:number,x:any)=>n+x.attempts,0);
+ const providerTurns=rows.filter((d:any)=>d.turn&&['provider','recovered'].includes(d.turn.origin)).length;
+ assert(calls===providerTurns&&calls<=120,'Call reconciliation');
+ const waits=ticks.filter(t=>t.executed==='WAIT'),old=prior.find((x:any)=>x.policy===policy);
+ return {...result,calls,usage,profitDeltaCents:result.score.profitCents-old.score.profitCents,restockTicks:ticks.filter(t=>t.executed==='RESTOCK').map(t=>t.tick),cookTicks:ticks.filter(t=>t.executed==='COOK').map(t=>t.tick),waits:{total:waits.length,emptyPipelineRestockLegal:waits.filter(t=>!t.raw&&!t.ready&&!t.cooking&&!t.pending&&t.legal.includes('RESTOCK')).map(t=>t.tick),cookLegal:waits.filter(t=>t.legal.includes('COOK')).map(t=>t.tick),serveLegal:waits.filter(t=>t.legal.includes('SERVE')).map(t=>t.tick)},fallbacks:rows.filter((d:any)=>d.turn?.result.status==='fallback'),ticks};
+});
+const calls=policies.reduce((n,p)=>n+p.calls,0),delta=(id:string)=>r.after.pools.find((p:any)=>p.id===id).reservedMicros-r.before.pools.find((p:any)=>p.id===id).reservedMicros;
+assert(r.before.attempts===1903&&r.after.attempts-r.before.attempts===calls,'Ledger attempts');
+const jevReservedMicros=delta('jev-separate'),zoomAllocatedMicros=delta('zoom-shared');
+assert(jevReservedMicros===policies.find(p=>p.policy==='jev')!.calls*2753&&jevReservedMicros<=330360,'Jev reservations');
+assert(zoomAllocatedMicros===policies.filter(p=>p.policy.startsWith('zoom')).reduce((n,p)=>n+p.calls,0)*1000&&zoomAllocatedMicros<=250000,'Zoom allocations');
+assert(r.after.pools.every((p:any)=>p.reservedMicros<=p.capMicros),'Budget cap');
+const report={status:'verified',roundId:r.roundId,calls,jevReservedMicros,zoomAllocatedMicros,policies,caveat:'Single hybrid run versus prior unguarded run; sampling can differ. Guard interventions are not raw model decisions.'};
+writeFileSync(dir+'/analysis.json',JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify({...report,policies:policies.map(({ticks,usage,...p})=>p)},null,2));

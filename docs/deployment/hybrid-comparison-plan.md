@@ -1,7 +1,7 @@
 # Prepared shared-restock hybrid comparison
 
-Status: approved by the user (“extend”). The prepared run may now deploy within
-the limits below. Results and standby restoration will be recorded after execution.
+Status: approved by the user (“extend”) and completed. See
+[results and post-run analysis](hybrid-comparison.md) for the verified comparison.
 
 ## Concrete run
 

@@ -1,0 +1,85 @@
+[
+  {
+    "status": "hybrid-ledger-transition",
+    "roundId": "2a818689-d18d-4810-9d18-aeca4607cf42",
+    "configurationHash": "940b5187ed901041dcbabfc78fd06b76ee11d7ac6cf35e1912311910d09b6ed8",
+    "before": {
+      "campaignId": "zoom-trial-campaign-1",
+      "pools": [
+        {
+          "id": "jev-separate",
+          "reservedMicros": 1894064,
+          "capMicros": 1896817,
+          "lastDispatchAtMs": 1792905167730
+        },
+        {
+          "id": "zoom-shared",
+          "reservedMicros": 1217000,
+          "capMicros": 5000000,
+          "lastDispatchAtMs": 1792905170668
+        }
+      ],
+      "attempts": 1903
+    }
+  },
+  {
+    "status": "hybrid-progress",
+    "roundId": "2a818689-d18d-4810-9d18-aeca4607cf42",
+    "tick": 0
+  },
+  {
+    "status": "hybrid-progress",
+    "roundId": "2a818689-d18d-4810-9d18-aeca4607cf42",
+    "tick": 10
+  },
+  {
+    "status": "hybrid-progress",
+    "roundId": "2a818689-d18d-4810-9d18-aeca4607cf42",
+    "tick": 20
+  },
+  {
+    "status": "hybrid-progress",
+    "roundId": "2a818689-d18d-4810-9d18-aeca4607cf42",
+    "tick": 30
+  },
+  {
+    "status": "hybrid-progress",
+    "roundId": "2a818689-d18d-4810-9d18-aeca4607cf42",
+    "tick": 40
+  },
+  {
+    "status": "hybrid-progress",
+    "roundId": "2a818689-d18d-4810-9d18-aeca4607cf42",
+    "tick": 50
+  },
+  {
+    "status": "hybrid-progress",
+    "roundId": "2a818689-d18d-4810-9d18-aeca4607cf42",
+    "tick": 60
+  },
+  {
+    "status": "hybrid-progress",
+    "roundId": "2a818689-d18d-4810-9d18-aeca4607cf42",
+    "tick": 70
+  },
+  {
+    "status": "hybrid-progress",
+    "roundId": "2a818689-d18d-4810-9d18-aeca4607cf42",
+    "tick": 80
+  },
+  {
+    "status": "hybrid-progress",
+    "roundId": "2a818689-d18d-4810-9d18-aeca4607cf42",
+    "tick": 90
+  },
+  {
+    "status": "hybrid-progress",
+    "roundId": "2a818689-d18d-4810-9d18-aeca4607cf42",
+    "tick": 100
+  },
+  {
+    "status": "hybrid-progress",
+    "roundId": "2a818689-d18d-4810-9d18-aeca4607cf42",
+    "tick": 110
+  }
+]
