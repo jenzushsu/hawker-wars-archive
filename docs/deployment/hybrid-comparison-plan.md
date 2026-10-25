@@ -1,8 +1,7 @@
 # Prepared shared-restock hybrid comparison
 
-Status: implemented and tested, awaiting the Jev budget extension. No deployment,
-ledger amendment or paid dispatch has occurred for this run. The existing Coolify
-worker remains in standby.
+Status: approved by the user (“extend”). The prepared run may now deploy within
+the limits below. Results and standby restoration will be recorded after execution.
 
 ## Concrete run
 
@@ -30,11 +29,11 @@ this does not publish a new web-visible round. Checkpoints are atomically replac
 and flushed. A one-use lock plus ledger identity gate prevents automatic reruns.
 Failures require inspection; no ledger reset, refund or automatic retry occurs.
 
-## Requested budget
+## Approved budget
 
 Current Jev reservations are $1.894064 against a $1.896817 cap: one call remains.
 A full run requires at most 120 × $0.002753 = $0.330360 additional reservations.
-The proposed cumulative cap is therefore **$2.224424**, an increase of $0.327607
+The approved cumulative cap is therefore **$2.224424**, an increase of $0.327607
 from the current cap. The existing $0.34 Jev per-run cap remains sufficient.
 
 Zoom remains at $0.25 shared per run and $5 per campaign. At most 240 calls across
@@ -45,7 +44,7 @@ These are maximum ledger reservations/operator allocations, not invoice amounts.
 - Expected prior records: 1,903.
 - Previous allowed run: `cdeb4749-9f09-4276-b6e5-efff4d99158e`.
 - Previous ledger hash: `bf633701e84ab4202d53bde186484eddc674bc4908736c91f2d9efc932cd4f8f`.
-- Approval record: [fair-campaign-approval-hybrid.json](../providers/fair-campaign-approval-hybrid.json), currently `pending-budget-approval`.
+- Approval record: [fair-campaign-approval-hybrid.json](../providers/fair-campaign-approval-hybrid.json), now `approved`.
 
 The runner checks approval before opening or amending the ledger. Its `--check`
 mode validates configuration without dispatch. Running it without approval was

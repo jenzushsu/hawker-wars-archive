@@ -1,5 +1,5 @@
 {
-  "status": "pending-budget-approval",
+  "status": "approved",
   "requestSource": "User: next, following the proposed shared hybrid comparison",
   "scope": "One standalone private Coolify hybrid experiment: seed23, 120ticks, three live models with identical shared restock recovery plus frozen Rules baseline. No full-round repeat.",
   "roundId": "2a818689-d18d-4810-9d18-aeca4607cf42",
@@ -18,5 +18,7 @@
   "zoomPriorAllocatedMicros": 1217000,
   "zoomAdditionalMaximumMicros": 240000,
   "zoomRunCapMicros": 250000,
-  "zoomCampaignCapMicros": 5000000
+  "zoomCampaignCapMicros": 5000000,
+  "approvalSource": "User: extend",
+  "approvedAt": "2026-10-25T05:26:56.277089+00:00"
 }
