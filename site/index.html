@@ -1,0 +1,1307 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How fast decision models perform across full Hawker Wars shifts, and how planning support changes the choices they make.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="From Mario to Hawker Wars: Decision Models in Sequential Operations">
+  <meta property="og:description" content="Six repeated shifts, per-tick actions, stockouts, prompt changes, and the limits of comparing sequential operations with static benchmarks.">
+  <meta property="og:image" content="https://jenzushsu.github.io/hawker-wars/repeated-seed-results.png">
+  <link rel="canonical" href="https://jenzushsu.github.io/hawker-wars/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>From Mario to Hawker Wars: Decision Models in Sequential Operations</title>
+</head>
+<body>
+  <a class="skip-link" href="#article">Skip to article</a>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="brand" href="./">Hawker Wars <span>Research notes</span></a>
+      <nav aria-label="Site">
+        <a href="article.md">Markdown</a>
+        <a href="https://github.com/jenzushsu/hawker-wars">GitHub</a>
+      </nav>
+    </div>
+  </header>
+  <div class="page-layout">
+    <main id="article" class="article">
+      <div class="eyebrow">Sequential decision evaluation · 26 October 2026</div>
+      <h1
+      id="from-mario-to-hawker-wars-decision-models-in-sequential-operations">From
+      Mario to Hawker Wars: Decision Models in Sequential
+      Operations</h1>
+      <p><strong>How do fast decision models perform in sequential
+      operations, and how does planning support affect their
+      choices?</strong> A model can choose a valid action and still
+      leave customers hungry. Hawker Wars makes that distinction visible
+      by asking models to operate simulated chicken rice stalls for a
+      full lunch shift.</p>
+      <p>In six full rounds with the same retained prompt across three
+      new demand seeds, Zoom Decisions Pro led the three models on game
+      profit and final utility each time, while Zoom Decisions served
+      the most customers. Jev 1.13.0 no longer repeated a historical
+      pattern of waiting through an empty supply pipeline, yet it served
+      fewer customers and had longer periods with waiting customers but
+      no ready food. These are outcomes of specific model, prompt,
+      interface and simulator configurations—not a general verdict about
+      a model’s planning ability.</p>
+      <h2 id="from-measured-mario-moves-to-hawker-stall-decisions">From
+      measured Mario moves to hawker-stall decisions</h2>
+      <p>In <a
+      href="https://medium.com/@jenzushsu/seven-moves-one-flag-putting-zoom-decisions-to-the-mario-test-829dc8d730ec"><em>Seven
+      Moves, One Flag</em></a>, the Mario emulator simulated seven
+      candidate moves and their follow-ups, restored the starting state,
+      and gave each model the measured outcomes. The model selected one
+      move to execute; hypothetical follow-ups required later decisions.
+      In the final default-depth batches on stage 1-1, Jev 1.13.0, Zoom
+      Decisions and Zoom Decisions Pro each cleared their respective ten
+      episodes. Mario requested <code>jev-latest</code> and verified
+      returned <code>jev-1.13.0</code>, plus Zoom API IDs
+      <code>zoom-decisions</code> and <code>zoom-decisions-pro</code>;
+      Hawker Wars configured <code>jev-1.13.0</code>,
+      <code>zoom-decisions-standard</code> and
+      <code>zoom-decisions-pro</code>. These service IDs are not
+      immutable weight snapshots. Mario’s result concerns action
+      selection <strong>with simulator-generated candidate
+      evidence</strong> on one stage, not unaided play or unseen levels.
+      <a href="sources/mario-article.md">Mario source Markdown</a></p>
+      <p>Hawker Wars’ original interface supplied the current stall
+      state, public mechanics and currently legal actions. It did not
+      simulate each candidate action and hand the model measured future
+      outcomes before asking for a choice. Later Hawker prompts added
+      shared planning guidance and state-derived supply summaries;
+      separate diagnostics let models select between supplied
+      conditional plans. Selecting a supplied plan is different from
+      constructing and carrying out one unaided.</p>
+      <table>
+      <colgroup>
+      <col style="width: 33%" />
+      <col style="width: 33%" />
+      <col style="width: 33%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>Experiment</th>
+      <th>Planning support supplied before the choice</th>
+      <th>What the model selected</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>Mario stage 1-1</td>
+      <td>Simulator-measured outcomes for seven candidate moves and
+      follow-ups</td>
+      <td>One move to execute</td>
+      </tr>
+      <tr class="even">
+      <td>Hawker Wars original interface</td>
+      <td>Current observation, mechanics, legal actions and
+      final-utility objective</td>
+      <td>One stall action</td>
+      </tr>
+      <tr class="odd">
+      <td>Hawker Wars later diagnostics</td>
+      <td>Explicit future-turn guidance, state-derived timing summaries,
+      or supplied conditional plans in separately labeled tests</td>
+      <td>The next action or one supplied plan</td>
+      </tr>
+      </tbody>
+      </table>
+      <p>The comparison is therefore about the <strong>whole decision
+      setup</strong>: what evidence and planning support the application
+      provides, what the model selects, and what happens after many
+      selections. Neither experiment by itself isolates a general
+      planning trait of a model.</p>
+      <h2
+      id="the-use-case-a-small-action-space-with-delayed-consequences">The
+      use case: a small action space with delayed consequences</h2>
+      <p>Each model operates an independent stall. At every decision
+      tick, it receives its current observation, public game mechanics,
+      recent action history and legal choices. It selects one action:
+      <strong>RESTOCK, COOK, SERVE, PROMOTE or WAIT</strong>.</p>
+      <p>An order normally takes ten simulated minutes to arrive.
+      Cooking takes five. Customers lose patience, prepared food
+      expires, and service closes at tick 120. Time and background work
+      progress during every action; WAIT is not required for a delivery
+      or cooking job to finish. When WAIT is the sole legal action, the
+      worker applies it locally without making a model call.</p>
+      <p>Profit and utility are different measures. Closing profit
+      includes remaining cash and raw-ingredient salvage, less starting
+      wealth. Utility also penalizes unserved customers, accumulated
+      waiting and cooked-food waste. The models are instructed to
+      maximize final utility, so profit alone is an incomplete
+      evaluation. All monetary results below are <strong>simulation
+      dollars, excluding API fees</strong>. <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/packages/simulation/src/scoring.ts">Simulation
+      scoring</a></p>
+      <p>The simulator’s mechanics determine deliveries, cooking,
+      patience, spoilage and scores for <strong>every</strong>
+      controller. Legal-action checks determine which choices are
+      possible at a particular state; they do not choose a strategy. The
+      fixed <strong>Rules</strong> controller is a separate,
+      hand-authored heuristic that chooses actions from those legal
+      options. It provides a useful practical reference, but it is
+      neither an optimal solver nor a set of ground-truth labels, and it
+      has no guarantee of winning other scenarios. A <strong>rules
+      fallback</strong> is yet another role: after an invalid or
+      timed-out model response, the worker records that failure and uses
+      the fixed controller’s action for that tick. These
+      model-plus-fallback trajectories must be labeled as such.</p>
+      <h2 id="the-starting-point-one-published-seed-23-round">The
+      starting point: one published seed-23 round</h2>
+      <p>The original headline comparison is completed published round
+      <code>a4366c8c-a68e-4699-adcc-f06e754ef352</code>, using the
+      <strong>clean scenario, demand seed 23, and 120 decision ticks
+      followed by closing</strong>. The six later rounds are presented
+      separately below.</p>
+      <table>
+      <colgroup>
+      <col style="width: 50%" />
+      <col style="width: 50%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>Item</th>
+      <th>Verified configuration</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>Shared model prompt</td>
+      <td><code>action-criteria-prompt-1</code></td>
+      </tr>
+      <tr class="even">
+      <td>Jev</td>
+      <td><code>jev-1.13.0</code></td>
+      </tr>
+      <tr class="odd">
+      <td>Zoom Decisions</td>
+      <td>API model ID <code>zoom-decisions-standard</code></td>
+      </tr>
+      <tr class="even">
+      <td>Zoom Decisions Pro</td>
+      <td>API model ID <code>zoom-decisions-pro</code></td>
+      </tr>
+      <tr class="odd">
+      <td>Worker revision</td>
+      <td><code>e86ca1e</code></td>
+      </tr>
+      <tr class="even">
+      <td>Execution</td>
+      <td>No voting or safeguard overriding model choices; no provider
+      fallbacks occurred</td>
+      </tr>
+      </tbody>
+      </table>
+      <p>The Zoom entries identify the configured API models; the
+      evidence does not establish an immutable, dated backend weight
+      version. Jev’s returned identity was checked against the pinned
+      version. We should not claim more version precision than the
+      records support. <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/manifests/provider-runtime-live-retained.json">Runtime
+      manifest</a> · <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/docs/deployment/live-retained-results.md">Verified
+      run report</a></p>
+      <p>All models used the same request-building rules and
+      instructions, but each received its own evolving observation. A
+      shared seed does not mean identical realized customer totals:
+      promotions can add arrivals. The experiment shares mechanics and
+      starting conditions without forcing the models into identical
+      trajectories.</p>
+      <p>A frozen Rules controller also ran as a hand-authored
+      reference. Its result appears in the table for context, not as an
+      optimal score or a per-tick answer key.</p>
+      <h2
+      id="the-published-seed-23-result-three-different-trade-offs">The
+      published seed-23 result: three different trade-offs</h2>
+      <table>
+      <colgroup>
+      <col style="width: 13%" />
+      <col style="width: 17%" />
+      <col style="width: 17%" />
+      <col style="width: 17%" />
+      <col style="width: 17%" />
+      <col style="width: 17%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>Model</th>
+      <th style="text-align: right;">Game profit</th>
+      <th style="text-align: right;">Served</th>
+      <th style="text-align: right;">Unserved / abandoned</th>
+      <th style="text-align: right;">Cooked portions wasted</th>
+      <th style="text-align: right;">Utility</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>Jev 1.13.0</td>
+      <td style="text-align: right;">$241</td>
+      <td style="text-align: right;">85</td>
+      <td style="text-align: right;">34</td>
+      <td style="text-align: right;">7</td>
+      <td style="text-align: right;">18,625</td>
+      </tr>
+      <tr class="even">
+      <td>Zoom Decisions</td>
+      <td style="text-align: right;">$221</td>
+      <td style="text-align: right;">102</td>
+      <td style="text-align: right;">19</td>
+      <td style="text-align: right;">40</td>
+      <td style="text-align: right;">16,935</td>
+      </tr>
+      <tr class="odd">
+      <td>Zoom Decisions Pro</td>
+      <td style="text-align: right;">$246</td>
+      <td style="text-align: right;">98</td>
+      <td style="text-align: right;">21</td>
+      <td style="text-align: right;">24</td>
+      <td style="text-align: right;">19,475</td>
+      </tr>
+      <tr class="even">
+      <td>Rules heuristic</td>
+      <td style="text-align: right;">$311</td>
+      <td style="text-align: right;">120</td>
+      <td style="text-align: right;">2</td>
+      <td style="text-align: right;">22</td>
+      <td style="text-align: right;">29,165</td>
+      </tr>
+      </tbody>
+      </table>
+      <figure>
+      <img src="latest-results.png"
+      alt="Published clean-seed-23 model results: profit, service and waste shown separately." />
+      <figcaption aria-hidden="true">Published clean-seed-23 model
+      results: profit, service and waste shown separately.</figcaption>
+      </figure>
+      <p>Zoom Decisions Pro finished $5 ahead of Jev. Zoom Decisions
+      served 17 more customers than Jev, but also wasted 33 more cooked
+      portions and earned $20 less. Jev’s lower waste accompanied lower
+      service volume; it does not establish that the model deliberately
+      optimized for waste reduction.</p>
+      <p>These are descriptive outcomes from one round. Neither the
+      small profit gap nor the different trade-offs establish a reliable
+      winner across conditions. <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/docs/deployment/live-retained-results.md">Closing
+      results and replay analysis</a></p>
+      <figure>
+      <img src="replay/hawker-wars-replay.gif"
+      alt="Accelerated replay of the published seed-23 shift, reconstructed from recorded simulation states." />
+      <figcaption aria-hidden="true">Accelerated replay of the published
+      seed-23 shift, reconstructed from recorded simulation
+      states.</figcaption>
+      </figure>
+      <p>The replay is a reconstruction of simulated ticks, not footage
+      of API response time.</p>
+      <h2 id="six-more-full-shifts-with-the-retained-prompt">Six more
+      full shifts with the retained prompt</h2>
+      <p>To test whether that finish order survived a change in demand,
+      we froze the <strong>clean scenario</strong>,
+      <code>action-criteria-prompt-1</code>, Jev
+      <strong>1.13.0</strong>, and the same configured Zoom Decisions
+      and Zoom Decisions Pro API model IDs. Seeds <strong>31, 47 and
+      59</strong> had not been used in the earlier campaigns; each ran
+      <strong>twice</strong> for 120 decisions plus closing. All three
+      decision models and the frozen Rules reference started with the
+      same mechanics and seed in a round, then controlled separate
+      evolving stalls. The repeats were completed but not published as
+      live viewer rounds. <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/22cbc8fd6f31ef767b4b1b348cbfe52d281ac580/docs/deployment/repeated-seed-evaluation.md">Repeated-seed
+      evidence</a></p>
+      <p>The following table keeps <strong>all five outcomes</strong>
+      and each run’s fallback count visible. The two repeats of a seed
+      share its potential demand schedule; promotions and other choices
+      can still change each stall’s arrivals and later states. Utility
+      is the instructed objective; profit is simulated game profit,
+      excluding API charges.</p>
+      <table style="width:100%;">
+      <colgroup>
+      <col style="width: 10%" />
+      <col style="width: 10%" />
+      <col style="width: 13%" />
+      <col style="width: 13%" />
+      <col style="width: 13%" />
+      <col style="width: 13%" />
+      <col style="width: 13%" />
+      <col style="width: 13%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>Seed / repeat</th>
+      <th>Model</th>
+      <th style="text-align: right;">Utility</th>
+      <th style="text-align: right;">Profit</th>
+      <th style="text-align: right;">Served</th>
+      <th style="text-align: right;">Wasted</th>
+      <th style="text-align: right;">Abandoned</th>
+      <th style="text-align: right;">Fallbacks</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>31 / 1</td>
+      <td>Jev 1.13.0</td>
+      <td style="text-align: right;">16,905</td>
+      <td style="text-align: right;">$231</td>
+      <td style="text-align: right;">83</td>
+      <td style="text-align: right;">9</td>
+      <td style="text-align: right;">39</td>
+      <td style="text-align: right;">2</td>
+      </tr>
+      <tr class="even">
+      <td>31 / 1</td>
+      <td>Zoom Decisions</td>
+      <td style="text-align: right;">26,020</td>
+      <td style="text-align: right;">$296</td>
+      <td style="text-align: right;">114</td>
+      <td style="text-align: right;">18</td>
+      <td style="text-align: right;">16</td>
+      <td style="text-align: right;">0</td>
+      </tr>
+      <tr class="odd">
+      <td>31 / 1</td>
+      <td>Zoom Decisions Pro</td>
+      <td style="text-align: right;">30,200</td>
+      <td style="text-align: right;">$331</td>
+      <td style="text-align: right;">112</td>
+      <td style="text-align: right;">0</td>
+      <td style="text-align: right;">16</td>
+      <td style="text-align: right;">1</td>
+      </tr>
+      <tr class="even">
+      <td>31 / 2</td>
+      <td>Jev 1.13.0</td>
+      <td style="text-align: right;">18,365</td>
+      <td style="text-align: right;">$241</td>
+      <td style="text-align: right;">85</td>
+      <td style="text-align: right;">7</td>
+      <td style="text-align: right;">37</td>
+      <td style="text-align: right;">1</td>
+      </tr>
+      <tr class="odd">
+      <td>31 / 2</td>
+      <td>Zoom Decisions</td>
+      <td style="text-align: right;">26,020</td>
+      <td style="text-align: right;">$296</td>
+      <td style="text-align: right;">114</td>
+      <td style="text-align: right;">18</td>
+      <td style="text-align: right;">16</td>
+      <td style="text-align: right;">0</td>
+      </tr>
+      <tr class="even">
+      <td>31 / 2</td>
+      <td>Zoom Decisions Pro</td>
+      <td style="text-align: right;">28,345</td>
+      <td style="text-align: right;">$311</td>
+      <td style="text-align: right;">107</td>
+      <td style="text-align: right;">5</td>
+      <td style="text-align: right;">15</td>
+      <td style="text-align: right;">0</td>
+      </tr>
+      <tr class="odd">
+      <td>47 / 1</td>
+      <td>Jev 1.13.0</td>
+      <td style="text-align: right;">21,640</td>
+      <td style="text-align: right;">$276</td>
+      <td style="text-align: right;">92</td>
+      <td style="text-align: right;">0</td>
+      <td style="text-align: right;">39</td>
+      <td style="text-align: right;">3</td>
+      </tr>
+      <tr class="even">
+      <td>47 / 1</td>
+      <td>Zoom Decisions</td>
+      <td style="text-align: right;">23,850</td>
+      <td style="text-align: right;">$286</td>
+      <td style="text-align: right;">115</td>
+      <td style="text-align: right;">27</td>
+      <td style="text-align: right;">20</td>
+      <td style="text-align: right;">0</td>
+      </tr>
+      <tr class="odd">
+      <td>47 / 1</td>
+      <td>Zoom Decisions Pro</td>
+      <td style="text-align: right;">29,455</td>
+      <td style="text-align: right;">$331</td>
+      <td style="text-align: right;">111</td>
+      <td style="text-align: right;">1</td>
+      <td style="text-align: right;">20</td>
+      <td style="text-align: right;">0</td>
+      </tr>
+      <tr class="even">
+      <td>47 / 2</td>
+      <td>Jev 1.13.0</td>
+      <td style="text-align: right;">21,620</td>
+      <td style="text-align: right;">$276</td>
+      <td style="text-align: right;">92</td>
+      <td style="text-align: right;">0</td>
+      <td style="text-align: right;">39</td>
+      <td style="text-align: right;">0</td>
+      </tr>
+      <tr class="odd">
+      <td>47 / 2</td>
+      <td>Zoom Decisions</td>
+      <td style="text-align: right;">26,350</td>
+      <td style="text-align: right;">$306</td>
+      <td style="text-align: right;">115</td>
+      <td style="text-align: right;">17</td>
+      <td style="text-align: right;">20</td>
+      <td style="text-align: right;">0</td>
+      </tr>
+      <tr class="even">
+      <td>47 / 2</td>
+      <td>Zoom Decisions Pro</td>
+      <td style="text-align: right;">26,955</td>
+      <td style="text-align: right;">$311</td>
+      <td style="text-align: right;">111</td>
+      <td style="text-align: right;">11</td>
+      <td style="text-align: right;">20</td>
+      <td style="text-align: right;">0</td>
+      </tr>
+      <tr class="odd">
+      <td>59 / 1</td>
+      <td>Jev 1.13.0</td>
+      <td style="text-align: right;">20,140</td>
+      <td style="text-align: right;">$256</td>
+      <td style="text-align: right;">88</td>
+      <td style="text-align: right;">4</td>
+      <td style="text-align: right;">35</td>
+      <td style="text-align: right;">0</td>
+      </tr>
+      <tr class="even">
+      <td>59 / 1</td>
+      <td>Zoom Decisions</td>
+      <td style="text-align: right;">24,365</td>
+      <td style="text-align: right;">$286</td>
+      <td style="text-align: right;">111</td>
+      <td style="text-align: right;">21</td>
+      <td style="text-align: right;">19</td>
+      <td style="text-align: right;">0</td>
+      </tr>
+      <tr class="odd">
+      <td>59 / 1</td>
+      <td>Zoom Decisions Pro</td>
+      <td style="text-align: right;">26,000</td>
+      <td style="text-align: right;">$296</td>
+      <td style="text-align: right;">104</td>
+      <td style="text-align: right;">8</td>
+      <td style="text-align: right;">19</td>
+      <td style="text-align: right;">0</td>
+      </tr>
+      <tr class="even">
+      <td>59 / 2</td>
+      <td>Jev 1.13.0</td>
+      <td style="text-align: right;">15,940</td>
+      <td style="text-align: right;">$226</td>
+      <td style="text-align: right;">78</td>
+      <td style="text-align: right;">4</td>
+      <td style="text-align: right;">45</td>
+      <td style="text-align: right;">0</td>
+      </tr>
+      <tr class="odd">
+      <td>59 / 2</td>
+      <td>Zoom Decisions</td>
+      <td style="text-align: right;">21,865</td>
+      <td style="text-align: right;">$266</td>
+      <td style="text-align: right;">111</td>
+      <td style="text-align: right;">31</td>
+      <td style="text-align: right;">19</td>
+      <td style="text-align: right;">0</td>
+      </tr>
+      <tr class="even">
+      <td>59 / 2</td>
+      <td>Zoom Decisions Pro</td>
+      <td style="text-align: right;">25,980</td>
+      <td style="text-align: right;">$296</td>
+      <td style="text-align: right;">104</td>
+      <td style="text-align: right;">8</td>
+      <td style="text-align: right;">19</td>
+      <td style="text-align: right;">0</td>
+      </tr>
+      </tbody>
+      </table>
+      <figure>
+      <img src="repeated-seed-results.png"
+      alt="Profit, service and waste for the six repeated rounds, shown separately." />
+      <figcaption aria-hidden="true">Profit, service and waste for the
+      six repeated rounds, shown separately.</figcaption>
+      </figure>
+      <figure>
+      <img src="repeated-seed-utility-abandonment.png"
+      alt="Final utility and customer abandonment for the same six repeated rounds." />
+      <figcaption aria-hidden="true">Final utility and customer
+      abandonment for the same six repeated rounds.</figcaption>
+      </figure>
+      <p>A <strong>voluntary WAIT</strong> is a model-selected WAIT when
+      another action was legal. A <strong>compulsory WAIT</strong> is
+      the sole legal action and is applied locally, without a model
+      request. These are different from a Rules fallback; none of the
+      seven fallbacks below selected WAIT. Counts are voluntary /
+      compulsory:</p>
+      <table>
+      <thead>
+      <tr class="header">
+      <th>Seed / repeat</th>
+      <th style="text-align: right;">Jev 1.13.0</th>
+      <th style="text-align: right;">Zoom Decisions</th>
+      <th style="text-align: right;">Zoom Decisions Pro</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>31 / 1</td>
+      <td style="text-align: right;">50 / 17</td>
+      <td style="text-align: right;">7 / 30</td>
+      <td style="text-align: right;">22 / 21</td>
+      </tr>
+      <tr class="even">
+      <td>31 / 2</td>
+      <td style="text-align: right;">44 / 16</td>
+      <td style="text-align: right;">7 / 30</td>
+      <td style="text-align: right;">23 / 17</td>
+      </tr>
+      <tr class="odd">
+      <td>47 / 1</td>
+      <td style="text-align: right;">36 / 20</td>
+      <td style="text-align: right;">6 / 27</td>
+      <td style="text-align: right;">15 / 25</td>
+      </tr>
+      <tr class="even">
+      <td>47 / 2</td>
+      <td style="text-align: right;">40 / 18</td>
+      <td style="text-align: right;">9 / 25</td>
+      <td style="text-align: right;">22 / 18</td>
+      </tr>
+      <tr class="odd">
+      <td>59 / 1</td>
+      <td style="text-align: right;">44 / 18</td>
+      <td style="text-align: right;">7 / 26</td>
+      <td style="text-align: right;">25 / 18</td>
+      </tr>
+      <tr class="even">
+      <td>59 / 2</td>
+      <td style="text-align: right;">47 / 19</td>
+      <td style="text-align: right;">6 / 26</td>
+      <td style="text-align: right;">24 / 19</td>
+      </tr>
+      </tbody>
+      </table>
+      <p>Across these six rounds, Zoom Decisions Pro led the decision
+      models in game profit <strong>and final utility</strong> every
+      time; its mean profit was <strong>$312.67</strong> (range
+      $296–$331) and mean utility <strong>27,822.5</strong>. Zoom
+      Decisions served the most customers every time, averaging
+      <strong>113.3</strong>; Zoom Decisions Pro averaged
+      <strong>108.2</strong>, and Jev <strong>86.3</strong>. Jev’s mean
+      waste was <strong>4.0</strong> portions, but it served far fewer
+      customers and abandoned <strong>35–45</strong> per round, versus
+      <strong>16–20</strong> for Zoom Decisions and
+      <strong>15–20</strong> for Zoom Decisions Pro. Jev wasted the
+      least in four rounds, while Zoom Decisions Pro did so in the other
+      two. The seed-23 profit order—Zoom Decisions Pro, Jev, Zoom
+      Decisions—did <strong>not</strong> persist in these three other
+      demand schedules. Even within seed 59, Jev’s profit changed from
+      $256 to $226 across repetitions while Zoom Decisions Pro’s stayed
+      at $296.</p>
+      <p>The separate Rules heuristic earned <strong>$331–$356</strong>
+      profit, <strong>31,655–33,430</strong> utility and served
+      <strong>124–129</strong> customers across these six rounds. Those
+      observed results show what its explicit strategy achieved here.
+      They do not establish an optimal ceiling or a guarantee against a
+      model on another state or scenario. <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/22cbc8fd6f31ef767b4b1b348cbfe52d281ac580/docs/deployment/repeated-seed-evaluation.md">Rules
+      and repeat results</a></p>
+      <p>There were <strong>seven Rules fallbacks</strong> among the 18
+      model trajectories: six invalid Jev responses and one Zoom
+      Decisions Pro timeout. They occurred in the seed-31 runs and
+      seed-47’s first repetition; seed-47’s second repetition and both
+      seed-59 rounds were fallback-free. A score with a fallback is a
+      mixed model-and-Rules outcome, not a pure model-only outcome.
+      Differences also appeared between fallback-free repetitions, so
+      the fallback count does not by itself explain all variation.
+      Independent replay reproduced every closing score and found
+      <strong>zero empty-pipeline WAITs with RESTOCK legal</strong> for
+      all three models across these repeats. That is evidence that the
+      retained prompt avoided the specific earlier Jev failure here, not
+      that it made Jev the strongest operator.</p>
+      <figure>
+      <img src="repeated-seed-action-timeline.png"
+      alt="Per-tick action timelines for all six rounds; hatched cells are forced waits and red crosses are Rules fallbacks." />
+      <figcaption aria-hidden="true">Per-tick action timelines for all
+      six rounds; hatched cells are forced waits and red crosses are
+      Rules fallbacks.</figcaption>
+      </figure>
+      <p>The action timeline shows each recorded decision, including
+      forced WAITs applied locally when WAIT was the only legal action.
+      A SERVE action can handle several customers; these colored cells
+      are action counts, not customer counts. Three distinct seeds with
+      two repeats each are still too few to claim a stable population
+      ranking. Further seeds, disturbances, and repeated provider calls
+      would better measure how often each model leads and how robust its
+      API responses are. <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/22cbc8fd6f31ef767b4b1b348cbfe52d281ac580/docs/deployment/evidence/repeated-seeds/timelines.json">Recorded
+      repeated actions</a></p>
+      <p>The per-tick replay also measures a <strong>customer-facing
+      stockout</strong>: an observation with customers waiting but no
+      ready food. This includes periods when ingredients are already on
+      order or cooking; it does <strong>not</strong> mean the model
+      chose to WAIT or left the entire supply pipeline empty. Jev had
+      46–60 such ticks per round, including one uninterrupted
+      <strong>15-tick</strong> interval in every repeat. Zoom Decisions
+      had 30–31 such ticks and Zoom Decisions Pro 27–39; their longest
+      intervals were <strong>five ticks</strong> in these runs. <a
+      href="stockout-summary.json">Stockout intervals</a></p>
+      <figure>
+      <img src="stockout-duration.png"
+      alt="Six-round customer-facing stockout spans at each simulated decision tick. Orange markers show the one empty-pipeline tick on which Jev ordered." />
+      <figcaption aria-hidden="true">Six-round customer-facing stockout
+      spans at each simulated decision tick. Orange markers show the one
+      empty-pipeline tick on which Jev ordered.</figcaption>
+      </figure>
+      <p>Jev encountered one tick per repeat with an entirely empty
+      pipeline and RESTOCK legal, then <strong>selected RESTOCK
+      immediately</strong> at that tick. The subsequent customer-facing
+      gap reflects the delivery and cooking delay, not the prolonged
+      empty-pipeline WAIT pattern from the earlier seed-7 prompt. It is
+      still an operationally important gap: customers can abandon while
+      food is unavailable. Every chart here uses <strong>simulated
+      one-minute ticks</strong> on its horizontal axis. Provider
+      inference latency is wall-clock time and is not plotted as
+      simulated delay.</p>
+      <h2 id="the-evaluation-journey-keep-the-experiments-distinct">The
+      evaluation journey: keep the experiments distinct</h2>
+      <h3
+      id="historical-seed-7-clearer-mechanics-did-not-resolve-replenishment">Historical
+      seed 7: clearer mechanics did not resolve replenishment</h3>
+      <p>The early comparisons used <strong>clean seed 7</strong> with
+      the original prompt (v1) and
+      <code>hawker-decision-prompt-2</code>. These are separate from the
+      later <code>action-criteria</code> prompt family; the two “v2”
+      labels must not be confused.</p>
+      <table style="width:100%;">
+      <colgroup>
+      <col style="width: 10%" />
+      <col style="width: 10%" />
+      <col style="width: 13%" />
+      <col style="width: 13%" />
+      <col style="width: 13%" />
+      <col style="width: 13%" />
+      <col style="width: 13%" />
+      <col style="width: 13%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>Seed-7 prompt</th>
+      <th>Controller</th>
+      <th style="text-align: right;">Utility</th>
+      <th style="text-align: right;">Profit</th>
+      <th style="text-align: right;">Served</th>
+      <th style="text-align: right;">Wasted</th>
+      <th style="text-align: right;">Abandoned</th>
+      <th style="text-align: right;">Fallbacks</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>Original v1</td>
+      <td>Jev 1.13.0</td>
+      <td style="text-align: right;">700</td>
+      <td style="text-align: right;">$106</td>
+      <td style="text-align: right;">46</td>
+      <td style="text-align: right;">16</td>
+      <td style="text-align: right;">66</td>
+      <td style="text-align: right;">1</td>
+      </tr>
+      <tr class="even">
+      <td>Original v1</td>
+      <td>Zoom Decisions</td>
+      <td style="text-align: right;">18,390</td>
+      <td style="text-align: right;">$226</td>
+      <td style="text-align: right;">98</td>
+      <td style="text-align: right;">34</td>
+      <td style="text-align: right;">14</td>
+      <td style="text-align: right;">0</td>
+      </tr>
+      <tr class="odd">
+      <td>Original v1</td>
+      <td>Zoom Decisions Pro</td>
+      <td style="text-align: right;">22,955</td>
+      <td style="text-align: right;">$261</td>
+      <td style="text-align: right;">101</td>
+      <td style="text-align: right;">21</td>
+      <td style="text-align: right;">11</td>
+      <td style="text-align: right;">0</td>
+      </tr>
+      <tr class="even">
+      <td>Original v1</td>
+      <td>Rules heuristic</td>
+      <td style="text-align: right;">29,790</td>
+      <td style="text-align: right;">$311</td>
+      <td style="text-align: right;">116</td>
+      <td style="text-align: right;">16</td>
+      <td style="text-align: right;">2</td>
+      <td style="text-align: right;">0</td>
+      </tr>
+      <tr class="odd">
+      <td><code>hawker-decision-prompt-2</code></td>
+      <td>Jev 1.13.0</td>
+      <td style="text-align: right;">870</td>
+      <td style="text-align: right;">$106</td>
+      <td style="text-align: right;">46</td>
+      <td style="text-align: right;">16</td>
+      <td style="text-align: right;">66</td>
+      <td style="text-align: right;">1</td>
+      </tr>
+      <tr class="even">
+      <td><code>hawker-decision-prompt-2</code></td>
+      <td>Zoom Decisions</td>
+      <td style="text-align: right;">20,765</td>
+      <td style="text-align: right;">$251</td>
+      <td style="text-align: right;">109</td>
+      <td style="text-align: right;">33</td>
+      <td style="text-align: right;">14</td>
+      <td style="text-align: right;">0</td>
+      </tr>
+      <tr class="odd">
+      <td><code>hawker-decision-prompt-2</code></td>
+      <td>Zoom Decisions Pro</td>
+      <td style="text-align: right;">25,260</td>
+      <td style="text-align: right;">$281</td>
+      <td style="text-align: right;">101</td>
+      <td style="text-align: right;">11</td>
+      <td style="text-align: right;">11</td>
+      <td style="text-align: right;">0</td>
+      </tr>
+      <tr class="even">
+      <td><code>hawker-decision-prompt-2</code></td>
+      <td>Rules heuristic</td>
+      <td style="text-align: right;">29,790</td>
+      <td style="text-align: right;">$311</td>
+      <td style="text-align: right;">116</td>
+      <td style="text-align: right;">16</td>
+      <td style="text-align: right;">2</td>
+      <td style="text-align: right;">0</td>
+      </tr>
+      </tbody>
+      </table>
+      <p>The second prompt made action consequences, delivery and
+      cooking delays, customer patience and closing value more explicit.
+      Zoom Decisions served more customers, while Zoom Decisions Pro
+      retained more value by wasting fewer cooked portions. One run per
+      condition cannot isolate the prompt’s effect from model variation
+      and the resulting different trajectories.</p>
+      <p>Jev’s replenishment failure persisted. In the seed-7 prompt-2
+      run, it chose WAIT at ticks <strong>57–109</strong>, despite an
+      empty supply pipeline and RESTOCK being legal. These 53 accepted
+      model choices were not timeouts or exhausted budgets. The run did
+      contain a separate invalid-probability fallback at tick 1; it must
+      therefore remain labeled as a run with a fallback, even though
+      that incident does not explain the later accepted WAIT sequence.
+      <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/docs/deployment/prompt-v2-comparison.md">Historical
+      comparison</a></p>
+      <figure>
+      <img src="historical-seed7-timeline.png"
+      alt="Historical seed-7 Jev action timeline; voluntary stockout waits and forced waits are distinct." />
+      <figcaption aria-hidden="true">Historical seed-7 Jev action
+      timeline; voluntary stockout waits and forced waits are
+      distinct.</figcaption>
+      </figure>
+      <p>At tick 57, replenishment followed by cooking could support
+      later arrivals, even if it could not rescue the current queue.
+      Near closing, the same logic changes: an order at 109 arrives at
+      119 and cannot finish a five-minute cook before 120. Legal
+      restocking is not automatically beneficial restocking.</p>
+      <p>Captured-state tests then explored richer planning instructions
+      and supplied conditional plans. In the initial plan-selection
+      diagnostic, all three models chose immediate replenishment at tick
+      57. That was evidence of sensitivity to framing, not evidence that
+      they could construct and execute the same plan independently.
+      Those diagnostic selections were not themselves full simulation
+      outcomes. <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/docs/deployment/planning-experiment.md">Planning
+      tests</a> · <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/docs/deployment/short-plan-experiment.md">Initial
+      short-plan diagnostic</a></p>
+      <h3
+      id="shared-planning-request-size-and-model-version-were-separate-questions">Shared
+      planning, request size and model version were separate
+      questions</h3>
+      <p>A subsequent shared-planning campaign used seeds 7, 11 and 23.
+      Jev still placed only one restock per round. There was no coded
+      one-restock limit: repeated orders remained legal. The seed-23 run
+      also exposed two request-size fallbacks for the Zoom models, so it
+      cannot be presented as entirely model-driven execution.</p>
+      <p>Prompt <code>hawker-decision-prompt-4</code> compacted the
+      shared observation representation while retaining its information.
+      A new seed-23 round completed without fallbacks, but raw Jev
+      1.13.0 still earned $96, served 44 customers and made 47
+      empty-pipeline WAIT choices with RESTOCK legal. Solving the
+      request-envelope issue did not solve the replenishment behavior.
+      <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/docs/deployment/fair-120-tick-campaign.md">Shared-planning
+      campaign and format fix</a> · <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/docs/deployment/v4-full-campaign.md">Full
+      prompt-4 round</a></p>
+      <p>A separate raw Jev 1.14.0 test under prompt 4 earned $71 and
+      served 39, with 51 such waits. That single run did not demonstrate
+      a general version regression, but it did not resolve this observed
+      failure either. A safeguard-assisted hybrid earned $191 in another
+      experiment; that belongs to a different policy and must not be
+      presented as unmodified Jev performance. <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/docs/deployment/jev114-comparison.md">Version
+      comparison</a></p>
+      <h3
+      id="concise-action-criteria-changed-the-observed-trajectory">Concise
+      action criteria changed the observed trajectory</h3>
+      <p>The next candidate,
+      <strong><code>action-criteria-prompt-1</code></strong>, retained
+      the shared mechanics and legal options but reorganized the
+      instructions around concrete action criteria. It asked the model
+      to evaluate ready food, cooking, raw stock and incoming deliveries
+      together, consider customers arriving after replenishment, and
+      recognize that WAIT cannot refill an empty pipeline.</p>
+      <p>It also derived a short pipeline summary and an optimistic
+      earliest-food time from public state. Those calculations did not
+      expose hidden arrivals or choose an action for the model.
+      Follow-up actions still had to be selected on later ticks. <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/packages/providers/src/action-criteria-experiment.ts">Prompt
+      implementation</a></p>
+      <p>In a Jev-only seed-23 run, this candidate produced <strong>$241
+      profit, 85 served and 7 wasted</strong>, with three restocks and
+      zero empty-pipeline WAITs while RESTOCK was legal. The model
+      resumed its own supply chain without a code-level override.
+      Compared with the earlier raw prompt-4 run, that was a substantial
+      observed improvement, but several instructions and the derived
+      summary changed together. It is not a causal estimate for any
+      single sentence. <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/docs/deployment/criteria-comparison.md">First
+      action-criteria full round</a></p>
+      <h3 id="a-local-improvement-failed-the-full-round-test">A local
+      improvement failed the full-round test</h3>
+      <p>The first action-criteria run still contained a useful
+      diagnostic: at ticks 86–87, Jev had usable raw ingredients and
+      waiting customers but delayed cooking while another delivery
+      approached.</p>
+      <p><code>action-criteria-prompt-2</code> clarified that deliveries
+      progress during other actions and explicitly compared cooking
+      existing stock now with waiting for incoming stock. Across the two
+      saved states, it selected COOK in six of six treatment calls,
+      versus one of six baseline calls. These were small, targeted tests
+      with three repetitions per state and condition—not a general
+      reliability estimate. <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/docs/deployment/cooking-test.md">Cooking
+      clarification test</a></p>
+      <p>The full seed-23 run told a different story. Jev 1.13.0 under
+      action-criteria prompt 2 earned <strong>$71, served 39 and wasted
+      23</strong>, with <strong>61 empty-pipeline WAITs</strong> while
+      RESTOCK was legal. It eliminated cooking-legal waits on that
+      trajectory but reintroduced a larger replenishment failure.</p>
+      <p>The candidate was rejected, and <strong>action-criteria prompt
+      1 was retained</strong>. This is the central evaluation lesson:
+      fixing the response to a saved state can change earlier choices,
+      causing the model to encounter a completely different set of
+      states later. <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/docs/deployment/criteria-v2-full.md">Full-round
+      regression</a> · <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/docs/deployment/prompt-selection.md">Prompt
+      selection</a></p>
+      <p>The latest published all-model round then repeated Jev’s
+      <strong>$241 / 85 served / 7 wasted</strong> outcome under the
+      retained prompt. Its action sequence and utility were not
+      identical to the earlier run. Repeating headline totals on the
+      same seed supports further testing; it does not establish
+      cross-seed reliability.</p>
+      <h2 id="the-prompts-actually-used">The prompts actually used</h2>
+      <p>The historical rounds, the published seed-23 round and the six
+      repeats did not use one interchangeable “v2” prompt. They used the
+      following versions, with the same public simulator rules and
+      legal-action schema within each comparison:</p>
+      <table>
+      <colgroup>
+      <col style="width: 33%" />
+      <col style="width: 33%" />
+      <col style="width: 33%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>Experiment</th>
+      <th>Shared prompt sent for decisions</th>
+      <th>Relevant change</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>Historical clean seed 7, first comparison</td>
+      <td>Original prompt v1</td>
+      <td>Initial decision framing; retained as historical
+      evidence.</td>
+      </tr>
+      <tr class="even">
+      <td>Historical clean seed 7, second comparison</td>
+      <td><code>hawker-decision-prompt-2</code></td>
+      <td>Explicit action consequences, waiting, delays and closing
+      value.</td>
+      </tr>
+      <tr class="odd">
+      <td>Three-seed planning campaign</td>
+      <td><code>hawker-decision-prompt-3</code></td>
+      <td>Shared planning guidance over future turns and repeated
+      restocking.</td>
+      </tr>
+      <tr class="even">
+      <td>Raw Jev version tests and seed-23 v4 round</td>
+      <td><code>hawker-decision-prompt-4</code></td>
+      <td>Same planning semantics with compact observation tables and
+      public action rules.</td>
+      </tr>
+      <tr class="odd">
+      <td>Jev-only test, published seed-23 comparison and six repeated
+      rounds</td>
+      <td><code>action-criteria-prompt-1</code>, built on the prompt-4
+      context</td>
+      <td>Short action criteria and state-dependent pipeline/restock
+      summary. <strong>This is the retained prompt.</strong></td>
+      </tr>
+      <tr class="even">
+      <td>Jev-only cooking test and regression round</td>
+      <td><code>action-criteria-prompt-2</code>, built on the prompt-4
+      context</td>
+      <td>Added cooking-versus-delivery timing and queued-customer
+      deadline calculations. Rejected after the full round.</td>
+      </tr>
+      </tbody>
+      </table>
+      <p>Here is the <strong>verbatim fixed instruction block</strong>
+      from the retained <code>action-criteria-prompt-1</code> builder.
+      It was used for Jev 1.13.0, Zoom Decisions and Zoom Decisions Pro
+      in the published seed-23 comparison and all six repeats; the
+      provider wire formats place it in different fields:</p>
+      <pre class="text"><code>Choose one legal action to maximize final utility at tick 120 using the supplied rules. Return the typed choice; do not infer hidden arrivals.
+Evaluate ready food, cooking, raw stock and pending delivery together.
+SERVE: Prioritize waiting customers when food is ready; delay risks abandonment or spoilage.
+COOK: Consider cooking when ready supply is insufficient for expected demand; account for completion time and spoilage.
+RESTOCK: Consider replenishment before supply runs out. An empty pipeline needs an order. Consider arrivals after delivery/cooking, not only the current queue. Repeat orders are allowed.
+WAIT: Use when work progresses, delay avoids waste, or other actions offer no expected utility gain. WAIT cannot replenish stock.
+PROMOTE: Consider extra demand when supply and service capacity can support it.
+Account for closing salvage and penalties. Follow-up actions are not automatic. Tables use named columns; queue rows are FIFO.</code></pre>
+      <p>Each request appended the current pipeline state—raw and ready
+      portions, cooking and delivery due ticks—and an optimistic
+      earliest-food calculation if RESTOCK was legal. It also stated
+      when restocking could no longer lead to cooked food before
+      closing. The observation, legal actions, public rules and
+      final-utility objective were supplied as structured context; this
+      block alone was not the complete request. Those dynamic fields
+      change at every tick, so a single static quotation cannot
+      represent all requests. The exact builders preserve their wording
+      and serialization: <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/packages/providers/src/action-criteria-experiment.ts">retained
+      action criteria</a>, <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/packages/providers/src/action-criteria-v2-experiment.ts">rejected
+      cooking clarification</a>, and <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/packages/providers/src/wire.ts">shared
+      context/base prompts</a>.</p>
+      <p>For the earlier runs, the <strong>original v1</strong> question
+      instruction was:</p>
+      <pre class="text"><code>Choose exactly one allowed action to maximize expected final utility at closing. Use the supplied observation and public game rules. Return the typed choice only; do not infer hidden schedules or seeds.</code></pre>
+      <p>The <strong>historical prompt 2</strong> used that opening,
+      then added <code>Allowed actions and consequences:</code> followed
+      by the lines for actions legal on that tick, selected from this
+      exact list:</p>
+      <pre class="text"><code>SERVE: Serve min(3, queue length, ready portions), FIFO; consume earliest-expiring ready portions; earn 500 cents each. No passive service.
+COOK: One idle cooker takes 10 raw portions, reserves ready capacity and completes after 5 minutes; newly ready portions expire 20 minutes after completion.
+RESTOCK: Pay 4000 cents for 20 raw portions; one pending order; delivery after 10 minutes or 15 during supplier delay; must arrive before closing.
+PROMOTE: Pay 500 cents for extra arrival opportunities over next 10 ticks, with next activation at t+20; otherwise unchanged mechanics.
+WAIT: Consume this turn without direct action; background arrivals, patience, spoilage and timers continue.</code></pre>
+      <p>It ended with this exact line:</p>
+      <pre class="text"><code>Consider delivery and cooking delays, remaining time, customer patience and closing inventory value. WAIT does not place an order, start cooking or serve customers.</code></pre>
+      <p><strong>Prompt 3</strong> kept prompt 2 and appended this fixed
+      planning text:</p>
+      <pre class="text"><code>Plan across future turns: replenishing raw stock enables later cooking and serving. Consider future customer arrivals as well as the current queue, using only the public demand rates.
+Choose only the next action now. You will receive an updated observation and reassess on every following decision turn unless WAIT is the only legal action. A plan does not automatically execute later actions.
+There is no one-order limit. RESTOCK may be chosen repeatedly across the round whenever legal, after earlier orders complete. Reconsider the stock pipeline throughout all 120 decision ticks.
+Compare the next 20 minutes and closing value. Account for delivery and cooking delays, spoilage, customer patience and retained raw inventory. WAIT can be appropriate while work is in progress or when further action has no expected benefit. Do not force restocking or cooking near closing.</code></pre>
+      <p><strong>Prompt 4</strong> kept those opening and planning
+      instructions. It replaced the per-tick action list with the
+      following line, since the same action definitions already appeared
+      in the structured <code>publicRules.actions</code> context:</p>
+      <pre class="text"><code>Action consequences are defined in publicRules.actions; consider them for current and future turns. Tables use named columns and ordered rows; queue rows remain FIFO.</code></pre>
+      <p>The <strong>rejected action-criteria prompt 2</strong> started
+      from the retained action-criteria block above, changed only its
+      WAIT line to the following, then appended a
+      cooking-versus-delivery reminder and tick-specific
+      calculations:</p>
+      <pre class="text"><code>WAIT: Compare waiting with useful actions available now; background work progresses during any action. Wait when delay avoids waste or alternatives offer no expected utility gain. WAIT cannot replenish stock.
+A pending delivery does not prevent cooking raw stock already on hand. Do not wait solely because a delivery is approaching.</code></pre>
+      <p>For every version, the legal-action list, observations, public
+      rules and final-utility formula were part of the actual request,
+      not just the quoted instruction text. The <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/docs/providers/jev-smoke-plan.json">historical
+      v1 request</a> and the versioned builders above make those
+      state-dependent parts inspectable. The six repeated rounds
+      described above reused <strong>action-criteria prompt 1</strong>
+      exactly; no prompt was tuned between their seeds or
+      repetitions.</p>
+      <h2 id="what-the-per-tick-logs-show">What the per-tick logs
+      show</h2>
+      <p>The following detailed chart comes from the published seed-23
+      round’s recorded decisions. Each colored cell marks the action
+      taken at one simulated-minute tick; it does not represent API
+      latency or the duration of the delivery/cooking job that action
+      starts. Hatched cells distinguish forced WAITs from model-selected
+      WAITs. The six-round timeline above uses the same convention and
+      additionally marks fallbacks.</p>
+      <figure>
+      <img src="latest-action-timeline.png"
+      alt="Published seed-23 action timelines for Jev 1.13.0, Zoom Decisions and Zoom Decisions Pro." />
+      <figcaption aria-hidden="true">Published seed-23 action timelines
+      for Jev 1.13.0, Zoom Decisions and Zoom Decisions
+      Pro.</figcaption>
+      </figure>
+      <table>
+      <colgroup>
+      <col style="width: 11%" />
+      <col style="width: 11%" />
+      <col style="width: 15%" />
+      <col style="width: 15%" />
+      <col style="width: 15%" />
+      <col style="width: 15%" />
+      <col style="width: 15%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>Model</th>
+      <th>RESTOCK ticks</th>
+      <th style="text-align: right;">COOK actions</th>
+      <th style="text-align: right;">SERVE actions</th>
+      <th style="text-align: right;">Voluntary WAITs</th>
+      <th style="text-align: right;">Forced WAITs</th>
+      <th style="text-align: right;">Last SERVE tick</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>Jev 1.13.0</td>
+      <td>0, 67, 80</td>
+      <td style="text-align: right;">8</td>
+      <td style="text-align: right;">46</td>
+      <td style="text-align: right;">46</td>
+      <td style="text-align: right;">17</td>
+      <td style="text-align: right;">115</td>
+      </tr>
+      <tr class="even">
+      <td>Zoom Decisions</td>
+      <td>1, 13, 43, 53, 63, 80</td>
+      <td style="text-align: right;">13</td>
+      <td style="text-align: right;">56</td>
+      <td style="text-align: right;">12</td>
+      <td style="text-align: right;">32</td>
+      <td style="text-align: right;">116</td>
+      </tr>
+      <tr class="odd">
+      <td>Zoom Decisions Pro</td>
+      <td>24, 37, 47, 65, 76</td>
+      <td style="text-align: right;">11</td>
+      <td style="text-align: right;">51</td>
+      <td style="text-align: right;">33</td>
+      <td style="text-align: right;">20</td>
+      <td style="text-align: right;">116</td>
+      </tr>
+      </tbody>
+      </table>
+      <p>Zoom Decisions also selected PROMOTE once; the other two models
+      did not. A SERVE action can serve multiple customers, so action
+      counts must not be confused with customer totals.</p>
+      <p>Jev ordered at tick 67, cooked when that delivery arrived at
+      77, and ordered again at 80. It cooked at <strong>21, 29, 40, 49,
+      58, 77, 86 and 96</strong>, then continued serving until 115. The
+      historical seed-7 stockout-wait sequence does not describe this
+      latest trajectory. Nor should the earlier tick-86/87 hesitation be
+      copied into this run: the latest Jev selected COOK at 86, under a
+      different state history.</p>
+      <p>All three models had <strong>zero WAITs with SERVE
+      legal</strong> and <strong>zero empty-pipeline WAITs with RESTOCK
+      legal</strong>. Jev nevertheless had 23 WAITs with COOK legal.
+      Legality alone does not identify an error: queue size, ready
+      stock, cooking time, spoilage and time remaining all affect
+      whether cooking is worthwhile. <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/docs/deployment/evidence/live-retained/decisions.json">Recorded
+      actions</a> · <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/docs/deployment/evidence/live-retained/analysis.json">Replay
+      analysis</a></p>
+      <h2 id="how-this-differs-from-contested-fast-decisions">How this
+      differs from Contested Fast Decisions</h2>
+      <p><a
+      href="https://huggingface.co/datasets/zoom-ai/contested-fast-decisions">Contested
+      Fast Decisions</a> contains 818 decisions over 696 texts across 17
+      domains. It retains disagreements among eight filter models, then
+      uses independent model relabeling and adjudication. Its API
+      evaluation supplies task names and candidate labels without label
+      descriptions; single-label tasks use a choice, while multi-label
+      tasks use per-label yes/no questions. Accuracy requires an exact
+      match to the reference label set.</p>
+      <table>
+      <colgroup>
+      <col style="width: 33%" />
+      <col style="width: 33%" />
+      <col style="width: 33%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>Dimension</th>
+      <th>Contested Fast Decisions</th>
+      <th>Hawker Wars</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>Input</td>
+      <td>Fixed text and classification task</td>
+      <td>Current simulated operating state</td>
+      </tr>
+      <tr class="even">
+      <td>Feedback</td>
+      <td>Label scored against a reference</td>
+      <td>Action changes the next state</td>
+      </tr>
+      <tr class="odd">
+      <td>Main outcome</td>
+      <td>Exact-match accuracy</td>
+      <td>Closing utility, profit, service, waste and abandonment</td>
+      </tr>
+      <tr class="even">
+      <td>Evaluation unit</td>
+      <td>Individual decision</td>
+      <td>Full sequence of decisions</td>
+      </tr>
+      </tbody>
+      </table>
+      <p>The published leaderboard reports <strong>73.7% for Zoom
+      Decisions Pro, 69.3% for Zoom Decisions, 62.6% for Jev 1.13.0 and
+      66.0% for Jev 1.14.0</strong>. These are publisher-reported
+      classification results, not measurements from Hawker Wars. <a
+      href="https://huggingface.co/datasets/zoom-ai/contested-fast-decisions">Dataset
+      methodology and leaderboard</a></p>
+      <p>The published seed-23 simulation profit order differed from the
+      six held-out repeats. Neither should be used to infer a matching
+      ranking or correlation with classification accuracy: these
+      evaluations use different inputs, prompts, feedback and outcome
+      measures. Hawker Wars has no proven optimal reference action for
+      every tick, so its logged choices should not be assigned an
+      “accuracy” by comparing them with the hand-authored Rules
+      controller.</p>
+      <p>The evaluations are complementary. Classification tests whether
+      a model can resolve a supplied decision. The simulation tests
+      whether repeated choices sustain useful outcomes as earlier
+      decisions constrain later options.</p>
+      <h2 id="what-we-can-concludeand-what-to-test-next">What we can
+      conclude—and what to test next</h2>
+      <p>The strongest result is about the model-and-support
+      configuration. Valid outputs, successful API calls, sensible
+      isolated choices and good full-round outcomes are distinct
+      achievements. Mario’s final stage clears came from selecting among
+      simulator-measured moves and follow-ups. Hawker Wars’ original
+      interface supplied current state and mechanics without that
+      candidate simulation. Its later prompts and conditional-plan
+      diagnostics changed the support available, and the cooking-prompt
+      regression showed that a better choice on saved states can lead to
+      worse complete-round results.</p>
+      <p>The published seed-23 round completed with <strong>291
+      successful paid calls: 103 for Jev, 88 for Zoom Decisions and 100
+      for Zoom Decisions Pro</strong>, without provider errors, retries
+      or fallbacks. Offline replay verified all 480 decisions across the
+      three models and Rules, with 121 unique tick commits including
+      closing. The six repeats added <strong>612 Jev and 1,158
+      Zoom-model dispatches</strong> and replayed all
+      <strong>2,880</strong> recorded decisions; seven of those
+      dispatches led to Rules fallbacks. This establishes execution
+      integrity and exposes API reliability, not optimality. API budget
+      reservations are not invoice costs and should not be subtracted
+      from game dollars to claim real-world ROI. <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/docs/deployment/live-retained-results.md">Seed-23
+      verification and accounting</a> · <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/22cbc8fd6f31ef767b4b1b348cbfe52d281ac580/docs/deployment/repeated-seed-evaluation.md">Repeated-seed
+      evidence</a></p>
+      <p>A stronger next evaluation would add many more held-out seeds
+      and repeat provider calls on the same states, still freezing
+      prompts and model identities. Matched-state tests could compare
+      choices on identical observations, while full rounds would measure
+      their downstream consequences. Demand shocks and delivery delays
+      would test adaptation. Actual API charges, latency and failure
+      rates would establish deployment cost separately from simulated
+      operating results.</p>
+      <p>In the six comparable new-seed repetitions, <strong>Zoom
+      Decisions Pro led model profit and utility, while Zoom Decisions
+      served the most customers.</strong> Jev generally wasted little
+      food but served fewer people, abandoned more, and had longer
+      customer-facing stockouts; its historical empty-pipeline WAIT
+      sequence did <strong>not</strong> recur. The separately published
+      seed-23 round provides a counterexample to a fixed Jev-versus-Zoom
+      profit order. Some repeated trajectories include Rules fallbacks,
+      and only three new demand schedules were tested. These
+      observations do not identify a model’s general planning ability.
+      The next useful comparison would vary planning support under
+      controlled, repeated conditions and measure the resulting full
+      trajectories—not infer ability from a single action or a static
+      benchmark rank.</p>
+      <footer class="article-footer">
+        <strong>Inspect the evidence</strong>
+        <p>Read the <a href="article.md">article Markdown</a>, <a href="repeated-seed-metrics.json">closing results</a>, <a href="repeated-seed-timelines.json">per-tick action timelines</a>, and <a href="stockout-summary.csv">stockout intervals</a>. The <a href="sources/original-blog-draft.md">earlier draft</a> and <a href="sources/mario-article.md">Mario source Markdown</a> are preserved alongside this revision.</p>
+        <details>
+          <summary>Download editable vector charts</summary>
+          <ul>
+            <li><a href="latest-results.svg">Published round results</a> and <a href="latest-action-timeline.svg">action timeline</a></li>
+            <li><a href="repeated-seed-results.svg">Repeated-round results</a>, <a href="repeated-seed-utility-abandonment.svg">utility and abandonment</a>, and <a href="repeated-seed-action-timeline.svg">action timelines</a></li>
+            <li><a href="stockout-duration.svg">Stockout intervals</a> and <a href="historical-seed7-timeline.svg">historical seed-7 timeline</a></li>
+          </ul>
+        </details>
+      </footer>
+    </main>
+        <aside class="contents" aria-label="On this page">
+      <div class="contents-title">On this page</div>
+      <ul>
+      <li><a
+      href="#from-mario-to-hawker-wars-decision-models-in-sequential-operations"
+      id="toc-from-mario-to-hawker-wars-decision-models-in-sequential-operations">From
+      Mario to Hawker Wars: Decision Models in Sequential Operations</a>
+      <ul>
+      <li><a href="#from-measured-mario-moves-to-hawker-stall-decisions"
+      id="toc-from-measured-mario-moves-to-hawker-stall-decisions">From
+      measured Mario moves to hawker-stall decisions</a></li>
+      <li><a
+      href="#the-use-case-a-small-action-space-with-delayed-consequences"
+      id="toc-the-use-case-a-small-action-space-with-delayed-consequences">The
+      use case: a small action space with delayed consequences</a></li>
+      <li><a href="#the-starting-point-one-published-seed-23-round"
+      id="toc-the-starting-point-one-published-seed-23-round">The
+      starting point: one published seed-23 round</a></li>
+      <li><a
+      href="#the-published-seed-23-result-three-different-trade-offs"
+      id="toc-the-published-seed-23-result-three-different-trade-offs">The
+      published seed-23 result: three different trade-offs</a></li>
+      <li><a href="#six-more-full-shifts-with-the-retained-prompt"
+      id="toc-six-more-full-shifts-with-the-retained-prompt">Six more
+      full shifts with the retained prompt</a></li>
+      <li><a
+      href="#the-evaluation-journey-keep-the-experiments-distinct"
+      id="toc-the-evaluation-journey-keep-the-experiments-distinct">The
+      evaluation journey: keep the experiments distinct</a></li>
+      <li><a href="#the-prompts-actually-used"
+      id="toc-the-prompts-actually-used">The prompts actually
+      used</a></li>
+      <li><a href="#what-the-per-tick-logs-show"
+      id="toc-what-the-per-tick-logs-show">What the per-tick logs
+      show</a></li>
+      <li><a href="#how-this-differs-from-contested-fast-decisions"
+      id="toc-how-this-differs-from-contested-fast-decisions">How this
+      differs from Contested Fast Decisions</a></li>
+      <li><a href="#what-we-can-concludeand-what-to-test-next"
+      id="toc-what-we-can-concludeand-what-to-test-next">What we can
+      conclude—and what to test next</a></li>
+      </ul></li>
+      </ul>
+    </aside>
+      </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How fast decision models perform across full Hawker Wars shifts, and how planning support changes the choices they make.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="From Mario to Hawker Wars: Decision Models in Sequential Operations">
+  <meta property="og:description" content="Six repeated shifts, per-tick actions, stockouts, prompt changes, and the limits of comparing sequential operations with static benchmarks.">
+  <meta property="og:image" content="https://jenzushsu.github.io/hawker-wars/repeated-seed-results.png">
+  <link rel="canonical" href="https://jenzushsu.github.io/hawker-wars/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>From Mario to Hawker Wars: Decision Models in Sequential Operations</title>
+</head>
+<body>
+  <a class="skip-link" href="#article">Skip to article</a>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="brand" href="./">Hawker Wars <span>Research notes</span></a>
+      <nav aria-label="Site">
+        <a href="article.md">Markdown</a>
+        <a href="https://github.com/jenzushsu/hawker-wars">GitHub</a>
+      </nav>
+    </div>
+  </header>
+  <div class="page-layout">
+    <main id="article" class="article">
+      <div class="eyebrow">Sequential decision evaluation · 26 October 2026</div>
+      $body$
+      <footer class="article-footer">
+        <strong>Inspect the evidence</strong>
+        <p>Read the <a href="article.md">article Markdown</a>, <a href="repeated-seed-metrics.json">closing results</a>, <a href="repeated-seed-timelines.json">per-tick action timelines</a>, and <a href="stockout-summary.csv">stockout intervals</a>. The <a href="sources/original-blog-draft.md">earlier draft</a> and <a href="sources/mario-article.md">Mario source Markdown</a> are preserved alongside this revision.</p>
+        <details>
+          <summary>Download editable vector charts</summary>
+          <ul>
+            <li><a href="latest-results.svg">Published round results</a> and <a href="latest-action-timeline.svg">action timeline</a></li>
+            <li><a href="repeated-seed-results.svg">Repeated-round results</a>, <a href="repeated-seed-utility-abandonment.svg">utility and abandonment</a>, and <a href="repeated-seed-action-timeline.svg">action timelines</a></li>
+            <li><a href="stockout-duration.svg">Stockout intervals</a> and <a href="historical-seed7-timeline.svg">historical seed-7 timeline</a></li>
+          </ul>
+        </details>
+      </footer>
+    </main>
+    $if(toc)$
+    <aside class="contents" aria-label="On this page">
+      <div class="contents-title">On this page</div>
+      $toc$
+    </aside>
+    $endif$
+  </div>
+</body>
+</html>

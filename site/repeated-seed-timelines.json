@@ -1,0 +1,146 @@
+[
+  {
+    "seed": 47,
+    "repetition": 1,
+    "policy": "jev",
+    "actions": "SSRSWSWWSSSSWSSWWSCWWWWSSCSWWSSSSSSSSSSCWWWWSSSSCWWWWSSSSCWWWWSSSSRWWWWWWWWWCWWWWSSCSRSWSSSSWWWRCWWWWSSWWWSWWSWSSWWWWSSW",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmmmmrmmmmmmmmmrmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffffffffmmmmmmmrmmmfmmmmfffmmffffmmmmmmmmmmmmmmffmmf",
+    "fallbacks": "-------------------------i---------i-----------------------------------------------i------------------------------------"
+  },
+  {
+    "seed": 47,
+    "repetition": 1,
+    "policy": "zoom",
+    "actions": "SSCSRSWCSSSSPSSRSSSSSSCSSSRCWSSSSSSSSSSSSSSSSCRWWWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSSCSWSWCWWSWWSCSSWWWWSSS",
+    "sources": "mmmmmmfmmmmmmmmmmmmmmmmmmmmmfmmmmmmmmmmmmmmmmmmfffmmmmmffffmmmmmmfffmmmmmffffmmmmmmfffmmmmmffffmmmmmmmmmmmmmmmmmmffffmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "seed": 47,
+    "repetition": 1,
+    "policy": "zoom-pro",
+    "actions": "SSCSWSWWSSSSWSSCRSSSSSWSSSCWWSSSSSSSSSSSSSSCRWWWSSSSCWRWWSSSSCWWRWSSSSCWWWRSSSSCWWWWSSSSCRWWWSSSSCWWWWSWWWSWWSWSSWWWWSSS",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffmmmmmfmffmmmmmffmfmmmmmfffmmmmmmffffmmmmmmfffmmmmmffffmmmmmmmmmmmmmffmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "seed": 47,
+    "repetition": 2,
+    "policy": "jev",
+    "actions": "SSRSWSWWSSSSWSSWWSCWWWWSSSCWWSSSSSSSSSSCWWWWSSSSCWWWWSSSSCWWWWSSSSRWWWWWWWWWCRWWWSSSSCWWWWSSSSCWWWWSSSWWWWSWWSWSSWWWWWWW",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffffffffmmfffmmmmmfmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffff",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "seed": 47,
+    "repetition": 2,
+    "policy": "zoom",
+    "actions": "SSCSRSWCSSSSPSSRSSSSSSCSSSRCWSSSSSSSSSSSSSSSSCRWWWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSSCSWSWCWWSWWSWSSWWWWSSS",
+    "sources": "mmmmmmfmmmmmmmmmmmmmmmmmmmmmfmmmmmmmmmmmmmmmmmmfffmmmmmffffmmmmmmfffmmmmmffffmmmmmmfffmmmmmffffmmmmmmmmmmmmmmmmmmmmffmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "seed": 47,
+    "repetition": 2,
+    "policy": "zoom-pro",
+    "actions": "SSCSWSWWSSSSWSSCRSSSSSWSSSCWWSSSSSSSSSSSSSSCRWWWSSSSCWRWWSSSSCWWRWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSSSCWWWWSCWWSWWSWSSWWWWSSS",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffmmmmmfmffmmmmmffmfmmmmmfffmmmmmmmfffmmmmmfmmmmmmmmmmmmmmmmmmmmmmmmmffmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "seed": 59,
+    "repetition": 1,
+    "policy": "jev",
+    "actions": "RWWSWSSSWSWSSWWWWWWWCWWWWSSCSWSSSSSSSSSCWWWWSSSSCWWWWSSSSCWWWWSSSSRWWWWWWWWWCRWWWSSSSCWWWWSSSSWCWWWWSSSSWSWSSWWWSWWWWWWW",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffffffffmmfffmmmmmfmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffff",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "seed": 59,
+    "repetition": 1,
+    "policy": "zoom",
+    "actions": "CWWSWSSSCSWSSRPSSSSCSSWSSSSCSRSSSSSSSSSSSSSSSSCRWWWSSSSCWRWWSSSSCWWRWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSCSSSSSWSWSSWCWSWWWWSSS",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmfmmmmmmmmmmmmmmmmmmmmmmmmmfffmmmmmfmffmmmmmffmfmmmmmffffmmmmmmfffmmmmmffffmmmmmmmmmmmmmmmfmffffmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "seed": 59,
+    "repetition": 1,
+    "policy": "zoom-pro",
+    "actions": "WWWSWSSSWSCSSWWWCWRWWSWSSSSWSCSSSSSSSSSSSSSSSSCRWWWSSSSCWRWWSSSSCWWRWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSWSSSSSCSWWWSWWSWWWWSSS",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffmmmmmfmffmmmmmffmfmmmmmfffmmmmmmmfffmmmmmfmmmmmmmmmmmmmmmmmmmmmmffmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "seed": 31,
+    "repetition": 2,
+    "policy": "jev",
+    "actions": "SRWWWWSSWSSWWSSSWWWSCWWWWSWSSCSSSSSSSSSSSSSSSCWWWWSSSSCWWWWSSSSCWWWWSSSSRWWWWWWWWWCRWWWSSSSWWWCWWWWSSSWWSWSWWWWWWWCWWWWS",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffffffffrmfffmmmmmmmmmmmmmmmmmmmmmmmmmmmmffffm",
+    "fallbacks": "----------------------------------------------------------------------------------i-------------------------------------"
+  },
+  {
+    "seed": 31,
+    "repetition": 2,
+    "policy": "zoom",
+    "actions": "SCWRPSSSCSSWWSSSCWRSWWWWPSSSSSSSSSSSSSSSCWRWWSSSSCWWRWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSSSCRWWWSSSCWWSWSSCSWWSWSWSSSCSWSSWSSS",
+    "sources": "mmmmmmmmmmmffmmmmmmmffffmmmmmmmmmmmmmmmmmmmffmmmmmffmfmmmmmffffmmmmmmfffmmmmmffffmmmmmmfffmmmmffmfmmmmmmmmmmmmmmmfmmfmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "seed": 31,
+    "repetition": 2,
+    "policy": "zoom-pro",
+    "actions": "SWWWWWSSCSSWWSSSCRWSWWWWWSWSSCSSSSSSSSSSSSSSSSSSSCRWWWSSSSCWRWWSSSSCWWRWSSSSCWWWWSSSSCRWWWSSSWCWSWWSSSCWSWSWSSSWSWSSWSSS",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffmmmmmfmffmmmmmffmfmmmmmfffmmmmmmmfffmmmmmfmmmmmmmmmmmmmmmmmmmmfmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "seed": 31,
+    "repetition": 1,
+    "policy": "jev",
+    "actions": "SCRWWWSSWSSWWSSSWWWSWWWWWSCWWWWSSSSSSCWWWWSSSSCWWWWSSSSCWWWWSSSSRWWWWWWWWWCRWWWSSSSWWCWWWWSSSSWCWWWWSSRWSWSWSWWWWWWWWWWW",
+    "sources": "mrmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffffffffmmfffmmmmmmmmmmmmmmmmmmmmmrmmmmmmmmmmmmmmfffff",
+    "fallbacks": "-i--------------------------------------------------------------------------------------------------i-------------------"
+  },
+  {
+    "seed": 31,
+    "repetition": 1,
+    "policy": "zoom",
+    "actions": "SCWRPSSSCSSWWSSSCWRSWWWWPSSSSSSSSSSSSSSSCWRWWSSSSCWWRWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSSSCRWWWSSSCWWSWSSCSWWSWSWSSSCSWSSWSSS",
+    "sources": "mmmmmmmmmmmffmmmmmmmffffmmmmmmmmmmmmmmmmmmmffmmmmmffmfmmmmmffffmmmmmmfffmmmmmffffmmmmmmfffmmmmffmfmmmmmmmmmmmmmmmfmmfmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "seed": 31,
+    "repetition": 1,
+    "policy": "zoom-pro",
+    "actions": "SWWWWWSSCSSWWSSSCRWSWPWWSSSSSSSSSSSSSSSCRWWWSSSSCWRWWSSSSCWWWWSSSSCRWWWSSSSCWRWWSSSSCWWWWSSSSCWWWWSSSSCWSWWSSSSWSWSSWSWW",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmrmmmmmmmmmmmmmmmmmmmfffmmmmmfmffmmmmmffmmmmmmmmfffmmmmmfmffmmmmmffffmmmmmmmmmmmmmmmmmmmmmmmmmmmfmff",
+    "fallbacks": "---------------------t--------------------------------------------------------------------------------------------------"
+  },
+  {
+    "seed": 59,
+    "repetition": 2,
+    "policy": "jev",
+    "actions": "RWWSWSSSWSWSSWWWWWWWWCWWWWSSSCSSSSSSSSSCWWWWSSSSCWWWWSSSSWCWWWWSSSSRWWWWWWWWWCWWRWSSSSWWWWRWCWWWWSSSSSSSWSWWWWWWWWWWWWWW",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffffffffmmmmfmmmmmmmmmmmffffmmmmmmmmmmmmmmmmmmfffff",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "seed": 59,
+    "repetition": 2,
+    "policy": "zoom",
+    "actions": "CWWSWSSSCSWSSRPSSSSCSSWSSSSCSRSSSSSSSSSSSSSSSSCRWWWSSSSCWRWWSSSSCWWRWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSCSSSSSWSWSSCWWSWCWWSSS",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmfmmmmmmmmmmmmmmmmmmmmmmmmmfffmmmmmfmffmmmmmffmfmmmmmffffmmmmmmfffmmmmmffffmmmmmmmmmmmmmmffmfmffmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "seed": 59,
+    "repetition": 2,
+    "policy": "zoom-pro",
+    "actions": "WWWSWSSSWSCSSWWWCRWWWSWSSSSCSWSSSSSSSSSSSSSSSSCRWWWSSSSCWRWWSSSSCWWRWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSWSSSSSWSCWWWWSSWWWWSSS",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffmmmmmfmffmmmmmffmfmmmmmfffmmmmmmmfffmmmmmfmmmmmmmmmmmmmmmmmfmmmmffmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  }
+]
