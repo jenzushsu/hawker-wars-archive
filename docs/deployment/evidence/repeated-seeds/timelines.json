@@ -1,0 +1,170 @@
+[
+  {
+    "round_id": "8f4fa778-8067-4c47-a6e8-dae9c91311f7",
+    "policy_id": "jev",
+    "actions": "SSRSWSWWSSSSWSSWWSCWWWWSSCSWWSSSSSSSSSSCWWWWSSSSCWWWWSSSSCWWWWSSSSRWWWWWWWWWCWWWWSSCSRSWSSSSWWWRCWWWWSSWWWSWWSWSSWWWWSSW",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmmmmrmmmmmmmmmrmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffffffffmmmmmmmrmmmfmmmmfffmmffffmmmmmmmmmmmmmmffmmf",
+    "fallbacks": "-------------------------i---------i-----------------------------------------------i------------------------------------"
+  },
+  {
+    "round_id": "8f4fa778-8067-4c47-a6e8-dae9c91311f7",
+    "policy_id": "rules",
+    "actions": "SSCSWSWRSSSSCSSWWSSSSSCSSSWRPSSSSSSSSSSCSSWWSSCSSWWSSCSSRWSSCSSWWSSCSSRWSSSCSWWWSSCSSRWSSCSSWWSSCSWSWSCWWWSWWSWSSWWWWSSS",
+    "sources": "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "round_id": "8f4fa778-8067-4c47-a6e8-dae9c91311f7",
+    "policy_id": "zoom",
+    "actions": "SSCSRSWCSSSSPSSRSSSSSSCSSSRCWSSSSSSSSSSSSSSSSCRWWWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSSCSWSWCWWSWWSCSSWWWWSSS",
+    "sources": "mmmmmmfmmmmmmmmmmmmmmmmmmmmmfmmmmmmmmmmmmmmmmmmfffmmmmmffffmmmmmmfffmmmmmffffmmmmmmfffmmmmmffffmmmmmmmmmmmmmmmmmmffffmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "round_id": "8f4fa778-8067-4c47-a6e8-dae9c91311f7",
+    "policy_id": "zoom-pro",
+    "actions": "SSCSWSWWSSSSWSSCRSSSSSWSSSCWWSSSSSSSSSSSSSSCRWWWSSSSCWRWWSSSSCWWRWSSSSCWWWRSSSSCWWWWSSSSCRWWWSSSSCWWWWSWWWSWWSWSSWWWWSSS",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffmmmmmfmffmmmmmffmfmmmmmfffmmmmmmffffmmmmmmfffmmmmmffffmmmmmmmmmmmmmffmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "round_id": "8f884cfc-9df2-4833-a2d3-7e317a8b069e",
+    "policy_id": "jev",
+    "actions": "SSRSWSWWSSSSWSSWWSCWWWWSSSCWWSSSSSSSSSSCWWWWSSSSCWWWWSSSSCWWWWSSSSRWWWWWWWWWCRWWWSSSSCWWWWSSSSCWWWWSSSWWWWSWWSWSSWWWWWWW",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffffffffmmfffmmmmmfmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffff",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "round_id": "8f884cfc-9df2-4833-a2d3-7e317a8b069e",
+    "policy_id": "rules",
+    "actions": "SSCSWSWRSSSSCSSWWSSSSSCSSSWRPSSSSSSSSSSCSSWWSSCSSWWSSCSSRWSSCSSWWSSCSSRWSSSCSWWWSSCSSRWSSCSSWWSSCSWSWSCWWWSWWSWSSWWWWSSS",
+    "sources": "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "round_id": "8f884cfc-9df2-4833-a2d3-7e317a8b069e",
+    "policy_id": "zoom",
+    "actions": "SSCSRSWCSSSSPSSRSSSSSSCSSSRCWSSSSSSSSSSSSSSSSCRWWWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSSCSWSWCWWSWWSWSSWWWWSSS",
+    "sources": "mmmmmmfmmmmmmmmmmmmmmmmmmmmmfmmmmmmmmmmmmmmmmmmfffmmmmmffffmmmmmmfffmmmmmffffmmmmmmfffmmmmmffffmmmmmmmmmmmmmmmmmmmmffmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "round_id": "8f884cfc-9df2-4833-a2d3-7e317a8b069e",
+    "policy_id": "zoom-pro",
+    "actions": "SSCSWSWWSSSSWSSCRSSSSSWSSSCWWSSSSSSSSSSSSSSCRWWWSSSSCWRWWSSSSCWWRWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSSSCWWWWSCWWSWWSWSSWWWWSSS",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffmmmmmfmffmmmmmffmfmmmmmfffmmmmmmmfffmmmmmfmmmmmmmmmmmmmmmmmmmmmmmmmffmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "round_id": "973d314d-cc73-4c79-a145-abd393e10c99",
+    "policy_id": "jev",
+    "actions": "RWWSWSSSWSWSSWWWWWWWCWWWWSSCSWSSSSSSSSSCWWWWSSSSCWWWWSSSSCWWWWSSSSRWWWWWWWWWCRWWWSSSSCWWWWSSSSWCWWWWSSSSWSWSSWWWSWWWWWWW",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffffffffmmfffmmmmmfmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffff",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "round_id": "973d314d-cc73-4c79-a145-abd393e10c99",
+    "policy_id": "rules",
+    "actions": "CWWSWSSSRSPSSSCSSSSWSSCSSSSRSWSSSSSSSSCSSWWSSCSSWWSSCSSRWSSCSSWWSSCSSRWSSCSSWWSSCSSRWSSCSSWWSSCWSWWSSSSSCSWSSWWWSWWWWSSS",
+    "sources": "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "round_id": "973d314d-cc73-4c79-a145-abd393e10c99",
+    "policy_id": "zoom",
+    "actions": "CWWSWSSSCSWSSRPSSSSCSSWSSSSCSRSSSSSSSSSSSSSSSSCRWWWSSSSCWRWWSSSSCWWRWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSCSSSSSWSWSSWCWSWWWWSSS",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmfmmmmmmmmmmmmmmmmmmmmmmmmmfffmmmmmfmffmmmmmffmfmmmmmffffmmmmmmfffmmmmmffffmmmmmmmmmmmmmmmfmffffmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "round_id": "973d314d-cc73-4c79-a145-abd393e10c99",
+    "policy_id": "zoom-pro",
+    "actions": "WWWSWSSSWSCSSWWWCWRWWSWSSSSWSCSSSSSSSSSSSSSSSSCRWWWSSSSCWRWWSSSSCWWRWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSWSSSSSCSWWWSWWSWWWWSSS",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffmmmmmfmffmmmmmffmfmmmmmfffmmmmmmmfffmmmmmfmmmmmmmmmmmmmmmmmmmmmmffmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "round_id": "a78c4c76-53f0-4005-a1a9-364beea26961",
+    "policy_id": "jev",
+    "actions": "SRWWWWSSWSSWWSSSWWWSCWWWWSWSSCSSSSSSSSSSSSSSSCWWWWSSSSCWWWWSSSSCWWWWSSSSRWWWWWWWWWCRWWWSSSSWWWCWWWWSSSWWSWSWWWWWWWCWWWWS",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffffffffrmfffmmmmmmmmmmmmmmmmmmmmmmmmmmmmffffm",
+    "fallbacks": "----------------------------------------------------------------------------------i-------------------------------------"
+  },
+  {
+    "round_id": "a78c4c76-53f0-4005-a1a9-364beea26961",
+    "policy_id": "rules",
+    "actions": "SCWWWWSSRSSCPSSSSWSSSWWWWSCSSWSSSSSSSSSSSCSSSRSSSCSSWWSSCSSRWSSCSSWWSSCSSSRSSCSSWWSSCSSWWRSSCSWWSSSSCSWWSCSWSSSWSWSSWSSS",
+    "sources": "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "round_id": "a78c4c76-53f0-4005-a1a9-364beea26961",
+    "policy_id": "zoom",
+    "actions": "SCWRPSSSCSSWWSSSCWRSWWWWPSSSSSSSSSSSSSSSCWRWWSSSSCWWRWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSSSCRWWWSSSCWWSWSSCSWWSWSWSSSCSWSSWSSS",
+    "sources": "mmmmmmmmmmmffmmmmmmmffffmmmmmmmmmmmmmmmmmmmffmmmmmffmfmmmmmffffmmmmmmfffmmmmmffffmmmmmmfffmmmmffmfmmmmmmmmmmmmmmmfmmfmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "round_id": "a78c4c76-53f0-4005-a1a9-364beea26961",
+    "policy_id": "zoom-pro",
+    "actions": "SWWWWWSSCSSWWSSSCRWSWWWWWSWSSCSSSSSSSSSSSSSSSSSSSCRWWWSSSSCWRWWSSSSCWWRWSSSSCWWWWSSSSCRWWWSSSWCWSWWSSSCWSWSWSSSWSWSSWSSS",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffmmmmmfmffmmmmmffmfmmmmmfffmmmmmmmfffmmmmmfmmmmmmmmmmmmmmmmmmmmfmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "round_id": "b653ebdb-8164-4293-afa5-1339eba43bb8",
+    "policy_id": "jev",
+    "actions": "SCRWWWSSWSSWWSSSWWWSWWWWWSCWWWWSSSSSSCWWWWSSSSCWWWWSSSSCWWWWSSSSRWWWWWWWWWCRWWWSSSSWWCWWWWSSSSWCWWWWSSRWSWSWSWWWWWWWWWWW",
+    "sources": "mrmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffffffffmmfffmmmmmmmmmmmmmmmmmmmmmrmmmmmmmmmmmmmmfffff",
+    "fallbacks": "-i--------------------------------------------------------------------------------------------------i-------------------"
+  },
+  {
+    "round_id": "b653ebdb-8164-4293-afa5-1339eba43bb8",
+    "policy_id": "rules",
+    "actions": "SCWWWWSSRSSCPSSSSWSSSWWWWSCSSWSSSSSSSSSSSCSSSRSSSCSSWWSSCSSRWSSCSSWWSSCSSSRSSCSSWWSSCSSWWRSSCSWWSSSSCSWWSCSWSSSWSWSSWSSS",
+    "sources": "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "round_id": "b653ebdb-8164-4293-afa5-1339eba43bb8",
+    "policy_id": "zoom",
+    "actions": "SCWRPSSSCSSWWSSSCWRSWWWWPSSSSSSSSSSSSSSSCWRWWSSSSCWWRWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSSSCRWWWSSSCWWSWSSCSWWSWSWSSSCSWSSWSSS",
+    "sources": "mmmmmmmmmmmffmmmmmmmffffmmmmmmmmmmmmmmmmmmmffmmmmmffmfmmmmmffffmmmmmmfffmmmmmffffmmmmmmfffmmmmffmfmmmmmmmmmmmmmmmfmmfmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "round_id": "b653ebdb-8164-4293-afa5-1339eba43bb8",
+    "policy_id": "zoom-pro",
+    "actions": "SWWWWWSSCSSWWSSSCRWSWPWWSSSSSSSSSSSSSSSCRWWWSSSSCWRWWSSSSCWWWWSSSSCRWWWSSSSCWRWWSSSSCWWWWSSSSCWWWWSSSSCWSWWSSSSWSWSSWSWW",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmrmmmmmmmmmmmmmmmmmmmfffmmmmmfmffmmmmmffmmmmmmmmfffmmmmmfmffmmmmmffffmmmmmmmmmmmmmmmmmmmmmmmmmmmfmff",
+    "fallbacks": "---------------------t--------------------------------------------------------------------------------------------------"
+  },
+  {
+    "round_id": "d119ad4a-a85d-4722-af5b-e347f816b56c",
+    "policy_id": "jev",
+    "actions": "RWWSWSSSWSWSSWWWWWWWWCWWWWSSSCSSSSSSSSSCWWWWSSSSCWWWWSSSSWCWWWWSSSSRWWWWWWWWWCWWRWSSSSWWWWRWCWWWWSSSSSSSWSWWWWWWWWWWWWWW",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffffffffmmmmfmmmmmmmmmmmffffmmmmmmmmmmmmmmmmmmfffff",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "round_id": "d119ad4a-a85d-4722-af5b-e347f816b56c",
+    "policy_id": "rules",
+    "actions": "CWWSWSSSRSPSSSCSSSSWSSCSSSSRSWSSSSSSSSCSSWWSSCSSWWSSCSSRWSSCSSWWSSCSSRWSSCSSWWSSCSSRWSSCSSWWSSCWSWWSSSSSCSWSSWWWSWWWWSSS",
+    "sources": "rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "round_id": "d119ad4a-a85d-4722-af5b-e347f816b56c",
+    "policy_id": "zoom",
+    "actions": "CWWSWSSSCSWSSRPSSSSCSSWSSSSCSRSSSSSSSSSSSSSSSSCRWWWSSSSCWRWWSSSSCWWRWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSCSSSSSWSWSSCWWSWCWWSSS",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmfmmmmmmmmmmmmmmmmmmmmmmmmmfffmmmmmfmffmmmmmffmfmmmmmffffmmmmmmfffmmmmmffffmmmmmmmmmmmmmmffmfmffmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  },
+  {
+    "round_id": "d119ad4a-a85d-4722-af5b-e347f816b56c",
+    "policy_id": "zoom-pro",
+    "actions": "WWWSWSSSWSCSSWWWCRWWWSWSSSSCSWSSSSSSSSSSSSSSSSCRWWWSSSSCWRWWSSSSCWWRWSSSSCWWWWSSSSCRWWWSSSSCWWWWSSWSSSSSWSCWWWWSSWWWWSSS",
+    "sources": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmfffmmmmmfmffmmmmmffmfmmmmmfffmmmmmmmfffmmmmmfmmmmmmmmmmmmmmmmmfmmmmffmmm",
+    "fallbacks": "------------------------------------------------------------------------------------------------------------------------"
+  }
+]
