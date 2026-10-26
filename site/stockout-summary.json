@@ -1,0 +1,842 @@
+[
+  {
+    "roundId": "b653ebdb-8164-4293-afa5-1339eba43bb8",
+    "seed": 31,
+    "repetition": 1,
+    "policy": "jev",
+    "customerStockoutTicks": 56,
+    "longestCustomerStockout": 15,
+    "intervals": [
+      {
+        "start": 27,
+        "endInclusive": 30,
+        "durationTicks": 4
+      },
+      {
+        "start": 37,
+        "endInclusive": 41,
+        "durationTicks": 5
+      },
+      {
+        "start": 46,
+        "endInclusive": 50,
+        "durationTicks": 5
+      },
+      {
+        "start": 55,
+        "endInclusive": 59,
+        "durationTicks": 5
+      },
+      {
+        "start": 64,
+        "endInclusive": 78,
+        "durationTicks": 15
+      },
+      {
+        "start": 83,
+        "endInclusive": 89,
+        "durationTicks": 7
+      },
+      {
+        "start": 96,
+        "endInclusive": 99,
+        "durationTicks": 4
+      },
+      {
+        "start": 109,
+        "endInclusive": 119,
+        "durationTicks": 11
+      }
+    ],
+    "emptyPipelineRestockLegalTicks": [
+      64
+    ]
+  },
+  {
+    "roundId": "b653ebdb-8164-4293-afa5-1339eba43bb8",
+    "seed": 31,
+    "repetition": 1,
+    "policy": "zoom",
+    "customerStockoutTicks": 31,
+    "longestCustomerStockout": 5,
+    "intervals": [
+      {
+        "start": 40,
+        "endInclusive": 44,
+        "durationTicks": 5
+      },
+      {
+        "start": 49,
+        "endInclusive": 53,
+        "durationTicks": 5
+      },
+      {
+        "start": 58,
+        "endInclusive": 62,
+        "durationTicks": 5
+      },
+      {
+        "start": 67,
+        "endInclusive": 71,
+        "durationTicks": 5
+      },
+      {
+        "start": 76,
+        "endInclusive": 80,
+        "durationTicks": 5
+      },
+      {
+        "start": 85,
+        "endInclusive": 89,
+        "durationTicks": 5
+      },
+      {
+        "start": 97,
+        "endInclusive": 97,
+        "durationTicks": 1
+      }
+    ],
+    "emptyPipelineRestockLegalTicks": []
+  },
+  {
+    "roundId": "b653ebdb-8164-4293-afa5-1339eba43bb8",
+    "seed": 31,
+    "repetition": 1,
+    "policy": "zoom-pro",
+    "customerStockoutTicks": 39,
+    "longestCustomerStockout": 5,
+    "intervals": [
+      {
+        "start": 39,
+        "endInclusive": 43,
+        "durationTicks": 5
+      },
+      {
+        "start": 48,
+        "endInclusive": 52,
+        "durationTicks": 5
+      },
+      {
+        "start": 57,
+        "endInclusive": 61,
+        "durationTicks": 5
+      },
+      {
+        "start": 66,
+        "endInclusive": 70,
+        "durationTicks": 5
+      },
+      {
+        "start": 75,
+        "endInclusive": 79,
+        "durationTicks": 5
+      },
+      {
+        "start": 84,
+        "endInclusive": 88,
+        "durationTicks": 5
+      },
+      {
+        "start": 93,
+        "endInclusive": 97,
+        "durationTicks": 5
+      },
+      {
+        "start": 105,
+        "endInclusive": 106,
+        "durationTicks": 2
+      },
+      {
+        "start": 118,
+        "endInclusive": 119,
+        "durationTicks": 2
+      }
+    ],
+    "emptyPipelineRestockLegalTicks": []
+  },
+  {
+    "roundId": "a78c4c76-53f0-4005-a1a9-364beea26961",
+    "seed": 31,
+    "repetition": 2,
+    "policy": "jev",
+    "customerStockoutTicks": 49,
+    "longestCustomerStockout": 15,
+    "intervals": [
+      {
+        "start": 45,
+        "endInclusive": 49,
+        "durationTicks": 5
+      },
+      {
+        "start": 54,
+        "endInclusive": 58,
+        "durationTicks": 5
+      },
+      {
+        "start": 63,
+        "endInclusive": 67,
+        "durationTicks": 5
+      },
+      {
+        "start": 72,
+        "endInclusive": 86,
+        "durationTicks": 15
+      },
+      {
+        "start": 91,
+        "endInclusive": 98,
+        "durationTicks": 8
+      },
+      {
+        "start": 108,
+        "endInclusive": 118,
+        "durationTicks": 11
+      }
+    ],
+    "emptyPipelineRestockLegalTicks": [
+      72
+    ]
+  },
+  {
+    "roundId": "a78c4c76-53f0-4005-a1a9-364beea26961",
+    "seed": 31,
+    "repetition": 2,
+    "policy": "zoom",
+    "customerStockoutTicks": 31,
+    "longestCustomerStockout": 5,
+    "intervals": [
+      {
+        "start": 40,
+        "endInclusive": 44,
+        "durationTicks": 5
+      },
+      {
+        "start": 49,
+        "endInclusive": 53,
+        "durationTicks": 5
+      },
+      {
+        "start": 58,
+        "endInclusive": 62,
+        "durationTicks": 5
+      },
+      {
+        "start": 67,
+        "endInclusive": 71,
+        "durationTicks": 5
+      },
+      {
+        "start": 76,
+        "endInclusive": 80,
+        "durationTicks": 5
+      },
+      {
+        "start": 85,
+        "endInclusive": 89,
+        "durationTicks": 5
+      },
+      {
+        "start": 97,
+        "endInclusive": 97,
+        "durationTicks": 1
+      }
+    ],
+    "emptyPipelineRestockLegalTicks": []
+  },
+  {
+    "roundId": "a78c4c76-53f0-4005-a1a9-364beea26961",
+    "seed": 31,
+    "repetition": 2,
+    "policy": "zoom-pro",
+    "customerStockoutTicks": 27,
+    "longestCustomerStockout": 5,
+    "intervals": [
+      {
+        "start": 49,
+        "endInclusive": 53,
+        "durationTicks": 5
+      },
+      {
+        "start": 58,
+        "endInclusive": 62,
+        "durationTicks": 5
+      },
+      {
+        "start": 67,
+        "endInclusive": 71,
+        "durationTicks": 5
+      },
+      {
+        "start": 76,
+        "endInclusive": 80,
+        "durationTicks": 5
+      },
+      {
+        "start": 85,
+        "endInclusive": 89,
+        "durationTicks": 5
+      },
+      {
+        "start": 97,
+        "endInclusive": 98,
+        "durationTicks": 2
+      }
+    ],
+    "emptyPipelineRestockLegalTicks": []
+  },
+  {
+    "roundId": "8f4fa778-8067-4c47-a6e8-dae9c91311f7",
+    "seed": 47,
+    "repetition": 1,
+    "policy": "jev",
+    "customerStockoutTicks": 46,
+    "longestCustomerStockout": 15,
+    "intervals": [
+      {
+        "start": 18,
+        "endInclusive": 22,
+        "durationTicks": 5
+      },
+      {
+        "start": 39,
+        "endInclusive": 43,
+        "durationTicks": 5
+      },
+      {
+        "start": 48,
+        "endInclusive": 52,
+        "durationTicks": 5
+      },
+      {
+        "start": 57,
+        "endInclusive": 61,
+        "durationTicks": 5
+      },
+      {
+        "start": 66,
+        "endInclusive": 80,
+        "durationTicks": 15
+      },
+      {
+        "start": 87,
+        "endInclusive": 87,
+        "durationTicks": 1
+      },
+      {
+        "start": 92,
+        "endInclusive": 100,
+        "durationTicks": 9
+      },
+      {
+        "start": 119,
+        "endInclusive": 119,
+        "durationTicks": 1
+      }
+    ],
+    "emptyPipelineRestockLegalTicks": [
+      66
+    ]
+  },
+  {
+    "roundId": "8f4fa778-8067-4c47-a6e8-dae9c91311f7",
+    "seed": 47,
+    "repetition": 1,
+    "policy": "zoom",
+    "customerStockoutTicks": 30,
+    "longestCustomerStockout": 5,
+    "intervals": [
+      {
+        "start": 45,
+        "endInclusive": 49,
+        "durationTicks": 5
+      },
+      {
+        "start": 54,
+        "endInclusive": 58,
+        "durationTicks": 5
+      },
+      {
+        "start": 63,
+        "endInclusive": 67,
+        "durationTicks": 5
+      },
+      {
+        "start": 72,
+        "endInclusive": 76,
+        "durationTicks": 5
+      },
+      {
+        "start": 81,
+        "endInclusive": 85,
+        "durationTicks": 5
+      },
+      {
+        "start": 90,
+        "endInclusive": 94,
+        "durationTicks": 5
+      }
+    ],
+    "emptyPipelineRestockLegalTicks": []
+  },
+  {
+    "roundId": "8f4fa778-8067-4c47-a6e8-dae9c91311f7",
+    "seed": 47,
+    "repetition": 1,
+    "policy": "zoom-pro",
+    "customerStockoutTicks": 35,
+    "longestCustomerStockout": 5,
+    "intervals": [
+      {
+        "start": 43,
+        "endInclusive": 47,
+        "durationTicks": 5
+      },
+      {
+        "start": 52,
+        "endInclusive": 56,
+        "durationTicks": 5
+      },
+      {
+        "start": 61,
+        "endInclusive": 65,
+        "durationTicks": 5
+      },
+      {
+        "start": 70,
+        "endInclusive": 74,
+        "durationTicks": 5
+      },
+      {
+        "start": 79,
+        "endInclusive": 83,
+        "durationTicks": 5
+      },
+      {
+        "start": 88,
+        "endInclusive": 92,
+        "durationTicks": 5
+      },
+      {
+        "start": 97,
+        "endInclusive": 101,
+        "durationTicks": 5
+      }
+    ],
+    "emptyPipelineRestockLegalTicks": []
+  },
+  {
+    "roundId": "8f884cfc-9df2-4833-a2d3-7e317a8b069e",
+    "seed": 47,
+    "repetition": 2,
+    "policy": "jev",
+    "customerStockoutTicks": 48,
+    "longestCustomerStockout": 15,
+    "intervals": [
+      {
+        "start": 18,
+        "endInclusive": 22,
+        "durationTicks": 5
+      },
+      {
+        "start": 39,
+        "endInclusive": 43,
+        "durationTicks": 5
+      },
+      {
+        "start": 48,
+        "endInclusive": 52,
+        "durationTicks": 5
+      },
+      {
+        "start": 57,
+        "endInclusive": 61,
+        "durationTicks": 5
+      },
+      {
+        "start": 66,
+        "endInclusive": 80,
+        "durationTicks": 15
+      },
+      {
+        "start": 85,
+        "endInclusive": 89,
+        "durationTicks": 5
+      },
+      {
+        "start": 94,
+        "endInclusive": 98,
+        "durationTicks": 5
+      },
+      {
+        "start": 117,
+        "endInclusive": 119,
+        "durationTicks": 3
+      }
+    ],
+    "emptyPipelineRestockLegalTicks": [
+      66
+    ]
+  },
+  {
+    "roundId": "8f884cfc-9df2-4833-a2d3-7e317a8b069e",
+    "seed": 47,
+    "repetition": 2,
+    "policy": "zoom",
+    "customerStockoutTicks": 30,
+    "longestCustomerStockout": 5,
+    "intervals": [
+      {
+        "start": 45,
+        "endInclusive": 49,
+        "durationTicks": 5
+      },
+      {
+        "start": 54,
+        "endInclusive": 58,
+        "durationTicks": 5
+      },
+      {
+        "start": 63,
+        "endInclusive": 67,
+        "durationTicks": 5
+      },
+      {
+        "start": 72,
+        "endInclusive": 76,
+        "durationTicks": 5
+      },
+      {
+        "start": 81,
+        "endInclusive": 85,
+        "durationTicks": 5
+      },
+      {
+        "start": 90,
+        "endInclusive": 94,
+        "durationTicks": 5
+      }
+    ],
+    "emptyPipelineRestockLegalTicks": []
+  },
+  {
+    "roundId": "8f884cfc-9df2-4833-a2d3-7e317a8b069e",
+    "seed": 47,
+    "repetition": 2,
+    "policy": "zoom-pro",
+    "customerStockoutTicks": 35,
+    "longestCustomerStockout": 5,
+    "intervals": [
+      {
+        "start": 43,
+        "endInclusive": 47,
+        "durationTicks": 5
+      },
+      {
+        "start": 52,
+        "endInclusive": 56,
+        "durationTicks": 5
+      },
+      {
+        "start": 61,
+        "endInclusive": 65,
+        "durationTicks": 5
+      },
+      {
+        "start": 70,
+        "endInclusive": 74,
+        "durationTicks": 5
+      },
+      {
+        "start": 79,
+        "endInclusive": 83,
+        "durationTicks": 5
+      },
+      {
+        "start": 88,
+        "endInclusive": 92,
+        "durationTicks": 5
+      },
+      {
+        "start": 97,
+        "endInclusive": 101,
+        "durationTicks": 5
+      }
+    ],
+    "emptyPipelineRestockLegalTicks": []
+  },
+  {
+    "roundId": "973d314d-cc73-4c79-a145-abd393e10c99",
+    "seed": 59,
+    "repetition": 1,
+    "policy": "jev",
+    "customerStockoutTicks": 48,
+    "longestCustomerStockout": 15,
+    "intervals": [
+      {
+        "start": 21,
+        "endInclusive": 24,
+        "durationTicks": 4
+      },
+      {
+        "start": 39,
+        "endInclusive": 43,
+        "durationTicks": 5
+      },
+      {
+        "start": 48,
+        "endInclusive": 52,
+        "durationTicks": 5
+      },
+      {
+        "start": 57,
+        "endInclusive": 61,
+        "durationTicks": 5
+      },
+      {
+        "start": 66,
+        "endInclusive": 80,
+        "durationTicks": 15
+      },
+      {
+        "start": 85,
+        "endInclusive": 89,
+        "durationTicks": 5
+      },
+      {
+        "start": 94,
+        "endInclusive": 99,
+        "durationTicks": 6
+      },
+      {
+        "start": 117,
+        "endInclusive": 119,
+        "durationTicks": 3
+      }
+    ],
+    "emptyPipelineRestockLegalTicks": [
+      66
+    ]
+  },
+  {
+    "roundId": "973d314d-cc73-4c79-a145-abd393e10c99",
+    "seed": 59,
+    "repetition": 1,
+    "policy": "zoom",
+    "customerStockoutTicks": 30,
+    "longestCustomerStockout": 5,
+    "intervals": [
+      {
+        "start": 46,
+        "endInclusive": 50,
+        "durationTicks": 5
+      },
+      {
+        "start": 55,
+        "endInclusive": 59,
+        "durationTicks": 5
+      },
+      {
+        "start": 64,
+        "endInclusive": 68,
+        "durationTicks": 5
+      },
+      {
+        "start": 73,
+        "endInclusive": 77,
+        "durationTicks": 5
+      },
+      {
+        "start": 82,
+        "endInclusive": 86,
+        "durationTicks": 5
+      },
+      {
+        "start": 91,
+        "endInclusive": 95,
+        "durationTicks": 5
+      }
+    ],
+    "emptyPipelineRestockLegalTicks": []
+  },
+  {
+    "roundId": "973d314d-cc73-4c79-a145-abd393e10c99",
+    "seed": 59,
+    "repetition": 1,
+    "policy": "zoom-pro",
+    "customerStockoutTicks": 32,
+    "longestCustomerStockout": 5,
+    "intervals": [
+      {
+        "start": 46,
+        "endInclusive": 50,
+        "durationTicks": 5
+      },
+      {
+        "start": 55,
+        "endInclusive": 59,
+        "durationTicks": 5
+      },
+      {
+        "start": 64,
+        "endInclusive": 68,
+        "durationTicks": 5
+      },
+      {
+        "start": 73,
+        "endInclusive": 77,
+        "durationTicks": 5
+      },
+      {
+        "start": 82,
+        "endInclusive": 86,
+        "durationTicks": 5
+      },
+      {
+        "start": 91,
+        "endInclusive": 95,
+        "durationTicks": 5
+      },
+      {
+        "start": 107,
+        "endInclusive": 108,
+        "durationTicks": 2
+      }
+    ],
+    "emptyPipelineRestockLegalTicks": []
+  },
+  {
+    "roundId": "d119ad4a-a85d-4722-af5b-e347f816b56c",
+    "seed": 59,
+    "repetition": 2,
+    "policy": "jev",
+    "customerStockoutTicks": 60,
+    "longestCustomerStockout": 15,
+    "intervals": [
+      {
+        "start": 21,
+        "endInclusive": 25,
+        "durationTicks": 5
+      },
+      {
+        "start": 39,
+        "endInclusive": 43,
+        "durationTicks": 5
+      },
+      {
+        "start": 48,
+        "endInclusive": 52,
+        "durationTicks": 5
+      },
+      {
+        "start": 57,
+        "endInclusive": 62,
+        "durationTicks": 6
+      },
+      {
+        "start": 67,
+        "endInclusive": 81,
+        "durationTicks": 15
+      },
+      {
+        "start": 86,
+        "endInclusive": 96,
+        "durationTicks": 11
+      },
+      {
+        "start": 107,
+        "endInclusive": 119,
+        "durationTicks": 13
+      }
+    ],
+    "emptyPipelineRestockLegalTicks": [
+      67
+    ]
+  },
+  {
+    "roundId": "d119ad4a-a85d-4722-af5b-e347f816b56c",
+    "seed": 59,
+    "repetition": 2,
+    "policy": "zoom",
+    "customerStockoutTicks": 30,
+    "longestCustomerStockout": 5,
+    "intervals": [
+      {
+        "start": 46,
+        "endInclusive": 50,
+        "durationTicks": 5
+      },
+      {
+        "start": 55,
+        "endInclusive": 59,
+        "durationTicks": 5
+      },
+      {
+        "start": 64,
+        "endInclusive": 68,
+        "durationTicks": 5
+      },
+      {
+        "start": 73,
+        "endInclusive": 77,
+        "durationTicks": 5
+      },
+      {
+        "start": 82,
+        "endInclusive": 86,
+        "durationTicks": 5
+      },
+      {
+        "start": 91,
+        "endInclusive": 95,
+        "durationTicks": 5
+      }
+    ],
+    "emptyPipelineRestockLegalTicks": []
+  },
+  {
+    "roundId": "d119ad4a-a85d-4722-af5b-e347f816b56c",
+    "seed": 59,
+    "repetition": 2,
+    "policy": "zoom-pro",
+    "customerStockoutTicks": 34,
+    "longestCustomerStockout": 5,
+    "intervals": [
+      {
+        "start": 46,
+        "endInclusive": 50,
+        "durationTicks": 5
+      },
+      {
+        "start": 55,
+        "endInclusive": 59,
+        "durationTicks": 5
+      },
+      {
+        "start": 64,
+        "endInclusive": 68,
+        "durationTicks": 5
+      },
+      {
+        "start": 73,
+        "endInclusive": 77,
+        "durationTicks": 5
+      },
+      {
+        "start": 82,
+        "endInclusive": 86,
+        "durationTicks": 5
+      },
+      {
+        "start": 91,
+        "endInclusive": 95,
+        "durationTicks": 5
+      },
+      {
+        "start": 107,
+        "endInclusive": 110,
+        "durationTicks": 4
+      }
+    ],
+    "emptyPipelineRestockLegalTicks": []
+  }
+]
