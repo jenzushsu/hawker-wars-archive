@@ -207,6 +207,27 @@ Account for closing salvage and penalties. Follow-up actions are not automatic. 
 
 Each request appended the current pipeline state—raw and ready portions, cooking and delivery due ticks—and an optimistic earliest-food calculation if RESTOCK was legal. It also stated when restocking could no longer lead to cooked food before closing. The observation, legal actions, public rules and final-utility objective were supplied as structured context; this block alone was not the complete request. Those dynamic fields change at every tick, so a single static quotation cannot represent all requests. The exact builders preserve their wording and serialization: [retained action criteria][criteria-code], [rejected cooking clarification][criteria-v2-code], and [shared context/base prompts][wire-code].
 
+### How the prompt enters the Zoom Decisions API
+
+The Zoom Decisions request sends the current decision context as a **JSON string** in `input`. The retained prompt above, plus the tick-specific pipeline lines, goes in `questions[0].instructions`. The legal actions become `choices`. This abbreviated example shows the field placement; the `...` text stands for omitted context and prompt lines, so it is **not a replayable request**:
+
+```json
+{
+  "model": "zoom-decisions-standard",
+  "input": "{\"promptVersion\":\"hawker-decision-prompt-4\",\"observation\":{...},\"legalActions\":[\"RESTOCK\",\"WAIT\"],\"objective\":{...},\"publicRules\":{...}}",
+  "questions": [
+    {
+      "name": "action",
+      "type": "choice",
+      "instructions": "Choose one legal action to maximize final utility at tick 120 using the supplied rules. ...\nPipeline: EMPTY; raw=0; ready=0; cookingDue=none; deliveryDue=none.\nRESTOCK now: delivery at 69; optimistic earliest new food at 74, assuming COOK on delivery, idle cooker, capacity and no additional delay. Remaining service ticks: 46.\nWAIT leaves the pipeline empty.",
+      "choices": [{"value": "RESTOCK"}, {"value": "WAIT"}]
+    }
+  ]
+}
+```
+
+The example uses the seed-23 diagnostic's tick-59 pipeline summary to illustrate the dynamic instruction lines; it does not claim that the abbreviated `input` or choice list is the recorded request for that tick. Zoom Decisions Pro uses the same fields with `model` set to `zoom-decisions-pro`. See the [request builder][wire-code] for the full serialized context and [retained prompt builder][criteria-code] for the instruction placement.
+
 For the earlier runs, the **original v1** question instruction was:
 
 ```text

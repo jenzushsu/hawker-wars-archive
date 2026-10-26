@@ -1012,6 +1012,39 @@ Account for closing salvage and penalties. Follow-up actions are not automatic. 
       cooking clarification</a>, and <a
       href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/packages/providers/src/wire.ts">shared
       context/base prompts</a>.</p>
+      <h3 id="how-the-prompt-enters-the-zoom-decisions-api">How the
+      prompt enters the Zoom Decisions API</h3>
+      <p>The Zoom Decisions request sends the current decision context
+      as a <strong>JSON string</strong> in <code>input</code>. The
+      retained prompt above, plus the tick-specific pipeline lines, goes
+      in <code>questions[0].instructions</code>. The legal actions
+      become <code>choices</code>. This abbreviated example shows the
+      field placement; the <code>...</code> text stands for omitted
+      context and prompt lines, so it is <strong>not a replayable
+      request</strong>:</p>
+      <div class="sourceCode" id="cb2"><pre
+      class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;model&quot;</span><span class="fu">:</span> <span class="st">&quot;zoom-decisions-standard&quot;</span><span class="fu">,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;input&quot;</span><span class="fu">:</span> <span class="st">&quot;{</span><span class="ch">\&quot;</span><span class="st">promptVersion</span><span class="ch">\&quot;</span><span class="st">:</span><span class="ch">\&quot;</span><span class="st">hawker-decision-prompt-4</span><span class="ch">\&quot;</span><span class="st">,</span><span class="ch">\&quot;</span><span class="st">observation</span><span class="ch">\&quot;</span><span class="st">:{...},</span><span class="ch">\&quot;</span><span class="st">legalActions</span><span class="ch">\&quot;</span><span class="st">:[</span><span class="ch">\&quot;</span><span class="st">RESTOCK</span><span class="ch">\&quot;</span><span class="st">,</span><span class="ch">\&quot;</span><span class="st">WAIT</span><span class="ch">\&quot;</span><span class="st">],</span><span class="ch">\&quot;</span><span class="st">objective</span><span class="ch">\&quot;</span><span class="st">:{...},</span><span class="ch">\&quot;</span><span class="st">publicRules</span><span class="ch">\&quot;</span><span class="st">:{...}}&quot;</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;questions&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;action&quot;</span><span class="fu">,</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;choice&quot;</span><span class="fu">,</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;instructions&quot;</span><span class="fu">:</span> <span class="st">&quot;Choose one legal action to maximize final utility at tick 120 using the supplied rules. ...</span><span class="ch">\n</span><span class="st">Pipeline: EMPTY; raw=0; ready=0; cookingDue=none; deliveryDue=none.</span><span class="ch">\n</span><span class="st">RESTOCK now: delivery at 69; optimistic earliest new food at 74, assuming COOK on delivery, idle cooker, capacity and no additional delay. Remaining service ticks: 46.</span><span class="ch">\n</span><span class="st">WAIT leaves the pipeline empty.&quot;</span><span class="fu">,</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;choices&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="fu">{</span><span class="dt">&quot;value&quot;</span><span class="fu">:</span> <span class="st">&quot;RESTOCK&quot;</span><span class="fu">}</span><span class="ot">,</span> <span class="fu">{</span><span class="dt">&quot;value&quot;</span><span class="fu">:</span> <span class="st">&quot;WAIT&quot;</span><span class="fu">}</span><span class="ot">]</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+      <p>The example uses the seed-23 diagnostic’s tick-59 pipeline
+      summary to illustrate the dynamic instruction lines; it does not
+      claim that the abbreviated <code>input</code> or choice list is
+      the recorded request for that tick. Zoom Decisions Pro uses the
+      same fields with <code>model</code> set to
+      <code>zoom-decisions-pro</code>. See the <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/packages/providers/src/wire.ts">request
+      builder</a> for the full serialized context and <a
+      href="https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/packages/providers/src/action-criteria-experiment.ts">retained
+      prompt builder</a> for the instruction placement.</p>
       <p>For the earlier runs, the <strong>original v1</strong> question
       instruction was:</p>
       <pre class="text"><code>Choose exactly one allowed action to maximize expected final utility at closing. Use the supplied observation and public game rules. Return the typed choice only; do not infer hidden schedules or seeds.</code></pre>
