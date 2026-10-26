@@ -71,6 +71,7 @@ pre code { background: none; color: inherit; padding: 0; }
 .article-footer details { margin-top: 1rem; }
 .article-footer summary { cursor: pointer; font-weight: 650; }
 .article-footer ul { margin: .5rem 0 0; padding-left: 1.2rem; }
+.signoff { margin: 3.2rem 0 0; padding-top: 1.2rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .95rem; font-weight: 650; }
 @media (max-width: 1050px) { .page-layout { grid-template-columns: minmax(0, 800px); } .contents { display: none; } }
 @media (max-width: 620px) { body { font-size: 16px; } .masthead-inner { padding: .75rem 1rem; flex-wrap: wrap; } .brand span { display: none; } .masthead nav { width: 100%; justify-content: space-between; } .page-layout { padding: 2rem 1rem 4rem; } table { font-size: .8rem; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
