@@ -64,7 +64,7 @@ These are descriptive outcomes from one round. Neither the small profit gap nor 
 
 ![Accelerated replay of the published seed-23 shift, reconstructed from recorded simulation states.](replay/hawker-wars-replay.gif)
 
-The replay is a reconstruction of simulated ticks, not footage of API response time.
+The replay is a reconstruction of simulated ticks, not footage of API response time. [Explore the completed seed-23 round in the Vercel viewer][seed23-viewer] for the public app view of this same run. It is a past result, not a currently running experiment; the six later repeats were not published there.
 
 ## Six more full shifts with the retained prompt
 
@@ -344,5 +344,6 @@ In the six comparable new-seed repetitions, **Zoom Decisions Pro led model profi
 [repeats]: https://github.com/jenzushsu/hawker-wars/blob/22cbc8fd6f31ef767b4b1b348cbfe52d281ac580/docs/deployment/repeated-seed-evaluation.md
 [repeat-actions]: https://github.com/jenzushsu/hawker-wars/blob/22cbc8fd6f31ef767b4b1b348cbfe52d281ac580/docs/deployment/evidence/repeated-seeds/timelines.json
 [stockout-data]: stockout-summary.json
+[seed23-viewer]: https://hawker-wars-staging.vercel.app/live/a4366c8c-a68e-4699-adcc-f06e754ef352
 [mario-article]: https://medium.com/@jenzushsu/seven-moves-one-flag-putting-zoom-decisions-to-the-mario-test-829dc8d730ec
 [mario-source]: sources/mario-article.md
