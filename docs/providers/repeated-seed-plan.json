@@ -1,0 +1,62 @@
+{
+  "status": "approved",
+  "approvalSource": "User: proceed to run; extend the cap",
+  "scenario": "clean",
+  "seeds": [
+    31,
+    31,
+    47,
+    47,
+    59,
+    59
+  ],
+  "runs": [
+    {
+      "roundId": "b653ebdb-8164-4293-afa5-1339eba43bb8",
+      "seed": 31,
+      "repetition": 1
+    },
+    {
+      "roundId": "a78c4c76-53f0-4005-a1a9-364beea26961",
+      "seed": 31,
+      "repetition": 2
+    },
+    {
+      "roundId": "8f4fa778-8067-4c47-a6e8-dae9c91311f7",
+      "seed": 47,
+      "repetition": 1
+    },
+    {
+      "roundId": "8f884cfc-9df2-4833-a2d3-7e317a8b069e",
+      "seed": 47,
+      "repetition": 2
+    },
+    {
+      "roundId": "973d314d-cc73-4c79-a145-abd393e10c99",
+      "seed": 59,
+      "repetition": 1
+    },
+    {
+      "roundId": "d119ad4a-a85d-4722-af5b-e347f816b56c",
+      "seed": 59,
+      "repetition": 2
+    }
+  ],
+  "promptTreatment": "action-criteria-prompt-1",
+  "models": {
+    "jev": "jev-1.13.0",
+    "zoom": "zoom-decisions-standard",
+    "zoom-pro": "zoom-decisions-pro"
+  },
+  "previousRoundId": "a4366c8c-a68e-4699-adcc-f06e754ef352",
+  "previousLedgerHash": "880c11161f4137dd3e1ec5744a8318f3bcd45102d0dbe6f53b69b402ed652398",
+  "expectedPriorAttempts": 2817,
+  "jevPriorReservedMicros": 3366919,
+  "jevCumulativeCapMicros": 5349079,
+  "jevMaximumAdditionalMicros": 1982160,
+  "zoomPriorAllocatedMicros": 1596000,
+  "zoomMaximumAdditionalMicros": 1440000,
+  "zoomPerRunCapMicros": 250000,
+  "zoomCampaignCapMicros": 5000000,
+  "published": false
+}

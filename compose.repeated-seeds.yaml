@@ -1,0 +1,21 @@
+services:
+  repeated-seeds:
+    build:
+      context: .
+      dockerfile: deploy/worker.Dockerfile
+    command: ["node", "--use-env-proxy", "--import", "tsx", "scripts/run-repeated-seeds.ts"]
+    restart: "no"
+    environment:
+      SUPABASE_URL: ${SUPABASE_URL:?Required}
+      SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY:?Required}
+      HAWKER_PROVIDER_RUNTIME_FILE: /app/manifests/provider-runtime-repeated-seeds.json
+      HAWKER_CAMPAIGN_EXCEPTION_FILE: /app/manifests/campaign-exception-repeated-seeds.json
+      HAWKER_PROVIDER_LEDGER_DIRECTORY: /var/lib/hawker/campaign
+      TYPESAFE_API_KEY: ${TYPESAFE_API_KEY:?Required}
+      ZOOM_AI_SERVICES_API_KEY: ${ZOOM_AI_SERVICES_API_KEY:?Required}
+    volumes:
+      - /var/lib/docker/volumes/muvfmjgpedffyk919kl40eid_provider-ledger/_data:/var/lib/hawker
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
