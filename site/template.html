@@ -10,7 +10,16 @@
   <meta property="og:image" content="https://jenzushsu.github.io/hawker-wars/repeated-seed-results.png">
   <link rel="canonical" href="https://jenzushsu.github.io/hawker-wars/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>
+    try {
+      const savedTheme = localStorage.getItem("hawker-wars-theme");
+      if (savedTheme === "light" || savedTheme === "dark") {
+        document.documentElement.dataset.theme = savedTheme;
+      }
+    } catch {}
+  </script>
   <link rel="stylesheet" href="styles.css">
+  <script src="theme.js" defer></script>
   <title>From Mario to Hawker Wars: Decision Models in Sequential Operations</title>
 </head>
 <body>
@@ -21,6 +30,7 @@
       <nav aria-label="Site">
         <a href="article.md">Markdown</a>
         <a href="https://github.com/jenzushsu/hawker-wars">GitHub</a>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false">Dark mode</button>
       </nav>
     </div>
   </header>
