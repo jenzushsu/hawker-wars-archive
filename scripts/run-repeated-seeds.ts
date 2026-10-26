@@ -8,6 +8,7 @@ import {LiveStore} from '../packages/live/src/store.ts';
 import {createMultiRoundInput,runMultiTick} from '../packages/live/src/multi-worker.ts';
 import {multiControllers,multiProviderBlockers,providerConfigurationHash} from '../packages/live/src/multi-runtime.ts';
 
+async function main(){
 const planSchema=z.object({status:z.literal('approved'),scenario:z.literal('clean'),runs:z.array(z.object({roundId:z.string().uuid(),seed:z.number().int().min(0).max(99),repetition:z.number().int().min(1).max(2)}).strict()).length(6),promptTreatment:z.literal('action-criteria-prompt-1'),previousRoundId:z.string().uuid(),previousLedgerHash:z.string().regex(/^[a-f0-9]{64}$/),expectedPriorAttempts:z.number().int(),jevPriorReservedMicros:z.number().int(),jevCumulativeCapMicros:z.number().int(),zoomPriorAllocatedMicros:z.number().int(),published:z.literal(false)}).passthrough();
 const approval='docs/providers/repeated-seed-plan.json';
 const plan=planSchema.parse(JSON.parse(readFileSync(approval,'utf8')));
@@ -49,3 +50,6 @@ for(let index=0;index<plan.runs.length;index++){
  previousHash=next.configurationHash;previousId=run.roundId;
 }
 console.log(JSON.stringify({status:'batch-completed',rounds:plan.runs.length}));
+
+}
+main().catch(error=>{console.error(JSON.stringify({status:'batch-halted',message:error instanceof Error?error.message:String(error)}));setInterval(()=>{},30000);});
