@@ -319,7 +319,7 @@ A stronger next evaluation would add many more held-out seeds and repeat provide
 
 In the six comparable new-seed repetitions, **Zoom Decisions Pro led model profit and utility, while Zoom Decisions served the most customers.** Jev generally wasted little food but served fewer people, abandoned more, and had longer customer-facing stockouts; its historical empty-pipeline WAIT sequence did **not** recur. The separately published seed-23 round provides a counterexample to a fixed Jev-versus-Zoom profit order. Some repeated trajectories include Rules fallbacks, and only three new demand schedules were tested. These observations do not identify a model's general planning ability. The next useful comparison would vary planning support under controlled, repeated conditions and measure the resulting full trajectories—not infer ability from a single action or a static benchmark rank.
 
-<p class="signoff">— Jenzus Hsu · In collaboration with GPT Astra</p>
+<p class="signoff">— Jenzus Hsu · In close collaboration with Codex (GPT-6 Astra)</p>
 
 [scoring]: https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/packages/simulation/src/scoring.ts
 [runtime]: https://github.com/jenzushsu/hawker-wars/blob/34ddc5c71699d5ab757eabeefab080a0dc8071ce/manifests/provider-runtime-live-retained.json
