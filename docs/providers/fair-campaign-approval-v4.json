@@ -1,0 +1,18 @@
+{
+  "status": "approved",
+  "approvalSource": "User: extend jev threshold and excite 1 full run",
+  "scope": "One private clean seed-23 full 120-tick v4 comparison across Rules, Jev, Zoom Standard and Zoom Pro; no automatic repeat.",
+  "seed": 23,
+  "roundId": "81180c83-7388-4540-a46d-6602049e403c",
+  "previousRoundId": "d022e144-c2f1-428d-9894-3504edbefff8",
+  "previousCompletedRoundId": "c836aab3-96fc-47a5-a3d2-64c6c3400812",
+  "previousLedgerHash": "c13b86a2d78855dc557dd71cca13a38e5f65476f87b26e24a6a0c7789484e656",
+  "expectedPriorAttempts": 1576,
+  "jevPriorReservedMicros": 1566457,
+  "jevCumulativeCapMicros": 1896817,
+  "jevAdditionalMaximumMicros": 330360,
+  "maximumCallsPerModelThisRound": 120,
+  "zoomRunCapMicros": 250000,
+  "zoomCampaignCapMicros": 5000000,
+  "promptVersion": "hawker-decision-prompt-4"
+}

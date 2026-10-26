@@ -2,12 +2,19 @@ import { createHash } from 'node:crypto';
 import { canonicalState } from '../../simulation/src/hash.ts';
 import { activationBlockers, requestAccounting, ProviderRuntimeSchema, type ProviderRuntimeConfig } from '../../providers/src/activation.ts';
 import { createProviderAdapter } from '../../providers/src/adapter.ts';
-import { PROVIDER_PROMPT_VERSION } from '../../providers/src/wire.ts';
+import { buildRequest, PROVIDER_PROMPT_VERSION, type ProviderPromptVersion } from '../../providers/src/wire.ts';
 import type { Ledger } from '../../providers/src/ledger.ts';
 import type { MultiControllers } from './multi-worker.ts';
 
-export function providerConfigurationHash(config: ProviderRuntimeConfig): string {
-  return createHash('sha256').update('hawker-wars|live-provider-config-2\n').update(PROVIDER_PROMPT_VERSION+'\n').update(canonicalState(ProviderRuntimeSchema.parse(config))).digest('hex');
+import {buildActionCriteriaRequest,ACTION_CRITERIA_VERSION} from '../../providers/src/action-criteria-experiment.ts';
+export type LivePromptVersion=ProviderPromptVersion|typeof ACTION_CRITERIA_VERSION;
+export function liveRequestBuilder(prompt:LivePromptVersion){
+ if(prompt===ACTION_CRITERIA_VERSION)return buildActionCriteriaRequest;
+ if(!['hawker-decision-prompt-2','hawker-decision-prompt-3','hawker-decision-prompt-4'].includes(prompt))throw new Error('Unknown live prompt');
+ return (provider:Parameters<typeof buildRequest>[0],input:Parameters<typeof buildRequest>[1],model?:string)=>buildRequest(provider,input,model,prompt);
+}
+export function providerConfigurationHash(config: ProviderRuntimeConfig, promptVersion: LivePromptVersion = PROVIDER_PROMPT_VERSION): string {
+  return createHash('sha256').update('hawker-wars|live-provider-config-2\n').update(promptVersion+'\n').update(canonicalState(ProviderRuntimeSchema.parse(config))).digest('hex');
 }
 /** Configuration-only check. No account checks, reservations, or remote inference. */
 export function multiProviderBlockers(config: ProviderRuntimeConfig, env: NodeJS.ProcessEnv = process.env): string[] {
@@ -19,14 +26,15 @@ export function multiProviderBlockers(config: ProviderRuntimeConfig, env: NodeJS
   });
 }
 /** Existing ledger only. The operator must preserve all earlier campaign reservations. */
-export function multiControllers(config: ProviderRuntimeConfig, ledger: Ledger): MultiControllers {
+export function multiControllers(config: ProviderRuntimeConfig, ledger: Ledger, prompt:LivePromptVersion=PROVIDER_PROMPT_VERSION): MultiControllers {
+  const requestBuilder=liveRequestBuilder(prompt);
   const blockers = multiProviderBlockers(config);
   if (blockers.length) throw new Error('Multi-policy provider configuration is blocked');
   if (ledger.config.campaignId !== config.campaignId) throw new Error('Ledger campaign mismatch');
   ledger.validateStorage();
   const adapter = (provider: 'jev' | 'zoom' | 'zoom-pro') => {
     if (ledger.getCostBound(provider) !== requestAccounting(config,provider,'live')!.micros) throw new Error('Ledger request bound mismatch');
-    const controller = createProviderAdapter({ provider, config, ledger });
+    const controller = createProviderAdapter({ provider, config, ledger, requestBuilder });
     return { async decideTurn(input: Parameters<typeof controller.decideTurn>[0]) {
       const turn = await controller.decideTurn(input);
       if (turn.result.status === 'fallback') console.error(JSON.stringify({

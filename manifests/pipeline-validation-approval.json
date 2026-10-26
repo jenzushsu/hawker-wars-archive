@@ -1,0 +1,48 @@
+{
+  "status": "approved",
+  "approvalSource": "User: next, following the proposal to validate across states including near closing",
+  "scope": "Three captured states, each with baseline v4 and shared derived timeline/future-demand treatment. One call per model per condition, 18 calls total. Fixed ordering, no retries or automatic repeat.",
+  "previousRoundId": "56b798e3-cd14-4a71-9132-1fcb18058fd5",
+  "previousLedgerHash": "a7af04832092d4379a311d43306bf54c7ba7c37d9f63980e9c80ffb335d8e3ef",
+  "expectedPriorAttempts": 1885,
+  "jevPriorReservedMicros": 1877546,
+  "zoomPriorAllocatedMicros": 1205000,
+  "jevCumulativeCapMicros": 1896817,
+  "jevAdditionalMaximumMicros": 16518,
+  "zoomAdditionalAllocationMicros": 12000,
+  "callsPerModel": 6,
+  "promptVersion": "hawker-decision-prompt-4",
+  "experimentVersion": "pipeline-guidance-validation-1",
+  "runs": [
+    {
+      "roundId": "4ae09482-b36a-4bb8-bc27-23e086a7e71e",
+      "tick": 58,
+      "variant": "baseline"
+    },
+    {
+      "roundId": "8cd55fc0-5a4a-4382-9c12-deff7df5b210",
+      "tick": 58,
+      "variant": "treatment"
+    },
+    {
+      "roundId": "98b4180f-bf49-4d25-af48-d68aa5fbce80",
+      "tick": 73,
+      "variant": "treatment"
+    },
+    {
+      "roundId": "591b7c0f-3258-4691-9697-cd7a801562ac",
+      "tick": 73,
+      "variant": "baseline"
+    },
+    {
+      "roundId": "51a9af88-44d0-49f9-aded-aa2964436de1",
+      "tick": 109,
+      "variant": "baseline"
+    },
+    {
+      "roundId": "cdeb4749-9f09-4276-b6e5-efff4d99158e",
+      "tick": 109,
+      "variant": "treatment"
+    }
+  ]
+}

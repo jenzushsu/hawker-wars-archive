@@ -1,0 +1,20 @@
+{
+  "status": "approved",
+  "approvalSource": "User: proceed with 2. extend budget. 3 as well",
+  "scope": "Bounded follow-up selected under user authorization: two captured states, two option orders, three repeats, three providers. Twelve calls per model, no retries or automatic repetition.",
+  "callsPerModel": 12,
+  "jevAdditionalMaximumMicros": 33036,
+  "jevPriorReservedMicros": 622178,
+  "jevCumulativeCapMicros": 655214,
+  "zoomAdditionalAllocationMicros": 24000,
+  "zoomRunCapMicros": 250000,
+  "zoomCampaignCapMicros": 5000000,
+  "runIds": [
+    "8771792d-7132-46cb-9209-cbd5aaf71a75",
+    "a99560e6-ac22-443f-9126-d186175d7092",
+    "0f6ce385-6a7c-4eb7-8097-5014bcab50aa",
+    "9f0d746b-b4a6-4efe-bc14-6047976f7bfb",
+    "fd8e5428-cd0c-4f7b-abdf-aa391a3132e3",
+    "7268f741-0399-4473-b20e-f1c8bb7605eb"
+  ]
+}

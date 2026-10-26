@@ -4,7 +4,8 @@ import {
 } from '../../shared/src/index.js';
 
 export type WireProvider = 'jev' | 'zoom' | 'zoom-pro';
-export const PROVIDER_PROMPT_VERSION = 'hawker-decision-prompt-2' as const;
+export type ProviderPromptVersion = 'hawker-decision-prompt-2'|'hawker-decision-prompt-3'|'hawker-decision-prompt-4';
+export const PROVIDER_PROMPT_VERSION = 'hawker-decision-prompt-4' as const;
 export const ZOOM_ENDPOINT = 'https://api.zoom.us/v2/aiservices/decisions/decide';
 export const JEV_ENDPOINT = 'https://api.typesafe.ai/v1/systemone';
 export interface WireRequest { endpoint: string; body: Record<string, unknown>; requestedModel: string }
@@ -56,11 +57,19 @@ const ACTION_RULES = Object.freeze({
   PROMOTE: 'Pay 500 cents for extra arrival opportunities over next 10 ticks, with next activation at t+20; otherwise unchanged mechanics.',
   WAIT: 'Consume this turn without direct action; background arrivals, patience, spoilage and timers continue.',
 });
-/** Identical option descriptions accompany the question for every model. */
-function choiceInstructions(input: DecisionInput): string {
-  return [QUESTION_INSTRUCTIONS, 'Allowed actions and consequences:',
-    ...input.legalActions.map(action => `${action}: ${ACTION_RULES[action]}`),
+/** Identical planning guidance and public action rules accompany every model. */
+function choiceInstructions(input: DecisionInput, version:ProviderPromptVersion): string {
+  return [QUESTION_INSTRUCTIONS,
+    ...(version==='hawker-decision-prompt-4'
+      ? ['Action consequences are defined in publicRules.actions; consider them for current and future turns. Tables use named columns and ordered rows; queue rows remain FIFO.']
+      : ['Allowed actions and consequences:', ...input.legalActions.map(action => `${action}: ${ACTION_RULES[action]}`)]),
     'Consider delivery and cooking delays, remaining time, customer patience and closing inventory value. WAIT does not place an order, start cooking or serve customers.',
+    ...(version!=='hawker-decision-prompt-2' ? [
+      'Plan across future turns: replenishing raw stock enables later cooking and serving. Consider future customer arrivals as well as the current queue, using only the public demand rates.',
+      'Choose only the next action now. You will receive an updated observation and reassess on every following decision turn unless WAIT is the only legal action. A plan does not automatically execute later actions.',
+      'There is no one-order limit. RESTOCK may be chosen repeatedly across the round whenever legal, after earlier orders complete. Reconsider the stock pipeline throughout all 120 decision ticks.',
+      'Compare the next 20 minutes and closing value. Account for delivery and cooking delays, spoilage, customer patience and retained raw inventory. WAIT can be appropriate while work is in progress or when further action has no expected benefit. Do not force restocking or cooking near closing.',
+    ] : []),
   ].join('\n');
 }
 function canonicalJson(value: unknown): string {
@@ -80,10 +89,10 @@ function inputForWire(input: DecisionInput): DecisionInput {
   return checked.data;
 }
 /** The same semantic context bytes are sent as Jev state and Zoom input. */
-export function canonicalDecisionContext(input: DecisionInput): string {
+export function canonicalDecisionContext(input: DecisionInput, version:ProviderPromptVersion=PROVIDER_PROMPT_VERSION): string {
   const checked = inputForWire(input);
-  return canonicalJson({
-    promptVersion: PROVIDER_PROMPT_VERSION,
+  const context = {
+    promptVersion: version,
     observation: checked.observation, legalActions: checked.legalActions,
     objective: { scorer: 'utility-1', maximize: 'finalUtilityPoints', formula: 'closingCashCents + 200*closingRawPortions - 28400 - 100*abandoned - 5*allResolvedCustomerWaitMinutes - 50*wastedReadyPortions', weights: SCORE_CONFIG },
     publicRules: {
@@ -92,7 +101,20 @@ export function canonicalDecisionContext(input: DecisionInput): string {
       demand: { offPeakTicks: [[0, 29], [90, 119]], offPeakBaseCountMasses: { denominator: 4294967296, numerators: [2147483648, 1717986919, 429496729] }, peakTicks: [30, 89], peakBase: [{ count: 1, probability: 0.5 }, { count: 2, probability: 0.5 }], patience: { minimum: 3, maximum: 10, distribution: 'uniform' }, promotionExtra: { count: 1, probability: 0.5 }, effects: { bus: '6 arrivals at activation', rain: 'Keep each base arrival with probability 0.5 over 10 ticks; other sources unchanged', supplierDelay: 'Add 5 minutes once to pending order (clamp at119); new orders during10ticks take15 minutes' } },
       closing: 'At120 no arrivals or decisions; resolve every queued customer as abandoned, charge wait, discard remaining ready stock once, retain raw at200 cents; no in-flight stock.',
     },
-  });
+  };
+  if (version !== 'hawker-decision-prompt-4') return canonicalJson(context);
+  // Lossless tables avoid repeating field names for every queued customer/batch.
+  // Column names travel with each table; row order (including FIFO) is preserved.
+  const { queue, readyBatches, recentActions, legalActions: _legalActions, ...observation } = checked.observation;
+  // The explicit demand rules retain probabilities, phases, patience and effects.
+  // Omit their duplicate implementation config (hash streams, draw plumbing, UI vote timing).
+  const { demandDefaults: _implementationDefaults, ...publicRules } = context.publicRules;
+  return canonicalJson({ ...context, publicRules, observation: {
+    ...observation,
+    queue: { columns: ['id','arrivalTick','patience','deadlineTick'], rows: queue.map(c=>[c.id,c.arrivalTick,c.patience,c.deadlineTick]) },
+    readyBatches: { columns: ['id','quantity','expiresAt'], rows: readyBatches.map(b=>[b.id,b.quantity,b.expiresAt]) },
+    recentActions: { columns: ['tick','action'], rows: recentActions.map(a=>[a.tick,a.action]) },
+  } });
 }
 function selectedModel(provider: WireProvider, jevModel?: string): string {
   if (provider !== 'jev' && provider !== 'zoom' && provider !== 'zoom-pro') throw new WireContractError('invalid-model');
@@ -102,10 +124,10 @@ function selectedModel(provider: WireProvider, jevModel?: string): string {
   if (!IdentifierSchema.safeParse(jevModel).success) throw new WireContractError('invalid-model');
   return jevModel;
 }
-export function buildRequest(provider: WireProvider, input: DecisionInput, jevModel?: string): WireRequest {
+export function buildRequest(provider: WireProvider, input: DecisionInput, jevModel?: string, version:ProviderPromptVersion=PROVIDER_PROMPT_VERSION): WireRequest {
   const checked = inputForWire(input), requestedModel = selectedModel(provider, jevModel);
-  const context = canonicalDecisionContext(checked);
-  const instructions = choiceInstructions(checked);
+  const context = canonicalDecisionContext(checked,version);
+  const instructions = choiceInstructions(checked,version);
   if (provider === 'jev') {
     return { endpoint: JEV_ENDPOINT, requestedModel, body: { model: requestedModel, state: context, questions: { action: { type: 'choice', instructions, criteria: Object.fromEntries(checked.legalActions.map(action => [action, null])) } } } };
   }

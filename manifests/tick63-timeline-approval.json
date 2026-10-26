@@ -1,0 +1,20 @@
+{
+  "status": "approved",
+  "approvalSource": "User: try 1, referring to explicit recovery timeline guidance",
+  "scope": "One timeline-treatment call per model on the same Jev tick-63 state. Prior unchanged-prompt calls are the historical control. Three calls total; no automatic repetition.",
+  "roundId": "5277c2c3-4f6f-4aec-a910-938a62ef9594",
+  "previousRoundId": "c7ff5c31-65ed-4e78-bb20-8fb77e859ce3",
+  "previousLedgerHash": "564a80dc533cd550ed979e52f0dee6e7aa0e943568ebf906446059d75b83cfbc",
+  "expectedPriorAttempts": 1879,
+  "jevPriorReservedMicros": 1872040,
+  "jevCumulativeCapMicros": 1896817,
+  "zoomPriorAllocatedMicros": 1201000,
+  "jevAdditionalMaximumMicros": 2753,
+  "zoomAdditionalAllocationMicros": 2000,
+  "zoomCampaignCapMicros": 5000000,
+  "callsPerModel": 1,
+  "promptVersion": "hawker-decision-prompt-4",
+  "sourcePolicy": "jev",
+  "sourceTick": 63,
+  "experimentVersion": "tick63-timeline-1"
+}

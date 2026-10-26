@@ -16,7 +16,7 @@ describe('captured-state planning experiment',()=>{
   it.each([0,1,2,3])('preserves context and equal instructions at captured state %s',index=>{
     const input = states[index];
     const requests = (['jev','zoom','zoom-pro'] as const).map(provider=>{
-      expect(buildPlanningExperimentRequest(provider,input,'baseline','jev-1.13.0')).toEqual(buildRequest(provider,input,'jev-1.13.0'));
+      expect(buildPlanningExperimentRequest(provider,input,'baseline','jev-1.13.0')).toEqual(buildRequest(provider,input,'jev-1.13.0','hawker-decision-prompt-2'));
       const request = buildPlanningExperimentRequest(provider,input,'planning','jev-1.13.0');
       expect(Buffer.byteLength(JSON.stringify(request.body))).toBeLessThanOrEqual(8192);
       return request;

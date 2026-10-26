@@ -1,0 +1,12 @@
+{
+  "worker": {
+    "status": "exited:unhealthy",
+    "inferenceCredentialsPresent": false,
+    "serviceCredentialPresent": true
+  },
+  "provisioner": {
+    "status": "exited:unhealthy",
+    "inferenceCredentialsPresent": false,
+    "serviceCredentialPresent": false
+  }
+}

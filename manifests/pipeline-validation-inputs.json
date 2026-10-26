@@ -1,0 +1,332 @@
+[
+  {
+    "roundId": "81180c83-7388-4540-a46d-6602049e403c",
+    "tick": 58,
+    "observation": {
+      "schemaVersion": "observation-2",
+      "tick": 58,
+      "remainingMinutes": 62,
+      "cashCents": 33000,
+      "rawPortions": 0,
+      "readyBatches": [],
+      "cooking": {
+        "quantity": 10,
+        "dueTick": 59
+      },
+      "pendingRestock": null,
+      "promotion": null,
+      "promotionEligibleAt": 0,
+      "queue": [
+        {
+          "id": "customer-51-base-1",
+          "arrivalTick": 51,
+          "patience": 9,
+          "deadlineTick": 60
+        },
+        {
+          "id": "customer-53-base-1",
+          "arrivalTick": 53,
+          "patience": 10,
+          "deadlineTick": 63
+        },
+        {
+          "id": "customer-54-base-0",
+          "arrivalTick": 54,
+          "patience": 7,
+          "deadlineTick": 61
+        },
+        {
+          "id": "customer-55-base-0",
+          "arrivalTick": 55,
+          "patience": 6,
+          "deadlineTick": 61
+        },
+        {
+          "id": "customer-56-base-0",
+          "arrivalTick": 56,
+          "patience": 9,
+          "deadlineTick": 65
+        },
+        {
+          "id": "customer-56-base-1",
+          "arrivalTick": 56,
+          "patience": 6,
+          "deadlineTick": 62
+        },
+        {
+          "id": "customer-57-base-0",
+          "arrivalTick": 57,
+          "patience": 9,
+          "deadlineTick": 66
+        },
+        {
+          "id": "customer-57-base-1",
+          "arrivalTick": 57,
+          "patience": 6,
+          "deadlineTick": 63
+        },
+        {
+          "id": "customer-58-base-0",
+          "arrivalTick": 58,
+          "patience": 7,
+          "deadlineTick": 65
+        }
+      ],
+      "effects": [],
+      "demandPhase": "peak",
+      "cumulativeRevenueCents": 17000,
+      "cumulativePurchasesCents": 4000,
+      "cumulativePromotionSpendCents": 0,
+      "totals": {
+        "served": 34,
+        "abandoned": 12,
+        "wasted": 18,
+        "waitMinutes": 125,
+        "arrivals": 55,
+        "purchasedPortions": 20,
+        "restockOrders": 1,
+        "promotions": 0
+      },
+      "recentActions": [
+        {
+          "tick": 53,
+          "action": "WAIT"
+        },
+        {
+          "tick": 54,
+          "action": "COOK"
+        },
+        {
+          "tick": 55,
+          "action": "WAIT"
+        },
+        {
+          "tick": 56,
+          "action": "WAIT"
+        },
+        {
+          "tick": 57,
+          "action": "WAIT"
+        }
+      ],
+      "legalActions": [
+        "RESTOCK",
+        "WAIT"
+      ]
+    },
+    "legalActions": [
+      "RESTOCK",
+      "WAIT"
+    ]
+  },
+  {
+    "roundId": "81180c83-7388-4540-a46d-6602049e403c",
+    "tick": 73,
+    "observation": {
+      "schemaVersion": "observation-2",
+      "tick": 73,
+      "remainingMinutes": 47,
+      "cashCents": 38000,
+      "rawPortions": 0,
+      "readyBatches": [],
+      "cooking": null,
+      "pendingRestock": null,
+      "promotion": null,
+      "promotionEligibleAt": 0,
+      "queue": [
+        {
+          "id": "customer-66-base-0",
+          "arrivalTick": 66,
+          "patience": 8,
+          "deadlineTick": 74
+        },
+        {
+          "id": "customer-67-base-0",
+          "arrivalTick": 67,
+          "patience": 7,
+          "deadlineTick": 74
+        },
+        {
+          "id": "customer-68-base-0",
+          "arrivalTick": 68,
+          "patience": 10,
+          "deadlineTick": 78
+        },
+        {
+          "id": "customer-69-base-0",
+          "arrivalTick": 69,
+          "patience": 8,
+          "deadlineTick": 77
+        },
+        {
+          "id": "customer-69-base-1",
+          "arrivalTick": 69,
+          "patience": 9,
+          "deadlineTick": 78
+        },
+        {
+          "id": "customer-70-base-0",
+          "arrivalTick": 70,
+          "patience": 10,
+          "deadlineTick": 80
+        },
+        {
+          "id": "customer-71-base-0",
+          "arrivalTick": 71,
+          "patience": 10,
+          "deadlineTick": 81
+        },
+        {
+          "id": "customer-72-base-0",
+          "arrivalTick": 72,
+          "patience": 8,
+          "deadlineTick": 80
+        },
+        {
+          "id": "customer-72-base-1",
+          "arrivalTick": 72,
+          "patience": 7,
+          "deadlineTick": 79
+        },
+        {
+          "id": "customer-73-base-0",
+          "arrivalTick": 73,
+          "patience": 9,
+          "deadlineTick": 82
+        },
+        {
+          "id": "customer-73-base-1",
+          "arrivalTick": 73,
+          "patience": 8,
+          "deadlineTick": 81
+        }
+      ],
+      "effects": [],
+      "demandPhase": "peak",
+      "cumulativeRevenueCents": 22000,
+      "cumulativePurchasesCents": 4000,
+      "cumulativePromotionSpendCents": 0,
+      "totals": {
+        "served": 44,
+        "abandoned": 19,
+        "wasted": 18,
+        "waitMinutes": 214,
+        "arrivals": 74,
+        "purchasedPortions": 20,
+        "restockOrders": 1,
+        "promotions": 0
+      },
+      "recentActions": [
+        {
+          "tick": 68,
+          "action": "WAIT"
+        },
+        {
+          "tick": 69,
+          "action": "WAIT"
+        },
+        {
+          "tick": 70,
+          "action": "WAIT"
+        },
+        {
+          "tick": 71,
+          "action": "WAIT"
+        },
+        {
+          "tick": 72,
+          "action": "WAIT"
+        }
+      ],
+      "legalActions": [
+        "RESTOCK",
+        "WAIT"
+      ]
+    },
+    "legalActions": [
+      "RESTOCK",
+      "WAIT"
+    ]
+  },
+  {
+    "roundId": "81180c83-7388-4540-a46d-6602049e403c",
+    "tick": 109,
+    "observation": {
+      "schemaVersion": "observation-2",
+      "tick": 109,
+      "remainingMinutes": 11,
+      "cashCents": 38000,
+      "rawPortions": 0,
+      "readyBatches": [],
+      "cooking": null,
+      "pendingRestock": null,
+      "promotion": null,
+      "promotionEligibleAt": 0,
+      "queue": [
+        {
+          "id": "customer-102-base-0",
+          "arrivalTick": 102,
+          "patience": 10,
+          "deadlineTick": 112
+        },
+        {
+          "id": "customer-104-base-0",
+          "arrivalTick": 104,
+          "patience": 7,
+          "deadlineTick": 111
+        },
+        {
+          "id": "customer-107-base-0",
+          "arrivalTick": 107,
+          "patience": 4,
+          "deadlineTick": 111
+        }
+      ],
+      "effects": [],
+      "demandPhase": "off-peak",
+      "cumulativeRevenueCents": 22000,
+      "cumulativePurchasesCents": 4000,
+      "cumulativePromotionSpendCents": 0,
+      "totals": {
+        "served": 44,
+        "abandoned": 66,
+        "wasted": 18,
+        "waitMinutes": 529,
+        "arrivals": 113,
+        "purchasedPortions": 20,
+        "restockOrders": 1,
+        "promotions": 0
+      },
+      "recentActions": [
+        {
+          "tick": 104,
+          "action": "WAIT"
+        },
+        {
+          "tick": 105,
+          "action": "WAIT"
+        },
+        {
+          "tick": 106,
+          "action": "WAIT"
+        },
+        {
+          "tick": 107,
+          "action": "WAIT"
+        },
+        {
+          "tick": 108,
+          "action": "WAIT"
+        }
+      ],
+      "legalActions": [
+        "RESTOCK",
+        "WAIT"
+      ]
+    },
+    "legalActions": [
+      "RESTOCK",
+      "WAIT"
+    ]
+  }
+]

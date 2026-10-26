@@ -1,0 +1,18 @@
+{
+  "sha": "999d2b091b14fe8547d36c7a2aff76d4043982c1",
+  "prepareDeployment": "kun0ou1zjzgqk62n3gs498yh",
+  "workerDeployment": "b8p2bc6zfbuz63j61rqtjgte",
+  "standbyDeployment": "v765fc3sfn308b60f09xu4lv",
+  "worker": {
+    "status": "running:healthy",
+    "compose": "/compose.multi-worker-standby.yaml",
+    "inferenceCredentialsPresent": false,
+    "serviceCredentialPresent": true
+  },
+  "bootstrap": {
+    "status": "exited:unhealthy",
+    "compose": "/compose.prepare-v4-full.yaml",
+    "inferenceCredentialsPresent": false,
+    "serviceCredentialPresent": false
+  }
+}

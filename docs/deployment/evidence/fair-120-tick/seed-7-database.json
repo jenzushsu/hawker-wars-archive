@@ -1,0 +1,93 @@
+{
+  "id": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+  "status": "completed",
+  "tick": 120,
+  "sequence": 121,
+  "published": false,
+  "seed": 7,
+  "providerConfigurationHash": "b95ead8feffb645bfcdfc3f9ec5b8622f10afc85bc47c01a4ef138f6b71ae409",
+  "scores": [
+    {
+      "served": 116,
+      "activity": {
+        "raw": 10,
+        "queue": 0,
+        "ready": 0,
+        "action": null,
+        "cooking": false,
+        "departed": 0,
+        "received": 0,
+        "queuePoses": []
+      },
+      "abandoned": 2,
+      "policy_id": "rules",
+      "cash_cents": 57500,
+      "profit_cents": 31100,
+      "utility_points": 29790
+    },
+    {
+      "served": 46,
+      "activity": {
+        "raw": 0,
+        "queue": 0,
+        "ready": 0,
+        "action": null,
+        "cooking": false,
+        "departed": 4,
+        "received": 0,
+        "queuePoses": []
+      },
+      "abandoned": 66,
+      "policy_id": "jev",
+      "cash_cents": 39000,
+      "profit_cents": 10600,
+      "utility_points": 685
+    },
+    {
+      "served": 109,
+      "activity": {
+        "raw": 20,
+        "queue": 0,
+        "ready": 0,
+        "action": null,
+        "cooking": false,
+        "departed": 0,
+        "received": 0,
+        "queuePoses": []
+      },
+      "abandoned": 14,
+      "policy_id": "zoom",
+      "cash_cents": 49500,
+      "profit_cents": 25100,
+      "utility_points": 20765
+    },
+    {
+      "served": 98,
+      "activity": {
+        "raw": 20,
+        "queue": 0,
+        "ready": 0,
+        "action": null,
+        "cooking": false,
+        "departed": 1,
+        "received": 0,
+        "queuePoses": []
+      },
+      "abandoned": 14,
+      "policy_id": "zoom-pro",
+      "cash_cents": 53000,
+      "profit_cents": 28600,
+      "utility_points": 25865
+    }
+  ],
+  "events": {
+    "count": 121,
+    "unique_ticks": 121,
+    "closing_events": 1,
+    "unique_sequences": 121
+  },
+  "rulesComparisonToPromptV2": {
+    "comparedTicks": 121,
+    "differences": 0
+  }
+}

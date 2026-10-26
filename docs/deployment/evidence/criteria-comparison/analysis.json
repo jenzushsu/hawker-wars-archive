@@ -1,0 +1,114 @@
+{
+  "status": "verified",
+  "roundId": "3136cde0-c6ae-4f6a-af4d-29621f1a9370",
+  "model": "jev-1.13.0",
+  "promptTreatment": "action-criteria-prompt-1",
+  "score": {
+    "profitCents": 24100,
+    "utilityPoints": 18515,
+    "meanWaitMinutes": 3.0840336134453783,
+    "satisfaction": null,
+    "provisional": false
+  },
+  "totals": {
+    "served": 85,
+    "abandoned": 34,
+    "wasted": 7,
+    "waitMinutes": 367,
+    "arrivals": 119,
+    "purchasedPortions": 60,
+    "restockOrders": 3,
+    "promotions": 0
+  },
+  "calls": 105,
+  "reservedMicros": 289065,
+  "zoomAllocatedMicros": 0,
+  "priorRaw113": {
+    "score": {
+      "profitCents": 9600,
+      "utilityPoints": -1680,
+      "meanWaitMinutes": 4.840336134453781,
+      "satisfaction": null,
+      "provisional": false
+    },
+    "totals": {
+      "served": 44,
+      "abandoned": 75,
+      "wasted": 18,
+      "waitMinutes": 576,
+      "arrivals": 119,
+      "purchasedPortions": 20,
+      "restockOrders": 1,
+      "promotions": 0
+    }
+  },
+  "profitDeltaCents": 14500,
+  "restockTicks": [
+    0,
+    67,
+    78
+  ],
+  "cookTicks": [
+    23,
+    29,
+    40,
+    49,
+    58,
+    77,
+    88,
+    102
+  ],
+  "waits": {
+    "total": 67,
+    "forced": [
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      79,
+      80,
+      81,
+      117,
+      118,
+      119
+    ],
+    "emptyPipelineRestockLegal": [],
+    "serveLegal": [],
+    "cookLegal": [
+      1,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      18,
+      19,
+      20,
+      21,
+      22,
+      86,
+      87,
+      96,
+      97,
+      98,
+      99,
+      101,
+      109,
+      110,
+      111,
+      113
+    ]
+  },
+  "caveat": "One raw full run per prompt condition, not repeated matched-state trials or causal proof. Prior hybrid results include a safeguard and are separate."
+}

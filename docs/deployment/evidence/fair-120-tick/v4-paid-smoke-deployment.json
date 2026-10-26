@@ -1,0 +1,23 @@
+{
+  "app": "uv3z47fpgf70scuxg70dy56w",
+  "sha": "4395b947f5829fa2d2d08e5556a558f5d13456eb",
+  "deployment": "bw2xg9gelohzexu7zddcsjhg",
+  "restoreDeployment": "mxgjqqir07yhl7ywr08iwfm9",
+  "cleanupRestoreDeployment": "xcahim7yp8myvc8bix5xuyv9",
+  "finalStatus": "running:healthy",
+  "finalMode": "standby",
+  "inferenceCredentialsRemoved": true,
+  "readiness": [
+    {
+      "status": "standby-ready",
+      "promptVersion": "hawker-decision-prompt-4",
+      "requestBytes": [
+        5882,
+        5921,
+        5916
+      ],
+      "providerDispatch": false
+    }
+  ],
+  "cleanupNote": "Initial compose switch reported degraded; stopped application and redeployed standby."
+}

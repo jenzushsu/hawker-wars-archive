@@ -22,7 +22,7 @@ describe('wire requests', () => {
     expect(context.objective.scorer).toBe('utility-1');
     expect(context.objective.formula).toContain('100*abandoned');
     expect(context.publicRules.mechanics.initialWealthCents).toBe(28400);
-    expect(context.publicRules.demandDefaults.streams).toContain('patience');
+    expect(context.publicRules.demand.patience).toEqual({minimum:3,maximum:10,distribution:'uniform'});
     expect(context.legalActions).toEqual(value.legalActions);
     expect(zoom.endpoint).toBe('https://api.zoom.us/v2/aiservices/decisions/decide');
     expect(jev.endpoint).toBe('https://api.typesafe.ai/v1/systemone');
@@ -45,12 +45,15 @@ describe('wire requests', () => {
       : (r.body.questions as { instructions: string }[])[0]!);
     expect(questions[1]!.instructions).toBe(questions[0]!.instructions);
     expect(questions[2]!.instructions).toBe(questions[0]!.instructions);
-    expect(questions[0]!.instructions).toContain('RESTOCK: Pay 4000 cents for 20 raw portions');
+    expect(JSON.parse(requests[0]!.body.state as string).publicRules.actions.RESTOCK).toContain('Pay 4000 cents for 20 raw portions');
+    expect(questions[0]!.instructions).toContain('publicRules.actions');
     expect(questions[0]!.instructions).toContain('WAIT does not place an order');
+    expect(questions[0]!.instructions).toContain('There is no one-order limit');
+    expect(questions[0]!.instructions).toContain('reassess on every following decision turn');
     expect(questions[0]!.instructions).not.toContain('COOK:');
     expect(requests[1]!.body.input).toBe(requests[0]!.body.state);
     expect(requests[2]!.body.input).toBe(requests[0]!.body.state);
-    expect(JSON.parse(requests[0]!.body.state as string).promptVersion).toBe('hawker-decision-prompt-2');
+    expect(JSON.parse(requests[0]!.body.state as string).promptVersion).toBe('hawker-decision-prompt-4');
   });
   it('requires explicit Jev model and never silently defaults to latest', () => {
     expect(() => buildRequest('jev', input())).toThrow(WireContractError);

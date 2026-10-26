@@ -1,0 +1,16 @@
+{
+  "status": "approved",
+  "approvalSource": "User: run paid call",
+  "scope": "One v4 call per provider using the same captured seed-23 Zoom tick-80 input; three total; no retries or repetition.",
+  "roundId": "d022e144-c2f1-428d-9894-3504edbefff8",
+  "previousRoundId": "c836aab3-96fc-47a5-a3d2-64c6c3400812",
+  "previousLedgerHash": "175e814b376a45715d6b60dc5f882b682c1ffa28e40c9c957abb5f93bdea8fda",
+  "expectedPriorAttempts": 1573,
+  "jevPriorReservedMicros": 1563704,
+  "jevCumulativeCapMicros": 1646294,
+  "jevAdditionalMaximumMicros": 2753,
+  "zoomAdditionalAllocationMicros": 2000,
+  "zoomCampaignCapMicros": 5000000,
+  "callsPerModel": 1,
+  "promptVersion": "hawker-decision-prompt-4"
+}

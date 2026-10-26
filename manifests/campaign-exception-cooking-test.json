@@ -1,0 +1,10 @@
+{
+  "roundId": "7383ca18-6b12-4910-84e6-0dc0d5366b62",
+  "approvalReference": "manifests/cooking-test-approval.json",
+  "allocationMicrosPerRequest": 1000,
+  "maxRequestBytes": 8192,
+  "priorSmokeAllocations": [
+    "docs/providers/zoom-smoke-result.json",
+    "docs/providers/zoom-pro-smoke-result.json"
+  ]
+}

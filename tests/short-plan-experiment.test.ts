@@ -19,3 +19,20 @@ it.each([57,109])('supplies identical state and complete plan instructions at ti
 it('rejects the pending-delivery control instead of assigning infeasible plans',()=>{
   expect(()=>buildShortPlanRequest('jev',states[0],'jev-1.13.0')).toThrow('empty pipeline');
 });
+it.each([57,109])('reverses presented options without changing plan meanings or state at tick %s',tick=>{
+  const input=states.find((s:{tick:number})=>s.tick===tick);
+  const requests=(['jev','zoom','zoom-pro'] as const).map(p=>buildShortPlanRequest(p,input,'jev-1.13.0','reversed'));
+  const normal=buildShortPlanRequest('jev',input,'jev-1.13.0');
+  const j=(requests[0]!.body.questions as any).action;
+  expect(Object.keys(j.criteria)).toEqual(['WAIT','RESTOCK']);
+  expect(j.criteria).toEqual((normal.body.questions as any).action.criteria);
+  expect(requests[0]!.body.state).toBe(normal.body.state);
+  expect(j.instructions.indexOf('WAIT:')).toBeLessThan(j.instructions.indexOf('RESTOCK:'));
+  for(const r of requests.slice(1)) {
+    const q=(r.body.questions as any)[0];
+    expect(q.instructions).toBe(j.instructions);
+    expect(q.choices.map((c:{value:string})=>c.value)).toEqual(['WAIT','RESTOCK']);
+    expect(r.body.input).toBe(normal.body.state);
+  }
+  for(const r of requests)expect(Buffer.byteLength(JSON.stringify(r.body))).toBeLessThanOrEqual(8192);
+});

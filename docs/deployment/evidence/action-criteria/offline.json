@@ -1,0 +1,34 @@
+{
+  "version": "action-criteria-prompt-1",
+  "states": 123,
+  "forcedWaits": 15,
+  "requests": 324,
+  "maxRequestBytes": {
+    "jev": 6236,
+    "zoom": 6265,
+    "zoom-pro": 6260
+  },
+  "instructionCharacters": {
+    "baselineMaximum": 1410,
+    "candidateMaximum": 1317
+  },
+  "providerDispatch": false,
+  "examples": [
+    {
+      "tick": 31,
+      "instructions": "Choose one legal action to maximize final utility at tick 120 using the supplied rules. Return the typed choice; do not infer hidden arrivals.\nEvaluate ready food, cooking, raw stock and pending delivery together.\nSERVE: Prioritize waiting customers when food is ready; delay risks abandonment or spoilage.\nCOOK: Consider cooking when ready supply is insufficient for expected demand; account for completion time and spoilage.\nRESTOCK: Consider replenishment before supply runs out. An empty pipeline needs an order. Consider arrivals after delivery/cooking, not only the current queue. Repeat orders are allowed.\nWAIT: Use when work progresses, delay avoids waste, or other actions offer no expected utility gain. WAIT cannot replenish stock.\nPROMOTE: Consider extra demand when supply and service capacity can support it.\nAccount for closing salvage and penalties. Follow-up actions are not automatic. Tables use named columns; queue rows are FIFO.\nPipeline: NONEMPTY; raw=0; ready=0; cookingDue=35; deliveryDue=none.\nRESTOCK now: delivery at 41; optimistic earliest new food at 46, assuming COOK on delivery, idle cooker, capacity and no additional delay. Remaining service ticks: 74."
+    },
+    {
+      "tick": 32,
+      "instructions": "Choose one legal action to maximize final utility at tick 120 using the supplied rules. Return the typed choice; do not infer hidden arrivals.\nEvaluate ready food, cooking, raw stock and pending delivery together.\nSERVE: Prioritize waiting customers when food is ready; delay risks abandonment or spoilage.\nCOOK: Consider cooking when ready supply is insufficient for expected demand; account for completion time and spoilage.\nRESTOCK: Consider replenishment before supply runs out. An empty pipeline needs an order. Consider arrivals after delivery/cooking, not only the current queue. Repeat orders are allowed.\nWAIT: Use when work progresses, delay avoids waste, or other actions offer no expected utility gain. WAIT cannot replenish stock.\nPROMOTE: Consider extra demand when supply and service capacity can support it.\nAccount for closing salvage and penalties. Follow-up actions are not automatic. Tables use named columns; queue rows are FIFO.\nPipeline: NONEMPTY; raw=0; ready=0; cookingDue=35; deliveryDue=41.\nRESTOCK is not currently legal; do not assume an order can be placed now."
+    },
+    {
+      "tick": 59,
+      "instructions": "Choose one legal action to maximize final utility at tick 120 using the supplied rules. Return the typed choice; do not infer hidden arrivals.\nEvaluate ready food, cooking, raw stock and pending delivery together.\nSERVE: Prioritize waiting customers when food is ready; delay risks abandonment or spoilage.\nCOOK: Consider cooking when ready supply is insufficient for expected demand; account for completion time and spoilage.\nRESTOCK: Consider replenishment before supply runs out. An empty pipeline needs an order. Consider arrivals after delivery/cooking, not only the current queue. Repeat orders are allowed.\nWAIT: Use when work progresses, delay avoids waste, or other actions offer no expected utility gain. WAIT cannot replenish stock.\nPROMOTE: Consider extra demand when supply and service capacity can support it.\nAccount for closing salvage and penalties. Follow-up actions are not automatic. Tables use named columns; queue rows are FIFO.\nPipeline: EMPTY; raw=0; ready=0; cookingDue=none; deliveryDue=none.\nRESTOCK now: delivery at 69; optimistic earliest new food at 74, assuming COOK on delivery, idle cooker, capacity and no additional delay. Remaining service ticks: 46.\nWAIT leaves the pipeline empty."
+    },
+    {
+      "tick": 109,
+      "instructions": "Choose one legal action to maximize final utility at tick 120 using the supplied rules. Return the typed choice; do not infer hidden arrivals.\nEvaluate ready food, cooking, raw stock and pending delivery together.\nSERVE: Prioritize waiting customers when food is ready; delay risks abandonment or spoilage.\nCOOK: Consider cooking when ready supply is insufficient for expected demand; account for completion time and spoilage.\nRESTOCK: Consider replenishment before supply runs out. An empty pipeline needs an order. Consider arrivals after delivery/cooking, not only the current queue. Repeat orders are allowed.\nWAIT: Use when work progresses, delay avoids waste, or other actions offer no expected utility gain. WAIT cannot replenish stock.\nPROMOTE: Consider extra demand when supply and service capacity can support it.\nAccount for closing salvage and penalties. Follow-up actions are not automatic. Tables use named columns; queue rows are FIFO.\nPipeline: EMPTY; raw=0; ready=0; cookingDue=none; deliveryDue=none.\nRESTOCK now: delivery at 119; optimistic earliest new food at 124, assuming COOK on delivery, idle cooker, capacity and no additional delay. Remaining service ticks: 0.\nThis new order cannot be cooked and served before closing; raw salvage equals its purchase price.\nWAIT leaves the pipeline empty."
+    }
+  ]
+}

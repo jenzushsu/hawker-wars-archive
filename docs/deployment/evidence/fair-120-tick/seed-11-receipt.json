@@ -1,0 +1,561 @@
+{
+  "seed": 11,
+  "roundId": "f71d3a2b-6ad1-4e69-bebf-4a9bc68bfe37",
+  "approval": "docs/providers/fair-campaign-approval-11.json",
+  "previousLedgerHash": "042840fcdb36660d34914d6f27cbb3a3f19107949415d1b9ea65a5e299de4e41",
+  "previousRunId": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+  "prepareDeployment": "m1z5df3i2et786f7hvu1ibob",
+  "ledgerHash": "66f43cbb9e38c9cc543ead941b9c14c0d6a19438f0bfb49e6e3561bddac6e611",
+  "preparation": {
+    "status": "next-campaign-prepared",
+    "oldRun": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+    "roundId": "f71d3a2b-6ad1-4e69-bebf-4a9bc68bfe37",
+    "seed": 11,
+    "configurationHash": "66f43cbb9e38c9cc543ead941b9c14c0d6a19438f0bfb49e6e3561bddac6e611",
+    "before": {
+      "campaignId": "zoom-trial-campaign-1",
+      "pools": [
+        {
+          "id": "jev-separate",
+          "reservedMicros": 958044,
+          "capMicros": 1646294,
+          "lastDispatchAtMs": 1792895946303
+        },
+        {
+          "id": "zoom-shared",
+          "reservedMicros": 631000,
+          "capMicros": 5000000,
+          "lastDispatchAtMs": 1792896021377
+        }
+      ],
+      "attempts": 977
+    },
+    "after": {
+      "campaignId": "zoom-trial-campaign-1",
+      "pools": [
+        {
+          "id": "jev-separate",
+          "reservedMicros": 958044,
+          "capMicros": 1646294,
+          "lastDispatchAtMs": 1792895946303
+        },
+        {
+          "id": "zoom-shared",
+          "reservedMicros": 631000,
+          "capMicros": 5000000,
+          "lastDispatchAtMs": 1792896021377
+        }
+      ],
+      "attempts": 977
+    },
+    "providerDispatch": false
+  },
+  "workerDeployment": "lxw49ir2sydq3c5oxrcck1o5",
+  "finalStatus": {
+    "schemaVersion": "live-round-status-1",
+    "round_id": "f71d3a2b-6ad1-4e69-bebf-4a9bc68bfe37",
+    "classification": "exhibition",
+    "policy_ids": [
+      "rules",
+      "jev",
+      "zoom",
+      "zoom-pro"
+    ],
+    "status": "completed",
+    "control_state": "active",
+    "control_revision": 0,
+    "tick": 120,
+    "sequence": 121,
+    "configuration_hash": "9b088ecdbca6d50dca76a78a4e98872b0b8751d3b63ac881cbcb2704358236d6",
+    "schedule_hash": "493a0ffb23e8819dcdff8fcad884cd282fb61dbba6ae3720870fc2b2b09edee9",
+    "ready": false
+  },
+  "accounting": {
+    "status": "campaign-accounting",
+    "roundId": "f71d3a2b-6ad1-4e69-bebf-4a9bc68bfe37",
+    "summary": {
+      "campaignId": "zoom-trial-campaign-1",
+      "pools": [
+        {
+          "id": "jev-separate",
+          "reservedMicros": 1260874,
+          "capMicros": 1646294,
+          "lastDispatchAtMs": 1792896884300
+        },
+        {
+          "id": "zoom-shared",
+          "reservedMicros": 826000,
+          "capMicros": 5000000,
+          "lastDispatchAtMs": 1792896927809
+        }
+      ],
+      "attempts": 1282
+    },
+    "usage": {
+      "accountingBasis": "Jev verified reservations; Zoom operator allocations, not guaranteed charges",
+      "priorExposure": [
+        {
+          "micros": 1000,
+          "evidenceId": "docs/providers/zoom-smoke-result.json"
+        },
+        {
+          "micros": 1000,
+          "evidenceId": "docs/providers/zoom-pro-smoke-result.json"
+        }
+      ],
+      "runs": [
+        {
+          "run_id": "0f6ce385-6a7c-4eb7-8097-5014bcab50aa",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 5506,
+          "reported_input_units": 5126,
+          "mean_latency_ms": 302.5,
+          "max_latency_ms": 331
+        },
+        {
+          "run_id": "0f6ce385-6a7c-4eb7-8097-5014bcab50aa",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3774,
+          "mean_latency_ms": 504,
+          "max_latency_ms": 512
+        },
+        {
+          "run_id": "0f6ce385-6a7c-4eb7-8097-5014bcab50aa",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3774,
+          "mean_latency_ms": 463.5,
+          "max_latency_ms": 478
+        },
+        {
+          "run_id": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 109,
+          "allocated_micros": 300077,
+          "reported_input_units": 246637,
+          "mean_latency_ms": 282.11009174311926,
+          "max_latency_ms": 485
+        },
+        {
+          "run_id": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+          "provider": "jev",
+          "state": "uncertain",
+          "attempts": 1,
+          "allocated_micros": 2753,
+          "reported_input_units": null,
+          "mean_latency_ms": null,
+          "max_latency_ms": null
+        },
+        {
+          "run_id": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 89,
+          "allocated_micros": 89000,
+          "reported_input_units": 155569,
+          "mean_latency_ms": 526.8876404494382,
+          "max_latency_ms": 1202
+        },
+        {
+          "run_id": "32b5d1e3-f6a2-4e0b-a5c0-38cec0c3a863",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 104,
+          "allocated_micros": 104000,
+          "reported_input_units": 181591,
+          "mean_latency_ms": 583.1538461538462,
+          "max_latency_ms": 1291
+        },
+        {
+          "run_id": "577bb9e5-36df-49e1-895c-880e66d656ee",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 4,
+          "allocated_micros": 11012,
+          "reported_input_units": 9830,
+          "mean_latency_ms": 273.5,
+          "max_latency_ms": 309
+        },
+        {
+          "run_id": "577bb9e5-36df-49e1-895c-880e66d656ee",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 4,
+          "allocated_micros": 4000,
+          "reported_input_units": 7563,
+          "mean_latency_ms": 449,
+          "max_latency_ms": 474
+        },
+        {
+          "run_id": "577bb9e5-36df-49e1-895c-880e66d656ee",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 4,
+          "allocated_micros": 4000,
+          "reported_input_units": 7563,
+          "mean_latency_ms": 855,
+          "max_latency_ms": 1261
+        },
+        {
+          "run_id": "7268f741-0399-4473-b20e-f1c8bb7605eb",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 5506,
+          "reported_input_units": 5126,
+          "mean_latency_ms": 258.5,
+          "max_latency_ms": 264
+        },
+        {
+          "run_id": "7268f741-0399-4473-b20e-f1c8bb7605eb",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3774,
+          "mean_latency_ms": 437.5,
+          "max_latency_ms": 457
+        },
+        {
+          "run_id": "7268f741-0399-4473-b20e-f1c8bb7605eb",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3774,
+          "mean_latency_ms": 551.5,
+          "max_latency_ms": 575
+        },
+        {
+          "run_id": "76af5727-7871-4ea3-89be-16cf4a459dde",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 1,
+          "allocated_micros": 2753,
+          "reported_input_units": 1969,
+          "mean_latency_ms": 439,
+          "max_latency_ms": 439
+        },
+        {
+          "run_id": "8771792d-7132-46cb-9209-cbd5aaf71a75",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 5506,
+          "reported_input_units": 5126,
+          "mean_latency_ms": 302,
+          "max_latency_ms": 338
+        },
+        {
+          "run_id": "8771792d-7132-46cb-9209-cbd5aaf71a75",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3776,
+          "mean_latency_ms": 447,
+          "max_latency_ms": 494
+        },
+        {
+          "run_id": "8771792d-7132-46cb-9209-cbd5aaf71a75",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3776,
+          "mean_latency_ms": 523.5,
+          "max_latency_ms": 536
+        },
+        {
+          "run_id": "9464d32e-4183-416a-8f29-9d2abae3df86",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 5506,
+          "reported_input_units": 5126,
+          "mean_latency_ms": 277,
+          "max_latency_ms": 282
+        },
+        {
+          "run_id": "9464d32e-4183-416a-8f29-9d2abae3df86",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3776,
+          "mean_latency_ms": 490.5,
+          "max_latency_ms": 520
+        },
+        {
+          "run_id": "9464d32e-4183-416a-8f29-9d2abae3df86",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3776,
+          "mean_latency_ms": 479.5,
+          "max_latency_ms": 510
+        },
+        {
+          "run_id": "9f0d746b-b4a6-4efe-bc14-6047976f7bfb",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 5506,
+          "reported_input_units": 5126,
+          "mean_latency_ms": 257.5,
+          "max_latency_ms": 280
+        },
+        {
+          "run_id": "9f0d746b-b4a6-4efe-bc14-6047976f7bfb",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3776,
+          "mean_latency_ms": 468.5,
+          "max_latency_ms": 501
+        },
+        {
+          "run_id": "9f0d746b-b4a6-4efe-bc14-6047976f7bfb",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3776,
+          "mean_latency_ms": 433.5,
+          "max_latency_ms": 473
+        },
+        {
+          "run_id": "a99560e6-ac22-443f-9126-d186175d7092",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 5506,
+          "reported_input_units": 5126,
+          "mean_latency_ms": 264,
+          "max_latency_ms": 271
+        },
+        {
+          "run_id": "a99560e6-ac22-443f-9126-d186175d7092",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3774,
+          "mean_latency_ms": 536.5,
+          "max_latency_ms": 546
+        },
+        {
+          "run_id": "a99560e6-ac22-443f-9126-d186175d7092",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3774,
+          "mean_latency_ms": 605.5,
+          "max_latency_ms": 732
+        },
+        {
+          "run_id": "b7e8b014-2415-48f0-8bfd-5365a228e2c4",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 4,
+          "allocated_micros": 11012,
+          "reported_input_units": 8872,
+          "mean_latency_ms": 273.25,
+          "max_latency_ms": 280
+        },
+        {
+          "run_id": "b7e8b014-2415-48f0-8bfd-5365a228e2c4",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 4,
+          "allocated_micros": 4000,
+          "reported_input_units": 6917,
+          "mean_latency_ms": 834.75,
+          "max_latency_ms": 1236
+        },
+        {
+          "run_id": "b7e8b014-2415-48f0-8bfd-5365a228e2c4",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 4,
+          "allocated_micros": 4000,
+          "reported_input_units": 6917,
+          "mean_latency_ms": 676,
+          "max_latency_ms": 1225
+        },
+        {
+          "run_id": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 104,
+          "allocated_micros": 286312,
+          "reported_input_units": 224200,
+          "mean_latency_ms": 276.4326923076923,
+          "max_latency_ms": 345
+        },
+        {
+          "run_id": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+          "provider": "jev",
+          "state": "uncertain",
+          "attempts": 1,
+          "allocated_micros": 2753,
+          "reported_input_units": null,
+          "mean_latency_ms": null,
+          "max_latency_ms": null
+        },
+        {
+          "run_id": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 96,
+          "allocated_micros": 96000,
+          "reported_input_units": 154995,
+          "mean_latency_ms": 593.7291666666666,
+          "max_latency_ms": 1232
+        },
+        {
+          "run_id": "d7f7da47-8b31-4465-8cf9-77773683da3f",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 103,
+          "allocated_micros": 103000,
+          "reported_input_units": 165692,
+          "mean_latency_ms": 596.2330097087379,
+          "max_latency_ms": 1413
+        },
+        {
+          "run_id": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 110,
+          "allocated_micros": 302830,
+          "reported_input_units": 268811,
+          "mean_latency_ms": 282.3909090909091,
+          "max_latency_ms": 464
+        },
+        {
+          "run_id": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 90,
+          "allocated_micros": 90000,
+          "reported_input_units": 172711,
+          "mean_latency_ms": 527.2666666666667,
+          "max_latency_ms": 1269
+        },
+        {
+          "run_id": "ea6e1af5-c4a6-43fd-8cff-c9d4baa5546b",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 103,
+          "allocated_micros": 103000,
+          "reported_input_units": 197087,
+          "mean_latency_ms": 584.7766990291262,
+          "max_latency_ms": 1485
+        },
+        {
+          "run_id": "f71d3a2b-6ad1-4e69-bebf-4a9bc68bfe37",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 110,
+          "allocated_micros": 302830,
+          "reported_input_units": 268130,
+          "mean_latency_ms": 280.24545454545455,
+          "max_latency_ms": 389
+        },
+        {
+          "run_id": "f71d3a2b-6ad1-4e69-bebf-4a9bc68bfe37",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 92,
+          "allocated_micros": 92000,
+          "reported_input_units": 175066,
+          "mean_latency_ms": 553.6413043478261,
+          "max_latency_ms": 1253
+        },
+        {
+          "run_id": "f71d3a2b-6ad1-4e69-bebf-4a9bc68bfe37",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 103,
+          "allocated_micros": 103000,
+          "reported_input_units": 197168,
+          "mean_latency_ms": 537.7087378640776,
+          "max_latency_ms": 1286
+        },
+        {
+          "run_id": "fd8e5428-cd0c-4f7b-abdf-aa391a3132e3",
+          "provider": "jev",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 5506,
+          "reported_input_units": 5126,
+          "mean_latency_ms": 264,
+          "max_latency_ms": 272
+        },
+        {
+          "run_id": "fd8e5428-cd0c-4f7b-abdf-aa391a3132e3",
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3776,
+          "mean_latency_ms": 442,
+          "max_latency_ms": 458
+        },
+        {
+          "run_id": "fd8e5428-cd0c-4f7b-abdf-aa391a3132e3",
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 2,
+          "allocated_micros": 2000,
+          "reported_input_units": 3776,
+          "mean_latency_ms": 447.5,
+          "max_latency_ms": 483
+        }
+      ],
+      "providers": [
+        {
+          "provider": "jev",
+          "state": "success",
+          "attempts": 456,
+          "allocated_micros": 1255368,
+          "reported_input_tokens": 1064331
+        },
+        {
+          "provider": "jev",
+          "state": "uncertain",
+          "attempts": 2,
+          "allocated_micros": 5506,
+          "reported_input_tokens": 0
+        },
+        {
+          "provider": "zoom",
+          "state": "success",
+          "attempts": 389,
+          "allocated_micros": 389000,
+          "reported_input_tokens": 699247
+        },
+        {
+          "provider": "zoom-pro",
+          "state": "success",
+          "attempts": 435,
+          "allocated_micros": 435000,
+          "reported_input_tokens": 782444
+        }
+      ]
+    }
+  },
+  "errors": []
+}

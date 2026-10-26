@@ -1,0 +1,28 @@
+# Deploy the worker release without opening a campaign or mounting its ledger.
+# A fresh approved campaign must select the execution compose explicitly.
+services:
+  worker:
+    build:
+      context: .
+      dockerfile: deploy/worker.Dockerfile
+    command: ["node", "--import", "tsx", "scripts/standby-multi-worker.ts"]
+    restart: unless-stopped
+    init: true
+    healthcheck:
+      test: ["CMD", "node", "-e", "if(require('fs').readFileSync('/tmp/hawker-standby-ready','utf8')!=='hawker-decision-prompt-4')process.exit(1)"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=64m
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 512m
+    cpus: 1
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"

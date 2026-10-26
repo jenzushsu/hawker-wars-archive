@@ -1,0 +1,13 @@
+{
+  "roundId": "c836aab3-96fc-47a5-a3d2-64c6c3400812",
+  "tick": 80,
+  "diagnostic": "verified-request-size-bound-exceeded",
+  "maximumRequestBytes": 8192,
+  "reconstructedRequests": [
+    {"provider": "zoom", "bodyBytes": 8216, "queueLength": 12, "readyBatches": 1, "legalActions": ["SERVE", "COOK", "WAIT"], "fallbackAction": "SERVE", "attemptCount": 0},
+    {"provider": "zoom-pro", "bodyBytes": 8207, "queueLength": 12, "readyBatches": 1, "legalActions": ["SERVE", "COOK", "WAIT"], "fallbackAction": "SERVE", "attemptCount": 0}
+  ],
+  "cause": "Full public context plus prompt-v3 planning guidance exceeded the approved Zoom body-size envelope as the queue grew. Mock trajectories did not cover this state.",
+  "resolution": "Preserve committed fallback actions; resume the same round with unchanged commit, prompt, request bounds and budget. Report this seed as affected by fallbacks, not a pure model comparison.",
+  "followUp": "Before another paid comparison, make shared context fit the approved envelope across maximum legal states and captured trajectories, or obtain an explicit request-envelope change. Re-run all policies from fresh seeds under one fixed configuration; do not silently retry this run."
+}

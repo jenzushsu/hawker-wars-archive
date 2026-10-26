@@ -1,0 +1,2027 @@
+{
+  "scope": "Offline only, no provider calls. Actual trajectory exactly replayed. Counterfactuals use recorded prefix through85, start one batch at86/87/88, SERVE whenever legal otherwise WAIT through94, then the same frozen Rules controller from95. They are not predictions of Jev after intervention or an optimality proof.",
+  "states": [
+    {
+      "tick": 86,
+      "raw": 10,
+      "ready": [],
+      "queue": [
+        {
+          "id": "customer-83-base-1",
+          "arrivalTick": 83,
+          "patience": 10,
+          "deadlineTick": 93
+        },
+        {
+          "id": "customer-84-base-0",
+          "arrivalTick": 84,
+          "patience": 5,
+          "deadlineTick": 89
+        },
+        {
+          "id": "customer-85-base-0",
+          "arrivalTick": 85,
+          "patience": 8,
+          "deadlineTick": 93
+        },
+        {
+          "id": "customer-85-base-1",
+          "arrivalTick": 85,
+          "patience": 5,
+          "deadlineTick": 90
+        },
+        {
+          "id": "customer-86-base-0",
+          "arrivalTick": 86,
+          "patience": 3,
+          "deadlineTick": 89
+        }
+      ],
+      "cooking": null,
+      "pending": {
+        "quantity": 20,
+        "dueTick": 88,
+        "delayApplied": false
+      },
+      "legal": [
+        "COOK",
+        "WAIT"
+      ],
+      "choice": "WAIT",
+      "probabilities": [
+        {
+          "action": "COOK",
+          "probability": 0.48
+        },
+        {
+          "action": "WAIT",
+          "probability": 0.52
+        }
+      ],
+      "instructions": "Choose one legal action to maximize final utility at tick 120 using the supplied rules. Return the typed choice; do not infer hidden arrivals.\nEvaluate ready food, cooking, raw stock and pending delivery together.\nSERVE: Prioritize waiting customers when food is ready; delay risks abandonment or spoilage.\nCOOK: Consider cooking when ready supply is insufficient for expected demand; account for completion time and spoilage.\nRESTOCK: Consider replenishment before supply runs out. An empty pipeline needs an order. Consider arrivals after delivery/cooking, not only the current queue. Repeat orders are allowed.\nWAIT: Use when work progresses, delay avoids waste, or other actions offer no expected utility gain. WAIT cannot replenish stock.\nPROMOTE: Consider extra demand when supply and service capacity can support it.\nAccount for closing salvage and penalties. Follow-up actions are not automatic. Tables use named columns; queue rows are FIFO.\nPipeline: NONEMPTY; raw=10; ready=0; cookingDue=none; deliveryDue=88.\nRESTOCK is not currently legal; do not assume an order can be placed now.",
+      "cookNowReadyAt": 91,
+      "originalQueueSurvivingCookNow": [
+        "customer-83-base-1",
+        "customer-85-base-0"
+      ]
+    },
+    {
+      "tick": 87,
+      "raw": 10,
+      "ready": [],
+      "queue": [
+        {
+          "id": "customer-83-base-1",
+          "arrivalTick": 83,
+          "patience": 10,
+          "deadlineTick": 93
+        },
+        {
+          "id": "customer-84-base-0",
+          "arrivalTick": 84,
+          "patience": 5,
+          "deadlineTick": 89
+        },
+        {
+          "id": "customer-85-base-0",
+          "arrivalTick": 85,
+          "patience": 8,
+          "deadlineTick": 93
+        },
+        {
+          "id": "customer-85-base-1",
+          "arrivalTick": 85,
+          "patience": 5,
+          "deadlineTick": 90
+        },
+        {
+          "id": "customer-86-base-0",
+          "arrivalTick": 86,
+          "patience": 3,
+          "deadlineTick": 89
+        },
+        {
+          "id": "customer-87-base-0",
+          "arrivalTick": 87,
+          "patience": 4,
+          "deadlineTick": 91
+        }
+      ],
+      "cooking": null,
+      "pending": {
+        "quantity": 20,
+        "dueTick": 88,
+        "delayApplied": false
+      },
+      "legal": [
+        "COOK",
+        "WAIT"
+      ],
+      "choice": "WAIT",
+      "probabilities": [
+        {
+          "action": "COOK",
+          "probability": 0.37
+        },
+        {
+          "action": "WAIT",
+          "probability": 0.63
+        }
+      ],
+      "instructions": "Choose one legal action to maximize final utility at tick 120 using the supplied rules. Return the typed choice; do not infer hidden arrivals.\nEvaluate ready food, cooking, raw stock and pending delivery together.\nSERVE: Prioritize waiting customers when food is ready; delay risks abandonment or spoilage.\nCOOK: Consider cooking when ready supply is insufficient for expected demand; account for completion time and spoilage.\nRESTOCK: Consider replenishment before supply runs out. An empty pipeline needs an order. Consider arrivals after delivery/cooking, not only the current queue. Repeat orders are allowed.\nWAIT: Use when work progresses, delay avoids waste, or other actions offer no expected utility gain. WAIT cannot replenish stock.\nPROMOTE: Consider extra demand when supply and service capacity can support it.\nAccount for closing salvage and penalties. Follow-up actions are not automatic. Tables use named columns; queue rows are FIFO.\nPipeline: NONEMPTY; raw=10; ready=0; cookingDue=none; deliveryDue=88.\nRESTOCK is not currently legal; do not assume an order can be placed now.",
+      "cookNowReadyAt": 92,
+      "originalQueueSurvivingCookNow": [
+        "customer-83-base-1",
+        "customer-85-base-0"
+      ]
+    },
+    {
+      "tick": 88,
+      "raw": 30,
+      "ready": [],
+      "queue": [
+        {
+          "id": "customer-83-base-1",
+          "arrivalTick": 83,
+          "patience": 10,
+          "deadlineTick": 93
+        },
+        {
+          "id": "customer-84-base-0",
+          "arrivalTick": 84,
+          "patience": 5,
+          "deadlineTick": 89
+        },
+        {
+          "id": "customer-85-base-0",
+          "arrivalTick": 85,
+          "patience": 8,
+          "deadlineTick": 93
+        },
+        {
+          "id": "customer-85-base-1",
+          "arrivalTick": 85,
+          "patience": 5,
+          "deadlineTick": 90
+        },
+        {
+          "id": "customer-86-base-0",
+          "arrivalTick": 86,
+          "patience": 3,
+          "deadlineTick": 89
+        },
+        {
+          "id": "customer-87-base-0",
+          "arrivalTick": 87,
+          "patience": 4,
+          "deadlineTick": 91
+        },
+        {
+          "id": "customer-88-base-0",
+          "arrivalTick": 88,
+          "patience": 7,
+          "deadlineTick": 95
+        }
+      ],
+      "cooking": null,
+      "pending": null,
+      "legal": [
+        "COOK",
+        "RESTOCK",
+        "WAIT"
+      ],
+      "choice": "COOK",
+      "probabilities": [
+        {
+          "action": "COOK",
+          "probability": 0.39999999999999997
+        },
+        {
+          "action": "RESTOCK",
+          "probability": 0.4
+        },
+        {
+          "action": "WAIT",
+          "probability": 0.2
+        }
+      ],
+      "instructions": "Choose one legal action to maximize final utility at tick 120 using the supplied rules. Return the typed choice; do not infer hidden arrivals.\nEvaluate ready food, cooking, raw stock and pending delivery together.\nSERVE: Prioritize waiting customers when food is ready; delay risks abandonment or spoilage.\nCOOK: Consider cooking when ready supply is insufficient for expected demand; account for completion time and spoilage.\nRESTOCK: Consider replenishment before supply runs out. An empty pipeline needs an order. Consider arrivals after delivery/cooking, not only the current queue. Repeat orders are allowed.\nWAIT: Use when work progresses, delay avoids waste, or other actions offer no expected utility gain. WAIT cannot replenish stock.\nPROMOTE: Consider extra demand when supply and service capacity can support it.\nAccount for closing salvage and penalties. Follow-up actions are not automatic. Tables use named columns; queue rows are FIFO.\nPipeline: NONEMPTY; raw=30; ready=0; cookingDue=none; deliveryDue=none.\nRESTOCK now: delivery at 98; optimistic earliest new food at 103, assuming COOK on delivery, idle cooker, capacity and no additional delay. Remaining service ticks: 17.",
+      "cookNowReadyAt": 93,
+      "originalQueueSurvivingCookNow": [
+        "customer-88-base-0"
+      ]
+    }
+  ],
+  "actual": {
+    "cookAt": null,
+    "timeline": [
+      {
+        "tick": 86,
+        "action": "WAIT",
+        "raw": 10,
+        "ready": 0,
+        "queue": [
+          {
+            "id": "customer-83-base-1",
+            "deadline": 93
+          },
+          {
+            "id": "customer-84-base-0",
+            "deadline": 89
+          },
+          {
+            "id": "customer-85-base-0",
+            "deadline": 93
+          },
+          {
+            "id": "customer-85-base-1",
+            "deadline": 90
+          },
+          {
+            "id": "customer-86-base-0",
+            "deadline": 89
+          }
+        ],
+        "servedIds": [],
+        "totals": {
+          "served": 65,
+          "abandoned": 27,
+          "wasted": 7,
+          "waitMinutes": 288,
+          "arrivals": 97,
+          "purchasedPortions": 60,
+          "restockOrders": 3,
+          "promotions": 0
+        }
+      },
+      {
+        "tick": 87,
+        "action": "WAIT",
+        "raw": 10,
+        "ready": 0,
+        "queue": [
+          {
+            "id": "customer-83-base-1",
+            "deadline": 93
+          },
+          {
+            "id": "customer-84-base-0",
+            "deadline": 89
+          },
+          {
+            "id": "customer-85-base-0",
+            "deadline": 93
+          },
+          {
+            "id": "customer-85-base-1",
+            "deadline": 90
+          },
+          {
+            "id": "customer-86-base-0",
+            "deadline": 89
+          },
+          {
+            "id": "customer-87-base-0",
+            "deadline": 91
+          }
+        ],
+        "servedIds": [],
+        "totals": {
+          "served": 65,
+          "abandoned": 27,
+          "wasted": 7,
+          "waitMinutes": 288,
+          "arrivals": 98,
+          "purchasedPortions": 60,
+          "restockOrders": 3,
+          "promotions": 0
+        }
+      },
+      {
+        "tick": 88,
+        "action": "COOK",
+        "raw": 30,
+        "ready": 0,
+        "queue": [
+          {
+            "id": "customer-83-base-1",
+            "deadline": 93
+          },
+          {
+            "id": "customer-84-base-0",
+            "deadline": 89
+          },
+          {
+            "id": "customer-85-base-0",
+            "deadline": 93
+          },
+          {
+            "id": "customer-85-base-1",
+            "deadline": 90
+          },
+          {
+            "id": "customer-86-base-0",
+            "deadline": 89
+          },
+          {
+            "id": "customer-87-base-0",
+            "deadline": 91
+          },
+          {
+            "id": "customer-88-base-0",
+            "deadline": 95
+          }
+        ],
+        "servedIds": [],
+        "totals": {
+          "served": 65,
+          "abandoned": 27,
+          "wasted": 7,
+          "waitMinutes": 288,
+          "arrivals": 99,
+          "purchasedPortions": 60,
+          "restockOrders": 3,
+          "promotions": 0
+        }
+      },
+      {
+        "tick": 89,
+        "action": "WAIT",
+        "raw": 20,
+        "ready": 0,
+        "queue": [
+          {
+            "id": "customer-83-base-1",
+            "deadline": 93
+          },
+          {
+            "id": "customer-85-base-0",
+            "deadline": 93
+          },
+          {
+            "id": "customer-85-base-1",
+            "deadline": 90
+          },
+          {
+            "id": "customer-87-base-0",
+            "deadline": 91
+          },
+          {
+            "id": "customer-88-base-0",
+            "deadline": 95
+          },
+          {
+            "id": "customer-89-base-0",
+            "deadline": 97
+          },
+          {
+            "id": "customer-89-base-1",
+            "deadline": 95
+          }
+        ],
+        "servedIds": [],
+        "totals": {
+          "served": 65,
+          "abandoned": 29,
+          "wasted": 7,
+          "waitMinutes": 296,
+          "arrivals": 101,
+          "purchasedPortions": 60,
+          "restockOrders": 3,
+          "promotions": 0
+        }
+      },
+      {
+        "tick": 90,
+        "action": "WAIT",
+        "raw": 20,
+        "ready": 0,
+        "queue": [
+          {
+            "id": "customer-83-base-1",
+            "deadline": 93
+          },
+          {
+            "id": "customer-85-base-0",
+            "deadline": 93
+          },
+          {
+            "id": "customer-87-base-0",
+            "deadline": 91
+          },
+          {
+            "id": "customer-88-base-0",
+            "deadline": 95
+          },
+          {
+            "id": "customer-89-base-0",
+            "deadline": 97
+          },
+          {
+            "id": "customer-89-base-1",
+            "deadline": 95
+          },
+          {
+            "id": "customer-90-base-0",
+            "deadline": 100
+          },
+          {
+            "id": "customer-90-base-1",
+            "deadline": 98
+          }
+        ],
+        "servedIds": [],
+        "totals": {
+          "served": 65,
+          "abandoned": 30,
+          "wasted": 7,
+          "waitMinutes": 301,
+          "arrivals": 103,
+          "purchasedPortions": 60,
+          "restockOrders": 3,
+          "promotions": 0
+        }
+      },
+      {
+        "tick": 91,
+        "action": "WAIT",
+        "raw": 20,
+        "ready": 0,
+        "queue": [
+          {
+            "id": "customer-83-base-1",
+            "deadline": 93
+          },
+          {
+            "id": "customer-85-base-0",
+            "deadline": 93
+          },
+          {
+            "id": "customer-88-base-0",
+            "deadline": 95
+          },
+          {
+            "id": "customer-89-base-0",
+            "deadline": 97
+          },
+          {
+            "id": "customer-89-base-1",
+            "deadline": 95
+          },
+          {
+            "id": "customer-90-base-0",
+            "deadline": 100
+          },
+          {
+            "id": "customer-90-base-1",
+            "deadline": 98
+          },
+          {
+            "id": "customer-91-base-0",
+            "deadline": 99
+          }
+        ],
+        "servedIds": [],
+        "totals": {
+          "served": 65,
+          "abandoned": 31,
+          "wasted": 7,
+          "waitMinutes": 305,
+          "arrivals": 104,
+          "purchasedPortions": 60,
+          "restockOrders": 3,
+          "promotions": 0
+        }
+      },
+      {
+        "tick": 92,
+        "action": "WAIT",
+        "raw": 20,
+        "ready": 0,
+        "queue": [
+          {
+            "id": "customer-83-base-1",
+            "deadline": 93
+          },
+          {
+            "id": "customer-85-base-0",
+            "deadline": 93
+          },
+          {
+            "id": "customer-88-base-0",
+            "deadline": 95
+          },
+          {
+            "id": "customer-89-base-0",
+            "deadline": 97
+          },
+          {
+            "id": "customer-89-base-1",
+            "deadline": 95
+          },
+          {
+            "id": "customer-90-base-0",
+            "deadline": 100
+          },
+          {
+            "id": "customer-90-base-1",
+            "deadline": 98
+          },
+          {
+            "id": "customer-91-base-0",
+            "deadline": 99
+          }
+        ],
+        "servedIds": [],
+        "totals": {
+          "served": 65,
+          "abandoned": 31,
+          "wasted": 7,
+          "waitMinutes": 305,
+          "arrivals": 104,
+          "purchasedPortions": 60,
+          "restockOrders": 3,
+          "promotions": 0
+        }
+      },
+      {
+        "tick": 93,
+        "action": "SERVE",
+        "raw": 20,
+        "ready": 10,
+        "queue": [
+          {
+            "id": "customer-88-base-0",
+            "deadline": 95
+          },
+          {
+            "id": "customer-89-base-0",
+            "deadline": 97
+          },
+          {
+            "id": "customer-89-base-1",
+            "deadline": 95
+          },
+          {
+            "id": "customer-90-base-0",
+            "deadline": 100
+          },
+          {
+            "id": "customer-90-base-1",
+            "deadline": 98
+          },
+          {
+            "id": "customer-91-base-0",
+            "deadline": 99
+          },
+          {
+            "id": "customer-93-base-0",
+            "deadline": 99
+          },
+          {
+            "id": "customer-93-base-1",
+            "deadline": 98
+          }
+        ],
+        "servedIds": [
+          "customer-88-base-0",
+          "customer-89-base-0",
+          "customer-89-base-1"
+        ],
+        "totals": {
+          "served": 68,
+          "abandoned": 33,
+          "wasted": 7,
+          "waitMinutes": 336,
+          "arrivals": 106,
+          "purchasedPortions": 60,
+          "restockOrders": 3,
+          "promotions": 0
+        }
+      },
+      {
+        "tick": 94,
+        "action": "SERVE",
+        "raw": 20,
+        "ready": 7,
+        "queue": [
+          {
+            "id": "customer-90-base-0",
+            "deadline": 100
+          },
+          {
+            "id": "customer-90-base-1",
+            "deadline": 98
+          },
+          {
+            "id": "customer-91-base-0",
+            "deadline": 99
+          },
+          {
+            "id": "customer-93-base-0",
+            "deadline": 99
+          },
+          {
+            "id": "customer-93-base-1",
+            "deadline": 98
+          }
+        ],
+        "servedIds": [
+          "customer-90-base-0",
+          "customer-90-base-1",
+          "customer-91-base-0"
+        ],
+        "totals": {
+          "served": 71,
+          "abandoned": 33,
+          "wasted": 7,
+          "waitMinutes": 347,
+          "arrivals": 106,
+          "purchasedPortions": 60,
+          "restockOrders": 3,
+          "promotions": 0
+        }
+      }
+    ],
+    "checkpoint94": {
+      "totals": {
+        "served": 71,
+        "abandoned": 33,
+        "wasted": 7,
+        "waitMinutes": 347,
+        "arrivals": 106,
+        "purchasedPortions": 60,
+        "restockOrders": 3,
+        "promotions": 0
+      },
+      "cashCents": 43500,
+      "raw": 20
+    },
+    "score": {
+      "profitCents": 24100,
+      "utilityPoints": 18515,
+      "meanWaitMinutes": 3.0840336134453783,
+      "satisfaction": null,
+      "provisional": false
+    },
+    "totals": {
+      "served": 85,
+      "abandoned": 34,
+      "wasted": 7,
+      "waitMinutes": 367,
+      "arrivals": 119,
+      "purchasedPortions": 60,
+      "restockOrders": 3,
+      "promotions": 0
+    }
+  },
+  "counterfactuals": [
+    {
+      "cookAt": 86,
+      "timeline": [
+        {
+          "tick": 86,
+          "action": "COOK",
+          "raw": 10,
+          "ready": 0,
+          "queue": [
+            {
+              "id": "customer-83-base-1",
+              "deadline": 93
+            },
+            {
+              "id": "customer-84-base-0",
+              "deadline": 89
+            },
+            {
+              "id": "customer-85-base-0",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-1",
+              "deadline": 90
+            },
+            {
+              "id": "customer-86-base-0",
+              "deadline": 89
+            }
+          ],
+          "servedIds": [],
+          "totals": {
+            "served": 65,
+            "abandoned": 27,
+            "wasted": 7,
+            "waitMinutes": 288,
+            "arrivals": 97,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 87,
+          "action": "WAIT",
+          "raw": 0,
+          "ready": 0,
+          "queue": [
+            {
+              "id": "customer-83-base-1",
+              "deadline": 93
+            },
+            {
+              "id": "customer-84-base-0",
+              "deadline": 89
+            },
+            {
+              "id": "customer-85-base-0",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-1",
+              "deadline": 90
+            },
+            {
+              "id": "customer-86-base-0",
+              "deadline": 89
+            },
+            {
+              "id": "customer-87-base-0",
+              "deadline": 91
+            }
+          ],
+          "servedIds": [],
+          "totals": {
+            "served": 65,
+            "abandoned": 27,
+            "wasted": 7,
+            "waitMinutes": 288,
+            "arrivals": 98,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 88,
+          "action": "WAIT",
+          "raw": 20,
+          "ready": 0,
+          "queue": [
+            {
+              "id": "customer-83-base-1",
+              "deadline": 93
+            },
+            {
+              "id": "customer-84-base-0",
+              "deadline": 89
+            },
+            {
+              "id": "customer-85-base-0",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-1",
+              "deadline": 90
+            },
+            {
+              "id": "customer-86-base-0",
+              "deadline": 89
+            },
+            {
+              "id": "customer-87-base-0",
+              "deadline": 91
+            },
+            {
+              "id": "customer-88-base-0",
+              "deadline": 95
+            }
+          ],
+          "servedIds": [],
+          "totals": {
+            "served": 65,
+            "abandoned": 27,
+            "wasted": 7,
+            "waitMinutes": 288,
+            "arrivals": 99,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 89,
+          "action": "WAIT",
+          "raw": 20,
+          "ready": 0,
+          "queue": [
+            {
+              "id": "customer-83-base-1",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-0",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-1",
+              "deadline": 90
+            },
+            {
+              "id": "customer-87-base-0",
+              "deadline": 91
+            },
+            {
+              "id": "customer-88-base-0",
+              "deadline": 95
+            },
+            {
+              "id": "customer-89-base-0",
+              "deadline": 97
+            },
+            {
+              "id": "customer-89-base-1",
+              "deadline": 95
+            }
+          ],
+          "servedIds": [],
+          "totals": {
+            "served": 65,
+            "abandoned": 29,
+            "wasted": 7,
+            "waitMinutes": 296,
+            "arrivals": 101,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 90,
+          "action": "WAIT",
+          "raw": 20,
+          "ready": 0,
+          "queue": [
+            {
+              "id": "customer-83-base-1",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-0",
+              "deadline": 93
+            },
+            {
+              "id": "customer-87-base-0",
+              "deadline": 91
+            },
+            {
+              "id": "customer-88-base-0",
+              "deadline": 95
+            },
+            {
+              "id": "customer-89-base-0",
+              "deadline": 97
+            },
+            {
+              "id": "customer-89-base-1",
+              "deadline": 95
+            },
+            {
+              "id": "customer-90-base-0",
+              "deadline": 100
+            },
+            {
+              "id": "customer-90-base-1",
+              "deadline": 98
+            }
+          ],
+          "servedIds": [],
+          "totals": {
+            "served": 65,
+            "abandoned": 30,
+            "wasted": 7,
+            "waitMinutes": 301,
+            "arrivals": 103,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 91,
+          "action": "SERVE",
+          "raw": 20,
+          "ready": 10,
+          "queue": [
+            {
+              "id": "customer-83-base-1",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-0",
+              "deadline": 93
+            },
+            {
+              "id": "customer-88-base-0",
+              "deadline": 95
+            },
+            {
+              "id": "customer-89-base-0",
+              "deadline": 97
+            },
+            {
+              "id": "customer-89-base-1",
+              "deadline": 95
+            },
+            {
+              "id": "customer-90-base-0",
+              "deadline": 100
+            },
+            {
+              "id": "customer-90-base-1",
+              "deadline": 98
+            },
+            {
+              "id": "customer-91-base-0",
+              "deadline": 99
+            }
+          ],
+          "servedIds": [
+            "customer-83-base-1",
+            "customer-85-base-0",
+            "customer-88-base-0"
+          ],
+          "totals": {
+            "served": 68,
+            "abandoned": 31,
+            "wasted": 7,
+            "waitMinutes": 322,
+            "arrivals": 104,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 92,
+          "action": "SERVE",
+          "raw": 20,
+          "ready": 7,
+          "queue": [
+            {
+              "id": "customer-89-base-0",
+              "deadline": 97
+            },
+            {
+              "id": "customer-89-base-1",
+              "deadline": 95
+            },
+            {
+              "id": "customer-90-base-0",
+              "deadline": 100
+            },
+            {
+              "id": "customer-90-base-1",
+              "deadline": 98
+            },
+            {
+              "id": "customer-91-base-0",
+              "deadline": 99
+            }
+          ],
+          "servedIds": [
+            "customer-89-base-0",
+            "customer-89-base-1",
+            "customer-90-base-0"
+          ],
+          "totals": {
+            "served": 71,
+            "abandoned": 31,
+            "wasted": 7,
+            "waitMinutes": 330,
+            "arrivals": 104,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 93,
+          "action": "SERVE",
+          "raw": 20,
+          "ready": 4,
+          "queue": [
+            {
+              "id": "customer-90-base-1",
+              "deadline": 98
+            },
+            {
+              "id": "customer-91-base-0",
+              "deadline": 99
+            },
+            {
+              "id": "customer-93-base-0",
+              "deadline": 99
+            },
+            {
+              "id": "customer-93-base-1",
+              "deadline": 98
+            }
+          ],
+          "servedIds": [
+            "customer-90-base-1",
+            "customer-91-base-0",
+            "customer-93-base-0"
+          ],
+          "totals": {
+            "served": 74,
+            "abandoned": 31,
+            "wasted": 7,
+            "waitMinutes": 335,
+            "arrivals": 106,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 94,
+          "action": "SERVE",
+          "raw": 20,
+          "ready": 1,
+          "queue": [
+            {
+              "id": "customer-93-base-1",
+              "deadline": 98
+            }
+          ],
+          "servedIds": [
+            "customer-93-base-1"
+          ],
+          "totals": {
+            "served": 75,
+            "abandoned": 31,
+            "wasted": 7,
+            "waitMinutes": 336,
+            "arrivals": 106,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        }
+      ],
+      "checkpoint94": {
+        "totals": {
+          "served": 75,
+          "abandoned": 31,
+          "wasted": 7,
+          "waitMinutes": 336,
+          "arrivals": 106,
+          "purchasedPortions": 60,
+          "restockOrders": 3,
+          "promotions": 0
+        },
+        "cashCents": 45500,
+        "raw": 20
+      },
+      "score": {
+        "profitCents": 23100,
+        "utilityPoints": 17450,
+        "meanWaitMinutes": 2.857142857142857,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "totals": {
+        "served": 87,
+        "abandoned": 32,
+        "wasted": 15,
+        "waitMinutes": 340,
+        "arrivals": 119,
+        "purchasedPortions": 60,
+        "restockOrders": 3,
+        "promotions": 0
+      }
+    },
+    {
+      "cookAt": 87,
+      "timeline": [
+        {
+          "tick": 86,
+          "action": "WAIT",
+          "raw": 10,
+          "ready": 0,
+          "queue": [
+            {
+              "id": "customer-83-base-1",
+              "deadline": 93
+            },
+            {
+              "id": "customer-84-base-0",
+              "deadline": 89
+            },
+            {
+              "id": "customer-85-base-0",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-1",
+              "deadline": 90
+            },
+            {
+              "id": "customer-86-base-0",
+              "deadline": 89
+            }
+          ],
+          "servedIds": [],
+          "totals": {
+            "served": 65,
+            "abandoned": 27,
+            "wasted": 7,
+            "waitMinutes": 288,
+            "arrivals": 97,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 87,
+          "action": "COOK",
+          "raw": 10,
+          "ready": 0,
+          "queue": [
+            {
+              "id": "customer-83-base-1",
+              "deadline": 93
+            },
+            {
+              "id": "customer-84-base-0",
+              "deadline": 89
+            },
+            {
+              "id": "customer-85-base-0",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-1",
+              "deadline": 90
+            },
+            {
+              "id": "customer-86-base-0",
+              "deadline": 89
+            },
+            {
+              "id": "customer-87-base-0",
+              "deadline": 91
+            }
+          ],
+          "servedIds": [],
+          "totals": {
+            "served": 65,
+            "abandoned": 27,
+            "wasted": 7,
+            "waitMinutes": 288,
+            "arrivals": 98,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 88,
+          "action": "WAIT",
+          "raw": 20,
+          "ready": 0,
+          "queue": [
+            {
+              "id": "customer-83-base-1",
+              "deadline": 93
+            },
+            {
+              "id": "customer-84-base-0",
+              "deadline": 89
+            },
+            {
+              "id": "customer-85-base-0",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-1",
+              "deadline": 90
+            },
+            {
+              "id": "customer-86-base-0",
+              "deadline": 89
+            },
+            {
+              "id": "customer-87-base-0",
+              "deadline": 91
+            },
+            {
+              "id": "customer-88-base-0",
+              "deadline": 95
+            }
+          ],
+          "servedIds": [],
+          "totals": {
+            "served": 65,
+            "abandoned": 27,
+            "wasted": 7,
+            "waitMinutes": 288,
+            "arrivals": 99,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 89,
+          "action": "WAIT",
+          "raw": 20,
+          "ready": 0,
+          "queue": [
+            {
+              "id": "customer-83-base-1",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-0",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-1",
+              "deadline": 90
+            },
+            {
+              "id": "customer-87-base-0",
+              "deadline": 91
+            },
+            {
+              "id": "customer-88-base-0",
+              "deadline": 95
+            },
+            {
+              "id": "customer-89-base-0",
+              "deadline": 97
+            },
+            {
+              "id": "customer-89-base-1",
+              "deadline": 95
+            }
+          ],
+          "servedIds": [],
+          "totals": {
+            "served": 65,
+            "abandoned": 29,
+            "wasted": 7,
+            "waitMinutes": 296,
+            "arrivals": 101,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 90,
+          "action": "WAIT",
+          "raw": 20,
+          "ready": 0,
+          "queue": [
+            {
+              "id": "customer-83-base-1",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-0",
+              "deadline": 93
+            },
+            {
+              "id": "customer-87-base-0",
+              "deadline": 91
+            },
+            {
+              "id": "customer-88-base-0",
+              "deadline": 95
+            },
+            {
+              "id": "customer-89-base-0",
+              "deadline": 97
+            },
+            {
+              "id": "customer-89-base-1",
+              "deadline": 95
+            },
+            {
+              "id": "customer-90-base-0",
+              "deadline": 100
+            },
+            {
+              "id": "customer-90-base-1",
+              "deadline": 98
+            }
+          ],
+          "servedIds": [],
+          "totals": {
+            "served": 65,
+            "abandoned": 30,
+            "wasted": 7,
+            "waitMinutes": 301,
+            "arrivals": 103,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 91,
+          "action": "WAIT",
+          "raw": 20,
+          "ready": 0,
+          "queue": [
+            {
+              "id": "customer-83-base-1",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-0",
+              "deadline": 93
+            },
+            {
+              "id": "customer-88-base-0",
+              "deadline": 95
+            },
+            {
+              "id": "customer-89-base-0",
+              "deadline": 97
+            },
+            {
+              "id": "customer-89-base-1",
+              "deadline": 95
+            },
+            {
+              "id": "customer-90-base-0",
+              "deadline": 100
+            },
+            {
+              "id": "customer-90-base-1",
+              "deadline": 98
+            },
+            {
+              "id": "customer-91-base-0",
+              "deadline": 99
+            }
+          ],
+          "servedIds": [],
+          "totals": {
+            "served": 65,
+            "abandoned": 31,
+            "wasted": 7,
+            "waitMinutes": 305,
+            "arrivals": 104,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 92,
+          "action": "SERVE",
+          "raw": 20,
+          "ready": 10,
+          "queue": [
+            {
+              "id": "customer-83-base-1",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-0",
+              "deadline": 93
+            },
+            {
+              "id": "customer-88-base-0",
+              "deadline": 95
+            },
+            {
+              "id": "customer-89-base-0",
+              "deadline": 97
+            },
+            {
+              "id": "customer-89-base-1",
+              "deadline": 95
+            },
+            {
+              "id": "customer-90-base-0",
+              "deadline": 100
+            },
+            {
+              "id": "customer-90-base-1",
+              "deadline": 98
+            },
+            {
+              "id": "customer-91-base-0",
+              "deadline": 99
+            }
+          ],
+          "servedIds": [
+            "customer-83-base-1",
+            "customer-85-base-0",
+            "customer-88-base-0"
+          ],
+          "totals": {
+            "served": 68,
+            "abandoned": 31,
+            "wasted": 7,
+            "waitMinutes": 325,
+            "arrivals": 104,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 93,
+          "action": "SERVE",
+          "raw": 20,
+          "ready": 7,
+          "queue": [
+            {
+              "id": "customer-89-base-0",
+              "deadline": 97
+            },
+            {
+              "id": "customer-89-base-1",
+              "deadline": 95
+            },
+            {
+              "id": "customer-90-base-0",
+              "deadline": 100
+            },
+            {
+              "id": "customer-90-base-1",
+              "deadline": 98
+            },
+            {
+              "id": "customer-91-base-0",
+              "deadline": 99
+            },
+            {
+              "id": "customer-93-base-0",
+              "deadline": 99
+            },
+            {
+              "id": "customer-93-base-1",
+              "deadline": 98
+            }
+          ],
+          "servedIds": [
+            "customer-89-base-0",
+            "customer-89-base-1",
+            "customer-90-base-0"
+          ],
+          "totals": {
+            "served": 71,
+            "abandoned": 31,
+            "wasted": 7,
+            "waitMinutes": 336,
+            "arrivals": 106,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 94,
+          "action": "SERVE",
+          "raw": 20,
+          "ready": 4,
+          "queue": [
+            {
+              "id": "customer-90-base-1",
+              "deadline": 98
+            },
+            {
+              "id": "customer-91-base-0",
+              "deadline": 99
+            },
+            {
+              "id": "customer-93-base-0",
+              "deadline": 99
+            },
+            {
+              "id": "customer-93-base-1",
+              "deadline": 98
+            }
+          ],
+          "servedIds": [
+            "customer-90-base-1",
+            "customer-91-base-0",
+            "customer-93-base-0"
+          ],
+          "totals": {
+            "served": 74,
+            "abandoned": 31,
+            "wasted": 7,
+            "waitMinutes": 344,
+            "arrivals": 106,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        }
+      ],
+      "checkpoint94": {
+        "totals": {
+          "served": 74,
+          "abandoned": 31,
+          "wasted": 7,
+          "waitMinutes": 344,
+          "arrivals": 106,
+          "purchasedPortions": 60,
+          "restockOrders": 3,
+          "promotions": 0
+        },
+        "cashCents": 45000,
+        "raw": 20
+      },
+      "score": {
+        "profitCents": 23100,
+        "utilityPoints": 17395,
+        "meanWaitMinutes": 2.9495798319327733,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "totals": {
+        "served": 87,
+        "abandoned": 32,
+        "wasted": 15,
+        "waitMinutes": 351,
+        "arrivals": 119,
+        "purchasedPortions": 60,
+        "restockOrders": 3,
+        "promotions": 0
+      }
+    },
+    {
+      "cookAt": 88,
+      "timeline": [
+        {
+          "tick": 86,
+          "action": "WAIT",
+          "raw": 10,
+          "ready": 0,
+          "queue": [
+            {
+              "id": "customer-83-base-1",
+              "deadline": 93
+            },
+            {
+              "id": "customer-84-base-0",
+              "deadline": 89
+            },
+            {
+              "id": "customer-85-base-0",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-1",
+              "deadline": 90
+            },
+            {
+              "id": "customer-86-base-0",
+              "deadline": 89
+            }
+          ],
+          "servedIds": [],
+          "totals": {
+            "served": 65,
+            "abandoned": 27,
+            "wasted": 7,
+            "waitMinutes": 288,
+            "arrivals": 97,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 87,
+          "action": "WAIT",
+          "raw": 10,
+          "ready": 0,
+          "queue": [
+            {
+              "id": "customer-83-base-1",
+              "deadline": 93
+            },
+            {
+              "id": "customer-84-base-0",
+              "deadline": 89
+            },
+            {
+              "id": "customer-85-base-0",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-1",
+              "deadline": 90
+            },
+            {
+              "id": "customer-86-base-0",
+              "deadline": 89
+            },
+            {
+              "id": "customer-87-base-0",
+              "deadline": 91
+            }
+          ],
+          "servedIds": [],
+          "totals": {
+            "served": 65,
+            "abandoned": 27,
+            "wasted": 7,
+            "waitMinutes": 288,
+            "arrivals": 98,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 88,
+          "action": "COOK",
+          "raw": 30,
+          "ready": 0,
+          "queue": [
+            {
+              "id": "customer-83-base-1",
+              "deadline": 93
+            },
+            {
+              "id": "customer-84-base-0",
+              "deadline": 89
+            },
+            {
+              "id": "customer-85-base-0",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-1",
+              "deadline": 90
+            },
+            {
+              "id": "customer-86-base-0",
+              "deadline": 89
+            },
+            {
+              "id": "customer-87-base-0",
+              "deadline": 91
+            },
+            {
+              "id": "customer-88-base-0",
+              "deadline": 95
+            }
+          ],
+          "servedIds": [],
+          "totals": {
+            "served": 65,
+            "abandoned": 27,
+            "wasted": 7,
+            "waitMinutes": 288,
+            "arrivals": 99,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 89,
+          "action": "WAIT",
+          "raw": 20,
+          "ready": 0,
+          "queue": [
+            {
+              "id": "customer-83-base-1",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-0",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-1",
+              "deadline": 90
+            },
+            {
+              "id": "customer-87-base-0",
+              "deadline": 91
+            },
+            {
+              "id": "customer-88-base-0",
+              "deadline": 95
+            },
+            {
+              "id": "customer-89-base-0",
+              "deadline": 97
+            },
+            {
+              "id": "customer-89-base-1",
+              "deadline": 95
+            }
+          ],
+          "servedIds": [],
+          "totals": {
+            "served": 65,
+            "abandoned": 29,
+            "wasted": 7,
+            "waitMinutes": 296,
+            "arrivals": 101,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 90,
+          "action": "WAIT",
+          "raw": 20,
+          "ready": 0,
+          "queue": [
+            {
+              "id": "customer-83-base-1",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-0",
+              "deadline": 93
+            },
+            {
+              "id": "customer-87-base-0",
+              "deadline": 91
+            },
+            {
+              "id": "customer-88-base-0",
+              "deadline": 95
+            },
+            {
+              "id": "customer-89-base-0",
+              "deadline": 97
+            },
+            {
+              "id": "customer-89-base-1",
+              "deadline": 95
+            },
+            {
+              "id": "customer-90-base-0",
+              "deadline": 100
+            },
+            {
+              "id": "customer-90-base-1",
+              "deadline": 98
+            }
+          ],
+          "servedIds": [],
+          "totals": {
+            "served": 65,
+            "abandoned": 30,
+            "wasted": 7,
+            "waitMinutes": 301,
+            "arrivals": 103,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 91,
+          "action": "WAIT",
+          "raw": 20,
+          "ready": 0,
+          "queue": [
+            {
+              "id": "customer-83-base-1",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-0",
+              "deadline": 93
+            },
+            {
+              "id": "customer-88-base-0",
+              "deadline": 95
+            },
+            {
+              "id": "customer-89-base-0",
+              "deadline": 97
+            },
+            {
+              "id": "customer-89-base-1",
+              "deadline": 95
+            },
+            {
+              "id": "customer-90-base-0",
+              "deadline": 100
+            },
+            {
+              "id": "customer-90-base-1",
+              "deadline": 98
+            },
+            {
+              "id": "customer-91-base-0",
+              "deadline": 99
+            }
+          ],
+          "servedIds": [],
+          "totals": {
+            "served": 65,
+            "abandoned": 31,
+            "wasted": 7,
+            "waitMinutes": 305,
+            "arrivals": 104,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 92,
+          "action": "WAIT",
+          "raw": 20,
+          "ready": 0,
+          "queue": [
+            {
+              "id": "customer-83-base-1",
+              "deadline": 93
+            },
+            {
+              "id": "customer-85-base-0",
+              "deadline": 93
+            },
+            {
+              "id": "customer-88-base-0",
+              "deadline": 95
+            },
+            {
+              "id": "customer-89-base-0",
+              "deadline": 97
+            },
+            {
+              "id": "customer-89-base-1",
+              "deadline": 95
+            },
+            {
+              "id": "customer-90-base-0",
+              "deadline": 100
+            },
+            {
+              "id": "customer-90-base-1",
+              "deadline": 98
+            },
+            {
+              "id": "customer-91-base-0",
+              "deadline": 99
+            }
+          ],
+          "servedIds": [],
+          "totals": {
+            "served": 65,
+            "abandoned": 31,
+            "wasted": 7,
+            "waitMinutes": 305,
+            "arrivals": 104,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 93,
+          "action": "SERVE",
+          "raw": 20,
+          "ready": 10,
+          "queue": [
+            {
+              "id": "customer-88-base-0",
+              "deadline": 95
+            },
+            {
+              "id": "customer-89-base-0",
+              "deadline": 97
+            },
+            {
+              "id": "customer-89-base-1",
+              "deadline": 95
+            },
+            {
+              "id": "customer-90-base-0",
+              "deadline": 100
+            },
+            {
+              "id": "customer-90-base-1",
+              "deadline": 98
+            },
+            {
+              "id": "customer-91-base-0",
+              "deadline": 99
+            },
+            {
+              "id": "customer-93-base-0",
+              "deadline": 99
+            },
+            {
+              "id": "customer-93-base-1",
+              "deadline": 98
+            }
+          ],
+          "servedIds": [
+            "customer-88-base-0",
+            "customer-89-base-0",
+            "customer-89-base-1"
+          ],
+          "totals": {
+            "served": 68,
+            "abandoned": 33,
+            "wasted": 7,
+            "waitMinutes": 336,
+            "arrivals": 106,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        },
+        {
+          "tick": 94,
+          "action": "SERVE",
+          "raw": 20,
+          "ready": 7,
+          "queue": [
+            {
+              "id": "customer-90-base-0",
+              "deadline": 100
+            },
+            {
+              "id": "customer-90-base-1",
+              "deadline": 98
+            },
+            {
+              "id": "customer-91-base-0",
+              "deadline": 99
+            },
+            {
+              "id": "customer-93-base-0",
+              "deadline": 99
+            },
+            {
+              "id": "customer-93-base-1",
+              "deadline": 98
+            }
+          ],
+          "servedIds": [
+            "customer-90-base-0",
+            "customer-90-base-1",
+            "customer-91-base-0"
+          ],
+          "totals": {
+            "served": 71,
+            "abandoned": 33,
+            "wasted": 7,
+            "waitMinutes": 347,
+            "arrivals": 106,
+            "purchasedPortions": 60,
+            "restockOrders": 3,
+            "promotions": 0
+          }
+        }
+      ],
+      "checkpoint94": {
+        "totals": {
+          "served": 71,
+          "abandoned": 33,
+          "wasted": 7,
+          "waitMinutes": 347,
+          "arrivals": 106,
+          "purchasedPortions": 60,
+          "restockOrders": 3,
+          "promotions": 0
+        },
+        "cashCents": 43500,
+        "raw": 20
+      },
+      "score": {
+        "profitCents": 22600,
+        "utilityPoints": 16730,
+        "meanWaitMinutes": 2.9747899159663866,
+        "satisfaction": null,
+        "provisional": false
+      },
+      "totals": {
+        "served": 86,
+        "abandoned": 33,
+        "wasted": 16,
+        "waitMinutes": 354,
+        "arrivals": 119,
+        "purchasedPortions": 60,
+        "restockOrders": 3,
+        "promotions": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+[
+  {
+    "status": "criteria-v2-ledger-transition",
+    "roundId": "371de41b-8241-4514-ba95-52c7ddcdcac2",
+    "configurationHash": "be3ba603b59dffd5903c82114cb011fdc6eb070e0ca1f7b45bfd70fe0513fb05",
+    "before": {
+      "campaignId": "zoom-trial-campaign-1",
+      "pools": [
+        {
+          "id": "jev-separate",
+          "reservedMicros": 2780530,
+          "capMicros": 2788789,
+          "lastDispatchAtMs": 1792911818644
+        },
+        {
+          "id": "zoom-shared",
+          "reservedMicros": 1408000,
+          "capMicros": 5000000,
+          "lastDispatchAtMs": 1792906593773
+        }
+      ],
+      "attempts": 2416
+    }
+  },
+  {
+    "status": "criteria-v2-smoke-passed",
+    "tick": 0,
+    "smoke": {
+      "requestId": "req_01a171fc2d7275888ad9df8072282d53",
+      "requestedModel": "jev-1.13.0",
+      "returnedModel": "jev-1.13.0",
+      "checkedAt": "2026-10-25T07:35:14.687Z"
+    }
+  },
+  {
+    "status": "criteria-v2-progress",
+    "roundId": "371de41b-8241-4514-ba95-52c7ddcdcac2",
+    "tick": 0
+  },
+  {
+    "status": "criteria-v2-progress",
+    "roundId": "371de41b-8241-4514-ba95-52c7ddcdcac2",
+    "tick": 10
+  },
+  {
+    "status": "criteria-v2-progress",
+    "roundId": "371de41b-8241-4514-ba95-52c7ddcdcac2",
+    "tick": 20
+  },
+  {
+    "status": "criteria-v2-progress",
+    "roundId": "371de41b-8241-4514-ba95-52c7ddcdcac2",
+    "tick": 30
+  },
+  {
+    "status": "criteria-v2-progress",
+    "roundId": "371de41b-8241-4514-ba95-52c7ddcdcac2",
+    "tick": 40
+  },
+  {
+    "status": "criteria-v2-progress",
+    "roundId": "371de41b-8241-4514-ba95-52c7ddcdcac2",
+    "tick": 50
+  },
+  {
+    "status": "criteria-v2-progress",
+    "roundId": "371de41b-8241-4514-ba95-52c7ddcdcac2",
+    "tick": 60
+  },
+  {
+    "status": "criteria-v2-progress",
+    "roundId": "371de41b-8241-4514-ba95-52c7ddcdcac2",
+    "tick": 70
+  },
+  {
+    "status": "criteria-v2-progress",
+    "roundId": "371de41b-8241-4514-ba95-52c7ddcdcac2",
+    "tick": 80
+  },
+  {
+    "status": "criteria-v2-progress",
+    "roundId": "371de41b-8241-4514-ba95-52c7ddcdcac2",
+    "tick": 90
+  },
+  {
+    "status": "criteria-v2-progress",
+    "roundId": "371de41b-8241-4514-ba95-52c7ddcdcac2",
+    "tick": 100
+  },
+  {
+    "status": "criteria-v2-progress",
+    "roundId": "371de41b-8241-4514-ba95-52c7ddcdcac2",
+    "tick": 110
+  }
+]

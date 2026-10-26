@@ -1,0 +1,18 @@
+{
+  "app": "uv3z47fpgf70scuxg70dy56w",
+  "sha": "eeed08236cecf1827183b6721ac038bb6073d790",
+  "deployment": "pxx00bp3f6a07wxgsejd5mjg",
+  "standbyDeployment": "yi4ywxgnvbbwto7hwhwrmf2b",
+  "inferenceCredentialsRemoved": true,
+  "status": "running:healthy",
+  "readiness": {
+    "status": "standby-ready",
+    "promptVersion": "hawker-decision-prompt-4",
+    "requestBytes": [
+      5882,
+      5921,
+      5916
+    ],
+    "providerDispatch": false
+  }
+}
